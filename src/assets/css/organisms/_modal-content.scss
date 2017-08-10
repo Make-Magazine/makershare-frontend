@@ -1,0 +1,235 @@
+@media only screen and (min-width: 992px) {
+  .modal-lg, .modal-dialog {
+    max-width: 1110px;
+  }
+  .modal-sm {
+    width: 29%;
+
+  }
+  .delete-promodal {
+    .modal-dialog {
+      max-width: 700px !important;
+    }
+  }
+}
+
+.modal-content {
+  .profile-modal {
+    background-color: $lighter-grey;
+    text-align: left !important;
+    label {
+      color: $highlight-red;
+      margin: 0 0 .2rem 0;
+      .custom-control-indicator {
+        top: .24rem;
+      }
+    }
+    textarea {
+      border: .1rem solid $medium-light-grey;
+      color: $dark-grey;
+      resize: inherit;
+    }
+    input {
+      border: .1rem solid $medium-light-grey;
+      padding: 1.2rem;
+      @include desc-font-1 ();
+      color: $dark-grey;
+      ::placeholder,
+      ::-webkit-input-placeholder,
+      ::-moz-placeholder,
+      :-ms-input-placeholder,
+      :-moz-placeholder {
+        text-align: center;
+        @include desc-font-1 ();
+        color: $medium-light-grey;
+      }
+    }
+    .modal-header {
+      border-bottom: none !important;
+      padding: 1.4rem;
+      .close:focus, .close:hover {
+        outline: none !important;
+      }
+    }
+    .modal-body {
+      padding-top: 0;
+      .scroll-container {
+        overflow-y: auto;
+        width: 100%;
+        height: 48rem;
+        max-width: 100%;
+        max-height: 100%;
+        padding: 1.4rem 0;
+        background-color: #f3f3f3;
+        -webkit-box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.5);
+        .file-browser-btn {
+          background-color: $white;
+        }
+      }
+      input::placeholder {
+        text-align: center;
+        color: $medium-light-grey !important;
+        @include card-header-font-xs();
+      }
+      input::-webkit-input-placeholder {
+        text-align: center;
+        color: $medium-light-grey !important;
+        @include card-header-font-xs();
+      }
+      input::-moz-placeholder {
+        text-align: center;
+        color: $medium-light-grey !important;
+        @include card-header-font-xs();
+      }
+      input:-ms-input-placeholder {
+        text-align: center;
+        color: $medium-light-grey !important;
+        @include card-header-font-xs();
+      }
+      input:-moz-placeholder {
+        text-align: center;
+        color: $medium-light-grey !important;
+        @include card-header-font-xs();
+      }
+      #description-textarea-info {
+        input::placeholder {
+          text-align: center;
+          padding-top: 2.2rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input::-webkit-input-placeholder {
+          text-align: center;
+          padding-top: 2.2rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input::-moz-placeholder {
+          text-align: center;
+          padding-top: 2.2rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input:-ms-input-placeholder {
+          text-align: center;
+          padding-top: 2.2rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input:-moz-placeholder {
+          text-align: center;
+          padding-top: 2.2rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+      }
+      #description-textarea-bio,
+      #start-making-textarea {
+        input::placeholder {
+          text-align: center;
+          padding-top: 8rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input::-webkit-input-placeholder {
+          text-align: center;
+          padding-top: 8rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input::-moz-placeholder {
+          text-align: center;
+          padding-top: 8rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input:-ms-input-placeholder {
+          text-align: center;
+          padding-top: 8rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+        input:-moz-placeholder {
+          text-align: center;
+          padding-top: 8rem;
+          color: $medium-light-grey !important;
+          @include card-header-font-xs ();
+        }
+      }
+      .modal-menu {
+        a {
+          color: $highlight-bright-blue;
+          &.active {
+            color: $light-grey;
+          }
+        }
+      }
+      .modal-contents {
+        min-height: 37rem;
+        max-height: 65rem;
+        overflow-y: auto;
+      }
+      #social {
+        .form-group {
+          position: relative;
+        }
+        .radio-breferred {
+          position: absolute;
+          top: 1.3rem;
+          right: .8rem;
+        }
+      }
+      #maker-spaces {
+        .maker-space-remove {
+          margin-top: 1rem;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .add-other {
+          padding: 0;
+          i {
+            font-size: 2rem;
+          }
+          span {
+            padding-left: .8rem;
+            font-size: 1.92rem;
+            position: relative;
+            top: -.2rem;
+          }
+        }
+      }
+      #links {
+        .form-group {
+          position: relative;
+        }
+        .radio-breferred {
+          position: absolute;
+          top: 1.3rem;
+          right: 2.1rem;
+        }
+        .form-item {
+          padding: 0;
+        }
+      }
+      .char-left {
+        color: $light-grey;
+      }
+      #administrative_areas {
+        background: $white;
+        border: .1rem solid $medium-light-grey;
+        color: $dark-grey;
+        height: 3.8rem;
+      }
+    }
+    .modal-footer {
+      border-top: none !important;
+      padding: 0 3.2rem;
+    }
+  }
+  #maker-moment .char-left {
+    color: $dark-grey;
+  }
+}
