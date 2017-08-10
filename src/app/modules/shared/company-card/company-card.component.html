@@ -1,34 +1,47 @@
 <!-- start company card test  -->
 <div *ngIf="cardData" class="card project {{state}}">
-  <div class="card-image" [style.background-image]="'url('+cardData.orgs_cover_photo+')'"></div>
+  <div class="card-image" [style.background-image]="'url('+cardData.orgs_cover_photo+')'">
+  </div>
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt" [style.background-image]="'url('+cardData.orgs_cover_photo+')'"></div>
+      <app-card-badges [badges]="badges"></app-card-badges>
+      <div class="d-flex align-items-start flex-column">
+        <div class="mb-auto p-2">
+          <img class="rounded-circle bg-danger" src="{{cardData.orgs_logo}}" />
+        </div>
+      </div>
       <!-- no alt bg for companies but we still need the div here for hovers -->
-      <div class="flag project">Organization </div>
+      <!-- <div class="flag project">Organization </div> -->
       <!-- Start Feature Company -->
       <!-- <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'"> </app-feature> -->
       <!-- End Feature Company -->
-      <app-card-badges [badges]="badges"></app-card-badges>
       <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/orgs/',cardData.path]">
-        <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
       </span>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{cardData.orgs_logo}}" />
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{cardData.Orgs_name}}"></span>
-          <div class="card-owners-group">
+          <!-- <div class="card-owners-group">
             <p>Admin : <a class="card-owner-link d-inline" (click)="goToProfile(cardData.profile_url)" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a></p>
-          </div>
+          </div> -->
+          <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
           <!-- <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span> -->
         </div>
       </div>
-      <ul class="followers-count" *ngIf="cardData.minimum_number_followers < cardData.followers_count ">
+      <div class="followers-count" *ngIf="cardData.minimum_number_followers < cardData.followers_count ">
         <span *ngIf="cardData.followers_count >1"> {{cardData.followers_count}} Followers</span>
         <span *ngIf="cardData.followers_count == 1"> {{cardData.followers_count}} Follower</span>
-      </ul>
+      </div>
+      <div class="projects-count" *ngIf="cardData.total_projects">
+        <span *ngIf="cardData.total_projects >1"> {{cardData.total_projects}} Projects</span>
+        <span *ngIf="cardData.total_projects == 1"> {{cardData.total_projects}} Project</span>
+        <span *ngIf="cardData.total_projects == 0"> {{cardData.total_projects}} Project</span>
+      </div>
+      <div class="org-views" *ngIf="cardData.org_views">
+        {{cardData.org_views}} views
+      </div>
     </div>
   </div>
 </div>

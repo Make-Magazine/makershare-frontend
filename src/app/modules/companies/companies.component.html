@@ -1,6 +1,6 @@
 <div class="page-explore mb-5">
   <div class="container page-header mb-5">
-    <h3>Organizations</h3>
+    <h3>Maker Orgs</h3>
   </div>
 
   <div class="container clearfix mb-3">
@@ -33,7 +33,7 @@
 
       <div class="filters projects-counter">
         <div class="entries-count btn">
-          <p>{{countCompanies}} Organization{{ countCompanies > 1 ? 's': '' }}</p>
+          <p>{{countCompanies}} Maker Orgs</p>
         </div>
       </div>
     </div>
@@ -46,16 +46,9 @@
                       [state]="'tall'"></app-company-card>
     </div>
   </div>
-
-  <!-- <ng-template #noCompanies class="text-center">
-      <h1>No Organizations added yet</h1>
-  </ng-template> -->
-<!--   <div class="text-center pt-3 pb-5" *ngIf="showloadmoreCompany">
-    <a class="btn btn-load-more" (click)="getCompanies(true)">Load more</a>
-  </div> -->
    <div class="text-center" *ngIf="showloadmoreCompany">
     <button class="grey -no-bg -big -border -slim"
-            (click)="loadMoreCompanies(true)">Load more
+            (click)="getCompanies(true)">Load more
     </button>
   </div>
 </div>
