@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-about-us',
+  selector: 'app-org-form-about-us',
   templateUrl: './about-us.component.html'
 })
 export class AboutUsComponent implements OnInit {
