@@ -1,4 +1,4 @@
-import { DrupalCustomField } from './custom-field';
+import { DrupalCustomField } from './fields/custom-field';
 
 export class FileEntity extends DrupalCustomField{
 

@@ -1,4 +1,4 @@
-import { Singleton, DrupalCustomField } from '../';
+import { Singleton, DrupalCustomField } from '../../';
 
 export class DrupalCustomLanguageField {
   [key: string]: any;
