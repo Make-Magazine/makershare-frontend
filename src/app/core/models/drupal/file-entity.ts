@@ -13,6 +13,7 @@ export class FileEntity extends DrupalCustomField{
   uri_full?: URL;
   uid?: number;
   filepath?: string;
+  url?: string;
 
   constructor(){
     super();
