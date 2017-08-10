@@ -55,7 +55,7 @@ export class OrgFormComponent implements OnInit {
       field_breif_info: [this.organizationProxy.field_breif_info.value, []],
       body: [this.organizationProxy.body.value, []],
       field_maker_memberships: this.formBuilder.array([]),
-      field_orgs_projects: this.formBuilder.array([]),
+      field_orgs_projects: [this.organizationProxy.field_orgs_projects],
     });
   }
 
