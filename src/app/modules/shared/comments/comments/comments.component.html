@@ -20,7 +20,7 @@
     <div class="comment-body">
       <p>{{comment?.comment}}</p>
     </div>
-    <div *ngIf="comment?.comment_nid">
+    <div *ngIf="comment?.comment_nid &&  CurrentLoggedUserId != comment?.uid">
       <app-report *ngIf="comment?.comment_nid" [EntityId]="comment?.comment_nid" [EntityType]="'comment'"></app-report>
     </div>
   </div>
