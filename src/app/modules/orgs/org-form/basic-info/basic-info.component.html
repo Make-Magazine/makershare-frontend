@@ -2,8 +2,8 @@
 
   <div>
     <label>Organization Type</label>
-    <input type="checkbox" name="field_orgs_type" value="non-profit" [checked]= "organizationForm.value.field_orgs_type === 'non-profit'" (click)="updateType($event.target.value)">non-profit
-    <input type="checkbox" name="field_orgs_type" value="startup" [checked]= "organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
+    <input type="radio" name="field_orgs_type" value="non-profit" [checked]= "organizationForm.value.field_orgs_type === 'non-profit'" (click)="updateType($event.target.value)">non-profit
+    <input type="radio" name="field_orgs_type" value="startup" [checked]= "organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
   </div>
 
   <div>
@@ -46,6 +46,36 @@
     <label>Website</label>
     <input type="text" formControlName="field_orgs_contact">
   </div>
+
+  <div>
+    <label>FIELD CONTACT "WIP"</label>
+    
+  </div>
+
+  <div>
+    <label>Phone</label>
+    <input type="number" formControlName="field_orgs_phone">
+  </div>
+
+  <div>
+    <label>Founder Name</label>
+    <input type="text" formControlName="field_founder_name">
+  </div>
+
+  <div formGroupName="field_founded_date">
+    <label>Founded Date</label>
+    <input type="number" formControlName="date">
+  </div>
+
+  <div>
+    <label>Type of Business</label>
+    <input type="text" formControlName="field_type_of_business">
+  </div>
+
+  <div>
+    <label>Display only after there are more than</label>
+    <input type="number" formControlName="field_minimum_number_of_follower">
+  </div>  
 
 </div>
 
