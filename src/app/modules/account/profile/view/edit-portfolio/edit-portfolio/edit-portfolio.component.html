@@ -11,35 +11,36 @@
       <div class="d-flex flex-row align-items-start justify-content-md-between hidden-sm-down">
         <!--<p class="titles" *ngIf="projectsCount > 0">CHOOSE PUBLIC VIEW</p>-->
         <div class="display-style d-flex  hidden-md-down">
-          <p [ngClass]="{'not_active': DefaultView != 'grid'}" (click)="ChangeDefaultView('grid')" class="grid-view"><img src="./assets/images/icons/dark-squares.png" alt="">Grid view</p>
-          <p [ngClass]="{'not_active': DefaultView != 'showcase'}" (click)="ChangeDefaultView('showcase')" class="square-view"><img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
+          <p [ngClass]="{'not_active': DefaultView != 'grid'}"
+             (click)="ChangeDefaultView('grid')" class="grid-view">
+            <img src="./assets/images/icons/dark-squares.png"
+                 alt="">Grid view</p>
+          <p [ngClass]="{'not_active': DefaultView != 'showcase'}"
+             (click)="ChangeDefaultView('showcase')"
+             class="square-view">
+            <img src="./assets/images/icons/hamburger.png" alt=""> Expanded view</p>
         </div>
         <div class="profile-header justify-content-end d-flex">
           <ul class="list-unstyled stats d-flex flex-row justify-content-end">
-            <li *ngIf="projectsCountPublic && CurrentTab == 'public'">
-              <p *ngIf="projectsCountPublic == 0"><span class="number" >{{projectsCountPublic}} projects</span> </p>
-              <p *ngIf="projectsCountPublic == 1"><span class="number" >{{projectsCountPublic}} project</span> </p>
-              <p *ngIf="projectsCountPublic > 1"><span class="number" >{{projectsCountPublic}} projects</span> </p>
-
+            <li *ngIf="CurrentTab == 'public'">
+              <p>
+                <span class="number">{{projectsCountPublic}}</span> project{{projectsCountPublic == 1 ? '' : 's'}}</p>
             </li>
-            <li *ngIf="projectsCountPrivate && CurrentTab == 'private'">
-              <p *ngIf="projectsCountPrivate == 0"><span class="number" >{{projectsCountPrivate}}</span> projects</p>
-              <p *ngIf="projectsCountPrivate == 1"><span class="number" >{{projectsCountPrivate}}</span> project</p>
-              <p *ngIf="projectsCountPrivate > 1"><span class="number" >{{projectsCountPrivate}}</span> projects</p>
-
+            <li *ngIf="CurrentTab == 'private'">
+              <p>
+                <span class="number">{{projectsCountPrivate}}</span> project{{projectsCountPrivate == 1 ? '' : 's'}}</p>
             </li>
-            <li *ngIf="projectsCountDraft && CurrentTab == 'draft'">
-              <p *ngIf="projectsCountDraft == 0"><span class="number" >{{projectsCountDraft}}</span> projects</p>
-              <p *ngIf="projectsCountDraft == 1"><span class="number" >{{projectsCountDraft}}</span> project</p>
-              <p *ngIf="projectsCountDraft > 1"><span class="number" >{{projectsCountDraft}}</span> projects</p>
-
+            <li *ngIf="CurrentTab == 'draft'">
+              <p>
+                <span class="number">{{projectsCountDraft}}</span> project{{projectsCountDraft == 1 ? '' : 's'}}</p>
             </li>
             <!--<li *ngIf="LikesCount != 0">
               <p><span class="number">{{LikesCount}}</span> project likes</p>
             </li>-->
             <li *ngIf="ViewsCount">
-              <p *ngIf="ViewsCount > 1"><span class="number">{{ViewsCount}}</span> views</p>
-              <p *ngIf="ViewsCount == 1"><span class="number">{{ViewsCount}}</span> view</p>
+              <p>
+                <span class="number">{{ViewsCount}}</span> view{{ViewsCount == 1 ? '' : 's'}}
+              </p>
             </li>
             <!-- Start Bookmsrk-section -->
             <!--<li>
@@ -49,19 +50,29 @@
           <!-- End Bookmark-section -->
         </div>
       </div>
+
       <div class="d-flex flex-column">
         <p class="titles">EDIT YOUR PORTFOLIO</p>
         <div class="d-flex flex-wrap nav">
-          <a (click)="CurrentTab = 'public'" [ngClass]="{'active': CurrentTab == 'public'}" class="nav-item btn btn-white-2" id="public">
+          <a (click)="CurrentTab = 'public'"
+             [ngClass]="{'active': CurrentTab == 'public'}"
+             class="nav-item btn btn-white-2" id="public">
             <p>Portfolio</p>
           </a>
-          <a (click)="CurrentTab = 'private'" [ngClass]="{'active': CurrentTab == 'private'}" class="nav-item btn btn-white-2" id="private">
+          <a (click)="CurrentTab = 'private'"
+             [ngClass]="{'active': CurrentTab == 'private'}"
+             class="nav-item btn btn-white-2" id="private">
             <p>Private Projects</p>
           </a>
-          <a (click)="CurrentTab = 'draft'" [ngClass]="{'active': CurrentTab == 'draft'}" class="nav-item btn btn-white-2" id="drafts">
+          <a (click)="CurrentTab = 'draft'"
+             [ngClass]="{'active': CurrentTab == 'draft'}"
+             class="nav-item btn btn-white-2" id="drafts">
             <p>Drafts</p>
           </a>
-          <a (click)="CurrentTab = 'file'" [ngClass]="{'active': CurrentTab == 'file'}" class="nav-item btn btn-white-2" id="photos">
+          <a (click)="CurrentTab = 'file'"
+             [ngClass]="{'active': CurrentTab == 'file'}"
+             class="nav-item btn btn-white-2"
+             id="photos">
             <p>File manager</p>
           </a>
         </div>
@@ -70,20 +81,32 @@
   </div>
   <!-- End top-content-wrapper -->
   <div class="region region-content">
-    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'public'" [status]="370" [DefaultView]="DefaultView" [projectsCountPublic]="projectsCountPublic"></portfolio-tab>
-    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'private'" [status]="371" [DefaultView]="DefaultView" [projectsCountPrivate]="projectsCountPrivate"></portfolio-tab>
-    <portfolio-tab (emitter)="emitter.emit()" *ngIf="CurrentTab === 'draft'" [status]="1115" [DefaultView]="DefaultView" [projectsCountDraft]="projectsCountDraft"></portfolio-tab>
+    <portfolio-tab (emitter)="emitter.emit()"
+                   *ngIf="CurrentTab === 'public'"
+                   [status]="370"
+                   [DefaultView]="DefaultView"
+                   [projectsCountPublic]="projectsCountPublic"></portfolio-tab>
+    <portfolio-tab (emitter)="emitter.emit()"
+                   *ngIf="CurrentTab === 'private'"
+                   [status]="371"
+                   [DefaultView]="DefaultView"
+                   [projectsCountPrivate]="projectsCountPrivate"></portfolio-tab>
+    <portfolio-tab (emitter)="emitter.emit()"
+                   *ngIf="CurrentTab === 'draft'"
+                   [status]="1115"
+                   [DefaultView]="DefaultView"
+                   [projectsCountDraft]="projectsCountDraft"></portfolio-tab>
     <app-file-manager *ngIf="CurrentTab === 'file'"></app-file-manager>
   </div>
   <div *ngIf="projectsCountPublic == 0 && CurrentTab === 'public'" class="empty-profile text-center mx-auto">
     <p class="text-red">Hello Maker</p>
-    <h2>Your Portfolio needs projects.</h2>
+    <h2 class="-secondary">Your Portfolio needs projects.</h2>
     <p class="empty-text">The world wants to see what you've been making.</p>
     <p class="empty-text">Get started today by adding your first project.</p>
     <div class="project-button button-container-main-1">
-      <a class="btn btn-main btn-sharp" [routerLink]="['/projects/create']">
+      <button class="button btn-main btn-sharp" [routerLink]="['/projects/create']">
         + Add a Project
-      </a>
+      </button>
     </div>
   </div>
   <!-- End container -->

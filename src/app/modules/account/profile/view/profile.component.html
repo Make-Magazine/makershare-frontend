@@ -11,11 +11,10 @@
 
     <section class="container">
       <!-- Start sidebar-left -->
-      <div class="row body-content">
+      <div class="row body-content mt-4">
         <div class="profile-overlay"></div>
         <div class="left-section col-lg-4 col-md-6">
           <div class="profile-sidebar">
-            <app-follow-user [targetUid]="uid"></app-follow-user>
             <div class="profile-container" *ngIf="CurrentLoggedUserId == uid">
               <app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'"></app-maker-card>
               <div class="container-override">
@@ -46,6 +45,9 @@
               <div class="profile-info">
                 <div class="userInfo">
                   <h4 class="profile-fullname">{{profile.full_name}}</h4>
+                  <div class="mt-2 mb-2">
+                    <app-follow-user [targetUid]="uid"></app-follow-user>
+                  </div>
                   <p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
                   <p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
                   <ul class="list-unstyled location">
@@ -482,11 +484,13 @@
         <div class="right-section col-lg-8 col-md-6">
           <!-- Start Content-region -->
           <div class="profile-view-control-container" *ngIf="CurrentLoggedUserId != uid">
-            <i *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}"
+            <i *ngIf="profile.projects_view == 'grid'"
+               [ngClass]="{'not_active': profile.projects_view != 'grid'}"
                (click)="profile.projects_view = 'showcase'"
                class="grid-view fa fa-th-large"></i>
             <i *ngIf="profile.projects_view == 'showcase'"
-               [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'"
+               [ngClass]="{'not_active': profile.projects_view != 'showcase'}"
+               (click)="profile.projects_view = 'grid'"
                class="fa fa-bars"></i>
           </div>
 
@@ -580,12 +584,13 @@
                       <p class="drag-photo">Drag a Photo Here</p>
                       <p class="drag-or">or</p>
                     </div>
-                    <a class="btn btn-load-more" [ngClass]="{big:ProfilePicData.original}" (click)="fileinput.click()">
+                    <button class="button btn-load-more" [ngClass]="{big:ProfilePicData.original}"
+                            (click)="fileinput.click()">
                       <span *ngIf="!ProfilePicData.original;else differentphoto">Choose</span>
                       <ng-template #differentphoto>Choose a Different Photo</ng-template>
                       <input #fileinput type="file" (change)="fileChangeListener($event.target.files[0],cropper)"
                              id="upload" style="display:none;"/>
-                    </a>
+                    </button>
                   </div>
                   <div class="recommended-section col-md-4">
                     <p class="drag-text mt-4 mb-0">Recommended minimum resolution 350 by 350 pixels</p>
@@ -1038,24 +1043,28 @@
               <div class="form-subgroup container ProfileInfo.maker_interests">
                 <div class="row">
                   <div class="col-sm-4">
-                    <i class="dropdownIcon lnr lnr-chevron-down"></i>
-                    <select class="shadowed" #parentinterest
-                            (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
-                      <option value="_none" disabled>Choose</option>
-                      <option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid"
-                              [selected]="SelectedParentInterest == parentInterest.tid"><span
-                          [innerHTML]="parentInterest.name"></span></option>
-                    </select>
+                    <div class="dropdown-group -no-margin">
+                      <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                      <select class="shadowed" #parentinterest
+                              (change)="SelectedParentInterest = $event.target.value;GetInterestsForParent()">
+                        <option value="_none" disabled>Choose</option>
+                        <option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid"
+                                [selected]="SelectedParentInterest == parentInterest.tid"><span
+                            [innerHTML]="parentInterest.name"></span></option>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-sm-4">
-                    <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest"></i>
-                    <select class="shadowed" *ngIf="SelectedParentInterest"
-                            (change)="SelectedChildInterest = $event.target.value;SetInterest(parentinterest)">
-                      <option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
-                      <option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid"
-                              [selected]="SelectedChildInterest == childInterest.tid"><span
-                          [innerHTML]="childInterest.name"></span></option>
-                    </select>
+                    <div class="dropdown-group -no-margin">
+                      <i class="dropdownIcon lnr lnr-chevron-down" *ngIf="SelectedParentInterest"></i>
+                      <select class="shadowed" *ngIf="SelectedParentInterest"
+                              (change)="SelectedChildInterest = $event.target.value;SetInterest(parentinterest)">
+                        <option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
+                        <option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid"
+                                [selected]="SelectedChildInterest == childInterest.tid"><span
+                            [innerHTML]="childInterest.name"></span></option>
+                      </select>
+                    </div>
                   </div>
                   <div *ngIf="ProfileInfo.maker_interests" class="col-12 cate-list">
                     <div *ngFor="let selected_interest of ProfileInfo.maker_interests; let i=index">
@@ -1077,11 +1086,12 @@
           </div>
         </div>
         <div class="modal-footer mt-auto ml-auto">
-          <button #closebtn type="button" class="btn btn-load-more" (click)="c('Close click');SaveInfo(closebtn)">Save
+          <button #closebtn type="button" class="button btn-load-more" (click)="c('Close click');SaveInfo(closebtn)">
+            Save
             &amp;&nbsp;Close
           </button>
           <button *ngIf="ModalTabs.indexOf(CurrentInfoTab) != ModalTabs.length-1" type="button"
-                  class="btn btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next
+                  class="button btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next
           </button>
         </div>
       </div>

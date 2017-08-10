@@ -12,6 +12,15 @@ h1, h3, h5 {
 h2 {
   color: $highlight-red;
   margin-bottom: 12px;
+
+  &.-secondary {
+    font-family: $font-messina-modern-regular;
+    font-size: 3.74rem;
+    font-weight: 500;
+    line-height: 110%;
+    color: $dark-grey;
+    text-transform: inherit;
+  }
 }
 
 h3 {
@@ -22,4 +31,12 @@ h3 {
   &.card-title {
     font-size: 4.2rem;
   }
+}
+
+h4 {
+  font-family: $font-messina-modern-regular;
+  font-size: 2.56rem;
+  font-weight: 500;
+  line-height: 110%;
+  color: $dark-grey;
 }
