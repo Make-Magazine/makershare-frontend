@@ -138,7 +138,7 @@
           </div>
           <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
         </div>
-        <a>
+        <a *ngIf="CurrentLoggedUserId != company.admin">
           <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
         </a>
       </div>

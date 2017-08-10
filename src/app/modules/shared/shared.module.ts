@@ -51,7 +51,6 @@ import { ProfilePictureService } from './profile-picture/profile-picture.service
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { ProjectVoteComponent } from './project-vote/project-vote.component';
 import { RegistrationCollectComponent } from './registration-collect/registration-collect.component';
-import { ReportCommentComponent } from './report-comment/report-comment.component';
 
 import { ChallengeSearchCardComponent } from './search-cards/challenge-search-card/challenge-search-card.component';
 import { LearnSearchCardComponent } from './search-cards/learn-search-card/learn-search-card.component';
@@ -114,7 +113,6 @@ import { ReportComponent } from './report/report.component';
     LearnSearchCardComponent,
     ProjectVoteComponent,
     FileBrowserComponent,
-    ReportCommentComponent,
     VideoViewerComponent,
     UserCardMsgsComponent,
     NotificationPanelComponent,
@@ -164,7 +162,6 @@ import { ReportComponent } from './report/report.component';
     ShowcaeSearchCardComponent,
     LearnSearchCardComponent,
     ProjectVoteComponent,
-    ReportCommentComponent,
     FileBrowserComponent,
     VideoViewerComponent,
     UserCardMsgsComponent,
