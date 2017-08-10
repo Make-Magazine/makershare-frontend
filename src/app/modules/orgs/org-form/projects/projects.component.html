@@ -1,3 +1,30 @@
-<p>
-  projects works!
-</p>
+<div class="region region-content col-md-8" [formGroup]="organizationForm">
+  
+  <div *ngIf="!organizationForm.value.field_orgs_projects" style="text-align: center;">
+    Your organization has no projects yet.<br>
+You can import a project from your personal portfolio or add a new one.<br>
+Changes you make to a project will be reflected in both places.<br>
+  </div>
+
+  <div *ngIf="organizationForm.value.field_orgs_projects">
+      <app-project-card class="card-wrapper col-md-6 col-lg-4 pull-left"
+                        *ngFor="let nid of organizationForm.value.field_orgs_projects"
+                        [view]="view"
+                        [nid]="nid"
+                        [state]="'tall'"></app-project-card>
+
+  </div>
+
+  <div>Select an existing project from your portfolio.</div>
+
+  <select *ngIf="userProjects" class="form-control" #item (change)="updateSelectedProjects($event)">
+    <option [value]="" disabled>Select an existing project</option>
+    <option *ngFor="let p of userProjects" [value]="p.nid">{{p.project_name}}</option>
+  </select>
+
+  <button type="button" (click)="insertSelectedProject()">Submit</button>
+  <div> OR </div>
+  <a href="/projects/create" target="_blank">+ Add a Project</a>
+
+
+</div>
