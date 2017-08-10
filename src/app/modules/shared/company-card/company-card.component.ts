@@ -26,6 +26,7 @@ export class CompanyCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.cardData)
     this.getCompanyBadge();
   }
   goToProfile(path: string) {
