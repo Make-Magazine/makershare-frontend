@@ -12,26 +12,39 @@
 </ng-template>
 <div class="region region-content col-md-8" [formGroup]="TeamForm">
   <div class="team" formArrayName="field_maker_memberships">
-    <div class="add-sortable" *ngFor="let Member of TeamForm.controls['field_maker_memberships']['controls']; let i=index;" class="card add-collaborate">
+    <div class="add-sortable"
+         *ngFor="let Member of TeamForm.controls['field_maker_memberships']['controls']; let i=index;"
+         class="card add-collaborate">
       <div>
         <div class="card-block inputs-container flex-column flex-md-row row" [formGroupName]="i">
           <div class="col-md-9">
             <div *ngIf="SelectedUser && SelectedUser[i]">
               <label>Name</label>
-              <app-user-card-small *ngIf="!SelectedUser[i].invitation" [uid]="SelectedUser[i].uid"></app-user-card-small>
-              <div *ngIf="SelectedUser[i].invitation">{{SelectedUser[i].email}} > Invitation</div>
-              <div *ngIf="SelectedUser[i].anonymous">{{SelectedUser[i].name}} > Anonymous</div>
+              <app-maker-card *ngIf="!SelectedUser[i].invitation"
+                              [showFlag]="false"
+                              [state]="'short'"
+                              [uid]="SelectedUser[i].uid"></app-maker-card>
+                <div *ngIf="SelectedUser[i].invitation">{{SelectedUser[i].email}} > Invitation</div>
+                <div *ngIf="SelectedUser[i].anonymous">{{SelectedUser[i].name}} > Anonymous</div>
             </div>
             <div class="clearfix"></div>
-            <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]" >
+            <div class="form-group" *ngIf="!SelectedUser || !SelectedUser[i]">
               <label for="collab-name-{{i + 1}}">Name</label>
-              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_team_member}" #username type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)" [inputFormatter]="formatter">
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_team_member}" #username
+                     type="text" class="form-control" id="collab-name-{{i + 1}}" placeholder="Team member name"
+                     [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="SetMember($event.item.uid, i)"
+                     [inputFormatter]="formatter">
               <div *ngIf="searchFailed">
                 <div *ngIf="ValidEmailAddress">
-                  Email not registered <button type="button" class="btn btn-primary" (click)="InviteUser(username,i)">Invite</button>
+                  Email not registered
+                  <button type="button" class="btn btn-primary" (click)="InviteUser(username,i)">Invite</button>
                 </div>
                 <div *ngIf="!ValidEmailAddress">
-                  User not registered <button type="button" class="btn btn-primary" (click)="SetAnonymous(username.value,i)">Add as anonymous member</button> or type email address to invite.
+                  User not registered
+                  <button type="button" class="btn btn-primary" (click)="SetAnonymous(username.value,i)">Add as
+                    anonymous member
+                  </button>
+                  or type email address to invite.
                 </div>
               </div>
               <small *ngIf="formErrors.field_maker_memberships[i].field_team_member" class="text-danger">
@@ -40,30 +53,36 @@
             </div>
             <div class="form-group">
               <label for="collab-role-{{i + 1}}">Role</label>
-              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_membership_role}" maxlength="140" type="text" class="form-control" id="collab-role-{{i + 1}}" placeholder="What role did this person play on the project?" [formControl]="Member.controls.field_membership_role">
-               {{Member.controls.field_membership_role.value.length}}/140
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_membership_role}" maxlength="140"
+                     type="text" class="form-control" id="collab-role-{{i + 1}}"
+                     placeholder="What role did this person play on the project?"
+                     [formControl]="Member.controls.field_membership_role">
+              {{Member.controls.field_membership_role.value.length}}/140
               <small *ngIf="formErrors.field_maker_memberships[i].field_membership_role" class="text-danger">
                 {{formErrors.field_maker_memberships[i].field_membership_role}}
               </small>
-            </div>	
+            </div>
           </div>
           <div *ngIf="i==0" class="col-md-3 admin d-flex flex-column">
-              <label>Admin</label>
-              <i class="fa fa-check-square" aria-hidden="true"></i>
+            <label>Admin</label>
+            <i class="fa fa-check-square" aria-hidden="true"></i>
           </div>
         </div>
-        <a *ngIf="(i > 0)" (click)="RemoveRow(i, 'field_maker_memberships')" class="btn btn-transparent remove">Remove</a>
+        <a *ngIf="(i > 0)" (click)="RemoveRow(i, 'field_maker_memberships')"
+           class="btn btn-transparent remove">Remove</a>
       </div><!-- End add-collaborate -->
-    </div>   
-    <a class="add-teammember" *ngIf="TeamForm.controls['field_maker_memberships']['controls'].length < 7 && (TeamForm.controls['field_maker_memberships']['controls'][TeamForm.controls['field_maker_memberships']['controls'].length-1].controls.field_team_member.valid || TeamForm.value.field_maker_memberships[TeamForm.controls['field_maker_memberships']['controls'].length-1].field_anonymous_member_name)" (click)="AddRow('field_maker_memberships')"><i class="fa fa-plus-square"></i> Add more</a>
+    </div>
+    <a class="add-teammember"
+       *ngIf="TeamForm.controls['field_maker_memberships']['controls'].length < 7 && (TeamForm.controls['field_maker_memberships']['controls'][TeamForm.controls['field_maker_memberships']['controls'].length-1].controls.field_team_member.valid || TeamForm.value.field_maker_memberships[TeamForm.controls['field_maker_memberships']['controls'].length-1].field_anonymous_member_name)"
+       (click)="AddRow('field_maker_memberships')"><i class="fa fa-plus-square"></i> Add more</a>
   </div>
 </div>
 <!--side bar guide-->
 <aside class="col-md-4">
   <div class="team-guide hidden-sm-down">
-    <h2 class="col-12">Helpful Hints</h2>
+    <h2 class="-secondary col-12">Helpful Hints</h2>
     <p class="col-12">This tab isn't required to publish your project.</p>
-     <br>
+    <br>
     <div class="guideline">
       <div class="pull-left question-mark"><i class="fa fa-2x fa-question-circle"></i></div>
       <div class="pull-left content">

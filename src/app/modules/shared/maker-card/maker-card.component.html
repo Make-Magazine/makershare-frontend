@@ -3,11 +3,13 @@
   <div class="card-info">
     <div class="info-top" (click)="goToProfile(card.profile_url)">
       <!-- <div class="card-image alt" *ngIf="profile"></div> -->
-      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'"></div>
+      <div class="card-image alt" *ngIf="!profile && latestPorjectImg"
+           [style.background-image]="'url('+latestPorjectImg+')'"></div>
 
       <div class="flag maker"
-           *ngIf="showFlag">maker</div>
-      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"> </app-feature>
+           *ngIf="showFlag">maker
+      </div>
+      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"></app-feature>
       <app-card-badges [badges]="badges"></app-card-badges>
       <div class="float-right" *ngIf="card.orgs_logo">
         <img class="rounded-circle bg-danger" src="{{card.orgs_logo}}" alt="">
@@ -15,9 +17,10 @@
     </div>
     <div class="info-bottom {{showFlag ? '' : 'no-flag'}}">
       <div class="card-owner-meta">
-        <img class="card-owner-media" *ngIf="card.photo_lg" src="{{card.photo_lg}}" />
+        <img class="card-owner-media" *ngIf="card.photo_lg" src="{{card.photo_lg}}"/>
         <div class="card-owner-meta-info">
-          <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);" innerHTML="{{card.first_name}} {{card.last_name}}"></a>
+          <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);"
+             innerHTML="{{card.first_name}} {{card.last_name}}"></a>
           <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
 
           <div class="card-meta-row" *ngIf="card.nickname">
@@ -45,7 +48,8 @@
         </div>
 
       </div>
-      <social-stats [profileViews]="card.profile_views" [projectsCount]="projectsCount" [profileView]="profile" [uid]="uid"></social-stats>
+      <social-stats [profileViews]="card.profile_views" [projectsCount]="projectsCount" [profileView]="profile"
+                    [uid]="uid"></social-stats>
 
     </div>
 
@@ -66,19 +70,22 @@
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt" *ngIf="profile" (click)="goToProfile(cardData.profile_url)"></div>
-      <div class="card-image alt" *ngIf="!profile && latestPorjectImg" [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(cardData.profile_url)"></div>
+      <div class="card-image alt" *ngIf="!profile && latestPorjectImg"
+           [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(cardData.profile_url)"></div>
       <div class="flag maker">maker</div>
 
-      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"> </app-feature>
+      <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"></app-feature>
 
       <app-card-badges [badges]="badges"></app-card-badges>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" *ngIf="cardData.photo_lg" src="{{cardData.photo_lg}}" />
+        <img class="card-owner-media" *ngIf="cardData.photo_lg" src="{{cardData.photo_lg}}"/>
         <div class="card-owner-meta-info">
-          <a class="card-owner-link" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a>
-          <a class="card-owner-link" *ngIf="!cardData.first_name && !cardData.last_name" innerHTML="{{cardData.username}}"></a>
+          <a class="card-owner-link" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);"
+             innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a>
+          <a class="card-owner-link" *ngIf="!cardData.first_name && !cardData.last_name"
+             innerHTML="{{cardData.username}}"></a>
 
           <div class="card-meta-row" *ngIf="cardData.nickname">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
@@ -86,12 +93,14 @@
           </div>
 
 
-          <div class="card-meta-row" *ngIf="cardData.location_locality && cardData.country && cardData.country == 'United States'">
+          <div class="card-meta-row"
+               *ngIf="cardData.location_locality && cardData.country && cardData.country == 'United States'">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
             <p class="maker-city card-meta-row-description">{{cardData.location_locality}}, {{cardData.city}}</p>
           </div>
 
-          <div class="card-meta-row" *ngIf="cardData.location_locality && cardData.country && cardData.country != 'United States'">
+          <div class="card-meta-row"
+               *ngIf="cardData.location_locality && cardData.country && cardData.country != 'United States'">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-map-marker"></span>
             <p class="maker-city card-meta-row-description">{{cardData.location_locality}}, {{cardData.country}}</p>
           </div>
@@ -105,7 +114,8 @@
         </div>
 
       </div>
-      <social-stats [profileViews]="cardData.profile_views" [projectsCount]="projectsCount" [profileView]="profile" [uid]="uid"></social-stats>
+      <social-stats [profileViews]="cardData.profile_views" [projectsCount]="projectsCount" [profileView]="profile"
+                    [uid]="uid"></social-stats>
 
     </div>
 
