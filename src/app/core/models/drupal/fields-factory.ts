@@ -33,7 +33,7 @@ export class FieldsFactory {
     return this.addLanguage([]);
   }
   
-  date(date: string,time?: string): any {
+  date(date?: string,time?: string): any {
     if(date || time) {
       let date_time = new DateTime();
       date_time.date = date;
