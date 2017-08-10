@@ -13,7 +13,7 @@
 
   <div>
     <div>
-      <label>Logo</label>
+      <label>Organization Logo</label>
       <p>logo must work at small size (20 x 20)</p>
     </div>
     <div>
@@ -38,7 +38,20 @@
   </div>
 
   <div>
-    <label>FIELD SOCIAL "WIP"</label>
+    <div>
+      <label>Organization Avatar</label>
+      <p>Should be at max 104px square</p>
+    </div>
+    <div>
+      <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose</a>
+      <div>
+        <img *ngIf="organizationForm.value.field_org_avatar.file" [src]="organizationForm.value.field_org_avatar.file">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label>Social Channels</label>
     
   </div>
 

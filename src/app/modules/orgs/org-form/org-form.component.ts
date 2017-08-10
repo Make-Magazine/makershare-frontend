@@ -44,9 +44,11 @@ export class OrgFormComponent implements OnInit {
       field_orgs_type: [this.organizationProxy.field_orgs_type, [Validators.required]],//
       field_orgs_logo: [this.organizationProxy.field_orgs_logo, [Validators.required]],//
       field_orgs_cover_photo: [this.organizationProxy.field_orgs_cover_photo, [Validators.required]],//
+      field_org_avatar: [this.organizationProxy.field_org_avatar, [Validators.required]],//
       field_orgs_contact: [this.organizationProxy.field_orgs_contact.email, [Validators.required, Validators.email]],//
       field_orgs_phone: [this.organizationProxy.field_orgs_phone.value, []],//
       field_founder_name: [this.organizationProxy.field_founder_name.value, []],//
+      field_maker_motto: [this.organizationProxy.field_maker_motto.value, []],//
       field_website_blog: [this.organizationProxy.field_website_blog.value, []],//
       field_breif_info: [this.organizationProxy.field_breif_info.value, []],//
       body: [this.organizationProxy.body.value, []],//
