@@ -68,6 +68,7 @@ export class OrgsComponent implements OnInit {
     };
     this.mainService.custompost('company_profile_api/retrieve_count_of_company_followers', body).subscribe(res => {
       this.followers = res['followers'];
+      console.log(this.followers)
       this.followersCount = res['count_all'];
     });
   }
@@ -75,8 +76,13 @@ export class OrgsComponent implements OnInit {
     if (more) this.page++;
     this.viewService.getView('company_followers', [['page', this.page], ['nid', this.nid]]).subscribe(data => {
       this.allFollwers = this.allFollwers.concat(data);
+      console.log(this.allFollwers)
       this.showloadmoreFollowers = (this.followersCount <= this.allFollwers.length) ? false : true;
     });
+  }
+  followersCounter(count) {
+    this.getLimitedFollowers();
+    
   }
   open(content) {
     this.modalService.open(content, { size: 'sm' }).result.then((result) => {

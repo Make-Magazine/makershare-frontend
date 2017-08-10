@@ -50,12 +50,14 @@ export class OrgFormComponent implements OnInit {
       field_type_of_business: [this.organizationProxy.field_type_of_business.value, []],
       field_social_accounts: [this.formBuilder.array([])],
       field_website_blog: [this.organizationProxy.field_website_blog.value, []],
-      field_orgs_address: [this.organizationProxy.field_orgs_address, []],
+      field_orgs_address: this.formBuilder.group({
+        
+      }),
       field_minimum_number_of_follower: [this.organizationProxy.field_minimum_number_of_follower.value, []],
       field_breif_info: [this.organizationProxy.field_breif_info.value, []],
       body: [this.organizationProxy.body.value, []],
       field_maker_memberships: this.formBuilder.array([]),
-      field_orgs_projects: this.formBuilder.array([]),
+      field_orgs_projects: [this.organizationProxy.field_orgs_projects],
     });
   }
 
