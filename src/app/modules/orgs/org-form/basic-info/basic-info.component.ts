@@ -88,10 +88,10 @@ export class BasicInfoComponent implements OnInit {
     this.setImage(file.url, file.filename, file.fid);
   }
 
-  imageUpdated(closebtn: HTMLButtonElement) {
+  imageUpdated(closebtn: HTMLButtonElement, file) {
     closebtn.click();
     if(!this.imageData.original) return;
-    this.setImage(this.imageData.image, this.imageData.original.filename);
+    this.setImage(this.imageData.image, file.name);
   }
 
   setImage(file: string, filename: string, fid?: number) {
