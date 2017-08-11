@@ -12,17 +12,16 @@
               <app-maker-card [uid]="uid"
                               [state]="'tall'"></app-maker-card>
               <div class="container-override">
-                <a class="edit-your-profile" (click)="OpenModal(editinfomodal,'Portfolio Photo')"><i
-                    class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
+                <a class="edit-your-profile" (click)="OpenModal(editinfomodal,'Portfolio Photo')">
+                  <i class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
               </div>
-              <div class="add-org" *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
-                <!--it should be orgs/create like commented line  -->
-                <button [routerLink]="['/orgs/create']">Create Org</button>
-                <!--<button [routerLink]="['/']"> Create Org</button>-->
+              <div class="container-override mt-3 mb-3"
+                   *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
+                <button class="-full -big"
+                        [routerLink]="['/orgs/create']">Create Org</button>
               </div>
               <div class="profile-group">
                 <div class="profile-pic">
-                  <!-- Start Profiel Pic -->
                   <div *ngIf="!profile.user_photo_with_style">
                     <div class="first-photo-upload">
                       <a (click)="OpenModal(editinfomodal,'Portfolio Photo')">Upload Photo</a>
