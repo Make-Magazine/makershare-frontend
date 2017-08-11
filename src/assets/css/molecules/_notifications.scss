@@ -43,13 +43,12 @@
           }
         }
         .media-body {
-          padding: 0px 2px;
+          padding: 0 2px;
           span {
             margin-bottom: 1px;
           }
           p {
-            margin: 2px 0px 0px 0px;
-
+            margin: 5px 0 0 0;
           }
         }
         .delete {
@@ -57,16 +56,18 @@
           display: none;
         }
         .link {
-          color: $blue;
+          color: $highlight-bright-blue;
+          cursor: pointer;
           &:hover {
             text-decoration: none !important;
-            color: $blue !important;
+            color: $highlight-bright-blue !important;
           }
         }
         .notf-date {
           color: $text-color-2;
           @include desc-font-2 ();
           font-size: 0.83em !important;
+          margin-top: 5px;
         }
       }
       .inner-text {
