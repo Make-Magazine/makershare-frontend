@@ -1,10 +1,13 @@
 <div id="page-404">
-   <div class="image-container hidden-md-down" style="background-image: url('/assets/images/background/404 Error Page-Desktop@2x-min.jpg');width: 100%;height: 100%;background-size: cover;">
+  <div class="image-container hidden-md-down"
+       style="background-image: url('/assets/images/background/404 Error Page-Desktop@2x-min.jpg');width: 100%;height: 100%;background-size: cover;">
   </div>
-  <div class="image-container hidden-lg-up hidden-sm-down" style="background-image: url('/assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;">
+  <div class="image-container hidden-lg-up hidden-sm-down"
+       style="background-image: url('/assets/images/background/404-Error-Tablet.jpg');width: 100%;height: 100%;background-size: cover;">
   </div>
-  <div class="image-container hidden-md-up" style="background: url('/assets/images/background/404-Error-Mobile.jpg') 50% 0%;width: 100%;height: 100%;background-size: cover;">
-  </div> 
+  <div class="image-container hidden-md-up"
+       style="background: url('/assets/images/background/404-Error-Mobile.jpg') 50% 0%;width: 100%;height: 100%;background-size: cover;">
+  </div>
   <div class="text-block">
     <h4>error code: 404</h4>
     <p>Looks like we can't find this page.</p>
@@ -16,10 +19,12 @@
     </ul>
     <div class="search-form-group">
       <form (keydown)="keyDownFunction($event)">
-        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" placeholder="Or... you can search here"
-          #searchBox id="search-box-input-404" />
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery"
+               placeholder="Or... you can search here"
+               #searchBox id="search-box-input-404"/>
         <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
-        <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search" aria-hidden="true"></span>
+        <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search"
+              aria-hidden="true"></span>
       </form>
     </div>
   </div>

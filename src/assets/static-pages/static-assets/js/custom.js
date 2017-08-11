@@ -138,7 +138,7 @@ $(document).ready(function () {
 	})
 
 	// Show and hide project stats on project card
-	$(document).on('mouseenter', '.project , .maker-card', function () {
+	$(document).on('mouseenter', '.project, .maker-card', function () {
 		if (squareView) {
 			$(this).find('.icons').stop();
 			$(this).find('.icons').fadeOut('400');
