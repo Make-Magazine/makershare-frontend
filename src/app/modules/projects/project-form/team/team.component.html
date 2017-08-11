@@ -22,7 +22,6 @@
               <label>Name</label>
               <app-maker-card *ngIf="!SelectedUser[i].invitation"
                               [showFlag]="false"
-                              [state]="'short'"
                               [uid]="SelectedUser[i].uid"></app-maker-card>
                 <div *ngIf="SelectedUser[i].invitation">{{SelectedUser[i].email}} > Invitation</div>
                 <div *ngIf="SelectedUser[i].anonymous">{{SelectedUser[i].name}} > Anonymous</div>

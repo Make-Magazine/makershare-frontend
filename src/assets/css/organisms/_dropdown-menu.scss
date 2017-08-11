@@ -5,4 +5,10 @@
     right: 0;
     left: auto;
   }
+
+  .dropdown-item {
+    &:active {
+      background: transparent;
+    }
+  }
 }
