@@ -2,9 +2,18 @@ html {
   font-size: 10px; //baseline for our rem
   font-family: $font-messina-regular, Arial;
   background: $lighter-grey;
+  height: 100%;
 }
 
 body {
   font-size: 1.2rem;
   color: $dark-grey;
+  height: 100%;
+}
+
+application {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
