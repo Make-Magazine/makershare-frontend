@@ -1,9 +1,14 @@
 .dropdown-menu {
   padding: 2rem;
-  max-width: 34rem;
 
   .user-menu & {
     right: 0;
     left: auto;
+  }
+
+  .dropdown-item {
+    &:active {
+      background: transparent;
+    }
   }
 }

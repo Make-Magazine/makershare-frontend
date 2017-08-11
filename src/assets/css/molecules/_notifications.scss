@@ -1,9 +1,16 @@
 .dropdown-notification {
+  width: 33rem;
+  overflow-y: auto;
+  max-width: 35rem;
+  max-height: 40.8rem;
+  .no-notfy{
+    padding-top: 2rem;
+  }
   ul {
     position: relative;
-    padding-top: 12px;
+    padding-top: 1.2rem;
     li {
-      padding: 8px 12px;
+      padding: .8rem 1.2rem;
       position: absolute;
       display: block;
       background-color: #fff;
@@ -11,31 +18,39 @@
       left: 0;
       right: 0;
       .view-all {
-        padding: .4rem 0rem;
-        color: $blue;
+        padding: .64rem 0;
+        color: $highlight-bright-blue;
       }
       .notf-gear {
         i {
-          font-size: 19px;
+          font-size: 1.9rem;
         }
       }
       .notf-Cancel {
         i {
-          font-size: 20px;
+          font-size: 2rem;
+        }
+      }
+    }
+    notification-tpl {
+      &:last-child {
+        .notification-item {
+          border-bottom: none;
         }
       }
     }
     .notification-container {
-      padding: 0px 12px;
+      padding: 0 1.2rem;
       .notification-item {
-        border-bottom: 0.5px solid $text-color-2;
+        white-space: normal;
+        border-bottom: .05rem solid $medium-grey;
         @include desc-font-1 ();
-        padding: 5px 0px;
-        font-size: 0.96em !important;
+        padding: .8rem 0;
+        font-size: 1.344rem !important;
         .media-left {
-          width: 40px;
+          width: 4rem;
           height: auto;
-          margin-right: 6px;
+          margin-right: .6rem;
           img {
             width: 100%;
             height: auto;
@@ -43,16 +58,17 @@
           }
         }
         .media-body {
-          padding: 0 2px;
+          padding: 0 .2rem;
           span {
-            margin-bottom: 1px;
+            margin-bottom: .1rem;
+            line-height: 1.2;
           }
           p {
-            margin: 5px 0 0 0;
+            margin: .5rem 0 0 0;
           }
         }
         .delete {
-          padding-top: 14px;
+          padding-top: 1.4rem;
           display: none;
         }
         .link {
@@ -64,16 +80,16 @@
           }
         }
         .notf-date {
-          color: $text-color-2;
+          color: $medium-grey;
           @include desc-font-2 ();
-          font-size: 0.83em !important;
-          margin-top: 5px;
+          font-size: 1.2rem !important;
+          margin-top: .5rem;
         }
       }
       .inner-text {
-        color: $text-color-1;
-        padding: 2px 0px;
-        line-height: 17px;
+        color: $dark-grey;
+        padding: .2rem 0;
+        line-height: 1.7rem;
       }
     }
     .not-seen {
