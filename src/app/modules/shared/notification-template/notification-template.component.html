@@ -11,12 +11,10 @@
   <div class="notification-item wrapper d-flex d-row">
     <div class="media wrapper d-flex d-row message-info w-100">
       <div class="media-left">
-        <a>
-          <img class="d-flex mr-3"
-               src="{{notification.profile_photo || './assets/images/Gears-Grey.png'}}"
-               alt=""
-               class="img-responsive">
-        </a>
+        <img class="d-flex mr-3"
+             src="{{notification.profile_photo || './assets/images/Gears-Grey.png'}}"
+             alt=""
+             class="img-responsive">
       </div>
       <div class="media-body" *ngIf="notification.type == 'project_is_featured_on_the_home_page'">
         <span>We featured your project </span>
