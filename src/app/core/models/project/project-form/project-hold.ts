@@ -1,5 +1,5 @@
 import {
-  date_time,
+  DateTime,
   field_entity_reference,
   NodeEntity,
 } from '../../drupal';
@@ -7,7 +7,7 @@ import {
 export interface ProjectHold extends NodeEntity {
   field_project_to_edit: { und: field_entity_reference[] };
   field_users_wants_edit?: { und: field_entity_reference[] };
-  unpublish_on: date_time;
+  unpublish_on: DateTime;
 }
 
 export class ProjectHold extends NodeEntity implements ProjectHold {
@@ -37,10 +37,10 @@ export class ProjectHold extends NodeEntity implements ProjectHold {
     const year = date.getFullYear();
     const minutes = date.getMinutes();
     const hours = date.getHours();
-    const date_with_time = new date_time();
+    const date_with_time = new DateTime();
     date_with_time.date = year + '-' + month + '-' + day;
     date_with_time.time = hours + ':' + minutes + ':00';
-    this.unpublish_on = new date_time(date_with_time);
+    this.unpublish_on = new DateTime(date_with_time);
   }
 
   updateField() {

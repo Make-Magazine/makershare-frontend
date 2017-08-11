@@ -1,6 +1,6 @@
 import {
-  date_time,
-  field_date,
+  DateTime,
+  FieldDateTime,
   field_entity_reference,
   FieldNumber,
   field_term_reference,
@@ -43,7 +43,7 @@ export interface ProjectForm extends NodeEntity {
   field_cover_photo: { und: FieldFileReference[] };
   field_how_to?: { und: FieldText[] };
   field_categories: { und: any[] };
-  field_creation_date: { und: field_date[] };
+  field_creation_date: { und: FieldDateTime[] };
 }
 
 export interface ProjectView extends NodeEntity {
@@ -133,7 +133,7 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
     this.field_aha_moment = { und: [new FieldText(null)] };
     this.field_uh_oh_moment = { und: [new FieldText(null)] };
     this.field_sort_order = { und: [new FieldNumber()] };
-    this.field_creation_date = { und: [new field_date(new date_time())] };
+    this.field_creation_date = { und: [new FieldDateTime(new DateTime())] };
   }
 
   public setField(FieldName: string, value: any): void {
