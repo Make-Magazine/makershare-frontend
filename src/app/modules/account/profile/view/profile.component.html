@@ -3,12 +3,6 @@
     <section class="container-fluid cover-region">
     </section>
 
-    <div class="add-org" *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
-      <!--it should be orgs/create like commented line  -->
-      <!-- <button  [routerLink]="['/orgs/create']"> Create Org </button> -->
-      <button [routerLink]="['/']"> Create Org</button>
-    </div>
-
     <section class="container">
       <!-- Start sidebar-left -->
       <div class="row body-content mt-4">
@@ -21,6 +15,11 @@
               <div class="container-override">
                 <a class="edit-your-profile" (click)="OpenModal(editinfomodal,'Portfolio Photo')"><i
                     class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
+              </div>
+              <div class="add-org" *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
+                <!--it should be orgs/create like commented line  -->
+                <button [routerLink]="['/orgs/create']">Create Org</button>
+                <!--<button [routerLink]="['/']"> Create Org</button>-->
               </div>
               <div class="profile-group">
                 <div class="profile-pic">
