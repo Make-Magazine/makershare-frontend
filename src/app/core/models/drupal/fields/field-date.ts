@@ -1,14 +1,14 @@
-export interface date_time{
-  date:string;
-  time:string;
-}
+import { DrupalCustomField } from './custom-field';
 
-export class date_time implements date_time{
-  constructor(date_with_time?:date_time){
-    this.Init(date_with_time);
+export class DateTime {
+  date: string;
+  time?: string;
+
+  constructor(date_with_time?: DateTime){
+    this.initFields(date_with_time);
   }
 
-  protected Init(date_with_time?:date_time){
+  protected initFields(date_with_time?: DateTime){
     if(date_with_time){
       this.date = date_with_time.date;
       this.time = date_with_time.time;
@@ -29,20 +29,27 @@ export class date_time implements date_time{
   }
 }
 
-export interface field_date{
-  value:date_time;
-}
+export class FieldDateTime extends DrupalCustomField{
+  value: DateTime;
 
-export class field_date implements field_date{
-  constructor(date_with_time?:date_time){
-    this.Init(date_with_time);
+  constructor(date_with_time?: DateTime){
+    super();
+    this.initFields(date_with_time);
   }
 
-  protected Init(date_with_time?:date_time){
+  protected initFields(date_with_time?: DateTime){
     if(date_with_time){
       this.value = date_with_time;
     }else{
-      this.value = new date_time();
+      this.value = new DateTime();
     }
+  }
+
+  init() {
+    return [this];
+  }
+
+  updateValue(date_time: DateTime) {
+    this.value = date_time;
   }
 }

@@ -6,5 +6,5 @@ export { FieldNumber } from './field-number';
 export { field_term_reference } from './field-term-reference';
 export { FieldText, FieldLongText } from './field-text';
 export { field_URL } from './field-URL';
-export { field_date, date_time } from './field-date';
+export { FieldDateTime, DateTime } from './field-date';
 export { FieldEmail } from './field-email';
