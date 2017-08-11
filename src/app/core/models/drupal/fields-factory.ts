@@ -1,6 +1,6 @@
 import { 
   FileEntity, DrupalCustomLanguageField, FieldEmail, FieldNumber,
-  FieldText, FieldLongText
+  FieldText, FieldLongText, FieldDateTime, DateTime
 } from './';
 
 export class FieldsFactory {
@@ -31,6 +31,16 @@ export class FieldsFactory {
 
   array(): any {
     return this.addLanguage([]);
+  }
+  
+  date(date?: string,time?: string): any {
+    if(date || time) {
+      let date_time = new DateTime();
+      date_time.date = date;
+      date_time.time = time;
+      return this.addLanguage(new FieldDateTime(date_time));
+    }
+    return this.addLanguage(new FieldDateTime());
   }
 
   private addLanguage(field: any): DrupalCustomLanguageField {
