@@ -33,6 +33,11 @@
     }
   }
 
+  &.lt-grey {
+    background-color: $light-grey;
+    color: $black;
+  }
+
   &.grey, &.disabled {
     background-color: $medium-grey;
 
