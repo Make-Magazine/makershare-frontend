@@ -74,8 +74,8 @@
             <li> <span class="org-contact-key">Founded:</span> {{company.founded_date}}</li>
             <li> <span class="org-contact-key">Type of business:</span> {{company.business}}</li>
           </ul>
-          <p>
-            <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
+          <p class="push">
+            <a href="mailto:{{company.contact}}" target="_top"><i class="fa fa-envelope-o"></i> <span>Send Email</span></a>
           </p>
           <div *ngIf="company.website_or_blog">
             <h2 class="text-left">Websites</h2>
@@ -83,7 +83,7 @@
           </div>
           <div *ngIf="company.field_social_accounts">
             <h1 class="text-left">Social</h1>
-            <div class="org-social-links d-flex flex-wrap">
+            <div class="social-links d-flex flex-wrap">
               <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
                 <a class="nav-link social fb" target="_blank" href="{{company.field_social_accounts[0].field_facebook}}">
   												<i class="fa fa-facebook fa-lg"></i>
