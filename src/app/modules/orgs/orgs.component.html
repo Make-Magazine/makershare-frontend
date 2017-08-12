@@ -6,26 +6,19 @@
         <div class="col-md-12">
           <div class="container">
             <div class="row justify-content-center">
-              <img class="company-logo" height="100" src="{{company.company_logo}}">
+              <img class="org-logo" height="100" src="{{company.company_logo}}">
             </div>
             <div class="row justify-content-center" height="10">
               <img src="{{company.field_badges}}" alt="">
             </div>
-            <div class="row justify-content-center company-name">
+            <div class="row justify-content-center org-name">
               <span>{{company.company_name}} - {{company.address.locality}}, {{company.address.administrative_area}}</span>
-            </div>
-            <div class="row justify-content-end">
-              <a class="profile-share">
-                <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name" [PageDescription]="company.company_description.text"
-                  [PageImage]="company.company_cover_photo"></app-btn-share>
-              </a>
-              <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
             </div>
           </div>
 
           <div>
-            <p class="text-center text-white card-text"><small class="text-muted text-center">{{company.breif_info}} - {{company.address.locality}}, 
-            {{company.address.administrative_area}}</small></p>
+            <p class="text-center text-white org-description">{{company.breif_info}} - {{company.address.locality}}, 
+            {{company.address.administrative_area}}</p>
           </div>
           <div class="row justify-content-center">
             <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center text-center">
@@ -40,6 +33,14 @@
                 </a>
               </li>
             </ul>
+          </div>
+          
+          <div class="row justify-content-end">
+            <a class="profile-share">
+              <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name" [PageDescription]="company.company_description.text"
+                [PageImage]="company.company_cover_photo"></app-btn-share>
+            </a>
+            <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
           </div>
         </div>
 
@@ -58,27 +59,27 @@
         </header>
       </div> -->
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
           <app-orgs-about-us *ngIf="current_active_tab == 'about-us'" [description]="company.company_description"></app-orgs-about-us>
           <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
         </div>
-        <div class="col-md-5" *ngIf="company">
+        <div class="col-md-4" *ngIf="company">
           <!-- About Us Side Bar  -->
 
-          <ul>
-            <h1 class="text-left">Contact</h1>
-            <li> Phone: {{company.phone_number}}</li>
-            <li> Location: {{company.address.locality}}, {{company.address.administrative_area}}</li>
-            <li> # of employees: {{company.employees}}</li>
-            <li> Founder: {{company.founder_name}}</li>
-            <li> Founded: {{company.founded_date}}</li>
-            <li> Type of business: {{company.business}}</li>
+          <h2 class="text-left -secondary">Contact</h2>
+          <ul class="org-contact-list">
+            <li> <span class="org-contact-key">Phone:</span> {{company.phone_number}}</li>
+            <li> <span class="org-contact-key">Location:</span> {{company.address.locality}}, {{company.address.administrative_area}}</li>
+            <li> <span class="org-contact-key"># of employees:</span> {{company.employees}}</li>
+            <li> <span class="org-contact-key">Founder:</span> {{company.founder_name}}</li>
+            <li> <span class="org-contact-key">Founded:</span> {{company.founded_date}}</li>
+            <li> <span class="org-contact-key">Type of business:</span> {{company.business}}</li>
           </ul>
           <p>
             <a href="mailto:{{company.contact}}" target="_top">Send Email</a>
           </p>
           <div *ngIf="company.website_or_blog">
-            <h1 class="text-left">Websites</h1>
+            <h2 class="text-left">Websites</h2>
             <a class="row" *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
           </div>
           <div *ngIf="company.field_social_accounts">
