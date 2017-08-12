@@ -7,6 +7,9 @@
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
+	.org-logo {
+		margin-bottom: 2rem;
+	}
 }
 
 .org-feature-photo {
@@ -20,6 +23,8 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	padding-bottom: 50vh;
+	background-color: #d6d6d6;
+	background-blend-mode: multiply;
 }
 
 .org-content {
@@ -29,6 +34,21 @@
     position: relative;
 }
 
-.company-name {
+.org-name {
 	font-size: 3rem;
+	color: white;
+}
+
+.org-description {
+	font-size: 2.5rem;
+	color: white;
+}
+
+.org-contact-list {
+	.org-contact-key {
+		color: #828282;
+	}
+	li {
+		color: #000;
+	}
 }
