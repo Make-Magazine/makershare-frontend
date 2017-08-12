@@ -176,7 +176,7 @@
       </div>
       <div class="row p-2" *ngIf="team">
         <div class="col-4" *ngFor="let teams of team">
-          <app-maker-card [uid]="teams.field_team_member"></app-maker-card>
+          <app-maker-card [uid]="teams.field_team_member" [state]="'tall'" ></app-maker-card>
         </div>
       </div>
       <div class="col-md-12" *ngIf="followers">
