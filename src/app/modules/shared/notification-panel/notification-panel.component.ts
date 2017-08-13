@@ -51,8 +51,17 @@ export class NotificationPanelComponent implements OnInit {
           /*this.notifications.push({
             title: 'title of not',
             date: '01/01/0203',
-            type: 'follow_user',
-            status: 'Active'
+            type: 'new_message_sent',
+            status: 'Active',
+            first_name: 'Jared',
+            last_name: 'Smith'
+          }, {
+            title: 'title of not',
+            date: '01/01/0203',
+            type: 'new_entry_challenge_follow',
+            status: 'Active',
+            first_name: 'Jared',
+            last_name: 'Smith'
           });*/
         },
         err => {

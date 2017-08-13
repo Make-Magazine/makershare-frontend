@@ -1,5 +1,5 @@
 <div class="page-create-project-why" *ngIf="ProjectLoaded">
-  <section class="container mt-4 mb-4">
+  <section class="container pt-4 pb-4">
     <div class="top-content-wrapper">
       <!--hidden under 769px width-->
       <div class="add-controls row hidden-md-down">
@@ -22,12 +22,15 @@
           <p>PUBLISH AS</p>
           <ul class="list-unstyled d-flex flex-row align-items-center contorls mb-0">
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">
+              <button class="btn btn-grey"
+                      [ngClass]="{'disabled':!StoryFormValid}"
+                      (click)="GettingFieldsReady(0,370)">
                 Public
               </button>
             </li>
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}"
+              <button class="btn btn-grey"
+                      [ngClass]="{'disabled':!StoryFormValid}"
                       (click)="GettingFieldsReady(null,371)">Private
               </button>
             </li>

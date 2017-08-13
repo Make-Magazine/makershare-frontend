@@ -7,6 +7,10 @@
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
+	position: relative;
+	.org-logo {
+		margin-bottom: 2rem;
+	}
 }
 
 .org-feature-photo {
@@ -20,10 +24,54 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	padding-bottom: 50vh;
+	background-color: #d6d6d6;
+	background-blend-mode: multiply;
 }
 
 .org-content {
-	background: white;
+	padding-top: 4rem;
+	background: $site-bg;
     overflow: hidden;
     position: relative;
+}
+
+.org-name {
+	font-size: 3rem;
+	color: white;
+}
+
+// for cards
+.orgs-logo {
+	    width: 6rem;
+    height: auto;
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
+}
+
+.org-social {
+	bottom: 2rem;
+	right: 20vw;
+	position: absolute;
+}
+
+.org-description {
+	font-size: 2.5rem;
+	color: white;
+}
+
+.push {
+	margin: 1.375rem auto;
+}
+
+.org-contact-list {
+	.org-contact-key {
+		color: #828282;
+	}
+	li {
+		color: #000;
+		font-weight: bold;
+		font-size: 1.5rem;
+    	line-height: 3rem;
+	}
 }

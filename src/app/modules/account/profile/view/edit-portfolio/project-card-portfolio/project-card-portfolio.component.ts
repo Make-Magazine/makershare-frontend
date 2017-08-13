@@ -2,28 +2,28 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectCardPortfolio } from '../../../../../../core';
-import { NodeService, ViewService } from '../../../../../../core/d7services';
-import { UserService } from '../../../../../../core/d7services/user/user.service';
+import { NodeService, ViewService, UserService } from '../../../../../../core/d7services';
 
 @Component({
   selector: 'project-card-portfolio',
-  templateUrl: './project-card-portfolio.component.html',
+  templateUrl: './project-card-portfolio.component.html'
 })
 export class ProjectCardPortfolioComponent implements OnInit {
   @Input() type: string;
   @Input() Project: ProjectCardPortfolio;
   @Input() Visibility: number;
   @Output() emitter = new EventEmitter();
+
   projectCard;
   badges = [];
   pages: number = 0;
-  constructor(
-    private nodeService: NodeService,
-    private viewService: ViewService,
-    private router: Router,
-    private modal: NgbModal,
-    private userService: UserService,
-  ) {}
+
+  constructor(private nodeService: NodeService,
+              private viewService: ViewService,
+              private router: Router,
+              private modal: NgbModal,
+              private userService: UserService) {
+  }
 
   ngOnInit() {
     this.GetProjectCard();
@@ -37,14 +37,14 @@ export class ProjectCardPortfolioComponent implements OnInit {
         var categories_string = res[0].project_categories;
         categories_string = categories_string.substring(
           0,
-          categories_string.length - 2,
+          categories_string.length - 2
         );
         var categories_array = categories_string.split(', ');
         res[0].project_categories = categories_array;
         var membership_string = res[0].field_team_members;
         membership_string = membership_string.substring(
           0,
-          membership_string.length - 1,
+          membership_string.length - 1
         );
         var membership_array = membership_string.split(',');
         res[0].field_team_members = membership_array;
@@ -76,16 +76,18 @@ export class ProjectCardPortfolioComponent implements OnInit {
       nid: this.Project.nid,
       field_visibility2: { und: [NewVisibility] },
       field_sort_order: { und: [{ value: 0 }] },
-      status: status,
+      status: status
     };
 
     this.nodeService.updateNode(project).subscribe(data => {
       this.emitter.emit();
     });
   }
+
   ShowProjectDetails(path) {
     this.router.navigate(['/projects/', path]);
   }
+
   getBadgesProject() {
     if (this.Project.nid) {
       this.viewService
@@ -101,11 +103,13 @@ export class ProjectCardPortfolioComponent implements OnInit {
         });
     }
   }
+
   /* function load more  */
   loadMoreProject() {
     this.pages++;
     this.GetProjectCard();
   }
+
   /* end function load more  */
   getProfile() {
     if (this.projectCard['uid']) {
