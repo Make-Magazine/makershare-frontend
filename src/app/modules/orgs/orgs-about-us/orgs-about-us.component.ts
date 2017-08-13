@@ -9,6 +9,7 @@ export class OrgsAboutUsComponent implements OnInit {
 
   @Input() description;
   trustedLink
+  test:boolean  = false
   constructor(
     private sanitizer: DomSanitizer,
   ) { }
@@ -16,11 +17,10 @@ export class OrgsAboutUsComponent implements OnInit {
   ngOnInit() {
     // console.log(this.description)
     if (this.description) {
-      for (let i = 0; i < this.description.videos.length; i++) {
-        let link = this.description.videos[i].video;
+      this.test = true
+        let link = this.description;
         this.trustedLink = this.sanitizer.bypassSecurityTrustHtml(link);
-        // console.log(this.trustedLink)
-      }
+        // console.log(this.description)
     }
   }
 }

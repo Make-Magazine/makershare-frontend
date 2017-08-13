@@ -57,7 +57,6 @@ export class CompanyCardComponent implements OnInit {
   getOrgCardIfNid() {
     this.viewService.getView('company_cards', [['nid', this.nid]]).subscribe(res => {
       this.cardData = res[0];
-      console.log(this.cardData)
     })
   }
 
