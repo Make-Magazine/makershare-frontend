@@ -295,6 +295,7 @@ export class Auth {
               );
               // if the first time, navigate to edit profile page
               window.location.hash = '';
+              window.location.reload();
               if (res.user_photo.indexOf('profile-default.png') >= 0) {
                 console.log('doesnt have a photo');
                 this.notificationBarService.create({
