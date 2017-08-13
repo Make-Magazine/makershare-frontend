@@ -33,6 +33,11 @@
     }
   }
 
+  &.lt-grey {
+    background-color: $light-grey;
+    color: $black;
+  }
+
   &.grey, &.disabled {
     background-color: $medium-grey;
 
@@ -49,13 +54,10 @@
   }
 
   &.disabled {
+    cursor: not-allowed;
     &:hover, &:active {
       //background-color: $medium-grey; // no hover for disabled
     }
-  }
-
-  &.disabled {
-    cursor: not-allowed;
   }
 
   &.red, &.warning {
@@ -64,6 +66,12 @@
     &:hover, &:active {
       background: darken($highlight-red, 20%);
     }
+  }
+
+  &.-full {
+    display: block;
+    text-align: center;
+    width: 100%;
   }
 
   &.-no-bg {
@@ -158,9 +166,9 @@
   &.btn-load-more {
     font-size: 1.6rem;
     white-space: nowrap;
-    width: 12rem;
     padding: 1.2rem;
     background-color: $white !important;
+    width: auto;
   }
 
   &.btn-simple-large {
@@ -279,6 +287,17 @@ a:not([href]):not([tabindex]).btn-tabs {
 .btn-tabs.active,
 a:not([href]):not([tabindex]).btn-tabs.active {
   background-color: $lighter-grey;
+}
+
+.btn-transparent,
+a:not([href]):not([tabindex]).btn-transparent {
+  color: $main-grey * 0.8;
+  background: transparent;
+  font-size: 1.6rem;
+  &:focus, &:active, &:hover {
+    color: $main-grey;
+    box-shadow: none;
+  }
 }
 
 // Prev and Next button

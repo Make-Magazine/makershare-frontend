@@ -1,5 +1,5 @@
 .main-header {
-	padding: 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
   color: #333333;
   width: 100vw;
@@ -10,40 +10,85 @@
   z-index: 99;
   height: 110px;
 
-	.header-wrapper {
-		margin: auto;
-		width: 70vw;
-		display: flex;
-		padding: 2rem 0;
-		@include transition(0.5s);
-	}
+  .header-wrapper {
+    margin: auto;
+    width: 70vw;
+    display: flex;
+    padding: 2rem 0;
+    @include transition(0.5s);
+  }
 
-	 &.shrink {
-	 	.header-wrapper {
-	 		padding: 1rem 0;
-	 	}
-		.nav-item {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-	}
+  &.shrink {
+    .header-wrapper {
+      padding: 1rem 0;
+    }
+    .nav-item {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
 }
-
 
 .coming-soon {
-    position: relative;
-    .coming-soon-text {
-        position: absolute;
-        font-size: 0.8rem;
-        color: $red;
-        right: 0;
-        bottom: -1.8rem;
-        text-transform: uppercase;
-    }
+  position: relative;
+  .coming-soon-text {
+    position: absolute;
+    font-size: 0.8rem;
+    color: $red;
+    right: 0;
+    bottom: -1.8rem;
+    text-transform: uppercase;
+  }
 }
 
+@media only screen and (max-width: 768px) {
+  .main-header {
+    .header-wrapper {
+      width: 100%;
+      padding: 2rem 3rem;
+      nav {
+        &.primary {
+          .hide-mobile {
+            display: none;
+          }
+          .mobile-menu-item,
+          .line-mobile {
+            display: block;
+          }
+        }
+        &.secondary {
+          .mobile-menu {
+            display: block;
+          }
+          .hide-mobile {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
 
-
+@media only screen and (min-width: 769px) {
+  nav {
+    &.primary {
+      .nav-item {
+        .hide-mobile {
+          display: block;
+        }
+        .mobile-menu-item,
+        .line-mobile {
+          display: none;
+        }
+      }
+    }
+    &.secondary {
+      .mobile-menu {
+        display: none;
+      }
+    }
+  }
+}
 
 // // old styles
 // header {

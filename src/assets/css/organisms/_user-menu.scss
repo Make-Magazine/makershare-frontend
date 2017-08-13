@@ -6,5 +6,9 @@
   .dropdown-toggle {
     line-height: 0;
     cursor: pointer;
+
+    &:after {
+      right: -1.4rem !important;
+    }
   }
 }
