@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ViewService } from '../../../core/d7services';
@@ -13,7 +13,12 @@ export class CompanyCardComponent implements OnInit {
 
   @Input() cardData;
   @Input() state;
+  @Output() Featured = new EventEmitter<number>();
+  @Input() nid;
+  @Input() view: string = 'grid';
+  @Input() front;
   badges;
+  Manager: boolean = false;
 
   card;
   constructor(public router: Router,
@@ -26,20 +31,34 @@ export class CompanyCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.cardData)
-    this.getCompanyBadge();
+    if (this.nid) {
+      this.getOrgCardIfNid();
+    }
+    this.auth.IsCommuintyManager();
+    this.Manager = this.auth.IsCommuintyManager();
+    // this.getCompanyBadge();
   }
   goToProfile(path: string) {
     this.router.navigate(['/portfolio/', path]);
   }
-  getCompanyBadge() {
-    this.viewService
-      .getView('org-badge', [['nid', this.cardData.nid]])
-      .subscribe(data => {
-        if (data) {
-          this.badges = data;
-        }
-      });
+  // getCompanyBadge() {
+  //   this.viewService
+  //     .getView('org-badge', [['nid', this.cardData.nid]])
+  //     .subscribe(data => {
+  //       if (data) {
+  //         this.badges = data;
+  //       }
+  //     });
+  // }
+  emitFeatured() {
+    this.Featured.emit();
+  }
+
+  getOrgCardIfNid() {
+    this.viewService.getView('company_cards', [['nid', this.nid]]).subscribe(res => {
+      this.cardData = res[0];
+      console.log(this.cardData)
+    })
   }
 
 }
