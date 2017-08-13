@@ -1,9 +1,16 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../auth0/auth.service';
 import { ViewService } from '../../../core/d7services';
-import { UserService } from '../../../core/d7services/user/user.service';
+import { UserService, NodeService } from '../../../core/d7services';
 
 @Component({
   selector: 'app-project-card',
@@ -16,6 +23,8 @@ export class ProjectCardComponent implements OnInit {
   @Input() front;
   @Input() state;
   @Input() clickAction: Function = null;
+  @Input() editMode: boolean = false;
+  @Input() visibility: number;
   @Output() Featured = new EventEmitter<number>();
 
   badges = [];
@@ -26,9 +35,11 @@ export class ProjectCardComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private nodeService: NodeService,
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     private userService: UserService,
+    private modal: NgbModal,
     public auth: Auth,
   ) {
     this.config.placement = 'bottom';
@@ -53,30 +64,31 @@ export class ProjectCardComponent implements OnInit {
     this.viewService
       .getView('api-project-card', [['nid', this.nid]])
       .subscribe(res => {
-        let categories_string = res[0].project_categories;
-        categories_string = categories_string.substring(
+        let categoriesStr = res[0].project_categories;
+        categoriesStr = categoriesStr.substring(
           0,
-          categories_string.length - 2,
+          categoriesStr.length - 2,
         );
-        const categories_array = categories_string.split(', ');
-        res[0].project_categories = categories_array;
-        let membership_string = res[0].field_team_members;
-        membership_string = membership_string.substring(
+        const categoriesArr = categoriesStr.split(', ');
+        res[0].project_categories = categoriesArr;
+        let membershipStr: string = res[0].field_team_members;
+        membershipStr= membershipStr.substring(
           0,
-          membership_string.length - 1,
+          membershipStr.length - 1,
         );
-        const membership_array = membership_string.split(',');
-        res[0].field_team_members = membership_array;
+        const membershipArr: string[] = membershipStr.split(',');
+        res[0].field_team_members = membershipArr;
 
-        let membership_uid_string = res[0].field_maker_memberships_uid;
-        membership_uid_string = membership_uid_string.substring(
+        let membershipUidStr = res[0].field_maker_memberships_uid;
+        membershipUidStr = membershipUidStr.substring(
           0,
-          membership_uid_string.length - 1,
+          membershipUidStr.length - 1,
         );
-        const membership_uid_array = membership_uid_string.split(',');
-        res[0].field_maker_memberships_uid = membership_uid_array;
+        const membershipUidArr = membershipUidStr.split(',');
+        res[0].field_maker_memberships_uid = membershipUidArr;
 
         this.project = res[0];
+
         this.viewService
           .getView('maker_count_all_projects/' + this.project['uid'])
           .subscribe(data => {
@@ -87,7 +99,6 @@ export class ProjectCardComponent implements OnInit {
           this.project['maker_url'] = '/portfolio/' + res.url;
         });
       });
-      
   }
 
   getBadgesProject() {
@@ -100,10 +111,8 @@ export class ProjectCardComponent implements OnInit {
       });
   }
 
-  @HostListener('click') clickItem() {
-
-    console.log('click full project');
-
+  @HostListener('click')
+  clickItem() {
     if (this.clickAction != null) {
       this.clickAction();
     }
@@ -125,12 +134,61 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['portfolio/', path]);
   }
 
-  getProfile() {
-    // if (this.project['uid']) {
-    // }
-  }
-
   emitFeatured() {
     this.Featured.emit();
+  }
+
+  /*****************************
+   * EDIT MODE
+   *****************************/
+
+  /**
+   * openModal
+   *
+   * @param template
+   * @constructor
+   */
+  openModal(template) {
+    this.modal.open(template, { size: 'lg', windowClass: 'delete-promodal' });
+  }
+
+  /**
+   * deleteProject
+   *
+   * @param closebtn
+   * @constructor
+   */
+  deleteProject(closebtn) {
+    closebtn.click();
+    this.nodeService.deleteNode(+this.nid).subscribe(data => {
+      this.emitFeatured();
+    });
+  }
+
+  /**
+   * updateProjectVisibility
+   *
+   * @param {number} newVisibility
+   * @param closebtn
+   */
+  updateProjectVisibility(newVisibility: number, closebtn?) {
+    if (closebtn) {
+      closebtn.click();
+    }
+
+    let status = null;
+    if (newVisibility == 370) {
+      status = 1;
+    }
+    let project: any = {
+      nid: this.project.nid,
+      field_visibility2: { und: [newVisibility] },
+      field_sort_order: { und: [{ value: 0 }] },
+      status: status,
+    };
+
+    this.nodeService.updateNode(project).subscribe(data => {
+      this.emitFeatured();
+    });
   }
 }

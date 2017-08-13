@@ -9,3 +9,18 @@
 		float: right;
 	}
 }
+
+.profile-content {
+	.card {
+		social-stats {
+			position: inherit;
+		}
+	}
+	.tall {
+		.card {
+			social-stats {
+				position: absolute;
+			}
+		}
+	}
+}
