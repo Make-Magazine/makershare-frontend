@@ -14,7 +14,7 @@
       <!-- no alt bg for companies but we still need the div here for hovers -->
       <!-- <div class="flag project">Organization </div> -->
       <!-- Start Feature Company -->
-      <!-- <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'"> </app-feature> -->
+       <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'" (Featured)="emitFeatured()"></app-feature> 
       <!-- End Feature Company -->
       <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/orgs/',cardData.path]">
       </span>
