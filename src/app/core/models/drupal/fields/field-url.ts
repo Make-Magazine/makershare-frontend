@@ -1,9 +1,9 @@
-export interface field_URL{
+export interface FieldURL{
   value?: URL;
   format: null;
   safe_value?: string;
 }
 
-export class field_URL{
+export class FieldURL{
   constructor(){}
 }

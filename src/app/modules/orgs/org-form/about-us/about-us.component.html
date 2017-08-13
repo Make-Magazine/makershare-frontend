@@ -13,4 +13,40 @@
       <label>About Us</label>
       <textarea maxlength="250" formControlName='body'></textarea>
     </div>
+
+    <div formArrayName="field_maker_memberships">
+      <label>Team</label>
+      <div *ngFor="let uid of team;let i = index;" [formGroupName]="i">
+        <app-maker-card [showFlag]="false" [uid]="uid"></app-maker-card>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a (click)="removeMember(i)">Remove</a>
+      </div>
+      <div [formGroupName]="organizationForm.value.field_maker_memberships.length - 1">
+        <label>Member name</label>
+        <input #username type="text" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="selectedUser = $event.item" [inputFormatter]="formatter">
+          <div *ngIf="searchFailed">
+            User not registered
+            <!-- <button type="button" class="btn btn-primary" (click)="setAnonymous(username.value, i)">
+              Add as anonymous member
+            </button> -->
+          </div>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a *ngIf="selectedUser" (click)="addMember()">+add</a>
+      </div>
+    </div>
 </div>
+
+<ng-template #rt let-r="result" let-t="term">
+  <div class="d-flex">
+    <div class="typeahead-image-container">
+      <img *ngIf="r.profile_pic_typeahead" src="{{r.profile_pic_typeahead}}">
+      <img *ngIf="!r.profile_pic_typeahead" src="./assets/images/Gears-Grey.svg">
+    </div>
+    <div class="typeahead-data-container">
+      <p class="nickname" *ngIf="r.first_name && r.last_name">{{r.first_name}} {{r.last_name}} </p>
+      <p class="nickname" *ngIf="!r.first_name && !r.last_name">{{r.name}} </p>
+    </div>
+  </div>
+</ng-template>
