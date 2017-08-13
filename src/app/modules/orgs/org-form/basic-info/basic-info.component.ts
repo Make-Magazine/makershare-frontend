@@ -19,6 +19,8 @@ export class BasicInfoComponent implements OnInit {
   cropperSettings:CropperSettings;
   cropperLogoSettings: CropperSettings;
   cropperCoverSettings: CropperSettings;
+  cropperAvatarSettings: CropperSettings;
+  
   currentImageFieldName: string;
 
   constructor(
@@ -60,6 +62,17 @@ export class BasicInfoComponent implements OnInit {
     this.cropperCoverSettings.noFileInput = true;
     this.cropperCoverSettings.canvasWidth = 400;
     this.cropperCoverSettings.canvasHeight = 225;
+
+    this.cropperAvatarSettings = new CropperSettings();
+    this.cropperAvatarSettings.width = 800;
+    this.cropperAvatarSettings.height = 450;
+    this.cropperAvatarSettings.minWidth = 800;
+    this.cropperAvatarSettings.minHeight = 450;
+    this.cropperAvatarSettings.croppedWidth = 800;
+    this.cropperAvatarSettings.croppedHeight = 450;
+    this.cropperAvatarSettings.noFileInput = true;
+    this.cropperAvatarSettings.canvasWidth = 400;
+    this.cropperAvatarSettings.canvasHeight = 225;
 
     this.imageData = {};
   }

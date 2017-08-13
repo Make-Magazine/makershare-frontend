@@ -1,11 +1,11 @@
 import {
   DateTime,
   FieldDateTime,
-  field_entity_reference,
+  FieldEntityReference,
   FieldNumber,
   field_term_reference,
   FieldText,
-  field_URL,
+  FieldURL,
   FieldFileReference,
   NodeEntity,
 } from '../../';
@@ -23,20 +23,20 @@ export interface ProjectForm extends NodeEntity {
   field_parts?: { und: FieldCollectionItem.FieldCollectionItemPart[] };
   field_difficulty?: { und: number | '_none' };
   field_duration?: { und: number | '_none' };
-  field_show_tell_video?: { und: field_URL[] };
+  field_show_tell_video?: { und: FieldURL[] };
   field_show_tell_video_as_default: { und: FieldNumber[] };
   field_tags?: { und: string };
   field_resources?: {
     und: FieldCollectionItem.FieldCollectionItemResource[];
   };
-  field_collaborators?: { und: field_entity_reference[] };
+  field_collaborators?: { und: FieldEntityReference[] };
   field_sort_order?: { und: FieldNumber[] };
   field_maker_memberships?: {
     und: FieldCollectionItem.FieldCollectionItemMember[];
   };
-  field_original_team_members?: { und: field_entity_reference[] };
+  field_original_team_members?: { und: FieldEntityReference[] };
   field_total_forks?: { und: FieldNumber[] };
-  field_forks?: { und: field_entity_reference[] };
+  field_forks?: { und: FieldEntityReference[] };
   field_visibility2: { und: number[] };
   field_faire_name: { und: number[] };
   field_mfba17_project_id?: { und: FieldText[] };
@@ -68,14 +68,14 @@ export interface ProjectView extends NodeEntity {
   };
   field_difficulty: { und: field_term_reference[] };
   field_duration: { und: field_term_reference[] };
-  field_show_tell_video?: { und: field_URL[] };
+  field_show_tell_video?: { und: FieldURL[] };
   field_show_tell_video_as_default: { und: FieldNumber[] };
   field_tags?: { und: field_term_reference[] };
-  field_collaborators?: { und: field_entity_reference[] };
+  field_collaborators?: { und: FieldEntityReference[] };
   field_sort_order?: { und: FieldNumber[] };
-  field_original_team_members?: { und: field_entity_reference[] };
+  field_original_team_members?: { und: FieldEntityReference[] };
   field_total_forks?: { und: FieldNumber[] };
-  field_forks?: { und: field_entity_reference[] };
+  field_forks?: { und: FieldEntityReference[] };
   field_visibility2?: { und: field_term_reference[] };
   field_categories?: { und: field_term_reference[] };
   field_mfba17_project_id?: { und: FieldText[] };
@@ -128,7 +128,7 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
     this.field_cover_photo = { und: [new FieldFileReference()] };
     this.field_categories = { und: [] };
     this.field_tags = { und: '' };
-    this.field_show_tell_video = { und: [new field_URL()] };
+    this.field_show_tell_video = { und: [new FieldURL()] };
     this.field_show_tell_video_as_default = { und: [new FieldNumber()] };
     this.field_aha_moment = { und: [new FieldText(null)] };
     this.field_uh_oh_moment = { und: [new FieldText(null)] };

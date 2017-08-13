@@ -7,9 +7,10 @@ import { BasicInfoComponent } from '../../orgs/org-form/basic-info/basic-info.co
 import { OrgsRoutingModule } from '../../orgs/org-form/org-form.routing.module';
 import { OrgFormComponent } from '../../orgs/org-form/org-form.component';
 import { ProjectsComponent } from '../../orgs/org-form/projects/projects.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, OrgsRoutingModule, SharedModule.forChild(), ReactiveFormsModule],
+  imports: [CommonModule, OrgsRoutingModule, SharedModule.forChild(), ReactiveFormsModule, NgbModule],
   declarations: [
     OrgFormComponent,
     BasicInfoComponent,
