@@ -12,7 +12,7 @@
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"></app-feature>
       <app-card-badges [badges]="badges"></app-card-badges>
       <div class="float-right" *ngIf="card.orgs_logo">
-        <img class="rounded-circle bg-danger" src="{{card.orgs_logo}}" alt="">
+        <img class="orgs-logo" src="{{card.orgs_logo}}" alt="">
       </div>
     </div>
     <div class="info-bottom {{showFlag ? '' : 'no-flag'}}">
