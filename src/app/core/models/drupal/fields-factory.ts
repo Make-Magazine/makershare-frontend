@@ -1,39 +1,40 @@
 import { 
   FileEntity, DrupalCustomLanguageField, FieldEmail, FieldNumber,
-  FieldText, FieldLongText, FieldDateTime, DateTime
+  FieldText, FieldLongText, FieldDateTime, DateTime, FieldEntityReference,
+  FieldCollectionItem
 } from './';
 
 export class FieldsFactory {
 
-  fileEntityReference(): any{
+  fileEntityReference(): FileEntity{
     return this.addLanguage(new FileEntity());
   }
 
-  listText(defaultValue: string): any{
+  listText(defaultValue: string): any {
     return this.addLanguage(defaultValue);
   }
 
-  email(): any {
+  email(): FieldEmail {
     return this.addLanguage(new FieldEmail());
   }
 
-  number(): any {
+  number(): FieldNumber {
     return this.addLanguage(new FieldNumber());
   }
 
-  text(format: null|string): any {
-    return this.addLanguage(new FieldText(format));
+  text(): FieldText {
+    return this.addLanguage(new FieldText(null));
   }
 
-  longText(format: null|string): any {
+  longText(format: null|string): FieldLongText {
     return this.addLanguage(new FieldLongText(format));
   }
 
-  array(): any {
+  array(): Array<any> {
     return this.addLanguage([]);
   }
   
-  date(date?: string,time?: string): any {
+  date(date?: string,time?: string): FieldDateTime {
     if(date || time) {
       let date_time = new DateTime();
       date_time.date = date;
@@ -43,7 +44,15 @@ export class FieldsFactory {
     return this.addLanguage(new FieldDateTime());
   }
 
-  private addLanguage(field: any): DrupalCustomLanguageField {
+  entityReference(): FieldEntityReference {
+    return this.addLanguage(new FieldEntityReference());
+  }
+
+  fieldCollection(itemField: FieldCollectionItem): FieldCollectionItem[] {
+    return this.addLanguage(itemField);
+  }
+
+  private addLanguage(field: any): any {
     return new DrupalCustomLanguageField(field);
   }
 }

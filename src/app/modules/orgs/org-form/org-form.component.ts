@@ -26,18 +26,9 @@ export class OrgFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fileService;
-    this.nodeService;
-
-    this.organizationProxy.title = 'test change0';
-    this.organizationProxy.body.value = 'new value';
-    this.organizationProxy.field_breif_info.value = 'test';
-    this.organizationProxy.field_orgs_logo.fid = 3617;
-    this.organizationProxy.field_orgs_cover_photo.fid = 3618;
-    this.organizationProxy.field_orgs_contact.email = 'example@bla.com';
-    this.organizationProxy.field_minimum_number_of_follower.value = 4987;
     this.buildForm();
     this.organizationReady = true;
+    console.log(this.organizationForm.value);
   }
 
   buildForm() {
@@ -60,16 +51,16 @@ export class OrgFormComponent implements OnInit {
       field_founded_date: this.formBuilder.group({
         date: [this.organizationProxy.field_founded_date.value.date, [Validators.min(1990), Validators.max(new Date().getFullYear())]],
       }),//
+      field_maker_memberships: this.formBuilder.array([],Validators.required),//
       // field_social_accounts: [this.formBuilder.array([])],
       // field_orgs_address: this.formBuilder.group({
-        
-      // }),   
-      // field_maker_memberships: this.formBuilder.array([]),
+      // }),
     });
   }
 
   // Fires when clicking on publish button
   publishButtonClick() {
+    console.log(this.organizationProxy.entity)
     if(!this.organizationForm.valid) {
       // display error
       console.log("not all fields are filled");
@@ -93,7 +84,7 @@ export class OrgFormComponent implements OnInit {
         index++;
       }
     },err=> {}, ()=> {
-      this.nodeService.createNode(this.organizationProxy.entity).subscribe((nodes)=>{ 
+      this.nodeService.createNode(this.organizationProxy.entity).subscribe((node)=>{
       },err=>{console.log(this.organizationProxy.entity)},()=> {
         this.router.navigate(['/portfolio']);
         // this.organizationReady = true;
