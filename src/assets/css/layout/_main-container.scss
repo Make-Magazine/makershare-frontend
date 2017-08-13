@@ -10,4 +10,7 @@ section,
 
 .main-container {
   padding-top: 110px;
+  &.-no-pad {
+    padding-top: 0;
+  }
 }
