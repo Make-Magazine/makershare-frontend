@@ -1,36 +1,58 @@
 <div class="col-md-8"
      [formGroup]="organizationForm">
-  <div class="form-group">
-    <label>Organization Type</label>
-    <input type="radio" name="field_orgs_type" value="non-profit"
-           [checked]="organizationForm.value.field_orgs_type === 'non-profit'"
-           (click)="updateType($event.target.value)">non-profit
-    <input type="radio" name="field_orgs_type" value="startup"
-           [checked]="organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="orgName">Organization Name</label>
+    </div>
+    <input type="text"
+           [ngClass]="{valError: !organizationForm.controls['title'].valid}"
+           formControlName="title"
+           placeholder="Enter name here"
+           maxlength="50"
+           validate-onfocusout
+           class="form-control"
+           id="orgName">
   </div>
 
   <div class="form-group">
-    <label>Organization Name</label>
-    <input type="text" formControlName="title" maxlength="50">
-  </div>
-
-  <div class="form-group">
+    <div class="form-label">
+      <label>Organization Type</label>
+    </div>
     <div>
+      <input type="radio"
+             name="field_orgs_type"
+             value="non-profit"
+             class="form-control"
+             [checked]="organizationForm.value.field_orgs_type === 'non-profit'"
+             (click)="updateType($event.target.value)">non-profit
+      <input type="radio"
+             name="field_orgs_type"
+             value="startup"
+             class="form-control"
+             [checked]="organizationForm.value.field_orgs_type === 'startup'"
+             (click)="updateType($event.target.value)">startup
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
       <label>Organization Logo</label>
-      <p>logo must work at small size (20 x 20)</p>
+      <span>logo must work at small size (20 x 20)</span>
     </div>
     <div>
       <a (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose</a>
       <div>
-        <img *ngIf="organizationForm.value.field_orgs_logo.file" [src]="organizationForm.value.field_orgs_logo.file">
+        <img *ngIf="organizationForm.value.field_orgs_logo.file"
+             [src]="organizationForm.value.field_orgs_logo.file">
       </div>
     </div>
   </div>
 
   <div class="form-group">
-    <div>
+    <div class="form-label">
       <label>Cover Photo</label>
-      <p>For the top of the profile page (at least 300 x 2000)</p>
+      <span>For the top of the profile page (at least 300 x 2000)</span>
     </div>
     <div>
       <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</a>
@@ -42,56 +64,88 @@
   </div>
 
   <div class="form-group">
-    <div>
+    <div class="form-label">
       <label>Organization Avatar</label>
-      <p>Should be at max 104px square</p>
+      <span>Should be at max 104px square</span>
     </div>
     <div>
       <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose</a>
       <div>
-        <img *ngIf="organizationForm.value.field_org_avatar.file" [src]="organizationForm.value.field_org_avatar.file">
+        <img *ngIf="organizationForm.value.field_org_avatar.file"
+             [src]="organizationForm.value.field_org_avatar.file">
       </div>
     </div>
   </div>
 
   <div>
     <label>Social Channels</label>
-
   </div>
 
   <div class="form-group">
-    <label>Website</label>
-    <input type="text" formControlName="field_orgs_contact">
-  </div>
-
-  <div>
-    <label>FIELD CONTACT "WIP"</label>
-
-  </div>
-
-  <div class="form-group">
-    <label>Phone</label>
-    <input type="number" formControlName="field_orgs_phone">
+    <div class="form-label">
+      <label for="website">Website</label>
+    </div>
+    <input type="text"
+           class="form-control"
+           id="website"
+           formControlName="field_orgs_contact">
   </div>
 
   <div class="form-group">
-    <label>Founder Name</label>
-    <input type="text" formControlName="field_founder_name">
-  </div>
-
-  <div class="form-group" formGroupName="field_founded_date">
-    <label>Founded Date</label>
-    <input type="number" formControlName="date">
+    <div class="form-label">
+      <label>FIELD CONTACT "WIP"</label>
+    </div>
   </div>
 
   <div class="form-group">
-    <label>Type of Business</label>
-    <input type="text" formControlName="field_type_of_business">
+    <div class="form-label">
+      <label for="phone">Phone</label>
+    </div>
+    <input type="number"
+           class="form-control"
+           id="phone"
+           formControlName="field_orgs_phone">
   </div>
 
   <div class="form-group">
-    <label>Display only after there are more than</label>
-    <input type="number" formControlName="field_minimum_number_of_follower">
+    <div class="form-label">
+      <label for="founder_name">Founder Name</label>
+    </div>
+    <input type="text"
+           class="form-control"
+           id="founder_name"
+           formControlName="field_founder_name">
+  </div>
+
+  <div class="form-group"
+       formGroupName="field_founded_date">
+    <div class="form-label">
+      <label for="founded_date">Founded Date</label>
+    </div>
+    <input type="number"
+           max=""
+           class="form-control"
+           id="founded_date"
+           formControlName="date">
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="business_type">Type of Business</label>
+    </div>
+    <input type="text"
+           class="form-control"
+           id="business_type"
+           formControlName="field_type_of_business">
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label>Display only after there are more than</label>
+    </div>
+    <input type="number"
+           class="form-control"
+           formControlName="field_minimum_number_of_follower">
   </div>
 </div>
 
@@ -99,7 +153,11 @@
 <ng-template #imagemodal let-c="close" let-d="dismiss">
   <div class="upload-image-modal">
     <div class="modal-header">
-      <button type="button" class="close ml-auto" #closebtn aria-label="Close" (click)="d('Cross click')">
+      <button type="button"
+              class="close ml-auto"
+              #closebtn
+              aria-label="Close"
+              (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -119,13 +177,15 @@
         <div [hidden]="imageModalTab != 'upload'" ng2FileDrop
              (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
           <div>
-            <img *ngIf="!imageData.original" src="./assets/images/icons/Photos Icon.png">
+            <img *ngIf="!imageData.original"
+                 src="./assets/images/icons/Photos Icon.png">
             <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData"
                          [settings]="cropperSettings"></img-cropper>
             <a (click)="file.click()">
-              <span *ngIf="!imageData.original">Choose</span>
-              <span *ngIf="imageData.original">Choose a Different Photo</span>
-              <input [hidden]="true" type="file" #file (change)="uploadBtn($event.target.files[0], imagecropper)">
+              <span *ngIf="imageData.original">{{imageData.original ? 'Choose a Different Photo' : 'Choose'}}</span>
+              <input [hidden]="true"
+                     type="file" #file
+                     (change)="uploadBtn($event.target.files[0], imagecropper)">
             </a>
           </div>
         </div>
@@ -134,7 +194,8 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button *ngIf="imageModalTab == 'upload'" (click)="imageUpdated(closebtn, file.files[0])">Save
+      <button *ngIf="imageModalTab == 'upload'"
+              (click)="imageUpdated(closebtn, file.files[0])">Save
       </button>
     </div>
   </div>

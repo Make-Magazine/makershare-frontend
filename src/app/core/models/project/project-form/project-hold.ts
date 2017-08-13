@@ -1,12 +1,12 @@
 import {
   DateTime,
-  field_entity_reference,
+  FieldEntityReference,
   NodeEntity,
 } from '../../drupal';
 
 export interface ProjectHold extends NodeEntity {
-  field_project_to_edit: { und: field_entity_reference[] };
-  field_users_wants_edit?: { und: field_entity_reference[] };
+  field_project_to_edit: { und: FieldEntityReference[] };
+  field_users_wants_edit?: { und: FieldEntityReference[] };
   unpublish_on: DateTime;
 }
 
@@ -19,7 +19,7 @@ export class ProjectHold extends NodeEntity implements ProjectHold {
   protected initFields(Project_title_id) {
     super.initFields('project_hold');
     this.status = 1;
-    this.field_project_to_edit = { und: [{ target_id: Project_title_id }] };
+    this.field_project_to_edit = { und: [new FieldEntityReference(Project_title_id)] };
 
     const now = new Date(); // Get current date
     let date = new Date(

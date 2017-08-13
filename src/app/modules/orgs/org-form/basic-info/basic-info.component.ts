@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -7,23 +7,22 @@ import { FileEntity } from '../../../../core';
 
 @Component({
   selector: 'app-org-form-basic-info',
-  templateUrl: './basic-info.component.html'
+  templateUrl: './basic-info.component.html',
 })
 export class BasicInfoComponent implements OnInit {
-
   @Input() organizationForm: FormGroup;
 
-  imageModalTab: 'upload'|'filemanager' = 'upload';
+  imageModalTab: 'upload' | 'filemanager' = 'upload';
   imageData: any;
 
-  cropperSettings:CropperSettings;
+  cropperSettings: CropperSettings;
   cropperLogoSettings: CropperSettings;
   cropperCoverSettings: CropperSettings;
+  cropperAvatarSettings: CropperSettings;
+
   currentImageFieldName: string;
 
-  constructor(
-    private modalService: NgbModal,
-  ) { }
+  constructor(private modalService: NgbModal) {}
 
   ngOnInit() {
     this.setCropperSettings();
@@ -38,28 +37,24 @@ export class BasicInfoComponent implements OnInit {
     this.uploadBtn(acceptedFile.file, cropper);
   }
 
-  setCropperSettings() {
-    this.cropperLogoSettings = new CropperSettings();
-    this.cropperLogoSettings.width = 800;
-    this.cropperLogoSettings.height = 450;
-    this.cropperLogoSettings.minWidth = 800;
-    this.cropperLogoSettings.minHeight = 450;
-    this.cropperLogoSettings.croppedWidth = 800;
-    this.cropperLogoSettings.croppedHeight = 450;
-    this.cropperLogoSettings.noFileInput = true;
-    this.cropperLogoSettings.canvasWidth = 400;
-    this.cropperLogoSettings.canvasHeight = 225;
+  cropperSettingsFactory() {
+    let cropperSettings = new CropperSettings();
+    cropperSettings.width = 800;
+    cropperSettings.height = 450;
+    cropperSettings.minWidth = 800;
+    cropperSettings.minHeight = 450;
+    cropperSettings.croppedWidth = 800;
+    cropperSettings.croppedHeight = 450;
+    cropperSettings.noFileInput = true;
+    cropperSettings.canvasWidth = 400;
+    cropperSettings.canvasHeight = 225;
+    return cropperSettings;
+  }
 
-    this.cropperCoverSettings = new CropperSettings();
-    this.cropperCoverSettings.width = 800;
-    this.cropperCoverSettings.height = 450;
-    this.cropperCoverSettings.minWidth = 800;
-    this.cropperCoverSettings.minHeight = 450;
-    this.cropperCoverSettings.croppedWidth = 800;
-    this.cropperCoverSettings.croppedHeight = 450;
-    this.cropperCoverSettings.noFileInput = true;
-    this.cropperCoverSettings.canvasWidth = 400;
-    this.cropperCoverSettings.canvasHeight = 225;
+  setCropperSettings() {
+    this.cropperLogoSettings = this.cropperSettingsFactory();
+    this.cropperCoverSettings = this.cropperSettingsFactory();
+    this.cropperAvatarSettings = this.cropperSettingsFactory();
 
     this.imageData = {};
   }
@@ -73,8 +68,8 @@ export class BasicInfoComponent implements OnInit {
 
   uploadBtn(file, cropper) {
     if (!file) return;
-    var image: any = new Image();
-    var myReader: FileReader = new FileReader();
+    let image: any = new Image();
+    let myReader: FileReader = new FileReader();
     myReader.onloadend = function(loadEvent: any) {
       image.src = loadEvent.target.result;
       cropper.setImage(image);
@@ -90,7 +85,7 @@ export class BasicInfoComponent implements OnInit {
 
   imageUpdated(closebtn: HTMLButtonElement, file) {
     closebtn.click();
-    if(!this.imageData.original) return;
+    if (!this.imageData.original) return;
     this.setImage(this.imageData.image, file.name);
   }
 
@@ -99,8 +94,9 @@ export class BasicInfoComponent implements OnInit {
     fileEntity.file = file;
     fileEntity.filename = filename;
     fileEntity.fid = fid;
-    const imageFormControl = this.organizationForm.controls[this.currentImageFieldName];
+    const imageFormControl = this.organizationForm.controls[
+      this.currentImageFieldName
+    ];
     imageFormControl.patchValue(fileEntity);
   }
-
 }

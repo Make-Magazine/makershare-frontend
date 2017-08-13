@@ -1,25 +1,52 @@
-<div class="region region-content col-md-8" [formGroup]="organizationForm">
-
-    <div class="form-group required">
-      <label for="brief-intro">Organization Info</label>
-      <textarea maxlength="250" class="form-control"
-                rows="5" id="brief-intro" formControlName='field_breif_info'
-                placeholder="this breif description will be shown in the directory and in Search results"></textarea>
+<div [formGroup]="organizationForm">
+    <div>
+      <label>Organization Info</label>
+      <textarea maxlength="250" rows="5" formControlName='field_breif_info'></textarea>
     </div>
 
-    <div class="form-group required">
-      <label for="brief-intro">Motto</label>
-      <input type="text" maxlength="50" class="form-control"
-                 id="brief-intro" formControlName='field_maker_motto'
-                placeholder="Motto">
+    <div>
+      <label>Motto</label>
+      <input type="text" maxlength="50" formControlName='field_maker_motto'>
     </div>
 
-    <div class="form-group required">
-      <label for="body">About Us</label>
-      <textarea maxlength="250" class="form-control"
-                rows="5" id="body" formControlName='body'
-                placeholder="Describe your company mission and what you do"></textarea>
+    <div>
+      <label>About Us</label>
+      <textarea maxlength="250" formControlName='body'></textarea>
     </div>
 
-
+    <div formArrayName="field_maker_memberships">
+      <label>Team</label>
+      <div *ngFor="let uid of team;let i = index;" [formGroupName]="i">
+        <app-maker-card [showFlag]="false" [uid]="uid"></app-maker-card>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a (click)="removeMember(i)">Remove</a>
+      </div>
+      <div [formGroupName]="organizationForm.value.field_maker_memberships.length - 1">
+        <label>Member name</label>
+        <input #username type="text" [ngbTypeahead]="search" [resultTemplate]="rt" (selectItem)="selectedUser = $event.item" [inputFormatter]="formatter">
+          <div *ngIf="searchFailed">
+            User not registered
+            <!-- <button type="button" class="btn btn-primary" (click)="setAnonymous(username.value, i)">
+              Add as anonymous member
+            </button> -->
+          </div>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a *ngIf="selectedUser" (click)="addMember()">+add</a>
+      </div>
+    </div>
 </div>
+
+<ng-template #rt let-r="result" let-t="term">
+  <div class="d-flex">
+    <div class="typeahead-image-container">
+      <img *ngIf="r.profile_pic_typeahead" src="{{r.profile_pic_typeahead}}">
+      <img *ngIf="!r.profile_pic_typeahead" src="./assets/images/Gears-Grey.svg">
+    </div>
+    <div class="typeahead-data-container">
+      <p class="nickname" *ngIf="r.first_name && r.last_name">{{r.first_name}} {{r.last_name}} </p>
+      <p class="nickname" *ngIf="!r.first_name && !r.last_name">{{r.name}} </p>
+    </div>
+  </div>
+</ng-template>
