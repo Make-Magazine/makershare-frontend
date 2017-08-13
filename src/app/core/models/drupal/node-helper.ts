@@ -48,8 +48,8 @@ export class NodeHelper{
   //  }
 
 
-  public static GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string){
-    return UsernameAndId.match(/\(([^)]+)\)/)[1];
+  public static GetUserIDFromFieldReferenceAutoComplete(UsernameAndId:string): number{
+    return +UsernameAndId.match(/\(([^)]+)\)/)[1];
   }
 
   public static IsEmail(email:string):boolean {

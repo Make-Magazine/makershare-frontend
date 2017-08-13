@@ -11,11 +11,11 @@ export class DrupalCustomLanguageField {
     }
   }
 
-  getField(index?: number): any {
+  getField(index?: number, asArray?:boolean): any {
     const field = this[Singleton.Settings.language];
     if(field instanceof Array){
       if(!index && field[0]) {
-        if(field.length > 1) {
+        if(field.length > 1 || asArray) {
           return field;
         }
         return field[0];

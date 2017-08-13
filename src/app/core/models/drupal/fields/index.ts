@@ -1,10 +1,11 @@
 export { DrupalCustomLanguageField } from './custom-language-field';
 export { DrupalCustomField } from './custom-field';
-export { field_entity_reference } from './field-entity-reference';
+export { FieldEntityReference } from './field-entity-reference';
 export { FieldFileReference } from './field-file-reference';
 export { FieldNumber } from './field-number';
 export { field_term_reference } from './field-term-reference';
 export { FieldText, FieldLongText } from './field-text';
-export { field_URL } from './field-URL';
+export { FieldURL } from './field-url';
 export { FieldDateTime, DateTime } from './field-date';
 export { FieldEmail } from './field-email';
+export { FieldCollectionItem } from './field-collection-item';
