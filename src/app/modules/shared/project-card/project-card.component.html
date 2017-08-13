@@ -1,9 +1,9 @@
 <div *ngIf="project"
      class="card project {{state}} {{clickAction != null ? 'allow-cta' : ''}}"> <!--(click)="clickItem()"-->
-  <div class="card-image" [style.background-image]="'url('+project.cover_photo+')'">
-    <br>
-    <img *ngIf="project.orgs_logo" class="rounded-circle bg-danger" src="{{project.orgs_logo}}" alt="">
-  </div>
+  <div class="card-image" [style.background-image]="'url('+project.cover_photo+')'"></div>
+  <!-- <img *ngIf="project.orgs_logo" class="card-org-logo" src="{{project.orgs_logo}}" alt=""> -->
+
+
   <!-- <div class="badge badge-default" >
 
  </div>  -->
@@ -20,6 +20,10 @@
                    (Featured)="emitFeatured()"></app-feature>
       <!-- End Feature Project -->
       <app-card-badges [badges]="badges"></app-card-badges>
+
+      <div class="float-right" *ngIf="project.orgs_logo">
+        <img class="orgs-logo" src="{{project.orgs_logo}}" alt="">
+      </div>
       <a class="flex-text-container"
          href="projects/{{project.path}}"
          *ngIf="!editMode">
