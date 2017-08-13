@@ -1,17 +1,20 @@
-<div [formGroup]="organizationForm">
-
-  <div>
+<div class="col-md-8"
+     [formGroup]="organizationForm">
+  <div class="form-group">
     <label>Organization Type</label>
-    <input type="radio" name="field_orgs_type" value="non-profit" [checked]= "organizationForm.value.field_orgs_type === 'non-profit'" (click)="updateType($event.target.value)">non-profit
-    <input type="radio" name="field_orgs_type" value="startup" [checked]= "organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
+    <input type="radio" name="field_orgs_type" value="non-profit"
+           [checked]="organizationForm.value.field_orgs_type === 'non-profit'"
+           (click)="updateType($event.target.value)">non-profit
+    <input type="radio" name="field_orgs_type" value="startup"
+           [checked]="organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Organization Name</label>
     <input type="text" formControlName="title" maxlength="50">
   </div>
 
-  <div>
+  <div class="form-group">
     <div>
       <label>Organization Logo</label>
       <p>logo must work at small size (20 x 20)</p>
@@ -24,7 +27,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <div>
       <label>Cover Photo</label>
       <p>For the top of the profile page (at least 300 x 2000)</p>
@@ -32,12 +35,13 @@
     <div>
       <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</a>
       <div>
-        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file" [src]="organizationForm.value.field_orgs_cover_photo.file">
+        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file"
+             [src]="organizationForm.value.field_orgs_cover_photo.file">
       </div>
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <div>
       <label>Organization Avatar</label>
       <p>Should be at max 104px square</p>
@@ -52,44 +56,43 @@
 
   <div>
     <label>Social Channels</label>
-    
+
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Website</label>
     <input type="text" formControlName="field_orgs_contact">
   </div>
 
   <div>
     <label>FIELD CONTACT "WIP"</label>
-    
+
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Phone</label>
     <input type="number" formControlName="field_orgs_phone">
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Founder Name</label>
     <input type="text" formControlName="field_founder_name">
   </div>
 
-  <div formGroupName="field_founded_date">
+  <div class="form-group" formGroupName="field_founded_date">
     <label>Founded Date</label>
     <input type="number" formControlName="date">
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Type of Business</label>
     <input type="text" formControlName="field_type_of_business">
   </div>
 
-  <div>
+  <div class="form-group">
     <label>Display only after there are more than</label>
     <input type="number" formControlName="field_minimum_number_of_follower">
-  </div>  
-
+  </div>
 </div>
 
 <!--Cover image modal-->
@@ -113,10 +116,12 @@
     </div>
     <div class="modal-body">
       <div class="container">
-        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop
+             (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
           <div>
             <img *ngIf="!imageData.original" src="./assets/images/icons/Photos Icon.png">
-            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData"
+                         [settings]="cropperSettings"></img-cropper>
             <a (click)="file.click()">
               <span *ngIf="!imageData.original">Choose</span>
               <span *ngIf="imageData.original">Choose a Different Photo</span>
@@ -124,7 +129,8 @@
             </a>
           </div>
         </div>
-        <app-file-browser *ngIf="imageModalTab == 'filemanager'" (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
+        <app-file-browser *ngIf="imageModalTab == 'filemanager'"
+                          (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
       </div>
     </div>
     <div class="modal-footer">
