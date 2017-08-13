@@ -1,25 +1,16 @@
-<div class="region region-content col-md-8" [formGroup]="organizationForm">
-
-    <div class="form-group required">
-      <label for="brief-intro">Organization Info</label>
-      <textarea maxlength="250" class="form-control"
-                rows="5" id="brief-intro" formControlName='field_breif_info'
-                placeholder="this breif description will be shown in the directory and in Search results"></textarea>
+<div [formGroup]="organizationForm">
+    <div>
+      <label>Organization Info</label>
+      <textarea maxlength="250" rows="5" formControlName='field_breif_info'></textarea>
     </div>
 
-    <div class="form-group required">
-      <label for="brief-intro">Motto</label>
-      <input type="text" maxlength="50" class="form-control"
-                 id="brief-intro" formControlName='field_maker_motto'
-                placeholder="Motto">
+    <div>
+      <label>Motto</label>
+      <input type="text" maxlength="50" formControlName='field_maker_motto'>
     </div>
 
-    <div class="form-group required">
-      <label for="body">About Us</label>
-      <textarea maxlength="250" class="form-control"
-                rows="5" id="body" formControlName='body'
-                placeholder="Describe your company mission and what you do"></textarea>
+    <div>
+      <label>About Us</label>
+      <textarea maxlength="250" formControlName='body'></textarea>
     </div>
-
-
 </div>
