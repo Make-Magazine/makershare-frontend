@@ -286,6 +286,7 @@
             <!-- asldkfjsdlkfjsdlfkjsdlkfjsdlkfjsldkfjsldkfjsdlkfjdsf -->
             <div class="profile-container" *ngIf="CurrentLoggedUserId != uid">
               <app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'" [profile]="true"></app-maker-card>
+              <app-follow-user [targetUid]="uid"></app-follow-user>
               <div class="profile-info">
 
                 <div class="bio hideData">
@@ -309,7 +310,7 @@
                 <!-- End Bio -->
                 <div class="hideData 1" *ngIf="!emptySocial">
                   <p class="global-title" *ngIf="!emptySocial">Social</p>
-                  <div class="profile-social-links d-flex flex-wrap">
+                  <div class="social-links d-flex flex-wrap">
                     <div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
                       <a class="nav-link social fb" target="_blank"
                          href="{{ProfileInfo.field_social_accounts.field_facebook}}">
