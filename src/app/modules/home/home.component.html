@@ -44,7 +44,13 @@
                             [nid]="item.entity_id"
                             [state]="item.size"
                             [front]=true></app-project-card>
-
+          <!--Org Cards  -->
+          <app-company-card *ngIf="item.type == 'company_profile'"
+                            (Featured)="UnFlagged(i)"
+                            [view]="view"
+                            [nid]="item.entity_id"
+                            [state]="item.size"
+                            [front]=true></app-company-card>
           <!-- Learning Sequence -->
           <!--<app-learn-card *ngIf="item.type == 'learning_sequence'"
                           (Featured)="UnFlagged(i)"
