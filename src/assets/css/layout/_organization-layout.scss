@@ -30,7 +30,7 @@
 
 .org-content {
 	padding-top: 4rem;
-	background: white;
+	background: $site-bg;
     overflow: hidden;
     position: relative;
 }
@@ -38,6 +38,15 @@
 .org-name {
 	font-size: 3rem;
 	color: white;
+}
+
+// for cards
+.orgs-logo {
+	    width: 6rem;
+    height: auto;
+    position: absolute;
+    bottom: .5rem;
+    right: .5rem;
 }
 
 .org-social {
@@ -51,11 +60,18 @@
 	color: white;
 }
 
+.push {
+	margin: 1.375rem auto;
+}
+
 .org-contact-list {
 	.org-contact-key {
 		color: #828282;
 	}
 	li {
 		color: #000;
+		font-weight: bold;
+		font-size: 1.5rem;
+    	line-height: 3rem;
 	}
 }
