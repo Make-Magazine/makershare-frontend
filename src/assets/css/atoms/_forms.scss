@@ -1,0 +1,43 @@
+.form-group {
+  margin-top: 2rem;
+  /*br {
+    display: none;
+  }*/
+
+  .form-label {
+    label {
+      @include card-header-font-md();
+      color: $dark-grey;
+      &.selected-topic {
+        font-size: 1.1rem;
+      }
+    }
+    span {
+      font-size: 1.08rem;
+      display: inline-block;
+      margin-bottom: 0;
+      margin-left: .5rem;
+    }
+  }
+
+  &.required {
+    label::after {
+      content: " *";
+      color: red;
+    }
+  }
+
+  .form-control {
+    border-radius: 0;
+  }
+
+  .form-control::-webkit-input-placeholder {
+    color: $light-grey;
+  }
+  .form-control::-moz-placeholder {
+    color: $light-grey;
+  }
+  .form-control:-ms-input-placeholder {
+    color: $light-grey;
+  }
+}

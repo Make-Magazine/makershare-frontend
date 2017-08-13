@@ -1,6 +1,6 @@
 import { 
   NodeEntity, DrupalCustomLanguageField, DrupalCustomField, FileEntity, FieldEmail, FieldNumber,
-  FieldText, FieldLongText, FieldDateTime
+  FieldText, FieldLongText, FieldDateTime, FC_MakerMembership
 } from '../';
 
 export class Organization extends NodeEntity {
@@ -22,11 +22,9 @@ export class Organization extends NodeEntity {
   field_founded_date?: FieldDateTime;
   field_type_of_business?: FieldText; 
   field_maker_motto?: FieldText;
+  field_maker_memberships?: FC_MakerMembership[];
   // field_orgs_address?;
   // field_social_accounts?;
-  // field_maker_memberships?;
-  
-  // field_badges?;
 
   constructor() {
     super();
@@ -42,22 +40,23 @@ export class Organization extends NodeEntity {
     this.field_orgs_type = this.fieldsFactory.listText('non-profit');
     this.field_orgs_contact = this.fieldsFactory.email();
     this.field_minimum_number_of_follower = this.fieldsFactory.number();
-    this.field_breif_info = this.fieldsFactory.text(null);
+    this.field_breif_info = this.fieldsFactory.text();
     this.body = this.fieldsFactory.longText(null);
     this.field_website_blog = this.fieldsFactory.longText(null);
     this.field_orgs_phone = this.fieldsFactory.longText(null);
     this.field_number_of_employees = this.fieldsFactory.number();
-    this.field_founder_name = this.fieldsFactory.text(null);
-    this.field_maker_motto = this.fieldsFactory.text(null);
-    this.field_type_of_business = this.fieldsFactory.text(null);
+    this.field_founder_name = this.fieldsFactory.text();
+    this.field_maker_motto = this.fieldsFactory.text();
+    this.field_type_of_business = this.fieldsFactory.text();
     this.field_orgs_projects = this.fieldsFactory.array();
     this.field_founded_date = this.fieldsFactory.date(new Date().getFullYear().toString());
+    this.field_maker_memberships = <Array<FC_MakerMembership>>this.fieldsFactory.fieldCollection(new FC_MakerMembership());
   }
 
-  getField(fieldName: string, index?: number): any {
+  getField(fieldName: string, index?: number, asArray?: boolean): any {
     const field = this[fieldName];
     if (field instanceof DrupalCustomLanguageField) {
-      return field.getField(index);
+      return field.getField(index, asArray);
     }
     return field;
   }

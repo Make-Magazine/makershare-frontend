@@ -31,17 +31,14 @@
       </div>
     </div>
 
-    <div class="container">
-      <div *ngIf="organizationReady">
-        <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
-                                 [organizationForm]="organizationForm"></app-org-form-basic-info>
-        <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
-                               [organizationForm]="organizationForm"></app-org-form-about-us>
-        <app-org-form-projects *ngIf="currentFormTab == 'Products'"
-                               [organizationForm]="organizationForm"></app-org-form-projects>
-      </div>
+    <div *ngIf="organizationReady">
+      <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
+                               [organizationForm]="organizationForm"></app-org-form-basic-info>
+      <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
+                             [organizationForm]="organizationForm"></app-org-form-about-us>
+      <app-org-form-projects *ngIf="currentFormTab == 'Products'"
+                             [organizationForm]="organizationForm"></app-org-form-projects>
     </div>
-
     <div class="add-controls row">
       <div class="nav-create col-md-8 mt-auto">
         <div class="container d-flex">
