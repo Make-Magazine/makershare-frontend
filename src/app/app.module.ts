@@ -84,7 +84,7 @@ import { SharedModule } from './modules/shared/shared.module';
 })
 export class AppModule {
   constructor(router: Router, zone: NgZone) {
-    if (typeof prebootstrap === 'undefined') {
+    if (typeof pprebootstrap === 'undefined') {
       return;
     }
 
@@ -112,4 +112,4 @@ export class AppModule {
   }
 }
 
-declare const prebootstrap;
+declare const pprebootstrap;
