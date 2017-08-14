@@ -17,8 +17,8 @@
           </div>
 
           <div>
-            <p class="text-center text-white org-description">{{company.breif_info}} - {{company.address.locality}}, 
-            {{company.address.administrative_area}}</p>
+            <p class="text-center text-white org-description">{{company.breif_info}} - {{company.address.locality}}, {{company.address.administrative_area}}
+            </p>
           </div>
           <div class="row justify-content-center mb-5">
             <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center text-center">
@@ -39,19 +39,19 @@
       </div>
     </div>
     <div class="row justify-content-end org-social">
-            <a class="profile-share">
-              <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name" [PageDescription]="company.company_description.text"
-                [PageImage]="company.company_cover_photo"></app-btn-share>
-            </a>
-            <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
-          </div>
+      <a class="profile-share">
+        <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name" [PageDescription]="company.company_description.text"
+          [PageImage]="company.company_cover_photo"></app-btn-share>
+      </a>
+      <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
+    </div>
   </div>
 
 
   <!-- org body content -->
   <div class="org-content">
     <div class="container">
-      
+
       <!-- <div class="row">
         <header class="mr-auto col-lg-6">
           
@@ -164,18 +164,20 @@
             </div>
             <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
           </div>
-          <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
           <a *ngIf="CurrentLoggedUserId != company.admin">
+            <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
             <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
           </a>
         </div>
       </div>
+
       <div class="text-center">
         <h1 class="p-2">Our Team</h1>
+        <h1 class="p-2" *ngIf="!team">There isn't team in organization yet</h1>
       </div>
       <div class="row p-2" *ngIf="team">
         <div class="col-4" *ngFor="let teams of team">
-          <app-maker-card [uid]="teams.field_team_member" [state]="'tall'" ></app-maker-card>
+          <app-maker-card [uid]="teams.field_team_member" [state]="'tall'"></app-maker-card>
         </div>
       </div>
       <div class="col-md-12" *ngIf="followers">

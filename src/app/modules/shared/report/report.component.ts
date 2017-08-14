@@ -61,10 +61,8 @@ export class ReportComponent implements OnInit {
     for (let key in this.reportForm.value) {
       reportReasons[key + '_' + this.EntityType] = this.reportForm.value[key];
     }
-    this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
-
     if (!this.checkUserLogin) { this.router.navigate(['/access-denied']) };
-    this.flagService.flag(this.EntityId, this.userId, 'report_' + this.EntityType, reportReasons).subscribe(response => {
+    this.flagService.flag(this.EntityId, this.userId, 'report_'+this.EntityType, reportReasons).subscribe(response => {
       this.notificationBarService.create({ message: 'Your report has been sent to Community Management. Thank you for your active participation!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
       this.isReported = !this.isReported;
     });
