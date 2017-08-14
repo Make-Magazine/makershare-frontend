@@ -9,14 +9,16 @@ export class EntityProxy {
     this.implementGetSet();
   }
 
-  private implementGetSet(){
+  private implementGetSet() {
     for (let key in this.entity) {
-      if(this.entity[key] instanceof Function) {
+      if (this.entity[key] instanceof Function) {
         return;
       }
       Object.defineProperty(this, key, {
-        get: () => { return this.entity.getField(key); },
-        set: (value) => {
+        get: () => {
+          return this.entity.getField(key);
+        },
+        set: value => {
           this.entity.setField(key, value);
         },
       });

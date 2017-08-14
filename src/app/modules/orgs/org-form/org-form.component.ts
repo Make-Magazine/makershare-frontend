@@ -15,11 +15,10 @@ import { FileService, NodeService } from '../../../core/d7services';
   templateUrl: './org-form.component.html',
 })
 export class OrgFormComponent implements OnInit {
-  // Current active form tab, the default is Basic Info
   currentFormTab: string = 'Basic Info';
   organizationProxy = new EntityProxy(new Organization());
   organizationReady: boolean = false;
-
+  orgFormValid: boolean = false;
   organizationForm: FormGroup;
 
   constructor(
@@ -32,7 +31,6 @@ export class OrgFormComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.organizationReady = true;
-    console.log(this.organizationForm.value);
   }
 
   buildForm() {
