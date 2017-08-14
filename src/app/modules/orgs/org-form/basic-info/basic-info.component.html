@@ -104,11 +104,15 @@
     </div>
   </div>
 
-  <!--<div class="form-group">
+  <div class="form-group">
     <div class="form-label">
-      <label>FIELD CONTACT "WIP"</label>
+      <label>Contact email</label>
     </div>
-  </div>-->
+    <div class="form-ctl">
+      <input type="text"
+             formControlName="field_orgs_contact">
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="form-label">
@@ -162,8 +166,85 @@
       <label>Display only after there are more than</label>
     </div>
     <div class="form-ctl">
-      <input type="number"
-             formControlName="field_minimum_number_of_follower">
+      <input type="number" formControlName="field_minimum_number_of_follower">
+    </div>
+  </div> 
+
+  <div formGroupName="field_orgs_address">
+    <label>Country</label>
+    <input type="text" formControlName="countryName" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
+    <div *ngIf="selectedCountry">
+
+      <div>
+        <label>Address 1</label>
+        <input type="text" formControlName="thoroughfare">
+      </div> 
+
+      <div>
+        <label>Address 2</label>
+        <input type="text" formControlName="premise">
+      </div> 
+
+      <div *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
+        <label>{{selectedCountry.administrative_area_label}}</label>
+        <select formControlName="administrative_area">
+          <option *ngFor="let governerate of selectedCountry.administrative_areas" [value]="governerate.key">{{governerate.value}}</option>
+        </select>
+      </div>
+
+      <div *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
+        <label>{{selectedCountry.locality_label}}</label>
+        <input type="text" formControlName="locality">
+      </div>
+
+      <div *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
+        <label>District</label>
+        <input type="text" formControlName="dependent_locality">
+      </div>      
+
+      <div *ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
+        <label>{{selectedCountry.postal_code_label}}</label>
+        <input type="number" formControlName="postal_code">
+      </div> 
+
+    </div>
+  </div>
+  
+  <div formGroupName="field_social_accounts">
+    <label>Social Channels</label>
+    <div>
+      <div>
+        <label>Facebook</label>
+        <input type="text" formControlName="field_facebook" add-protocol>
+      </div>
+      <div>
+        <label>linkedin</label>
+        <input type="text" formControlName="field_linkedin" add-protocol>
+      </div>
+      <div>
+        <label>pinterest</label>
+        <input type="text" formControlName="field_pinterest" add-protocol>
+      </div>
+      <div>
+        <label>instagram</label>
+        <input type="text" formControlName="field_instagram" add-protocol>
+      </div>
+      <div>
+        <label>twitter</label>
+        <input type="text" formControlName="field_twitter" add-protocol>
+      </div>
+      <div>
+        <label>github</label>
+        <input type="text" formControlName="field_github" add-protocol>
+      </div>
+      <div>
+        <label>kickstarter</label>
+        <input type="text" formControlName="field_kickstarter" add-protocol>
+      </div>
+      <div>
+        <label>etsy_shop</label>
+        <input type="text" formControlName="field_etsy_shop" add-protocol>
+      </div>
     </div>
   </div>
 </div>
@@ -217,5 +298,11 @@
               (click)="imageUpdated(closebtn, file.files[0])">Save
       </button>
     </div>
+  </div>
+</ng-template>
+
+<ng-template #countryrt let-r="result" let-t="term">
+  <div class="data-container">
+    {{r.value}}
   </div>
 </ng-template>

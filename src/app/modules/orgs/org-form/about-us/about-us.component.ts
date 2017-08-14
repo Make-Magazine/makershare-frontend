@@ -1,11 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import {
-  NodeHelper,
-  Organization,
-  EntityProxy,
-  FC_MakerMembership,
-} from '../../../../core';
+import { Organization, EntityProxy, NodeHelper } from '../../../../core';
 import { ViewService } from '../../../../core/d7services/view/view.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -16,9 +11,13 @@ import { Observable } from 'rxjs/Observable';
 export class AboutUsComponent implements OnInit {
   @Input() organizationForm: FormGroup;
   @Input() organizationProxy: EntityProxy;
-  team: number[];
+  team: {
+    usernameOrUID: string | number,
+    anonymous: boolean
+  }[] = [];
   selectedUser;
   searchFailed: boolean = false;
+  fixFormReady: boolean = false;
 
   constructor(
     private viewService: ViewService,
@@ -26,9 +25,16 @@ export class AboutUsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.initFormArray('field_maker_memberships');
-    this.setOrganizationOwner();
-    this.setUserIDs();
+    const field_maker_memberships = <FormArray>this.organizationForm.controls.field_maker_memberships;
+    if(field_maker_memberships.length == 0) {
+      const organization = <Organization>this.organizationProxy.entity;
+      const members = organization.getField("field_maker_memberships", null, true);
+      members.forEach(element => {
+        this.addRow(element);
+      });
+      this.addRow();
+    }
+    this.setSelectedUsers();
   }
 
   search = (text$: Observable<string>) => {
@@ -63,104 +69,75 @@ export class AboutUsComponent implements OnInit {
     return x;
   };
 
-  setUserIDs() {
-    this.team = [];
-    const users = this.organizationForm.value.field_maker_memberships;
-    users.forEach(element => {
-      if (!element.field_team_member) {
+  setSelectedUsers() {
+    const field_maker_memberships = this.organizationForm.value.field_maker_memberships;
+    field_maker_memberships.forEach((member, index) => {
+      if(NodeHelper.isEmpty(member)) {
         return;
       }
-      let uid = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(
-        element.field_team_member,
-      );
-      this.team.push(uid);
+      this.addSelectedUser(member);
     });
   }
 
-  // setAnonymous(name: string) {
-  //   const formArray = <FormArray>this.organizationForm.controls['field_maker_memberships'];
-  //   let usernameWithID = name;
-  //   let currentUser = {
-  //     field_team_member: usernameWithID,
-  //     field_anonymous_member_name: '',
-  //     field_membership_role: formArray.value[formArray.length-1].field_membership_role,
-  //   };
-  //   formArray.push(this.initGroup('field_maker_memberships', currentUser));
-  // }
-
-  addMember() {
-    const formArray = <FormArray>this.organizationForm.controls[
-      'field_maker_memberships'
-    ];
-    let usernameWithID =
-      this.selectedUser.username + ' (' + this.selectedUser.uid + ')';
-    let currentUser = {
-      field_team_member: usernameWithID,
-      field_anonymous_member_name: '',
-      field_membership_role:
-        formArray.value[formArray.length - 1].field_membership_role,
+  addSelectedUser(user) {
+    var usernameOrUID;
+    var anonymous = false;
+    if(user.field_anonymous_member_name) {
+      usernameOrUID = user.field_anonymous_member_name;
+      anonymous = true;
+    } else {
+      usernameOrUID = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(user.field_team_member);
+    }
+    let member = {
+      usernameOrUID: usernameOrUID,
+      anonymous: anonymous,
     };
-    formArray.push(this.initGroup('field_maker_memberships', currentUser));
-    this.setUserIDs();
-    this.selectedUser = {};
+    this.team.push(member);
   }
 
-  initFormArray(fieldName: string) {
-    const formArray = <FormArray>this.organizationForm.controls[fieldName];
-    const entity = <Organization>this.organizationProxy.entity;
-    entity
-      .getField(fieldName, null, true)
-      .forEach((element: FC_MakerMembership, index: number) => {
-        formArray.push(this.initGroup(fieldName, element));
-      });
+  addRow(data?) {
+    const self = this;
+    this.fixFormReady = false;
+    this.searchFailed = false;
+    delete this.selectedUser;
+    const control = <FormArray>this.organizationForm.controls['field_maker_memberships'];
+    const addrCtrl = this.initRow(data);
+    control.push(addrCtrl);
+    setTimeout(function() {
+      self.fixFormReady = true;
+    }, 0);
   }
 
-  setOrganizationOwner() {
-    if (!this.organizationProxy.nid) {
-      let usernameWithID =
-        localStorage.getItem('user_name') +
-        ' (' +
-        localStorage.getItem('user_id') +
-        ')';
-      let currentUser = {
-        field_team_member: usernameWithID,
-        field_anonymous_member_name: '',
-        field_membership_role: 'Admin',
-      };
-      const field_membership = <FormArray>this.organizationForm.controls
-        .field_maker_memberships;
-      field_membership.controls[0].patchValue(currentUser);
-    }
-    const formArray = <FormArray>this.organizationForm.controls[
-      'field_maker_memberships'
-    ];
-    formArray.push(this.initGroup('field_maker_memberships'));
+  setMember() {
+    const field_maker_memberships = <FormArray>this.organizationForm.controls['field_maker_memberships'];
+    let lastIndex = field_maker_memberships.length - 1;
+    let nameWithID = this.selectedUser.username + ' (' + this.selectedUser.uid + ')';
+    const lastControl = <FormGroup>field_maker_memberships.controls[lastIndex];
+    lastControl.controls.field_team_member.setValue(nameWithID);
+    this.addSelectedUser(lastControl.value);
+    this.addRow();
   }
 
-  initGroup(fieldName: string, value?): FormGroup {
-    switch (fieldName) {
-      case 'field_maker_memberships':
-        return this.formBuilder.group({
-          field_team_member: [
-            value ? value.getField('field_team_member').target_id : '',
-            Validators.required,
-          ],
-          field_anonymous_member_name: [
-            value ? value.getField('field_anonymous_member_name').value : '',
-          ],
-          field_membership_role: [
-            value ? value.getField('field_membership_role').value : '',
-          ],
-        });
-      default:
-        return this.formBuilder.group({});
-    }
+  setAnonymous(name) {
+    const field_maker_memberships = <FormArray>this.organizationForm.controls['field_maker_memberships'];
+    let lastIndex = field_maker_memberships.length - 1;
+    const lastControl = <FormGroup>field_maker_memberships.controls[lastIndex];
+    lastControl.controls.field_anonymous_member_name.setValue(name);
+    this.addSelectedUser(lastControl.value);
+    this.addRow();
   }
 
-  removeMember(index: number) {
-    const formArray = <FormArray>this.organizationForm.controls[
-      'field_maker_memberships'
-    ];
-    formArray.removeAt(index);
+  initRow(data?) {
+    return this.formBuilder.group({
+      field_anonymous_member_name: [data? data.getField('field_anonymous_member_name').value: '', ],
+      field_team_member: [data? data.getField('field_team_member').target_id: '', ],
+      field_membership_role: [data? data.getField('field_membership_role').value: '', Validators.maxLength(140)],
+    });
+  }
+
+  removeRow(i: number, controlName: string) {
+    const control = <FormArray>this.organizationForm.controls[controlName];
+    control.removeAt(i);
+    this.team.splice(i, 1);
   }
 }
