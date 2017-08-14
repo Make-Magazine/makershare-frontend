@@ -198,13 +198,11 @@ export class OrgFormComponent implements OnInit {
         this.nodeService.updateNode(this.organizationProxy.entity).subscribe((node)=>{
         },err=>{console.log(this.organizationProxy.entity)},()=> {
           this.router.navigate(['/portfolio']);
-          // this.organizationReady = true;
         });
       }else {
         this.nodeService.createNode(this.organizationProxy.entity).subscribe((node)=>{
         },err=>{console.log(this.organizationProxy.entity)},()=> {
           this.router.navigate(['/portfolio']);
-          // this.organizationReady = true;
         });
       }
     });
