@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Organization, EntityProxy, FileEntity, NodeHelper } from '../../../core/models';
+import { Organization, EntityProxy, FileEntity, NodeHelper, Singleton } from '../../../core/models';
 import { FileService, NodeService, MainService } from '../../../core/d7services';
 
 @Component({
@@ -45,17 +45,72 @@ export class OrgFormComponent implements OnInit {
   }
 
   convertToForm(nid: number) {
+    var tasks = [];
     this.nodeService.getNode(nid).subscribe(org => {
+      console.log(org);
       const organization = <Organization>this.organizationProxy.entity;
       Object.keys(organization).forEach(key => {
-        let field = organization[key];
-        console.log(org[key]);
+        let field = organization.getField(key);
+        if(field instanceof Function) {
+          return;
+        }
+        if(key != 'title' && (!org[key] || !org[key].und)) {
+          return;
+        }
+        let valueFields = ['body', 'field_breif_info', 'field_maker_motto', 'field_minimum_number_of_follower',
+          'field_founder_name', 'field_orgs_phone', 'field_type_of_business'
+        ];
+        let imageFields = ['field_orgs_logo', 'field_orgs_cover_photo', 'field_org_avatar'];
+        if(valueFields.indexOf(key) != -1) {
+          field.updateValue(org[key].und[0].value);
+          return;
+        }
+        else if(key == 'title') {
+          organization.title = org.title;
+          organization.nid = nid;
+          organization.language = org.language;
+        } else if(key == 'field_orgs_type' ) {
+          organization.updateField(key, org[key].und[0].value);
+          return;
+        }else if (key == 'field_orgs_contact') {
+          organization.updateField(key, org[key].und[0].email);
+          return;
+        }else if (imageFields.indexOf(key) != -1) {
+          let fileEntity = new FileEntity();
+          org[key].und[0].file = org[key].und[0].uri.replace("public://", Singleton.Settings.getBackEndUrl()+ "sites/default/files/");
+          fileEntity.updateValue(org[key].und[0]);
+          this.organizationProxy[key] = fileEntity;
+        }else if (key == "field_founded_date") {
+          let fulldate = org[key].und[0].value.split('-');
+          let date = {date:fulldate[0]};
+          field.updateValue(date);
+        }else if (key == 'field_orgs_projects') {
+          this.organizationProxy[key] = org[key].und.map(element=> element.target_id);
+        }else if (key == 'field_orgs_address') {
+          field.updateValue(org[key].und[0]);
+        }else if (key == 'field_social_accounts') {
+          tasks.push(this.mainService.get('entity_field_collection_item', org[key].und[0].value));
+        }
       });
-      
-    },err=>console.log(err),()=>{
-      this.buildForm();
-      this.organizationReady = true;
+    }, err=>console.log(err),()=>{
+      let source = Observable.forkJoin(tasks);
+      source.subscribe(x=>{
+        let field = this.organizationProxy.entity.getField('field_social_accounts');
+        Object.keys(field).forEach(key => {
+          const subField = field.getField(key);
+          if(!x[0][key] || !x[0][key].und) {
+            return;
+          }
+          subField.updateValue(x[0][key].und[0].value);
+        });
+      },err=>{console.log(err)},()=>{
+        console.log(this.organizationProxy.entity);
+        this.buildForm();
+        this.organizationReady = true;
+      });
     });
+
+
   }
 
   buildForm() {
@@ -103,7 +158,8 @@ export class OrgFormComponent implements OnInit {
         thoroughfare: [this.organizationProxy.field_orgs_address.thoroughfare, Validators.required],
         administrative_area: [this.organizationProxy.field_orgs_address.administrative_area, ],
         premise: [this.organizationProxy.field_orgs_address.premise, ],
-        postal_code: [this.organizationProxy.field_orgs_address.postal_code, CustomValidators.number]
+        postal_code: [this.organizationProxy.field_orgs_address.postal_code, CustomValidators.number],
+        countryName: ['']
       }),
     });
   }
@@ -138,11 +194,19 @@ export class OrgFormComponent implements OnInit {
         index++;
       }
     },err=> {}, ()=> {
-      this.nodeService.createNode(this.organizationProxy.entity).subscribe((node)=>{
-      },err=>{console.log(this.organizationProxy.entity)},()=> {
-        this.router.navigate(['/portfolio']);
-        // this.organizationReady = true;
-      });
+      if(this.organizationProxy.entity.nid) {
+        this.nodeService.updateNode(this.organizationProxy.entity).subscribe((node)=>{
+        },err=>{console.log(this.organizationProxy.entity)},()=> {
+          this.router.navigate(['/portfolio']);
+          // this.organizationReady = true;
+        });
+      }else {
+        this.nodeService.createNode(this.organizationProxy.entity).subscribe((node)=>{
+        },err=>{console.log(this.organizationProxy.entity)},()=> {
+          this.router.navigate(['/portfolio']);
+          // this.organizationReady = true;
+        });
+      }
     });
   }
 

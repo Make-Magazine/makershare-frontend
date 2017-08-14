@@ -5,26 +5,26 @@ import {
 
 export class Organization extends NodeEntity {
 
-  field_orgs_logo: FileEntity;
-  field_orgs_cover_photo: FileEntity;
-  field_org_avatar: FileEntity;
-  field_orgs_type: 'non-profit' | 'startup';
-  field_orgs_contact: FieldEmail;
-  field_minimum_number_of_follower: FieldNumber;
-  field_breif_info: FieldText;
-  body: FieldLongText;
+  field_orgs_logo: FileEntity;//
+  field_orgs_cover_photo: FileEntity;//
+  field_org_avatar: FileEntity;//
+  field_orgs_type: 'non-profit' | 'startup';//
+  field_orgs_contact: FieldEmail;//
+  field_minimum_number_of_follower: FieldNumber;//
+  field_breif_info: FieldText;//
+  body: FieldLongText;//
 
-  field_website_blog?: FieldText;
+  field_website_blog?: FieldText; //
   field_orgs_projects?: Array<number>;
-  field_orgs_phone?: FieldText;
-  field_number_of_employees?: FieldNumber;
-  field_founder_name?: FieldText;
-  field_founded_date?: FieldDateTime;
-  field_type_of_business?: FieldText; 
-  field_maker_motto?: FieldText;
+  field_orgs_phone?: FieldText;//
+  field_number_of_employees?: FieldNumber;//
+  field_founder_name?: FieldText;//
+  field_founded_date?: FieldDateTime;//
+  field_type_of_business?: FieldText;//
+  field_maker_motto?: FieldText;//
   field_maker_memberships?: FC_MakerMembership[];
-  field_social_accounts?: FC_SocialAccounts;
-  field_orgs_address?: FieldAddress;
+  field_social_accounts?: FC_SocialAccounts;//
+  field_orgs_address?: FieldAddress;//
 
   constructor() {
     super();

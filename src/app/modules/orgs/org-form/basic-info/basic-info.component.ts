@@ -117,6 +117,11 @@ export class BasicInfoComponent implements OnInit {
   getCountries(){
     this.viewService.getView('maker_address_api').subscribe(countries =>{
       this.countries = countries;
+      let countryKey = this.organizationForm.value.field_orgs_address.country;
+      if(countryKey) {
+        let index = countries.map(element=> element.key).indexOf(countryKey);
+        this.getCountryDetails(countries[index]);
+      }
     });
   }
 
@@ -128,8 +133,9 @@ export class BasicInfoComponent implements OnInit {
       this.selectedCountry = countrydetails;
       const field_address = <FormGroup>this.organizationForm.controls['field_orgs_address'];
       field_address.controls.country.patchValue(country.key);
+      field_address.controls.countryName.patchValue(country.value);
     });
-  }  
+  }
 
   openImageModal(template, settings: CropperSettings, fieldName: string) {
     this.imageData = {};
