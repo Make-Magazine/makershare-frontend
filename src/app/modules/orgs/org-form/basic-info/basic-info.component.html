@@ -82,7 +82,7 @@
 
   <div formGroupName="field_orgs_address">
     <label>Country</label>
-    <input type="text" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
+    <input type="text" formControlName="countryName" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
     <div *ngIf="selectedCountry">
 
       <div>
