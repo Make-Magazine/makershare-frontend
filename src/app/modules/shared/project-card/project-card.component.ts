@@ -9,8 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../auth0/auth.service';
-import { ViewService } from '../../../core/d7services';
-import { UserService, NodeService } from '../../../core/d7services';
+import { ViewService, UserService, NodeService, MainService } from '../../../core/d7services';
 
 @Component({
   selector: 'app-project-card',
@@ -26,12 +25,13 @@ export class ProjectCardComponent implements OnInit {
   @Input() editMode: boolean = false;
   @Input() visibility: number;
   @Output() Featured = new EventEmitter<number>();
-
+  inOrg = false;
   badges = [];
   project;
   userId;
   smallWindow: number;
   Manager: boolean = false;
+  org_data;
 
   constructor(
     private router: Router,
@@ -41,6 +41,7 @@ export class ProjectCardComponent implements OnInit {
     private userService: UserService,
     private modal: NgbModal,
     public auth: Auth,
+    public mainService: MainService
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
@@ -58,6 +59,8 @@ export class ProjectCardComponent implements OnInit {
     window.onresize = e => {
       this.smallWindow = window.innerWidth;
     };
+    this.checkIfHasOrg();
+
   }
 
   getProjectCard() {
@@ -72,7 +75,7 @@ export class ProjectCardComponent implements OnInit {
         const categoriesArr = categoriesStr.split(', ');
         res[0].project_categories = categoriesArr;
         let membershipStr: string = res[0].field_team_members;
-        membershipStr= membershipStr.substring(
+        membershipStr = membershipStr.substring(
           0,
           membershipStr.length - 1,
         );
@@ -190,5 +193,44 @@ export class ProjectCardComponent implements OnInit {
     this.nodeService.updateNode(project).subscribe(data => {
       this.emitFeatured();
     });
+  }
+  checkIfHasOrg(){
+    let body = {
+      "uid": this.userId
+    }
+    this.mainService.custompost('company_profile_api/my_org_profile', body).subscribe(res => {
+      this.org_data = res[0];
+      this.checkProjectInOrg();
+    })
+  }
+  setProjectonOrgs() {
+    
+    let data =
+      {
+        "org_nid": this.org_data.nid,
+        "project_nid": this.nid,
+        "project_uid": this.userId
+      };
+   
+    this.mainService.custompost('company_profile_api/add_project_orgs', data).subscribe(res => {
+    
+      if(res[0] == 'add'){
+        this.inOrg = true;
+      }else {
+        this.inOrg = false;
+      }
+    })
+  }
+
+  checkProjectInOrg(){
+    let data = {
+        "org_nid": this.org_data.nid,
+        "project_nid": this.nid,
+        "project_uid": this.userId      
+    }
+    this.mainService.custompost('company_profile_api/check_project_orgs', data).subscribe(res => {
+      this.inOrg = res[0]
+    })
+
   }
 }

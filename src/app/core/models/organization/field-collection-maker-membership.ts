@@ -14,5 +14,4 @@ export class FC_MakerMembership extends FieldCollectionItem{
     this.field_membership_role = this.fieldsFactory.text();
     this.field_sort_order = this.fieldsFactory.number();
   }
-
 }

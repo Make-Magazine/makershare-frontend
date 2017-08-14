@@ -686,7 +686,8 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }
     this.project.setField('field_visibility2', Visibility);
     this.project.setField('status', Status);
-    if (!this.project.getField('title')) {
+    console.log(this.project);
+    if (!this.project.title) {
       this.project.setField('title', 'Untitled');
     }
     if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
