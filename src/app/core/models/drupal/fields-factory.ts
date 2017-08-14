@@ -1,7 +1,7 @@
 import { 
   FileEntity, DrupalCustomLanguageField, FieldEmail, FieldNumber,
   FieldText, FieldLongText, FieldDateTime, DateTime, FieldEntityReference,
-  FieldCollectionItem
+  FieldCollectionItem, FieldURL, FieldAddress
 } from './';
 
 export class FieldsFactory {
@@ -48,8 +48,16 @@ export class FieldsFactory {
     return this.addLanguage(new FieldEntityReference());
   }
 
-  fieldCollection(itemField: FieldCollectionItem): FieldCollectionItem[] {
+  fieldCollection(itemField: FieldCollectionItem[] | FieldCollectionItem): any {
     return this.addLanguage(itemField);
+  }
+
+  url() {
+    return this.addLanguage(new FieldURL());
+  }
+  
+  address() {
+    return this.addLanguage(new FieldAddress());
   }
 
   private addLanguage(field: any): any {

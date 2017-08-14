@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { AboutUsComponent } from '../../orgs/org-form/about-us/about-us.component';
 import { BasicInfoComponent } from '../../orgs/org-form/basic-info/basic-info.component';
@@ -10,7 +10,7 @@ import { ProjectsComponent } from '../../orgs/org-form/projects/projects.compone
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [CommonModule, OrgsRoutingModule, SharedModule.forChild(), ReactiveFormsModule, NgbModule],
+  imports: [CommonModule, OrgsRoutingModule, SharedModule.forChild(), ReactiveFormsModule, NgbModule, FormsModule],
   declarations: [
     OrgFormComponent,
     BasicInfoComponent,
