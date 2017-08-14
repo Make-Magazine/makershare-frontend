@@ -71,3 +71,7 @@ h5 {
   font-size: map-get($body, 'size') * 1rem;
   line-height: map-get($body, 'line-height') * 1rem;
 }
+
+.tac {
+  text-align: center;
+}

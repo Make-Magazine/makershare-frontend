@@ -5,7 +5,7 @@
         <div class="container">
           <h1 class="text-center">Organization Editor</h1>
         </div>
-        <div class="nav-create col-md-8 mt-auto">
+        <div class="nav-create col-md-8 mt-4 mb-2">
           <div class="container">
             <ul class="list-unstyled">
               <li><a (click)="currentFormTab = 'Basic Info'"
@@ -23,8 +23,9 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-4 project-create-buttons">
+        <div class="col-md-4 mt-4 mb-2 tac">
           <button class="btn btn-grey"
+                  [ngClass]="{'disabled':!orgFormValid}"
                   (click)="publishButtonClick()">Publish
           </button>
         </div>
@@ -45,30 +46,30 @@
           <div class="back mr-auto"
                *ngIf="currentFormTab == 'About Us'"
                (click)="currentFormTab = 'Basic Info'">
-            <span class="btn btn-advance">
+            <button class="btn btn-advance">
               <i class="lnr lnr-chevron-left"></i>
-            </span> Go To Basic Info
+            </button> Go To Basic Info
           </div>
           <div class="back mr-auto"
                *ngIf="currentFormTab == 'Products'"
                (click)="currentFormTab = 'About Us'">
-            <span class="btn btn-advance">
+            <button class="btn btn-advance">
               <i class="lnr lnr-chevron-left"></i>
-            </span> Go To About Us
+            </button> Go To About Us
           </div>
           <div class="next ml-auto"
                *ngIf="currentFormTab == 'Basic Info'"
                (click)="currentFormTab = 'About Us'">Go To About Us
-            <span class="btn btn-advance">
+            <button class="btn btn-advance">
               <i class="lnr lnr-chevron-right"></i>
-            </span>
+            </button>
           </div>
           <div class="next ml-auto"
                *ngIf="currentFormTab == 'About Us'"
                (click)="currentFormTab = 'Products'">Go To Products
-            <span class="btn btn-advance">
+            <button class="btn btn-advance">
               <i class="lnr lnr-chevron-right"></i>
-            </span>
+            </button>
           </div>
         </div>
       </div>
