@@ -54,7 +54,10 @@ export class TeamComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder, private viewService: ViewService) {}
+  constructor(
+    private fb: FormBuilder,
+    private viewService: ViewService
+  ) {}
 
   formatter = x => {
     if (x.username) {
