@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
 import { CropperSettings } from 'ng2-img-cropper';
 import { FileEntity } from '../../../../core';
+import { ViewService } from '../../../../core/d7services';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-org-form-basic-info',
@@ -22,14 +24,49 @@ export class BasicInfoComponent implements OnInit {
   cropperAvatarSettings: CropperSettings;
   
   currentImageFieldName: string;
+  countries: {
+    key:string,
+    value:string,
+  }[];
+
+  selectedCountry;
+  searchFailed = false;
 
   constructor(
     private modalService: NgbModal,
+    private viewService: ViewService,
   ) { }
 
   ngOnInit() {
     this.setCropperSettings();
+    this.getCountries();
   }
+
+  formatter = x => {
+    if (x.value) {
+      return x.value;
+    }
+    return x;
+  };
+
+  searchCountry = (text$: Observable<string>) => {
+    return text$
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .do(() => (this.searchFailed = false))
+      .map(term => {
+        if (term.length > 1) {
+          const res = this.countries
+            .filter(element => new RegExp(term, 'gi').test(element.value))
+            .splice(0, 10);
+          if (res) {
+            return res;
+          }
+          this.searchFailed = true;
+        }
+        return [];
+      });
+  };
 
   updateType(newType: string) {
     const field_orgs_type = this.organizationForm.controls.field_orgs_type;
@@ -76,6 +113,23 @@ export class BasicInfoComponent implements OnInit {
 
     this.imageData = {};
   }
+
+  getCountries(){
+    this.viewService.getView('maker_address_api').subscribe(countries =>{
+      this.countries = countries;
+    });
+  }
+
+  getCountryDetails(country) {
+    if (!country.key) {
+      return;
+    }
+    this.viewService.get('maker_address_api', country.key).subscribe(countrydetails => {
+      this.selectedCountry = countrydetails;
+      const field_address = <FormGroup>this.organizationForm.controls['field_orgs_address'];
+      field_address.controls.country.patchValue(country.key);
+    });
+  }  
 
   openImageModal(template, settings: CropperSettings, fieldName: string) {
     this.imageData = {};

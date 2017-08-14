@@ -1,6 +1,6 @@
 import { 
   NodeEntity, DrupalCustomLanguageField, DrupalCustomField, FileEntity, FieldEmail, FieldNumber,
-  FieldText, FieldLongText, FieldDateTime, FC_MakerMembership
+  FieldText, FieldLongText, FieldDateTime, FC_MakerMembership, FC_SocialAccounts, FieldAddress
 } from '../';
 
 export class Organization extends NodeEntity {
@@ -23,12 +23,13 @@ export class Organization extends NodeEntity {
   field_type_of_business?: FieldText; 
   field_maker_motto?: FieldText;
   field_maker_memberships?: FC_MakerMembership[];
-  // field_orgs_address?;
-  // field_social_accounts?;
+  field_social_accounts?: FC_SocialAccounts;
+  field_orgs_address?: FieldAddress;
 
   constructor() {
     super();
     this.initFields();
+    this.setOrganizationOwner();
   }
 
   protected initFields() {
@@ -51,6 +52,15 @@ export class Organization extends NodeEntity {
     this.field_orgs_projects = this.fieldsFactory.array();
     this.field_founded_date = this.fieldsFactory.date(new Date().getFullYear().toString());
     this.field_maker_memberships = <Array<FC_MakerMembership>>this.fieldsFactory.fieldCollection(new FC_MakerMembership());
+    this.field_social_accounts = <FC_SocialAccounts>this.fieldsFactory.fieldCollection(new FC_SocialAccounts());
+    this.field_orgs_address = this.fieldsFactory.address();
+  }
+
+  setOrganizationOwner() {
+    let usernameWithID = localStorage.getItem("user_name") + ' (' + localStorage.getItem("user_id") + ')';
+    const field_maker_memberships = <FC_MakerMembership>this.getField("field_maker_memberships", null, true)[0];
+    field_maker_memberships.updateField('field_team_member', usernameWithID);
+    field_maker_memberships.updateField('field_membership_role', 'Admin');
   }
 
   getField(fieldName: string, index?: number, asArray?: boolean): any {
@@ -61,7 +71,7 @@ export class Organization extends NodeEntity {
     return field;
   }
   
-  setField(fieldName: string, value: DrupalCustomField | string | number, index?: number): void {
+  setField(fieldName: string, value: DrupalCustomField[] | string | number, index?: number): void {
     const field = this[fieldName];
     if (field instanceof DrupalCustomLanguageField) {
       field.setField(value);
@@ -72,7 +82,18 @@ export class Organization extends NodeEntity {
 
   updateField(fieldName: string, value: any, index?: number) {
     const field = this[fieldName];
-    if (field instanceof DrupalCustomLanguageField) {
+    if(fieldName == 'field_maker_memberships' && value.length > 0) {
+      var members:FC_MakerMembership[] = [];
+      value.forEach((element, index) => {
+        var membership = new FC_MakerMembership();
+        Object.keys(element).forEach(key => {
+          membership.updateField(key, element[key]);
+        });
+        members.push(membership);
+      });
+      this[fieldName] = this.fieldsFactory.fieldCollection(members);
+      return;
+    }else if (field instanceof DrupalCustomLanguageField) {
       field.updateField(value, index);
       return;
     }
