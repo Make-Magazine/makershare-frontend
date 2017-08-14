@@ -9,3 +9,4 @@ export { FieldURL } from './field-url';
 export { FieldDateTime, DateTime } from './field-date';
 export { FieldEmail } from './field-email';
 export { FieldCollectionItem } from './field-collection-item';
+export { FieldAddress } from './field-address';
