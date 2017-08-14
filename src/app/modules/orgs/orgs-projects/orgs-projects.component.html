@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="text-right" *ngIf="projectsCount && company_views ">{{projectsCount}} projects |{{company_views}} views</div>
+  <div class="text-right" *ngIf="projects && projectsCount && company_views ">{{projectsCount}} projects |{{company_views}} views</div>
   <div class="row" *ngIf="projects">
-  	<div class="col-6" *ngFor="let project of projects">
-    <app-project-card  [view]="view" [nid]="project.nid"
-      [state]="'tall'"></app-project-card>
-      </div>
+    <div class="col-6" *ngFor="let project of projects">
+      <app-project-card [view]="view" [nid]="project.nid" [state]="'tall'"></app-project-card>
+    </div>
+  </div>
+  <div *ngIf="projects.length == '0'">
+    <h2 class="text-center">THere is no projects yet</h2>
   </div>
   <div class="text-center" *ngIf="showloadmoreProject">
     <a class="btn btn-load-more" (click)="getProjects(true)">Load more</a>

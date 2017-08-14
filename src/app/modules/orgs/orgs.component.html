@@ -178,9 +178,6 @@
           <app-maker-card [uid]="teams.field_team_member" [state]="'tall'" ></app-maker-card>
         </div>
       </div>
-      <div class="col-md-12" *ngIf="followers">
-        <!-- Our Team  -->
-      </div>
       <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
         <div class="modal-header">
           <span *ngIf="followersCount">{{followersCount}} Followers</span>
