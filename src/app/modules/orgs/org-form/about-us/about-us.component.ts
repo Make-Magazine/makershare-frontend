@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { NodeHelper, Organization, EntityProxy, FC_MakerMembership } from '../../../../core';
+import { NodeHelper, Organization, EntityProxy, FC_MakerMembership, FieldCollectionItem } from '../../../../core';
 import { ViewService } from '../../../../core/d7services/view/view.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -85,14 +85,14 @@ export class AboutUsComponent implements OnInit {
   addMember() {
     const formArray = <FormArray>this.organizationForm.controls['field_maker_memberships'];
     let usernameWithID = this.selectedUser.username + ' (' + this.selectedUser.uid + ')';
-    let currentUser = {
-      field_team_member: usernameWithID,
-      field_anonymous_member_name: '',
-      field_membership_role: formArray.value[formArray.length-1].field_membership_role,
-    };
-    formArray.push(this.initGroup('field_maker_memberships', currentUser));
+    let selectedUser = new FC_MakerMembership();
+    selectedUser.setField("field_team_member", usernameWithID);
+    selectedUser.setField("field_membership_role", formArray.value[formArray.length-1].field_membership_role);
+    formArray.push(this.initGroup('field_maker_memberships', selectedUser));
     this.setUserIDs();
     this.selectedUser = {};
+    formArray.push(this.initGroup('field_maker_memberships'));
+    console.log(this.organizationForm.value);
   }
 
   initFormArray(fieldName: string) {
@@ -104,6 +104,7 @@ export class AboutUsComponent implements OnInit {
   }
 
   setOrganizationOwner() {
+    const field_membership = <FormArray>this.organizationForm.controls.field_maker_memberships;
     if(!this.organizationProxy.nid) {
       let usernameWithID = localStorage.getItem("user_name") + ' (' + localStorage.getItem("user_id") + ')';
       let currentUser = {
@@ -111,21 +112,19 @@ export class AboutUsComponent implements OnInit {
         field_anonymous_member_name: '',
         field_membership_role: 'Admin',
       };
-      const field_membership = <FormArray>this.organizationForm.controls.field_maker_memberships;
       field_membership.controls[0].patchValue(currentUser);
     }
-    const formArray = <FormArray>this.organizationForm.controls['field_maker_memberships'];
-    formArray.push(this.initGroup('field_maker_memberships'));
+    field_membership.push(this.initGroup('field_maker_memberships'));
   }
 
-  initGroup(fieldName: string, value?): FormGroup {
+  initGroup(fieldName: string, value?: FieldCollectionItem): FormGroup {
     switch (fieldName) {
       case 'field_maker_memberships':
         return this.formBuilder.group({
           field_team_member:[value? value.getField('field_team_member').target_id: '', Validators.required],
           field_anonymous_member_name:[value? value.getField('field_anonymous_member_name').value: ''],
           field_membership_role:[value? value.getField('field_membership_role').value: ''],
-        });    
+        });
       default:
         return this.formBuilder.group({});
     }
