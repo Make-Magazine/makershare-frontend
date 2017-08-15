@@ -6,6 +6,7 @@ import { CropperSettings } from 'ng2-img-cropper';
 import { FileEntity } from '../../../../core';
 import { ViewService } from '../../../../core/d7services';
 import { Observable } from 'rxjs/Observable';
+import { KeyValueObject } from '../../../../core/models/object/key-value-object';
 
 @Component({
   selector: 'app-org-form-basic-info',
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
 export class BasicInfoComponent implements OnInit {
   @Input() organizationForm: FormGroup;
 
-  imageModalTab: 'upload' | 'filemanager' = 'upload';
+  currentPhotoModalTab: 'upload' | 'filemanager' = 'upload';
   imageData: any;
 
   cropperSettings: CropperSettings;
@@ -23,10 +24,7 @@ export class BasicInfoComponent implements OnInit {
   cropperAvatarSettings: CropperSettings;
 
   currentImageFieldName: string;
-  countries: {
-    key:string,
-    value:string,
-  }[];
+  countries: KeyValueObject[];
 
   selectedCountry;
   searchFailed = false;
@@ -34,7 +32,7 @@ export class BasicInfoComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private viewService: ViewService,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.setCropperSettings();
@@ -42,13 +40,11 @@ export class BasicInfoComponent implements OnInit {
   }
 
   formatter = x => {
-    if (x.value) {
-      return x.value;
-    }
-    return x;
+    return x.value || x;
   };
 
-  searchCountry = (text$: Observable<string>) => {
+  searchCountry(text$: Observable<string>) {
+    console.log(text$);
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
@@ -65,7 +61,7 @@ export class BasicInfoComponent implements OnInit {
         }
         return [];
       });
-  };
+  }
 
   updateType(newType: string) {
     const field_orgs_type = this.organizationForm.controls.field_orgs_type;
@@ -98,27 +94,33 @@ export class BasicInfoComponent implements OnInit {
     this.imageData = {};
   }
 
-  getCountries(){
-    this.viewService.getView('maker_address_api').subscribe(countries =>{
-      this.countries = countries;
-      let countryKey = this.organizationForm.value.field_orgs_address.country;
-      if(countryKey) {
-        let index = countries.map(element=> element.key).indexOf(countryKey);
-        this.getCountryDetails(countries[index]);
-      }
-    });
+  getCountries() {
+    this.viewService
+      .getView<KeyValueObject>('maker_address_api')
+      .subscribe(countries => {
+        this.countries = countries;
+        let countryKey = this.organizationForm.value.field_orgs_address.country;
+        if (countryKey) {
+          let index = countries.map(element => element.key).indexOf(countryKey);
+          this.getCountryDetails(countries[index]);
+        }
+      });
   }
 
   getCountryDetails(country) {
     if (!country.key) {
       return;
     }
-    this.viewService.get('maker_address_api', country.key).subscribe(countrydetails => {
-      this.selectedCountry = countrydetails;
-      const field_address = <FormGroup>this.organizationForm.controls['field_orgs_address'];
-      field_address.controls.country.patchValue(country.key);
-      field_address.controls.countryName.patchValue(country.value);
-    });
+    this.viewService
+      .get('maker_address_api', country.key)
+      .subscribe(countrydetails => {
+        this.selectedCountry = countrydetails;
+        const field_address = <FormGroup>this.organizationForm.controls[
+          'field_orgs_address'
+        ];
+        field_address.controls.country.patchValue(country.key);
+        field_address.controls.countryName.patchValue(country.value);
+      });
   }
 
   openImageModal(template, settings: CropperSettings, fieldName: string) {
@@ -140,7 +142,7 @@ export class BasicInfoComponent implements OnInit {
   }
 
   selectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
-    this.imageModalTab = 'upload';
+    this.currentPhotoModalTab = 'upload';
     closebtn.click();
     this.setImage(file.url, file.filename, file.fid);
   }

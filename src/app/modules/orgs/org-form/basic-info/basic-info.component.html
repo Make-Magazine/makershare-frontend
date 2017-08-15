@@ -46,12 +46,14 @@
       <label>Organization Logo</label>
       <span>logo must work at small size (20 x 20)</span>
     </div>
-    <div>
-      <button class="btn btn-grey -slim"
-              (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose</button>
-      <div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose file
+      </button>
+      <div class="image-preview">
         <img *ngIf="organizationForm.value.field_orgs_logo.file"
-             [src]="organizationForm.value.field_orgs_logo.file">
+             [src]="organizationForm.value.field_orgs_logo.file"
+             class="img-responsive">
       </div>
     </div>
   </div>
@@ -61,12 +63,14 @@
       <label>Cover Photo</label>
       <span>For the top of the profile page (at least 300 x 2000)</span>
     </div>
-    <div>
-      <button class="btn btn-grey -slim"
-              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</button>
-      <div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose file
+      </button>
+      <div class="image-preview">
         <img *ngIf="organizationForm.value.field_orgs_cover_photo.file"
-             [src]="organizationForm.value.field_orgs_cover_photo.file">
+             [src]="organizationForm.value.field_orgs_cover_photo.file"
+             class="img-responsive">
       </div>
     </div>
   </div>
@@ -76,19 +80,15 @@
       <label>Organization Avatar</label>
       <span>Should be at max 104px square</span>
     </div>
-    <div>
-      <button class="btn btn-grey -slim"
-              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose</button>
-      <div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose file
+      </button>
+      <div class="image-preview">
         <img *ngIf="organizationForm.value.field_org_avatar.file"
-             [src]="organizationForm.value.field_org_avatar.file">
+             [src]="organizationForm.value.field_org_avatar.file"
+             class="img-responsive">
       </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="form-label">
-      <label>Social Channels</label>
     </div>
   </div>
 
@@ -156,6 +156,7 @@
     </div>
     <div class="form-ctl">
       <input type="text"
+             placeholder="Technology, ..."
              id="business_type"
              formControlName="field_type_of_business">
     </div>
@@ -168,82 +169,138 @@
     <div class="form-ctl">
       <input type="number" formControlName="field_minimum_number_of_follower">
     </div>
-  </div> 
+  </div>
 
-  <div formGroupName="field_orgs_address">
-    <label>Country</label>
-    <input type="text" formControlName="countryName" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
-    <div *ngIf="selectedCountry">
+  <div class="form-group"
+       formGroupName="field_orgs_address">
+    <div class="form-label">
+      <label>Country</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             formControlName="countryName"
+             [inputFormatter]="formatter"
+             [ngbTypeahead]="searchCountry"
+             [resultTemplate]="countryrt"
+             (selectItem)="getCountryDetails($event.item)">
 
-      <div>
-        <label>Address 1</label>
-        <input type="text" formControlName="thoroughfare">
-      </div> 
+      <!--<input [ngClass]="{valError: searchFailed}"
+             [ngModel]="ProfileInfo.address.country"
+             type="text"
+             class="form-control"
+             id="country"
+             placeholder="Click to select country"
+             [inputFormatter]="formatter"
+             [ngbTypeahead]="SearchCountry"
+             [resultTemplate]="rt"
+             (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">-->
 
-      <div>
-        <label>Address 2</label>
-        <input type="text" formControlName="premise">
-      </div> 
+      <div class="form-subform"
+           *ngIf="selectedCountry">
+        <div class="form-subform-group">
+          <label>Address 1</label>
+          <input type="text"
+                 formControlName="thoroughfare">
+        </div>
 
-      <div *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
-        <label>{{selectedCountry.administrative_area_label}}</label>
-        <select formControlName="administrative_area">
-          <option *ngFor="let governerate of selectedCountry.administrative_areas" [value]="governerate.key">{{governerate.value}}</option>
-        </select>
+        <div>
+          <label>Address 2</label>
+          <input type="text"
+                 formControlName="premise">
+        </div>
+
+        <div *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
+          <label>{{selectedCountry.administrative_area_label}}</label>
+          <select formControlName="administrative_area">
+            <option *ngFor="let governerate of selectedCountry.administrative_areas"
+                    [value]="governerate.key">
+              {{governerate.value}}
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
+          <label>{{selectedCountry.locality_label}}</label>
+          <input type="text"
+                 formControlName="locality">
+        </div>
+
+        <div *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
+          <label>District</label>
+          <input type="text"
+                 formControlName="dependent_locality">
+        </div>
+
+        <div *ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
+          <label>{{selectedCountry.postal_code_label}}</label>
+          <input type="number"
+                 formControlName="postal_code">
+        </div>
       </div>
-
-      <div *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
-        <label>{{selectedCountry.locality_label}}</label>
-        <input type="text" formControlName="locality">
-      </div>
-
-      <div *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
-        <label>District</label>
-        <input type="text" formControlName="dependent_locality">
-      </div>      
-
-      <div *ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
-        <label>{{selectedCountry.postal_code_label}}</label>
-        <input type="number" formControlName="postal_code">
-      </div> 
-
     </div>
   </div>
-  
-  <div formGroupName="field_social_accounts">
-    <label>Social Channels</label>
-    <div>
-      <div>
-        <label>Facebook</label>
-        <input type="text" formControlName="field_facebook" add-protocol>
+
+  <div class="form-group"
+       formGroupName="field_social_accounts">
+    <div class="form-label">
+      <label>Social Channels</label>
+    </div>
+    <div class="form-subform">
+      <div class="form-subform-group">
+        <label for="s-a-fb">Facebook</label>
+        <input id="s-a-fb"
+               type="text"
+               formControlName="field_facebook"
+               add-protocol>
       </div>
-      <div>
-        <label>linkedin</label>
-        <input type="text" formControlName="field_linkedin" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-li">Linkedin</label>
+        <input id="s-a-li"
+               type="text"
+               formControlName="field_linkedin"
+               add-protocol>
       </div>
-      <div>
-        <label>pinterest</label>
-        <input type="text" formControlName="field_pinterest" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-pi">Pinterest</label>
+        <input id="s-a-pi"
+               type="text"
+               formControlName="field_pinterest"
+               add-protocol>
       </div>
-      <div>
-        <label>instagram</label>
-        <input type="text" formControlName="field_instagram" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-ig">Instagram</label>
+        <input id="s-a-ig"
+               type="text"
+               formControlName="field_instagram"
+               add-protocol>
       </div>
-      <div>
-        <label>twitter</label>
-        <input type="text" formControlName="field_twitter" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-tw">Twitter</label>
+        <input id="s-a-tw"
+               type="text"
+               formControlName="field_twitter"
+               add-protocol>
       </div>
-      <div>
-        <label>github</label>
-        <input type="text" formControlName="field_github" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-gh">Github</label>
+        <input id="s-a-gh"
+               type="text"
+               formControlName="field_github"
+               add-protocol>
       </div>
-      <div>
-        <label>kickstarter</label>
-        <input type="text" formControlName="field_kickstarter" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-ks">Kickstarter</label>
+        <input id="s-a-ks"
+               type="text"
+               formControlName="field_kickstarter"
+               add-protocol>
       </div>
-      <div>
-        <label>etsy_shop</label>
-        <input type="text" formControlName="field_etsy_shop" add-protocol>
+      <div class="form-subform-group">
+        <label for="s-a-et">Etsy Shop</label>
+        <input id="s-a-et"
+               type="text"
+               formControlName="field_etsy_shop"
+               add-protocol>
       </div>
     </div>
   </div>
@@ -251,7 +308,7 @@
 
 <!--Cover image modal-->
 <ng-template #imagemodal let-c="close" let-d="dismiss">
-  <div class="upload-image-modal">
+  <div class="upload-cover-modal">
     <div class="modal-header">
       <button type="button"
               class="close ml-auto"
@@ -262,39 +319,61 @@
       </button>
     </div>
 
-    <div>
-      <ul>
-        <li (click)="imageModalTab = 'upload'">
-          <a>Upload</a>
+    <div class="modal-tabs">
+      <ul class="list-unstyled">
+        <li class="upload"
+            (click)="currentPhotoModalTab = 'upload'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'upload'}">Upload</a>
         </li>
-        <li (click)="imageModalTab = 'filemanager'">
-          <a>Your Photos</a>
+        <li class="your-photos"
+            (click)="currentPhotoModalTab = 'filemanager'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'filemanager'}">YOUR PHOTOS</a>
         </li>
       </ul>
     </div>
+
     <div class="modal-body">
       <div class="container">
-        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop
+        <div [hidden]="currentPhotoModalTab != 'upload'"
+             ng2FileDrop
+             class="upload-tab row"
              (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
-          <div>
+          <div class="drop-section col-md-7">
             <img *ngIf="!imageData.original"
+                 class="image-background"
                  src="./assets/images/icons/Photos Icon.png">
-            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData"
+            <img-cropper [hidden]="!imageData.original"
+                         #imagecropper
+                         [image]="imageData"
                          [settings]="cropperSettings"></img-cropper>
-            <a (click)="file.click()">
-              <span *ngIf="imageData.original">{{imageData.original ? 'Choose a Different Photo' : 'Choose'}}</span>
+            <div>
+              <p>Drag a photo here</p>
+              <p>or</p>
+            </div>
+            <button class="btn btn-load-more"
+                    [ngClass]="{big:imageData.original}"
+                    (click)="file.click()">
+              <span *ngIf="!imageData.original;else differentphoto">Choose</span>
+              <ng-template #differentphoto>Choose a Different Photo</ng-template>
               <input [hidden]="true"
                      type="file" #file
                      (change)="uploadBtn($event.target.files[0], imagecropper)">
-            </a>
+            </button>
+          </div>
+          <div class="recommended-section col-md-4">
+            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 800 by 450 pixels</p>
           </div>
         </div>
-        <app-file-browser *ngIf="imageModalTab == 'filemanager'"
+        <app-file-browser *ngIf="currentPhotoModalTab == 'filemanager'"
                           (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
       </div>
     </div>
     <div class="modal-footer">
-      <button *ngIf="imageModalTab == 'upload'"
+      <button *ngIf="currentPhotoModalTab == 'upload'"
+              type="button"
+              class="btn btn-load-more"
               (click)="imageUpdated(closebtn, file.files[0])">Save
       </button>
     </div>

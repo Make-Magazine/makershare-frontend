@@ -1,4 +1,14 @@
-import { animate, Component, EventEmitter, Input, OnInit, Output, style, transition, trigger } from '@angular/core';
+import {
+  animate,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  style,
+  transition,
+  trigger,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -7,7 +17,12 @@ import { CustomValidators } from 'ng2-validation';
 import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
 import { UsaDate } from '../../../../angular/validations/usa-date.validation';
 import { YoutubeOrVimeoLink } from '../../../../angular/validations/youtube-or-vimeo-link.validation';
-import { FileEntity, NodeHelper, ProjectCategory, ProjectForm } from '../../../../core';
+import {
+  FileEntity,
+  NodeHelper,
+  ProjectCategory,
+  ProjectForm,
+} from '../../../../core';
 import { ViewService } from '../../../../core/d7services';
 
 @Component({
@@ -67,11 +82,11 @@ export class YourStoryComponent implements OnInit {
   current_child_category: number;
   child_categories: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
-  PhotoModalTab: string;
+  currentPhotoModalTab: string;
 
   //image cropper
   cropperSettings: CropperSettings;
-  imagedata: any;
+  imageData: any;
   sanitizethis;
   show_video;
 
@@ -91,8 +106,8 @@ export class YourStoryComponent implements OnInit {
   }
 
   SelectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
-    this.imagedata = {};
-    this.PhotoModalTab = 'upload';
+    this.imageData = {};
+    this.currentPhotoModalTab = 'upload';
     closebtn.click();
     this.cover_image.file = file['url'];
     this.cover_image.fid = file['fid'];
@@ -105,7 +120,7 @@ export class YourStoryComponent implements OnInit {
    * 
    */
   ngOnInit() {
-    this.PhotoModalTab = 'upload';
+    this.currentPhotoModalTab = 'upload';
     this.cover_image = this.FormPrintableValues.cover_image;
     this.tags = this.FormPrintableValues.tags;
     this.buildForm();
@@ -247,9 +262,9 @@ export class YourStoryComponent implements OnInit {
     delete this.cover_image.fid;
     this.cover_image.file = '';
     this.formErrors.field_cover_photo = '';
-    if (!NodeHelper.isEmpty(this.imagedata)) {
-      this.cover_image.file = this.imagedata.image;
-      this.imagedata = {};
+    if (!NodeHelper.isEmpty(this.imageData)) {
+      this.cover_image.file = this.imageData.image;
+      this.imageData = {};
       this.EmitValues();
     }
     if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
@@ -489,12 +504,13 @@ export class YourStoryComponent implements OnInit {
     this.cropperSettings.noFileInput = true;
     this.cropperSettings.canvasWidth = 400;
     this.cropperSettings.canvasHeight = 225;
-    this.imagedata = {};
+    this.imageData = {};
   }
 
-  OpenCoverImageModal(Template) {
+  openImageModal(Template) {
     this.modalService.open(Template);
   }
+
   UploadBtn(file, cropper) {
     if (!file) return;
     var image: any = new Image();
