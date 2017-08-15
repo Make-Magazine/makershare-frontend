@@ -6,10 +6,9 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-org-form-about-us',
-  templateUrl: './about-us.component.html'
+  templateUrl: './about-us.component.html',
 })
 export class AboutUsComponent implements OnInit {
-
   @Input() organizationForm: FormGroup;
   @Input() organizationProxy: EntityProxy;
   team: {
@@ -23,7 +22,7 @@ export class AboutUsComponent implements OnInit {
   constructor(
     private viewService: ViewService,
     private formBuilder: FormBuilder,
-  ) { }
+  ) {}
 
   ngOnInit() {
     const field_maker_memberships = <FormArray>this.organizationForm.controls.field_maker_memberships;
@@ -141,5 +140,4 @@ export class AboutUsComponent implements OnInit {
     control.removeAt(i);
     this.team.splice(i, 1);
   }
-
 }

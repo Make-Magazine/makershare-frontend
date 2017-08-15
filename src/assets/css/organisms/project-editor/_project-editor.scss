@@ -1,19 +1,4 @@
-.page-create-project-why {
-  label {
-    color: $dark-grey;
-  }
-  .form-control::-webkit-input-placeholder {
-    color: $light-grey;
-  }
-  .form-control::-moz-input-placeholder {
-    color: $light-grey;
-  }
-  .form-control::-ms-input-placeholder {
-    color: $light-grey;
-  }
-  .form-control::-moz-input-placeholder {
-    color: $light-grey;
-  }
+.page-editor {
   .words-count {
     font-size: 1.2rem;
     font-weight: bold;
@@ -32,11 +17,12 @@
   }
   color: $dark-grey;
   background-color: $lighter-grey;
-  .form-group > input,
+
+  /*.form-group > input,
   textarea,
   #cke_how-to-make {
     max-width: 100%;
-  }
+  }*/
   .add-controls {
     padding: 1rem 0 .5rem;
     h1 {
@@ -58,9 +44,6 @@
         .project-private,
         .project-public {
           .btn {
-            /*background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);*/
             background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
             padding: .4rem .6rem;
           }
@@ -69,19 +52,6 @@
             border-color: #d51920;
           }
         }
-        /*.project-public {
-          .btn {
-            background: -webkit-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            background: -moz-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            background: -o-linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            background: linear-gradient(rgba(153, 153, 153, 0.51) 0%, $white .5rem, $white 100%);
-            padding: 4px 6px 4px 6px;
-          }
-          .btn-main {
-            background: $highlight-red !important;
-            border-color: #d51920;
-          }
-        }*/
         .project-delete {
           .btn {
             padding: .4rem .6rem;
@@ -96,15 +66,7 @@
       }
     }
   }
-  .form-group {
-    margin-top: 2rem;
-    br {
-      display: none;
-    }
-  }
-  input {
-    border-radius: 0;
-  }
+
   #projectCategory {
     height: auto;
     padding: 0;
@@ -146,14 +108,9 @@
       }
     }
   }
-  .small-text {
-    font-size: 1.08rem;
-    display: inline-block;
-    margin-bottom: 0;
-    margin-left: .5rem;
-  }
   .your-story,
   .how-to,
+  .basic-info,
   .team {
     .add-button {
       margin-left: 1.5rem;
@@ -165,9 +122,6 @@
       label {
         display: inline-block;
       }
-    }
-    .projectName {
-      width: 100%;
     }
     .red-text {
       font-size: 1.296rem;
@@ -298,8 +252,7 @@
         text-transform: uppercase;
       }
       .result,
-      .how-to-select
-      {
+      .how-to-select {
         @include desc-font-2();
         font-size: 1.76rem;
         margin-top: 1rem;
@@ -601,29 +554,11 @@
   }
 }
 
-.form-group.required {
-  label::after {
-    content: " *";
-    color: red;
-  }
-}
-
 .cke_button.cke_button__maximize.cke_button_off {
   position: absolute;
   right: 2rem;
   &::after {
     display: none;
-  }
-}
-
-.your-story,
-.how-to {
-  label {
-    @include card-header-font-md();
-    color: $dark-grey;
-    &.selected-topic {
-      font-size: 1.1rem;
-    }
   }
 }
 

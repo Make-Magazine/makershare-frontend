@@ -138,7 +138,7 @@ export class YourStoryComponent implements OnInit {
   buildForm(): void {
     this.YourStoryForm = this.fb.group({
       title: [
-        this.project.getField('title'),
+        this.project.title,
         [
           Validators.required,
           Validators.minLength(4),

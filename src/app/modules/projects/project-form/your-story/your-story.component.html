@@ -3,12 +3,15 @@
     <p class="red-text">* Fields required to publish</p>
     <div class="form-group required projectName">
       <label for="projectName"
-             [ngClass]="{valErrorString: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}">Project
-        Name</label>
-      <input [ngClass]="{valError: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}" type="text"
+             [ngClass]="{valErrorString: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}">Project Name</label>
+      <input [ngClass]="{valError:!YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}"
+             type="text"
              class="form-control"
-             id="projectName" formControlName="title" placeholder="{{TooltipText.project_name.guide}}"
-             validate-onfocusout maxlength="50">
+             id="projectName"
+             formControlName="title"
+             placeholder="{{TooltipText.project_name.guide}}"
+             validate-onfocusout
+             maxlength="50">
       <!--<div *ngIf="formErrors.title && YourStoryForm.controls['title'].touched" class="alert alert-danger error-msg">
         {{ formErrors.title }}
       </div>-->
@@ -16,9 +19,12 @@
     <div class="form-group required">
       <label for="teaser"
              [ngClass]="{valErrorString:  !YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}">Teaser</label>
-      <textarea [ngClass]="{valError:  !YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}"
-                maxlength="250" class="form-control"
-                rows="5" id="teaser" formControlName='field_teaser'
+      <textarea [ngClass]="{valError:!YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}"
+                maxlength="250"
+                class="form-control"
+                rows="5"
+                id="teaser"
+                formControlName='field_teaser'
                 placeholder="{{TooltipText.teaser.guide}}"></textarea>
       <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
     </div>
@@ -27,18 +33,19 @@
       {{ formErrors.field_teaser }}
     </div>-->
     <div class="form-group required cover d-flex flex-column">
-      <div class="d-flex align-items-center">
-        <label class="control-label" [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover
-          photo </label>
-        <p class="small-text">Choose a photo that is at least 800 x 450 px</p>
-      </div>
+      <!--<div class="d-flex align-items-center">-->
+      <label class="control-label"
+             [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover photo</label>
+      <span>Choose a photo that is at least 800 x 450 px</span>
+      <!--</div>-->
       <div class="align-items-start">
         <a [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}"
-           (click)="OpenCoverImageModal(coverimagemodal)" id="cover-upload-link"
+           (click)="OpenCoverImageModal(coverimagemodal)"
+           id="cover-upload-link"
            class="btn btn-load-more">CHOOSE FILE</a>
         <div class="image-preview">
-
-          <img *ngIf="YourStoryForm.value.field_cover_photo.file" [src]="YourStoryForm.value.field_cover_photo.file"
+          <img *ngIf="YourStoryForm.value.field_cover_photo.file"
+               [src]="YourStoryForm.value.field_cover_photo.file"
                class="img-responsive">
         </div>
       </div>
@@ -47,11 +54,13 @@
       </div>-->
     </div>
     <div class="form-group required projectCategory d-flex flex-column">
-      <div class="d-flex align-items-center">
-        <label for="projectCategory" class=""
-               [ngClass]="{valErrorString: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}">Topics</label>
-        <p class="small-text">Choose as many topics as your project relates to.</p>
-      </div>
+      <!--<div class="d-flex align-items-center">-->
+      <label for="projectCategory" class=""
+             [ngClass]="{valErrorString: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}">Topics
+        <span>Choose as many topics as your project relates to.</span>
+      </label>
+
+      <!--</div>-->
 
       <div class="categories-group d-flex flex-row row">
         <div class="col-md-4">
