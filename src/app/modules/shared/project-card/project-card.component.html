@@ -44,7 +44,7 @@
                   <span>PUBLIC</span>
                 </p>
               </div>
-              <div class="d-flex flex-column ml-auto">
+              <div class="d-flex flex-column ml-auto" *ngIf="org_data && visibility == 370 && userId==project.uid">
                 <p (click)="setProjectonOrgs()" class="btn ml-auto">
                   <span *ngIf="!inOrg">Add to Org</span>
                   <span *ngIf="inOrg">Remove From Org</span>

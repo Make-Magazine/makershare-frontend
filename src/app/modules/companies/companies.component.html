@@ -3,7 +3,7 @@
     <h3>Maker Orgs</h3>
   </div>
 
-  <div class="container clearfix mb-3">
+  <div class="container clearfix mb-3" *ngIf="countCompanies > 0">
     <div class="filters-group mb-3">
       <div class="dropdown-group">
         <i class="dropdownIcon lnr lnr-chevron-down"></i>
@@ -37,6 +37,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="countCompanies == 0">
+    <h2>There is no Organizations</h2>
   </div>
 
   <div class="container items-container p-414">
