@@ -79,6 +79,7 @@ export class OrgFormComponent implements OnInit {
             'field_minimum_number_of_follower',
             'field_founder_name',
             'field_orgs_phone',
+            'field_website_blog',
             'field_type_of_business',
           ];
           const imageFields = [
@@ -398,7 +399,7 @@ export class OrgFormComponent implements OnInit {
   }
 
   uploadImages(): Observable<FileEntity[]> {
-    var tasks: Observable<FileEntity>[] = [];
+    const tasks: Observable<FileEntity>[] = [];
     if (!this.organizationForm.value.field_orgs_logo.fid) {
       this.organizationForm.value.field_orgs_logo.file = NodeHelper.RemoveFileTypeFromBase64(
         this.organizationForm.value.field_orgs_logo.file,
