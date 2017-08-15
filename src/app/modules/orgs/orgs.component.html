@@ -183,13 +183,11 @@
           </div>
           <app-maker-card [uid]="teams.field_team_member" [state]="'tall'"></app-maker-card>
         </div>
-        <div class="col-md-12" *ngIf="followers">
-          <!-- Our Team  -->
-        </div>
-        <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
-          <div class="modal-header">
-            <span *ngIf="followersCount">{{followersCount}} Followers</span>
-            <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      </div>
+      <ng-template #content let-c="close" let-d="dismiss" class="like-modal">
+        <div class="modal-header">
+          <span *ngIf="followersCount">{{followersCount}} Followers</span>
+          <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
           </div>
