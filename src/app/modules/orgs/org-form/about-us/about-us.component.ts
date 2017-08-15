@@ -86,6 +86,7 @@ export class AboutUsComponent implements OnInit {
       usernameOrUID = user.field_anonymous_member_name;
       anonymous = true;
     } else {
+      console.log(user);
       usernameOrUID = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(user.field_team_member);
     }
     let member = {

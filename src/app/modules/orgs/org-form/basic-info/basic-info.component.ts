@@ -76,6 +76,11 @@ export class BasicInfoComponent implements OnInit {
     this.uploadBtn(acceptedFile.file, cropper);
   }
 
+  /**
+   * THIS FUNCTION IS USELESS BECAUSE YOU NEED DEFFIRENT SETTINGS FOR EACH FIELD :)
+   * i was using the same numbers because i dont care about the styling but you will need to pass the new size for each field
+   * good luck with that!
+   */
   cropperSettingsFactory() {
     let cropperSettings = new CropperSettings();
     cropperSettings.width = 800;
