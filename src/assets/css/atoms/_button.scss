@@ -97,6 +97,14 @@
         color: $highlight-bright-blue;
       }
     }
+    &.-grey {
+      color: $dark-grey;
+      &:hover {
+        i {
+          color: $dark-grey;
+        }
+      }
+    }
   }
 
   &.-link {
