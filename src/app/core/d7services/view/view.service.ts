@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MainService } from '../main/main.service';
 import { Observable } from 'rxjs/Observable';
+import { MainService } from '../main/main.service';
 
 @Injectable()
 export class ViewService extends MainService {
@@ -21,9 +21,7 @@ export class ViewService extends MainService {
   }
 
   /* end function cheack user allowe to enter challenge */
-
   getCountProjectByID(viewName: string, id: string): Observable<any> {
-    // console.log(string_args);
     return super.get(viewName + '/' + id).catch(err => Observable.throw(err));
   }
 }

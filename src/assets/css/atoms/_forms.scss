@@ -58,5 +58,31 @@
     input:-ms-input-placeholder {
       color: $light-grey;
     }
+    textarea::-webkit-input-placeholder {
+      color: $light-grey;
+    }
+    textarea::-moz-placeholder {
+      color: $light-grey;
+    }
+    textarea:-ms-input-placeholder {
+      color: $light-grey;
+    }
+
+    .image-preview {
+      width: 50%;
+      .img-responsive {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .form-subform {
+    .form-subform-group {
+      margin: 1rem 0;
+      label,
+      input {
+        width: 100%;
+      }
+    }
   }
 }

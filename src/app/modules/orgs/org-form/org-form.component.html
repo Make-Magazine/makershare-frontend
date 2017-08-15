@@ -8,26 +8,32 @@
         <div class="nav-create col-md-8 mt-4 mb-2">
           <div class="container">
             <ul class="list-unstyled">
-              <li><a (click)="currentFormTab = 'Basic Info'"
-                     class="btn btn-tab"
-                     id="basic-info"
-                     [ngClass]="{'active': currentFormTab == 'Basic Info'}">Basic Info</a></li>
-              <li><a (click)="currentFormTab = 'About Us'"
-                     class="btn btn-tab"
-                     id="about-us"
-                     [ngClass]="{'active': currentFormTab == 'About Us'}">About Us</a></li>
-              <li><a (click)="currentFormTab = 'Products'"
-                     class="btn btn-tab"
-                     id="products"
-                     [ngClass]="{'active': currentFormTab == 'Products'}">Products</a></li>
+              <li>
+                <a (click)="goToTab('Basic Info')"
+                   class="btn btn-tab"
+                   id="basic-info"
+                   [ngClass]="{'active': currentFormTab == 'Basic Info'}">Basic Info</a>
+              </li>
+              <li>
+                <a (click)="goToTab('About Us')"
+                   class="btn btn-tab"
+                   id="about-us"
+                   [ngClass]="{'active': currentFormTab == 'About Us'}">About Us</a>
+              </li>
+              <li>
+                <a (click)="goToTab('Products')"
+                   class="btn btn-tab"
+                   id="products"
+                   [ngClass]="{'active': currentFormTab == 'Products'}">Products</a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-4 mt-4 mb-2 tac">
           <button class="btn btn-grey"
-                  [ngClass]="{'disabled':!orgFormValid}"
                   (click)="publishButtonClick()">Publish
           </button>
+          <!--[ngClass]="{'disabled':!orgFormValid}"-->
         </div>
       </div>
     </div>
@@ -41,34 +47,37 @@
       <app-org-form-projects *ngIf="currentFormTab == 'Products'"
                              [organizationForm]="organizationForm"></app-org-form-projects>
     </div>
+
     <div class="add-controls row">
       <div class="nav-create col-md-8 mt-auto">
         <div class="container d-flex">
           <div class="back mr-auto"
-               *ngIf="currentFormTab == 'About Us'"
-               (click)="currentFormTab = 'Basic Info'">
-            <button class="btn btn-advance">
+               *ngIf="currentFormTab=='About Us'">
+            <button class="btn btn-advance"
+                    (click)="goToTab('Basic Info')">
               <i class="lnr lnr-chevron-left"></i>
-            </button> Go To Basic Info
+            </button>
+            Go To Basic Info
           </div>
           <div class="back mr-auto"
-               *ngIf="currentFormTab == 'Products'"
-               (click)="currentFormTab = 'About Us'">
-            <button class="btn btn-advance">
+               *ngIf="currentFormTab=='Products'">
+            <button class="btn btn-advance"
+                    (click)="goToTab('About Us')">
               <i class="lnr lnr-chevron-left"></i>
-            </button> Go To About Us
+            </button>
+            Go To About Us
           </div>
           <div class="next ml-auto"
-               *ngIf="currentFormTab == 'Basic Info'"
-               (click)="currentFormTab = 'About Us'">Go To About Us
-            <button class="btn btn-advance">
+               *ngIf="currentFormTab=='Basic Info'">Go To About Us
+            <button class="btn btn-advance"
+                    (click)="goToTab('About Us')">
               <i class="lnr lnr-chevron-right"></i>
             </button>
           </div>
           <div class="next ml-auto"
-               *ngIf="currentFormTab == 'About Us'"
-               (click)="currentFormTab = 'Products'">Go To Products
-            <button class="btn btn-advance">
+               *ngIf="currentFormTab=='About Us'">Go To Products
+            <button class="btn btn-advance"
+                    (click)="goToTab('Products')">
               <i class="lnr lnr-chevron-right"></i>
             </button>
           </div>
