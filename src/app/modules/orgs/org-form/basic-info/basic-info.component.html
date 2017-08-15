@@ -43,6 +43,7 @@
     </div>
   </div>
 
+
   <div class="form-group required">
     <div class="form-label">
       <label>Organization Logo</label>
@@ -117,17 +118,6 @@
              [resultTemplate]="countryrt"
              (selectItem)="getCountryDetails($event.item)">
 
-      <!--<input [ngClass]="{valError: searchFailed}"
-             [ngModel]="ProfileInfo.address.country"
-             type="text"
-             class="form-control"
-             id="country"
-             placeholder="Click to select country"
-             [inputFormatter]="formatter"
-             [ngbTypeahead]="SearchCountry"
-             [resultTemplate]="rt"
-             (selectItem)="ProfileInfo.address.country = $event.item.value;GetCountryDetails($event.item.key)">-->
-
       <div class="form-subform"
            *ngIf="selectedCountry">
         <div class="form-subform-group">
@@ -181,7 +171,7 @@
       <input type="url"
              placeholder="http://"
              id="website"
-             formControlName="field_orgs_contact">
+             formControlName="field_orgs_website">
     </div>
   </div>
 
