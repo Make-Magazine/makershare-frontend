@@ -44,7 +44,8 @@
                   Email not registered
                   <button type="button"
                           class="btn btn-primary"
-                          (click)="InviteUser(username,i)">Invite</button>
+                          (click)="InviteUser(username,i)">Invite
+                  </button>
                 </div>
                 <div *ngIf="!ValidEmailAddress">
                   User not registered
@@ -61,8 +62,11 @@
             </div>
             <div class="form-group">
               <label for="collab-role-{{i + 1}}">Role</label>
-              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_membership_role}" maxlength="140"
-                     type="text" class="form-control" id="collab-role-{{i + 1}}"
+              <input [ngClass]="{valError: formErrors.field_maker_memberships[i].field_membership_role}"
+                     maxlength="140"
+                     type="text"
+                     class="form-control"
+                     id="collab-role-{{i + 1}}"
                      placeholder="What role did this person play on the project?"
                      [formControl]="Member.controls.field_membership_role">
               {{Member.controls.field_membership_role.value.length}}/140
