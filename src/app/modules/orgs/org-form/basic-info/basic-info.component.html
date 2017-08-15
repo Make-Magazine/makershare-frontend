@@ -1,6 +1,8 @@
 <div class="col-md-8"
      [formGroup]="organizationForm">
 
+  <p class="red-text">* Fields required to publish</p>
+
   <div class="form-group required">
     <div class="form-label">
       <label for="orgName">Organization Name</label>
@@ -41,7 +43,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label>Organization Logo</label>
       <span>logo must work at small size (20 x 20)</span>
@@ -58,7 +60,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label>Cover Photo</label>
       <span>For the top of the profile page (at least 300 x 2000)</span>
@@ -75,7 +77,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label>Organization Avatar</label>
       <span>Should be at max 104px square</span>
@@ -92,87 +94,17 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="form-label">
-      <label for="website">Website</label>
-    </div>
-    <div class="form-ctl">
-      <input type="url"
-             placeholder="http://"
-             id="website"
-             formControlName="field_orgs_contact">
-    </div>
-  </div>
-
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label>Contact email</label>
     </div>
     <div class="form-ctl">
-      <input type="text"
+      <input type="email"
              formControlName="field_orgs_contact">
     </div>
   </div>
 
-  <div class="form-group">
-    <div class="form-label">
-      <label for="phone">Phone</label>
-    </div>
-    <div class="form-ctl">
-      <input type="tel"
-             id="phone"
-             formControlName="field_orgs_phone">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="form-label">
-      <label for="founder_name">Founder Name</label>
-    </div>
-    <div class="form-ctl">
-      <input type="text"
-             placeholder="Enter name here"
-             id="founder_name"
-             formControlName="field_founder_name">
-    </div>
-  </div>
-
-  <div class="form-group"
-       formGroupName="field_founded_date">
-    <div class="form-label">
-      <label for="founded_date">Founded Date</label>
-    </div>
-    <div class="form-ctl">
-      <input type="number"
-             max=""
-             id="founded_date"
-             formControlName="date">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="form-label">
-      <label for="business_type">Type of Business</label>
-    </div>
-    <div class="form-ctl">
-      <input type="text"
-             placeholder="Technology, ..."
-             id="business_type"
-             formControlName="field_type_of_business">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="form-label">
-      <label>Minimum number of followers</label>
-    </div>
-    <div class="form-ctl">
-      <input type="number"
-             formControlName="field_minimum_number_of_follower">
-    </div>
-  </div>
-
-  <div class="form-group"
+  <div class="form-group required"
        formGroupName="field_orgs_address">
     <div class="form-label">
       <label>Country</label>
@@ -238,6 +170,77 @@
                  formControlName="postal_code">
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="website">Website</label>
+    </div>
+    <div class="form-ctl">
+      <input type="url"
+             placeholder="http://"
+             id="website"
+             formControlName="field_orgs_contact">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="phone">Phone</label>
+    </div>
+    <div class="form-ctl">
+      <input type="tel"
+             id="phone"
+             formControlName="field_orgs_phone">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="founder_name">Founder Name</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             placeholder="Enter name here"
+             id="founder_name"
+             formControlName="field_founder_name">
+    </div>
+  </div>
+
+  <div class="form-group"
+       formGroupName="field_founded_date">
+    <div class="form-label">
+      <label for="founded_date">Founded Date</label>
+    </div>
+    <div class="form-ctl">
+      <input type="number"
+             max=""
+             id="founded_date"
+             formControlName="date">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="business_type">Type of Business</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             placeholder="Technology, ..."
+             id="business_type"
+             formControlName="field_type_of_business">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label>Minimum number of followers</label>
+      <span>To display the organization</span>
+    </div>
+    <div class="form-ctl">
+      <input type="number"
+             formControlName="field_minimum_number_of_follower">
     </div>
   </div>
 
