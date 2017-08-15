@@ -1,13 +1,79 @@
-<div>
-  <div (click)="currentFormTab = 'Basic Info'">Basic Info</div>
-  <div (click)="currentFormTab = 'About Us'">About Us</div>
-  <div (click)="currentFormTab = 'Products'">Products</div>
-</div>
+<div class="page-editor">
+  <section class="container pt-4 pb-4">
+    <div class="top-content-wrapper">
+      <div class="add-controls row hidden-md-down">
+        <div class="container">
+          <h1 class="text-center">Organization Editor</h1>
+        </div>
+        <div class="nav-create col-md-8 mt-4 mb-2">
+          <div class="container">
+            <ul class="list-unstyled">
+              <li><a (click)="currentFormTab = 'Basic Info'"
+                     class="btn btn-tab"
+                     id="basic-info"
+                     [ngClass]="{'active': currentFormTab == 'Basic Info'}">Basic Info</a></li>
+              <li><a (click)="currentFormTab = 'About Us'"
+                     class="btn btn-tab"
+                     id="about-us"
+                     [ngClass]="{'active': currentFormTab == 'About Us'}">About Us</a></li>
+              <li><a (click)="currentFormTab = 'Products'"
+                     class="btn btn-tab"
+                     id="products"
+                     [ngClass]="{'active': currentFormTab == 'Products'}">Products</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4 mb-2 tac">
+          <button class="btn btn-grey"
+                  [ngClass]="{'disabled':!orgFormValid}"
+                  (click)="publishButtonClick()">Publish
+          </button>
+        </div>
+      </div>
+    </div>
 
-<button class="btn-primaty" (click)="publishButtonClick()">Publish</button>
-
-<div *ngIf="organizationReady">
-  <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'" [organizationForm]="organizationForm"></app-org-form-basic-info>
-  <app-org-form-about-us *ngIf="currentFormTab == 'About Us'" [organizationForm]="organizationForm" [organizationProxy]="organizationProxy"></app-org-form-about-us>
-  <app-org-form-projects *ngIf="currentFormTab == 'Products'" [organizationForm]="organizationForm"></app-org-form-projects>
+    <div *ngIf="organizationReady">
+      <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
+                               [organizationForm]="organizationForm"></app-org-form-basic-info>
+      <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
+                             [organizationForm]="organizationForm"
+                             [organizationProxy]="organizationProxy"></app-org-form-about-us>
+      <app-org-form-projects *ngIf="currentFormTab == 'Products'"
+                             [organizationForm]="organizationForm"></app-org-form-projects>
+    </div>
+    <div class="add-controls row">
+      <div class="nav-create col-md-8 mt-auto">
+        <div class="container d-flex">
+          <div class="back mr-auto"
+               *ngIf="currentFormTab == 'About Us'"
+               (click)="currentFormTab = 'Basic Info'">
+            <button class="btn btn-advance">
+              <i class="lnr lnr-chevron-left"></i>
+            </button> Go To Basic Info
+          </div>
+          <div class="back mr-auto"
+               *ngIf="currentFormTab == 'Products'"
+               (click)="currentFormTab = 'About Us'">
+            <button class="btn btn-advance">
+              <i class="lnr lnr-chevron-left"></i>
+            </button> Go To About Us
+          </div>
+          <div class="next ml-auto"
+               *ngIf="currentFormTab == 'Basic Info'"
+               (click)="currentFormTab = 'About Us'">Go To About Us
+            <button class="btn btn-advance">
+              <i class="lnr lnr-chevron-right"></i>
+            </button>
+          </div>
+          <div class="next ml-auto"
+               *ngIf="currentFormTab == 'About Us'"
+               (click)="currentFormTab = 'Products'">Go To Products
+            <button class="btn btn-advance">
+              <i class="lnr lnr-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

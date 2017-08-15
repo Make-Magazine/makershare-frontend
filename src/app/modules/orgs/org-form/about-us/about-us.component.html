@@ -1,20 +1,46 @@
-<div [formGroup]="organizationForm">
-    <div>
-      <label>Organization Info</label>
-      <textarea maxlength="250" rows="5" formControlName='field_breif_info'></textarea>
-    </div>
+<div class="col-md-8"
+     [formGroup]="organizationForm">
 
-    <div>
-      <label>Motto</label>
-      <input type="text" maxlength="50" formControlName='field_maker_motto'>
+  <div class="form-group">
+    <div class="form-label">
+      <label for="orgInfo">Organization Info</label>
     </div>
-
-    <div>
-      <label>About Us</label>
-      <textarea maxlength="250" formControlName='body'></textarea>
+    <div class="form-ctl">
+      <textarea maxlength="250"
+                rows="5"
+                id="orgInfo"
+                placeholder="Enter info here"
+                formControlName="field_breif_info"></textarea>
     </div>
+  </div>
 
-    <div formArrayName="field_maker_memberships">
+  <div class="form-group">
+    <div class="form-label">
+      <label for="orgMotto">Motto</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             id="orgMotto"
+             maxlength="50"
+             formControlName="field_maker_motto">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="orgAboutUs">About Us</label>
+    </div>
+    <div class="form-ctl">
+      <textarea maxlength="250"
+                rows="5"
+                id="orgAboutUs"
+                formControlName="body"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group"
+       formArrayName="field_maker_memberships">
+    <div class="form-label">
       <label>Team</label>
       <div *ngFor="let user of team;let i = index;" [formGroupName]="i">
         <app-maker-card *ngIf="!user.anonymous" [showFlag]="false" [uid]="user.usernameOrUID"></app-maker-card>
@@ -37,6 +63,7 @@
         <a *ngIf="selectedUser" (click)="setMember()">+add</a>
       </div>
     </div>
+  </div>
 </div>
 
 <ng-template #rt let-r="result" let-t="term">

@@ -1,88 +1,178 @@
-<div [formGroup]="organizationForm">
+<div class="col-md-8"
+     [formGroup]="organizationForm">
 
-  <div>
-    <label>Organization Type</label>
-    <input type="radio" name="field_orgs_type" value="non-profit" [checked]= "organizationForm.value.field_orgs_type === 'non-profit'" (click)="updateType($event.target.value)">non-profit
-    <input type="radio" name="field_orgs_type" value="startup" [checked]= "organizationForm.value.field_orgs_type === 'startup'" (click)="updateType($event.target.value)">startup
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="orgName">Organization Name</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             [ngClass]="{valError: !organizationForm.controls['title'].valid}"
+             formControlName="title"
+             placeholder="Enter name here"
+             maxlength="50"
+             validate-onfocusout
+             id="orgName">
+    </div>
   </div>
 
-  <div>
-    <label>Organization Name</label>
-    <input type="text" formControlName="title" maxlength="50">
+  <div class="form-group">
+    <div class="form-label">
+      <label>Organization Type</label>
+    </div>
+    <div class="form-ctl">
+      <input type="radio"
+             name="field_orgs_type"
+             value="non-profit"
+             id="type-non-profit"
+             [checked]="organizationForm.value.field_orgs_type === 'non-profit'"
+             (click)="updateType($event.target.value)">
+      <label for="type-non-profit">non-profit</label>
+    </div>
+    <div class="form-ctl">
+      <input type="radio"
+             name="field_orgs_type"
+             value="startup"
+             id="type-startup"
+             class="form-ctl"
+             [checked]="organizationForm.value.field_orgs_type === 'startup'"
+             (click)="updateType($event.target.value)">
+      <label for="type-startup">startup</label>
+    </div>
   </div>
 
-  <div>
-    <div>
+  <div class="form-group">
+    <div class="form-label">
       <label>Organization Logo</label>
-      <p>logo must work at small size (20 x 20)</p>
+      <span>logo must work at small size (20 x 20)</span>
     </div>
     <div>
-      <a (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose</a>
+      <button class="btn btn-grey -slim"
+              (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose</button>
       <div>
-        <img *ngIf="organizationForm.value.field_orgs_logo.file" [src]="organizationForm.value.field_orgs_logo.file">
+        <img *ngIf="organizationForm.value.field_orgs_logo.file"
+             [src]="organizationForm.value.field_orgs_logo.file">
       </div>
     </div>
   </div>
 
-  <div>
-    <div>
+  <div class="form-group">
+    <div class="form-label">
       <label>Cover Photo</label>
-      <p>For the top of the profile page (at least 300 x 2000)</p>
+      <span>For the top of the profile page (at least 300 x 2000)</span>
     </div>
     <div>
-      <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</a>
+      <button class="btn btn-grey -slim"
+              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose</button>
       <div>
-        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file" [src]="organizationForm.value.field_orgs_cover_photo.file">
+        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file"
+             [src]="organizationForm.value.field_orgs_cover_photo.file">
       </div>
     </div>
   </div>
 
-  <div>
-    <div>
+  <div class="form-group">
+    <div class="form-label">
       <label>Organization Avatar</label>
-      <p>Should be at max 104px square</p>
+      <span>Should be at max 104px square</span>
     </div>
     <div>
-      <a (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose</a>
+      <button class="btn btn-grey -slim"
+              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose</button>
       <div>
-        <img *ngIf="organizationForm.value.field_org_avatar.file" [src]="organizationForm.value.field_org_avatar.file">
+        <img *ngIf="organizationForm.value.field_org_avatar.file"
+             [src]="organizationForm.value.field_org_avatar.file">
       </div>
     </div>
   </div>
 
-  <div>
-    <label>Contact email</label>
-    <input type="text" formControlName="field_orgs_contact">
+  <div class="form-group">
+    <div class="form-label">
+      <label>Social Channels</label>
+    </div>
   </div>
 
-  <div>
-    <label>Phone</label>
-    <input type="number" formControlName="field_orgs_phone">
+  <div class="form-group">
+    <div class="form-label">
+      <label for="website">Website</label>
+    </div>
+    <div class="form-ctl">
+      <input type="url"
+             placeholder="http://"
+             id="website"
+             formControlName="field_orgs_contact">
+    </div>
   </div>
 
-  <div>
-    <label>Founder Name</label>
-    <input type="text" formControlName="field_founder_name">
+  <div class="form-group">
+    <div class="form-label">
+      <label>Contact email</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             formControlName="field_orgs_contact">
+    </div>
   </div>
 
-  <div formGroupName="field_founded_date">
-    <label>Founded Date</label>
-    <input type="number" formControlName="date">
+  <div class="form-group">
+    <div class="form-label">
+      <label for="phone">Phone</label>
+    </div>
+    <div class="form-ctl">
+      <input type="tel"
+             id="phone"
+             formControlName="field_orgs_phone">
+    </div>
   </div>
 
-  <div>
-    <label>Type of Business</label>
-    <input type="text" formControlName="field_type_of_business">
+  <div class="form-group">
+    <div class="form-label">
+      <label for="founder_name">Founder Name</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             placeholder="Enter name here"
+             id="founder_name"
+             formControlName="field_founder_name">
+    </div>
   </div>
 
-  <div>
-    <label>Display only after there are more than</label>
-    <input type="number" formControlName="field_minimum_number_of_follower">
+  <div class="form-group"
+       formGroupName="field_founded_date">
+    <div class="form-label">
+      <label for="founded_date">Founded Date</label>
+    </div>
+    <div class="form-ctl">
+      <input type="number"
+             max=""
+             id="founded_date"
+             formControlName="date">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="business_type">Type of Business</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             id="business_type"
+             formControlName="field_type_of_business">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label>Display only after there are more than</label>
+    </div>
+    <div class="form-ctl">
+      <input type="number" formControlName="field_minimum_number_of_follower">
+    </div>
   </div> 
 
   <div formGroupName="field_orgs_address">
     <label>Country</label>
-    <input type="text" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
+    <input type="text" formControlName="countryName" [inputFormatter]="formatter" [ngbTypeahead]="searchCountry" [resultTemplate]="countryrt" (selectItem)="getCountryDetails($event.item)">
     <div *ngIf="selectedCountry">
 
       <div>
@@ -157,14 +247,17 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <!--Cover image modal-->
 <ng-template #imagemodal let-c="close" let-d="dismiss">
   <div class="upload-image-modal">
     <div class="modal-header">
-      <button type="button" class="close ml-auto" #closebtn aria-label="Close" (click)="d('Cross click')">
+      <button type="button"
+              class="close ml-auto"
+              #closebtn
+              aria-label="Close"
+              (click)="d('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -181,22 +274,28 @@
     </div>
     <div class="modal-body">
       <div class="container">
-        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+        <div [hidden]="imageModalTab != 'upload'" ng2FileDrop
+             (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
           <div>
-            <img *ngIf="!imageData.original" src="./assets/images/icons/Photos Icon.png">
-            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData" [settings]="cropperSettings"></img-cropper>
+            <img *ngIf="!imageData.original"
+                 src="./assets/images/icons/Photos Icon.png">
+            <img-cropper [hidden]="!imageData.original" #imagecropper [image]="imageData"
+                         [settings]="cropperSettings"></img-cropper>
             <a (click)="file.click()">
-              <span *ngIf="!imageData.original">Choose</span>
-              <span *ngIf="imageData.original">Choose a Different Photo</span>
-              <input [hidden]="true" type="file" #file (change)="uploadBtn($event.target.files[0], imagecropper)">
+              <span *ngIf="imageData.original">{{imageData.original ? 'Choose a Different Photo' : 'Choose'}}</span>
+              <input [hidden]="true"
+                     type="file" #file
+                     (change)="uploadBtn($event.target.files[0], imagecropper)">
             </a>
           </div>
         </div>
-        <app-file-browser *ngIf="imageModalTab == 'filemanager'" (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
+        <app-file-browser *ngIf="imageModalTab == 'filemanager'"
+                          (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
       </div>
     </div>
     <div class="modal-footer">
-      <button *ngIf="imageModalTab == 'upload'" (click)="imageUpdated(closebtn, file.files[0])">Save
+      <button *ngIf="imageModalTab == 'upload'"
+              (click)="imageUpdated(closebtn, file.files[0])">Save
       </button>
     </div>
   </div>
