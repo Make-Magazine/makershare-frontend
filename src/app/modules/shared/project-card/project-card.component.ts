@@ -11,6 +11,7 @@ import { NgbModal, NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from '../../auth0/auth.service';
 import { ViewService, UserService, NodeService, MainService } from '../../../core/d7services';
 
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -194,43 +195,46 @@ export class ProjectCardComponent implements OnInit {
       this.emitFeatured();
     });
   }
-  checkIfHasOrg(){
+  checkIfHasOrg() {
     let body = {
       "uid": this.userId
     }
     this.mainService.custompost('company_profile_api/my_org_profile', body).subscribe(res => {
       this.org_data = res[0];
-      this.checkProjectInOrg();
+      if (this.org_data) {
+        this.checkProjectInOrg();
+      }
     })
   }
   setProjectonOrgs() {
-    
+
     let data =
       {
         "org_nid": this.org_data.nid,
         "project_nid": this.nid,
         "project_uid": this.userId
       };
-   
+
     this.mainService.custompost('company_profile_api/add_project_orgs', data).subscribe(res => {
-    
-      if(res[0] == 'add'){
+
+      if (res[0] == 'add') {
         this.inOrg = true;
-      }else {
+      } else {
         this.inOrg = false;
       }
     })
   }
 
-  checkProjectInOrg(){
-    let data = {
+  checkProjectInOrg() {
+    if (this.auth.authenticated()) {
+      let data = {
         "org_nid": this.org_data.nid,
         "project_nid": this.nid,
-        "project_uid": this.userId      
+        "project_uid": this.userId
+      }
+      this.mainService.custompost('company_profile_api/check_project_orgs', data).subscribe(res => {
+        this.inOrg = res[0]
+      })
     }
-    this.mainService.custompost('company_profile_api/check_project_orgs', data).subscribe(res => {
-      this.inOrg = res[0]
-    })
-
   }
 }
