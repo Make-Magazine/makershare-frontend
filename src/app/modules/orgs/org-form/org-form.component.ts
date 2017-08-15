@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Organization, EntityProxy, FileEntity, NodeHelper, Singleton } from '../../../core/models';
+import { Organization, EntityProxy, FileEntity, NodeHelper, Singleton, FC_MakerMembership } from '../../../core/models';
 import { FileService, NodeService, MainService } from '../../../core/d7services';
 
 @Component({
@@ -44,8 +44,9 @@ export class OrgFormComponent implements OnInit {
 
   convertToForm(nid: number) {
     var tasks = [];
+    var getOrganization;
     this.nodeService.getNode(nid).subscribe(org => {
-      console.log(org);
+      getOrganization = org;
       const organization = <Organization>this.organizationProxy.entity;
       Object.keys(organization).forEach(key => {
         let field = organization.getField(key);
@@ -88,25 +89,69 @@ export class OrgFormComponent implements OnInit {
           field.updateValue(org[key].und[0]);
         }else if (key == 'field_social_accounts') {
           tasks.push(this.mainService.get('entity_field_collection_item', org[key].und[0].value));
+        }else if (key == 'field_maker_memberships') {
+          org[key].und.forEach(element => {
+            tasks.push(this.mainService.get('entity_field_collection_item', element.value));
+          });
         }
       });
     }, err=>console.log(err),()=>{
       let source = Observable.forkJoin(tasks);
       source.subscribe(x=>{
+        var index = 0;
+        var members = [];
+        if(getOrganization['field_maker_memberships'].und) {
+          getOrganization['field_maker_memberships'].und.forEach(element => {
+            let member = new FC_MakerMembership();
+            if(x[index]['field_team_member'].und) {
+              let ID = x[index]['field_team_member'].und[0].target_id;
+              member.updateField("field_team_member", ID);
+            }
+            console.log(x[index]['field_anonymous_member_name']);
+            if(x[index]['field_anonymous_member_name'].und) {
+              let name = x[index]['field_anonymous_member_name'].und[0].value;
+              member.updateField("field_anonymous_member_name", name);
+            }
+            member.updateField('field_membership_role', x[index]['field_membership_role'].und[0].value);
+            members.push(member);
+            index++;
+          });
+        }
         let field = this.organizationProxy.entity.getField('field_social_accounts');
         Object.keys(field).forEach(key => {
           const subField = field.getField(key);
-          if(!x[0][key] || !x[0][key].und) {
+          if(!x[index][key] || !x[index][key].und) {
             return;
           }
-          subField.updateValue(x[0][key].und[0].value);
+          subField.updateValue(x[index][key].und[0].value);
         });
-      },err=>{console.log(err)},()=>{
-        console.log(this.organizationProxy.entity);
-        this.buildForm();
-        this.organizationReady = true;
+        this.getUsernamesAndSetValue(members);
       });
     });
+  }
+
+  getUsernamesAndSetValue(members: FC_MakerMembership[]) {
+    var tasks = [];
+    members.forEach(element => {
+      if(element.getField("field_team_member").target_id) {
+        tasks.push(this.mainService.get('user', element.getField("field_team_member").target_id));
+      }
+    });
+    Observable.forkJoin(tasks).subscribe(data=>{
+      var index = 0;
+      members.forEach(element => {
+        if(element.getField("field_team_member").target_id) {
+          let usernameWithID = data[index]['name'] + ' (' + data[index]['uid'] + ')';
+          element.updateField("field_team_member", usernameWithID);
+          index++;
+        }
+      });
+      this.organizationProxy.entity.setField("field_maker_memberships", members);
+    },err=> {},()=>{
+      console.log(this.organizationProxy.entity);
+      this.buildForm();
+      this.organizationReady = true;
+    })
   }
 
   buildForm() {
