@@ -26,8 +26,8 @@ export abstract class FieldCollectionItem extends DrupalCustomField {
     return [this];
   }
 
-  updateValue(item_id: number) {
-    this.item_id = item_id;
+  updateValue(value) {
+    this.item_id = value;
   }
 
   abstract initFields();

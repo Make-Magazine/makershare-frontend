@@ -33,7 +33,7 @@ export class OrgsProjectsComponent implements OnInit {
       this.nodeService.getIdFromUrl(this.path, 'company_profile').subscribe(id => {
         this.nid = id[0]
         if (this.nid) {
-          this.getProjects(false); 
+          this.getProjects(false);
           this.orgsProjectsCount();
         }
       })
@@ -44,15 +44,17 @@ export class OrgsProjectsComponent implements OnInit {
     if (more) this.pages++;
     this.viewServcie.getView('orgs-projects', [['page', this.pages], ['nid', this.nid]]).subscribe(data => {
       this.projects = this.projects.concat(data);
-      this.company_views = data[0].org_views;
-      this.showloadmoreProject = (this.projectsCount <= this.projects.length) ? false : true;
-         if (this.LoggedInUserID != data[0].uid) {
-      this.statisticsService
-        .view_record(data[0].company_nid, 'node')
-        .subscribe();
-    }
+      if (this.projects.length>0) {
+        this.company_views = data[0].org_views;
+        this.showloadmoreProject = (this.projectsCount <= this.projects.length) ? false : true;
+        if (this.LoggedInUserID != data[0].uid) {
+          this.statisticsService
+            .view_record(data[0].company_nid, 'node')
+            .subscribe();
+        }
+      }
     })
- 
+
   }
   orgsProjectsCount() {
     let body = {
