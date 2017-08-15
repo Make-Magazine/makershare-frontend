@@ -262,7 +262,6 @@ export class OrgFormComponent implements OnInit {
         sub_premise: [this.organizationProxy.field_orgs_address.sub_premise],
         thoroughfare: [
           this.organizationProxy.field_orgs_address.thoroughfare,
-          Validators.required,
         ],
         administrative_area: [
           this.organizationProxy.field_orgs_address.administrative_area,
