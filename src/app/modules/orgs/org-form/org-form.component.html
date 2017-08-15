@@ -31,15 +31,17 @@
         </div>
         <div class="col-md-4 mt-4 mb-2 tac">
           <button class="btn btn-grey"
+                  [ngClass]="{'disabled':!orgFormValid}"
                   (click)="publishButtonClick()">Publish
           </button>
-          <!--[ngClass]="{'disabled':!orgFormValid}"-->
         </div>
       </div>
     </div>
 
     <div *ngIf="organizationReady">
       <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
+                               (CanNavigate)="CanNavigate = $event"
+                               (orgFormValid)="orgFormValid = $event"
                                [organizationForm]="organizationForm"></app-org-form-basic-info>
       <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
                              [organizationForm]="organizationForm"

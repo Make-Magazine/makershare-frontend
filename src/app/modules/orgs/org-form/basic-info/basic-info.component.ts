@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2FileDropAcceptedFile } from 'ng2-file-drop';
@@ -14,6 +14,9 @@ import { KeyValueObject } from '../../../../core/models/object/key-value-object'
 })
 export class BasicInfoComponent implements OnInit {
   @Input() organizationForm: FormGroup;
+  @Output() orgFormValid = new EventEmitter();
+  @Output() CanNavigate = new EventEmitter();
+  @Output() emitter = new EventEmitter();
 
   currentPhotoModalTab: 'upload' | 'filemanager' = 'upload';
   imageData: any;
@@ -37,6 +40,11 @@ export class BasicInfoComponent implements OnInit {
   ngOnInit() {
     this.setCropperSettings();
     this.getCountries();
+
+    this.organizationForm.valueChanges.subscribe(data => {
+      this.onValueChanged();
+    });
+    this.onValueChanged();
   }
 
   formatter = x => {
@@ -44,7 +52,6 @@ export class BasicInfoComponent implements OnInit {
   };
 
   searchCountry(text$: Observable<string>) {
-    console.log(text$);
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
@@ -61,6 +68,22 @@ export class BasicInfoComponent implements OnInit {
         }
         return [];
       });
+  }
+
+  onValueChanged() {
+    this.emitValues();
+  }
+
+  emitValues() {
+    this.orgFormValid.emit(
+      this.organizationForm['controls']['title'].valid
+    );
+
+    if (this.organizationForm.dirty && this.organizationForm.touched) {
+      this.CanNavigate.emit(false);
+    }
+
+    this.emitter.emit(/*this.tags*/);
   }
 
   updateType(newType: string) {
