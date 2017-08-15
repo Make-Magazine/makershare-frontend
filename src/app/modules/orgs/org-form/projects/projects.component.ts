@@ -19,7 +19,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getUserProjects() {
-    let uid = +localStorage.getItem('user_id');
+    const uid = +localStorage.getItem('user_id');
     this.viewService
       .getView('profile_projects_grid', [['uid', uid]])
       .subscribe(data => {

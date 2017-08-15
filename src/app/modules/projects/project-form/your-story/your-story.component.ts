@@ -84,290 +84,14 @@ export class YourStoryComponent implements OnInit {
   all_categories: ProjectCategory[];
   currentPhotoModalTab: string;
 
-  //image cropper
+  // image cropper
   cropperSettings: CropperSettings;
   imageData: any;
   sanitizethis;
   show_video;
 
-  constructor(
-    private fb: FormBuilder,
-    private viewService: ViewService,
-    private modalService: NgbModal,
-    private config: NgbTooltipConfig,
-  ) {
-    this.SetCropperSettings();
-    this.config.placement = 'right';
-    this.config.triggers = 'hover';
-  }
-
-  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
-    this.UploadBtn(acceptedFile.file, cropper);
-  }
-
-  SelectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
-    this.imageData = {};
-    this.currentPhotoModalTab = 'upload';
-    closebtn.click();
-    this.cover_image.file = file['url'];
-    this.cover_image.fid = file['fid'];
-  }
-
   /**
-   * on loading the component we will assign the printable variables to the parent printable variables
-   * also we will build our form
-   * and getting base details as categories 
-   * 
-   */
-  ngOnInit() {
-    this.currentPhotoModalTab = 'upload';
-    this.cover_image = this.FormPrintableValues.cover_image;
-    this.tags = this.FormPrintableValues.tags;
-    this.buildForm();
-    this.viewService
-      .getView('projects_categories')
-      .subscribe((categories: ProjectCategory[]) => {
-        this.all_categories = categories;
-        categories.forEach((element, index) => {
-          if (element.parent_tid) {
-            this.project_categories_childs.push(element);
-          } else {
-            this.project_categories_parents.push(element);
-          }
-        });
-      });
-    // this.meta.setTitle(`Create Project | Maker Share`);
-    // this.meta.setTag('og:image', '/assets/logo.png');
-    // this.meta.setTag('og:description', ' Create Project ');
-    setTimeout(function() {
-      //  $("html,body").animate({scrollTop: 0}, "slow");
-    }, 0);
-  }
-
-  /**
-   * when building the form we must assign the default value which is received from the parent and building the form with Validators
-   * onValueChanged is used in two ways :
-   * 1- for the hole form to check for validation error messages
-   * 2- foreach control in the form to get the valid values only and save them to project object or emit them to the parent component
-   */
-  buildForm(): void {
-    this.YourStoryForm = this.fb.group({
-      title: [
-        this.project.title,
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(50),
-          CustomValidators.notEqual('Untitled'),
-          CustomValidators.notEqual('untitled'),
-        ],
-      ],
-      field_teaser: [
-        this.project.field_teaser.und[0].value,
-        [Validators.required, Validators.maxLength(250)],
-      ],
-      field_cover_photo: [this.cover_image, [Validators.required]],
-      field_show_tell_video: [
-        this.project.field_show_tell_video.und[0].value,
-        [URLNoProtocol(), YoutubeOrVimeoLink()],
-      ],
-      field_show_tell_video_as_default: [
-        this.project.field_show_tell_video_as_default.und &&
-        this.project.field_show_tell_video_as_default.und[0].value == 1
-          ? 1
-          : null,
-      ],
-      field_aha_moment: [this.project.field_aha_moment.und[0].value, []],
-      field_uh_oh_moment: [this.project.field_uh_oh_moment.und[0].value, []],
-      field_story: [
-        this.project.field_story.und[0].value,
-        [Validators.required],
-      ],
-      field_tags: [this.tags],
-      field_categories: [
-        this.project.field_categories.und,
-        [Validators.required],
-      ],
-      field_creation_date: [
-        this.project.field_creation_date.und[0].value.date,
-        [Validators.required, UsaDate()],
-      ],
-    });
-    this.YourStoryForm.valueChanges.subscribe(data => {
-      this.onValueChanged(data);
-    });
-    this.onValueChanged(this.YourStoryForm.value);
-    for (let index in this.YourStoryForm.controls) {
-      const control = this.YourStoryForm.controls[index];
-      control.valueChanges.subscribe(value => {
-        if (
-          value != 0 &&
-          value != 1 &&
-          (NodeHelper.isEmpty(value) || !control.valid)
-        ) {
-          this.SetControlValue('', index);
-        } else {
-          this.SetControlValue(value, index);
-        }
-      });
-    }
-  }
-
-  EmitValues() {
-    this.StoryFormValid.emit(
-      this.YourStoryForm['controls']['title'].valid &&
-        this.YourStoryForm['controls']['field_teaser'].valid &&
-        this.cover_image.file &&
-        this.project.field_categories.und.length > 0 &&
-        this.YourStoryForm['controls']['field_story'].valid,
-    );
-
-    if (this.YourStoryForm.dirty && this.YourStoryForm.touched) {
-      this.CanNavigate.emit(false);
-    }
-
-    this.emitter.emit(this.tags);
-  }
-
-  /**
-   * setting control values
-   * this function will set the value to the project property
-   * @param value : the value to be setted in the project property
-   * @param index : the field name of the property
-   */
-  SetControlValue(value: any, index: string) {
-    let field = this.project[index];
-    if (typeof field === 'string') {
-      this.project[index] = value;
-    } else if (field.und[0] && typeof field.und[0] === 'object') {
-      if (index == 'field_creation_date') {
-        this.project[index].und[0]['value'].date = value;
-      } else {
-        this.project[index].und[0].value = value;
-      }
-    } else if (index != 'field_tags') {
-      value
-        ? (this.project[index].und = value)
-        : (this.project[index].und = []);
-    }
-  }
-
-  /**
-   * this function will watch for the new changes in cover_image field and set the values after converting the file to base64
-   * its better if we used custom validator so we can remove the error check here "need works"
-   * @param event the selected file object
-   */
-  ImageUpdated(closebtn: HTMLButtonElement) {
-    closebtn.click();
-    delete this.cover_image.fid;
-    this.cover_image.file = '';
-    this.formErrors.field_cover_photo = '';
-    if (!NodeHelper.isEmpty(this.imageData)) {
-      this.cover_image.file = this.imageData.image;
-      this.imageData = {};
-      this.EmitValues();
-    }
-    if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
-      this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;
-    }
-  }
-
-  /**
-   * a function to check the validation for each control and set the error messages to formerrors from messages array
-   * @param data : the data to be checked but its not required in our case
-   * this data will be helpfull if we need to make any change to the value before setting the error
-   */
-  onValueChanged(data?: any) {
-    this.EmitValues();
-    if (!this.YourStoryForm) {
-      return;
-    }
-    const form = this.YourStoryForm;
-    for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
-        const messages = this.validationMessages[field];
-        for (const key in control.errors) {
-          this.formErrors[field] += messages[key] + ' ';
-        }
-      }
-    }
-  }
-
-  RemoveCategory(CategoryId: number, CategoryParentId: number): void {
-    this.project.field_categories.und.splice(
-      this.project.field_categories.und.indexOf(CategoryId),
-      1,
-    );
-    var flag = false;
-    this.project.field_categories.und.forEach((category, index) => {
-      let catIndex = this.all_categories
-        .map(element => element.tid)
-        .indexOf(category);
-      if (this.all_categories[catIndex].parent_tid == CategoryParentId) {
-        flag = true;
-        return;
-      }
-    });
-    if (!flag) {
-      this.project.field_categories.und.splice(
-        this.project.field_categories.und.indexOf(CategoryParentId),
-        1,
-      );
-    }
-    this.EmitValues();
-  }
-
-  /**
-   * handling selection of categories
-   * @param tid : selected term id 
-   * @param mode : parent or child selection
-   */
-  SelectTerm(tid: number, mode: string) {
-    if (mode == 'parent') {
-      this.child_categories = [];
-      this.current_parent_category = tid;
-      this.project_categories_childs.forEach((element, index) => {
-        if (
-          element.parent_tid == this.current_parent_category &&
-          this.project.field_categories.und.indexOf(element.tid) == -1
-        ) {
-          this.child_categories.push(element);
-        }
-      });
-    } else {
-      this.current_child_category = tid;
-    }
-  }
-
-  /**
-   * pushing the selected categories to project categories field and check for dublication
-   */
-  SetCategories(ParentCategoryElement: HTMLSelectElement) {
-    ParentCategoryElement.value = '_none_';
-    if (
-      this.project.field_categories.und.indexOf(this.current_parent_category) ==
-      -1
-    ) {
-      this.project.field_categories.und.push(this.current_parent_category);
-    }
-    if (
-      this.project.field_categories.und.indexOf(this.current_child_category) ==
-      -1
-    ) {
-      this.project.field_categories.und.push(this.current_child_category);
-    }
-    this.YourStoryForm.controls['field_categories'].patchValue(
-      this.project.field_categories.und,
-    );
-    delete this.current_parent_category;
-    delete this.current_child_category;
-  }
-
-  /**
-   * an object to store the error messages for each field 
+   * an object to store the error messages for each field
    * this is usefull if we has multiple errors for each field
    */
   formErrors = {
@@ -493,6 +217,281 @@ export class YourStoryComponent implements OnInit {
     },
   };
 
+  constructor(
+    private fb: FormBuilder,
+    private viewService: ViewService,
+    private modalService: NgbModal,
+    private config: NgbTooltipConfig,
+  ) {
+    this.SetCropperSettings();
+    this.config.placement = 'right';
+    this.config.triggers = 'hover';
+  }
+
+  dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
+    this.UploadBtn(acceptedFile.file, cropper);
+  }
+
+  SelectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
+    this.imageData = {};
+    this.currentPhotoModalTab = 'upload';
+    closebtn.click();
+    this.cover_image.file = file['url'];
+    this.cover_image.fid = file['fid'];
+  }
+
+  /**
+   * on loading the component we will assign the printable variables to the parent printable variables
+   * also we will build our form
+   * and getting base details as categories
+   */
+  ngOnInit() {
+    this.currentPhotoModalTab = 'upload';
+    this.cover_image = this.FormPrintableValues.cover_image;
+    this.tags = this.FormPrintableValues.tags;
+    this.buildForm();
+    this.viewService
+      .getView('projects_categories')
+      .subscribe((categories: ProjectCategory[]) => {
+        this.all_categories = categories;
+        categories.forEach((element, index) => {
+          if (element.parent_tid) {
+            this.project_categories_childs.push(element);
+          } else {
+            this.project_categories_parents.push(element);
+          }
+        });
+      });
+    // this.meta.setTitle(`Create Project | Maker Share`);
+    // this.meta.setTag('og:image', '/assets/logo.png');
+    // this.meta.setTag('og:description', ' Create Project ');
+    setTimeout(function() {
+      //  $("html,body").animate({scrollTop: 0}, "slow");
+    }, 0);
+  }
+
+  /**
+   * when building the form we must assign the default value which is received from the parent and building the form with Validators
+   * onValueChanged is used in two ways :
+   * 1- for the hole form to check for validation error messages
+   * 2- foreach control in the form to get the valid values only and save them to project object or emit them to the parent component
+   */
+  buildForm(): void {
+    this.YourStoryForm = this.fb.group({
+      title: [
+        this.project.title,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(50),
+          CustomValidators.notEqual('Untitled'),
+          CustomValidators.notEqual('untitled'),
+        ],
+      ],
+      field_teaser: [
+        this.project.field_teaser.und[0].value,
+        [Validators.required, Validators.maxLength(250)],
+      ],
+      field_cover_photo: [this.cover_image, [Validators.required]],
+      field_show_tell_video: [
+        this.project.field_show_tell_video.und[0].value,
+        [URLNoProtocol(), YoutubeOrVimeoLink()],
+      ],
+      field_show_tell_video_as_default: [
+        this.project.field_show_tell_video_as_default.und &&
+        this.project.field_show_tell_video_as_default.und[0].value == 1
+          ? 1
+          : null,
+      ],
+      field_aha_moment: [this.project.field_aha_moment.und[0].value, []],
+      field_uh_oh_moment: [this.project.field_uh_oh_moment.und[0].value, []],
+      field_story: [
+        this.project.field_story.und[0].value,
+        [Validators.required],
+      ],
+      field_tags: [this.tags],
+      field_categories: [
+        this.project.field_categories.und,
+        [Validators.required],
+      ],
+      field_creation_date: [
+        this.project.field_creation_date.und[0].value.date,
+        [Validators.required, UsaDate()],
+      ],
+    });
+    this.YourStoryForm.valueChanges.subscribe(data => {
+      this.onValueChanged(data);
+    });
+    this.onValueChanged(this.YourStoryForm.value);
+    for (const index in this.YourStoryForm.controls) {
+      const control = this.YourStoryForm.controls[index];
+      control.valueChanges.subscribe(value => {
+        if (
+          value != 0 &&
+          value != 1 &&
+          (NodeHelper.isEmpty(value) || !control.valid)
+        ) {
+          this.SetControlValue('', index);
+        } else {
+          this.SetControlValue(value, index);
+        }
+      });
+    }
+  }
+
+  EmitValues() {
+    this.StoryFormValid.emit(
+      this.YourStoryForm['controls']['title'].valid &&
+        this.YourStoryForm['controls']['field_teaser'].valid &&
+        this.cover_image.file &&
+        this.project.field_categories.und.length > 0 &&
+        this.YourStoryForm['controls']['field_story'].valid,
+    );
+
+    if (this.YourStoryForm.dirty && this.YourStoryForm.touched) {
+      this.CanNavigate.emit(false);
+    }
+
+    this.emitter.emit(this.tags);
+  }
+
+  /**
+   * setting control values
+   * this function will set the value to the project property
+   * @param value : the value to be setted in the project property
+   * @param index : the field name of the property
+   */
+  SetControlValue(value: any, index: string) {
+    const field = this.project[index];
+    if (typeof field === 'string') {
+      this.project[index] = value;
+    } else if (field.und[0] && typeof field.und[0] === 'object') {
+      if (index == 'field_creation_date') {
+        this.project[index].und[0]['value'].date = value;
+      } else {
+        this.project[index].und[0].value = value;
+      }
+    } else if (index != 'field_tags') {
+      value
+        ? (this.project[index].und = value)
+        : (this.project[index].und = []);
+    }
+  }
+
+  /**
+   * this function will watch for the new changes in cover_image field and set the values after converting the file to base64
+   * its better if we used custom validator so we can remove the error check here "need works"
+   * @param event the selected file object
+   */
+  ImageUpdated(closebtn: HTMLButtonElement) {
+    closebtn.click();
+    delete this.cover_image.fid;
+    this.cover_image.file = '';
+    this.formErrors.field_cover_photo = '';
+    if (!NodeHelper.isEmpty(this.imageData)) {
+      this.cover_image.file = this.imageData.image;
+      this.imageData = {};
+      this.EmitValues();
+    }
+    if (!this.cover_image.file && !this.formErrors.field_cover_photo) {
+      this.formErrors.field_cover_photo = this.validationMessages.field_cover_photo.notvalidformat;
+    }
+  }
+
+  /**
+   * a function to check the validation for each control and set the error messages to formerrors from messages array
+   * @param data : the data to be checked but its not required in our case
+   * this data will be helpfull if we need to make any change to the value before setting the error
+   */
+  onValueChanged(data?: any) {
+    this.EmitValues();
+    if (!this.YourStoryForm) {
+      return;
+    }
+    const form = this.YourStoryForm;
+    for (const field in this.formErrors) {
+      // clear previous error message (if any)
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
+        }
+      }
+    }
+  }
+
+  RemoveCategory(CategoryId: number, CategoryParentId: number): void {
+    this.project.field_categories.und.splice(
+      this.project.field_categories.und.indexOf(CategoryId),
+      1,
+    );
+    let flag = false;
+    this.project.field_categories.und.forEach((category, index) => {
+      const catIndex = this.all_categories
+        .map(element => element.tid)
+        .indexOf(category);
+      if (this.all_categories[catIndex].parent_tid == CategoryParentId) {
+        flag = true;
+        return;
+      }
+    });
+    if (!flag) {
+      this.project.field_categories.und.splice(
+        this.project.field_categories.und.indexOf(CategoryParentId),
+        1,
+      );
+    }
+    this.EmitValues();
+  }
+
+  /**
+   * handling selection of categories
+   * @param tid : selected term id
+   * @param mode : parent or child selection
+   */
+  SelectTerm(tid: number, mode: string) {
+    if (mode == 'parent') {
+      this.child_categories = [];
+      this.current_parent_category = tid;
+      this.project_categories_childs.forEach((element, index) => {
+        if (
+          element.parent_tid == this.current_parent_category &&
+          this.project.field_categories.und.indexOf(element.tid) == -1
+        ) {
+          this.child_categories.push(element);
+        }
+      });
+    } else {
+      this.current_child_category = tid;
+    }
+  }
+
+  /**
+   * pushing the selected categories to project categories field and check for dublication
+   */
+  SetCategories(ParentCategoryElement: HTMLSelectElement) {
+    ParentCategoryElement.value = '_none_';
+    if (
+      this.project.field_categories.und.indexOf(this.current_parent_category) ==
+      -1
+    ) {
+      this.project.field_categories.und.push(this.current_parent_category);
+    }
+    if (
+      this.project.field_categories.und.indexOf(this.current_child_category) ==
+      -1
+    ) {
+      this.project.field_categories.und.push(this.current_child_category);
+    }
+    this.YourStoryForm.controls['field_categories'].patchValue(
+      this.project.field_categories.und,
+    );
+    delete this.current_parent_category;
+    delete this.current_child_category;
+  }
+
   SetCropperSettings(): void {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 800;
@@ -512,10 +511,12 @@ export class YourStoryComponent implements OnInit {
   }
 
   UploadBtn(file, cropper) {
-    if (!file) return;
-    var image: any = new Image();
+    if (!file) {
+      return;
+    }
+    const image: any = new Image();
     this.cover_image.filename = file.name;
-    var myReader: FileReader = new FileReader();
+    const myReader: FileReader = new FileReader();
     myReader.onloadend = function(loadEvent: any) {
       image.src = loadEvent.target.result;
       cropper.setImage(image);

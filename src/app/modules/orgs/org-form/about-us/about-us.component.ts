@@ -12,8 +12,8 @@ export class AboutUsComponent implements OnInit {
   @Input() organizationForm: FormGroup;
   @Input() organizationProxy: EntityProxy;
   team: {
-    usernameOrUID: string | number,
-    anonymous: boolean
+    usernameOrUID: string | number;
+    anonymous: boolean;
   }[] = [];
   selectedUser;
   searchFailed: boolean = false;
@@ -25,10 +25,15 @@ export class AboutUsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const field_maker_memberships = <FormArray>this.organizationForm.controls.field_maker_memberships;
-    if(field_maker_memberships.length == 0) {
+    const field_maker_memberships = <FormArray>this.organizationForm.controls
+      .field_maker_memberships;
+    if (field_maker_memberships.length == 0) {
       const organization = <Organization>this.organizationProxy.entity;
-      const members = organization.getField("field_maker_memberships", null, true);
+      const members = organization.getField(
+        'field_maker_memberships',
+        null,
+        true,
+      );
       members.forEach(element => {
         this.addRow(element);
       });
@@ -70,9 +75,10 @@ export class AboutUsComponent implements OnInit {
   };
 
   setSelectedUsers() {
-    const field_maker_memberships = this.organizationForm.value.field_maker_memberships;
+    const field_maker_memberships = this.organizationForm.value
+      .field_maker_memberships;
     field_maker_memberships.forEach((member, index) => {
-      if(NodeHelper.isEmpty(member)) {
+      if (NodeHelper.isEmpty(member)) {
         return;
       }
       this.addSelectedUser(member);
@@ -80,19 +86,20 @@ export class AboutUsComponent implements OnInit {
   }
 
   addSelectedUser(user) {
-    var usernameOrUID;
-    var anonymous = false;
-    if(user.field_anonymous_member_name) {
+    let usernameOrUID;
+    let anonymous = false;
+    if (user.field_anonymous_member_name) {
       usernameOrUID = user.field_anonymous_member_name;
       anonymous = true;
     } else {
-      usernameOrUID = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(user.field_team_member);
+      usernameOrUID = NodeHelper.GetUserIDFromFieldReferenceAutoComplete(
+        user.field_team_member,
+      );
     }
-    let member = {
+    this.team.push({
       usernameOrUID: usernameOrUID,
       anonymous: anonymous,
-    };
-    this.team.push(member);
+    });
   }
 
   addRow(data?) {
@@ -100,7 +107,9 @@ export class AboutUsComponent implements OnInit {
     this.fixFormReady = false;
     this.searchFailed = false;
     delete this.selectedUser;
-    const control = <FormArray>this.organizationForm.controls['field_maker_memberships'];
+    const control = <FormArray>this.organizationForm.controls[
+      'field_maker_memberships'
+    ];
     const addrCtrl = this.initRow(data);
     control.push(addrCtrl);
     setTimeout(function() {
@@ -109,9 +118,12 @@ export class AboutUsComponent implements OnInit {
   }
 
   setMember() {
-    const field_maker_memberships = <FormArray>this.organizationForm.controls['field_maker_memberships'];
-    let lastIndex = field_maker_memberships.length - 1;
-    let nameWithID = this.selectedUser.username + ' (' + this.selectedUser.uid + ')';
+    const field_maker_memberships = <FormArray>this.organizationForm.controls[
+      'field_maker_memberships'
+    ];
+    const lastIndex = field_maker_memberships.length - 1;
+    const nameWithID =
+      this.selectedUser.username + ' (' + this.selectedUser.uid + ')';
     const lastControl = <FormGroup>field_maker_memberships.controls[lastIndex];
     lastControl.controls.field_team_member.setValue(nameWithID);
     this.addSelectedUser(lastControl.value);
@@ -119,8 +131,10 @@ export class AboutUsComponent implements OnInit {
   }
 
   setAnonymous(name) {
-    const field_maker_memberships = <FormArray>this.organizationForm.controls['field_maker_memberships'];
-    let lastIndex = field_maker_memberships.length - 1;
+    const field_maker_memberships = <FormArray>this.organizationForm.controls[
+      'field_maker_memberships'
+    ];
+    const lastIndex = field_maker_memberships.length - 1;
     const lastControl = <FormGroup>field_maker_memberships.controls[lastIndex];
     lastControl.controls.field_anonymous_member_name.setValue(name);
     this.addSelectedUser(lastControl.value);
@@ -129,9 +143,16 @@ export class AboutUsComponent implements OnInit {
 
   initRow(data?) {
     return this.formBuilder.group({
-      field_anonymous_member_name: [data? data.getField('field_anonymous_member_name').value: '', ],
-      field_team_member: [data? data.getField('field_team_member').target_id: '', ],
-      field_membership_role: [data? data.getField('field_membership_role').value: '', Validators.maxLength(140)],
+      field_anonymous_member_name: [
+        data ? data.getField('field_anonymous_member_name').value : '',
+      ],
+      field_team_member: [
+        data ? data.getField('field_team_member').target_id : '',
+      ],
+      field_membership_role: [
+        data ? data.getField('field_membership_role').value : '',
+        Validators.maxLength(140),
+      ],
     });
   }
 

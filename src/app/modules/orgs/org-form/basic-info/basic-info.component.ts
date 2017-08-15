@@ -139,7 +139,7 @@ export class BasicInfoComponent implements OnInit {
    * @returns {CropperSettings}
    */
   cropperSettingsFactory() {
-    let cropperSettings = new CropperSettings();
+    const cropperSettings = new CropperSettings();
     cropperSettings.width = 800;
     cropperSettings.height = 450;
     cropperSettings.minWidth = 800;
@@ -171,9 +171,9 @@ export class BasicInfoComponent implements OnInit {
       .getView<KeyValueObject>('maker_address_api')
       .subscribe(countries => {
         this.countries = countries;
-        let countryKey = this.organizationForm.value.field_orgs_address.country;
+        const countryKey = this.organizationForm.value.field_orgs_address.country;
         if (countryKey) {
-          let index = countries.map(element => element.key).indexOf(countryKey);
+          const index = countries.map(element => element.key).indexOf(countryKey);
           this.getCountryDetails(countries[index]);
         }
       });
@@ -221,9 +221,11 @@ export class BasicInfoComponent implements OnInit {
    * @param cropper
    */
   uploadBtn(file, cropper) {
-    if (!file) return;
-    let image: any = new Image();
-    let myReader: FileReader = new FileReader();
+    if (!file) {
+      return;
+    }
+    const image: any = new Image();
+    const myReader: FileReader = new FileReader();
     myReader.onloadend = function(loadEvent: any) {
       image.src = loadEvent.target.result;
       cropper.setImage(image);
@@ -251,7 +253,9 @@ export class BasicInfoComponent implements OnInit {
    */
   imageUpdated(closebtn: HTMLButtonElement, file) {
     closebtn.click();
-    if (!this.imageData.original) return;
+    if (!this.imageData.original) {
+      return;
+    }
     this.setImage(this.imageData.image, file.name);
   }
 

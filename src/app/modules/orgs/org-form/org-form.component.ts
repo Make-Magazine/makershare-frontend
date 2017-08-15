@@ -9,12 +9,14 @@ import {
   FileEntity,
   NodeHelper,
   Singleton,
+  FC_MakerMembership,
 } from '../../../core/models';
 import {
   FileService,
   NodeService,
   MainService,
 } from '../../../core/d7services';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-org-form',
@@ -34,11 +36,12 @@ export class OrgFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private mainService: MainService,
     private router: Router,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit() {
-    let uid = +localStorage.getItem('user_id');
-    let body = {
+    const uid = +localStorage.getItem('user_id');
+    const body = {
       uid: uid,
     };
     this.mainService
@@ -55,20 +58,21 @@ export class OrgFormComponent implements OnInit {
   }
 
   convertToForm(nid: number) {
-    var tasks = [];
+    const tasks = [];
+    let getOrganization;
     this.nodeService.getNode(nid).subscribe(
       org => {
-        console.log(org);
+        getOrganization = org;
         const organization = <Organization>this.organizationProxy.entity;
         Object.keys(organization).forEach(key => {
-          let field = organization.getField(key);
+          const field = organization.getField(key);
           if (field instanceof Function) {
             return;
           }
           if (key != 'title' && (!org[key] || !org[key].und)) {
             return;
           }
-          let valueFields = [
+          const valueFields = [
             'body',
             'field_breif_info',
             'field_maker_motto',
@@ -77,7 +81,7 @@ export class OrgFormComponent implements OnInit {
             'field_orgs_phone',
             'field_type_of_business',
           ];
-          let imageFields = [
+          const imageFields = [
             'field_orgs_logo',
             'field_orgs_cover_photo',
             'field_org_avatar',
@@ -96,7 +100,7 @@ export class OrgFormComponent implements OnInit {
             organization.updateField(key, org[key].und[0].email);
             return;
           } else if (imageFields.indexOf(key) != -1) {
-            let fileEntity = new FileEntity();
+            const fileEntity = new FileEntity();
             org[key].und[0].file = org[key].und[0].uri.replace(
               'public://',
               Singleton.Settings.getBackEndUrl() + 'sites/default/files/',
@@ -104,8 +108,8 @@ export class OrgFormComponent implements OnInit {
             fileEntity.updateValue(org[key].und[0]);
             this.organizationProxy[key] = fileEntity;
           } else if (key == 'field_founded_date') {
-            let fulldate = org[key].und[0].value.split('-');
-            let date = { date: fulldate[0] };
+            const fulldate = org[key].und[0].value.split('-');
+            const date = { date: fulldate[0] };
             field.updateValue(date);
           } else if (key == 'field_orgs_projects') {
             this.organizationProxy[key] = org[key].und.map(
@@ -120,34 +124,93 @@ export class OrgFormComponent implements OnInit {
                 org[key].und[0].value,
               ),
             );
+          } else if (key == 'field_maker_memberships') {
+            org[key].und.forEach(element => {
+              tasks.push(
+                this.mainService.get(
+                  'entity_field_collection_item',
+                  element.value,
+                ),
+              );
+            });
           }
         });
       },
       err => console.log(err),
       () => {
-        let source = Observable.forkJoin(tasks);
-        source.subscribe(
-          x => {
-            let field = this.organizationProxy.entity.getField(
-              'field_social_accounts',
-            );
-            Object.keys(field).forEach(key => {
-              const subField = field.getField(key);
-              if (!x[0][key] || !x[0][key].und) {
-                return;
+        const source = Observable.forkJoin(tasks);
+        source.subscribe(x => {
+          let index = 0;
+          const members = [];
+          if (getOrganization['field_maker_memberships'].und) {
+            getOrganization['field_maker_memberships'].und.forEach(element => {
+              const member = new FC_MakerMembership();
+              if (x[index]['field_team_member'].und) {
+                const ID = x[index]['field_team_member'].und[0].target_id;
+                member.updateField('field_team_member', ID);
               }
-              subField.updateValue(x[0][key].und[0].value);
+              console.log(x[index]['field_anonymous_member_name']);
+              if (x[index]['field_anonymous_member_name'].und) {
+                const name = x[index]['field_anonymous_member_name'].und[0].value;
+                member.updateField('field_anonymous_member_name', name);
+              }
+              member.updateField(
+                'field_membership_role',
+                x[index]['field_membership_role'].und[0].value,
+              );
+              members.push(member);
+              index++;
             });
-          },
-          err => {
-            console.log(err);
-          },
-          () => {
-            console.log(this.organizationProxy.entity);
-            this.buildForm();
-            this.organizationReady = true;
-          },
+          }
+          const field = this.organizationProxy.entity.getField(
+            'field_social_accounts',
+          );
+          Object.keys(field).forEach(key => {
+            const subField = field.getField(key);
+            if (!x[index][key] || !x[index][key].und) {
+              return;
+            }
+            subField.updateValue(x[index][key].und[0].value);
+          });
+          this.getUsernamesAndSetValue(members);
+        });
+      },
+    );
+  }
+
+  getUsernamesAndSetValue(members: FC_MakerMembership[]) {
+    const tasks = [];
+    members.forEach(element => {
+      if (element.getField('field_team_member').target_id) {
+        tasks.push(
+          this.mainService.get(
+            'user',
+            element.getField('field_team_member').target_id,
+          ),
         );
+      }
+    });
+    Observable.forkJoin(tasks).subscribe(
+      data => {
+        let index = 0;
+        members.forEach(element => {
+          if (element.getField('field_team_member').target_id) {
+            const usernameWithID =
+              data[index]['name'] + ' (' + data[index]['uid'] + ')';
+            element.updateField('field_team_member', usernameWithID);
+            index++;
+          }
+        });
+        this.organizationProxy.entity.setField(
+          'field_maker_memberships',
+          members,
+        );
+      },
+      err => {},
+      () => {
+        console.log(this.organizationProxy.entity);
+        this.buildForm();
+        this.organizationReady = true;
       },
     );
   }
@@ -260,9 +323,7 @@ export class OrgFormComponent implements OnInit {
           this.organizationProxy.field_orgs_address.dependent_locality,
         ],
         sub_premise: [this.organizationProxy.field_orgs_address.sub_premise],
-        thoroughfare: [
-          this.organizationProxy.field_orgs_address.thoroughfare,
-        ],
+        thoroughfare: [this.organizationProxy.field_orgs_address.thoroughfare],
         administrative_area: [
           this.organizationProxy.field_orgs_address.administrative_area,
         ],
@@ -293,7 +354,7 @@ export class OrgFormComponent implements OnInit {
     const observables = this.uploadImages();
     observables.subscribe(
       (uploadedFiles: FileEntity[]) => {
-        var index = 0;
+        let index = 0;
         if (!this.organizationProxy.field_orgs_logo.fid) {
           this.organizationProxy.field_orgs_logo.fid = uploadedFiles[index].fid;
           index++;
@@ -383,5 +444,19 @@ export class OrgFormComponent implements OnInit {
 
   goToTab(section: string) {
     this.currentFormTab = section;
+  }
+
+  deleteOrganization(closebtn) {
+    closebtn.click();
+    this.nodeService
+      .deleteNode(this.organizationProxy.entity.nid)
+      .subscribe(data => {
+        console.log('org deleted');
+        this.router.navigate(['/portfolio']);
+      });
+  }
+
+  openDeleteConfirmModal(template) {
+    this.modalService.open(template);
   }
 }
