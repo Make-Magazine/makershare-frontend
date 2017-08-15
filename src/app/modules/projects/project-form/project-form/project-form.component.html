@@ -121,7 +121,8 @@
                                        (CanNavigate)="CanNavigate = $event"
                                        (emitter)="UpdateFields($event,'Your Story')"
                                        [FormPrintableValues]="FormPrintableValues"
-                                       (StoryFormValid)="StoryFormValid = $event" [project]="project"
+                                       (StoryFormValid)="StoryFormValid = $event"
+                                       [project]="project"
                                        *ngIf="current_active_tab == 'Your Story'"
                                        class="row"></app-project-form-your-story>
           <app-project-form-how-to (CanNavigate)="CanNavigate = $event" (emitter)="UpdateFields($event,'How To')"

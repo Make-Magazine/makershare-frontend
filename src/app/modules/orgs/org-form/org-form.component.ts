@@ -26,6 +26,7 @@ export class OrgFormComponent implements OnInit {
   organizationReady: boolean = false;
   orgFormValid: boolean = false;
   organizationForm: FormGroup;
+  canNavigate: boolean = true;
 
   constructor(
     private nodeService: NodeService,
@@ -192,7 +193,7 @@ export class OrgFormComponent implements OnInit {
       body: [this.organizationProxy.body.value, []], //
       field_orgs_projects: [this.organizationProxy.field_orgs_projects], //
       field_minimum_number_of_follower: [
-        this.organizationProxy.field_minimum_number_of_follower.value,
+        this.organizationProxy.field_minimum_number_of_follower.value || 1,
         [Validators.min(0)],
       ], //
       field_type_of_business: [
