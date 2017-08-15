@@ -15,7 +15,7 @@ import { KeyValueObject } from '../../../../core/models/object/key-value-object'
 export class BasicInfoComponent implements OnInit {
   @Input() organizationForm: FormGroup;
   @Output() orgFormValid = new EventEmitter();
-  @Output() CanNavigate = new EventEmitter();
+  @Output() canNavigate = new EventEmitter();
   @Output() emitter = new EventEmitter();
 
   currentPhotoModalTab: 'upload' | 'filemanager' = 'upload';
@@ -27,7 +27,7 @@ export class BasicInfoComponent implements OnInit {
   cropperAvatarSettings: CropperSettings;
 
   currentImageFieldName: string;
-  countries: KeyValueObject[];
+  countries: KeyValueObject[] = [];
 
   selectedCountry;
   searchFailed = false;
@@ -37,6 +37,9 @@ export class BasicInfoComponent implements OnInit {
     private viewService: ViewService,
   ) {}
 
+  /**
+   * ngOnInit
+   */
   ngOnInit() {
     this.setCropperSettings();
     this.getCountries();
@@ -47,11 +50,22 @@ export class BasicInfoComponent implements OnInit {
     this.onValueChanged();
   }
 
+  /**
+   * formatter
+   *
+   * @param x
+   * @returns {any}
+   */
   formatter = x => {
     return x.value || x;
   };
 
-  searchCountry(text$: Observable<string>) {
+  /**
+   * searchCountry
+   *
+   * @param {Observable<string>} text$
+   */
+  searchCountry = (text$: Observable<string>) => {
     return text$
       .debounceTime(300)
       .distinctUntilChanged()
@@ -68,33 +82,62 @@ export class BasicInfoComponent implements OnInit {
         }
         return [];
       });
-  }
+  };
 
+  /**
+   * onValueChanged
+   */
   onValueChanged() {
     this.emitValues();
   }
 
+  /**
+   * emitValues
+   */
   emitValues() {
     this.orgFormValid.emit(
-      this.organizationForm['controls']['title'].valid
+      this.organizationForm['controls']['title'].valid &&
+      this.organizationForm['controls']['field_orgs_logo'].valid &&
+      this.organizationForm['controls']['field_orgs_cover_photo'].valid &&
+      this.organizationForm['controls']['field_org_avatar'].valid &&
+      this.organizationForm['controls']['field_orgs_contact'].valid &&
+      this.organizationForm['controls']['field_orgs_address'].valid
     );
 
+    console.log(this.organizationForm['controls']);
+
     if (this.organizationForm.dirty && this.organizationForm.touched) {
-      this.CanNavigate.emit(false);
+      this.canNavigate.emit(false);
     }
 
     this.emitter.emit(/*this.tags*/);
   }
 
+  /**
+   * updateType
+   *
+   * @param {string} newType
+   */
   updateType(newType: string) {
     const field_orgs_type = this.organizationForm.controls.field_orgs_type;
     field_orgs_type.patchValue(newType);
   }
 
+  /**
+   * dragFileAccepted
+   *
+   * @param {AcceptedFile} acceptedFile
+   * @param cropper
+   */
   dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile, cropper) {
     this.uploadBtn(acceptedFile.file, cropper);
   }
 
+  /**
+   * cropperSettingsFactory
+   *
+   * @returns {CropperSettings}
+   */
   cropperSettingsFactory() {
     let cropperSettings = new CropperSettings();
     cropperSettings.width = 800;
@@ -109,6 +152,9 @@ export class BasicInfoComponent implements OnInit {
     return cropperSettings;
   }
 
+  /**
+   * setCropperSettings
+   */
   setCropperSettings() {
     this.cropperLogoSettings = this.cropperSettingsFactory();
     this.cropperCoverSettings = this.cropperSettingsFactory();
@@ -117,6 +163,9 @@ export class BasicInfoComponent implements OnInit {
     this.imageData = {};
   }
 
+  /**
+   * getCountries
+   */
   getCountries() {
     this.viewService
       .getView<KeyValueObject>('maker_address_api')
@@ -130,6 +179,11 @@ export class BasicInfoComponent implements OnInit {
       });
   }
 
+  /**
+   * getCountryDetails
+   *
+   * @param country
+   */
   getCountryDetails(country) {
     if (!country.key) {
       return;
@@ -146,6 +200,13 @@ export class BasicInfoComponent implements OnInit {
       });
   }
 
+  /**
+   * openImageModal
+   *
+   * @param template
+   * @param {CropperSettings} settings
+   * @param {string} fieldName
+   */
   openImageModal(template, settings: CropperSettings, fieldName: string) {
     this.imageData = {};
     this.currentImageFieldName = fieldName;
@@ -153,6 +214,12 @@ export class BasicInfoComponent implements OnInit {
     this.modalService.open(template);
   }
 
+  /**
+   * uploadBtn
+   *
+   * @param file
+   * @param cropper
+   */
   uploadBtn(file, cropper) {
     if (!file) return;
     let image: any = new Image();
@@ -164,18 +231,37 @@ export class BasicInfoComponent implements OnInit {
     myReader.readAsDataURL(file);
   }
 
+  /**
+   * selectFileAndSave
+   *
+   * @param {HTMLButtonElement} closebtn
+   * @param {FileEntity} file
+   */
   selectFileAndSave(closebtn: HTMLButtonElement, file: FileEntity) {
     this.currentPhotoModalTab = 'upload';
     closebtn.click();
     this.setImage(file.url, file.filename, file.fid);
   }
 
+  /**
+   * imageUpdated
+   *
+   * @param {HTMLButtonElement} closebtn
+   * @param file
+   */
   imageUpdated(closebtn: HTMLButtonElement, file) {
     closebtn.click();
     if (!this.imageData.original) return;
     this.setImage(this.imageData.image, file.name);
   }
 
+  /**
+   * setImage
+   *
+   * @param {string} file
+   * @param {string} filename
+   * @param {number} fid
+   */
   setImage(file: string, filename: string, fid?: number) {
     const fileEntity = new FileEntity();
     fileEntity.file = file;

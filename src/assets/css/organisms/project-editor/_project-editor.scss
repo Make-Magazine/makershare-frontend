@@ -18,6 +18,11 @@
   color: $dark-grey;
   background-color: $lighter-grey;
 
+  .red-text {
+    font-size: 1.296rem;
+    color: $highlight-red;
+  }
+
   .add-controls {
     padding: 1rem 0 .5rem;
     h1 {
@@ -118,10 +123,7 @@
         display: inline-block;
       }
     }
-    .red-text {
-      font-size: 1.296rem;
-      color: $highlight-red;
-    }
+
     .projectCategory {
       width: 100%;
       align-items: flex-start;
