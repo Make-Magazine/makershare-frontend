@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Organization, EntityProxy, FileEntity, NodeHelper, Singleton, FC_MakerMembership } from '../../../core/models';
 import { FileService, NodeService, MainService } from '../../../core/d7services';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-org-form',
@@ -23,6 +24,7 @@ export class OrgFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private mainService: MainService,
     private router: Router,
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit() {
@@ -322,5 +324,17 @@ export class OrgFormComponent implements OnInit {
       const organizationEntity = this.organizationProxy.entity as Organization;
       organizationEntity.updateField(key.toString(), fieldValue);
     });
+  }
+
+  deleteOrganization(closebtn) {
+    closebtn.click();
+    this.nodeService.deleteNode(this.organizationProxy.entity.nid).subscribe(data => {
+      console.log("org deleted");
+      this.router.navigate(['/portfolio']);
+    });;
+  }
+
+  openDeleteConfirmModal(template) {
+    this.modalService.open(template);
   }
 }

@@ -28,6 +28,7 @@
                   [ngClass]="{'disabled':!orgFormValid}"
                   (click)="publishButtonClick()">Publish
           </button>
+          <button *ngIf="organizationProxy.entity.nid" (click)="openDeleteConfirmModal(confirmdelete)">Delete</button>
         </div>
       </div>
     </div>
@@ -77,3 +78,20 @@
     </div>
   </section>
 </div>
+
+<ng-template #confirmdelete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <h5 class="control-label">Your organization will be deleted. This cannot be undone.</h5>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a #close class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
+    <button class="btn btn-blue btn-sharp" (click)="deleteOrganization(close)">Ok</button>
+  </div>
+</ng-template>
