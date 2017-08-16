@@ -20,6 +20,23 @@ $ ng serve
 $ ng serve --lr=false
 ```
 
+
+
+# For CLI 
+----------------
+- `ng serve`
+- `ng build --prod --aot`
+
+# For Universal
+---------------------
+- `npm run build`
+- `npm run start`
+- `npm run watch`
+
+
+
+
+
 # known bugs/errors
 1- ng2-file-drop module disabled.
 2- auth0.setclient in console
