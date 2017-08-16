@@ -40,6 +40,12 @@ nav.primary, nav.secondary {
   transition: all 0.3s ease;
   cursor: pointer;
   padding: 0;
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 nav.primary {

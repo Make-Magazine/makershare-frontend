@@ -35,28 +35,28 @@
             <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
               <ul class="subnav">
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['projects/create']" class="dropdown-item add-project nav-link">Add a
+                  <a [routerLink]="['projects/create']" class="add-project nav-link">Add a
                     Project</a>
                 </li>
                 <hr class="line-mobile">
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['makers']" class="dropdown-item nav-link">Makers</a>
+                  <a [routerLink]="['makers']" class="nav-link">Makers</a>
                 </li>
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['projects']" class="dropdown-item nav-link">Projects</a>
+                  <a [routerLink]="['projects']" class="nav-link">Projects</a>
                 </li>
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['showcases']" class="dropdown-item nav-link">Showcases</a>
+                  <a [routerLink]="['showcases']" class="nav-link">Showcases</a>
                 </li>
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['missions']" class="dropdown-item nav-link">Missions</a>
+                  <a [routerLink]="['missions']" class="nav-link">Missions</a>
                 </li>
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['organizations']" class="dropdown-item nav-link">Organizations</a>
+                  <a [routerLink]="['organizations']" class="nav-link">Organizations</a>
                 </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a class="dropdown-item disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
-                </li>
+                <!-- <li class="sub-nav-item dropdown-item mobile-menu-item">
+                  <a class="disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
+                </li> -->
                 <hr class="line-mobile">
                 <li class="sub-nav-item dropdown-item">
                   <a [routerLink]="['make-intel']" class="nav-link">Make + Intel</a>
@@ -75,7 +75,7 @@
                 </li>
                 <hr class="line-mobile">
                 <li class="sub-nav-item dropdown-item">
-                  <a class="dropdown-item beta-feedback nav-link">
+                  <a class="beta-feedback nav-link">
                     <app-feedback></app-feedback>
                   </a>
                 </li>
@@ -111,7 +111,7 @@
           </div>
           <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
             <li class="sub-nav-item dropdown-item" *ngIf="Manager">
-              <a class="nav-link" target="_blank" href="{{Back_End_Domain}}" class="dropdown-item">Manage</a>
+              <span class="nav-link"><a target="_blank" href="{{Back_End_Domain}}">Manage</a></span>
             </li>
             <li class="sub-nav-item dropdown-item" [routerLink]="['/portfolio/']">
               <span class="nav-link">Profile</span>
