@@ -1,91 +1,93 @@
 <header class="main-header">
-  <div class="header-wrapper">
-    <a class="make-logo" [routerLink]="['/']"></a>
+  <div class="header-wrapper container">
+    <div class="header-inner">
+      <a class="make-logo" [routerLink]="['/']"></a>
 
-    <!-- main nav -->
-    <nav class="primary">
-      <ul class="nav-content">
-        <li class="nav-item hide-mobile">
-          <a class="nav-link" [routerLink]="['makers']">Makers</a>
-        </li>
-        <li class="nav-item hide-mobile">
-          <a class="nav-link" [routerLink]="['projects']">Projects</a>
-        </li>
-        <li class="nav-item hide-mobile">
-          <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
-        </li>
-        <li class="nav-item hide-mobile">
-          <a class="nav-link" [routerLink]="['missions']">Missions</a>
-        </li>
-        <li class="nav-item hide-mobile">
-          <a class="nav-link" [routerLink]="['organizations']">Organizations</a>
-        </li>
-        <li class="nav-item has-dropdown">
-          <a href="#"
-             class="nav-link dropdown-toggle hover hide-mobile navbar-left"
-             data-toggle="dropdown"
-             data-target="makerMenu"
-             role="button"
-             aria-haspopup="true"
-             aria-expanded="false">
-            About
-          </a>
-          <span class="icon-search mobile-menu-item nav-link fa fa-bars" (click)="openSearchBox()"></span>
-          <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
-            <ul class="subnav">
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['projects/create']" class="dropdown-item add-project nav-link">Add a
-                  Project</a>
-              </li>
-              <hr class="line-mobile">
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['makers']" class="dropdown-item nav-link">Makers</a>
-              </li>
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['projects']" class="dropdown-item nav-link">Projects</a>
-              </li>
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['showcases']" class="dropdown-item nav-link">Showcases</a>
-              </li>
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['missions']" class="dropdown-item nav-link">Missions</a>
-              </li>
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a [routerLink]="['organizations']" class="dropdown-item nav-link">Organizations</a>
-              </li>
-              <li class="sub-nav-item dropdown-item mobile-menu-item">
-                <a class="dropdown-item disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
-              </li>
-              <hr class="line-mobile">
-              <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['make-intel']" class="nav-link">Make + Intel</a>
-              </li>
-              <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['guidelines']" class="nav-link">Community Guidelines</a>
-              </li>
-              <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['badges']" class="nav-link">About Badges</a>
-              </li>
-              <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['why-portfolio']" class="nav-link">Why Makers Need Portfolios</a>
-              </li>
-              <li class="sub-nav-item dropdown-item">
-                <a [routerLink]="['about-us']" class="nav-link">About Us</a>
-              </li>
-              <hr class="line-mobile">
-              <li class="sub-nav-item dropdown-item">
-                <a class="dropdown-item beta-feedback nav-link">
-                  <app-feedback></app-feedback>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item hide-mobile">
-          <a class="nav-link disabled coming-soon">Learning<span class="coming-soon-text">Coming soon</span></a>
-        </li>
-      </ul>
-    </nav>
+      <!-- main nav -->
+      <nav class="primary">
+        <ul class="nav-content">
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" [routerLink]="['makers']">Makers</a>
+          </li>
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" [routerLink]="['projects']">Projects</a>
+          </li>
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
+          </li>
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" [routerLink]="['missions']">Missions</a>
+          </li>
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" [routerLink]="['organizations']">Organizations</a>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="#"
+               class="nav-link dropdown-toggle hover hide-mobile navbar-left"
+               data-toggle="dropdown"
+               data-target="makerMenu"
+               role="button"
+               aria-haspopup="true"
+               aria-expanded="false">
+              About
+            </a>
+            <span class="icon-search mobile-menu-item nav-link fa fa-bars" (click)="openSearchBox()"></span>
+            <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
+              <ul class="subnav">
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['projects/create']" class="dropdown-item add-project nav-link">Add a
+                    Project</a>
+                </li>
+                <hr class="line-mobile">
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['makers']" class="dropdown-item nav-link">Makers</a>
+                </li>
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['projects']" class="dropdown-item nav-link">Projects</a>
+                </li>
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['showcases']" class="dropdown-item nav-link">Showcases</a>
+                </li>
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['missions']" class="dropdown-item nav-link">Missions</a>
+                </li>
+                <li class="dropdown-item mobile-menu-item">
+                  <a [routerLink]="['organizations']" class="dropdown-item nav-link">Organizations</a>
+                </li>
+                <li class="dropdown-item mobile-menu-item">
+                  <a class="dropdown-item disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
+                </li>
+                <hr class="line-mobile">
+                <li class="dropdown-item">
+                  <a [routerLink]="['make-intel']" class="nav-link">Make + Intel</a>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['guidelines']" class="nav-link">Community Guidelines</a>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['badges']" class="nav-link">About Badges</a>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['why-portfolio']" class="nav-link">Why Makers Need Portfolios</a>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['about-us']" class="nav-link">About Us</a>
+                </li>
+                <hr class="line-mobile">
+                <li class="dropdown-item">
+                  <a class="dropdown-item beta-feedback nav-link">
+                    <app-feedback></app-feedback>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item hide-mobile">
+            <a class="nav-link disabled coming-soon">Learning<span class="coming-soon-text">Coming soon</span></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <!-- secondary nav -->
     <nav class="secondary">
@@ -109,21 +111,23 @@
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
               <li class="dropdown-item" *ngIf="isManager">
-                <a target="_blank" href="{{Back_End_Domain}}">
-                  <span class="nav-link">Manage</span>
-                </a>
+                <a class="nav-link"
+                   target="_blank"
+                   href="{{Back_End_Domain}}">Manage</a>
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/portfolio/']">
                   <span class="nav-link">Profile</span>
                 </a>
               </li>
-              <li *ngIf="org_data && org_data.path" class="dropdown-item">
+              <li *ngIf="org_data && org_data.path"
+                  class="dropdown-item">
                 <a [routerLink]="[org_data.path]">
                   <span class="nav-link">Organization Profile</span>
                 </a>
               </li>
-              <li *ngIf="!org_data && isManager" class="dropdown-item">
+              <li *ngIf="!org_data && isManager"
+                  class="dropdown-item">
                 <a [routerLink]="['/orgs/create']">
                   <span class="nav-link">Create Organization</span>
                 </a>
@@ -163,7 +167,9 @@
       </ul>
     </nav>
   </div>
-  <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
+  <app-search-box *ngIf="showSearchBox"
+                  [boxStatus]="showSearchBox"
+                  (notify)="onNotify($event)"></app-search-box>
   <app-registration-collect *ngIf="registrationFormStatus"
                             [registrationFormState]="registrationFormState"></app-registration-collect>
 </header>

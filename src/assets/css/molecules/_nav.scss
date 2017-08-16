@@ -43,8 +43,23 @@ nav.primary, nav.secondary {
   padding: 0;
 }
 
-nav.secondary {
-  margin-left: auto;
+nav {
+  &.primary {
+    @include tablet() {
+      .nav-item {
+        padding: 1rem;
+      }
+    }
+  }
+
+  &.secondary {
+    position: absolute;
+    right: 2rem;
+    top: 30%;
+    .nav-item {
+      padding: .5rem .9rem;;
+    }
+  }
 }
 
 .mobile-menu-item {
