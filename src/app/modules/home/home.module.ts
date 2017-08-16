@@ -9,6 +9,7 @@ import { ShowcasesComponent } from './showcases/showcases.component';
 import { SliderComponent } from './slider/slider.component';
 import { SpotlightComponent } from './spotlight/spotlight.component';
 import { SharedModule } from '../shared/shared.module';
+import { FeedComponent } from '../feed/feed.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
     ShowcasesComponent,
     SpotlightComponent,
     OnboardingComponent,
+    FeedComponent,
   ],
 })
 export class HomeModule {}

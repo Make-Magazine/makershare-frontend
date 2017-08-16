@@ -20,6 +20,8 @@ export class FeedComponent implements OnInit {
   getFeed(more?: boolean) {
     if (more) this.pages++;
     this.viewService.getView('feed', [['page', this.pages]]).subscribe(data => {
+      console.log('feed');
+      console.log(data);
       if (data['seen'].length >= 1) {
         this.projects = this.projects.concat(data['seen']);
         this.hideloadmoreproject = (data['count'] <= this.projects.length) ? true : false;
