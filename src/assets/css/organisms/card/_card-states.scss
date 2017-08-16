@@ -162,6 +162,22 @@
       }
     }
 
+    @include tablet() {
+      .info-top {
+        width: 50%;
+      }
+      .card-info {
+        margin-left: 50%;
+        padding-bottom: 100%;
+      }
+      .card-image {
+        width: 50%;
+      }
+      .info-bottom {
+        width: 75%;
+      }
+    }
+
     &.showcase {
       .info-top {
         //height: auto;
