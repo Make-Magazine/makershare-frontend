@@ -5,3 +5,14 @@
 		clear:both;
 	}
 }
+
+@include phone() {
+	.hide-mobile {
+		display: none !important;
+	}
+}
+@include tablet() {
+	.hide-tablet {
+		display: none !important;
+	}
+}

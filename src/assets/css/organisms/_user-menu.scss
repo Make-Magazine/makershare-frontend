@@ -12,3 +12,14 @@
     }
   }
 }
+@include phone() {
+ .show>.dropdown-menu {
+    left: auto;
+    width: 100vw;
+    position: fixed;
+    top: 109px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 0;
+ } 
+}
