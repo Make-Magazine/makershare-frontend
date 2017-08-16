@@ -75,3 +75,15 @@ h5 {
 .tac {
   text-align: center;
 }
+
+
+@include phone() {
+  html {
+    font-size: 6px;
+  }
+}
+@include tablet() {
+  html {
+    font-size: 7.5px;
+  }
+}
