@@ -14,7 +14,7 @@ import { KeyValueObject } from '../../../../core/models/object/key-value-object'
 })
 export class BasicInfoComponent implements OnInit {
   @Input() organizationForm: FormGroup;
-  @Output() orgFormValid = new EventEmitter();
+  @Output() validateForm = new EventEmitter();
   @Output() canNavigate = new EventEmitter();
   @Output() emitter = new EventEmitter();
 
@@ -95,14 +95,7 @@ export class BasicInfoComponent implements OnInit {
    * emitValues
    */
   emitValues() {
-    this.orgFormValid.emit(
-      this.organizationForm['controls']['title'].valid &&
-      this.organizationForm['controls']['field_orgs_logo'].valid &&
-      this.organizationForm['controls']['field_orgs_cover_photo'].valid &&
-      this.organizationForm['controls']['field_org_avatar'].valid &&
-      this.organizationForm['controls']['field_orgs_contact'].valid &&
-      this.organizationForm['controls']['field_orgs_address'].valid
-    );
+    this.validateForm.emit();
 
     if (this.organizationForm.dirty && this.organizationForm.touched) {
       this.canNavigate.emit(false);

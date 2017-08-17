@@ -1,0 +1,84 @@
+/* Logs API state, forms errors,.... */
+.logs {
+  margin: 1rem 0;
+  .log-item {
+    width: 100%;
+    display: block;
+    span {
+      color: $white;
+      padding: .2rem .5rem;
+      width: 100%;
+      margin: .3rem 0;
+      display: block;
+    }
+    &.success {
+      span {
+        background-color: $highlight-bright-blue;
+      }
+    }
+    &.info {
+      span {
+        background-color: $dark-grey;
+      }
+    }
+    &.error {
+      span {
+        background-color: $highlight-red;
+      }
+    }
+  }
+}
+
+/* Notifications container () */
+.notifications-container {
+  .success {
+    background-color: $highlight-bright-blue !important;
+    border-bottom: .1rem solid $highlight-bright-blue !important;
+    height: 4.5rem !important;
+    text-align: center !important;
+    font-size: 1.6rem !important;
+    padding-top: 1rem !important;
+    .message {
+      margin-top: 1rem;
+      color: $white !important;
+    }
+    .close-click {
+      position: absolute;
+      right: 1rem;
+      top: 0;
+      font-size: 2em !important;
+      color: $white*.8 !important;
+      &:hover {
+        color: $white !important;
+      }
+    }
+  }
+  .error, .warning {
+    height: 4.5rem !important;
+    text-align: center !important;
+    font-size: 1.6rem !important;
+    padding-top: 1rem !important;
+  }
+  .warning {
+    background-color: $dark-grey !important;
+    border-bottom: .1rem solid $dark-grey !important;
+  }
+  .error {
+    background-color: $highlight-red !important;
+    border-bottom: .1rem solid $highlight-red !important;
+  }
+  .message {
+    margin-top: 1rem;
+    color: $white !important;
+  }
+  .close-click {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    font-size: 3.2rem !important;
+    color: $white*.8;
+    &:hover {
+      color: $white !important;
+    }
+  }
+}

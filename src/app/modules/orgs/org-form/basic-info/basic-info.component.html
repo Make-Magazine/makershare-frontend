@@ -119,19 +119,20 @@
 
       <div class="form-subform"
            *ngIf="selectedCountry">
-        <div class="form-subform-group">
+        <div class="form-subform-group required">
           <label>Address 1</label>
           <input type="text"
                  formControlName="thoroughfare">
         </div>
 
-        <div>
+        <div class="form-subform-group">
           <label>Address 2</label>
           <input type="text"
                  formControlName="premise">
         </div>
 
-        <div *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
+        <div class="form-subform-group"
+             *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
           <label>{{selectedCountry.administrative_area_label}}</label>
           <select formControlName="administrative_area">
             <option *ngFor="let governerate of selectedCountry.administrative_areas"
@@ -141,19 +142,22 @@
           </select>
         </div>
 
-        <div *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
+        <div class="form-subform-group required"
+             *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
           <label>{{selectedCountry.locality_label}}</label>
           <input type="text"
                  formControlName="locality">
         </div>
 
-        <div *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
+        <div class="form-subform-group"
+             *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
           <label>District</label>
           <input type="text"
                  formControlName="dependent_locality">
         </div>
 
-        <div *ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
+        <div
+            class="form-subform-group required"*ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
           <label>{{selectedCountry.postal_code_label}}</label>
           <input type="number"
                  formControlName="postal_code">

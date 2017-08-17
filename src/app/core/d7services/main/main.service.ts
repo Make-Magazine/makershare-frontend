@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, RequestOptionsArgs } from '@angular/http';
+import {
+  Headers,
+  Http,
+  RequestOptions,
+  RequestOptionsArgs,
+} from '@angular/http';
 import { CookieService } from 'ngx-cookie';
 import { Observable } from 'rxjs';
 import { Singleton } from '../../models/application/singleton';
@@ -30,7 +35,7 @@ export class MainService {
     selector?: string | number,
     without_end_point?: boolean,
   ): string {
-    var request_url = Singleton.Settings.getBackEndUrlWithEndPoint();
+    let request_url = Singleton.Settings.getBackEndUrlWithEndPoint();
 
     if (without_end_point) {
       request_url = Singleton.Settings.getBackEndUrl();
@@ -67,7 +72,10 @@ export class MainService {
     without_end_point?: boolean,
   ): Observable<any> {
     return this.HttpRequestWithConfig(
-      this.http.get(this.getURL(entityType, selector, without_end_point), this.options),
+      this.http.get(
+        this.getURL(entityType, selector, without_end_point),
+        this.options,
+      ),
       without_end_point,
     );
   }
@@ -78,7 +86,11 @@ export class MainService {
     );
   }
 
-  put(entityType: string, selector: number | string, body: any): Observable<any> {
+  put(
+    entityType: string,
+    selector: number | string,
+    body: any,
+  ): Observable<any> {
     return this.HttpRequestWithConfig(
       this.http.put(this.getURL(entityType, selector), body, this.options),
     );
