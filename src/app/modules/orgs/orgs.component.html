@@ -12,7 +12,7 @@
               <img src="{{company.field_badges}}" alt="">
             </div>
             <div class="row justify-content-center org-name">
-              <span>{{company.company_name}} - {{company.address.locality}}, {{company.address.administrative_area}}</span>
+              <span>{{company.company_name}}</span>
             </div>
           </div>
 
@@ -21,7 +21,7 @@
               {{company.address.administrative_area}}
             </p>
           </div>
-          <div class="row justify-content-center mb-5">
+          <div class="row justify-content-center org-tabber">
             <ul class="list-unstyled d-flex flex-row flex-wrap aling-self-center align-content-lg-center text-center">
               <li>
                 <a (click)="current_active_tab = 'about-us'" class="btn btn-tab"
@@ -193,7 +193,7 @@
 
       <div class="text-center">
         <h1 class="p-2">Our Team</h1>
-        <h1 class="p-2" *ngIf="!team">There isn't team in organization yet</h1>
+        <h1 class="p-2" *ngIf="!team">No team members in organization yet</h1>
       </div>
       <div class="row p-2" *ngIf="team">
         <div class="col-4" *ngFor="let teams of team">
