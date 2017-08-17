@@ -63,7 +63,7 @@
   <div class="form-group required">
     <div class="form-label">
       <label>Cover Photo</label>
-      <span>For the top of the profile page (at least 300 x 2000)</span>
+      <span>For the top of the profile page (at least 2200 x 1100)</span>
     </div>
     <div class="form-ctl">
       <button class="btn btn-grey -slim mb-3 mt-2"
@@ -84,7 +84,7 @@
     </div>
     <div class="form-ctl">
       <button class="btn btn-grey -slim mb-3 mt-2"
-              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_org_avatar')">Choose file
+              (click)="openImageModal(imagemodal, cropperAvatarSettings, 'field_org_avatar')">Choose file
       </button>
       <div class="image-preview">
         <img *ngIf="organizationForm.value.field_org_avatar.file"
