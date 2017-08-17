@@ -104,8 +104,6 @@ export class BasicInfoComponent implements OnInit {
       this.organizationForm['controls']['field_orgs_address'].valid
     );
 
-    console.log(this.organizationForm['controls']);
-
     if (this.organizationForm.dirty && this.organizationForm.touched) {
       this.canNavigate.emit(false);
     }
