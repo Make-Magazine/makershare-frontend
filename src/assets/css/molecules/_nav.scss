@@ -41,7 +41,7 @@ nav.primary, nav.secondary {
 .nav-link {
   display: block;
   font-size: 2rem;
-  color: lighten($dark-grey, 15%);
+  color: lighten($dark-grey, 15%) !important;
   transition: all .3s ease;
   cursor: pointer;
   padding: 0;
