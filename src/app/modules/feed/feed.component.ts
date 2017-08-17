@@ -18,15 +18,16 @@ export class FeedComponent implements OnInit {
     this.getFeed(false);
   }
   getFeed(more?: boolean) {
-    if (more) this.pages++;
+    if (more) {
+      this.pages++;
+    }
     this.viewService.getView('feed', [['page', this.pages]]).subscribe(data => {
-      console.log('feed');
-      console.log(data);
-      if (data['seen'].length >= 1) {
-        this.projects = this.projects.concat(data['seen']);
-        this.hideloadmoreproject = (data['count'] <= this.projects.length) ? true : false;
-      } else {
-        this.noFeed = true;
+      if (data) {
+        if (data['seen'].length >= 1) {
+          this.projects = this.projects.concat(data['seen']);
+          this.hideloadmoreproject = (data['count'] <= this.projects.length) ? true : false;
+          this.noFeed = true;
+        }
       }
     })
   }
