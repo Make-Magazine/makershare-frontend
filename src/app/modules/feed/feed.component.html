@@ -1,6 +1,7 @@
-<h1 *ngIf="noFeed" class="text-center"> There is nothing in your feed yet, go follow something!</h1>
+<h1 *ngIf="!projects" class="text-center"> There is nothing in your feed yet, go follow something!</h1>
+<h1 *ngIf="projects" class="text-center"> Your Feed</h1>
 <div class="page-explore mb-5">
-  <div class="container items-container p-414">
+  <div class="items-container p-414">
     <div *ngIf="projects" class="row">
       <div *ngFor="let project of projects" class="card-wrapper col-md-6 col-lg-4 pull-left">
         <app-project-card [view]="view" [state]="'tall'" [nid]="project.nid"></app-project-card>
