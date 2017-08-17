@@ -89,6 +89,7 @@
       </nav>
     </div>
 
+  </div>
     <!-- secondary nav -->
     <nav class="secondary">
       <ul class="nav-content">
@@ -219,7 +220,6 @@
         </li>
       </ul>
     </nav>
-  </div>
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
   <app-registration-collect *ngIf="registrationFormStatus"
                             [registrationFormState]="registrationFormState"></app-registration-collect>
