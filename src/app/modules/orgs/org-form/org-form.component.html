@@ -2,8 +2,8 @@
   <section class="container pt-4 pb-4">
     <div class="top-content-wrapper">
       <div class="add-controls row hidden-md-down">
-        <div class="container">
-          <h1 class="text-center">Organization Editor</h1>
+        <div class="container mb-4">
+          <h1 class="text-center">Create Organization</h1>
         </div>
         <div class="nav-create col-md-8 mt-auto">
           <div class="container">
@@ -29,12 +29,22 @@
             </ul>
           </div>
         </div>
-        <div class="col-md-4 mt-4 mb-2 tac">
-          <button class="btn btn-grey"
-                  [ngClass]="{'disabled':!orgFormValid}"
-                  (click)="publishButtonClick()">Publish
-          </button>
-          <button *ngIf="organizationProxy.entity.nid" (click)="openDeleteConfirmModal(confirmdelete)">Delete</button>
+        <div class="col-md-4">
+          <div class="right-menu">
+            <div class="row sm-12">
+              <button class="btn btn-grey"
+                      [ngClass]="{'disabled':!orgFormValid}"
+                      (click)="publishButtonClick()">Publish
+              </button>
+              <button *ngIf="organizationProxy.entity.nid"
+                      (click)="openDeleteConfirmModal(confirmdelete)">Delete</button>
+            </div>
+            <div *ngIf="errors.length > 0"
+                 class="row notifications-container">
+              <p *ngFor="let err of errors"
+                 class="error">{{err}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
