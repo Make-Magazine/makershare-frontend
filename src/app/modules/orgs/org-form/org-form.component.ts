@@ -29,6 +29,7 @@ export class OrgFormComponent implements OnInit {
   orgFormValid: boolean = false;
   organizationForm: FormGroup;
   canNavigate: boolean = true;
+  errors: string[] = [];
 
   constructor(
     private nodeService: NodeService,
@@ -338,18 +339,26 @@ export class OrgFormComponent implements OnInit {
     });
   }
 
-  // Fires when clicking on publish button
+  /**
+   * publishButtonClick
+   */
   publishButtonClick() {
+    // Reset errors
+    this.errors = [];
+
+    // If form valid
     if (!this.organizationForm.valid) {
+      this.errors.push('Not all required fields are filled');
+      const missingFields: string[] = [];
       // display error
       Object.keys(this.organizationForm.controls).forEach(key => {
         if (!this.organizationForm.controls[key].valid) {
-          console.log(key);
+          missingFields.push(key);
         }
       });
-      console.log('not all fields are filled');
-      return;
+      this.errors.push(missingFields.join(' ,'));
     }
+
     this.setOrganizationFields();
     this.organizationReady = false;
     const observables = this.uploadImages();
@@ -436,8 +445,11 @@ export class OrgFormComponent implements OnInit {
   setOrganizationFields() {
     Object.keys(
       this.organizationForm.value,
-    ).forEach((key: string, index: number) => {
+    ).forEach((key: string) => {
       const fieldValue = this.organizationForm.value[key];
+
+      console.log('setOrganizationFields', key, fieldValue);
+
       const organizationEntity = this.organizationProxy.entity as Organization;
       organizationEntity.updateField(key.toString(), fieldValue);
     });

@@ -9,7 +9,9 @@ section,
 }
 
 .main-container {
+  height: 100%;
   padding-top: 110px;
+  padding-bottom: 300px;
   &.-no-pad {
     padding-top: 0;
   }
