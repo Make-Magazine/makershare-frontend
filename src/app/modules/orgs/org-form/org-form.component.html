@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-4">
           <div class="right-menu">
-            <div class="row sm-12">
+            <div>
               <button class="btn btn-grey"
                       [ngClass]="{'disabled':!orgFormValid}"
                       (click)="publishButtonClick()">Publish
@@ -39,10 +39,14 @@
               <button *ngIf="organizationProxy.entity.nid"
                       (click)="openDeleteConfirmModal(confirmdelete)">Delete</button>
             </div>
-            <div *ngIf="errors.length > 0"
-                 class="row notifications-container">
-              <p *ngFor="let err of errors"
-                 class="error">{{err}}</p>
+            <div class="logs">
+              <div class="log-item info"
+                   *ngIf="processLog != ''">
+                <span>{{processLog}}</span>
+              </div>
+              <div class="log-item error">
+                <span *ngFor="let err of errorLogs">{{err}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -52,9 +56,10 @@
     <div *ngIf="organizationReady">
       <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
                                (canNavigate)="CanNavigate = $event"
-                               (orgFormValid)="orgFormValid = $event"
+                               (validateForm)="validateForm()"
                                [organizationForm]="organizationForm"></app-org-form-basic-info>
       <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
+                             (validateForm)="validateForm()"
                              [organizationForm]="organizationForm"
                              [organizationProxy]="organizationProxy"></app-org-form-about-us>
       <app-org-form-projects *ngIf="currentFormTab == 'Products'"

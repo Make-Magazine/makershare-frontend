@@ -14,7 +14,7 @@ import {
   ProfileService,
   StatisticsService,
   UserService,
-  ViewService
+  ViewService,
 } from '../../../../core/d7services';
 import { ProfileSocial } from '../../../../core/models/profile/profile-social';
 import { UserProfile } from '../../../../core/models/profile/user-profile';
@@ -517,16 +517,18 @@ export class ProfileComponent implements OnInit {
 
   canCreateOrg() {
     this.uid = +localStorage.getItem('user_id');
-    let body = {
-      "uid": this.uid
-    }
-    this.mainService.custompost('company_profile_api/check_if_user_has_org', body).subscribe(res => {
-      if(res[0] == 'can_not_create_org'){
-        this.canCreateOrNot == false;
-      }else if(res[0] == 'can_create_org'){
-        this.canCreateOrNot = true;
-      }
-    })
+    const body = {
+      uid: this.uid,
+    };
+    this.mainService
+      .custompost('company_profile_api/check_if_user_has_org', body)
+      .subscribe(res => {
+        if (res[0] == 'can_not_create_org') {
+          this.canCreateOrNot == false;
+        } else if (res[0] == 'can_create_org') {
+          this.canCreateOrNot = true;
+        }
+      });
   }
 
   AddMakerspaceRow(makerspace?) {

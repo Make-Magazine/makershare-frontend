@@ -191,6 +191,13 @@
   }
 }
 
+.btn,
+.button {
+  .controls & {
+    margin-right: .5rem;
+  }
+}
+
 a:not([href]):not([tabindex]) {
   cursor: pointer;
 }
@@ -240,7 +247,6 @@ a:not([href]):not([tabindex]).btn-white {
   border-radius: 0;
   font-size: 1.92rem;
   padding: 1rem 1.5rem;
-  margin-left: .5rem;
   &:focus, &:active, &:hover {
     color: $white;
     background-color: $dark-grey*0.9;

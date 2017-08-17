@@ -1,26 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from 'ng2-validation';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import {
-  Organization,
-  EntityProxy,
-  FileEntity,
-  NodeHelper,
-  Singleton,
-  FC_MakerMembership,
-} from '../../../core/models';
-import {
-  FileService,
-  NodeService,
-  MainService,
-} from '../../../core/d7services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CustomValidators } from 'ng2-validation';
+import { Observable } from 'rxjs/Observable';
+import { FileService, MainService, NodeService } from '../../../core/d7services';
+import { EntityProxy, FC_MakerMembership, FileEntity, NodeHelper, Organization, Singleton } from '../../../core/models';
 
 @Component({
   selector: 'app-org-form',
-  templateUrl: './org-form.component.html',
+  templateUrl: './org-form.component.html'
 })
 export class OrgFormComponent implements OnInit {
   currentFormTab: string = 'Basic Info';
@@ -29,21 +18,21 @@ export class OrgFormComponent implements OnInit {
   orgFormValid: boolean = false;
   organizationForm: FormGroup;
   canNavigate: boolean = true;
-  errors: string[] = [];
+  processLog: string = '';
+  errorLogs: string[] = [];
 
-  constructor(
-    private nodeService: NodeService,
-    private fileService: FileService,
-    private formBuilder: FormBuilder,
-    private mainService: MainService,
-    private router: Router,
-    private modalService: NgbModal,
-  ) {}
+  constructor(private nodeService: NodeService,
+              private fileService: FileService,
+              private formBuilder: FormBuilder,
+              private mainService: MainService,
+              private router: Router,
+              private modalService: NgbModal) {
+  }
 
   ngOnInit() {
     const uid = +localStorage.getItem('user_id');
     const body = {
-      uid: uid,
+      uid: uid
     };
     this.mainService
       .custompost('company_profile_api/my_org_profile', body)
@@ -81,12 +70,12 @@ export class OrgFormComponent implements OnInit {
             'field_founder_name',
             'field_orgs_phone',
             'field_website_blog',
-            'field_type_of_business',
+            'field_type_of_business'
           ];
           const imageFields = [
             'field_orgs_logo',
             'field_orgs_cover_photo',
-            'field_org_avatar',
+            'field_org_avatar'
           ];
           if (valueFields.indexOf(key) != -1) {
             field.updateValue(org[key].und[0].value);
@@ -105,7 +94,7 @@ export class OrgFormComponent implements OnInit {
             const fileEntity = new FileEntity();
             org[key].und[0].file = org[key].und[0].uri.replace(
               'public://',
-              Singleton.Settings.getBackEndUrl() + 'sites/default/files/',
+              Singleton.Settings.getBackEndUrl() + 'sites/default/files/'
             );
             fileEntity.updateValue(org[key].und[0]);
             this.organizationProxy[key] = fileEntity;
@@ -115,7 +104,7 @@ export class OrgFormComponent implements OnInit {
             field.updateValue(date);
           } else if (key == 'field_orgs_projects') {
             this.organizationProxy[key] = org[key].und.map(
-              element => element.target_id,
+              element => element.target_id
             );
           } else if (key == 'field_orgs_address') {
             field.updateValue(org[key].und[0]);
@@ -123,16 +112,16 @@ export class OrgFormComponent implements OnInit {
             tasks.push(
               this.mainService.get(
                 'entity_field_collection_item',
-                org[key].und[0].value,
-              ),
+                org[key].und[0].value
+              )
             );
           } else if (key == 'field_maker_memberships') {
             org[key].und.forEach(element => {
               tasks.push(
                 this.mainService.get(
                   'entity_field_collection_item',
-                  element.value,
-                ),
+                  element.value
+                )
               );
             });
           }
@@ -158,14 +147,14 @@ export class OrgFormComponent implements OnInit {
               }
               member.updateField(
                 'field_membership_role',
-                x[index]['field_membership_role'].und[0].value,
+                x[index]['field_membership_role'].und[0].value
               );
               members.push(member);
               index++;
             });
           }
           const field = this.organizationProxy.entity.getField(
-            'field_social_accounts',
+            'field_social_accounts'
           );
           Object.keys(field).forEach(key => {
             const subField = field.getField(key);
@@ -176,8 +165,22 @@ export class OrgFormComponent implements OnInit {
           });
           this.getUsernamesAndSetValue(members);
         });
-      },
+      }
     );
+  }
+
+  /**
+   * validateForm
+   */
+  validateForm() {
+    this.orgFormValid = this.organizationForm['controls']['title'].valid &&
+      this.organizationForm['controls']['field_orgs_logo'].valid &&
+      this.organizationForm['controls']['field_orgs_cover_photo'].valid &&
+      this.organizationForm['controls']['field_org_avatar'].valid &&
+      this.organizationForm['controls']['field_orgs_contact'].valid &&
+      this.organizationForm['controls']['field_orgs_address'].valid &&
+      this.organizationForm['controls']['field_breif_info'].valid &&
+      this.organizationForm['controls']['body'].valid;
   }
 
   getUsernamesAndSetValue(members: FC_MakerMembership[]) {
@@ -187,8 +190,8 @@ export class OrgFormComponent implements OnInit {
         tasks.push(
           this.mainService.get(
             'user',
-            element.getField('field_team_member').target_id,
-          ),
+            element.getField('field_team_member').target_id
+          )
         );
       }
     });
@@ -205,15 +208,15 @@ export class OrgFormComponent implements OnInit {
         });
         this.organizationProxy.entity.setField(
           'field_maker_memberships',
-          members,
+          members
         );
       },
-      err => {},
+      err => {
+      },
       () => {
-        console.log(this.organizationProxy.entity);
         this.buildForm();
         this.organizationReady = true;
-      },
+      }
     );
   }
 
@@ -222,120 +225,120 @@ export class OrgFormComponent implements OnInit {
     this.organizationForm = this.formBuilder.group({
       title: [
         this.organizationProxy.title,
-        [Validators.required, Validators.maxLength(50)],
+        [Validators.required, Validators.maxLength(50)]
       ], //
       field_orgs_type: [
         this.organizationProxy.field_orgs_type,
-        [Validators.required],
+        [Validators.required]
       ], //
       field_orgs_logo: [
         this.organizationProxy.field_orgs_logo.file
           ? this.organizationProxy.field_orgs_logo
           : '',
-        [Validators.required],
+        [Validators.required]
       ], //
       field_orgs_cover_photo: [
         this.organizationProxy.field_orgs_cover_photo.file
           ? this.organizationProxy.field_orgs_cover_photo
           : '',
-        [Validators.required],
+        [Validators.required]
       ], //
       field_org_avatar: [
         this.organizationProxy.field_org_avatar.file
           ? this.organizationProxy.field_org_avatar
           : '',
-        [Validators.required],
+        [Validators.required]
       ], //
       field_orgs_contact: [
         this.organizationProxy.field_orgs_contact.email,
-        [Validators.required, Validators.email],
+        [Validators.required, Validators.email]
       ], //
       field_orgs_phone: [this.organizationProxy.field_orgs_phone.value, []], //
       field_founder_name: [this.organizationProxy.field_founder_name.value, []], //
       field_maker_motto: [this.organizationProxy.field_maker_motto.value, []], //
       field_website_blog: [this.organizationProxy.field_website_blog.value, []], //
-      field_breif_info: [this.organizationProxy.field_breif_info.value, []], //
-      body: [this.organizationProxy.body.value, []], //
+      field_breif_info: [this.organizationProxy.field_breif_info.value, [Validators.required]], //
+      body: [this.organizationProxy.body.value, [Validators.required]], //
       field_orgs_projects: [this.organizationProxy.field_orgs_projects], //
       field_minimum_number_of_follower: [
         this.organizationProxy.field_minimum_number_of_follower.value || 1,
-        [Validators.min(0)],
+        [Validators.min(0)]
       ], //
       field_type_of_business: [
         this.organizationProxy.field_type_of_business.value,
-        [],
+        []
       ],
       field_founded_date: this.formBuilder.group({
         date: [
           this.organizationProxy.field_founded_date.value.date,
-          [Validators.min(1990), Validators.max(new Date().getFullYear())],
-        ],
+          [Validators.min(1990), Validators.max(new Date().getFullYear())]
+        ]
       }), //
       field_maker_memberships: this.formBuilder.array([], Validators.required), //
       field_social_accounts: this.formBuilder.group({
         field_facebook: [
           socialAccounts.getField('field_facebook').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_linkedin: [
           socialAccounts.getField('field_linkedin').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_pinterest: [
           socialAccounts.getField('field_pinterest').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_instagram: [
           socialAccounts.getField('field_instagram').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_twitter: [
           socialAccounts.getField('field_twitter').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_github: [
           socialAccounts.getField('field_github').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_kickstarter: [
           socialAccounts.getField('field_kickstarter').value,
-          CustomValidators.url,
+          CustomValidators.url
         ],
         field_etsy_shop: [
           socialAccounts.getField('field_etsy_shop').value,
-          CustomValidators.url,
-        ],
+          CustomValidators.url
+        ]
       }),
       field_orgs_address: this.formBuilder.group({
         country: [
           this.organizationProxy.field_orgs_address.country,
-          Validators.required,
+          Validators.required
         ],
         name_line: [this.organizationProxy.field_orgs_address.name_line],
         first_name: [this.organizationProxy.field_orgs_address.first_name],
         last_name: [this.organizationProxy.field_orgs_address.last_name],
         organisation_name: [
-          this.organizationProxy.field_orgs_address.organisation_name,
+          this.organizationProxy.field_orgs_address.organisation_name
         ],
         sub_administrative_area: [
-          this.organizationProxy.field_orgs_address.sub_administrative_area,
+          this.organizationProxy.field_orgs_address.sub_administrative_area
         ],
-        locality: [this.organizationProxy.field_orgs_address.locality],
+        locality: [this.organizationProxy.field_orgs_address.locality, [Validators.required]],
         dependent_locality: [
-          this.organizationProxy.field_orgs_address.dependent_locality,
+          this.organizationProxy.field_orgs_address.dependent_locality
         ],
         sub_premise: [this.organizationProxy.field_orgs_address.sub_premise],
-        thoroughfare: [this.organizationProxy.field_orgs_address.thoroughfare],
+        thoroughfare: [this.organizationProxy.field_orgs_address.thoroughfare, [Validators.required]],
         administrative_area: [
-          this.organizationProxy.field_orgs_address.administrative_area,
+          this.organizationProxy.field_orgs_address.administrative_area
         ],
         premise: [this.organizationProxy.field_orgs_address.premise],
         postal_code: [
           this.organizationProxy.field_orgs_address.postal_code,
-          CustomValidators.number,
+          [CustomValidators.number, Validators.required]
         ],
-        countryName: [''],
-      }),
+        countryName: ['']
+      })
     });
   }
 
@@ -344,11 +347,11 @@ export class OrgFormComponent implements OnInit {
    */
   publishButtonClick() {
     // Reset errors
-    this.errors = [];
+    this.errorLogs = [];
 
     // If form valid
     if (!this.organizationForm.valid) {
-      this.errors.push('Not all required fields are filled');
+      this.errorLogs.push('Not all required fields are filled');
       const missingFields: string[] = [];
       // display error
       Object.keys(this.organizationForm.controls).forEach(key => {
@@ -356,11 +359,13 @@ export class OrgFormComponent implements OnInit {
           missingFields.push(key);
         }
       });
-      this.errors.push(missingFields.join(' ,'));
+      this.errorLogs.push(missingFields.join(' ,'));
     }
 
     this.setOrganizationFields();
-    this.organizationReady = false;
+
+    this.processLog = 'Uploading images...';
+
     const observables = this.uploadImages();
     observables.subscribe(
       (uploadedFiles: FileEntity[]) => {
@@ -380,30 +385,42 @@ export class OrgFormComponent implements OnInit {
           index++;
         }
       },
-      err => {},
+      err => {
+      },
       () => {
+        this.processLog = 'Creating organization...';
+
         if (this.organizationProxy.entity.nid) {
           this.nodeService.updateNode(this.organizationProxy.entity).subscribe(
-            node => {},
+            node => {
+            },
             err => {
-              console.log(this.organizationProxy.entity);
+              this.processLog = '';
+              this.errorLogs.push(`Something happened: ${err.statusText}`);
             },
             () => {
+              this.processLog = '';
+              this.errorLogs = [];
               this.router.navigate(['/portfolio']);
-            },
+            }
           );
         } else {
           this.nodeService.createNode(this.organizationProxy.entity).subscribe(
-            node => {},
+            node => {
+            },
             err => {
-              console.log(this.organizationProxy.entity);
+              console.log(err);
+              this.processLog = '';
+              this.errorLogs.push(`Couldn't create the org. ${err.statusText}`);
             },
             () => {
+              this.processLog = 'Organization created';
+              this.errorLogs = [];
               this.router.navigate(['/portfolio']);
-            },
+            }
           );
         }
-      },
+      }
     );
   }
 
@@ -411,32 +428,32 @@ export class OrgFormComponent implements OnInit {
     const tasks: Observable<FileEntity>[] = [];
     if (!this.organizationForm.value.field_orgs_logo.fid) {
       this.organizationForm.value.field_orgs_logo.file = NodeHelper.RemoveFileTypeFromBase64(
-        this.organizationForm.value.field_orgs_logo.file,
+        this.organizationForm.value.field_orgs_logo.file
       );
       tasks.push(
         this.fileService.SendCreatedFile(
-          this.organizationForm.value.field_orgs_logo,
-        ),
+          this.organizationForm.value.field_orgs_logo
+        )
       );
     }
     if (!this.organizationForm.value.field_orgs_cover_photo.fid) {
       this.organizationForm.value.field_orgs_cover_photo.file = NodeHelper.RemoveFileTypeFromBase64(
-        this.organizationForm.value.field_orgs_cover_photo.file,
+        this.organizationForm.value.field_orgs_cover_photo.file
       );
       tasks.push(
         this.fileService.SendCreatedFile(
-          this.organizationForm.value.field_orgs_cover_photo,
-        ),
+          this.organizationForm.value.field_orgs_cover_photo
+        )
       );
     }
     if (!this.organizationForm.value.field_org_avatar.fid) {
       this.organizationForm.value.field_org_avatar.file = NodeHelper.RemoveFileTypeFromBase64(
-        this.organizationForm.value.field_org_avatar.file,
+        this.organizationForm.value.field_org_avatar.file
       );
       tasks.push(
         this.fileService.SendCreatedFile(
-          this.organizationForm.value.field_org_avatar,
-        ),
+          this.organizationForm.value.field_org_avatar
+        )
       );
     }
     return Observable.forkJoin(tasks);
@@ -444,12 +461,9 @@ export class OrgFormComponent implements OnInit {
 
   setOrganizationFields() {
     Object.keys(
-      this.organizationForm.value,
+      this.organizationForm.value
     ).forEach((key: string) => {
       const fieldValue = this.organizationForm.value[key];
-
-      console.log('setOrganizationFields', key, fieldValue);
-
       const organizationEntity = this.organizationProxy.entity as Organization;
       organizationEntity.updateField(key.toString(), fieldValue);
     });
