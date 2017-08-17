@@ -61,7 +61,7 @@
           
         </header>
       </div> -->
-      <div class="row">
+      <div class="row main-org-content">
         <div class="col-md-8">
           <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"
                              [description]="company.company_description"></app-orgs-about-us>
@@ -198,8 +198,7 @@
       <div class="row p-2" *ngIf="team">
         <div class="col-4" *ngFor="let teams of team">
           <div *ngIf="teams.field_membership_role">
-            <p> ROLE ON THE PROJECT </p>
-            <P>{{teams.field_membership_role}}</P>
+            <P>Role: {{teams.field_membership_role}}</P>
           </div>
           <app-maker-card [uid]="teams.field_team_member" [state]="'tall'"></app-maker-card>
         </div>
