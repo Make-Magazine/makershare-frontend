@@ -1,4 +1,5 @@
 .about-badges {
+  padding-top: 5rem;
   
    .page-title {
   
@@ -8,10 +9,10 @@
   
   }
     .page-description { 
-          font-size: 0.95rem;
-          line-height: 1.5rem;
+          // font-size: 0.95rem;
+          // line-height: 1.5rem;
           color: #828282;
-          width: 720px;
+          // width: 720px;
           padding-bottom: 50px;
           margin: auto;
          
@@ -20,17 +21,17 @@
     text-align: center;
     text-transform: uppercase;
     color: #ED1C24;
-    font-size: 1.125rem;
-    padding-bottom: 30px;
+    // font-size: 1.125rem;
+    margin-bottom: 5rem;
     
   }
   .badge-group {
     .image-container {
       width: 20%;
       img{
-        width: 220px;
+        // width: 220px;
         height: auto;
-        margin-top: -5px;
+        // margin-top: -5px;
         padding: 3px 7px 10px 0px;
       }
     }
@@ -43,12 +44,13 @@
       margin-bottom: 6%;
       //@include boxShadow(2px, 2px ,8px, $shade-3);
       h3 {
-        font-size: 1.6rem;
-        line-height: 1.75rem;
+        // font-size: 1.6rem;
+        // line-height: 1.75rem;
+        text-align: left;
       }
       p{
-        font-size: 0.85rem;
-        line-height: 1.3rem;
+        // font-size: 0.85rem;
+        // line-height: 1.3rem;
         text-align: left;
       }
     }
@@ -68,7 +70,7 @@
         text-align: left;
         font-family: 'Open Sans', sans-serif;
         text-transform: uppercase;
-        font-size: 1.125rem;
+        // font-size: 1.125rem;
         color: #ed1c24;
         font-weight: 500;
         margin-bottom: 12px;
@@ -77,16 +79,16 @@
         text-align: left;
         font-size: 36px;
         font-weight: 500;
-        font-size: 2.1rem;
-        line-height: 110%;
+        // font-size: 2.1rem;
+        // line-height: 110%;
         color: $text-color-1;
         font-family: 'Messina Modern Regular';
         margin-bottom: 14px;
       }
       p {
       font-family: 'Messina Sans Regular';
-      font-size: 0.95rem;
-      line-height: 1.5rem;
+      // font-size: 0.95rem;
+      // line-height: 1.5rem;
       color: #828282;
       text-align: left;
       }
@@ -118,7 +120,7 @@
       text-align: center;
       font-family: 'Open Sans', sans-serif;
       text-transform: uppercase;
-      font-size: 1.125rem;
+      // font-size: 1.125rem;
       color: #ed1c24;
       font-weight: 500;
       margin-bottom: 12px;
@@ -127,15 +129,15 @@
       text-align: center;
       font-size: 36px;
       font-weight: 500;
-      font-size: 2.1rem;
-      line-height: 110%;
+      // font-size: 2.1rem;
+      // line-height: 110%;
       color: $text-color-1;
       font-family: 'Messina Modern Regular';
     }
     p {
       font-family: 'Messina Sans Regular';
-      font-size: 0.95rem;
-      line-height: 1.5rem;
+      // font-size: 0.95rem;
+      // line-height: 1.5rem;
       text-align: left;
       color: #4f4f4f;
     }
