@@ -129,14 +129,14 @@ export class BasicInfoComponent implements OnInit {
    *
    * @returns {CropperSettings}
    */
-  cropperSettingsFactory() {
+  cropperSettingsFactory(x, y) {
     const cropperSettings = new CropperSettings();
-    cropperSettings.width = 800;
-    cropperSettings.height = 450;
-    cropperSettings.minWidth = 800;
-    cropperSettings.minHeight = 450;
-    cropperSettings.croppedWidth = 800;
-    cropperSettings.croppedHeight = 450;
+    cropperSettings.width = x;
+    cropperSettings.height = y;
+    cropperSettings.minWidth = x;
+    cropperSettings.minHeight = y;
+    cropperSettings.croppedWidth = x;
+    cropperSettings.croppedHeight = y;
     cropperSettings.noFileInput = true;
     cropperSettings.canvasWidth = 400;
     cropperSettings.canvasHeight = 225;
@@ -147,9 +147,9 @@ export class BasicInfoComponent implements OnInit {
    * setCropperSettings
    */
   setCropperSettings() {
-    this.cropperLogoSettings = this.cropperSettingsFactory();
-    this.cropperCoverSettings = this.cropperSettingsFactory();
-    this.cropperAvatarSettings = this.cropperSettingsFactory();
+    this.cropperLogoSettings = this.cropperSettingsFactory(600, 600);
+    this.cropperCoverSettings = this.cropperSettingsFactory(2200, 1100);
+    this.cropperAvatarSettings = this.cropperSettingsFactory(600,600);
 
     this.imageData = {};
   }
