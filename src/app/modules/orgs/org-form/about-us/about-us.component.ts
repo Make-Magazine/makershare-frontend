@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Organization, EntityProxy, NodeHelper } from '../../../../core';
 import { ViewService } from '../../../../core/d7services/view/view.service';
@@ -11,6 +11,8 @@ import { Observable } from 'rxjs/Observable';
 export class AboutUsComponent implements OnInit {
   @Input() organizationForm: FormGroup;
   @Input() organizationProxy: EntityProxy;
+  @Output() validateForm = new EventEmitter();
+
   team: {
     usernameOrUID: string | number;
     anonymous: boolean;
@@ -40,6 +42,11 @@ export class AboutUsComponent implements OnInit {
       this.addRow();
     }
     this.setSelectedUsers();
+
+    this.organizationForm.valueChanges.subscribe(data => {
+      this.onValueChanged();
+    });
+    this.onValueChanged();
   }
 
   search = (text$: Observable<string>) => {
@@ -73,6 +80,20 @@ export class AboutUsComponent implements OnInit {
     }
     return x;
   };
+
+  /**
+   * onValueChanged
+   */
+  onValueChanged() {
+    this.emitValues();
+  }
+
+  /**
+   * emitValues
+   */
+  emitValues() {
+    this.validateForm.emit();
+  }
 
   setSelectedUsers() {
     const field_maker_memberships = this.organizationForm.value

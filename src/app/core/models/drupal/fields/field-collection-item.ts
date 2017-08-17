@@ -22,7 +22,7 @@ export abstract class FieldCollectionItem extends DrupalCustomField {
     this.item_id = item_id;
   }
 
-  init() : FieldCollectionItem[] {
+  init(): FieldCollectionItem[] {
     return [this];
   }
 
@@ -32,15 +32,19 @@ export abstract class FieldCollectionItem extends DrupalCustomField {
 
   abstract initFields();
 
-  getField(fieldName:string) {
+  getField(fieldName: string) {
     const field = this[fieldName];
-    if(field instanceof DrupalCustomLanguageField) {
+    if (field instanceof DrupalCustomLanguageField) {
       return field.getField();
     }
     return field;
   }
 
-  setField(fieldName: string, value: DrupalCustomField | string | number, index?: number): void {
+  setField(
+    fieldName: string,
+    value: DrupalCustomField | string | number,
+    index?: number,
+  ): void {
     const field = this[fieldName];
     if (field instanceof DrupalCustomLanguageField) {
       field.setField(value);

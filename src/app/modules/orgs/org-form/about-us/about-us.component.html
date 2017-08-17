@@ -1,7 +1,7 @@
 <div class="col-md-8"
      [formGroup]="organizationForm">
 
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label for="orgInfo">Organization Info</label>
     </div>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group required">
     <div class="form-label">
       <label for="orgAboutUs">About Us</label>
     </div>
@@ -51,13 +51,14 @@
       </div>
       <div [formGroupName]="organizationForm.value.field_maker_memberships.length - 1" *ngIf="fixFormReady">
         <label>Member name</label>
-        <input #username type="text" [ngbTypeahead]="search" [resultTemplate]='rt' (selectItem)="selectedUser = $event.item" [inputFormatter]="formatter">
-          <div *ngIf="searchFailed">
-            User not registered
-             <button type="button" class="btn btn-primary" (click)="setAnonymous(username.value, i)">
-              Add as anonymous member
-            </button>
-          </div>
+        <input #username type="text" [ngbTypeahead]="search" [resultTemplate]='rt'
+               (selectItem)="selectedUser = $event.item" [inputFormatter]="formatter">
+        <div *ngIf="searchFailed">
+          User not registered
+          <button type="button" class="btn btn-primary" (click)="setAnonymous(username.value, i)">
+            Add as anonymous member
+          </button>
+        </div>
         <label>Role</label>
         <input type="text" formControlName="field_membership_role">
         <a *ngIf="selectedUser" (click)="setMember()">+add</a>
