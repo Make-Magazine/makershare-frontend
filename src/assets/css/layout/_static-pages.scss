@@ -1,5 +1,5 @@
 .about-badges {
-  padding-top: 5rem;
+  padding-top: 4rem;
   
    .page-title {
   
@@ -26,6 +26,7 @@
     
   }
   .badge-group {
+    overflow: hidden; //clearfix
     .image-container {
       width: 20%;
       img{
@@ -265,6 +266,39 @@
 }
 }
 
+.page-explore {
+  .second-logo-link {
+    a {
+      display: block;
+      float: left;
+      width: 50%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .left {
+    float: left; width: 45%; margin-right: 5%;
+
+    @include tablet() {
+      width: 100%;
+      margin-right: initial;
+      a {
+        margin: auto;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  .right {
+    float:left;
+    width: 45%;
+
+    @include tablet() {
+      width: 100%;
+    }
+  }
+}
 
 .community-guidelines-page {
   img {

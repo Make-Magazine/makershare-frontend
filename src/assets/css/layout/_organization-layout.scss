@@ -11,21 +11,30 @@
 	.org-logo {
 		margin-bottom: 2rem;
 	}
+
+	.flexer {
+		min-height: 50vh;
+		display: flex;
+		.center-self {
+			align-self: center;
+    		margin: auto;
+		}
+	}	
 }
 
 .org-feature-photo {
 	position: fixed;
-	opacity: 0.45;
-	top: 110px;
-	left: 0;
-	right: 0;
-	height: 0;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	padding-bottom: 50vh;
-	background-color: #343434;
-	background-blend-mode: multiply;
+    opacity: 0.45;
+    top: 107px;
+    left: 0;
+    right: 0;
+    height: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: calc(50vh + 3px);
+    background-color: #343434;
+    background-blend-mode: multiply;
 }
 
 .org-content {
@@ -64,7 +73,7 @@
 
 .org-social {
 	bottom: 2rem;
-	right: 20vw;
+	right: 0;
 	position: absolute;
 	font-size: 3rem;
 	.fa {
