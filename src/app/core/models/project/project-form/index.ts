@@ -5,8 +5,8 @@ export {
   ToolMaterialPart,
 } from '../../project/project-form/tool-material-part';
 export {
-  ProjectCategory,
-} from '../../project/project-form/project-category';
+  ICategory,
+} from '../../category/category';
 export {
   FieldCollectionItemTool,
   FieldCollectionItemPart,
