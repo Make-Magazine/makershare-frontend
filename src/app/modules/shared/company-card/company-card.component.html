@@ -23,25 +23,10 @@
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{cardData.Orgs_name}}"></span>
-          <!-- <div class="card-owners-group">
-            <p>Admin : <a class="card-owner-link d-inline" (click)="goToProfile(cardData.profile_url)" innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a></p>
-          </div> -->
           <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
-          <!-- <span *ngIf="cardData.location['country'] && cardData.location['locality'] " innerHTML="{{cardData.location['country']}}{{cardData.location['locality']}}"> </span> -->
         </div>
       </div>
-      <div class="followers-count" *ngIf="cardData.minimum_number_followers < cardData.followers_count ">
-        <span *ngIf="cardData.followers_count >1"> {{cardData.followers_count}} Followers</span>
-        <span *ngIf="cardData.followers_count == 1"> {{cardData.followers_count}} Follower</span>
-      </div>
-      <div class="projects-count" *ngIf="cardData.total_projects">
-        <span *ngIf="cardData.total_projects >1"> {{cardData.total_projects}} Projects</span>
-        <span *ngIf="cardData.total_projects == 1"> {{cardData.total_projects}} Project</span>
-        <span *ngIf="cardData.total_projects == 0"> {{cardData.total_projects}} Project</span>
-      </div>
-      <div class="org-views" *ngIf="cardData.org_views">
-        {{cardData.org_views}} views
-      </div>
+      <social-stats [followerCount]="cardData.followers_count" [profileViews]="cardData.ord_views" [projectsCount]="cardData.total_projects"></social-stats>
     </div>
   </div>
 </div>

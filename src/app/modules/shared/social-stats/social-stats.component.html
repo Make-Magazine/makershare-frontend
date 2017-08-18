@@ -1,7 +1,7 @@
 <ul class="social-stat-group">
-  <li class="social-stat">
+  <li class="social-stat" *ngIf="followerCount">
     <i class="fa fa-users"></i>
-    <span class="info">0</span>
+    <span class="info">{{followerCount}}</span>
   </li>
 
   <li class="social-stat" *ngIf="like && nid">

@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SocialStatsComponent implements OnInit {
   @Input() profileViews;
   @Input() projectsCount;
+  @Input() followerCount;
   @Input() profileView;
   @Input() uid;
   @Input() nid;
