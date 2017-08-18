@@ -7,6 +7,9 @@ import { FileEntity } from '../../../../core';
 import { ViewService } from '../../../../core/d7services';
 import { Observable } from 'rxjs/Observable';
 import { KeyValueObject } from '../../../../core/models/object/key-value-object';
+// import { CountriesShape } from '../../../../core/store/countries-reducer';
+// import { Store } from '@ngrx/store';
+// import { State, Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-org-form-basic-info',
@@ -14,6 +17,7 @@ import { KeyValueObject } from '../../../../core/models/object/key-value-object'
 })
 export class BasicInfoComponent implements OnInit {
   @Input() organizationForm: FormGroup;
+  @Input() countries: KeyValueObject[];
   @Output() validateForm = new EventEmitter();
   @Output() canNavigate = new EventEmitter();
   @Output() emitter = new EventEmitter();
@@ -27,7 +31,6 @@ export class BasicInfoComponent implements OnInit {
   cropperAvatarSettings: CropperSettings;
 
   currentImageFieldName: string;
-  countries: KeyValueObject[] = [];
 
   selectedCountry;
   searchFailed = false;
@@ -35,19 +38,23 @@ export class BasicInfoComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private viewService: ViewService,
-  ) {}
+    /*private store: Store<CountriesShape>,*/
+  ) {
+  }
 
   /**
    * ngOnInit
    */
   ngOnInit() {
     this.setCropperSettings();
-    this.getCountries();
+    // this.getCountries();
 
     this.organizationForm.valueChanges.subscribe(data => {
       this.onValueChanged();
     });
     this.onValueChanged();
+
+    this.initCountries();
   }
 
   /**
@@ -57,7 +64,11 @@ export class BasicInfoComponent implements OnInit {
    * @returns {any}
    */
   formatter = x => {
-    return x.value || x;
+    const val: string = x.key || x;
+    const match = this.countries.filter(c => {
+      return c.key == val;
+    })[0];
+    return match.value;
   };
 
   /**
@@ -149,7 +160,7 @@ export class BasicInfoComponent implements OnInit {
   setCropperSettings() {
     this.cropperLogoSettings = this.cropperSettingsFactory(600, 600);
     this.cropperCoverSettings = this.cropperSettingsFactory(2200, 1100);
-    this.cropperAvatarSettings = this.cropperSettingsFactory(600,600);
+    this.cropperAvatarSettings = this.cropperSettingsFactory(600, 600);
 
     this.imageData = {};
   }
@@ -157,17 +168,28 @@ export class BasicInfoComponent implements OnInit {
   /**
    * getCountries
    */
-  getCountries() {
+  /*getCountries() {
     this.viewService
       .getView<KeyValueObject>('maker_address_api')
       .subscribe(countries => {
         this.countries = countries;
+
+        this._store.dispatch({type: COUNTRIES_SET, payload: this.countries});
+
         const countryKey = this.organizationForm.value.field_orgs_address.country;
         if (countryKey) {
           const index = countries.map(element => element.key).indexOf(countryKey);
           this.getCountryDetails(countries[index]);
         }
       });
+  }*/
+
+  initCountries() {
+    const countryKey = this.organizationForm.value.field_orgs_address.country;
+    if (countryKey) {
+      const index = this.countries.map(element => element.key).indexOf(countryKey);
+      this.getCountryDetails(this.countries[index]);
+    }
   }
 
   /**
