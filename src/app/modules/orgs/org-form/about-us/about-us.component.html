@@ -3,20 +3,22 @@
 
   <div class="form-group required">
     <div class="form-label">
-      <label for="orgAboutUs">About Us</label>
+      <label for="org-about-us">About Us</label>
     </div>
     <div class="form-ctl">
-     <!--  <textarea maxlength="250"
-                rows="5"
-                id="orgAboutUs"
-                formControlName="body"></textarea> -->
-       <maker-ckeditor [id]="'org-about-us'"
-          formControlName="body"
-          ngDefaultControl></maker-ckeditor>
+      <maker-ckeditor [id]="'org-about-us'"
+                      formControlName="body"
+                      ngDefaultControl></maker-ckeditor>
+      <div *ngIf="organizationForm.controls['body'].invalid && (organizationForm.controls['body'].dirty || organizationForm.controls['body'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['body'].errors.required">
+          This field is required
+        </div>
+      </div>
     </div>
   </div>
 
-  
+
   <div class="form-group required">
     <div class="form-label">
       <label for="orgInfo">Organization Info</label>
@@ -27,6 +29,12 @@
                 id="orgInfo"
                 placeholder="Enter info here"
                 formControlName="field_breif_info"></textarea>
+      <div *ngIf="organizationForm.controls['field_breif_info'].invalid && (organizationForm.controls['field_breif_info'].dirty || organizationForm.controls['field_breif_info'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_breif_info'].errors.required">
+          This field is required
+        </div>
+      </div>
     </div>
   </div>
 

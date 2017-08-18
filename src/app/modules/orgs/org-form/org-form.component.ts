@@ -33,13 +33,7 @@ export function countryValid(countriesList): ValidatorFn {
     const match = countriesList.filter(c => {
       return c.key == control.value;
     })[0];
-
-    console.log(control.value);
-
     return match ? null : { countryValid: { value: control.value } };
-
-    /*const forbidden = nameRe.test(control.value);*/
-    /*return forbidden ? {'forbiddenName': {value: control.value}} : null;*/
   };
 }
 
