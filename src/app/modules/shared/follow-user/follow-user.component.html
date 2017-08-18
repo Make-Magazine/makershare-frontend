@@ -1,14 +1,17 @@
-<div class="button-container-sec-2" *ngIf="CurrentLoggedUserId != targetUid">
-  <a class="btn btn-main-2" (click)="followThis($event)" [class.active]="!isFollowed">{{ButtonFollow}}</a>
+<div class="follow-control action" *ngIf="CurrentLoggedUserId != targetUid" (click)="followThis($event)" [class.active]="!isFollowed">
+  <span class="follow-item" >{{ButtonFollow}}</span>
 </div>
-<span *ngIf="countFollowers == 0">{{countFollowers}} Follower</span>
-<div *ngIf="countFollowers >= 1">
-  <span (click)="openModal(contentfollower)">{{countFollowers}} Followers</span>
+
+<div class="follow-control">
+  <span class="follow-item" (click)="openModal(contentfollower)">{{countFollowers}} Followers</span>
 </div>
-<span *ngIf="countFollowing == 0">Following {{countFollowing}}</span>
-<div *ngIf="countFollowing >= 1">
-  <span (click)="openModal(contentfollowing)">Following {{countFollowing}}</span>
+<div class="follow-control">
+  <span class="follow-item" (click)="openModal(contentfollowing)">{{countFollowing}} Following</span>
 </div>
+
+
+
+<!-- overlays -->
 <ng-template #contentfollower let-c="close" let-d="dismiss" class="like-modal">
   <div class="model-likes">
     <div class="modal-header">

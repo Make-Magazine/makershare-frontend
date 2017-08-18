@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
-import { MainService, ViewService } from '../../../core/d7services';
+import { MainService, ViewService, FlagService } from '../../../core/d7services';
 import { Auth } from '../../auth0/auth.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class MakerCardComponent implements OnInit {
   card;
   projectsCount;
   latestPorjectImg;
+  countFollowing = 0;
   swtichImage: boolean = false;
   Manager: boolean = false;
 
@@ -30,6 +31,7 @@ export class MakerCardComponent implements OnInit {
     private viewService: ViewService,
     private config: NgbTooltipConfig,
     public auth: Auth,
+    private flagService: FlagService,
     private mainService: MainService,
   ) {
     this.config.placement = 'bottom';
@@ -48,10 +50,17 @@ export class MakerCardComponent implements OnInit {
     this.viewService
       .getView('maker_card_data', [['uid', this.uid]])
       .subscribe(data => {
-        // console.log(data);
+        // console.log('maker');
         this.card = data[0];
-        // console.log(this.card)
+        // console.log(this.card);
+        this.getFollowersCount();
       });
+  }
+
+  getFollowersCount() {
+    this.flagService.flagCount(this.uid, 'follow_user').subscribe(response => {
+      this.countFollowing = response['count'] ? response['count'] : 0;
+    });
   }
 
   getMakerBadges() {
