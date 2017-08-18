@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Auth } from '../../../modules/auth0/auth.service';
 import { ProfilePictureService } from '../../shared/profile-picture/profile-picture.service';
 import { Singleton } from '../../../core';
+import { Store } from '@ngrx/store';
+import { CurrentUserShape } from '../../../core/store/current-user-reducer';
 import {
   NotificationBarService,
   NotificationType,
@@ -28,6 +30,8 @@ export class HeaderComponent implements OnInit {
   uid;
   org_data;
 
+  orgId$: Observable<number>;
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -35,7 +39,10 @@ export class HeaderComponent implements OnInit {
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
     private mainService: MainService,
-  ) {}
+    private _currentUserStore: Store<CurrentUserShape>,
+  ) {
+    this.orgId$ = this._currentUserStore.select('orgId');
+  }
 
   ngOnInit() {
     this.getOrgProfile();
@@ -98,13 +105,12 @@ export class HeaderComponent implements OnInit {
   onNotify(event) {
     this.showSearchBox = false;
   }
+
   getOrgProfile() {
-    this.uid = +localStorage.getItem('user_id');
-    const body = {
-      uid: this.uid,
-    };
     this.mainService
-      .custompost('company_profile_api/my_org_profile', body)
+      .custompost('company_profile_api/my_org_profile', {
+        uid: +localStorage.getItem('user_id'),
+      })
       .subscribe(res => {
         this.org_data = res[0];
       });
