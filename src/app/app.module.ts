@@ -40,6 +40,7 @@ import { ShowTellComponent } from './modules/pages/show-tell/show-tell.component
 import { TermsComponent } from './modules/pages/terms/terms.component';
 import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfolio.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { LoginComponent } from './modules/auth0/login/login.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -81,6 +82,7 @@ import { SharedModule } from './modules/shared/shared.module';
     GuidelinesComponent,
     WhyPortfolioComponent,
     AboutUsComponent,
+    LoginComponent,
     ShowTellComponent,
     ClaimProfileComponent
   ]
