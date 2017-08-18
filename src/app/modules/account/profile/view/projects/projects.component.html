@@ -3,11 +3,11 @@
     <app-project-card *ngFor="let project of profile_projects" 
                       [nid]="project.nid" 
                       [ngClass]="{'col-lg-12' : view != 'grid',
-                                  'col-lg-6 tall' : view == 'grid'}"
-                      [state]="view" 
+                                  'col-lg-6' : view == 'grid'}"
+                      [state]="view == 'grid' ? 'tall' : 'wide'"
+ 
                       class="project-item card-wrapper" 
                       [view]="view">
-                      <!-- state="{{project.view != 'grid' ? 'wide' : 'tall'}}"  -->
     </app-project-card>
     <div *ngIf="profile_projects.length == 0" class="col-12">
       <div class="empty-content row">
