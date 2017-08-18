@@ -96,6 +96,11 @@ export class OrgFormComponent implements OnInit {
       });
   }
 
+  /**
+   * convertToForm
+   *
+   * @param {number} nid
+   */
   convertToForm(nid: number) {
     const tasks = [];
     let getOrganization;
@@ -270,6 +275,9 @@ export class OrgFormComponent implements OnInit {
     );
   }
 
+  /**
+   * getForm
+   */
   buildForm() {
     const socialAccounts = this.organizationProxy.field_social_accounts;
     this.organizationForm = this.formBuilder.group({
