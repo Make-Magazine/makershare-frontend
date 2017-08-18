@@ -19,6 +19,7 @@ import { ShowTellComponent } from './modules/pages/show-tell/show-tell.component
 import { TermsComponent } from './modules/pages/terms/terms.component';
 import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfolio.component';
 import { AccessRestrictedComponent } from './modules/shared/access-restricted/access-restricted.component';
+import { LoginComponent } from './modules/auth0/login/login.component';
 
 const APP_ROUTES: Routes = [
     { path: '', loadChildren: './modules/home/home.module#HomeModule' },
@@ -52,6 +53,7 @@ const APP_ROUTES: Routes = [
     { path: 'claim-profile', component: ClaimProfileComponent },
     { path: '404', component: Four04Component },
     { path: 'access-restricted', component: AccessRestrictedComponent },
+    { path: 'login',component: LoginComponent },
     { path: '**', redirectTo: '/404' },
 ];
 

@@ -17,6 +17,10 @@ export class Settings {
   appName: string = 'Maker Share';
   language: string = 'und';
 
+  orgCreated: boolean = false;
+  orgDeleted: boolean = false;
+
+
   getBackEndUrl(): string {
     const url = this.apiProtocol + '://' + this.apiHost;
     return this.apiPort ? url + ':' + this.apiPort + '/' : url + '/';

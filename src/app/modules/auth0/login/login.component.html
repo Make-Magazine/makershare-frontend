@@ -1,0 +1,198 @@
+<a (click)="open(content,$event)"  class="nav-link">Login/signup</a>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-feedback">
+    <div class="modal-header">
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+			  <span aria-hidden="true">&times;</span>
+		  </button>
+    </div>
+    <div class="modal-body">
+   
+     <div>
+       
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>Login/sign up</h2>
+      
+      <form id="login">
+
+        <div class="form-group">
+          <label for="name">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            #email
+            placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            #password
+            placeholder="Enter your password">
+        </div>
+         <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="auth.login(email.value, password.value)">
+            Log In
+        </button>
+
+        </form>
+      <form id="signup">
+      <div class="form-group">
+          <label for="name">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            #emailUp
+            placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="name">First name</label>
+          <input
+            type="text"
+            class="form-control"
+            #firstName
+            placeholder="you@example.com">
+        </div>
+          <div class="form-group">
+          <label for="name">last name</label>
+          <input
+            type="text"
+            class="form-control"
+            #lastName
+            placeholder="you@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            #passwordUp
+            placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+            <fieldset  > 
+        <legend>Birthday Date </legend> 
+        <label for="month">Month</label> 
+        <select id="month" 
+                name="month"  #month> 
+          <option  value="1">January</option>       
+          <option value="2">February</option>       
+          <option value="3">March</option>       
+          <option value="4">April</option>       
+          <option value="5">May</option>       
+          <option value="6">June</option>       
+          <option value="7">July</option>       
+          <option value="8">August</option>       
+          <option value="9">September</option>       
+          <option value="10">October</option>       
+          <option value="11">November</option>       
+          <option value="12">December</option>       
+        </select> - 
+        <label for="day">Day</label> 
+        <select id="day" 
+                name="day" #day > 
+          <option>1</option>       
+          <option>2</option>       
+          <option>3</option>       
+          <option>4</option>       
+          <option>5</option>       
+          <option>6</option>       
+          <option>7</option>       
+          <option>8</option>       
+          <option>9</option>       
+          <option>10</option>       
+          <option>11</option>       
+          <option>12</option>       
+          <option>13</option>       
+          <option>14</option>       
+          <option>15</option>       
+          <option>16</option>       
+          <option>17</option>       
+          <option>18</option>       
+          <option>19</option>       
+          <option>20</option>       
+          <option>21</option>       
+          <option>22</option>       
+          <option>23</option>       
+          <option>24</option>       
+          <option>25</option>       
+          <option>26</option>       
+          <option>27</option>       
+          <option>28</option>       
+          <option>29</option>       
+          <option>30</option>       
+          <option>31</option>       
+        </select> - 
+        <label for="year">Year</label> 
+        <select id="year" 
+              name="year" #year >
+          <option>1980</option>       
+          <option>1981</option>       
+          <option>1982</option>       
+          <option>1983</option>       
+          <option>1984</option>       
+          <option>1985</option>       
+          <option>1986</option>       
+          <option>1987</option>       
+          <option>1988</option>       
+          <option>1989</option>   
+          <option>1990</option>       
+          <option>1991</option>       
+          <option>1992</option>       
+          <option>1993</option>       
+          <option>1994</option>       
+          <option>1995</option>       
+          <option>1996</option>       
+          <option>1997</option>       
+          <option>1998</option>  
+          <option>1999</option>       
+          <option>2000</option>       
+          <option>2001</option>       
+          <option>2002</option>       
+          <option>2003</option>       
+          <option>2004</option>       
+          <option>2005</option>       
+          <option>2006</option>       
+          <option>2007</option>       
+          <option>2008</option>   
+          <option>2009</option>       
+          <option>2010</option>       
+          <option>2011</option>       
+          <option>2012</option>       
+          <option>2013</option>       
+          <option>2014</option>       
+          <option>2015</option>       
+          <option>2016</option>       
+          <option>2017</option>       
+        </select> 
+        <span >(Month-Day-Year)</span> 
+      </fieldset> 
+    </div>
+    <div class=form-group>
+        <input type="checkbox" #birthdate value="true" hidden>
+    </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          class="btn btn-primary"
+          (click)="auth.signup(emailUp.value, passwordUp.value,firstName.value,lastName.value,day.value,month.value,year.value,birthdate.value)">
+            Sign Up
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>       
+        
+
+</div>
+</div>
+</ng-template>

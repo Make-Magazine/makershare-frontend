@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InfoCard } from '../../../core/models/cards/infoCard';
 import { Auth } from '../../auth0/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-onboarding',
@@ -29,12 +30,15 @@ export class OnboardingComponent implements OnInit {
       subtitle: 'Create Your Maker Portfolio',
       button: 'Add a project',
       action: () => {
-        this.auth.login();
+        this.router.navigate(['login']);
       }
     }
   ];
 
-  constructor(public auth: Auth) {
+  constructor(
+    public auth: Auth,
+    public router:Router) {
+
   }
 
   ngOnInit() {
