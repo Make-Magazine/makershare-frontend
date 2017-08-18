@@ -45,6 +45,9 @@ nav.primary, nav.secondary {
   transition: all .3s ease;
   cursor: pointer;
   padding: 0;
+  &.disabled {
+    cursor: not-allowed !important;
+  }
   a {
     color: inherit;
     &:hover {
