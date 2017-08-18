@@ -76,6 +76,13 @@
     }
   }
 
+  input,
+  textarea {
+    &.ng-dirty.ng-invalid {
+      border: .1rem solid $vivid-red;
+    }
+  }
+
   .form-subform {
     .form-subform-group {
       margin: 1rem 0;

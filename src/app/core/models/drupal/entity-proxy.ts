@@ -10,7 +10,7 @@ export class EntityProxy {
   }
 
   private implementGetSet() {
-    for (let key in this.entity) {
+    for (const key in this.entity) {
       if (this.entity[key] instanceof Function) {
         return;
       }
