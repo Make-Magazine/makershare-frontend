@@ -33,7 +33,13 @@ export function countryValid(countriesList): ValidatorFn {
     const match = countriesList.filter(c => {
       return c.key == control.value;
     })[0];
+
+    console.log(control.value);
+
     return match ? null : { countryValid: { value: control.value } };
+
+    /*const forbidden = nameRe.test(control.value);*/
+    /*return forbidden ? {'forbiddenName': {value: control.value}} : null;*/
   };
 }
 
@@ -93,17 +99,6 @@ export class OrgFormComponent implements OnInit {
 
         this.buildForm();
         this.organizationReady = true;
-
-        // this._store.dispatch({ type: COUNTRIES_SET, payload: countries });
-
-        /*const countryKey = this.organizationForm.value.field_orgs_address
-          .country;
-        if (countryKey) {
-          const index = countries
-            .map(element => element.key)
-            .indexOf(countryKey);
-          this.getCountryDetails(countries[index]);
-        }*/
       });
   }
 

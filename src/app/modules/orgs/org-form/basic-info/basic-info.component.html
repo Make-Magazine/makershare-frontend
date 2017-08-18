@@ -147,7 +147,7 @@
     </div>
     <div class="form-ctl">
       <input type="text"
-             formControlName="countryName"
+             formControlName="country"
              [inputFormatter]="formatter"
              [ngbTypeahead]="searchCountry"
              [editable]="false"
@@ -157,6 +157,9 @@
            class="alert alert-danger">
         <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['country'].errors.required">
           Country is required
+        </div>
+        <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['country'].errors.countryValid">
+          Country is not valid. Please select from the list.
         </div>
       </div>
 
