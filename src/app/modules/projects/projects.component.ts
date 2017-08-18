@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import {
+  NotificationBarService,
+  NotificationType,
+} from 'ngx-notification-bar/release';
 import { Singleton } from '../../core/models/application';
 import { MainService } from '../../core/d7services/main/main.service';
 import { ViewService } from '../../core/d7services/view/view.service';
 import { SortBySortingSet, SortingSet } from '../../core/models/makers';
-import { ProjectCategory } from '../../core/models/project/project-form';
+import { ICategory } from '../../core/models/category/category';
 import { Auth } from '../auth0/auth.service';
 import { LoaderService } from '../shared/loader/loader.service';
 
@@ -22,22 +25,17 @@ export class ProjectsComponent implements OnInit {
     this.CurrentSortSet,
     this.viewService,
   );
-  projects = [];
-  hasContent = false;
-  categories = null;
-  nameCat;
-  view = 'grid';
-  pages: number = 0;
-  countProject = 0;
-  showloadmoreproject = false;
-  currentActiveParentIndex = -1;
-  currentActiveChildIndex = -1;
-  categories_parents: ProjectCategory[] = [];
-  categories_childs: ProjectCategory[] = [];
-  all_categories: ProjectCategory[];
-  childCategory = [];
-  categoryId;
-  Manager: boolean = false;
+
+  private projects = [];
+  private categoryId: number;
+  private subCategoryId: number;
+  private showLoadMoreBtn: boolean = false;
+  private projectsCount: number = 0;
+  private currentPage: number = 0;
+  private categories: ICategory[] = [];
+  private subCategories: ICategory[] = [];
+  private filteredSubCategories: ICategory[] = [];
+  // Manager: boolean = false;
 
   constructor(
     private viewService: ViewService,
@@ -47,14 +45,7 @@ export class ProjectsComponent implements OnInit {
     public auth: Auth,
     private meta: Meta,
     private title: Title,
-  ) {}
-
-  ngOnInit() {
-    this.Manager = this.auth.IsCommuintyManager();
-    this.getCountProject();
-    this.getProjects();
-    this.getProjectCategories();
-
+  ) {
     this.title.setTitle(
       'Maker Projects | Learn the Stories Behind the Projects | Maker Share',
     );
@@ -71,135 +62,180 @@ export class ProjectsComponent implements OnInit {
           '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);
-
-    // this.meta.setTag('og:image', '/assets/logo.png');
   }
 
-  getProjects() {
-    this.loaderService.display(true);
-    if (this.pages == 0) {
-      this.projects = [];
-    }
-    this.SortBy.Sort('browse_projects', this.pages, this.categoryId).subscribe(
-      data => {
-        this.projects = this.projects.concat(data);
-        this.loadMoreVisibilty();
-        if (this.projects.length == 0) {
-          this.notificationBarService.create({
-            message:
-              "There aren't any projects yet for this topic. Go make one!",
-            type: NotificationType.Error,
-            allowClose: false,
-            autoHide: true,
-            hideOnHover: false,
-          });
-        }
-        this.loaderService.display(false);
-      },
-      err => {},
-    );
-  }
-
-  projectsById(event) {
-    // show spinner
-    this.categoryId = event.target.id;
-    this.projects = [];
-    this.pages = 0;
+  /**
+   * ngOnInit
+   */
+  ngOnInit() {
+    // this.Manager = this.auth.IsCommuintyManager();
+    this.countAllProjects();
     this.getProjects();
+    this.getProjectCategories();
   }
 
-  /* function to get count projects */
-  getCountProject() {
+  /**
+   * countAllProjects
+   */
+  countAllProjects() {
     this.viewService.getView('maker_count_all_projects').subscribe(
       data => {
-        this.countProject = data[0];
+        this.projectsCount = data[0];
       },
       err => {},
     );
   }
 
-  getProjectCategories() {
-    this.viewService
-      .getView('projects_categories')
-      .subscribe((categories: ProjectCategory[]) => {
-        this.all_categories = categories;
-        categories.forEach((element, index) => {
-          if (element.parent_tid) {
-            this.viewService
-              .getView('browse_projects', [['category', element.tid]])
-              .subscribe(data => {
-                if (data.length > 0) {
-                  this.categories_childs.push(element);
-                }
-              });
-          } else {
-            this.categories_parents.push(element);
-          }
-        });
-      });
-  }
-
-  idCategory(term) {
-    this.currentActiveParentIndex = this.categories_parents
-      .map(element => element.tid)
-      .indexOf(term.parent_tid);
-    this.nameCat = term.name;
-    const body = {
-      tid: term.tid,
-    };
-    this.mainService
-      .custompost('maker_count_all_projects/retrieve_count_category', body)
+  /**
+   * getProjects
+   */
+  getProjects() {
+    this.loaderService.display(true);
+    if (this.currentPage == 0) {
+      this.projects = [];
+    }
+    this.SortBy
+      .Sort(
+        'browse_projects',
+        this.currentPage,
+        this.categoryId,
+        this.subCategoryId,
+      )
       .subscribe(
-        res => {
-          this.countProject = res[0];
+        data => {
+          this.projects = this.projects.concat(data);
+          this.loadMoreVisibility();
+          this.loaderService.display(false);
+          if (this.projects.length == 0) {
+            this.notificationBarService.create({
+              message:
+                "There aren't any projects yet for this topic. Go make one!",
+              type: NotificationType.Error,
+              allowClose: false,
+              autoHide: true,
+              hideOnHover: false,
+            });
+          }
         },
-        err => {
-          // this.notificationBarService.create({ message: "Sorry, but your project doesn't meet the challenge requirements, Please check <a id='rules-id' href='#rules' data-nodeId='" + this.nid + "'>Rules & Instructions </a>", type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false, isHtml: true });
-        },
+        err => {},
       );
   }
 
+  /**
+   * getProjectCategories
+   */
+  getProjectCategories() {
+    this.viewService
+      .getView('projects_categories')
+      .subscribe((categories: ICategory[]) => {
+        // this.categories = categories;
+        for (const element of categories) {
+          if (element.parent_tid) {
+            this.subCategories.push(element);
+          } else {
+            this.categories.push(element);
+          }
+        }
+      });
+  }
+
+  /**
+   * countSubCategory
+   */
+  countSubCategory() {
+    this.mainService
+      .custompost('maker_count_all_projects/retrieve_count_category', {
+        tid: this.subCategoryId,
+      })
+      .subscribe(
+        res => {
+          this.projectsCount = res[0];
+        },
+        err => {},
+      );
+    this.currentPage = 0;
+    this.getProjects();
+  }
+
+  /**
+   * selectParent
+   * @param value
+   */
   selectParent(value) {
-    this.currentActiveChildIndex = -1;
-    this.childCategory = [];
+    this.filteredSubCategories = [];
+    this.subCategoryId = null;
     if (value == 1) {
+      this.currentPage = 0;
       this.categoryId = null;
-      this.pages = 0;
-      this.getCountProject();
+      this.countAllProjects();
       this.getProjects();
     } else {
-      for (const cate of this.categories_childs) {
+      for (const cate of this.subCategories) {
         if (cate.parent_tid == value) {
-          this.childCategory.push(cate);
+          this.filteredSubCategories.push(cate);
         }
       }
     }
   }
 
-  loadMoreProject() {
-    this.pages++;
+  /**
+   * selectSubCategory
+   *
+   * @param event
+   * @param term
+   */
+  selectSubCategory(term) {
+    if (this.subCategoryId === term.tid) {
+      return;
+    }
+    this.subCategoryId = term.tid;
+
+    // show spinner
+    this.loaderService.display(true);
+    this.categoryId = term.parent_tid;
+
+    this.countSubCategory();
+  }
+
+  /**
+   * loadMoreProjects
+   */
+  loadMoreProjects() {
+    this.currentPage++;
     this.getProjects();
   }
 
-  loadMoreVisibilty() {
-    if (this.countProject <= this.projects.length) {
-      this.showloadmoreproject = false;
-    } else if (this.countProject > this.projects.length) {
-      this.showloadmoreproject = true;
-    }
+  /**
+   * loadMoreVisibilty
+   */
+  loadMoreVisibility() {
+    this.showLoadMoreBtn = this.projectsCount > this.projects.length;
   }
 
+  /**
+   * sortProjects
+   *
+   * @param sort
+   */
   sortProjects(sort) {
     if (sort == '_none') {
       return;
     }
-    this.pages = 0;
+    this.currentPage = 0;
     this.CurrentSortSet.sort_order = 'DESC';
     if (sort == 'created_1' || sort == 'title') {
       this.CurrentSortSet.sort_order = 'ASC';
     }
     this.CurrentSortSet.sort_by = sort;
-    this.getCountProject();
+    this.countAllProjects();
     this.getProjects();
   }
+
+  /*projectsById(event) {
+    // show spinner
+    this.categoryId = event.target.id;
+    this.projects = [];
+    this.currentPage = 0;
+    this.getProjects();
+  }*/
 }

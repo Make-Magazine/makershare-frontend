@@ -4,7 +4,7 @@ import {
   NotificationBarService,
   NotificationType,
 } from 'ngx-notification-bar/release';
-import { Singleton, SortBySortingSet, SortingSet } from '../../core';
+import { ICategory, Singleton, SortBySortingSet, SortingSet } from '../../core';
 import { MainService, ViewService } from '../../core/d7services';
 import { LoaderService } from '../shared/loader/loader.service';
 
@@ -22,17 +22,16 @@ export class MakersComponent implements OnInit {
     this.viewService,
   );
 
-  makers = [];
-  pages: number = 0;
-  makersCount = 0;
-  hideloadmore = true;
-  all_categories = [];
-  categories_childs = [];
-  categories_parents = [];
-  countProject;
-  childCategories = [];
-  categoryId: number;
-  subCategoryId: number;
+  private makers = [];
+  private categoryId: number;
+  private subCategoryId: number;
+  private showLoadMoreBtn: boolean = false;
+  private makersCount: number = 0;
+  private currentPage: number = 0;
+
+  private categories: ICategory[] = [];
+  private subCategories: ICategory[] = [];
+  private filteredSubCategories: ICategory[] = [];
 
   constructor(
     private viewService: ViewService,
@@ -60,12 +59,18 @@ export class MakersComponent implements OnInit {
     ]);
   }
 
+  /**
+   * ngOnInit
+   */
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
   }
 
+  /**
+   * countAllMakers
+   */
   countAllMakers() {
     this.mainService
       .custompost('maker_count_api/makers_count')
@@ -74,17 +79,19 @@ export class MakersComponent implements OnInit {
       });
   }
 
+  /**
+   * getMakers
+   */
   getMakers() {
     this.loaderService.display(true);
-    if (this.pages == 0) {
+    if (this.currentPage == 0) {
       this.makers = [];
     }
-
     this.SortBy
-      .Sort('makers', this.pages, this.categoryId, this.subCategoryId)
+      .Sort('makers', this.currentPage, this.categoryId, this.subCategoryId)
       .subscribe(data => {
         this.makers = this.makers.concat(data);
-        this.loadMoreVisibilty();
+        this.loadMoreVisibility();
         this.loaderService.display(false);
         if (this.makers.length == 0) {
           this.notificationBarService.create({
@@ -98,14 +105,16 @@ export class MakersComponent implements OnInit {
       });
   }
 
+  /**
+   * getMakerCategories
+   */
   getMakerCategories() {
     this.viewService.getView('projects_categories').subscribe(categories => {
-      this.all_categories = categories;
-      for (const element of this.all_categories) {
+      for (const element of categories) {
         if (element.parent_tid) {
-          this.categories_childs.push(element);
+          this.subCategories.push(element);
         } else {
-          this.categories_parents.push(element);
+          this.categories.push(element);
         }
       }
     });
@@ -125,7 +134,7 @@ export class MakersComponent implements OnInit {
         },
         err => {},
       );
-    this.pages = 0;
+    this.currentPage = 0;
     this.getMakers();
   }
 
@@ -135,17 +144,17 @@ export class MakersComponent implements OnInit {
    * @param value
    */
   selectParent(value) {
-    this.childCategories = [];
+    this.filteredSubCategories = [];
     this.subCategoryId = null;
     if (value == 1) {
-      this.pages = 0;
+      this.currentPage = 0;
       this.categoryId = null;
       this.countAllMakers();
       this.getMakers();
     } else {
-      for (const cate of this.categories_childs) {
+      for (const cate of this.subCategories) {
         if (cate.parent_tid == value) {
-          this.childCategories.push(cate);
+          this.filteredSubCategories.push(cate);
         }
       }
     }
@@ -158,7 +167,6 @@ export class MakersComponent implements OnInit {
    * @param term
    */
   selectSubCategory(term) {
-    // If already clicked, unclick it
     if (this.subCategoryId === term.tid) {
       return;
     }
@@ -171,24 +179,31 @@ export class MakersComponent implements OnInit {
     this.countSubCategory();
   }
 
+  /**
+   * loadMoreMakers
+   */
   loadMoreMakers() {
-    this.pages++;
+    this.currentPage++;
     this.getMakers();
   }
 
-  loadMoreVisibilty() {
-    if (this.makersCount <= this.makers.length) {
-      this.hideloadmore = true;
-    } else if (this.makersCount > this.makers.length) {
-      this.hideloadmore = false;
-    }
+  /**
+   * loadMoreVisibilty
+   */
+  loadMoreVisibility() {
+    this.showLoadMoreBtn = this.makersCount > this.makers.length;
   }
 
+  /**
+   * sortMakers
+   *
+   * @param sort
+   */
   sortMakers(sort) {
     if (sort == '_none') {
       return;
     }
-    this.pages = 0;
+    this.currentPage = 0;
     this.CurrentSortSet.sort_order = 'DESC';
     if (sort == 'field_first_name_value_1' || sort == 'random') {
       this.CurrentSortSet.sort_order = 'ASC';
