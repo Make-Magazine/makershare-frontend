@@ -35,10 +35,10 @@
     </div>
 
     <div class="cat-filters controls mt-5 mb-5"
-         *ngIf="childCategory.length > 0">
-      <button *ngFor="let term of childCategory;let i = index"
-              (click)="CurrentActiveChildIndex = i;selectCategory($event,term);"
-              class="button -big {{CurrentActiveChildIndex == i ? 'active':''}}"
+         *ngIf="childCategories.length > 0">
+      <button *ngFor="let term of childCategories"
+              (click)="selectSubCategory(term)"
+              class="button -big {{subCategoryId == term.tid ? 'active':''}}"
               data-id="{{term.tid}}"
               [innerHTML]="term.name"></button>
     </div>
