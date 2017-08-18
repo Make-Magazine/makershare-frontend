@@ -30,8 +30,9 @@ $ ng serve --lr=false
 # For Universal
 ---------------------
 - `npm run build`
+- `cp -r src/assets dist/assets`
+- `sass dist/assets/css/style.scss dist/assets/css/style.css`
 - `npm run start`
-- `npm run watch`
 
 
 
