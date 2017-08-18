@@ -166,24 +166,8 @@ export class BasicInfoComponent implements OnInit {
   }
 
   /**
-   * getCountries
+   * initCountries
    */
-  /*getCountries() {
-    this.viewService
-      .getView<KeyValueObject>('maker_address_api')
-      .subscribe(countries => {
-        this.countries = countries;
-
-        this._store.dispatch({type: COUNTRIES_SET, payload: this.countries});
-
-        const countryKey = this.organizationForm.value.field_orgs_address.country;
-        if (countryKey) {
-          const index = countries.map(element => element.key).indexOf(countryKey);
-          this.getCountryDetails(countries[index]);
-        }
-      });
-  }*/
-
   initCountries() {
     const countryKey = this.organizationForm.value.field_orgs_address.country;
     if (countryKey) {
