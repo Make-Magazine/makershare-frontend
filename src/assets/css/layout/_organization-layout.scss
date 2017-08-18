@@ -25,14 +25,14 @@
 .org-feature-photo {
 	position: fixed;
     opacity: 0.45;
-    top: 107px;
+    top: 88px;
     left: 0;
     right: 0;
     height: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: calc(50vh + 3px);
+    padding-bottom: 50vh;
     background-color: #343434;
     background-blend-mode: multiply;
 }
