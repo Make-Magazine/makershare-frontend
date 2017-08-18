@@ -1,8 +1,8 @@
 <div *ngIf="company">
   <div class="org-hero">
     <div class="org-feature-photo" [style.background-image]="'url('+company.company_cover_photo+')'"></div>
-    <div class="container">
-      <div class="row">
+    <div class="container flexer">
+      <div class="row center-self">
         <div class="col-md-12">
           <div class="container">
             <div class="row justify-content-center">
@@ -40,7 +40,6 @@
         </div>
 
       </div>
-    </div>
     <div class="row justify-content-end org-social">
       <a class="profile-share">
         <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name"
@@ -48,6 +47,7 @@
                        [PageImage]="company.company_cover_photo"></app-btn-share>
       </a>
       <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
+    </div>
     </div>
   </div>
 
@@ -76,20 +76,20 @@
             <li><span class="org-contact-key">Location:</span> {{company.address.locality}},
               {{company.address.administrative_area}}
             </li>
-            <li><span class="org-contact-key"># of employees:</span> {{company.employees}}</li>
+            <!-- <li><span class="org-contact-key"># of employees:</span> {{company.employees}}</li> -->
             <li><span class="org-contact-key">Founder:</span> {{company.founder_name}}</li>
             <li><span class="org-contact-key">Founded:</span> {{company.founded_date}}</li>
             <li><span class="org-contact-key">Type of business:</span> {{company.business}}</li>
           </ul>
-          <p class="push">
+          <p class="push mt-5">
             <a href="mailto:{{company.contact}}" target="_top"><i class="fa fa-envelope-o"></i> <span>Send Email</span></a>
           </p>
           <div *ngIf="company.website_or_blog">
-            <h2 class="text-left">Websites</h2>
-            <a class="row" *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+            <h2 class="text-left mt-8" style="margin-bottom: .5rem;">Websites</h2>
+            <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
           </div>
           <div *ngIf="company.field_social_accounts">
-            <h1 class="text-left">Social</h1>
+            <h1 class="text-left mt-5">Social</h1>
             <div class="social-links d-flex flex-wrap">
               <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
                 <a class="nav-link social fb" target="_blank"
