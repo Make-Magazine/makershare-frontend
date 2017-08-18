@@ -5,14 +5,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
 import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
 import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+// import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
+import { CountriesReducer } from './core/store/countries-reducer';
 // New Structure
 import { MessagesModule } from './modules/account/messages/messages.module';
 import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
@@ -56,6 +58,7 @@ import { SharedModule } from './modules/shared/shared.module';
     DndModule.forRoot(),
     ShareButtonsModule.forRoot(),
     HttpModule,
+    StoreModule.forRoot({ countries: CountriesReducer })
   ],
   declarations: [
     AppComponent,
@@ -79,8 +82,8 @@ import { SharedModule } from './modules/shared/shared.module';
     WhyPortfolioComponent,
     AboutUsComponent,
     ShowTellComponent,
-    ClaimProfileComponent,
-  ],
+    ClaimProfileComponent
+  ]
 })
 export class AppModule {
   constructor(router: Router, zone: NgZone) {
@@ -90,7 +93,7 @@ export class AppModule {
 
     const finished = Observable.combineLatest(
       router.events,
-      zone.onMicrotaskEmpty,
+      zone.onMicrotaskEmpty
     );
 
     const subscription = finished.subscribe(([event, stable]) => {
@@ -101,7 +104,7 @@ export class AppModule {
       switch (true) {
         case event instanceof NavigationError:
         case event instanceof NavigationEnd:
-          setImmediate(() => prebootClient().complete());
+          // setImmediate(() => prebootClient().complete());
 
           subscription.unsubscribe();
           break;
