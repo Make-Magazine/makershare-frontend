@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import {
+  NotificationBarService,
+  NotificationType,
+} from 'ngx-notification-bar/release';
 import { Singleton, SortBySortingSet, SortingSet } from '../../core';
 import { MainService, ViewService } from '../../core/d7services';
 import { LoaderService } from '../shared/loader/loader.service';
@@ -26,13 +29,10 @@ export class MakersComponent implements OnInit {
   all_categories = [];
   categories_childs = [];
   categories_parents = [];
-
-  CurrentActiveParentIndex;
-  CurrentActiveChildIndex;
-  nameCat;
   countProject;
-  childCategory = [];
-  categoryId;
+  childCategories = [];
+  categoryId: number;
+  subCategoryId: number;
 
   constructor(
     private viewService: ViewService,
@@ -79,20 +79,23 @@ export class MakersComponent implements OnInit {
     if (this.pages == 0) {
       this.makers = [];
     }
-    this.SortBy.Sort('makers', this.pages, this.categoryId).subscribe(data => {
-      this.makers = this.makers.concat(data);
-      this.loadMoreVisibilty();
-      this.loaderService.display(false);
-      if (this.makers.length == 0) {
-        this.notificationBarService.create({
-          message: "There aren't any makers Favorite this topic yet!",
-          type: NotificationType.Error,
-          allowClose: false,
-          autoHide: true,
-          hideOnHover: false,
-        });
-      }
-    });
+
+    this.SortBy
+      .Sort('makers', this.pages, this.categoryId, this.subCategoryId)
+      .subscribe(data => {
+        this.makers = this.makers.concat(data);
+        this.loadMoreVisibilty();
+        this.loaderService.display(false);
+        if (this.makers.length == 0) {
+          this.notificationBarService.create({
+            message: "There aren't any makers Favorite this topic yet!",
+            type: NotificationType.Error,
+            allowClose: false,
+            autoHide: true,
+            hideOnHover: false,
+          });
+        }
+      });
   }
 
   getMakerCategories() {
@@ -108,14 +111,13 @@ export class MakersComponent implements OnInit {
     });
   }
 
-  countCategory(term) {
-    this.CurrentActiveParentIndex = this.categories_parents
-      .map(element => element.tid)
-      .indexOf(term.parent_tid);
-    this.nameCat = term.name;
+  /**
+   * countSubCategory
+   */
+  countSubCategory() {
     this.mainService
       .custompost('maker_count_api/retrieve_count_makers_in_category', {
-        tid: term.tid,
+        tid: this.subCategoryId,
       })
       .subscribe(
         res => {
@@ -125,29 +127,48 @@ export class MakersComponent implements OnInit {
       );
     this.pages = 0;
     this.getMakers();
-  } // end function
+  }
 
+  /**
+   * selectParent
+   *
+   * @param value
+   */
   selectParent(value) {
-    this.childCategory = [];
+    this.childCategories = [];
+    this.subCategoryId = null;
     if (value == 1) {
       this.pages = 0;
       this.categoryId = null;
       this.countAllMakers();
       this.getMakers();
-      this.countAllMakers();
     } else {
       for (const cate of this.categories_childs) {
         if (cate.parent_tid == value) {
-          this.childCategory.push(cate);
+          this.childCategories.push(cate);
         }
       }
     }
   }
-  selectCategory(event, term) {
+
+  /**
+   * selectSubCategory
+   *
+   * @param event
+   * @param term
+   */
+  selectSubCategory(term) {
+    // If already clicked, unclick it
+    if (this.subCategoryId === term.tid) {
+      return;
+    }
+    this.subCategoryId = term.tid;
+
     // show spinner
     this.loaderService.display(true);
-    this.categoryId = event.target.id;
-    this.countCategory(term);
+    this.categoryId = term.parent_tid;
+
+    this.countSubCategory();
   }
 
   loadMoreMakers() {
