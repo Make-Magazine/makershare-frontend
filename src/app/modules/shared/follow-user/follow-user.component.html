@@ -5,9 +5,9 @@
 <div *ngIf="countFollowers >= 1">
   <span (click)="openModal(contentfollower)">{{countFollowers}} Followers</span>
 </div>
-<span *ngIf="countFollowing == 0">{{countFollowers}} Follower</span>
+<span *ngIf="countFollowing == 0">Following {{countFollowing}}</span>
 <div *ngIf="countFollowing >= 1">
-  <span (click)="openModal(contentfollowing)">{{countFollowing}} Following</span>
+  <span (click)="openModal(contentfollowing)">Following {{countFollowing}}</span>
 </div>
 <ng-template #contentfollower let-c="close" let-d="dismiss" class="like-modal">
   <div class="model-likes">
@@ -15,13 +15,14 @@
       <span *ngIf="countFollowers == 1">{{countFollowers}} Follower</span>
       <span *ngIf="countFollowers > 1">{{countFollowers}} Followers</span>
       <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="modal-body" *ngIf="myFollowers">
       <div class="model-likes" *ngFor="let follow of myFollowers; ">
-        <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo" src="{{follow?.default_profile_photo}}"
-          (click)="goToProfile(follow.profile_url)" (click)="d('Cross click')">
+        <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo"
+             src="{{follow?.default_profile_photo}}"
+             (click)="goToProfile(follow.profile_url)" (click)="d('Cross click')">
         <span *ngIf="follow?.default_profile_photo && follow.profile_url " class="new-tooltiptext like-name">
           {{follow?.first_name}} {{follow?.last_name}} </span><br>
       </div>
@@ -39,16 +40,20 @@
       <span *ngIf="countFollowing > 1">{{countFollowing}} Following</span>
 
       <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="modal-body" *ngIf="meFollowing">
       <div class="model-likes" *ngFor="let following of meFollowing; ">
-        <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo" src="{{following?.portfolio_photo}}"
-          (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span *ngIf="following?.portfolio_photo && following.profile_url "
+        <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo"
+             src="{{following?.portfolio_photo}}"
+             (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span
+          *ngIf="following?.portfolio_photo && following.profile_url "
           class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
-        <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg"
-          (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span *ngIf="!following?.portfolio_photo && following.profile_url "
+        <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo"
+             src="./assets/images/Gears-Grey.svg"
+             (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span
+          *ngIf="!following?.portfolio_photo && following.profile_url "
           (click)="goToProfile(following.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
       </div>
       <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollowing && meFollowing.length > 0 ">
