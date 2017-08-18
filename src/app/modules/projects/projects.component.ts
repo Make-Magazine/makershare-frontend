@@ -30,8 +30,8 @@ export class ProjectsComponent implements OnInit {
   pages: number = 0;
   countProject = 0;
   showloadmoreproject = false;
-  CurrentActiveParentIndex = -1;
-  CurrentActiveChildIndex = -1;
+  currentActiveParentIndex = -1;
+  currentActiveChildIndex = -1;
   categories_parents: ProjectCategory[] = [];
   categories_childs: ProjectCategory[] = [];
   all_categories: ProjectCategory[];
@@ -140,7 +140,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   idCategory(term) {
-    this.CurrentActiveParentIndex = this.categories_parents
+    this.currentActiveParentIndex = this.categories_parents
       .map(element => element.tid)
       .indexOf(term.parent_tid);
     this.nameCat = term.name;
@@ -160,7 +160,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   selectParent(value) {
-    this.CurrentActiveChildIndex = -1;
+    this.currentActiveChildIndex = -1;
     this.childCategory = [];
     if (value == 1) {
       this.categoryId = null;
