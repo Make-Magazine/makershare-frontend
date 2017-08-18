@@ -14,7 +14,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { CountriesReducer } from './core/store/countries-reducer';
+import { CurrentUserReducer } from './core/store/current-user-reducer';
 // New Structure
 import { MessagesModule } from './modules/account/messages/messages.module';
 import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
@@ -58,7 +58,7 @@ import { SharedModule } from './modules/shared/shared.module';
     DndModule.forRoot(),
     ShareButtonsModule.forRoot(),
     HttpModule,
-    StoreModule.forRoot({ countries: CountriesReducer })
+    StoreModule.forRoot({ currentUser: CurrentUserReducer })
   ],
   declarations: [
     AppComponent,

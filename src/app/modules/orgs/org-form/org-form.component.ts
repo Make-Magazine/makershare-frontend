@@ -24,8 +24,11 @@ import {
   Singleton,
 } from '../../../core/models';
 import { KeyValueObject } from '../../../core/models/object/key-value-object';
-// import { State, Store } from '@ngrx/store';
-// import { CountriesShape, COUNTRIES_SET } from '../../../core/store/countries-reducer';
+import { State, Store } from '@ngrx/store';
+import {
+  CurrentUserShape,
+  ORG_SET,
+} from '../../../core/store/current-user-reducer';
 import { ViewService } from '../../../core/d7services/view/view.service';
 
 export function countryValid(countriesList): ValidatorFn {
@@ -60,8 +63,9 @@ export class OrgFormComponent implements OnInit {
     private viewService: ViewService,
     private router: Router,
     private modalService: NgbModal,
-    // private _store: Store<State<CountriesShape>>,
-  ) {}
+    private currentUserStore: Store<State<CurrentUserShape>>,
+  ) {
+  }
 
   ngOnInit() {
     const uid = +localStorage.getItem('user_id');
@@ -457,9 +461,42 @@ export class OrgFormComponent implements OnInit {
       },
       err => {},
       () => {
-        this.processLog = 'Creating organization...';
+        const editMode: boolean = this.organizationProxy.entity.nid != null;
+        let request;
+        this.processLog = `${editMode
+          ? 'Updating'
+          : 'Creating'} organization...`;
+        if (editMode) {
+          request = this.nodeService.updateNode(this.organizationProxy.entity);
+        } else {
+          request = this.nodeService.createNode(this.organizationProxy.entity);
+        }
+        request.subscribe(
+          node => {
+            if (!editMode) {
+              // Set org to current user's store
+              this.currentUserStore.dispatch({
+                type: ORG_SET,
+                payload: {
+                  orgId: node.nid,
+                },
+              });
+            }
+          },
+          err => {
+            this.processLog = '';
+            this.errorLogs.push(`Something happened: ${err.statusText}`);
+          },
+          () => {
+            this.processLog = `Organization ${editMode
+              ? 'updated'
+              : 'created'}`;
+            this.errorLogs = [];
+            this.router.navigate(['/portfolio']);
+          },
+        );
 
-        if (this.organizationProxy.entity.nid) {
+        /*if (this.organizationProxy.entity.nid) {
           this.nodeService.updateNode(this.organizationProxy.entity).subscribe(
             node => {},
             err => {
@@ -474,7 +511,12 @@ export class OrgFormComponent implements OnInit {
           );
         } else {
           this.nodeService.createNode(this.organizationProxy.entity).subscribe(
-            node => {},
+            node => {
+              // Set org to current user's store
+              this.currentUserStore.dispatch({type: ORG_SET, payload: {
+                orgId: node.nid
+              }});
+            },
             err => {
               console.log(err);
               this.processLog = '';
@@ -486,7 +528,7 @@ export class OrgFormComponent implements OnInit {
               this.router.navigate(['/portfolio']);
             },
           );
-        }
+        }*/
       },
     );
   }
