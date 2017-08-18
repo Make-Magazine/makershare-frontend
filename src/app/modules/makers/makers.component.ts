@@ -33,6 +33,7 @@ export class MakersComponent implements OnInit {
   countProject;
   childCategory = [];
   categoryId;
+
   constructor(
     private viewService: ViewService,
     private loaderService: LoaderService,
@@ -58,11 +59,13 @@ export class MakersComponent implements OnInit {
       },
     ]);
   }
+
   ngOnInit() {
     this.countAllMakers();
     this.getMakers();
     this.getMakerCategories();
   }
+
   countAllMakers() {
     this.mainService
       .custompost('maker_count_api/makers_count')
@@ -70,6 +73,7 @@ export class MakersComponent implements OnInit {
         this.makersCount = res[0];
       });
   }
+
   getMakers() {
     this.loaderService.display(true);
     if (this.pages == 0) {
@@ -90,6 +94,7 @@ export class MakersComponent implements OnInit {
       }
     });
   }
+
   getMakerCategories() {
     this.viewService.getView('projects_categories').subscribe(categories => {
       this.all_categories = categories;
@@ -102,16 +107,16 @@ export class MakersComponent implements OnInit {
       }
     });
   }
+
   countCategory(term) {
     this.CurrentActiveParentIndex = this.categories_parents
       .map(element => element.tid)
       .indexOf(term.parent_tid);
     this.nameCat = term.name;
-    const body = {
-      tid: term.tid,
-    };
     this.mainService
-      .custompost('maker_count_api/retrieve_count_makers_in_category', body)
+      .custompost('maker_count_api/retrieve_count_makers_in_category', {
+        tid: term.tid,
+      })
       .subscribe(
         res => {
           this.makersCount = res[0];
@@ -121,6 +126,7 @@ export class MakersComponent implements OnInit {
     this.pages = 0;
     this.getMakers();
   } // end function
+
   selectParent(value) {
     this.childCategory = [];
     if (value == 1) {
