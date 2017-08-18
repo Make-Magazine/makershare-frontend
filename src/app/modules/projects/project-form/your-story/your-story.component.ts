@@ -20,7 +20,7 @@ import { YoutubeOrVimeoLink } from '../../../../angular/validations/youtube-or-v
 import {
   FileEntity,
   NodeHelper,
-  ProjectCategory,
+  ICategory,
   ProjectForm,
 } from '../../../../core';
 import { ViewService } from '../../../../core/d7services';
@@ -76,12 +76,12 @@ export class YourStoryComponent implements OnInit {
   YourStoryForm: FormGroup;
   accepted_image_width = 600;
   accepted_image_height = 600;
-  project_categories_parents: ProjectCategory[] = [];
-  project_categories_childs: ProjectCategory[] = [];
+  project_categories_parents: ICategory[] = [];
+  project_categories_childs: ICategory[] = [];
   current_parent_category: number;
   current_child_category: number;
-  child_categories: ProjectCategory[] = [];
-  all_categories: ProjectCategory[];
+  child_categories: ICategory[] = [];
+  all_categories: ICategory[];
   currentPhotoModalTab: string;
 
   // image cropper
@@ -252,7 +252,7 @@ export class YourStoryComponent implements OnInit {
     this.buildForm();
     this.viewService
       .getView('projects_categories')
-      .subscribe((categories: ProjectCategory[]) => {
+      .subscribe((categories: ICategory[]) => {
         this.all_categories = categories;
         categories.forEach((element, index) => {
           if (element.parent_tid) {
