@@ -34,15 +34,13 @@
       </div>
     </div>
 
-    <div class="submenus"
+    <div class="cat-filters controls mt-5 mb-5"
          *ngIf="childCategory.length > 0">
-      <ul class="list-unstyled cat-filters">
-        <li class="cat-filter-item" *ngFor="let term of childCategory;let i = index">
-          <a [ngClass]="{'active':CurrentActiveChildIndex == i}"
-             (click)="CurrentActiveChildIndex = i;selectCategory($event,term);"
-             class="btn btn-category" data-id="{{term.tid}}" [innerHTML]="term.name"></a>
-        </li>
-      </ul>
+      <button *ngFor="let term of childCategory;let i = index"
+              (click)="CurrentActiveChildIndex = i;selectCategory($event,term);"
+              class="button -big {{CurrentActiveChildIndex == i ? 'active':''}}"
+              data-id="{{term.tid}}"
+              [innerHTML]="term.name"></button>
     </div>
   </div>
 

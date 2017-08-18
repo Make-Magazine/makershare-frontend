@@ -22,9 +22,12 @@
   &:focus {
     border: 0;
     box-shadow: none;
+    outline: none;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active,
+  &.active {
     background: darken($highlight-bright-blue, 20%);
   }
 
