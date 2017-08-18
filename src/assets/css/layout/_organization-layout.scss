@@ -32,7 +32,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: 50vh;
+    padding-bottom: calc(50vh + 22px);
     background-color: #343434;
     background-blend-mode: multiply;
 }
