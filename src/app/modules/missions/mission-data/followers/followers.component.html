@@ -1,6 +1,6 @@
-<p *ngIf="followers" class="title-tab">Followers</p>
 
 <div class="followers conatiner" *ngIf="followers">
+  <p *ngIf="followers" class="title-tab">Followers</p>
   <div class="followers-cards row d-flex align-items-stretch">
     <app-maker-card class="col-lg-6 col-md-12 mb-4 card-wrapper"
                     *ngFor="let follower of followers"
