@@ -64,7 +64,7 @@
     <div class="region region-content ">
       <div class="row total-result">
         <!-- Projects -->
-        <div *ngIf="projects.length > 0" class="col-md-12 project-result result-section">
+        <div *ngIf="projects.length > 0" class="col-md-4 project-result result-section">
 
           <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Projects</span></div>
@@ -79,7 +79,7 @@
         </div>
 
         <!-- Showcases -->
-        <div *ngIf="showcases.length > 0" class="col-md-12 showcase-result result-section">
+        <div *ngIf="showcases.length > 0" class="col-md-4 showcase-result result-section">
 
           <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Showcases</span></div>
@@ -94,7 +94,7 @@
         </div>
 
         <!-- Challenges -->
-        <div *ngIf="challenges.length > 0" class="col-md-12 challenge-result result-section">
+        <div *ngIf="challenges.length > 0" class="col-md-4 challenge-result result-section">
 
           <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Missions</span></div>
@@ -109,7 +109,7 @@
         </div>
 
         <!-- Learning -->
-        <!--<div *ngIf="workshops.length > 0" class="col-md-12 workshop-result result-section">
+        <!--<div *ngIf="workshops.length > 0" class="col-md-4 workshop-result result-section">
 
           <div class="results-header d-flex justify-content-start  mb-3">
             <div class="result-title mr-auto"><span>Workshops</span></div>
@@ -124,7 +124,7 @@
         </div>-->
 
         <!-- Users -->
-        <div *ngIf="users.length > 0" class="col-md-12 maker-result result-section">
+        <div *ngIf="users.length > 0" class="col-md-4 maker-result result-section">
           <div class="results-header d-flex justify-content-start mb-3">
             <div class="result-title mr-auto"><span>Makers</span></div>
             <div class="view-all-result">
@@ -137,7 +137,7 @@
           </div>
         </div>
         
-        <div *ngIf="ShowEmptyResult()" class="col-md-12 maker-result result-section" style="margin-top: 70px;">
+        <div *ngIf="ShowEmptyResult()" class="col-md-4 maker-result result-section" style="margin-top: 70px;">
           <h4 class="text-center">No results. Try a different search term.</h4>
         </div>
 
