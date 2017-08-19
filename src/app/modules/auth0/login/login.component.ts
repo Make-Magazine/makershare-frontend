@@ -9,8 +9,12 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
   private CancelTitle: string = 'Cancel';
   private closeResult: string;
-  constructor(public auth: Auth,
-  private modalService: NgbModal) { }
+
+  current_active_tab: string = 'login';
+
+  constructor(
+    public auth: Auth,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
   }
