@@ -192,7 +192,6 @@ export class ProjectsComponent implements OnInit {
 
     // show spinner
     this.loaderService.display(true);
-    this.categoryId = term.parent_tid;
 
     this.countSubCategory();
   }
@@ -230,12 +229,4 @@ export class ProjectsComponent implements OnInit {
     this.countAllProjects();
     this.getProjects();
   }
-
-  /*projectsById(event) {
-    // show spinner
-    this.categoryId = event.target.id;
-    this.projects = [];
-    this.currentPage = 0;
-    this.getProjects();
-  }*/
 }
