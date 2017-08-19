@@ -31,6 +31,14 @@
                          #password
                          placeholder="Enter your password">
                    </div>
+
+                   <button
+                      type="submit"
+                      class="login-main-action"
+                      *ngIf="current_active_tab == 'login'"
+                      (click)="auth.login(email.value, password.value)">
+                   Log In
+                   </button>
                 </form>
                 <form *ngIf="current_active_tab == 'signup'" id="signup">
                    <div class="form-group">
@@ -170,17 +178,6 @@
                       <input type="checkbox" #birthdate value="true" hidden>
                    </div>
                    
-                </form>
-
-
-                 <button
-                      type="submit"
-                      class="login-main-action"
-                      *ngIf="current_active_tab == 'login'"
-                      (click)="auth.login(email.value, password.value)">
-                   Log In
-                   </button>
-
                   <button
                       type="submit"
                       class="login-main-action"
@@ -188,6 +185,11 @@
                       (click)="auth.signup(emailUp.value, passwordUp.value,firstName.value,lastName.value,day.value,month.value,year.value,birthdate.value)">
                    Sign Up
                    </button>
+                </form>
+
+
+                 
+
              </div>
          </div>
       </div>
