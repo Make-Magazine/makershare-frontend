@@ -74,7 +74,7 @@
               <a *ngIf="projectsCount > projectsCountQuery" (click)="searchTypeNavigate('project')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-project-search-card *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4 pull-left"></app-project-search-card>
+            <app-project-card [state]="'tall'" *ngFor="let project of projects" [view]="project_view" [nid]="project.is_nid" class="col-md-6 col-lg-4 pull-left card-wrapper"></app-project-card>
           </div>
         </div>
 
@@ -89,7 +89,7 @@
               <a *ngIf="showcasesCount > showcasesCountQuery" (click)="searchTypeNavigate('showcase')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-showcase-search-card *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-showcase-search-card>
+            <app-showcase-gen-card [state]="'tall'" *ngFor="let showcase of showcases" [showcaseNid]="showcase.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left card-wrapper"></app-showcase-gen-card>
           </div>
         </div>
 
@@ -104,7 +104,7 @@
               <a *ngIf="challengesCount > challengesCountQuery" (click)="searchTypeNavigate('challenge')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-challenge-search-card *ngFor="let challenge of challenges" [challengeNid]="challenge.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-challenge-search-card>
+            <app-mission-card [state]="'tall'" *ngFor="let challenge of challenges" [challengeNid]="challenge.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left card-wrapper"></app-mission-card>
           </div>
         </div>
 
@@ -119,7 +119,7 @@
               <a *ngIf="workshopsCount > workshopsCountQuery" (click)="searchTypeNavigate('learning_sequence')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-learn-search-card *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-learn-search-card>
+            <app-learn-card [state]="'tall'" *ngFor="let learn of workshops" [workshopNid]="learn.is_nid" class="col-lg-4 col-md-6 col-sm-12 pull-left"></app-learn-card>
           </div>
         </div>-->
 
@@ -133,7 +133,7 @@
               <a *ngIf="usersCount > usersCountQuery" (click)="searchTypeNavigate('maker')"> | View All</a></div>
           </div>
           <div class="row projects-result">
-            <app-maker-search-card *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4 pull-left"></app-maker-search-card>
+            <app-maker-card [state]="'tall'" *ngFor="let user of users" [uid]="user.is_uid" class="col-md-6 col-lg-4 pull-left card-wrapper"></app-maker-card>
           </div>
         </div>
         
