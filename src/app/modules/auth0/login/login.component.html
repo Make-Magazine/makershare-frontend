@@ -14,71 +14,122 @@
                 <li class="login-tabs" (click)="current_active_tab = 'login'" [ngClass]="{'active': current_active_tab == 'login'}"><span>Login</span></li>
                 <li class="login-tabs" (click)="current_active_tab = 'signup'" [ngClass]="{'active': current_active_tab == 'signup'}"><span>Sign Up</span></li>
                </ul>
-                <form *ngIf="current_active_tab == 'login'" id="login">
+                <form #loginForm="ngForm" *ngIf="current_active_tab == 'login'" id="login">
                    <div class="form-group">
                       <label for="name">Email</label>
                       <input
+                        name="email"
+                        [(ngModel)]="userlogin.email"
                          type="email"
                          class="form-control"
-                         #email
-                         placeholder="you@example.com">
+                         #email="ngModel"
+                         placeholder="you@example.com" required/>
                    </div>
+                   <small class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                         email is required
+                   </small>
                    <div class="form-group">
                       <label for="name">Password</label>
                       <input
+                        name="password"
+                        [(ngModel)]="userlogin.password"
                          type="password"
                          class="form-control"
-                         #password
-                         placeholder="Enter your password">
+                         #password="ngModel"
+                         placeholder="Enter your password" required/>
                    </div>
+                   <small class="alert alert-danger" *ngIf="(password.invalid && (password.dirty || password.touched)) ">
+                         password is required
+                   </small>
 
                    <button
                       type="submit"
                       class="login-main-action"
-                      *ngIf="current_active_tab == 'login'"
-                      (click)="auth.login(email.value, password.value)">
+                      *ngIf="current_active_tab == 'login' "
+                      (Click)="login(userlogin.email,userlogin.password)" (Click)="submit=true">
                    Log In
                    </button>
-                </form>
-                <form *ngIf="current_active_tab == 'signup'" id="signup">
+                     <a (click)="current_active_tab = 'forgetPass'">Don't remember your password</a>
+                   </form>
+                   <form #forgetPassForm="ngForm" id="forgetPass" *ngIf="current_active_tab == 'forgetPass'" >
+                        <div class="form-group">
+                        <label for="name">Email</label>
+                              <input
+                                    name="forgetEmail"
+                                    [(ngModel)]="forgetEmail.email"
+                                    type="email"
+                                    class="form-control"
+                                    #forgetEmail="ngModel"
+                                    placeholloginder="you@example.com" required/>
+                              </div>
+                              <small class="alert alert-danger" *ngIf="forgetEmail.email && forgetEmail.email.invalid && (forgetEmail.email.dirty || forgetEmail.email.touched)">
+                                    plese enter email
+                              </small>
+                    <button (click)="resetPassword(forgetEmail.email)" >send</button>
+                    <p *ngIf="resetSent == true">an email with reset link has been sent to your email</p>
+
+                  </form>
+                <form  #signupForm="ngForm" *ngIf="current_active_tab == 'signup'" id="signup">
                    <div class="form-group">
                       <label for="name">Email</label>
                       <input
+                        name="emailUp"
+                        [(ngModel)]="userSignup.emailUp"
                          type="email"
                          class="form-control"
-                         #emailUp
-                         placeholder="you@example.com">
+                         #emailUp="ngModel"
+                         placeholder="you@example.com" required/>
                    </div>
+                    <small class="alert alert-danger" *ngIf="(emailUp.invalid && (emailUp.dirty || emailUp.touched)) || (emailUp.invalid && submitted) ">
+                         email is required
+                   </small>
                    <div class="form-group">
                       <label for="name">First name</label>
                       <input
+                        name="firstName"
+                        [(ngModel)]="userSignup.firstName"
                          type="text"
                          class="form-control"
-                         #firstName
-                         placeholder="you@example.com">
+                         #firstName="ngModel"
+                         placeholder="First Name" required/>
                    </div>
+                   <small class="alert alert-danger" *ngIf="(firstName.invalid && (firstName.dirty || firstName.touched)) || (firstName.invalid && submitted)">
+                         first name is required
+                   </small>
                    <div class="form-group">
                       <label for="name">last name</label>
                       <input
+                          name="lastName"
+                        [(ngModel)]="userSignup.lastName"
                          type="text"
                          class="form-control"
-                         #lastName
-                         placeholder="you@example.com">
+                         #lastName="ngModel"
+                         placeholder="Last Name" required/>
                    </div>
+                   <small class="alert alert-danger" *ngIf="(lastName.invalid && (lastName.dirty || lastName.touched)) || (lastName.invalid && submitted)">
+                         last name is required
+                   </small>
                    <div class="form-group">
                       <label for="name">Password</label>
                       <input
+                         name="passwordUp"
+                         [(ngModel)]="userSignup.passwordUp"
                          type="password"
                          class="form-control"
-                         #passwordUp
-                         placeholder="Enter your password">
+                         #passwordUp="ngModel"
+                         placeholder="Enter your password" required/>
                    </div>
+                   <small class="alert alert-danger" *ngIf="(passwordUp.invalid && (passwordUp.dirty || passwordUp.touched)) || (passwordUp.invalid && submitted) ">
+                         password is required
+                   </small>
                    <div class="form-group">
                       <fieldset  >
                          <legend>Birthday Date </legend>
                          <label for="month">Month</label> 
                          <select id="month" 
-                            name="month"  #month>
+                            name="month" 
+                         [(ngModel)]="userSignup.month" #month (change)="selected_month = $event.target.value" required>
+                            <option value="" disabled>select month</option>
                             <option  value="1">January</option>
                             <option value="2">February</option>
                             <option value="3">March</option>
@@ -92,10 +143,14 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                          </select>
+                         <small class="alert alert-danger" *ngIf="!selected_month && submitted">
+                         month is required
+                        </small>
                          - 
                          <label for="day">Day</label> 
-                         <select id="day" 
-                            name="day" #day >
+                         <select id="day" [(ngModel)]="userSignup.day" 
+                            name="day" #day (change)="selected_day = $event.target.value" required>
+                            <option value="" disabled>select day</option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
@@ -128,63 +183,42 @@
                             <option>30</option>
                             <option>31</option>
                          </select>
+                           <small class="alert alert-danger" *ngIf="!selected_month && submitted">
+                         day is required
+                        </small>
                          - 
                          <label for="year">Year</label> 
                          <select id="year" 
-                            name="year" #year >
-                            <option>1980</option>
-                            <option>1981</option>
-                            <option>1982</option>
-                            <option>1983</option>
-                            <option>1984</option>
-                            <option>1985</option>
-                            <option>1986</option>
-                            <option>1987</option>
-                            <option>1988</option>
-                            <option>1989</option>
-                            <option>1990</option>
-                            <option>1991</option>
-                            <option>1992</option>
-                            <option>1993</option>
-                            <option>1994</option>
-                            <option>1995</option>
-                            <option>1996</option>
-                            <option>1997</option>
-                            <option>1998</option>
-                            <option>1999</option>
-                            <option>2000</option>
-                            <option>2001</option>
-                            <option>2002</option>
-                            <option>2003</option>
-                            <option>2004</option>
-                            <option>2005</option>
-                            <option>2006</option>
-                            <option>2007</option>
-                            <option>2008</option>
-                            <option>2009</option>
-                            <option>2010</option>
-                            <option>2011</option>
-                            <option>2012</option>
-                            <option>2013</option>
-                            <option>2014</option>
-                            <option>2015</option>
-                            <option>2016</option>
-                            <option>2017</option>
+                            name="year" #year  requitred (change)="selected_year = $event.target.value"> 
+                              <option disabled selected value=" " > -- select year -- </option>
+                              <option *ngFor="let one_year of userSignup.year; let i=index" value="{{one_year}}" [innerHTML]="one_year"></option>
+                           
                          </select>
+                         <small class="alert alert-danger" *ngIf="!selected_year && submitted">
+                         year is required
+                        </small>
                          <span >(Month-Day-Year)</span> 
                       </fieldset>
                    </div>
                    <div class=form-group>
                       <input type="checkbox" #birthdate value="true" hidden>
                    </div>
-                   
+                  <div class="form-group">
+                      <input type="checkbox" #checkbox name="checkbox" [(ngModel)]="userSignup.checkbox" required="required">I agree to the <a href='http://makermedia.com/terms' target='_new'>terms of service</a> and <a href='http://makermedia.com/privaacy' target='_new'>privacy policy</a>.
+                  </div>
+                   <small class="alert alert-danger" *ngIf="submitted == true && !userSignup.checkbox">
+                         please accept the license agreement
+                   </small>
+                  <br/>
                   <button
                       type="submit"
                       class="login-main-action"
                       *ngIf="current_active_tab == 'signup'"
-                      (click)="auth.signup(emailUp.value, passwordUp.value,firstName.value,lastName.value,day.value,month.value,year.value,birthdate.value)">
+                      (click)="signup(userSignup)">
                    Sign Up
                    </button>
+                 
+                
                 </form>
 
 

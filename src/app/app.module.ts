@@ -5,16 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StoreModule } from '@ngrx/store';
 import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
 import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-// import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+//import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
-import { CurrentUserReducer } from './core/store/current-user-reducer';
 // New Structure
 import { MessagesModule } from './modules/account/messages/messages.module';
 import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
@@ -50,7 +48,6 @@ import { LoginComponent } from './modules/auth0/login/login.component';
     FormsModule,
     CookieModule.forRoot(),
     SharedModule.forRoot(),
-    FormsModule,
     NgbModule.forRoot(),
     RouterModule,
     routing,
@@ -59,7 +56,6 @@ import { LoginComponent } from './modules/auth0/login/login.component';
     DndModule.forRoot(),
     ShareButtonsModule.forRoot(),
     HttpModule,
-    StoreModule.forRoot({ currentUser: CurrentUserReducer })
   ],
   declarations: [
     AppComponent,
@@ -82,20 +78,20 @@ import { LoginComponent } from './modules/auth0/login/login.component';
     GuidelinesComponent,
     WhyPortfolioComponent,
     AboutUsComponent,
-    LoginComponent,
     ShowTellComponent,
-    ClaimProfileComponent
-  ]
+    ClaimProfileComponent,
+    LoginComponent,
+  ],
 })
 export class AppModule {
   constructor(router: Router, zone: NgZone) {
-    if (typeof pprebootstrap === 'undefined') {
+    if (typeof prebootstrap === 'undefined') {
       return;
     }
 
     const finished = Observable.combineLatest(
       router.events,
-      zone.onMicrotaskEmpty
+      zone.onMicrotaskEmpty,
     );
 
     const subscription = finished.subscribe(([event, stable]) => {
@@ -106,7 +102,7 @@ export class AppModule {
       switch (true) {
         case event instanceof NavigationError:
         case event instanceof NavigationEnd:
-          // setImmediate(() => prebootClient().complete());
+          //setImmediate(() => prebootClient().complete());
 
           subscription.unsubscribe();
           break;
@@ -117,4 +113,4 @@ export class AppModule {
   }
 }
 
-declare const pprebootstrap;
+declare const prebootstrap;

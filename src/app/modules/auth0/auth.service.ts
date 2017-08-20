@@ -9,12 +9,7 @@ import * as auth0 from 'auth0-js';
 
 @Injectable()
 export class Auth {
-  
-  languageDictionary = {
-    signUpTerms:
-      "I agree to the <a href='http://makermedia.com/terms' target='_new'>terms of service</a> and <a href='http://makermedia.com/privaacy' target='_new'>privacy policy</a>.",
-    title: '',
-  };
+
   auth0 = new auth0.WebAuth({
       clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
       domain: 'makermedia.auth0.com',
@@ -23,7 +18,6 @@ export class Auth {
       redirectUri: 'http://localhost:4200/',      
       scope: 'openid id_token access_token profile'
     });
-
   constructor(
     public router: Router,
     private userService: UserService,
@@ -48,7 +42,9 @@ export class Auth {
       }
     });
   }
-  public signup(email: string, password: string,first_name:string,last_name:string,month:string,day:string,year:string,birthdate:boolean): void {
+
+
+  public signup(email: string, password: string,first_name:string,last_name:string,month:string,day:string,year:string,birthdate:string,checkbox:boolean): void {
     this.auth0.redirect.signupAndLogin({
       connection: 'Username-Password-Authentication',
       email,
@@ -56,13 +52,13 @@ export class Auth {
       "user_metadata": {
         "firstname": first_name,
         "lastname":last_name,
-        "birthdate":birthdate,
+        "birthdate":'"' + birthdate + '"',
         "dob": '"' + new Date(month + "/" + day + "/" + year).getTime() + '"',
         "Month":month,
         "Day":day,
         "Year":year
-    }
-      
+      }
+
     }, err => {
       if (err) {
         alert(`Error: ${err.description}. Check the console for further details.`);
@@ -70,7 +66,10 @@ export class Auth {
       }
     });
   }
-    public handleAuthentication(): void {
+
+
+
+  public handleAuthentication(): void {
     
     this.auth0.parseHash((window.location.hash, (err, authResult) => {
       if(authResult){
@@ -221,4 +220,26 @@ export class Auth {
       return false;
     }
   }
+//   public password_reset(){
+//     auth0 .passwordlessStart({
+//     connection: 'email',
+//     send: 'link',
+//     email: 'ghadaezzat89@gmail.com'
+//   }, function (err,res) {
+//     // handle errors or continue
+//     console.log(err);
+//   }
+// );
+//   }
+
+  public resetPassword(email: string, connection: string = 'Username-Password-Authentication'){
+    var options = {
+      email: email,
+      connection: connection
+    };
+    this.auth0.changePassword(options, function () {
+    });
+  }
+
+
 }
