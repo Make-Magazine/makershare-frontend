@@ -47,9 +47,9 @@
                       class="login-main-action"
                       *ngIf="current_active_tab == 'login' "
                       (Click)="login(userlogin.email,userlogin.password)" (Click)="submit=true">
-                   Log In
+                      Log In
                    </button>
-                     <a (click)="current_active_tab = 'forgetPass'">Don't remember your password</a>
+                    <a class="forgot-link" (click)="current_active_tab = 'forgetPass'">Forgot your password?</a>
                    </form>
                    <form #forgetPassForm="ngForm" id="forgetPass" *ngIf="current_active_tab == 'forgetPass'" >
                         <div class="form-group">
@@ -65,7 +65,7 @@
                               <small class="alert alert-danger" *ngIf="forgetEmail.email && forgetEmail.email.invalid && (forgetEmail.email.dirty || forgetEmail.email.touched)">
                                     plese enter email
                               </small>
-                    <button (click)="resetPassword(forgetEmail.email)" >send</button>
+                    <button class="login-main-action" (click)="resetPassword(forgetEmail.email)" >Submit</button>
                     <p *ngIf="resetSent == true">an email with reset link has been sent to your email</p>
 
                   </form>
@@ -204,7 +204,7 @@
                       <input type="checkbox" #birthdate value="true" hidden>
                    </div>
                   <div class="form-group">
-                      <input type="checkbox" #checkbox name="checkbox" [(ngModel)]="userSignup.checkbox" required="required">I agree to the <a href='http://makermedia.com/terms' target='_new'>terms of service</a> and <a href='http://makermedia.com/privaacy' target='_new'>privacy policy</a>.
+                      <input type="checkbox" #checkbox name="checkbox" [(ngModel)]="userSignup.checkbox" required="required">I agree to the <a href='http://makermedia.com/terms' target='_new'>terms of service</a> and <a href='http://makermedia.com/privacy' target='_new'>privacy policy</a>.
                   </div>
                    <small class="alert alert-danger" *ngIf="submitted == true && !userSignup.checkbox">
                          please accept the license agreement
