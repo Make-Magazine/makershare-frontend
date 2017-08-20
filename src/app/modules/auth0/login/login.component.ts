@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   forgetEmail = {
     email: ''
   };
+  current_active_tab: string = 'login';
 
   userlogin = {
     email: '',
