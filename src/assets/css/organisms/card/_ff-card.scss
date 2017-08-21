@@ -68,4 +68,13 @@
     		top: -70px;
 		}
 	}
+
+	.card.full {
+		.card-info {
+			height: auto;
+		}
+		.info-bottom {
+			padding-bottom: 8rem;
+		}
+	}
 }
