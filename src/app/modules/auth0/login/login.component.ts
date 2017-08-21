@@ -13,10 +13,12 @@ export class LoginComponent implements OnInit {
   selected_day = '';
   selected_month = '';
   selected_year = '';
-  submitted = false;
+  submitted = false;//sign up
+  submit=false;//login
   forgetEmail = {
     email: ''
   };
+
   current_active_tab: string = 'login';
 
   userlogin = {
@@ -68,8 +70,10 @@ export class LoginComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  public  (email, password) {
-
+  public login(email, password) {
+    console.log('hello?');
+    console.log(email, password);
+    this.submit=true;
     if (email && password) {
       this.auth.login(email, password);
     }
