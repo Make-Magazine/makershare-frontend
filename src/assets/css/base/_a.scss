@@ -2,3 +2,7 @@ a, .link {
 	text-decoration: none;
 	color: $highlight-bright-blue;
 }
+
+a.report {
+	color: $highlight-bright-blue !important;
+}
