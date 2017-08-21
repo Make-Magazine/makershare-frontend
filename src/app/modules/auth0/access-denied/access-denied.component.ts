@@ -9,4 +9,12 @@ export class AccessDeniedComponent implements OnInit {
   constructor(public auth: Auth) {}
 
   ngOnInit() {}
+
+  /**
+   * openLogin
+   */
+  openLogin() {
+    // Trigger login modal
+    this.auth.toggle(true);
+  }
 }
