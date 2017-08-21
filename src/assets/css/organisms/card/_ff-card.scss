@@ -1,12 +1,13 @@
 .ff {
 	.card.tall {
+		padding-top: 0;
 		.card-image {
 			// padding-bottom: 70%;
 		}
 		.info-bottom {
-			margin-top: 80%;
+			margin-top: 105%;
 			position: relative;
-			top: -80%;
+			// top: -80%;
 		}
 
 		.card-image.alt {
@@ -26,12 +27,45 @@
 		}
 
 		.card-owner-meta-info {
-			background: white;
+			// background: white;
 			padding: 2rem 1rem;
 			left: -1rem;
 			position: relative;
 			max-width: calc(100% + 3rem);
 			width: calc(100% + 3rem);
+		}
+	}
+
+
+	.card.wide {
+		.info-bottom {
+			padding-top: 60%;
+			position: relative;
+		}
+		.card-image.alt {
+			padding-bottom: 34.55%;
+		}
+		.card-owner-meta {
+		    position: absolute;
+		    width: 100%;
+		    top: 0;
+		}
+		.card-owner-meta-info {
+			position: absolute
+		}
+		.card-owners-group {
+			position: relative;
+			left: -1rem;
+			top: 0;
+		}
+		social-stats {
+			position: absolute;
+			top: 50%;
+			left: 1rem;	 
+		}
+		.social-stat-group {
+			position: absolute;
+    		top: -70px;
 		}
 	}
 }
