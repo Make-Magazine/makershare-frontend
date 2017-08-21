@@ -106,8 +106,11 @@ var squareView = true;
 var window_width;
 var window_height;
 /*var */
-$(document).ready(function () {
 
+$(document).ready(function () {
+  if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    $('html').addClass('ff');
+  }
   $('.navbar-header button,#navbar').hover(function () {
     $('#navbar').show();
     setTimeout(function () {
