@@ -46,7 +46,7 @@
                       type="submit"
                       class="login-main-action"
                       *ngIf="current_active_tab == 'login' "
-                      (Click)="login(userlogin.email,userlogin.password)" (Click)="submit=true">
+                      (click)="login(userlogin.email,userlogin.password)">
                       Log In
                    </button>
                     <a class="forgot-link" (click)="current_active_tab = 'forgetPass'">Forgot your password?</a>
