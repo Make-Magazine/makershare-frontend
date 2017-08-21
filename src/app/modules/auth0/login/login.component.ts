@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Auth } from './../auth.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,17 +13,18 @@ export class LoginComponent implements OnInit {
   selected_day = '';
   selected_month = '';
   selected_year = '';
-  submitted = false;//sign up
-  submit=false;//login
+  submitted = false; // sign up
+  submit = false; // login
   forgetEmail = {
-    email: ''
+    email: '',
   };
+  @ViewChild('content') modalContent: TemplateRef<any>;
 
   current_active_tab: string = 'login';
 
   userlogin = {
     email: '',
-    password: ''
+    password: '',
   };
   userSignup = {
     emailUp: '',
@@ -34,21 +35,24 @@ export class LoginComponent implements OnInit {
     checkbox: 0,
     month: '',
     day: '',
-    year: []
+    year: [],
+  };
+
+  constructor(public auth: Auth, private modalService: NgbModal) {
+    this.auth.toggleModal$.subscribe(() => {
+      this.open(this.modalContent);
+    });
   }
-  constructor(
-    public auth: Auth,
-    private modalService: NgbModal
-  ) { }
 
   ngOnInit() {
-          var index=0;
+    let index: number = 0;
 
     for (let i = 1930; i < 2017; i++) {
-        this.userSignup.year[index] = i;
-        index++;
+      this.userSignup.year[index] = i;
+      index++;
+    }
   }
-  }
+
   open(content) {
     this.modalService.open(content).result.then(
       result => {
@@ -70,14 +74,14 @@ export class LoginComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
   public login(email, password) {
     console.log('hello?');
     console.log(email, password);
-    this.submit=true;
+    this.submit = true;
     if (email && password) {
       this.auth.login(email, password);
     }
-
   }
 
   public resetPassword(email) {
@@ -86,12 +90,28 @@ export class LoginComponent implements OnInit {
   }
 
   public signup(user) {
-
     this.submitted = true;
-    if (user.emailUp && user.passwordUp && user.firstName && user.lastName && user.checkbox && this.selected_month && this.selected_day && this.selected_year) {
-      this.auth.signup(user.emailUp, user.passwordUp, user.firstName, user.lastName, user.month, user.day, this.selected_year, user.birthdate, user.checkbox)
+    if (
+      user.emailUp &&
+      user.passwordUp &&
+      user.firstName &&
+      user.lastName &&
+      user.checkbox &&
+      this.selected_month &&
+      this.selected_day &&
+      this.selected_year
+    ) {
+      this.auth.signup(
+        user.emailUp,
+        user.passwordUp,
+        user.firstName,
+        user.lastName,
+        user.month,
+        user.day,
+        this.selected_year,
+        user.birthdate,
+        user.checkbox,
+      );
     }
   }
-
- 
 }
