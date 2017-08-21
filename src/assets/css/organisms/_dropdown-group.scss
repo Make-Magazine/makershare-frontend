@@ -37,4 +37,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
   }
+  select::-ms-expand {
+    display: none;
+  }
 }
