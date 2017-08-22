@@ -76,8 +76,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login(email, password) {
-    console.log('hello?');
-    console.log(email, password);
     this.submit = true;
     if (email && password) {
       this.auth.login(email, password);
