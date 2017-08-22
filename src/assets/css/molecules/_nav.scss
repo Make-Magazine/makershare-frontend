@@ -70,7 +70,10 @@ nav {
     right: 2rem;
     top: 30%;
     .nav-item {
-      padding: .5rem .9rem;;
+      padding: .5rem .9rem;
+      &:last-child {
+        margin-right: 1rem;
+      }
     }
   }
 }
