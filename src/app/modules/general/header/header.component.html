@@ -94,7 +94,9 @@
     <nav class="secondary">
       <ul class="nav-content">
         <li class="nav-item" *ngIf="!auth.authenticated()">
-          <a class="nav-link"><app-login></app-login></a>
+          <!--<a class="nav-link">-->
+          <app-login></app-login>
+          <!--</a>-->
         </li>
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button" [routerLink]="['/projects/create']">+</a>
