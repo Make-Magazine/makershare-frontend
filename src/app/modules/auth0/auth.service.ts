@@ -17,7 +17,8 @@ export class Auth {
   auth0 = new auth0.WebAuth({
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
-    responseType: 'token id_token access_token profile',
+    // responseType: 'token id_token access_token profile',
+    responseType: 'token',
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/',
     scope: 'openid id_token access_token profile',
