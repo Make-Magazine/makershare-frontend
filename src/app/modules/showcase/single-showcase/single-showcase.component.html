@@ -1,9 +1,10 @@
 <section *ngIf="showcase" class="page-single-showcase">
   <div class="region region-content">
     <div class="container items-container">
-      <app-showcase-card [showcaseCard]="showcase"
-                         [projectsCount]="contentCount"
-                         [singleView]="true"></app-showcase-card>
+      <app-showcase-gen-card 
+                         (Featured)="UnFlagged(i)"
+                         [showcaseNid]="showcaseNid"
+                         [state]="wide"></app-showcase-gen-card>
     </div>
 
     <div>
