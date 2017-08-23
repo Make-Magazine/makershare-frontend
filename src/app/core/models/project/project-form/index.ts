@@ -15,5 +15,5 @@ export {
   FieldCollectionItemMember,
   FieldCollectionItemReferenceRow,
 } from '../../project/project-form/field-collection-item';
-export { ProjectCardPortfolio, ProjectForm, ProjectView } from '../../project/project-form/project';
+export { ProjectForm, ProjectView, ProjectCardPortfolio } from '../../project/project-form/project';
 export { ProjectHold } from '../../project/project-form/project-hold';

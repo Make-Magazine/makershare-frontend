@@ -1,4 +1,4 @@
-import express = require('express');
+import * as express from 'express';
 import { enableProdMode } from '@angular/core';
 import { applicationBuilderFromModule } from 'angular-ssr';
 import { AppModule } from '../app/app.module';

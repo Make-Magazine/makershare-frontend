@@ -5,7 +5,7 @@
       <app-project-card [view]="view" [nid]="project.nid" [state]="'tall'"></app-project-card>
     </div>
   </div>
-  <div *ngIf="projects.length == '0'">
+  <div *ngIf="projects.length === 0">
     <h2 class="text-center">There are no projects yet</h2>
   </div>
   <div class="text-center" *ngIf="showloadmoreProject">

@@ -122,19 +122,19 @@ export class Auth {
    */
   public handleAuthentication(): void {
     this.auth0.parseHash(
-      (
-        window.location.hash,
-        (err, authResult) => {
-          if (authResult) {
-            this.doLogin(authResult);
-          } else if (err) {
-            this.router.navigate(['/']);
-            alert(
-              `Error: ${err.error}. Check the console for further details.`,
-            );
-          }
+      {
+        hash: window.location.hash
+      },
+      (err, authResult) => {
+        if (authResult) {
+          this.doLogin(authResult);
+        } else if (err) {
+          this.router.navigate(['/']);
+          alert(
+            `Error: ${err.error}. Check the console for further details.`,
+          );
         }
-      ),
+      },
     );
   }
 
@@ -143,13 +143,13 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    var self = this;
-    this.auth0.client.userInfo(authResult.accessToken, function(err, user) {
+    //const self = this;
+    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
         return;
       }
-      var data = user;
+      const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
       (data.email_verified =
@@ -163,7 +163,7 @@ export class Auth {
       };
       console.log(data);
       if (user.email_verified == true) {
-        self.userService.auth0_authenticate(data).subscribe(res => {
+        this.userService.auth0_authenticate(data).subscribe(res => {
           if (res.user.uid != 0) {
             localStorage.setItem('access_token', authResult.accessToken);
             localStorage.setItem('id_token', authResult.idToken);
@@ -171,21 +171,21 @@ export class Auth {
             localStorage.setItem('user_name', res.user.name);
             localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
-            self.userService.saveCookies(
+            this.userService.saveCookies(
               res['token'],
               res['session_name'],
               res['sessid'],
             );
             // update profile picture globally
-            self.profilePictureService.update(res.user_photo);
+            this.profilePictureService.update(res.user_photo);
             // redirect to the profile page if it's first time
             if (res.first_time == true) {
-              setTimeout(function() {
-                self.router.navigate(['portfolio']);
+              setTimeout(() => {
+                this.router.navigate(['portfolio']);
                 window.location.reload();
               }, 1000);
             } else if (res.user_photo.indexOf('profile-default') < 0) {
-              self.router.navigate(['/']);
+              this.router.navigate(['/']);
               window.location.reload();
             }
             window.location.reload();
@@ -197,7 +197,7 @@ export class Auth {
           // if the first time, navigate to edit profile page
           window.location.hash = '';
           if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            self.notificationBarService.create({
+            this.notificationBarService.create({
               message:
                 'Please upload a profile photo now to get started creating projects.',
               type: NotificationType.Warning,
@@ -205,12 +205,12 @@ export class Auth {
               allowClose: true,
               hideOnHover: false,
             });
-            self.router.navigate(['/portfolio/']);
+            this.router.navigate(['/portfolio/']);
           }
         });
       } else {
         // not verified
-        self.notificationBarService.create({
+        this.notificationBarService.create({
           message:
             'For your security, check email for our Welcome message and activate your Maker Share account.',
           type: NotificationType.Warning,
@@ -219,7 +219,7 @@ export class Auth {
           hideOnHover: false,
         });
       }
-      self.setSession(authResult);
+      this.setSession(authResult);
     });
   }
 

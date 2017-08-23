@@ -83,11 +83,6 @@ export interface ProjectView extends NodeEntity {
   field_cover_photo?: { und: FieldFileReference[] };
 }
 
-export interface ProjectCardPortfolio extends NodeEntity {
-  grid_image: URL;
-  showcase_image: URL;
-}
-
 export class ProjectView extends NodeEntity implements ProjectView {
   constructor(Project: ProjectView) {
     super();
@@ -101,9 +96,7 @@ export class ProjectView extends NodeEntity implements ProjectView {
       this.setField(FieldName, FieldValue);
     }
   }
-  updateField() {
-    
-  }
+  updateField() {}
 }
 
 export class ProjectForm extends NodeEntity implements ProjectForm {
@@ -169,7 +162,6 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
     } else {
       this.setField('status', null);
     }
-    
   }
 
   private setCustomFields(value: any, FieldName: string): void {
@@ -188,7 +180,22 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
       this[FieldName].und[0] = value;
     }
   }
-  updateField() {
-    
+  updateField() {}
+}
+
+export interface IProjectCardPortfolio extends NodeEntity {
+  grid_image: URL;
+  showcase_image: URL;
+}
+
+export class ProjectCardPortfolio extends NodeEntity implements IProjectCardPortfolio {
+
+  grid_image: URL;
+  showcase_image: URL;
+
+  constructor() {
+    super();
   }
+
+  updateField() {}
 }

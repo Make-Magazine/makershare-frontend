@@ -1,6 +1,6 @@
-import cookieParser = require('cookie-parser');
-import express = require('express');
-import url = require('url');
+import * as cookieParser from 'cookie-parser';
+import * as express from 'express';
+import { format } from 'url';
 import { dist, index } from './paths';
 
 export const configure = (http: express.Application): void => {
@@ -26,7 +26,7 @@ export const listen = (http: express.Application): Promise<number> => {
 };
 
 export const absoluteUri = (request: express.Request): string => {
-  return url.format({
+  return format({
     protocol: request.protocol,
     host: request.get('host'),
     pathname: request.originalUrl,

@@ -22,16 +22,16 @@ export class MakersComponent implements OnInit {
     this.viewService,
   );
 
-  private makers = [];
+  makers = [];
   private categoryId: number;
   private subCategoryId: number;
-  private showLoadMoreBtn: boolean = false;
-  private makersCount: number = 0;
+  showLoadMoreBtn: boolean = false;
+  makersCount: number = 0;
   private currentPage: number = 0;
 
-  private categories: ICategory[] = [];
+  categories: ICategory[] = [];
   private subCategories: ICategory[] = [];
-  private filteredSubCategories: ICategory[] = [];
+  filteredSubCategories: ICategory[] = [];
 
   constructor(
     private viewService: ViewService,

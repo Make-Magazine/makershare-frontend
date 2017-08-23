@@ -26,15 +26,15 @@ export class ProjectsComponent implements OnInit {
     this.viewService,
   );
 
-  private projects = [];
+  projects = [];
   private categoryId: number;
   private subCategoryId: number;
-  private showLoadMoreBtn: boolean = false;
-  private projectsCount: number = 0;
+  showLoadMoreBtn: boolean = false;
+  projectsCount: number = 0;
   private currentPage: number = 0;
-  private categories: ICategory[] = [];
+  categories: ICategory[] = [];
   private subCategories: ICategory[] = [];
-  private filteredSubCategories: ICategory[] = [];
+  filteredSubCategories: ICategory[] = [];
   // Manager: boolean = false;
 
   constructor(

@@ -1,5 +1,7 @@
-import {join, resolve} from 'path';
+// import {join, resolve} from 'path';
 
-export const dist = resolve(join(__dirname, '..', '..', 'dist'));
+const path = require('path');
 
-export const index = resolve(join(dist, 'index.html'));
+export const dist = path.resolve(path.join(__dirname, '..', '..', 'dist'));
+
+export const index = path.resolve(path.join(dist, 'index.html'));

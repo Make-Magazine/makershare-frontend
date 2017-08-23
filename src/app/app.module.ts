@@ -1,17 +1,22 @@
-import { NgModule, NgZone } from '@angular/core';
+import { NgModule/*, NgZone*/ } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
+import {
+  /*NavigationEnd,
+  NavigationError,
+  Router,*/
+  RouterModule,
+} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
 import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
-import { Observable } from 'rxjs/Observable';
+// import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+// import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { CurrentUserReducer } from './core/store/current-user-reducer';
@@ -45,7 +50,7 @@ import { LoginComponent } from './modules/auth0/login/login.component';
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'universal' }),
     BrowserAnimationsModule,
     FormsModule,
     CookieModule.forRoot(),
@@ -58,7 +63,7 @@ import { LoginComponent } from './modules/auth0/login/login.component';
     DndModule.forRoot(),
     ShareButtonsModule.forRoot(),
     HttpModule,
-    StoreModule.forRoot({ currentUser: CurrentUserReducer })
+    StoreModule.forRoot({ currentUser: CurrentUserReducer }),
   ],
   declarations: [
     AppComponent,
@@ -87,7 +92,7 @@ import { LoginComponent } from './modules/auth0/login/login.component';
   ],
 })
 export class AppModule {
-  constructor(router: Router, zone: NgZone) {
+  /*constructor(router: Router, zone: NgZone) {
     if (typeof prebootstrap === 'undefined') {
       return;
     }
@@ -113,7 +118,7 @@ export class AppModule {
           break;
       }
     });
-  }
+  }*/
 }
 
-declare const prebootstrap;
+// declare const prebootstrap;
