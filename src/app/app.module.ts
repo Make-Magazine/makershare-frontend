@@ -10,7 +10,7 @@ import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
 import { NotificationBarModule } from 'ngx-notification-bar/release';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+// import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
 import { Observable } from 'rxjs/Observable';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
