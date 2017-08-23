@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavigationEnd, NavigationError, Router, RouterModule } from '@angular/router';
+import { NavigationEnd, NavigationError, Router /*RouterModule*/ } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { DndModule } from 'ng2-dnd';
@@ -51,7 +51,7 @@ import { LoginComponent } from './modules/auth0/login/login.component';
     CookieModule.forRoot(),
     SharedModule.forRoot(),
     NgbModule.forRoot(),
-    RouterModule,
+    /*RouterModule,*/
     routing,
     MessagesModule,
     NotificationBarModule,
@@ -101,6 +101,8 @@ export class AppModule {
       if (stable === false) {
         return;
       }
+
+      // document.body.innerHTML += '<div style="color:black;padding:0 20px;position:relative;background-color:white;">LOG: ' + event.toString() + '</div>';
 
       switch (true) {
         case event instanceof NavigationError:
