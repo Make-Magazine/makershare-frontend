@@ -9,8 +9,10 @@ enableProdMode();
 
 const builder = applicationBuilderFromModule(AppModule, index);
 
-builder.preboot({ appRoot: 'application' });
+// builder.preboot({ appRoot: 'application' });
 // builder.stabilizeTimeout(20000);
+builder.preboot(true);
+
 const application = builder.build();
 
 const http = express();

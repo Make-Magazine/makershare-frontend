@@ -53,7 +53,7 @@ const APP_ROUTES: Routes = [
     { path: 'claim-profile', component: ClaimProfileComponent },
     { path: '404', component: Four04Component },
     { path: 'access-restricted', component: AccessRestrictedComponent },
-    { path: 'login',component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', redirectTo: '/404' },
 ];
 
