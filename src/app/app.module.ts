@@ -105,7 +105,7 @@ export class AppModule {
       switch (true) {
         case event instanceof NavigationError:
         case event instanceof NavigationEnd:
-          setImmediate(() => prebootClient().complete());
+          // setImmediate(() => prebootClient().complete());
 
           subscription.unsubscribe();
           break;
