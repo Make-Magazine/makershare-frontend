@@ -93,34 +93,31 @@ export class Auth {
     last_name: string,
     month: string,
     day: string,
-    year: string,
-    birthdate: string,
-    checkbox: boolean,
-  ): void {
-    this.auth0.redirect.signupAndLogin(
-      {
-        connection: 'Username-Password-Authentication',
-        email,
-        password,
-        user_metadata: {
-          firstname: first_name,
-          lastname: last_name,
-          birthdate: '"' + birthdate + '"',
-          dob: '"' + new Date(month + '/' + day + '/' + year).getTime() + '"',
-          Month: month,
-          Day: day,
-          Year: year,
+    year: string
+  ): Observable<Error | boolean> {
+    const birthdate: number = new Date(month + '/' + day + '/' + year).getTime();
+
+    return Observable.create(observer => {
+      this.auth0.redirect.signupAndLogin(
+        {
+          connection: 'Username-Password-Authentication',
+          email,
+          password,
+          user_metadata: {
+            firstname: first_name,
+            lastname: last_name,
+            birthdate: `${birthdate}`,
+            dob: `${birthdate}`,
+            Month: month,
+            Day: day,
+            Year: year,
+          },
         },
-      },
-      err => {
-        if (err) {
-          alert(
-            `Error: ${err.description}. Check the console for further details.`,
-          );
-          return;
-        }
-      },
-    );
+        (err, authResult) => {
+          observer.error(err);
+        },
+      );
+    });
   }
 
   /**
