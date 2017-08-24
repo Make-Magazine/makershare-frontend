@@ -53,10 +53,6 @@ export class MakerSearchCardComponent implements OnInit {
       this.projectsCount = data[0]
     })
   }
-  userProfile(fName, lName) {
-    var name = fName + '-' + lName;
-    this.router.navigate(['/portfolio/', name]);
-  }
   goToProfile(path: string) {
     this.router.navigate(['/portfolio/', path]);
   }

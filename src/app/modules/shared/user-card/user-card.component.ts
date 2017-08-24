@@ -239,10 +239,6 @@ export class UserCardComponent implements OnInit {
   }
   checkUserLogin() {}
 
-  userProfile(fName, lName) {
-    this.router.navigate(['/portfolio/', `${fName + '-' + lName}`]);
-  }
-
   getProfile() {
     if (this.card.uid) {
       this.userService.getUrlFromId(this.card.uid).subscribe(res => {

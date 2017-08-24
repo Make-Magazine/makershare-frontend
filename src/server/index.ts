@@ -10,8 +10,8 @@ enableProdMode();
 const builder = applicationBuilderFromModule(AppModule, index);
 
 // builder.preboot({ appRoot: 'application' });
-// builder.stabilizeTimeout(20000);
 builder.preboot(true);
+builder.stabilizeTimeout(16000);
 
 const application = builder.build();
 
