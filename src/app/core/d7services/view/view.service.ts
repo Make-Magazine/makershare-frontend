@@ -5,9 +5,9 @@ import { MainService } from '../main/main.service';
 @Injectable()
 export class ViewService extends MainService {
   getView<T>(viewName: string, args?: (string | any)[][]): Observable<T | any> {
-    var string_args = '';
+    let string_args = '';
     if (args && args.length > 0) {
-      var string_args = '?';
+      string_args = '?';
       args.forEach((item, index) => {
         string_args += item[0] + '=' + item[1] + '&';
       });

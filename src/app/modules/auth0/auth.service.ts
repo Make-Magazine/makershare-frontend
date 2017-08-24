@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {Singleton} from '../../core/models/application/singleton';
 import * as auth0 from 'auth0-js';
 import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 import {
   NotificationBarService,
   NotificationType,
@@ -48,26 +49,28 @@ export class Auth {
    * @param {string} username
    * @param {string} password
    */
-  public login(username: string, password: string): void {
-    this.auth0.client.login(
-      {
-        realm: 'Username-Password-Authentication',
-        username,
-        password,
-      },
-      (err, authResult) => {
-        if (err) {
-          console.log(err);
-          alert(
-            `Error: ${err.error_description}. Check the console for further details.`,
-          );
-          return;
-        } else if (authResult && authResult.accessToken && authResult.idToken) {
-          // this.setSession(authResult);
-          this.doLogin(authResult);
-        }
-      },
-    );
+  public login(username: string, password: string): Observable<Error | boolean> {
+    return Observable.create(observer => {
+      this.auth0.client.login(
+        {
+          realm: 'Username-Password-Authentication',
+          username,
+          password,
+        },
+        (err, authResult) => {
+          if (err) {
+            observer.error(err);
+          } else if (authResult && authResult.accessToken && authResult.idToken) {
+            // this.setSession(authResult);
+            observer.next(true);
+
+            this.doLogin(authResult);
+
+            observer.complete();
+          }
+        },
+      );
+    });
   }
 
   /**
@@ -132,10 +135,7 @@ export class Auth {
         if (authResult) {
           this.doLogin(authResult);
         } else if (err) {
-          this.router.navigate(['/']);
-          alert(
-            `Error: ${err.error}. Check the console for further details.`,
-          );
+
         }
       }
     );
@@ -146,7 +146,6 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    // var self = this;
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
@@ -164,7 +163,6 @@ export class Auth {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
       };
-      console.log(data);
       if (user.email_verified == true) {
         this.userService.auth0_authenticate(data).subscribe(res => {
           if (res.user.uid != 0) {
@@ -197,7 +195,6 @@ export class Auth {
               });
               this.router.navigate(['/portfolio']);
             }
-            return;
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
             localStorage.setItem('user_id', '0');

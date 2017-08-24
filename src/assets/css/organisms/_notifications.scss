@@ -34,6 +34,9 @@
   padding: .75rem 1.25rem;
   margin-bottom: 1rem;
   border-radius: .25rem;
+  &.-small {
+    font-size: 1.2rem;
+  }
   &-danger {
     background-color: #f2dede;
     color: $vivid-red;

@@ -1,5 +1,6 @@
 export * from './application';
 export * from './drupal';
+export * from './error';
 export * from './project';
 export * from './organization';
 export * from './filemanager';
