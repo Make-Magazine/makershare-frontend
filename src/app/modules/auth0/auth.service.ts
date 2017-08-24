@@ -183,32 +183,24 @@ export class Auth {
             this.profilePictureService.update(res.user_photo);
             // redirect to the profile page if it's first time
             if (res.first_time == true) {
-              setTimeout(function() {
-                this.router.navigate(['portfolio']);
-                window.location.reload();
-              }, 1000);
+              this.router.navigate(['/portfolio']);
             } else if (res.user_photo.indexOf('profile-default') < 0) {
               this.router.navigate(['/']);
-              window.location.reload();
+            } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+              this.notificationBarService.create({
+                message:
+                  'Please upload a profile photo now to get started creating projects.',
+                type: NotificationType.Warning,
+                autoHide: false,
+                allowClose: true,
+                hideOnHover: false,
+              });
+              this.router.navigate(['/portfolio']);
             }
-            window.location.reload();
+            return;
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
             localStorage.setItem('user_id', '0');
-          }
-
-          // if the first time, navigate to edit profile page
-          window.location.hash = '';
-          if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            this.notificationBarService.create({
-              message:
-                'Please upload a profile photo now to get started creating projects.',
-              type: NotificationType.Warning,
-              autoHide: false,
-              allowClose: true,
-              hideOnHover: false,
-            });
-            this.router.navigate(['/portfolio/']);
           }
         });
       } else {
