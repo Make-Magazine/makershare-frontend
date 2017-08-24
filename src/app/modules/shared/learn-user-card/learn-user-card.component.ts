@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { ViewService } from '../../../core/d7services';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { FormGroup } from '@angular/forms';
@@ -30,7 +29,6 @@ export class LearnUserCardComponent implements OnInit {
   @Input() leader;
   @Input() name;
   constructor(
-    private router: Router,
     private viewService: ViewService,
     private notificationBarService: NotificationBarService,
     private config: NgbTooltipConfig, )
