@@ -1,5 +1,6 @@
-<div class="follow-control action" *ngIf="CurrentLoggedUserId != targetUid" (click)="followThis($event)" [class.active]="!isFollowed">
-  <span class="follow-item" >{{ButtonFollow}}</span>
+<div class="follow-control action" *ngIf="CurrentLoggedUserId != targetUid" (click)="followThis($event)"
+     [class.active]="!isFollowed">
+  <span class="follow-item">{{ButtonFollow}}</span>
 </div>
 
 <div class="follow-control">
@@ -8,7 +9,6 @@
 <div class="follow-control">
   <span class="follow-item" (click)="openModal(contentfollowing)">{{countFollowing}} Following</span>
 </div>
-
 
 
 <!-- overlays -->
@@ -25,7 +25,8 @@
       <div class="model-likes" *ngFor="let follow of myFollowers; ">
         <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo"
              src="{{follow?.default_profile_photo}}"
-             (click)="goToProfile(follow.profile_url)" (click)="d('Cross click')">
+             [routerLink]="['/portfolio', follow.profile_url]"
+             (click)="d('Cross click')">
         <span *ngIf="follow?.default_profile_photo && follow.profile_url " class="new-tooltiptext like-name">
           {{follow?.first_name}} {{follow?.last_name}} </span><br>
       </div>
@@ -50,14 +51,18 @@
       <div class="model-likes" *ngFor="let following of meFollowing; ">
         <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo"
              src="{{following?.portfolio_photo}}"
-             (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span
-          *ngIf="following?.portfolio_photo && following.profile_url "
-          class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
+             [routerLink]="['/portfolio', following.profile_url]"
+             (click)="d('Cross click')">
+        <span *ngIf="following?.portfolio_photo && following.profile_url "
+              class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
         <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo"
              src="./assets/images/Gears-Grey.svg"
-             (click)="goToProfile(following.profile_url)" (click)="d('Cross click')"><span
-          *ngIf="!following?.portfolio_photo && following.profile_url "
-          (click)="goToProfile(following.profile_url)" (click)="d('Cross click')" class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}} </span><br>
+             [routerLink]="['/portfolio', following.profile_url]"
+             (click)="d('Cross click')">
+        <span *ngIf="!following?.portfolio_photo && following.profile_url "
+              [routerLink]="['/portfolio', following.profile_url]"
+              (click)="d('Cross click')"
+              class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
       </div>
       <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollowing && meFollowing.length > 0 ">
         <a class="btn btn-load-more" (click)="getWhoFollowing(true)">Load more</a>
