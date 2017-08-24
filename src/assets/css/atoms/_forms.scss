@@ -45,12 +45,19 @@
       border: 1px solid rgba(0,0,0,.15);
       background-color: $white;
       color: $dark-grey;
-      &[type=radio] {
+      &[type=radio],
+      &[type=checkbox] {
         display: inline-block;
         width: auto;
         margin: .5rem;
         border: none;
         background-color: transparent;
+      }
+      &[type=checkbox] {
+        margin: 0;
+        & + span {
+          font-size: 1.3rem;
+        }
       }
 
       &[disabled] {
