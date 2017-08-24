@@ -48,10 +48,12 @@
     <h4 *ngIf="makers.length == 0"
         class="text-center mt-5 mb-5">There are no makers to show</h4>
     <div class="row">
-      <app-maker-card class="card-wrapper col-md-6 col-lg-4 pull-left"
-                      *ngFor="let maker of makers"
+    <div class="card-wrapper col-md-6 col-lg-4"
+                      *ngFor="let maker of makers">
+      <app-maker-card 
                       [uid]="maker.uid"
                       [state]="'tall'"></app-maker-card>
+    </div>
     </div>
   </div>
 
