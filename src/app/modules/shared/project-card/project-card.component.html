@@ -20,12 +20,14 @@
       <div class="float-right" *ngIf="project.orgs_logo">
         <img class="orgs-logo" src="{{project.orgs_logo}}" alt="">
       </div>
-      <a class="flex-text-container" href="projects/{{project.path}}" *ngIf="!editMode">
+      <a class="flex-text-container"
+         [routerLink]="['/projects/', project.path]"
+         *ngIf="!editMode">
         <p class="card-description-long" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="card-description-long" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </a>
       <div class="flex-text-container" *ngIf="editMode">
-        <div class="overlay-portfolio" [routerLink]="['/projects/',project.path]"></div>
+        <div class="overlay-portfolio" [routerLink]="['/projects/', project.path]"></div>
         <div class="profile-edit-buttons">
           <div class=" d-flex flex-column m-auto">
             <p [routerLink]="['/projects/',project.path,'edit']" class="btn edit-project">
@@ -70,7 +72,9 @@
         <div class="card-owner-meta-info">
           <span class="card-title" innerHTML="{{project.project_name}}"></span>
           <div class="card-owners-group">
-            <a class="card-owner-link" href="{{project.maker_url}}" innerHTML="By {{project.first_name}} {{project.last_name}}"></a>
+            <a class="card-owner-link"
+               [routerLink]="[project.maker_url]"
+               innerHTML="By {{project.first_name}} {{project.last_name}}"></a>
           </div>
         </div>
       </div>

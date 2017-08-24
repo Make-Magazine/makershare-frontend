@@ -88,7 +88,7 @@
           </div>
           <div class="data-container d-flex flex-column title-name" (click)="ShowProjectDetails(project.path)">
             <h4 class="card-title" innerHTML="{{project.project_name}}"></h4>
-            <a (click)="userProfile(project.first_name,project.last_name)" class="mt-auto">
+            <a [routerLink]="['/portfolio', project.first_name+'-'+project.last_name]" class="mt-auto">
               <p class="maker-name">{{project.first_name}} {{project.last_name}}</p>
             </a>
           </div>
