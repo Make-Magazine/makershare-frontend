@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import {Singleton} from '../../core/models/application/singleton';
 import * as auth0 from 'auth0-js';
 import { Subject } from 'rxjs/Subject';
 import {
@@ -17,9 +18,11 @@ export class Auth {
   auth0 = new auth0.WebAuth({
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
-    responseType: 'token id_token access_token profile',
+    // responseType: 'token id_token access_token profile',
+    responseType: 'token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/',
+    // redirectUri: 'http://localhost:4200/',
+    redirectUri: Singleton.Settings.appURL,
     scope: 'openid id_token access_token profile',
   });
 
