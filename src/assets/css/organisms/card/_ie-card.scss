@@ -1,0 +1,85 @@
+html.ie.ie-11 app-card-badges {
+    position: absolute;
+    top: 90%;
+    width: 100%;
+}
+
+html.ie.ie-plus {
+	.card.tall {
+		padding-top: 0;
+		.card-image {
+			padding-bottom: 80%;
+		}
+		.info-bottom {
+			margin-top: 105%;
+			position: relative;
+			// top: -80%;
+		}
+
+		.card-image.alt {
+			padding-bottom: 106.5%;
+		}
+
+		.badge-group {
+			top: 100%;
+			left: 1rem;
+			right: initial;
+			width: 100%;
+			background: white;
+			left: 0;
+			padding-left: 1rem;
+			padding-bottom: 100%;
+			padding-top: 1rem;
+		}
+
+		.card-owner-meta-info {
+			// background: white;
+			padding: 2rem 1rem;
+			left: -1rem;
+			position: relative;
+			max-width: calc(100% + 3rem);
+			width: calc(100% + 3rem);
+		}
+	}
+
+	.card.wide {
+		.info-bottom {
+			padding-top: 60%;
+			position: relative;
+		}
+		.card-image.alt {
+			padding-bottom: 34.55%;
+		}
+		.card-owner-meta {
+		    position: absolute;
+		    width: 100%;
+		    top: 0;
+		}
+		.card-owner-meta-info {
+			position: absolute
+		}
+		.card-owners-group {
+			position: relative;
+			left: -1rem;
+			top: 0;
+		}
+		social-stats {
+			position: absolute;
+			top: 50%;
+			left: 1rem;	 
+		}
+		.social-stat-group {
+			position: absolute;
+    		top: -70px;
+		}
+	}
+
+	.card.full {
+		.card-info {
+			height: auto;
+		}
+		.info-bottom {
+			padding-bottom: 8rem;
+		}
+	}
+}
