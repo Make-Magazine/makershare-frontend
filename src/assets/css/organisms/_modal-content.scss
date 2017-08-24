@@ -1,18 +1,3 @@
-@media only screen and (min-width: 992px) {
-  .modal-lg, .modal-dialog {
-    max-width: 1110px;
-  }
-  .modal-sm {
-    width: 29%;
-
-  }
-  .delete-promodal {
-    .modal-dialog {
-      max-width: 700px !important;
-    }
-  }
-}
-
 .modal-content {
   .profile-modal {
     background-color: $lighter-grey;
