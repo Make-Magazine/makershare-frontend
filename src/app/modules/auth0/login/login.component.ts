@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Auth } from './../auth.service';
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { NetworkError } from '../../../core/models/error';
+import { NetworkError, NetworkErrorCode } from '../../../core/models/error';
 
 @Component({
   selector: 'app-login',
@@ -16,16 +16,22 @@ export class LoginComponent implements OnInit {
   selected_year = '';
   submitted = false;
   loading: boolean = false;
+  signingUp: boolean = false;
   loginBtnLabel: string = 'Log in';
+  signupBtnLabel: string = 'Sign Up';
   forgetEmail = {
     email: '',
   };
   @ViewChild('content') modalContent: TemplateRef<any>;
   current_active_tab: string = 'login';
   errorMessage: string;
+  errorSignupMessage: string;
+  extraErrorDetails: string;
 
   // Modal
   modalRef: NgbModalRef;
+
+  formYears: number[] = [];
 
   userlogin = {
     email: '',
@@ -36,11 +42,10 @@ export class LoginComponent implements OnInit {
     passwordUp: '',
     firstName: '',
     lastName: '',
-    birthdate: 0,
     checkbox: 0,
-    month: '',
-    day: '',
-    year: [],
+    month: null,
+    day: null,
+    year: null,
   };
 
   constructor(public auth: Auth, private modalService: NgbModal) {
@@ -50,11 +55,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    let index: number = 0;
-
-    for (let i = 1930; i < 2017; i++) {
-      this.userSignup.year[index] = i;
-      index++;
+    const currYear: number = (new Date()).getFullYear();
+    for (let i = 1930; i < currYear; i++) {
+      this.formYears.push(i);
     }
   }
 
@@ -107,34 +110,64 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  /**
+   * resetPassword
+   *
+   * @param email
+   */
   public resetPassword(email) {
     this.auth.resetPassword(email);
     this.resetSent = true;
   }
 
-  public signup(user) {
+  /**
+   * signup
+   *
+   * @param user
+   */
+  public signup() {
+    this.errorSignupMessage = null;
+    this.extraErrorDetails = null;
     this.submitted = true;
     if (
-      user.emailUp &&
-      user.passwordUp &&
-      user.firstName &&
-      user.lastName &&
-      user.checkbox &&
-      this.selected_month &&
-      this.selected_day &&
-      this.selected_year
+      this.userSignup.emailUp &&
+      this.userSignup.passwordUp &&
+      this.userSignup.firstName &&
+      this.userSignup.lastName &&
+      this.userSignup.checkbox &&
+      this.userSignup.month &&
+      this.userSignup.day &&
+      this.userSignup.year
     ) {
+      this.signingUp = true;
+      this.signupBtnLabel = 'Signing Up...';
       this.auth.signup(
-        user.emailUp,
-        user.passwordUp,
-        user.firstName,
-        user.lastName,
-        user.month,
-        user.day,
-        this.selected_year,
-        user.birthdate,
-        user.checkbox,
-      );
+        this.userSignup.emailUp,
+        this.userSignup.passwordUp,
+        this.userSignup.firstName,
+        this.userSignup.lastName,
+        this.userSignup.month,
+        this.userSignup.day,
+        this.userSignup.year,
+      ).subscribe((val: boolean) => {
+        this.errorSignupMessage = null;
+        this.extraErrorDetails = null;
+        this.signupBtnLabel = 'Retrieving user info...';
+      }, (err: NetworkError) => {
+        this.signupBtnLabel = 'Sign Up';
+
+        // If error related to password
+        if (err.code === NetworkErrorCode.INVALID_PASSWORD) {
+          this.errorSignupMessage = err.original.response.body['message'];
+          this.extraErrorDetails = err.original.response.body['policy'];
+        } else {
+          this.errorSignupMessage = err.description;
+        }
+        this.signingUp = false;
+      }, () => {
+        // Close modal
+        this.modalRef.close();
+      });
     }
   }
 }
