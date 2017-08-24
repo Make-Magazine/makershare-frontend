@@ -111,6 +111,30 @@ $(document).ready(function () {
   if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
     $('html').addClass('ff');
   }
+  (function detectIE() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf('MSIE ');
+    var trident = ua.indexOf('Trident/');
+    var edge = ua.indexOf('Edge/');
+    if (msie > 0) {
+      // IE 10 or older 
+      //Do some stuff
+      $('html').addClass('ie');
+    }
+    else if (trident > 0) {
+      // IE 11 
+      //Do some stuff
+      $('html').addClass('ie ie-11');
+    }
+    else if (edge > 0) {
+      // Edge 
+      //Do some stuff
+      $('html').addClass('ie ie-plus');
+    }
+    else
+      // other browser
+      return false;
+  })();
   $('.navbar-header button,#navbar').hover(function () {
     $('#navbar').show();
     setTimeout(function () {

@@ -13,12 +13,14 @@
 }
 
 .app-likes {
+  display: inline-block;
   img {
     width: 1.2rem;
   }
 }
 
 .app-views {
+  display: inline-block;
   img {
     width: 22px;
     height: auto;
