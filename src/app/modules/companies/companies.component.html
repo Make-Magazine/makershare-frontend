@@ -44,9 +44,12 @@
 
   <div class="container items-container p-414">
     <div class="row">
-      <app-company-card *ngFor="let company of companies; let i=index" class="card-wrapper col-md-6 col-lg-4 pull-left"
+      <div class="card-wrapper col-md-6 col-lg-4"
+        *ngFor="let company of companies; let i=index">
+        <app-company-card 
                       [cardData]="companies[i]"
                       [state]="'tall'"></app-company-card>
+      </div>
     </div>
   </div>
    <div class="text-center" *ngIf="showloadmoreCompany">

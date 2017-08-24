@@ -23,7 +23,7 @@
           <a class="card-owner-link" *ngIf="card.first_name && card.last_name"
              [routerLink]="['/portfolio/', card.profile_url]"
              innerHTML="{{card.first_name}} {{card.last_name}}"></a>
-          <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
+          <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" [routerLink]="['/portfolio/', card.profile_url]" innerHTML="{{card.username}}"></a>
 
           <div class="card-meta-row" *ngIf="card.nickname">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
