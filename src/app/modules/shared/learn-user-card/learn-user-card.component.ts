@@ -54,11 +54,4 @@ export class LearnUserCardComponent implements OnInit {
       this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error, allowClose: true, autoHide: false, hideOnHover: false });
     });
   }
-
-      userProfile(fName, lName) {
-    var name = fName + '-' + lName;
-    this.router.navigate(['/portfolio/', name]);
-  }
-
-
 }

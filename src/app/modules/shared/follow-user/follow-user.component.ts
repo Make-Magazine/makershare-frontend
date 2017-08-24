@@ -133,12 +133,4 @@ export class FollowUserComponent implements OnInit {
           this.countFollowing <= this.meFollowing.length;
       });
   }
-
-  goToProfile(path: string) {
-    if (window.location.href.indexOf('portfolio') != -1) {
-      window.location.href = '/portfolio/' + path;
-    } else {
-      this.router.navigate(['/portfolio/', path]);
-    }
-  }
 }
