@@ -289,11 +289,4 @@ export class SentComponent implements OnInit {
     var index = this.blocked.indexOf(uid, 0);
     this.blocked.splice(index, 1);
   }
-
-  userProfile(fName, lName) {
-    var name = fName + '-' + lName;
-    this.router.navigate(['/portfolio/', name]);
-  }
-
-
 }

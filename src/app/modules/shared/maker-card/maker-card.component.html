@@ -1,7 +1,8 @@
 <div class="card maker {{state}}" *ngIf="card">
   <div class="card-image" *ngIf="card.photo_lg" [style.background-image]="'url('+card.photo_lg+')'"></div>
   <div class="card-info">
-    <div class="info-top" (click)="goToProfile(card.profile_url)">
+    <div class="info-top"
+         [routerLink]="['/portfolio/', card.profile_url]">
       <!-- <div class="card-image alt" *ngIf="profile"></div> -->
       <div class="card-image alt" *ngIf="!profile && latestPorjectImg"
            [style.background-image]="'url('+latestPorjectImg+')'"></div>
@@ -19,7 +20,8 @@
       <div class="card-owner-meta">
         <img class="card-owner-media" *ngIf="card.photo_lg" src="{{card.photo_lg}}"/>
         <div class="card-owner-meta-info">
-          <a class="card-owner-link" *ngIf="card.first_name && card.last_name" href="javascript:void(0);"
+          <a class="card-owner-link" *ngIf="card.first_name && card.last_name"
+             [routerLink]="['/portfolio/', card.profile_url]"
              innerHTML="{{card.first_name}} {{card.last_name}}"></a>
           <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" innerHTML="{{card.username}}"></a>
 
@@ -69,9 +71,11 @@
   <div class="card-image" *ngIf="cardData.photo_lg" [style.background-image]="'url('+cardData.photo_lg+')'"></div>
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt" *ngIf="profile" (click)="goToProfile(cardData.profile_url)"></div>
+      <div class="card-image alt" *ngIf="profile"
+           [routerLink]="['/portfolio/', card.profile_url]"></div>
       <div class="card-image alt" *ngIf="!profile && latestPorjectImg"
-           [style.background-image]="'url('+latestPorjectImg+')'" (click)="goToProfile(cardData.profile_url)"></div>
+           [style.background-image]="'url('+latestPorjectImg+')'"
+           [routerLink]="['/portfolio/', card.profile_url]"></div>
       <div class="flag maker">maker</div>
 
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'"></app-feature>

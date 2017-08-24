@@ -126,14 +126,6 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['/projects/', path]);
   }
 
-  userProfile(fName, lName) {
-    this.router.navigate(['/portfolio/', `${fName} + '-' + ${lName}`]);
-  }
-
-  goToProfile(path: string) {
-    this.router.navigate(['portfolio/', path]);
-  }
-
   emitFeatured() {
     this.Featured.emit();
   }
