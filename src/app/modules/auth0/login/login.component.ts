@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Auth } from './../auth.service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NetworkError } from '../../../core/models/error';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,18 @@ export class LoginComponent implements OnInit {
   selected_day = '';
   selected_month = '';
   selected_year = '';
-  submitted = false; // sign up
-  submit = false; // login
+  submitted = false;
+  loading: boolean = false;
+  loginBtnLabel: string = 'Log in';
   forgetEmail = {
     email: '',
   };
   @ViewChild('content') modalContent: TemplateRef<any>;
-
   current_active_tab: string = 'login';
+  errorMessage: string;
+
+  // Modal
+  modalRef: NgbModalRef;
 
   userlogin = {
     email: '',
@@ -54,7 +59,9 @@ export class LoginComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content).result.then(
+    this.modalRef = this.modalService.open(content);
+
+    this.modalRef.result.then(
       result => {
         this.CancelTitle = 'Cancel';
         this.closeResult = `Closed with: ${result}`;
@@ -75,10 +82,28 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  public login(email, password) {
-    this.submit = true;
-    if (email && password) {
-      this.auth.login(email, password);
+  /**
+   * login
+   */
+  public login() {
+    this.errorMessage = '';
+    if (this.userlogin.email && this.userlogin.password) {
+      this.loading = true;
+      this.loginBtnLabel = 'Logging in...';
+      this.auth.login(this.userlogin.email, this.userlogin.password).subscribe((val: boolean) => {
+        this.errorMessage = null;
+        this.loginBtnLabel = 'Retrieving user info...';
+      }, (err: NetworkError) => {
+        this.loginBtnLabel = 'Log in';
+        this.errorMessage = err.description;
+        this.loading = false;
+      }, () => {
+        // Close modal
+        this.modalRef.close();
+      });
+    } else {
+      this.loading = false;
+      this.errorMessage = 'Please fill the required fields';
     }
   }
 
