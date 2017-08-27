@@ -62,7 +62,7 @@
     <div *ngIf="!homeCards || homeCards.length == 0">
       <h4 class="text-center mt-5 mb-5">There are no Results to show</h4>
     </div>
-    <div id="feed" name="feed">
+    <div *ngIf="auth.authenticated()" id="feed" name="feed">
         <app-feed></app-feed>
     </div>
 
