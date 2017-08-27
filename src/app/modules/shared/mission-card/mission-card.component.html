@@ -4,6 +4,10 @@
   <div class="card-image"
        [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}"></div>
 
+  <app-feature *ngIf="Manager && challengeNid"
+               [id]="challengeNid"
+               [type]="'node'" (Featured)="emitFeatured()"></app-feature>
+
   <div class="card-info">
     <div class="info-top">
       <div class="card-image alt"
