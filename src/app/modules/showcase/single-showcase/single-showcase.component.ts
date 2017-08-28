@@ -131,6 +131,7 @@ export class SingleShowcaseComponent implements OnInit {
             { label: 'Name Z-A', value: 'field_first_name_value' },
             { label: 'Most likes', value: 'php_2' },
             { label: 'Oldest', value: 'created' },
+            { label: 'Most likes', value: 'count' },
             { label: 'Last updated', value: 'changed' },
           ],
     );
