@@ -43,7 +43,7 @@ export class SingleShowcaseComponent implements OnInit {
   private filterOptions: FilterOption[] = [
     { label: "Mix 'Em Up", value: 'random_seed' },
     { label: 'Newest', value: 'created' },
-    { label: 'Most viewed', value: 'php' },
+    { label: 'Most viewed', value: 'php_2' },
   ];
 
   constructor(
@@ -121,16 +121,16 @@ export class SingleShowcaseComponent implements OnInit {
     this.filterOptions = this.filterOptions.concat(
       this.contentType === 1
         ? [
-            { label: 'Most projects', value: 'php_1' },
+            { label: 'Most projects', value: 'php' },
             { label: 'Name A-Z', value: 'field_first_name_value_1' },
             { label: 'Name Z-A', value: 'field_first_name_value' },
-            { label: 'Most likes', value: "php_2'" },
+            { label: 'Most likes', value: "php_2" },
           ]
         : [
             { label: 'Name A-Z', value: 'field_first_name_value_1' },
             { label: 'Name Z-A', value: 'field_first_name_value' },
-            { label: 'Most likes', value: 'count' },
-            { label: 'Oldest', value: 'created_1' },
+            { label: 'Most likes', value: 'php_2' },
+            { label: 'Oldest', value: 'created' },
             { label: 'Last updated', value: 'changed' },
           ],
     );
