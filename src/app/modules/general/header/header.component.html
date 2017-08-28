@@ -18,9 +18,9 @@
           <li class="nav-item hide-mobile">
             <a class="nav-link" [routerLink]="['missions']">Missions</a>
           </li>
-          <li class="nav-item hide-mobile">
+          <!-- <li class="nav-item hide-mobile">
             <a class="nav-link" [routerLink]="['organizations']">Organizations</a>
-          </li>
+          </li> -->
           <li class="nav-item has-dropdown">
             <a href="#"
                class="nav-link dropdown-toggle hover hide-mobile navbar-left"
@@ -125,13 +125,13 @@
               </li>
               <li *ngIf="org_data && org_data.path"
                   class="dropdown-item">
-                <a [routerLink]="[org_data.path,'edit']">
+                <a [routerLink]="[org_data.path, 'edit']">
                   <span class="nav-link">Organization Profile</span>
                 </a>
               </li>
               <li *ngIf="!org_data && isManager"
                   class="dropdown-item">
-                <a routerLink="['/orgs/create']">
+                <a [routerLink]="['/orgs/create']">
                   <span class="nav-link">Create Organization</span>
                 </a>
               </li>
@@ -152,7 +152,10 @@
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/account/settings/notifications']">
+                  <span class="nav-link">Account Settings</span>
+                </a>
               </li>
+              <li class="dropdown-item">
                 <button (click)="auth.logout()">
                   <span class="nav-link">Logout</span>
                 </button>
