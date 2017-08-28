@@ -1,54 +1,65 @@
-# Maker
+# Maker Share
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
+## Install
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-### Updating Angular CLI
-
-To update Angular CLI to a new version, you must update both the global package and your project's local package.
-
-Global package:
+#### Install typings
 ```bash
-npm uninstall -g angular-cli @angular/cli
-npm cache clean
-npm install -g @angular/cli@latest
+$ npm install -g typings
 ```
-------------------------------
-### Build AoT
-npm run build:aot
+#### Install dependencies
+```bash
+$ npm install
+```
 
-### Serve AoT
-npm run serve:aot
+## Run dev mode (serve)
+```bash
+# With live reload
+$ ng serve
+ 
+# No live reload (for some reason it won't stop reloading sometimes - we should find out why when we have time)
+$ ng serve --lr=false
+```
 
-### Build Universal
-npm run build:uni
 
-### Serve Universal
-npm run serve:uni
 
-### Build Both AoT & Universal
-npm run build:aot:uni
+# For CLI 
+----------------
+- `ng serve`
+- `ng build --prod --aot`
+
+# For Universal
+---------------------
+- `npm run build`
+- `cp -r src/assets dist/assets`
+- `sass dist/assets/css/style.scss dist/assets/css/style.css`
+- `npm run start`
+
+
+
+
+
+# known bugs/errors
+1- ng2-file-drop module disabled.
+2- auth0.setclient in console
+
+
+# Code standards and naming convention
+
+## Pathing and module imports
+```javascript
+// bad
+import { ModuleName } from '/app/absolute/path/to/moduleName.ts'
+
+// good
+import { ModuleName } from './absolute/path/to/moduleName.ts'
+```
+
+## Naming conventions
+- Typescript files: `fileName.ts`
+- Scss files: `_file-name.scss`
+- HTML component files: `file-name.component.html`
+
+#### Hierarchy naming (organization page example)
+- Landing page: `organizations`
+- Detail page: `organization`
+- Related Components: `organization-card`

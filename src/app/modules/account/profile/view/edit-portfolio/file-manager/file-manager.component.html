@@ -1,0 +1,63 @@
+<div class="container file-manager" *ngIf="fileManageService">
+  <div class="row file-manager-header pt-4 pb-4">
+    <div class="col-lg-4 upload-file pt-2">
+      <button class="button btn-simple-large" (click)="fileManageUpload.click()">
+        Upload
+        <input #fileManageUpload multiple type="file" class="hidden-xs-up" (change)="FileChanged($event.target.files)"
+               accept=".jpeg,.jpg,.png,.gif,.pdf,.epub,.xls,.ppt,.pptx,.sxls,.doc,.docx,.txt">
+      </button>
+    </div>
+    <div class="col-lg-8 storge-progressbar pt-2 pt-lg-0">
+      YOUR STORAGE
+      <ngb-progressbar [value]="fileManageService.quota"><i>{{fileManageService.quota}}% Full</i></ngb-progressbar>
+    </div>
+  </div>
+  <div class="row file-manager-contnet">
+    <h2 class="-secondary col-md-12 file-manager-title">Manage Your Files</h2>
+    <ng-container *ngFor="let file of files">
+      <div *ngIf="(!file.usage || !file.usage.node) || (file.usage.node && file.usage.node[0].type == 'project')"
+           class="col-md-4 mb-4">
+        <div class="file-item">
+          <img *ngIf="file.thumbnail" [src]="file.thumbnail">
+          <img *ngIf="!file.thumbnail && FiletypesWithImageAvailable.indexOf(file.sourceType) != -1"
+               src="/assets/images/icons/file_manager_icons/{{file.sourceType}}-icon.png">
+          <img *ngIf="!file.thumbnail && FiletypesWithImageAvailable.indexOf(file.sourceType) == -1"
+               src="/assets/images/no-image-available.png">
+          <p class="btn mb-0 d-flex flex-column" (click)="CheckFileBeforeDelete(ConfirmDelete,file)"><i
+              class="fa fa-lg fa-times"></i><span>Delete</span></p>
+          <a [href]="file.url" target="_blank" class="btn mb-0 d-flex flex-column download-btn"><i
+              class="fa fa-lg fa-eye"></i><span>View</span></a>
+        </div>
+        <p>{{file.filename}}</p>
+      </div>
+    </ng-container>
+    <div *ngIf="!fileManageService.files">You have no files yet, please upload some files first</div>
+  </div>
+  <div class="file-manager-footer">
+    <a class="btn btn-load-more m-0" (click)="LoadMore()" *ngIf="files.length < fileManageService.files.length">Load
+      more</a>
+  </div>
+</div>
+
+<!-- Add Description Modal -->
+<ng-template #ConfirmDelete let-c="close" let-d="dismiss">
+  <div class="file-manager-modal">
+    <div class="modal-body">
+      <div>This file cannot be deleted because it is used in:</div>
+      <div *ngIf="fileCard.usage.profile2">* Your profile picture</div>
+      <div *ngIf="fileCard.usage.node">* The following projects cover image:
+        <div *ngFor="let node of fileCard.usage.node; let i = index;">
+          <a [routerLink]="['/projects',node.nid,'edit']">{{i+1}}-{{node.title}}</a>
+        </div>
+      </div>
+      <div *ngIf="fileCard.usage.field_collection_item">* The following projects as a resource file:
+        <div *ngFor="let node of fileCard.usage.field_collection_item; let i = index;">
+          <a [routerLink]="['/projects',node.nid,'edit']">{{i+1}}-{{node.title}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="button btn-load-more" (click)="c('Close click')">Close</button>
+    </div>
+  </div>
+</ng-template>

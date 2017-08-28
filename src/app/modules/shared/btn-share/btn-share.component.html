@@ -1,0 +1,25 @@
+<a (click)="open(content)"
+   class="app-btn-share -icon">
+  <i class="fa fa-share"></i>
+  <span class="info"
+        *ngIf="showLabel">Share</span>
+</a>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-share">
+    <div class="modal-header">
+      <h4 style="color: black">Share With Your Friends </h4>
+    </div>
+    <div class="modal-body w-50 m-auto">
+      <share-buttons (popUpClosed)="CancelTitle = 'Close'" [title]="PageTitle" [description]="PageDescription"
+                     [image]="PageImage" [tumblr]="false" [whatsApp]="false"
+                     [stumbleUpOn]="false"></share-buttons>
+    </div>
+    <div class="modal-footer">
+      <ul class="list-unstyled actions">
+        <li><a class="btn btn-load-more" style="background-color: #fff; padding: 12px !important; width: 140px;"
+               (click)="c('Close click')">{{CancelTitle}}</a></li>
+      </ul>
+    </div>
+  </div>
+</ng-template>

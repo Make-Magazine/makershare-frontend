@@ -1,0 +1,41 @@
+<a (click)="open(content)" (click)="getUserData()" class="message-btn">
+   <i class="fa fa-envelope"></i>
+    <span class="info">Message</span>
+</a>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="message-modal">
+    <div class="modal-header">
+      <button type="button" class="close ml-auto" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" (click)="resetForm($event)">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="messageForm" *ngIf="active" (ngSubmit)="onSubmit($event)" (ngSubmit)="c('Close click')" id="createMsg"
+        class="form-horizontal">
+        <div class="form-group subject">
+          <label class="control-label w-100">SUBJECT</label>
+          <input [ngClass]="{valError: formErrors.subject}" type="text" class="form-control w-100" name="subject" id="subject" formControlName="subject">
+        </div>
+        <div *ngIf="formErrors.subject" class="alert alert-danger">
+          {{ formErrors.subject }}
+        </div>
+        <div class="form-group message-text">
+          <label class="control-label w-100">MESSAGE</label>
+          <textarea [ngClass]="{valError: formErrors.body}" class="w-100" name="body" id="body" cols="30" rows="10" formControlName="body"></textarea>
+        </div>
+        <div *ngIf="formErrors.body" class="alert alert-danger">
+          {{ formErrors.body }}
+        </div>
+        <div class="modal-footer">
+          <ul class="list-unstyled actions">
+            <!--<li><a href="" class="btn btn-transparent" (click)="c('Close click')" (click)="resetForm($event)">Cancel</a></li>-->
+            <li><button type="submit" class="btn  btn-load-more" [disabled]="!messageForm.valid">Send</button></li>
+          </ul>
+        </div>
+        </form>
+    </div>
+
+  </div>
+</ng-template>

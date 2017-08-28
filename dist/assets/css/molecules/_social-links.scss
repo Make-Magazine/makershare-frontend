@@ -1,0 +1,115 @@
+.social-links {
+  margin-top: 1.5rem;
+  .social-container {
+    width: 20%;
+  }
+  li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+  }
+  i.fa-star {
+    font-size: 1.2rem;
+    color: $highlight-bright-blue;
+    display: none;
+    margin-top: .5rem;
+  }
+
+  // this all needs major cleanup
+  a.social {
+    position: relative;
+    text-align: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    color: $white !important;
+    border-radius: 2rem;
+    padding: .4rem;
+    i {
+      font-size: 1.76rem;
+    }
+  }
+
+  a.social {
+    margin: .5rem 0;
+    cursor: pointer;
+    background: $dark-grey;
+    color: $white;
+    &.hackster,
+    &.instruct,
+    &.hackday {
+      padding: .5rem;
+    }
+    &.github,
+    &.gitlab,
+    &.twitch,
+    &.stack {
+      padding: .5rem;
+      img {
+        -webkit-filter: invert(1);
+        filter: invert(1);
+      }
+    }
+    &.twitch {
+      img {
+        width: 80%;
+        padding-top: .3rem;
+      }
+    }
+    &.thingy {
+      padding: .5rem;
+    }
+  }
+  a.social:hover {
+    &.fb {
+      background-color: #014c8c;
+    }
+    &.tw {
+      background-color: #33ccff;
+    }
+    &.pin {
+      background-color: #cc2127;
+    }
+    &.ut {
+      background-color: #cc2127;
+    }
+    &.ln {
+      background-color: #014c8c;
+    }
+    &.in {
+      background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%),
+      radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+      radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+      radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%),
+      radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+      radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%),
+      radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+      linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    }
+    &.ext {
+      background-color: #fff;
+      border: .5rem solid $dark-grey;
+    }
+    &.github,
+    &.gitlab,
+    &.twitch,
+    &.stack {
+      background-color: #fff;
+      border: .5rem solid $dark-grey;
+      img {
+        -webkit-filter: invert(0);
+        filter: invert(0);
+      }
+    }
+    &.hackster,
+    &.instruct,
+    &.hackday,
+    &.thingy {
+      background-color: #fff;
+      border: .5rem solid $dark-grey;
+      img {
+        -webkit-filter: invert(1);
+        filter: invert(1);
+      }
+    }
+  }
+}

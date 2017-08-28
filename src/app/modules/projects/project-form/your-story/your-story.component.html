@@ -1,0 +1,369 @@
+<div class="col-md-8" [formGroup]="YourStoryForm">
+  <p class="red-text">* Fields required to publish</p>
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="projectName"
+             [ngClass]="{valErrorString: !YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}">Project
+        Name</label>
+    </div>
+    <div class="form-ctl">
+      <input [ngClass]="{valError:!YourStoryForm.controls['title'].valid && TryToSubmitPrivatePublic}"
+             type="text"
+             class="form-control"
+             id="projectName"
+             formControlName="title"
+             placeholder="{{TooltipText.project_name.guide}}"
+             validate-onfocusout
+             maxlength="50">
+    </div>
+    <!--<div *ngIf="formErrors.title && YourStoryForm.controls['title'].touched" class="alert alert-danger error-msg">
+      {{ formErrors.title }}
+    </div>-->
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="teaser"
+             [ngClass]="{valErrorString:  !YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}">Teaser</label>
+    </div>
+    <div class="form-ctl">
+        <textarea [ngClass]="{valError:!YourStoryForm.controls['field_teaser'].valid&&TryToSubmitPrivatePublic}"
+                  maxlength="250"
+                  class="form-control"
+                  rows="5"
+                  id="teaser"
+                  formControlName='field_teaser'
+                  placeholder="{{TooltipText.teaser.guide}}"></textarea>
+      <span class="words-count">{{YourStoryForm.value.field_teaser.length}}\250 chars</span>
+    </div>
+    <!--<div *ngIf="formErrors.field_teaser" class="alert alert-danger error-msg">
+    {{ formErrors.field_teaser }}
+  </div>-->
+  </div>
+
+  <div class="form-group required cover d-flex flex-column">
+    <div class="form-label">
+      <label [ngClass]="{valErrorString: !cover_image.file && TryToSubmitPrivatePublic}">Cover photo</label>
+      <span>Choose a photo that is at least 800 x 450 px</span>
+    </div>
+    <div class="form-ctl">
+      <button [ngClass]="{valError: !cover_image.file && TryToSubmitPrivatePublic}"
+              (click)="openImageModal(coverimagemodal)"
+              id="cover-upload-link"
+              class="btn btn-grey -slim mb-3 mt-2">Choose File
+      </button>
+      <div class="image-preview">
+        <img *ngIf="YourStoryForm.value.field_cover_photo.file"
+             [src]="YourStoryForm.value.field_cover_photo.file"
+             class="img-responsive">
+      </div>
+    </div>
+    <!--<div *ngIf="formErrors.field_cover_photo" class="alert alert-danger error-msg">
+      {{ formErrors.field_cover_photo }}
+    </div>-->
+  </div>
+
+  <div class="form-group required projectCategory d-flex flex-column">
+    <!--<div class="d-flex align-items-center">-->
+    <div class="form-label">
+      <label [ngClass]="{valErrorString: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}">Topics</label>
+      <span>Choose as many topics as your project relates to.</span>
+    </div>
+    <!--</div>-->
+
+    <div class="categories-group d-flex flex-row row">
+      <div class="col-md-4">
+        <div class="dropdown-group -no-margin -full">
+          <i class="dropdownIcon lnr lnr-chevron-down"></i>
+          <select #parentcategory
+                  [ngClass]="{valError: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}"
+                  class="form-control"
+                  type="text"
+                  class="shadowed form-control"
+                  id="projectCategoryParent"
+                  (change)="SelectTerm($event.target.value,'parent')">
+            <option disabled selected value="_none_"> Select Topics</option>
+            <option *ngFor="let parent_category of project_categories_parents; let i=index"
+                    value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="dropdown-group -no-margin -full">
+          <i class="dropdownIcon lnr lnr-chevron-down"
+             *ngIf="current_parent_category"></i>
+          <select [ngClass]="{valError: !YourStoryForm.controls['field_categories'].valid&&TryToSubmitPrivatePublic}"
+                  *ngIf="current_parent_category"
+                  class="form-control"
+                  type="text"
+                  class="shadowed form-control"
+                  id="projectCategoryChildren"
+                  (change)="SelectTerm($event.target.value,'child');SetCategories(parentcategory)">
+            <option disabled selected value> Select Topic</option>
+            <option *ngFor="let child_category of child_categories; let i=index"
+                    value="{{child_category.tid}}"
+                    [innerHTML]="child_category.name"></option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!--<div *ngIf="current_child_category" (click)="SetCategories(parentcategory)" class="btn btn-main add-cate col-md-2">add</div>-->
+
+    <!--<div *ngIf="formErrors.field_categories" class="alert alert-danger error-msg col-md-12">
+      {{ formErrors.field_categories }}
+    </div>-->
+    <div *ngIf="project.field_categories.und">
+      <div *ngFor="let selected_cate of project.field_categories.und; let i=index">
+        <!--<label class="selected-topic"
+               *ngIf="i == 1">Selected Topic</label>-->
+        <div *ngFor="let cate of all_categories"
+             class="category-container">
+          <p class="cate-name list-group-item"
+             *ngIf="cate.parent_tid && selected_cate == cate.tid">
+            <span [innerHTML]="cate.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="cate.name"></span>
+            <button class="-icon -grey ml-auto"
+                    (click)="RemoveCategory(cate.tid,cate.parent_tid)">
+              <i class="lnr lnr-cross"
+                 aria-hidden="true"></i>
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="project-story"
+             [ngClass]="{valErrorString: !YourStoryForm.controls['field_story'].valid&&TryToSubmitPrivatePublic}">The
+        Story</label>
+    </div>
+    <maker-ckeditor [id]="'project-story'"
+                    [error]="!YourStoryForm.controls['field_story'].valid && TryToSubmitPrivatePublic"
+                    formControlName='field_story'
+                    ngDefaultControl></maker-ckeditor>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="projectDate"
+             [ngClass]="{valErrorString: !YourStoryForm.controls['field_creation_date'].valid && TryToSubmitPrivatePublic}">Project Creation Date</label>
+    </div>
+    <div class="form-ctl">
+      <input [ngClass]="{valError: !YourStoryForm.controls['field_creation_date'].valid && TryToSubmitPrivatePublic}"
+             type="text"
+             class="form-control"
+             id="projectDate"
+             formControlName="field_creation_date"
+             placeholder="ex:09/18/2018"
+             validate-onfocusout>
+      <!--{{YourStoryForm.controls['field_creation_date'].valid}}-->
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="show-tell">Add Video: Show &amp; Tell</label>
+    </div>
+    <div class="form-ctl">
+      <input [ngClass]="{valError: formErrors.field_show_tell_video}"
+             type="text"
+             class="form-control"
+             id="show-tell"
+             placeholder="Add a YouTube or Vimeo URL"
+             formControlName='field_show_tell_video'
+             add-protocol>
+    </div>
+    <div *ngIf="formErrors.field_show_tell_video"
+         class="alert alert-danger error-msg">{{ formErrors.field_show_tell_video }}
+    </div>
+  </div>
+
+  <div class="form-group show-tell-as-default"
+       *ngIf="!formErrors.field_show_tell_video && YourStoryForm.controls['field_show_tell_video'].value">
+
+    <label class="custom-control custom-checkbox" for="show-tell-as-default">
+      <input type="checkbox"
+             class="custom-control-input"
+             id="show-tell-as-default"
+             formControlName="field_show_tell_video_as_default"
+             (change)="$event.target.checked? (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(1)) : (YourStoryForm.controls['field_show_tell_video_as_default'].patchValue(0))">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Display Show & Tell video in place of Cover Photo</span>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="aha">AHA! Moment</label>
+    </div>
+    <div class="form-ctl">
+      <textarea rows="5"
+                [ngClass]="{valError: formErrors.field_aha_moment}"
+                maxlength="350"
+                type="text"
+                class="form-control"
+                id="aha"
+                placeholder="What was your biggest insight during the build?"
+                formControlName='field_aha_moment'></textarea>
+      <span class="words-count">{{YourStoryForm.value.field_aha_moment.length}}/350 chars</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="uh-oh">Uh-Oh! Moment</label>
+    </div>
+    <div class="form-ctl">
+      <textarea rows="5"
+                [ngClass]="{valError: formErrors.field_uh_oh_moment}"
+                maxlength="350"
+                type="text"
+                class="form-control"
+                id="uh-oh"
+                placeholder="What was your biggest surprise or stress during the build?"
+                formControlName='field_uh_oh_moment'></textarea>
+      <span class="words-count">{{YourStoryForm.value.field_uh_oh_moment.length}}/350 chars</span>
+    </div>
+  </div>
+</div>
+
+<!--side bar help text-->
+<aside class="col-md-4">
+  <div class="your-story-guide hidden-sm-down">
+    <h2 class="-secondary col-12">Helpful Hints</h2>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.projectName.title}}</h5>
+        <p>{{sidebarText.projectName.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.teaser.title}}</h5>
+        <p>{{sidebarText.teaser.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.cover_image.title}}</h5>
+        <p>{{sidebarText.cover_image.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.category.title}}</h5>
+        <p>{{sidebarText.category.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.story.title}}</h5>
+        <p>{{sidebarText.story.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.show_tell.title}}</h5>
+        <!--<video width="250" height="150" controls>
+          <source src="/assets/videos/show_tell_video.mp4" type="video/mp4">
+        </video>-->
+        <div class="embed-responsive">
+          <video-viewer [link]="'https://www.youtube.com/watch?v=56i0M49rhtU'"></video-viewer>
+        </div>
+        <!--<span class="pt-2">links coming soon-</span>-->
+        <a href="https://help.makermedia.com/hc/en-us/articles/115003005383-Tips-Tricks" target="_blank"> Click here for
+          more Tips & Tricks </a>
+      </div>
+    </div>
+    <!--<div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.aha.title}}</h5>
+        <p>{{sidebarText.aha.guide}}</p>
+      </div>
+    </div>
+    <div class="guideline">
+      <div class="pull-left content">
+        <h5>{{sidebarText.uh.title}}</h5>
+        <p>{{sidebarText.uh.guide}}</p>
+      </div>
+  </div>-->
+  </div>
+</aside>
+
+<!--Cover image modal-->
+<ng-template #coverimagemodal let-c="close" let-d="dismiss">
+  <div class="upload-cover-modal">
+    <div class="modal-header">
+      <button type="button"
+              class="close ml-auto"
+              #closebtn
+              aria-label="Close"
+              (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-tabs">
+      <ul class="list-unstyled">
+        <li class="upload"
+            (click)="currentPhotoModalTab = 'upload'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'upload'}">Upload</a>
+        </li>
+        <li class="your-photos"
+            (click)="currentPhotoModalTab = 'filemanager'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'filemanager'}">YOUR PHOTOS</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="modal-body">
+      <div class="container">
+        <div [hidden]="currentPhotoModalTab != 'upload'"
+             ng2FileDrop
+             class="upload-tab row"
+             (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+          <div class="drop-section col-md-7">
+            <img *ngIf="!imageData.original"
+                 class="image-background"
+                 src="./assets/images/icons/Photos Icon.png">
+            <img-cropper [hidden]="!imageData.original"
+                         #imagecropper
+                         [image]="imageData"
+                         [settings]="cropperSettings"></img-cropper>
+            <div>
+              <p>Drag a photo here</p>
+              <p>or</p>
+            </div>
+            <button class="btn btn-load-more"
+                    [ngClass]="{big:imageData.original}"
+                    (click)="file.click()">
+              <span *ngIf="!imageData.original;else differentphoto">Choose</span>
+              <ng-template #differentphoto>Choose a Different Photo</ng-template>
+              <input id="custom-upload"
+                     class="hidden-xs-up"
+                     type="file"
+                     #file
+                     (change)="UploadBtn($event.target.files[0],imagecropper)">
+            </button>
+          </div>
+          <div class="recommended-section col-md-4">
+            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 800 by 450 pixels</p>
+          </div>
+        </div>
+        <app-file-browser *ngIf="currentPhotoModalTab == 'filemanager'"
+                          (emitter)="SelectFileAndSave(closebtn,$event)"></app-file-browser>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="currentPhotoModalTab == 'upload'"
+              type="button"
+              class="btn btn-load-more"
+              (click)="ImageUpdated(closebtn)">Save
+      </button>
+    </div>
+  </div>
+</ng-template>

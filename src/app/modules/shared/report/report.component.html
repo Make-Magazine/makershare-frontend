@@ -1,0 +1,58 @@
+<div>
+  <a class="report" *ngIf="!isReported && EntityType=='user'" (click)="open(content)">Report this user</a>
+  <a class="report" *ngIf="!isReported && typeOfNode=='orgs'" (click)="open(content)">Report this organization</a>
+  <a class="report" *ngIf="!isReported && typeOfNode=='project'" (click)="open(content)">Report this project</a>
+  <a class="report" *ngIf="!isReported && EntityType=='comment'" (click)="onSubmit($event)">Report this comment</a>
+
+  <p *ngIf="isReported && EntityType=='user'"> User has been reported </p>
+  <p *ngIf="isReported && typeOfNode=='orgs'"> Organization has been reported </p>
+  <p *ngIf="isReported  && typeOfNode=='project'"> Project has been reported </p>
+  <p *ngIf="isReported && EntityType=='comment'"> Comment has been reported </p>
+
+</div>
+<ng-template id="model" #content let-c="close" let-d="dismiss">
+  <div class="modal-report">
+    <div class="modal-header t-align-center">
+          <h4 class="modal-title">Select a reason for reporting</h4>
+    </div>
+    <div class="modal-body container">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="" [formGroup]="reportForm">
+            <div class="form-group">
+              <select class="mb-5 form-control" #item (change)="updateSelectedReason($event)" formControlName="field_reason_reporting">
+                  <option  value="none" selected disabled>Select a reason</option> 
+                  <option *ngIf="typeOfNode=='project' || typeofNode=='orgs'"  value="not_safe">Not safe for work</option>
+                  <option *ngIf="typeOfNode=='project'" value="hate_language">Uses hate language</option>
+                  <option *ngIf="typeOfNode=='project'" value="copyright">Violates a copyright</option> 
+                  <option *ngIf="typeOfNode=='orgs'" value="misrepresented">This organization is misrepresenting projects</option>
+                  <option *ngIf="EntityType=='user'" value="annoying">This person is annoying me</option>
+                  <option *ngIf="EntityType=='user'" value="pretending">They're pretending to be me or someone </option>
+                  <option *ngIf="EntityType=='user'" value="safe">This profile Isn't safe for work</option>
+                  <option value="other">Other</option>  
+            </select>
+              <textarea class="w-100" placeholder="Explain the problem in more details." cols="50" rows="6" formControlName="field_explain"></textarea>
+              <button  type="submit" [disabled]="!reportForm.valid" (click)="onSubmit($event)" (click)="c('Close click')">
+                  <i class="lnr lnr-chevron-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="error" class="alert alert-danger error-msg">
+          {{error}}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <ul class="list-unstyled actions">
+        <li>
+          <div class="enter-form-buttons d-flex">
+            <div class="ml-auto mr-1">
+              <a (click)="c('Close click')">Cancel</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>

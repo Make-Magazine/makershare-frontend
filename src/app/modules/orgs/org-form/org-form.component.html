@@ -1,0 +1,124 @@
+<div class="page-editor">
+  <section class="container pt-4 pb-4">
+    <div class="top-content-wrapper">
+      <div class="add-controls row hidden-md-down">
+        <div class="container mb-4">
+          <h1 class="text-center">Create Organization</h1>
+        </div>
+        <div class="nav-create col-md-8 mt-auto">
+          <div class="container">
+            <ul class="list-unstyled">
+              <li>
+                <a (click)="goToTab('Basic Info')"
+                   class="btn btn-tab"
+                   id="basic-info"
+                   [ngClass]="{'active': currentFormTab == 'Basic Info'}">Basic Info</a>
+              </li>
+              <li>
+                <a (click)="goToTab('About Us')"
+                   class="btn btn-tab"
+                   id="about-us"
+                   [ngClass]="{'active': currentFormTab == 'About Us'}">About Us</a>
+              </li>
+              <li>
+                <a (click)="goToTab('Products')"
+                   class="btn btn-tab"
+                   id="products"
+                   [ngClass]="{'active': currentFormTab == 'Products'}">Products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="right-menu">
+            <div>
+              <button class="btn btn-grey"
+                      [ngClass]="{'disabled':!orgFormValid}"
+                      (click)="publishButtonClick()">Publish
+              </button>
+              <button *ngIf="organizationProxy.entity.nid"
+                      (click)="openDeleteConfirmModal(confirmdelete)">Delete</button>
+            </div>
+            <div class="logs">
+              <div class="log-item info"
+                   *ngIf="processLog != ''">
+                <span>{{processLog}}</span>
+              </div>
+              <div class="log-item error">
+                <span *ngFor="let err of errorLogs">{{err}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="organizationReady">
+      <app-org-form-basic-info *ngIf="currentFormTab == 'Basic Info'"
+                               (canNavigate)="CanNavigate = $event"
+                               [countries]="countries"
+                               (validateForm)="validateForm()"
+                               [organizationForm]="organizationForm"></app-org-form-basic-info>
+      <app-org-form-about-us *ngIf="currentFormTab == 'About Us'"
+                             (validateForm)="validateForm()"
+                             [organizationForm]="organizationForm"
+                             [organizationProxy]="organizationProxy"></app-org-form-about-us>
+      <app-org-form-projects *ngIf="currentFormTab == 'Products'"
+                             [organizationForm]="organizationForm"></app-org-form-projects>
+    </div>
+
+    <div class="add-controls row">
+      <div class="nav-create col-md-8 mt-auto">
+        <div class="container d-flex">
+          <div class="back mr-auto"
+               *ngIf="currentFormTab=='About Us'">
+            <button class="btn btn-advance"
+                    (click)="goToTab('Basic Info')">
+              <i class="lnr lnr-chevron-left"></i>
+            </button>
+            Go To Basic Info
+          </div>
+          <div class="back mr-auto"
+               *ngIf="currentFormTab=='Products'">
+            <button class="btn btn-advance"
+                    (click)="goToTab('About Us')">
+              <i class="lnr lnr-chevron-left"></i>
+            </button>
+            Go To About Us
+          </div>
+          <div class="next ml-auto"
+               *ngIf="currentFormTab=='Basic Info'">Go To About Us
+            <button class="btn btn-advance"
+                    (click)="goToTab('About Us')">
+              <i class="lnr lnr-chevron-right"></i>
+            </button>
+          </div>
+          <div class="next ml-auto"
+               *ngIf="currentFormTab=='About Us'">Go To Products
+            <button class="btn btn-advance"
+                    (click)="goToTab('Products')">
+              <i class="lnr lnr-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<ng-template #confirmdelete let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" (click)="d('Cross click')" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <h5 class="control-label">Your organization will be deleted. This cannot be undone.</h5>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a #close class="btn btn-transparent" (click)="c('Close click')">Cancel</a>
+    <button class="btn btn-blue btn-sharp" (click)="deleteOrganization(close)">Ok</button>
+  </div>
+</ng-template>

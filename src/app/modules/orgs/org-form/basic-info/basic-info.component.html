@@ -1,0 +1,474 @@
+<div class="col-md-8"
+     [formGroup]="organizationForm">
+
+  <p class="red-text">* Fields required to publish</p>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="orgName">Organization Name</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             [ngClass]="{valError: !organizationForm.controls['title'].valid}"
+             formControlName="title"
+             placeholder="Enter name here"
+             maxlength="50"
+             validate-onfocusout
+             id="orgName">
+      <div *ngIf="organizationForm.controls['title'].invalid && (organizationForm.controls['title'].dirty || organizationForm.controls['title'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['title'].errors.required">
+          Title is required
+        </div>
+        <div *ngIf="organizationForm.controls['title'].errors.maxLength">
+          Title is too long (max. 50 characters)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label>Organization Type</label>
+    </div>
+    <div class="form-ctl">
+      <input type="radio"
+             name="field_orgs_type"
+             value="non-profit"
+             id="type-non-profit"
+             [checked]="organizationForm.value.field_orgs_type === 'non-profit'"
+             (click)="updateType($event.target.value)">
+      <label for="type-non-profit">non-profit</label>
+    </div>
+    <div class="form-ctl">
+      <input type="radio"
+             name="field_orgs_type"
+             value="startup"
+             id="type-startup"
+             class="form-ctl"
+             [checked]="organizationForm.value.field_orgs_type === 'startup'"
+             (click)="updateType($event.target.value)">
+      <label for="type-startup">startup</label>
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label>Organization Logo</label>
+      <span>logo must work at small size (20 x 20)</span>
+    </div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperLogoSettings, 'field_orgs_logo')">Choose file
+      </button>
+      <div *ngIf="organizationForm.controls['field_orgs_logo'].invalid && (organizationForm.controls['field_orgs_logo'].dirty || organizationForm.controls['field_orgs_logo'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_orgs_logo'].errors.required">
+          Logo is required
+        </div>
+      </div>
+      <div class="image-preview">
+        <img *ngIf="organizationForm.value.field_orgs_logo.file"
+             [src]="organizationForm.value.field_orgs_logo.file"
+             class="img-responsive">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label>Cover Photo</label>
+      <span>For the top of the profile page (at least 2200 x 1100)</span>
+    </div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperCoverSettings, 'field_orgs_cover_photo')">Choose file
+      </button>
+      <div *ngIf="organizationForm.controls['field_orgs_cover_photo'].invalid && (organizationForm.controls['field_orgs_cover_photo'].dirty || organizationForm.controls['field_orgs_cover_photo'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_orgs_cover_photo'].errors.required">
+          Cover photo is required
+        </div>
+      </div>
+      <div class="image-preview">
+        <img *ngIf="organizationForm.value.field_orgs_cover_photo.file"
+             [src]="organizationForm.value.field_orgs_cover_photo.file"
+             class="img-responsive">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label>Organization Avatar</label>
+      <span>Should be at max 104px square</span>
+    </div>
+    <div class="form-ctl">
+      <button class="btn btn-grey -slim mb-3 mt-2"
+              (click)="openImageModal(imagemodal, cropperAvatarSettings, 'field_org_avatar')">Choose file
+      </button>
+      <div *ngIf="organizationForm.controls['field_org_avatar'].invalid && (organizationForm.controls['field_org_avatar'].dirty || organizationForm.controls['field_org_avatar'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_org_avatar'].errors.required">
+          Avatar is required
+        </div>
+      </div>
+      <div class="image-preview">
+        <img *ngIf="organizationForm.value.field_org_avatar.file"
+             [src]="organizationForm.value.field_org_avatar.file"
+             class="img-responsive">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label>Contact email</label>
+    </div>
+    <div class="form-ctl">
+      <input type="email"
+             formControlName="field_orgs_contact">
+      <div *ngIf="organizationForm.controls['field_orgs_contact'].invalid && (organizationForm.controls['field_orgs_contact'].dirty || organizationForm.controls['field_orgs_contact'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_orgs_contact'].errors.required">
+          Email is required
+        </div>
+        <div *ngIf="organizationForm.controls['field_orgs_contact'].errors.email">
+          Email is not valid
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group required"
+       formGroupName="field_orgs_address">
+    <div class="form-label">
+      <label>Country</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             formControlName="country"
+             [inputFormatter]="formatter"
+             [ngbTypeahead]="searchCountry"
+             [editable]="false"
+             [resultTemplate]="countryrt"
+             (selectItem)="getCountryDetails($event.item)">
+      <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['country'].invalid && (organizationForm.controls['field_orgs_address']['controls']['country'].dirty || organizationForm.controls['field_orgs_address']['controls']['country'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['country'].errors.required">
+          Country is required
+        </div>
+        <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['country'].errors.countryValid">
+          Country is not valid. Please select from the list.
+        </div>
+      </div>
+
+      <div class="form-subform"
+           *ngIf="selectedCountry">
+        <div class="form-subform-group required">
+          <label>Address 1</label>
+          <input type="text"
+                 formControlName="thoroughfare">
+          <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['thoroughfare'].invalid && (organizationForm.controls['field_orgs_address']['controls']['thoroughfare'].dirty || organizationForm.controls['field_orgs_address']['controls']['thoroughfare'].touched)"
+               class="alert alert-danger">
+            <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['thoroughfare'].errors.required">
+              Address is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-subform-group">
+          <label>Address 2</label>
+          <input type="text"
+                 formControlName="premise">
+        </div>
+
+        <div class="form-subform-group"
+             *ngIf="selectedCountry.used_fields.indexOf('administrative_area') != -1">
+          <label>{{selectedCountry.administrative_area_label}}</label>
+          <select formControlName="administrative_area">
+            <option *ngFor="let governerate of selectedCountry.administrative_areas"
+                    [value]="governerate.key">
+              {{governerate.value}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-subform-group required"
+             *ngIf="selectedCountry.used_fields.indexOf('locality') != -1">
+          <label>{{selectedCountry.locality_label}}</label>
+          <input type="text"
+                 formControlName="locality">
+          <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['locality'].invalid && (organizationForm.controls['field_orgs_address']['controls']['locality'].dirty || organizationForm.controls['field_orgs_address']['controls']['locality'].touched)"
+               class="alert alert-danger">
+            <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['locality'].errors.required">
+              City is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-subform-group"
+             *ngIf="selectedCountry.used_fields.indexOf('dependent_locality') != -1">
+          <label>District</label>
+          <input type="text"
+                 formControlName="dependent_locality">
+        </div>
+
+        <div class="form-subform-group required"
+             *ngIf="selectedCountry.used_fields.indexOf('postal_code') != -1">
+          <label>{{selectedCountry.postal_code_label}}</label>
+          <input type="number"
+                 formControlName="postal_code">
+          <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['postal_code'].invalid && (organizationForm.controls['field_orgs_address']['controls']['postal_code'].dirty || organizationForm.controls['field_orgs_address']['controls']['postal_code'].touched)"
+               class="alert alert-danger">
+            <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['postal_code'].errors.required">
+              Postal code is required
+            </div>
+            <div *ngIf="organizationForm.controls['field_orgs_address']['controls']['postal_code'].errors.number">
+              Postal code must be a number
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="website">Website</label>
+    </div>
+    <div class="form-ctl">
+      <input type="url"
+             placeholder="http://"
+             id="website"
+             formControlName="field_website_blog">
+      <div
+          *ngIf="organizationForm.controls['field_website_blog'].invalid && (organizationForm.controls['field_website_blog'].dirty || organizationForm.controls['field_website_blog'].touched)"
+          class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_website_blog'].errors.pattern">
+          Website URL is not valid.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="phone">Phone</label>
+    </div>
+    <div class="form-ctl">
+      <input type="tel"
+             id="phone"
+             formControlName="field_orgs_phone">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="founder_name">Founder Name</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             placeholder="Enter name here"
+             id="founder_name"
+             formControlName="field_founder_name">
+    </div>
+  </div>
+
+  <div class="form-group"
+       formGroupName="field_founded_date">
+    <div class="form-label">
+      <label for="founded_date">Founded Date</label>
+    </div>
+    <div class="form-ctl">
+      <input type="number"
+             max=""
+             id="founded_date"
+             formControlName="date">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="business_type">Type of Business</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             placeholder="Technology, ..."
+             id="business_type"
+             formControlName="field_type_of_business">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label>Minimum number of followers</label>
+      <span>To display the organization</span>
+    </div>
+    <div class="form-ctl">
+      <input type="number"
+             formControlName="field_minimum_number_of_follower">
+    </div>
+  </div>
+
+  <div class="form-group"
+       formGroupName="field_social_accounts">
+    <div class="form-label">
+      <label>Social Channels</label>
+    </div>
+    <div class="form-subform">
+      <div class="form-subform-group">
+        <label for="s-a-fb">Facebook</label>
+        <div class="form-ctl">
+          <input id="s-a-fb"
+                 type="text"
+                 formControlName="field_facebook"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-li">Linkedin</label>
+        <div class="form-ctl">
+          <input id="s-a-li"
+                 type="text"
+                 formControlName="field_linkedin"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-pi">Pinterest</label>
+        <div class="form-ctl">
+          <input id="s-a-pi"
+                 type="text"
+                 formControlName="field_pinterest"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-ig">Instagram</label>
+        <div class="form-ctl">
+          <input id="s-a-ig"
+                 type="text"
+                 formControlName="field_instagram"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-tw">Twitter</label>
+        <div class="form-ctl">
+          <input id="s-a-tw"
+                 type="text"
+                 formControlName="field_twitter"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-gh">Github</label>
+        <div class="form-ctl">
+          <input id="s-a-gh"
+                 type="text"
+                 formControlName="field_github"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-ks">Kickstarter</label>
+        <div class="form-ctl">
+          <input id="s-a-ks"
+                 type="text"
+                 formControlName="field_kickstarter"
+                 add-protocol>
+        </div>
+      </div>
+      <div class="form-subform-group">
+        <label for="s-a-et">Etsy Shop</label>
+        <div class="form-ctl">
+          <input id="s-a-et"
+                 type="text"
+                 formControlName="field_etsy_shop"
+                 add-protocol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Cover image modal-->
+<ng-template #imagemodal let-c="close" let-d="dismiss">
+  <div class="upload-cover-modal">
+    <div class="modal-header">
+      <button type="button"
+              class="close ml-auto"
+              #closebtn
+              aria-label="Close"
+              (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-tabs">
+      <ul class="list-unstyled">
+        <li class="upload"
+            (click)="currentPhotoModalTab = 'upload'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'upload'}">Upload</a>
+        </li>
+        <li class="your-photos"
+            (click)="currentPhotoModalTab = 'filemanager'">
+          <a class="btn btn-transparent"
+             [ngClass]="{'active':currentPhotoModalTab == 'filemanager'}">YOUR PHOTOS</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="modal-body">
+      <div class="container">
+        <div [hidden]="currentPhotoModalTab != 'upload'"
+             ng2FileDrop
+             class="upload-tab row"
+             (ng2FileDropFileAccepted)="dragFileAccepted($event,imagecropper)">
+          <div class="drop-section col-md-7">
+            <img *ngIf="!imageData.original"
+                 class="image-background"
+                 src="./assets/images/icons/Photos Icon.png">
+            <img-cropper [hidden]="!imageData.original"
+                         #imagecropper
+                         [image]="imageData"
+                         [settings]="cropperSettings"></img-cropper>
+            <div>
+              <p>Drag a photo here</p>
+              <p>or</p>
+            </div>
+            <button class="btn btn-load-more"
+                    [ngClass]="{big:imageData.original}"
+                    (click)="file.click()">
+              <span *ngIf="!imageData.original;else differentphoto">Choose</span>
+              <ng-template #differentphoto>Choose a Different Photo</ng-template>
+              <input [hidden]="true"
+                     type="file" #file
+                     (change)="uploadBtn($event.target.files[0], imagecropper)">
+            </button>
+          </div>
+          <div class="recommended-section col-md-4">
+            <p class="drag-text mt-4 mb-0">Recommended minimum resolution 800 by 450 pixels</p>
+          </div>
+        </div>
+        <app-file-browser *ngIf="currentPhotoModalTab == 'filemanager'"
+                          (emitter)="selectFileAndSave(closebtn,$event)"></app-file-browser>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="currentPhotoModalTab == 'upload'"
+              type="button"
+              class="btn btn-load-more"
+              (click)="imageUpdated(closebtn, file.files[0])">Save
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #countryrt let-r="result" let-t="term">
+  <div class="data-container">
+    {{r.value}}
+  </div>
+</ng-template>

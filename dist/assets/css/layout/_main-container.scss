@@ -1,0 +1,21 @@
+section,
+.container {
+  &.padded {
+    padding: 3rem 0;
+  }
+  &.padded-half {
+    padding: 1.5rem 0;
+  }
+}
+
+.main-container {
+  height: 100%;
+  padding-top: 110px;
+  padding-bottom: 300px;
+  @include phone() {
+    padding-bottom: 0;
+  }
+  &.-no-pad {
+    padding-top: 0;
+  }
+}

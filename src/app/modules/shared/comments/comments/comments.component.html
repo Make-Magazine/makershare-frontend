@@ -1,0 +1,33 @@
+<div class="feedback-card" *ngFor="let comment of comments.value; let i=index">
+  <div class="media content-section" *ngIf="comment?.comment">
+    <div class="user-pic">
+      <img *ngIf="comment?.default_profile_photo" class="d-flex" src="{{comment?.default_profile_photo}}" (click)="goToPortfolio(comment?.first_name,comment?.last_name)"
+        alt="">
+      <img *ngIf="!comment?.default_profile_photo" class="d-flex" src="./assets/images/defaultprofile.png" (click)="goToPortfolio(comment?.first_name,comment?.last_name)"
+        alt="">
+    </div>
+    <div class="media-body mt-auto">
+      <div class="user-info">
+        <div class="user-details col-sm-12">
+          <p *ngIf="comment?.first_name" href="#" class="user-fullname" (click)="goToPortfolio(comment?.first_name,comment?.last_name)">{{comment?.first_name}} {{comment?.last_name}}</p>
+          <p *ngIf="comment?.nickname" class="user-nickname" (click)="goToPortfolio(comment?.first_name,comment?.last_name)">{{comment?.nickname}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="feed-timestamp" *ngIf="comment?.comment">Posted on {{comment?.post_date}}</p>
+  <div class="media-body">
+    <div class="comment-body">
+      <p>{{comment?.comment}}</p>
+    </div>
+    <div *ngIf="comment?.comment_nid &&  CurrentLoggedUserId != comment?.uid">
+      <app-report *ngIf="comment?.comment_nid" [EntityId]="comment?.comment_nid" [EntityType]="'comment'"></app-report>
+    </div>
+  </div>
+</div>
+<div class="media content-section pl-3" *ngIf="comments.value?.length == 1 && comments.value[0].comment == ''">
+  <p>{{titlecomment.ifempty}}</p>
+</div>
+<div class="text-center" *ngIf="!hideloadmorecomment">
+  <a class="btn btn-load-more mb-3" (click)="loadMoreComments()">Load more</a>
+</div>

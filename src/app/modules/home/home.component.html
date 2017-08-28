@@ -1,0 +1,90 @@
+<div class="front">
+  <app-onboarding *ngIf="!auth.authenticated()"></app-onboarding>
+  <div class="container">
+    <div class="row" *ngIf="homeCards">
+      <div class="container p-0 mt-5 mb-5"
+           *ngIf="auth.authenticated()">
+        <h1 class="big">Explore Maker Share</h1>
+      </div>
+
+      <!--<div *ngFor="let item of homeCards;let i = index" [ngClass]="{
+        'col-md-4 col-lg-4'   : item.type == 'project' ,
+        'col-md-4'            : item.type == 'maker' ,
+        'col-md-4'            : item.type == 'showcase',
+        'col-md-8'            : item.type == 'challenge' ,
+        'col-md-8'            : item.type == 'learning_sequence'
+          }">-->
+
+      <div *ngFor="let item of homeCards;let i=index;"
+           class="item-{{i}} col-md-6 col-lg-{{item.size == 'wide' ? '8' : '4'}} card-wrapper">
+        <!-- <div class="card-wrapper"> -->
+          <!-- Mission -->
+          <app-mission-card *ngIf="item.type == 'challenge'"
+                            [challengeNid]="item.entity_id"
+                            (Featured)="UnFlagged(i)"
+                            [front]=true
+                            [state]="item.size"></app-mission-card>
+
+          <!-- Showcase Cards -->
+          <app-showcase-gen-card *ngIf="item.type == 'showcase'"
+                                 (Featured)="UnFlagged(i)"
+                                 [showcaseNid]="item.entity_id"
+                                 [state]="item.size"></app-showcase-gen-card>
+
+          <!-- Maker Cards -->
+          <app-maker-card *ngIf="item.type == 'maker'"
+                          (Featured)="UnFlagged(i)"
+                          [uid]="item.entity_id"
+                          [state]="item.size"></app-maker-card>
+
+          <!-- Project Cards -->
+          <app-project-card *ngIf="item.type == 'project'"
+                            (Featured)="UnFlagged(i)"
+                            [view]="view"
+                            [nid]="item.entity_id"
+                            [state]="item.size"
+                            [front]=true></app-project-card>
+          <!--Org Cards  -->
+          <app-company-card *ngIf="item.type == 'company_profile'"
+                            (Featured)="UnFlagged(i)"
+                            [view]="view"
+                            [nid]="item.entity_id"
+                            [state]="item.size"
+                            [front]=true></app-company-card>
+          <!-- Learning Sequence -->
+          <!--<app-learn-card *ngIf="item.type == 'learning_sequence'"
+                          (Featured)="UnFlagged(i)"
+                          [workshopNid]="item.entity_id"
+                          [front]=true></app-learn-card>-->
+        <!-- </div> -->
+      </div>
+    </div>
+    <div *ngIf="!homeCards || homeCards.length == 0">
+      <h4 class="text-center mt-5 mb-5">There are no Results to show</h4>
+    </div>
+    <div *ngIf="auth.authenticated()" id="feed" name="feed">
+        <app-feed></app-feed>
+    </div>
+
+  </div>
+  <section class="modal-section">
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div id="joinus-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <h4>Start participating in <br>our worldwide community of makers!</h4>
+          </div>
+          <button type="button" class="btn btn-blue" data-dismiss="modal">Join now</button>
+          <p>Already a member? <a href="javascript:void(0)">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>

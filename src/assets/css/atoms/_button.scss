@@ -1,0 +1,365 @@
+.btns-container {
+  text-align: center;
+  .button, button {
+    &:first-child {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.button, button {
+  -webkit-appearance: none;
+  background: $highlight-bright-blue;
+  color: $white;
+  padding: 1rem 1.5rem;
+  border: 0;
+  font-size: 1.2rem;
+  line-height: normal;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  font-family: $font-messina-regular;
+
+  &:focus {
+    border: 0;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    background: darken($highlight-bright-blue, 20%);
+  }
+
+  &.grey {
+    &:hover, &:active {
+      background-color: $xtra-dark-grey;
+    }
+  }
+
+  &.lt-grey {
+    background-color: $light-grey;
+    color: $black;
+  }
+
+  &.grey, &.disabled {
+    background-color: $medium-grey;
+
+    &.-border {
+      border: .1rem $dark-grey solid;
+    }
+
+    &.-no-bg {
+      color: $dark-grey;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+    &:hover, &:active {
+      //background-color: $medium-grey; // no hover for disabled
+    }
+  }
+
+  &.red, &.warning {
+    background: $highlight-red;
+
+    &:hover, &:active {
+      background: darken($highlight-red, 20%);
+    }
+  }
+
+  &.-full {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  &.-no-bg {
+    background-color: transparent;
+  }
+
+  &.-big {
+    font-size: 1.6rem;
+  }
+
+  &.-slim {
+    padding: .5rem 1.5rem;
+  }
+
+  &.-icon {
+    background-color: transparent;
+    border: none;
+    i {
+      font-size: 1.73rem;
+    }
+    &:hover {
+      i {
+        color: $highlight-bright-blue;
+      }
+    }
+    &.-grey {
+      color: $dark-grey;
+      &:hover {
+        i {
+          color: $dark-grey;
+        }
+      }
+    }
+  }
+
+  &.-link {
+    padding: .8rem 1.5rem;
+    border: none;
+    margin-right: .2rem;
+    margin-top: .2rem;
+    background: none;
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    clear: both;
+
+    &:hover {
+      color: $highlight-bright-blue !important;
+    }
+  }
+
+  &.-vote {
+    font-family: $font-messina-modern-regular;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 120%;
+    color: $dark-grey;
+    background: $white;
+    border: .5px solid $dark-grey;
+    padding: 1.5rem 0;
+    width: 18rem;
+    margin: 0 auto;
+    text-align: center;
+    transition: background-color 0.5s ease;
+
+    &:hover,
+    &.active {
+      color: $white;
+      background-color: $highlight-red;
+      box-shadow: none;
+      border: .1rem solid;
+    }
+
+    i {
+      span {
+        font-family: $font-messina-modern-regular;
+      }
+    }
+  }
+
+  &.close {
+    float: right;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: $black;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    &:hover {
+      background-color: transparent;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75;
+    }
+  }
+
+  &.btn-load-more {
+    font-size: 1.6rem;
+    white-space: nowrap;
+    padding: 1.2rem;
+    background-color: $white !important;
+    width: auto;
+  }
+
+  &.btn-simple-large {
+    height: 3.5rem;
+    min-width: 18rem;
+    font-size: 2rem;
+    color: $dark-grey;
+    text-align: center;
+    border: .02rem solid $dark-grey;
+    background-color: $white;
+    padding: 5px 15px;
+  }
+}
+
+.btn,
+.button {
+  .controls & {
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+  }
+}
+
+a:not([href]):not([tabindex]) {
+  cursor: pointer;
+}
+
+.btn-soft-grey,
+a:not([href]):not([tabindex]).btn-soft-grey {
+  color: #757575 !important;
+  border-radius: 0;
+  font-size: 1.3rem;
+}
+
+.btn-load-more,
+a:not([href]):not([tabindex]).btn-load-more {
+  background-color: $lighter-grey;
+  border: .1rem solid $medium-grey;
+  color: $dark-grey;
+  margin-bottom: 3rem;
+}
+
+.btn-fit,
+a:not([href]):not([tabindex]).btn-fit {
+  padding: .5rem 1rem;
+}
+
+.btn, a:not([href]):not([tabindex]).btn {
+  padding: .5rem 1.5rem;
+  border: none;
+  border-radius: 0;
+}
+
+.btn-white,
+a:not([href]):not([tabindex]).btn-white {
+  background-color: $white;
+  border: .1rem solid $highlight-bright-blue;
+  font-size: 2rem;
+  &:hover, &:focus, &:active {
+    color: $highlight-bright-blue;
+    border: .1rem solid $highlight-bright-blue*1.3;
+  }
+}
+
+// Grey Button
+.btn-grey, a:not([href]):not([tabindex]).btn-grey {
+  color: $dark-grey;
+  background-color: $medium-light-grey;
+  border-color: $medium-light-grey*0.9;
+  border-radius: 0;
+  font-size: 1.92rem;
+  padding: 1rem 1.5rem;
+  &:focus, &:active, &:hover {
+    color: $white;
+    background-color: $dark-grey*0.9;
+    border-color: $dark-grey*0.8;
+  }
+  &.disabled {
+    color: $medium-light-grey;
+    border: .05rem solid $medium-light-grey;
+    background-color: $white;
+  }
+}
+
+.btn-load-more,
+a:not([href]):not([tabindex]).btn-load-more {
+  background-color: $lighter-grey;
+  border: .1rem solid $medium-grey;
+  color: $dark-grey;
+  margin-bottom: 3rem;
+  font-size: 1.6rem;
+}
+
+.btn-tabs,
+a:not([href]):not([tabindex]).btn-tabs {
+  background-color: white;
+  border: .1rem solid $lighter-grey;
+  &:active {
+    background-color: $lighter-grey;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Tabs switching blue bottom border button
+.btn-tab, a:not([href]):not([tabindex]).btn-tab {
+  border-radius: 0;
+  font-size: 1.92rem;
+  padding: .9rem 3rem 2.5rem 3rem;
+  height: 3.5rem;
+  color: $light-grey;
+  background-color: inherit;
+  &:focus {
+    color: $dark-grey;
+  }
+  &:active, &:hover, &.active {
+    cursor: pointer;
+    color: $dark-grey;
+    border-bottom: .5rem solid $highlight-bright-blue;
+  }
+}
+
+.btn-tabs.active,
+a:not([href]):not([tabindex]).btn-tabs.active {
+  background-color: $lighter-grey;
+}
+
+.btn-transparent,
+a:not([href]):not([tabindex]).btn-transparent {
+  color: $main-grey * 0.8;
+  background: transparent;
+  font-size: 1.6rem;
+  &:focus, &:active, &:hover {
+    color: $main-grey;
+    box-shadow: none;
+  }
+}
+
+// Prev and Next button
+.btn-advance, a:not([href]):not([tabindex]).btn-advance {
+  color: $dark-grey;
+  background-color: transparent;
+  border-color: $medium-light-grey*0.9;
+  border-radius: 0;
+  font-size: 3.84rem;
+  border: .05rem solid $dark-grey;
+  width: 5rem;
+  height: 5rem;
+  margin-left: .5rem;
+  &:hover {
+    background-color: $white;
+    border-color: $button-dark-grey*0.8;
+  }
+  &.disabled {
+    opacity: .5;
+  }
+  i {
+    text-align: center;
+    margin-left: -.7rem;
+  }
+}
+
+.btn-white-2, a:not([href]):not([tabindex]).btn-white-2 {
+  color: $darker-grey;
+  background: linear-gradient(to bottom, #999 0, $white .7rem, $white 100%);
+  border-radius: 0;
+  font-size: 1.6rem;
+  border: .1rem solid #999;
+  &:focus {
+    color: $white;
+    background: $highlight-red*1.3;
+    border-color: transparent;
+  }
+
+  &:active, &:hover, &.active {
+    color: $white;
+    background: $highlight-red;
+    border-color: transparent;
+  }
+}
