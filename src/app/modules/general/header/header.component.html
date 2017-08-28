@@ -51,9 +51,9 @@
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
                   <a [routerLink]="['missions']" class="nav-link">Missions</a>
                 </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
+                <!-- <li class="sub-nav-item dropdown-item mobile-menu-item">
                   <a [routerLink]="['organizations']" class="nav-link">Organizations</a>
-                </li>
+                </li> -->
                 <!-- <li class="sub-nav-item dropdown-item mobile-menu-item">
                   <a class="disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
                 </li> -->
@@ -119,19 +119,19 @@
                    href="{{Back_End_Domain}}">Manage</a>
               </li>
               <li class="dropdown-item">
-                <a href="/portfolio"> <!-- need a page refresh here -->
+                <a [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
                   <span class="nav-link">Profile</span>
                 </a>
               </li>
               <li *ngIf="org_data && org_data.path"
                   class="dropdown-item">
-                <a href="{{org_data.path}}/edit">
+                <a [routerLink]="[org_data.path,'edit']">
                   <span class="nav-link">Organization Profile</span>
                 </a>
               </li>
               <li *ngIf="!org_data && isManager"
                   class="dropdown-item">
-                <a href="/orgs/create">
+                <a routerLink="['/orgs/create']">
                   <span class="nav-link">Create Organization</span>
                 </a>
               </li>
@@ -141,21 +141,18 @@
                 </a>
               </li>
               <li class="dropdown-item">
-                <a href="/inbox-notifications">
+                <a [routerLink]="['/inbox-notifications']">
                   <span class="nav-link">Inbox</span>
                 </a>
               </li>
               <li class="dropdown-item">
-                <a href="/account/collection/bookmark">
+                <a [routerLink]="['/account/collection/bookmark']">
                   <span class="nav-link">Bookmarks</span>
                 </a>
               </li>
               <li class="dropdown-item">
-                <a href="/account/settings/notifications">
-                  <span class="nav-link">Account Settings</span>
-                </a>
+                <a [routerLink]="['/account/settings/notifications']">
               </li>
-              <li class="dropdown-item">
                 <button (click)="auth.logout()">
                   <span class="nav-link">Logout</span>
                 </button>
