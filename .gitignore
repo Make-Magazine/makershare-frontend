@@ -1,0 +1,56 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/dist-server
+app/**/*.js
+app/**/*.map
+/tmp
+
+# dependencies
+/node_modules
+
+/src/assets/css/*.css.map
+!/src/assets/css/bootstrap.min.css.map
+
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+**/*/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+package-lock.json
+src/assets/css/style.css
+
+# e2e
+/e2e/
+
+#System Files
+.DS_Store
+Thumbs.db
+/nbproject/private/
+/src/assets/css/style.css.map
+/src/dist/
+/src/*.ngfactory.ts
+/src/*.ngsummary.ts
+/.vscode/
+/src/app/core/models/application/settings.ts
