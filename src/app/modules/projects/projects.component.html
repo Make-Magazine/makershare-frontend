@@ -1,0 +1,73 @@
+<div class="page-explore mb-5">
+  <div class="container page-header mb-5">
+    <h3>Projects</h3>
+  </div>
+
+  <div class="container clearfix mb-5">
+    <div class="filters-group mb-3">
+      <app-filters [data]="categories"
+                   [type]="'project'"
+                   [ref]="this"></app-filters>
+
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags sorting-filter"
+                id="filter-projects"
+                (change)="sortProjects($event.target.value)">
+          <option value="_none" disabled class="btn">Sort By</option>
+          <option value="created_2" class="btn">Most recent</option>
+          <option value="created_1" class="btn">Oldest</option>
+          <option value="title" class="btn">Title A-Z</option>
+          <option value="title_1" class="btn">Title Z-A</option>
+          <option value="count" class="btn">Most liked</option>
+          <option value="php" class="btn">Most viewed</option>
+          <option value="timestamp" class="btn">Featured</option>
+        </select>
+      </div>
+
+      <div class="filters projects-counter">
+        <div *ngIf="projectsCount"
+             class="entries-count btn">
+          <p>{{projectsCount}} Project{{ projectsCount > 1 ? 's': '' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cat-filters controls mt-5 mb-5"
+         *ngIf="filteredSubCategories.length > 0">
+      <button *ngFor="let term of filteredSubCategories"
+              (click)="selectSubCategory(term)"
+              class="button -big {{subCategoryId == term.tid ? 'active':''}}"
+              data-id="{{term.tid}}"
+              [innerHTML]="term.name"></button>
+    </div>
+  </div>
+
+  <div class="container items-container p-414">
+    <h4 *ngIf="projects.length == 0"
+        class="text-center mt-5 mb-5">There are no projects to show</h4>
+    <div class="row">
+      <div *ngFor="let project of projects" class="col-md-6 col-lg-4 card-wrapper">
+        <app-project-card
+                          [view]="'grid'"
+                          [nid]="project.nid"
+                          [state]="'tall'"></app-project-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center pt-3 pb-5"
+       *ngIf="showLoadMoreBtn && projects.length > 0">
+    <button class="grey -no-bg -big -border -slim"
+            (click)="loadMoreProjects()">Load more
+    </button>
+  </div>
+
+  <!--<div *ngIf="Manager"> 
+<app-feature-project> </app-feature-project>
+</div>-->
+
+</div>
+
+
+<!-- End region-content -->

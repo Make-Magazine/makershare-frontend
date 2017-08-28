@@ -1,0 +1,59 @@
+<section *ngIf="showcase" class="page-single-showcase">
+  <div class="region region-content">
+    <div class="container items-container">
+      <app-showcase-card [showcaseCard]="showcase"
+                         [projectsCount]="contentCount"
+                         [singleView]="true"></app-showcase-card>
+    </div>
+
+    <div>
+      <div class="filters-container container clearfix">
+        <div class="filters">
+          <!--hide in mobiles screens-->
+          <div class="row justify-content-end align-items-center hidden-xs-down">
+            <div *ngIf="contentCount" class="entries-count btn">
+              <p>{{contentCount}} {{showcase.showcase_type}}{{contentCount > 1 ? 's' : ''}} &nbsp;</p>
+            </div>
+            <div class="container text-center" *ngIf="contentCount == 0">
+              <p>No {{showcase.showcase_type}}s yet</p>
+            </div>
+            <div class="filters" *ngIf="contentCount">
+              <div class="dropdown-group">
+                <i class="dropdownIcon lnr lnr-chevron-down"></i>
+                <select class="shadowed explore-tags sorting-filter" id="filter-projects"
+                        (change)="sortShowcase($event.target.value)">
+                  <option value="_none" class="btn" disabled>Sort By</option>
+                  <option *ngFor="let option of filterOptions"
+                          value="{{option.value}}"
+                          class="btn">{{option.label}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container items-container p-414">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 card-wrapper pull-left"
+               *ngFor="let item of ShowcaseItems; let i = index;">
+              <app-maker-card
+                              [uid]="item.uid"
+                              *ngIf="contentType == 2"
+                              [state]="'tall'"></app-maker-card>
+              <app-project-card 
+                                [nid]="item.nid"
+                                *ngIf="contentType == 1"
+                                [clickAction]="navigateShowcaseItem(item.nid)"
+                                [state]="'tall'"></app-project-card>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-3 mb-5"
+           *ngIf="!hideloadmore">
+        <button class="grey -no-bg -border -big -slim"
+                (click)="loadmore()">Load more
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

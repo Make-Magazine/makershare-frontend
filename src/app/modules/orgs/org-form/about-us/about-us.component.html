@@ -1,0 +1,88 @@
+<div class="col-md-8"
+     [formGroup]="organizationForm">
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="org-about-us">About Us</label>
+    </div>
+    <div class="form-ctl">
+      <maker-ckeditor [id]="'org-about-us'"
+                      formControlName="body"
+                      ngDefaultControl></maker-ckeditor>
+      <div *ngIf="organizationForm.controls['body'].invalid && (organizationForm.controls['body'].dirty || organizationForm.controls['body'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['body'].errors.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group required">
+    <div class="form-label">
+      <label for="orgInfo">Organization Info</label>
+    </div>
+    <div class="form-ctl">
+      <textarea maxlength="250"
+                rows="5"
+                id="orgInfo"
+                placeholder="Enter info here"
+                formControlName="field_breif_info"></textarea>
+      <div *ngIf="organizationForm.controls['field_breif_info'].invalid && (organizationForm.controls['field_breif_info'].dirty || organizationForm.controls['field_breif_info'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="organizationForm.controls['field_breif_info'].errors.required">
+          This field is required
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">
+      <label for="orgMotto">Motto</label>
+    </div>
+    <div class="form-ctl">
+      <input type="text"
+             id="orgMotto"
+             maxlength="50"
+             formControlName="field_maker_motto">
+    </div>
+  </div>
+
+
+  <div class="form-group"
+       formArrayName="field_maker_memberships">
+    <div class="form-label">
+      <label>Team</label>
+      <div *ngFor="let user of team;let i = index;" [formGroupName]="i">
+        <app-maker-card *ngIf="!user.anonymous" [showFlag]="false" [uid]="user.usernameOrUID"></app-maker-card>
+        <div *ngIf="user.anonymous">{{user.usernameOrUID}}</div>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a (click)="removeRow(i, 'field_maker_memberships')" *ngIf="i != 0">Remove</a>
+      </div>
+      <div [formGroupName]="organizationForm.value.field_maker_memberships.length - 1" *ngIf="fixFormReady">
+        <label>Member name</label>
+        <input #username type="text" [ngbTypeahead]="search" [resultTemplate]='rt'
+               (selectItem)="selectedUser = $event.item" [inputFormatter]="formatter">
+        <div *ngIf="searchFailed">
+          User not registered
+          <button type="button" class="btn btn-primary" (click)="setAnonymous(username.value, i)">
+            Add as anonymous member
+          </button>
+        </div>
+        <label>Role</label>
+        <input type="text" formControlName="field_membership_role">
+        <a *ngIf="selectedUser" (click)="setMember()">+add</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #rt let-r="result" let-t="term">
+  <img *ngIf="r.profile_pic_typeahead" [src]="r.profile_pic_typeahead">
+  <img *ngIf="!r.profile_pic_typeahead" src="./assets/images/Gears-Grey.svg">
+  <p *ngIf="r.first_name && r.last_name">{{r.first_name}} {{r.last_name}} </p>
+  <p *ngIf="!r.first_name && !r.last_name">{{r.name}} </p>
+</ng-template>

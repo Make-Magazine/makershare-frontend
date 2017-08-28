@@ -1,0 +1,57 @@
+import { Component, OnInit } from '@angular/core';
+import { Notification } from '../../../../core';
+import { ViewService } from '../../../../core/d7services';
+
+@Component({
+  selector: 'notifications-list',
+  templateUrl: './notifications-list.component.html',
+})
+export class NotificationsListComponent implements OnInit {
+
+  notifications:Notification[] = [];
+  notificationsCount:number = 0;
+  notificationsCountTotal: number = 0;
+  hideLoadMore = false;
+  pageNumber: number = 0;
+  CurrentUserID = localStorage.getItem("user_id");
+  intervalString='';
+  constructor(
+    private viewService: ViewService,
+  ) { }
+
+  ngOnInit() {
+    this.GetNotificationsList();
+    this.GetNotificationsCountTotal();
+    this.GetNotificationsCount();
+    // this.loaderService.display(true);
+  }
+
+  GetNotificationsList(){
+    //  this.loaderService.display(true);
+    this.viewService.getView('views/api_notifications', [['display_id', 'services_1'],['uid', this.CurrentUserID], ['page', this.pageNumber]]).subscribe((notifications:Notification[]) => {
+      this.notifications = this.notifications.concat(notifications);
+ 
+
+      // this.loaderService.display(false);
+
+    });
+  }
+
+  GetNotificationsCount(){
+    this.viewService.getView('notifications_count_api', [['uid', this.CurrentUserID]]).subscribe(data => {
+      this.notificationsCount = data[0].count;
+    });
+  }
+
+  GetNotificationsCountTotal(){
+    this.viewService.getView('views/api_notifications', [['display_id', 'services_2'],['uid', this.CurrentUserID]]).subscribe(data => {
+      this.notificationsCountTotal = data[0].total;
+    });
+  }  
+
+  loadMore() {
+    this.pageNumber++;
+    this.GetNotificationsList();
+  }
+}
+ 

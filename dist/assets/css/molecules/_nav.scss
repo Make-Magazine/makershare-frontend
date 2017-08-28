@@ -1,0 +1,83 @@
+nav.primary, nav.secondary {
+  display: flex;
+  .nav-content {
+    list-style: none;
+    display: flex;
+  }
+  .nav-item {
+    display: flex;
+    padding: 1.5rem;
+    align-self: center;
+    position: relative;
+
+    @include transition(0.5s);
+
+    &:hover {
+      > .nav-link {
+        color: $dark-grey;
+      }
+    }
+    &.has-dropdown {
+      padding-right: 2rem;
+      &:hover {
+        .dropdown-menu {
+          display: block;
+          margin-top: 0; // remove the gap so it doesn't close
+        }
+      }
+    }
+
+    .dropdown-toggle {
+      &:after {
+        position: absolute;
+        right: .1rem;
+        top: 50%;
+        margin-top: -.2rem;
+      }
+    }
+  }
+}
+
+.nav-link {
+  display: block;
+  font-size: 2rem;
+  color: lighten($dark-grey, 15%) !important;
+  transition: all .3s ease;
+  cursor: pointer;
+  padding: 0;
+  &.disabled {
+    cursor: not-allowed !important;
+  }
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+nav {
+  &.primary {
+    @include tablet() {
+      .nav-item {
+        padding: 1rem;
+      }
+    }
+  }
+
+  &.secondary {
+    position: absolute;
+    right: 2rem;
+    top: 30%;
+    .nav-item {
+      padding: .5rem .9rem;
+      &:last-child {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+.mobile-menu-item {
+  // need to add my mixin for responsive
+}

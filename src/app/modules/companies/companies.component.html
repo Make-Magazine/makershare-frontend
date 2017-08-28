@@ -1,0 +1,60 @@
+<div class="page-explore mb-5">
+  <div class="container page-header mb-5">
+    <h3>Maker Orgs</h3>
+  </div>
+
+  <div class="container clearfix mb-3" *ngIf="countCompanies > 0">
+    <div class="filters-group mb-3">
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags"
+                (change)="selectCompanyType($event.target.value)">
+          <option value="0" disabled>Filter By</option>
+          <option value="All">All Organizations</option>
+          <option value="non-profit">non-profit</option>
+          <option value="startup">startup</option>
+        </select>
+      </div>
+      <div class="dropdown-group">
+        <i class="dropdownIcon lnr lnr-chevron-down"></i>
+        <select class="shadowed explore-tags sorting-filter"
+                id="filter-projects"
+                (change)="sortCompanies($event.target.value)">
+          <option value="_none" disabled class="btn">Sort By</option>
+          <option value="random_seed" class="btn">Mix 'Em Up</option>
+          <option value="created" class="btn">Most recent</option>
+          <option value="created_1" class="btn">Oldest</option>
+          <option value="title" class="btn">Title A-Z</option>
+          <option value="title_1" class="btn">Title Z-A</option>
+          <option value="count" class="btn">Most Followers</option>
+          <option value="php" class="btn">Most Project</option>
+        </select>
+      </div>
+
+      <div class="filters projects-counter">
+        <div class="entries-count btn">
+          <p>{{countCompanies}} Maker Orgs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="countCompanies == 0">
+    <h2>There is no Organizations</h2>
+  </div>
+
+  <div class="container items-container p-414">
+    <div class="row">
+      <div class="card-wrapper col-md-6 col-lg-4"
+        *ngFor="let company of companies; let i=index">
+        <app-company-card 
+                      [cardData]="companies[i]"
+                      [state]="'tall'"></app-company-card>
+      </div>
+    </div>
+  </div>
+   <div class="text-center" *ngIf="showloadmoreCompany">
+    <button class="grey -no-bg -big -border -slim"
+            (click)="getCompanies(true)">Load more
+    </button>
+  </div>
+</div>

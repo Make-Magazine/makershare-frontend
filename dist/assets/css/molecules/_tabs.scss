@@ -1,0 +1,54 @@
+.tabs-buttons {
+  width: 100%;
+  overflow: hidden;
+  .challenge-submenu {
+    overflow: hidden;
+    width: 77%;
+    float: left;
+    .button-item {
+      clear: both;
+    }
+    a {
+      color: $title-color;
+    }
+    span {
+      color: $title-color;
+    }
+    li {
+      .btn {
+        padding: 8px 15px;
+        border: none;
+        margin-right: 2px;
+        margin-top: 2px;
+      }
+      .active {
+        color: $light-grey;
+        .badge {
+          background-color: $white;
+          color: $main-grey;
+
+        }
+      }
+    }
+  }
+  .challenge-follow {
+    overflow: hidden;
+    width: 23%;
+    float: right;
+    li {
+      float: left;
+      width: 50%;
+      .btn {
+        padding: 8px 34px;
+        border: 1px solid $main-grey;
+        width: 100%;
+        color: #fff;
+      }
+      i {
+        font-weight: normal;
+        width: 25px;
+        margin-left: -15px;
+      }
+    }
+  }
+}

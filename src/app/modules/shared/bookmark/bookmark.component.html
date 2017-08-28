@@ -1,0 +1,8 @@
+<div class="app-bookmark">
+  <a class="btn btn-soft-grey btn-fit"
+     (click)="bookmarkThis($event)"
+     ngbTooltip="{{isBookmarked ? 'Unbookmark this' : 'Bookmark this'}} {{nodeType}}">
+    <i [ngClass]="{'fa-bookmark-o': !isBookmarked,'fa-bookmark': isBookmarked}"
+       class="fa fa-lg"></i>
+  </a>
+</div>

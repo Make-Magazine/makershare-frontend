@@ -1,63 +1,65 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { routing } from "./app.routing";
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/general/header/header.component';
-import { FooterComponent } from './components/general/footer/footer.component';
-
-// New Structure
-import { MessagesModule } from './components/account/messages/messages.module';
-import { NotificationBarModule } from 'angular2-notification-bar/release';
-import { SharedModule } from './components/shared/shared.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DndModule } from 'ng2-dnd';
-import { ShareButtonsModule } from "ngx-sharebuttons";
-// import custom auth0 service
-
+import { NgModule, NgZone } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SearchBoxComponent } from './components/general/header/search-box/search-box.component';
-import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
-import { Four04Component } from './auth0/four04/four04.component';
-
-// static pages
-import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
-import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
-import { AboutBadgesComponent } from './components/pages/about-badges/about-badges.component';
-import { AboutUsComponent } from './components/pages/about-us/about-us.component';
-import { TermsComponent } from './components/pages/terms/terms.component';
-import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
-import { MakezineComponent } from './components/pages/makezine/makezine.component';
-import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
-import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
-import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
-import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
-import { ClaimProfileComponent } from './components/pages/claim-profile/claim-profile.component';
-
-// GA
-// import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
-import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
-import { ResponsiveModule, ResponsiveConfig } from 'ng2-responsive';
-import { MetaModule } from '@nglibs/meta';
-import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
-import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
-import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationEnd, NavigationError, Router /*RouterModule*/ } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StoreModule } from '@ngrx/store';
+import { DndModule } from 'ng2-dnd';
 import { CookieModule } from 'ngx-cookie';
-
-let config = {
-  breakPoints: {
-    xs: { max: 575 },
-    sm: { min: 576, max: 767 },
-    md: { min: 768, max: 991 },
-    lg: { min: 992, max: 1199 },
-    xl: { min: 1200 }
-  },
-  debounceTime: 100 // allow to debounce checking timer
-};
+import { NotificationBarModule } from 'ngx-notification-bar/release';
+import { ShareButtonsModule } from 'ngx-sharebuttons';
+// import { prebootClient } from 'preboot/__build/src/browser/preboot_browser';
+import { Observable } from 'rxjs/Observable';
+import { AppComponent } from './app.component';
+import { routing } from './app.routing';
+import { CurrentUserReducer } from './core/store/current-user-reducer';
+// New Structure
+import { MessagesModule } from './modules/account/messages/messages.module';
+import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
+import { Four04Component } from './modules/auth0/four04/four04.component';
+import { FooterComponent } from './modules/general/footer/footer.component';
+import { HeaderComponent } from './modules/general/header/header.component';
+import { SearchBoxComponent } from './modules/general/header/search-box/search-box.component';
+import { AboutBadgesComponent } from './modules/pages/about-badges/about-badges.component';
+import { AboutUsComponent } from './modules/pages/about-us/about-us.component';
+import { ClaimProfileComponent } from './modules/pages/claim-profile/claim-profile.component';
+import { GuidelinesComponent } from './modules/pages/guidelines/guidelines.component';
+import { IntelInnovationComponent } from './modules/pages/intel-innovation/intel-innovation.component';
+import { IntelMakeComponent } from './modules/pages/intel-make/intel-make.component';
+import { MakerCampComponent } from './modules/pages/maker-camp/maker-camp.component';
+import { MakerFaireComponent } from './modules/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from './modules/pages/maker-intel/maker-intel.component';
+// static pages
+import { MakerMovementComponent } from './modules/pages/maker-movement/maker-movement.component';
+import { MakerShedComponent } from './modules/pages/maker-shed/maker-shed.component';
+import { MakezineComponent } from './modules/pages/makezine/makezine.component';
+import { OtherSitesComponent } from './modules/pages/other-sites/other-sites.component';
+import { ShowTellComponent } from './modules/pages/show-tell/show-tell.component';
+import { TermsComponent } from './modules/pages/terms/terms.component';
+import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfolio.component';
+import { SharedModule } from './modules/shared/shared.module';
+import { LoginComponent } from './modules/auth0/login/login.component';
 
 @NgModule({
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    CookieModule.forRoot(),
+    SharedModule.forRoot(),
+    NgbModule.forRoot(),
+    /*RouterModule,*/
+    routing,
+    MessagesModule,
+    NotificationBarModule,
+    DndModule.forRoot(),
+    ShareButtonsModule.forRoot(),
+    HttpModule,
+    StoreModule.forRoot({ currentUser: CurrentUserReducer })
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -80,33 +82,40 @@ let config = {
     WhyPortfolioComponent,
     AboutUsComponent,
     ShowTellComponent,
-    ClaimProfileComponent
+    ClaimProfileComponent,
+    LoginComponent,
   ],
-  imports: [
-    BrowserModule.withServerTransition({
-      appId: 'maker'
-    }),
-    CookieModule.forRoot(),
-    SharedModule.forRoot(),
-    ResponsiveModule,
-    HttpModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgbModule.forRoot(),
-    RouterModule,
-    routing,
-    MessagesModule,
-    NotificationBarModule,
-    DndModule.forRoot(),
-    // Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    MetaModule.forRoot(),
-    ShareButtonsModule.forRoot(),
-  ],
-  entryComponents: [],
-  bootstrap: [AppComponent],
 })
-export class AppModule { };
-export function ResponsiveDefinition() {
-  return new ResponsiveConfig(config);
-};
-export { AppComponent };
+export class AppModule {
+  constructor(router: Router, zone: NgZone) {
+    if (typeof prebootstrap === 'undefined') {
+      return;
+    }
+
+    const finished = Observable.combineLatest(
+      router.events,
+      zone.onMicrotaskEmpty,
+    );
+
+    const subscription = finished.subscribe(([event, stable]) => {
+      if (stable === false) {
+        return;
+      }
+
+      // document.body.innerHTML += '<div style="color:black;padding:0 20px;position:relative;background-color:white;">LOG: ' + event.toString() + '</div>';
+
+      switch (true) {
+        case event instanceof NavigationError:
+        case event instanceof NavigationEnd:
+          // setImmediate(() => prebootClient().complete());
+
+          subscription.unsubscribe();
+          break;
+        default:
+          break;
+      }
+    });
+  }
+}
+
+declare const prebootstrap;

@@ -1,0 +1,43 @@
+.dropdown-group {
+  position: relative;
+  display: inline-block;
+  margin: 0 1.5rem;
+
+  &.-full {
+    width: 100%;
+  }
+
+  &.-no-margin {
+    margin: 0;
+  }
+
+  i.dropdownIcon {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    right: 1rem;
+    top: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  select.shadowed,
+  .shadowed button {
+    cursor: pointer;
+    width: 100%;
+    height: auto !important;
+    background: $white;
+    @include boxShadow(0, 0, .5rem, rgba(0, 0, 0, 0.2));
+    font-family: $font-messina-regular;
+    font-size: 1.8rem;
+    color: $dark-grey;
+    margin-bottom: .5rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+}

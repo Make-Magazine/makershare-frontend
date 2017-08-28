@@ -1,49 +1,39 @@
-import { RouterModule, Routes } from "@angular/router";
-import { AccessDeniedComponent } from './auth0/access-denied/access-denied.component';
-import { Four04Component } from './auth0/four04/four04.component';
-import { AccessRestrictedComponent } from './components/shared/access-restricted/access-restricted.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AccessDeniedComponent } from './modules/auth0/access-denied/access-denied.component';
+import { Four04Component } from './modules/auth0/four04/four04.component';
+import { AboutBadgesComponent } from './modules/pages/about-badges/about-badges.component';
+import { AboutUsComponent } from './modules/pages/about-us/about-us.component';
+import { ClaimProfileComponent } from './modules/pages/claim-profile/claim-profile.component';
+import { GuidelinesComponent } from './modules/pages/guidelines/guidelines.component';
+import { IntelInnovationComponent } from './modules/pages/intel-innovation/intel-innovation.component';
+import { IntelMakeComponent } from './modules/pages/intel-make/intel-make.component';
+import { MakerCampComponent } from './modules/pages/maker-camp/maker-camp.component';
+import { MakerFaireComponent } from './modules/pages/maker-faire/maker-faire.component';
+import { MakerIntelComponent } from './modules/pages/maker-intel/maker-intel.component';
 // static pages
-import { MakerMovementComponent } from './components/pages/maker-movement/maker-movement.component';
-import { IntelMakeComponent } from './components/pages/intel-make/intel-make.component';
-import { AboutBadgesComponent } from './components/pages/about-badges/about-badges.component';
-import { TermsComponent } from './components/pages/terms/terms.component';
-import { OtherSitesComponent } from './components/pages/other-sites/other-sites.component';
-import { MakezineComponent } from './components/pages/makezine/makezine.component';
-import { MakerFaireComponent } from './components/pages/maker-faire/maker-faire.component';
-import { MakerIntelComponent } from './components/pages/maker-intel/maker-intel.component';
-import { MakerCampComponent } from './components/pages/maker-camp/maker-camp.component';
-import { MakerShedComponent } from './components/pages/maker-shed/maker-shed.component';
-import { IntelInnovationComponent } from './components/pages/intel-innovation/intel-innovation.component';
-import { GuidelinesComponent } from './components/pages/guidelines/guidelines.component';
-import { WhyPortfolioComponent } from './components/pages/why-portfolio/why-portfolio.component';
-import { AboutUsComponent } from './components/pages/about-us/about-us.component';
-import { ShowTellComponent } from './components/pages/show-tell/show-tell.component';
-
-// Claim your profile component
-import { ClaimProfileComponent } from './components/pages/claim-profile/claim-profile.component';
-
-
-//modules
-import { HomeModule } from './components/home/home.module';
-import { ShowcaseModule } from './components/showcase/showcase.module';
-import { ProjectsModule } from './components/projects/projects.module';
-import { ChallengeModule } from './components/challenge/challenge.module';
-import { ProfileModule } from './components/account/profile/profile.module';
-import { AccountModule } from './components/account/account.module';
-import { SearchModule } from './components/search/search.module';
-import { LearnModule } from './components/learn/learn.module';
+import { MakerMovementComponent } from './modules/pages/maker-movement/maker-movement.component';
+import { MakerShedComponent } from './modules/pages/maker-shed/maker-shed.component';
+import { MakezineComponent } from './modules/pages/makezine/makezine.component';
+import { OtherSitesComponent } from './modules/pages/other-sites/other-sites.component';
+import { ShowTellComponent } from './modules/pages/show-tell/show-tell.component';
+import { TermsComponent } from './modules/pages/terms/terms.component';
+import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfolio.component';
+import { AccessRestrictedComponent } from './modules/shared/access-restricted/access-restricted.component';
+import { LoginComponent } from './modules/auth0/login/login.component';
 
 const APP_ROUTES: Routes = [
-    { path: '', loadChildren: './components/home/home.module#HomeModule' },
-    { path: 'showcases', loadChildren: 'app/components/showcase/showcase.module#ShowcaseModule' },
-    { path: 'projects', loadChildren: './components/projects/projects.module#ProjectsModule' },
-    { path: 'makers', loadChildren: 'app/components/makers/makers.module#MakersModule' },
-    { path: 'missions', loadChildren: './components/challenge/challenge.module#ChallengeModule' },
-    { path: 'portfolio', loadChildren: './components/account/profile/profile.module#ProfileModule' },
-    { path: 'portfolio/:name', loadChildren: './components/account/profile/profile.module#ProfileModule' },
-    { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
-    { path: 'search', loadChildren: './components/search/search.module#SearchModule' },
-    { path: 'learning', loadChildren: './components/learn/learn.module#LearnModule' },
+    { path: '', loadChildren: './modules/home/home.module#HomeModule' },
+    { path: 'showcases', loadChildren: './modules/showcase/showcase.module#ShowcaseModule' },
+    { path: 'projects', loadChildren: './modules/projects/projects.module#ProjectsModule' },
+    { path: 'makers', loadChildren: './modules/makers/makers.module#MakersModule' },
+    { path: 'organizations', loadChildren: './modules/companies/companies.module#CompaniesModule' },
+    { path: 'feed', loadChildren: './modules/feed/feed.module#FeedModule' },
+    { path: 'orgs', loadChildren: './modules/orgs/orgs.module#OrgsModule' },
+    { path: 'missions', loadChildren: './modules/missions/mission.module#MissionModule' },
+    { path: 'portfolio', loadChildren: './modules/account/profile/profile.module#ProfileModule' },
+    { path: 'account', loadChildren: './modules/account/account.module#AccountModule' },
+    { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
+    { path: 'learning', loadChildren: './modules/learn/learn.module#LearnModule' },
     { path: 'access-denied', component: AccessDeniedComponent },
     { path: 'the-maker-movement', component: MakerMovementComponent },
     { path: 'make-intel', component: IntelMakeComponent },
@@ -63,6 +53,7 @@ const APP_ROUTES: Routes = [
     { path: 'claim-profile', component: ClaimProfileComponent },
     { path: '404', component: Four04Component },
     { path: 'access-restricted', component: AccessRestrictedComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', redirectTo: '/404' },
 ];
 

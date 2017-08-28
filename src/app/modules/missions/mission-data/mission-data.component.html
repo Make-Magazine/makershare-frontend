@@ -1,0 +1,81 @@
+<div *ngIf="challenge"
+     class="page-challenge-summary">
+  <div class="container mt-5 container-fluid">
+    <div class="row">
+      <section class="col-sm-12 width-fix">
+        <div class="top-content-wrapper">
+          <div class="container">
+            <app-mission-card class="card-wrapper"
+                                [challenge]="challenge"
+                                [singleView]="true"
+                                [state]="'full'"></app-mission-card>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <div class="region region-content col-sm-12 row">
+            <div id="rules-route"
+                 hidden
+                 (click)="activeTab = 'rules'"></div>
+            <div class="tabs-buttons col-md-4 p-0">
+              <ul class="list-unstyled challenge-submenu">
+                <li>
+                  <a class="button -link"
+                     [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}"
+                     (click)="activeTab = 'brief'">Design Brief</a></li>
+                <li>
+                  <a class="button -link"
+                     [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}"
+                     (click)="activeTab = 'awards'">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a>
+                </li>
+                <li>
+                  <a class="button -link"
+                     [ngClass]="{'active': activeTab =='rules', 'disabled': isDisabled}"
+                     (click)="activeTab = 'rules'">Rules &amp; Instructions</a></li>
+                <li *ngIf="challenge.discussion =='1' && challenge">
+                  <a class="button -link"
+                     [ngClass]="{'active': activeTab =='discussion', 'disabled': isDisabled}"
+                     (click)="activeTab = 'discussion'">Questions</a>
+                </li>
+                <li *ngIf="challenge.nbFollowers > 0">
+                  <a class="button -link"
+                     [ngClass]="{'active': activeTab =='followers', 'disabled': isDisabled}"
+                     (click)="activeTab = 'followers'">Followers <span class="badge">{{challenge.nbFollowers}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="challenge-details col-md-8 p-0">
+              <app-brief *ngIf="activeTab =='brief'"
+                         [projects]="projectsData"
+                         [challenge]="challenge"></app-brief>
+              <app-awards *ngIf="activeTab =='awards'"
+                          [awards]="awards"></app-awards>
+              <app-rules *ngIf="activeTab =='rules'"
+                         [projects]="projectsData"
+                         [challenge]="challenge"></app-rules>
+              <app-discussion *ngIf="activeTab =='discussion'"
+                              [challenge]="challenge"></app-discussion>
+              <app-followers *ngIf="activeTab =='followers'"
+                             [hideloadmorefollower]="hideloadmorefollower"
+                             [currentUser]="currentuser.user"
+                             (sortType)="getSortType($event)"
+                             (pageNumber)="getPageNumberFollowers($event)"
+                             [challenge]="challenge"
+                             [followers]="followers"></app-followers>
+            </div>
+          </div>
+          <div class="content-wrapper mt-5">
+            <app-summary [hideLoadMore]="hideloadmoreproject"
+                         (sortType)="getSortType($event)"
+                         (pageNumber)="getPageNumber($event)"
+                         [projectsCount]="countProjects"
+                         [challenge]="challenge"
+                         [awards]="awards"
+                         [projectsChallenge]="projects"></app-summary>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

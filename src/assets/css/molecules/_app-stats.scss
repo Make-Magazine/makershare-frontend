@@ -1,0 +1,28 @@
+.app-likes,
+.app-views,
+.app-bookmark,
+.app-btn-share {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    color: $light-grey;
+    padding: 0 .4rem;
+  }
+}
+
+.app-likes {
+  display: inline-block;
+  img {
+    width: 1.2rem;
+  }
+}
+
+.app-views {
+  display: inline-block;
+  img {
+    width: 22px;
+    height: auto;
+  }
+}

@@ -1,0 +1,32 @@
+.profile-view-control-container {
+	margin-top: 2rem;
+	position: relative;
+	padding-bottom: 0.7rem;
+	overflow: hidden;
+	i {
+		font-size: 2rem;
+		cursor: pointer;
+		float: right;
+	}
+}
+
+.profile-content {
+	.card {
+		social-stats {
+			position: inherit;
+		}
+	}
+	.tall {
+		.card {
+			social-stats {
+				position: absolute;
+			}
+		}
+	}
+}
+
+.project-body-content {
+	img {
+		width: 100%;
+	}
+}

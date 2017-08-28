@@ -1,0 +1,116 @@
+<div *ngIf="project">
+  <div class="page-project">
+    <div class="container p-414">
+      <div class="top-content-wrapper">
+        <div class="container">
+          <div class="project-full-card">
+            <!-- Start Project Header  -->
+            <div class="col-md-12 project-cover">
+              <div class="projectsingle-card row">
+                <div class="col-lg-8 col-md-12 left-side">
+                  <div class="image-container">
+                    <div
+                        *ngIf="!(project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1)">
+                      <img *ngIf="project.field_cover_photo.styled_url" src="{{project.field_cover_photo?.styled_url}}"
+                           alt="" class="img-responsive">
+                      <img *ngIf="!project.field_cover_photo.styled_url" src="./assets/images/placeholder.png" alt=""
+                           class="img-responsive">
+                    </div>
+                    <div
+                        *ngIf="project.field_show_tell_video.value && project.field_show_tell_video_as_default.value == 1">
+                      <video-viewer [link]="project.field_show_tell_video.value"></video-viewer>
+                    </div>
+                    <ul class="project-card-badges d-flex" *ngIf="badges" (click)="ShowProjectDetails(project.nid)">
+                      <li class="project-badge" *ngFor="let badge of badges;">
+                        <img src="{{badge?.goal_image}}" alt="" ngbTooltip="{{badge?.title}}">
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="project-card-footer-3 d-flex justify-content-end">
+                    <ul class="d-flex align-content-start flex-wrap actions-button pull-right">
+                      <!--<app-fork *ngIf="userLogin" [nodeNid]="project.nid" [user]="userLogin.user"></app-fork>-->
+                      <li>
+                        <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [nodeType]="'project'"></app-bookmark>
+                      </li>
+                      <li ngbTooltip="{{toolTips.share}}">
+                        <app-btn-share *ngIf="customTitle" [PageTitle]="customTitle"
+                                       [PageDescription]="customDescription" [PageImage]="customImage"></app-btn-share>
+                      </li>
+                      <li>
+                        <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
+                      </li>
+                      <li class="project-views">
+                        <img src="./assets/images/icons/views.png" alt="">
+                        <span>{{project.views_count}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End image-container -->
+                <div class="col-lg-4 col-md-12 right-side">
+                  <div class="card-container">
+                    <div class="card">
+                      <div class="projects-circle" *ngIf="showcaseName">
+                        <div class="projects-circle m-auto d-flex justify-content-start align-items-center"
+                             *ngIf="showcaseName">
+                          <a *ngIf="previousProject" (click)="NavigateShowcase(previousProject)"
+                             class="go-previous d-flex"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                          <p class=" showcase-nav" *ngIf="showcaseName"><a>{{showcaseName}}: project {{index}} of
+                            Total</a></p>
+                          <a *ngIf="nextProject" (click)="NavigateShowcase(nextProject)"
+                             class="go-next d-flex"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </div>
+                      </div>
+                      <h3 class="card-title pt-2" innerHTML="{{project.title.value}}"></h3>
+                      <div class="card-description">
+                        <p innerHTML="{{project.field_teaser?.value}}"></p>
+                      </div>
+                      <div class="card-date mt-auto">
+                        <span class="project-date pr-2">Project Creation Date: {{project.created}}</span>
+                        <br>
+                        <span class="project-date">Updated on: {{project.changed}}</span>
+                      </div>
+                      <div class="topics d-flex flex-row mt-auto mb-3">
+                        <div class="card-tags" *ngIf="project.field_categories">
+                          <span>Topics:</span>
+                          <span class="project-tag" *ngFor="let category of project.field_categories">
+                            <span *ngIf="!category.is_parent"> {{category.name}}<span class="tags-comma">,</span></span>
+                          </span>
+                          <!--<span class="project-tag pr-1" *ngFor="let tag of tags">{{tag.tag_name}}<span class="tags-comma">,</span></span>-->
+                        </div>
+                      </div>
+                      <div class="project-card-footer d-flex mt-auto"
+                           *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_how_to.value">
+                        <ul class="list-unstyled project-aside d-flex">
+                          <li id="read-story" [ngClass]="{'active': ActiveTab == 'project-story'}"><a
+                              class="btn btn-tabs read-story" (click)="current_active_tab = 'project-story'">Project
+                            Story</a></li>
+                          <li id="build-project" [ngClass]="{'active': ActiveTab == 'project-how-to'}"><a
+                              class="btn btn-tabs build-project"
+                              (click)="current_active_tab = 'project-how-to'">How-to</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End card-container -->
+                </div>
+                <!-- End col-md-6 -->
+              </div>
+            </div>
+            <!-- End Project Header  -->
+            <!-- <div *ngIf="Manager"> 
+                <app-feature-project [featuredProjectId]="projectId"> </app-feature-project>
+              </div> -->
+          </div>
+        </div>
+        <!-- End container -->
+      </div>
+      <!-- End top-content-wrapper -->
+      <div class="container">
+        <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+        <app-project-how-to [project]="projectDetails"
+                            *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
+      </div>
+    </div>
+  </div>
+</div>

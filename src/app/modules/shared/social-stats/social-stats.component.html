@@ -1,0 +1,26 @@
+<ul class="social-stat-group">
+  <li class="social-stat" *ngIf="followerCount">
+    <i class="fa fa-users"></i>
+    <span class="info">{{followerCount}}</span>
+  </li>
+
+  <li class="social-stat" *ngIf="like && nid">
+    <app-likes [nodeNid]="nid"></app-likes> <!--[project]="true"-->
+  </li>
+  <li class="social-stat" *ngIf="profileViews">
+    <i class="fa fa-eye"></i>
+    <span class="info">{{profileViews}}</span>
+  </li>
+  <li class="social-stat" *ngIf="projectsCount">
+    <i class="fa fa-cube"></i>
+    <span class="info">{{projectsCount}}</span>
+  </li>
+
+  <!-- profile view -->
+  <li class="right social-stat" *ngIf="profileView">
+    <app-message-modal class="profile-message" [uid]="uid"></app-message-modal>
+  </li>
+  <li class="right social-stat" *ngIf="profileView">
+    <app-btn-share [PageTitle]="'Maker Portfolio'"></app-btn-share>
+  </li>
+</ul>
