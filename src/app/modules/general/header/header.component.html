@@ -119,19 +119,31 @@
                    href="{{Back_End_Domain}}">Manage</a>
               </li>
               <li class="dropdown-item">
+<<<<<<< HEAD
                 <a [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
+=======
+                <a href="/portfolio"> <!-- need a page refresh here -->
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Profile</span>
                 </a>
               </li>
               <li *ngIf="org_data && org_data.path"
                   class="dropdown-item">
+<<<<<<< HEAD
                 <a [routerLink]="[org_data.path,'edit']">
+=======
+                <a href="{{org_data.path}}/edit">
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Organization Profile</span>
                 </a>
               </li>
               <li *ngIf="!org_data && isManager"
                   class="dropdown-item">
+<<<<<<< HEAD
                 <a routerLink="['/orgs/create']">
+=======
+                <a href="/orgs/create">
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Create Organization</span>
                 </a>
               </li>
@@ -141,17 +153,29 @@
                 </a>
               </li>
               <li class="dropdown-item">
+<<<<<<< HEAD
                 <a [routerLink]="['/inbox-notifications']">
+=======
+                <a href="/inbox-notifications">
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Inbox</span>
                 </a>
               </li>
               <li class="dropdown-item">
+<<<<<<< HEAD
                 <a [routerLink]="['/account/collection/bookmark']">
+=======
+                <a href="/account/collection/bookmark">
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Bookmarks</span>
                 </a>
               </li>
               <li class="dropdown-item">
+<<<<<<< HEAD
                 <a [routerLink]="['/account/settings/notifications']">
+=======
+                <a href="/account/settings/notifications">
+>>>>>>> 2df76433882194feae1323270b59f6db0a6724bd
                   <span class="nav-link">Account Settings</span>
                 </a>
               </li>
