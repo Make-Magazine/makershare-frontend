@@ -11,6 +11,9 @@
   app-project-card, app-company-card, app-showcase-gen-card, app-showcase-card, app-mission-card, app-maker-card {
     min-width: 100%; //this may be bad
     display: flex;
+    * {
+      overflow: visible !important;
+    }
   }
 }
 
@@ -24,9 +27,12 @@
   //cursor: default;
   //pointer-events: none;
 
-  * {
-    transition: all 0.6s ease;
-    -webkit-backface-visibility: hidden;
+   // {
+    // transition: all 0.6s ease;
+    // -webkit-backface-visibility: hidden;
+  // }
+  .tooltip-inner {
+    background: redl
   }
 
   // Allow CTA
@@ -90,6 +96,9 @@
         background-color: $card-hover;
         background-blend-mode: overlay;
         opacity: 1;
+      }
+      a {
+        text-decoration: none;
       }
       .card-description-long {
         opacity: 1;
