@@ -19,7 +19,7 @@
               </div>
               <div class="container-override mt-3 mb-3"
                    *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
-                <button class="-full -big" [routerLink]="['/orgs/create']">Create Org</button>
+                <button class="-full -big" [routerLink]="['/orgs/create']">Create Group</button>
               </div>
               <div class="profile-group">
                 <div class="profile-pic">
@@ -566,8 +566,7 @@
                                  [settings]="ProfilecropperSettings"></img-cropper>
                     <br>
                     <div *ngIf="!ProfilePicData.original">
-                      <p class="drag-photo">Drag a Photo Here</p>
-                      <p class="drag-or">or</p>
+                         
                     </div>
                     <button class="button btn-load-more" [ngClass]="{big:ProfilePicData.original}"
                             (click)="fileinput.click()">
