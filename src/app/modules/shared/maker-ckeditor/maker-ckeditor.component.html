@@ -29,8 +29,8 @@
             <img *ngIf="!imagedata.original" class="image-background" src="./assets/images/icons/Photos Icon.png" alt="">
             <img-cropper [hidden]="!imagedata.original" #imagecropper [image]="imagedata" [settings]="cropperSettings"></img-cropper><br>
             <div>
-              <p>Drag a photo here</p>
-              <p>or</p>
+            <!--   <p>Drag a photo here</p>
+              <p>or</p> -->
             </div>
             <a class="btn btn-load-more" [ngClass]="{big:imagedata.original}" (click)="file.click()">
 				      <span *ngIf="!imagedata.original;else differentphoto">Choose</span>
