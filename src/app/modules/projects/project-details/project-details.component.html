@@ -33,14 +33,14 @@
                         <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [nodeType]="'project'"></app-bookmark>
                       </li>
                       <li ngbTooltip="{{toolTips.share}}">
-                        <app-btn-share *ngIf="customTitle" [PageTitle]="customTitle"
+                        <app-btn-share [PageTitle]="customTitle"
                                        [PageDescription]="customDescription" [PageImage]="customImage"></app-btn-share>
                       </li>
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
                       </li>
                       <li class="project-views">
-                        <img src="./assets/images/icons/views.png" alt="">
+                        <i class="fa fa-eye"></i>
                         <span>{{project.views_count}}</span>
                       </li>
                     </ul>
@@ -82,10 +82,10 @@
                       <div class="project-card-footer d-flex mt-auto"
                            *ngIf="project.field_parts || project.field_tools || project.field_materials || project.field_resources || project.field_how_to.value">
                         <ul class="list-unstyled project-aside d-flex">
-                          <li id="read-story" [ngClass]="{'active': ActiveTab == 'project-story'}"><a
+                          <li id="read-story" [ngClass]="{'active': current_active_tab == 'project-story'}"><a
                               class="btn btn-tabs read-story" (click)="current_active_tab = 'project-story'">Project
                             Story</a></li>
-                          <li id="build-project" [ngClass]="{'active': ActiveTab == 'project-how-to'}"><a
+                          <li id="build-project" [ngClass]="{'active': current_active_tab == 'project-how-to'}"><a
                               class="btn btn-tabs build-project"
                               (click)="current_active_tab = 'project-how-to'">How-to</a></li>
                         </ul>
