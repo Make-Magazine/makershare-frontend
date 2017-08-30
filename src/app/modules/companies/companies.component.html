@@ -1,6 +1,6 @@
 <div class="page-explore mb-5">
   <div class="container page-header mb-5">
-    <h3>Maker Orgs</h3>
+    <h3>Maker Groups</h3>
   </div>
 
   <div class="container clearfix mb-3" *ngIf="countCompanies > 0">
@@ -10,7 +10,7 @@
         <select class="shadowed explore-tags"
                 (change)="selectCompanyType($event.target.value)">
           <option value="0" disabled>Filter By</option>
-          <option value="All">All Organizations</option>
+          <option value="All">All Groups</option>
           <option value="non-profit">non-profit</option>
           <option value="startup">startup</option>
         </select>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <div *ngIf="countCompanies == 0">
-    <h2>There is no Organizations</h2>
+    <h2>There are no Groups</h2>
   </div>
 
   <div class="container items-container p-414">
