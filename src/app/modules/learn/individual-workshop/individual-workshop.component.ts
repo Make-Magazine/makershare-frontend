@@ -207,7 +207,7 @@ export class IndividualWorkshopComponent implements OnInit {
     return (match && match[7].length == 11) ? match[7] : '';
   }
   vimeo_parser(url) {
-    var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
+    var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(orgs\/[A-z]+\/videos\/))?([0-9]+)/;
     var match = url.match(regExp);
     return match[5];
 
