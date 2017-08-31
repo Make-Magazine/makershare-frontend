@@ -41,6 +41,8 @@ export class LikesComponent implements OnInit {
 
   countLikes() {
     this.flagService.flagCount(this.nodeNid, 'like').subscribe(response => {
+      // console.log('response');
+      // console.log(response, this.nodeNid);
       this.countlikes = response['count'] ? response['count'] : 0;
       this.countNumber.emit(this.countlikes);
     });

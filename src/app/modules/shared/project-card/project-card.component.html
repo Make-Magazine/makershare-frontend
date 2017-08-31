@@ -68,9 +68,9 @@
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
-        <img class="card-owner-media" src="{{project.maker_photo}}" />
+        <img class="card-owner-media"[routerLink]="[project.maker_url]"  src="{{project.maker_photo}}" />
         <div class="card-owner-meta-info">
-          <span class="card-title" innerHTML="{{project.project_name}}"></span>
+          <span class="card-title" [routerLink]="['/projects/', project.path]" innerHTML="{{project.project_name}}"></span>
           <div class="card-owners-group">
             <a class="card-owner-link"
                [routerLink]="[project.maker_url]"
