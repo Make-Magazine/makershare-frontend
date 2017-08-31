@@ -10,6 +10,7 @@ import { Auth } from '../../auth0/auth.service';
 export class ShowcaseCardComponent implements OnInit {
   @Input() showcaseCard: ShowcaseCard;
   @Input() projectsCount: number;
+  @Input() nid: number;
   @Input() singleView: boolean = false;
   @Output() Featured = new EventEmitter<number>();
 
