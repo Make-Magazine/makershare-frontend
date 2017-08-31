@@ -47,9 +47,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.getOrgProfile();
     // temp fix for manager
-    setInterval(() => {
+    // setInterval(() => {
       this.isManager = this.auth.IsCommuintyManager();
-    }, 100);
+    // }, 100);
 
     //
 
