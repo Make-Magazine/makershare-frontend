@@ -44,7 +44,7 @@
                   <div class="mt-2 mb-2">
                   </div>
                   <p *ngIf="ProfileInfo.nickname" class="profile-nickname">{{ProfileInfo.nickname}}</p>
-                  <p class="placeholder-text" *ngIf="!ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
+                  <p class="placeholder-text" *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.nickname">{{PlaceholderText.nickname}}</p>
                   <ul class="list-unstyled location">
                     <li *ngIf="ProfileInfo.address && ProfileInfo.address.country == 'United States'"><span
                         *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.governorate}}
@@ -52,14 +52,14 @@
                     <li *ngIf="ProfileInfo.address && ProfileInfo.address.country != 'United States'"><span
                         *ngIf="ProfileInfo.address.city">{{ProfileInfo.address.city}}, </span>{{ProfileInfo.address.country}}
                     </li>
-                    <li *ngIf="!ProfileInfo.address || ProfileInfo.address == '' || ProfileInfo.address.country == '' ">
+                    <li *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.address || ProfileInfo.address == '' || ProfileInfo.address.country == '' ">
                       <p class="placeholder-text">{{PlaceholderText.address}}</p>
                     </li>
                   </ul>
                   <span class="toggleProfile" (click)="ToggleProfile()">
-										<i class="lnr lnr lnr-chevron-down open"></i>
-										<i class="lnr lnr lnr-cross close"></i>
-									</span>
+                    <i class="lnr lnr lnr-chevron-down open"></i>
+                    <i class="lnr lnr lnr-cross close"></i>
+                  </span>
                   <a class="profile-share">
                     <app-btn-share [showLabel]="false" [PageTitle]="'Maker Portfolio'"
                                    [PageDescription]="customDescription"
@@ -96,7 +96,7 @@
                       <span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
                     </div>
                   </div>
-                  <div *ngIf="!ProfileInfo.bio" class="bio">
+                  <div *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.bio" class="bio">
                     <p class="placeholder-text">{{PlaceholderText.bio}}</p>
                   </div>
                   <hr class="hideData">
@@ -105,7 +105,7 @@
                 <!--<hr *ngIf="CurrentLoggedUserId != uid  && auth.authenticated()">-->
                 <div class="hideData">
                   <p class="global-title">Social</p>
-                  <p class="placeholder-text" *ngIf="isEmpty(ProfileInfo.field_social_accounts)">
+                  <p class="placeholder-text">
                     {{PlaceholderText.social}}</p>
                   <div class="social-links d-flex flex-wrap">
                     <div class="social-container" *ngIf="ProfileInfo.field_social_accounts.field_facebook != '' ">
@@ -188,7 +188,7 @@
                       </a>
                     </div>
                     <div class="social-container"
-                         *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow	 != '' ">
+                         *ngIf="ProfileInfo.field_social_accounts.field_stackoverflow  != '' ">
                       <a class="nav-link social stack" target="_blank"
                          href="{{ProfileInfo.field_social_accounts.field_stackoverflow}}">
                         <img src="./assets/images/icons/stackoverflow.svg" alt="">
@@ -205,13 +205,13 @@
                 <ul class="list-unstyled makerspaces hideData">
                   <p class="global-title">Makerspaces</p>
                   <span
-                      *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0 && !isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])">
-										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
-											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url"
+                      >
+                    <div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
+                      <a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url"
                          href="{{makerspace.field_makerspace_url}}" target="_blank">  {{makerspace.field_makerspace_name}} </a>
-											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
-										</div>
-									</span>
+                      <div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
+                    </div>
+                  </span>
                 </ul>
                 <ul *ngIf="ProfileInfo.field_add_your_makerspace_s_.length  <= 0 || isEmpty(ProfileInfo.field_add_your_makerspace_s_[0])"
                     class="list-unstyled makerspaces hideData">
@@ -238,8 +238,8 @@
                 <div class="how hideData">
                   <!-- Start How -->
                   <p class="global-title">My Maker Moment</p>
-                  <div class="paragraph-style-sheesh">
-                    <div *ngIf="ProfileInfo.started_making" class="started_making">
+                  <div class="paragraph-style-sheesh" *ngIf="ProfileInfo.started_making.length">
+                    <div class="started_making">
                       <div *ngIf="ReadMoreFields.started_making">
                         <span class="read-less" (click)="ReadMoreFields.started_making = false"><i
                             class="lnr lnr-cross"></i></span>
@@ -256,7 +256,7 @@
                     </div> -->
                     </div>
                   </div>
-                  <p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">
+                  <p *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.started_making" class="started_making" class="placeholder-text">
                     {{PlaceholderText.started_making}}</p>
                 </div>
                 <hr class="hideData">
@@ -265,20 +265,65 @@
                   {{PlaceholderText.interests}}</p>
                 <p class="hideData topic-tags">
                   <span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
-										<i *ngIf="i != ProfileInfo.maker_interests.length-1 && interest.name && interest.tid"><span
+                    <i *ngIf="i != ProfileInfo.maker_interests.length-1 && interest.name && interest.tid"><span
                         [innerHTML]="interest.name"></span>,</i>
                   <i *ngIf="i == ProfileInfo.maker_interests.length-1 && interest.name && interest.tid"><span
                       [innerHTML]="interest.name"></span></i>
                   </span>
                 </p>
                 <span class="hideData toggleProfile" (click)="ToggleProfile()">
-									<i class="lnr lnr lnr-chevron-down open"></i>
-									<i class="lnr lnr lnr-cross close"></i>
-								</span>
+                  <i class="lnr lnr lnr-chevron-down open"></i>
+                  <i class="lnr lnr lnr-cross close"></i>
+                </span>
                 <!-- End How -->
               </div>
               <!-- End col-md-3 -->
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!--- WHAT THE HELL????? -->
             <!-- asldkfjsdlkfjsdlfkjsdlkfjsdlkfjsldkfjsldkfjsdlkfjdsf -->
             <div class="profile-container" *ngIf="CurrentLoggedUserId != uid">
@@ -297,10 +342,10 @@
                                                                       (click)="ReadMoreFields.bio = true">Read More</span>
                     </div>
                   </div>
-                  <div *ngIf="!ProfileInfo.bio" class="bio">
+                  <div *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.bio" class="bio">
                     <p class="placeholder-text">{{PlaceholderText.bio}}</p>
                   </div>
-                  <hr class="hideData">
+                  <hr class="hideData" *ngIf="!emptySocial">
                 </div>
 
                 <!-- End Bio -->
@@ -396,18 +441,18 @@
                   </div>
                   <div class="clearfix"></div>
                 </div>
-                <hr class="hideData" *ngIf="!emptySocial">
+                <hr class="hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_.legnth > 0">
                 <ul class="list-unstyled makerspaces hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_ != ''">
-                  <p class="global-title">Makerspaces</p>
-                  <span *ngIf="ProfileInfo.field_add_your_makerspace_s_.length > 0">
+                  <p class="global-title" *ngIf="ProfileInfo.field_add_your_makerspace_s_.legnth > 0">Makerspaces</p>
+                  <span >
 										<div *ngFor="let makerspace of ProfileInfo.field_add_your_makerspace_s_">
 											<a *ngIf="makerspace.field_makerspace_name && makerspace.field_makerspace_url"
                          href="{{makerspace.field_makerspace_url}}" target="_blank">  {{makerspace.field_makerspace_name}} </a>
 											<div *ngIf="makerspace.field_makerspace_name && !makerspace.field_makerspace_url"> {{makerspace.field_makerspace_name}} </div>
 										</div>
-										<hr class="hideData" *ngIf="ProfileInfo.field_add_your_makerspace_s_  != ''">
-									</span>
+                  </span>
                 </ul>
+										<hr class="hideData" *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
                 <div class="hideData websites">
                   <p class="global-title"
                      *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
@@ -423,11 +468,11 @@
                   </div>
                 </div>
                 <hr class="hideData"
-                    *ngIf="ProfileInfo.field_social_accounts.field_website_or_blog != '' || ProfileInfo.field_social_accounts.field_additional_site != ''">
+                    *ngIf="ProfileInfo.started_making">
                 <div class="how hideData">
                   <!-- Start How -->
-                  <p class="global-title">My Maker Moment</p>
-                  <div class="paragraph-style-sheesh" *ngIf="ProfileInfo.started_making" class="started_making">
+                  <p class="global-title" *ngIf="ProfileInfo.started_making">My Maker Moment</p>
+                  <div class="paragraph-style-sheesh" class="started_making">
                     <div *ngIf="ReadMoreFields.started_making">
                       <span class="read-less" (click)="ReadMoreFields.started_making = false"><i
                           class="lnr lnr-cross"></i></span>
@@ -443,7 +488,7 @@
                       <span *ngIf="ProfileInfo.started_making.length > 85" (click)="ReadMoreFields.started_making = true">Read More</span>
                     </div> -->
                   </div>
-                  <p *ngIf="!ProfileInfo.started_making" class="started_making" class="placeholder-text">
+                  <p *ngIf="CurrentLoggedUserId == uid && !ProfileInfo.started_making" class="started_making" class="placeholder-text">
                     {{PlaceholderText.started_making}}</p>
                 </div>
                 <hr class="hideData" *ngIf="ProfileInfo.started_making">
