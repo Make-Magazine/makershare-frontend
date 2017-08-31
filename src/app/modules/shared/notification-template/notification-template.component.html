@@ -55,9 +55,9 @@
       </div>
 
       <div class="media-body" *ngIf="notification.type == 'follow_user'">
+        <span>You have a new follower: </span>
         <span class="link text-capitalize"
               (click)="OpenNotification(notification.uid)">{{notification.fullname}}</span>
-        <span> followed you </span>
         <p class="notf-date">{{notification.date}}</p>
       </div>
 
@@ -216,9 +216,9 @@
           <img class="d-flex mr-3" src="{{notification.profile_photo}}" alt="" class="img-responsive">
         </a>
       </div>
+        <span>You have a new follower: </span>
       <div class="media-body">
         <span class="link text-capitalize" (click)="OpenNotification(notification.uid)">{{notification.fullname}}</span>
-        <span> followed you </span>
         <p class="notf-date">{{notification.date}}</p>
       </div>
       <div class="delete">

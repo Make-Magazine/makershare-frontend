@@ -251,8 +251,10 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('click', '#search-icon', function () {
-    $('#search-box-input').focus();
+  $('.icon-search.nav-link').on('click', function () {
+    setTimeout(function() {
+      $('#search-box-input').focus();
+    }, 200);
   })
 
   // Toggle profile sidebar view
