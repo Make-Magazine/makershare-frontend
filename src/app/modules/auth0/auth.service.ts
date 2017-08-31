@@ -178,9 +178,14 @@ export class Auth {
             this.profilePictureService.update(res.user_photo);
             // redirect to the profile page if it's first time
             if (res.first_time == true) {
-              this.router.navigate(['/portfolio']);
+              setTimeout(function() {
+                this.router.navigate(['portfolio']);
+                window.location.reload();
+              }, 1000);
+
             } else if (res.user_photo.indexOf('profile-default') < 0) {
               this.router.navigate(['/']);
+              window.location.reload();
             } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
               this.notificationBarService.create({
                 message:
@@ -191,6 +196,7 @@ export class Auth {
                 hideOnHover: false,
               });
               this.router.navigate(['/portfolio']);
+              window.location.reload();
             }
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
