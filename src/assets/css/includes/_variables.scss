@@ -65,7 +65,7 @@ $media-style: max-width;
   @media only screen and ($media-style: $breakpoint + px) { @content; }
 }
 
-$phone: 768;
+$phone: 968;
 $tablet: 1280;
 $desktop: 1460;
 

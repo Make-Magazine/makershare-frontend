@@ -2,7 +2,7 @@ app-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  @include phone() {
+  @include tablet() {
     position: relative;
   }
 }

@@ -1,3 +1,3 @@
-<div class="feature-container" (click)="feature($event)" [ngClass]="{active : isFeatured}">
+<div class="feature-container" (click)="feature($event)" [ngClass]="{active : isFeatured}" ngbTooltip="{{isFeatured ? 'Unfeature' : 'Feature'}}">
 	<span class="feature"><i class="fa fa-flag" aria-hidden="true"></i></span>
 </div>

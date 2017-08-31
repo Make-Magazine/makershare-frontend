@@ -82,6 +82,13 @@
     .flex-text-container {
       // color: $med-grey;
     }
+    .info-bottom {
+      background: white;
+      position: relative;
+    }
+    .social-stat-group {
+      bottom: -0.8rem;
+    }
   }
 
   // ///////////////////
@@ -162,19 +169,27 @@
       }
     }
 
-    @include tablet() {
+    @include phone() {
       .info-top {
-        width: 50%;
+        width: 100%;
       }
       .card-info {
-        margin-left: 50%;
+        margin-left: 0%;
         padding-bottom: 100%;
+        width: 100%;
+        // margin-bottom: 20%;
       }
       .card-image {
-        width: 50%;
+        width: 100%;
+        height: 50%
       }
       .info-bottom {
-        width: 75%;
+            width: 100%;
+        position: absolute;
+        margin-top: 52%;
+        .social-stat-group {
+            bottom: -1.5rem !important;
+        }
       }
     }
 
