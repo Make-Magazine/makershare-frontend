@@ -57,10 +57,7 @@
         </li>
 
         <li class="social-stat">
-          <app-likes [likesCount]="showcaseCard.likes_count"
-                     [nodeNid]="showcaseCard.nid"
-                     [userId]="userId"
-                     (countNumber)="likesCounter($event)"></app-likes>
+          <app-likes *ngIf="nid" [nodeNid]="nid"></app-likes>
         </li>
 
         <li class="social-stat">

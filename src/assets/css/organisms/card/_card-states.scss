@@ -430,6 +430,9 @@
   // ///////////////////
   // project - wide
   &.project {
+    .card-title, .card-owner-media {
+      cursor: pointer;
+    }
     &.wide {
       .card-title {
         margin-bottom: 0;
