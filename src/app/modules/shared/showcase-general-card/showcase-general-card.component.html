@@ -16,11 +16,11 @@
       <div class="card-image alt" *ngIf="makers.length > 0"></div>
       <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">showcase</div>
-      <a class="flex-text-container" href="showcases/{{showcase.path}}">
+      <div class="flex-text-container" [routerLink]="['/showcases/', showcase.path]">
         <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
         <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)"
            innerHTML="{{showcase.description_trim}}"></p>
-      </a>
+      </div>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
@@ -38,11 +38,11 @@
           <!-- <i class="fa fa-lightbulb-o"></i> -->
           <!-- <span class="info">54678</span> -->
         </li>
-        <li class="social-stat" *ngIf="showcase.number_of_project">
+        <!-- <li class="social-stat" *ngIf="showcase.number_of_project"> -->
           <!-- <app-likes [nodeNid]="showcase.nid" [project]="true"></app-likes> -->
-          <i class="fa fa-dot-circle-o"></i>
-          <span class="info">{{showcase.number_of_project}}</span>
-        </li>
+          <!-- <i class="fa fa-dot-circle-o"></i> -->
+          <!-- <span class="info">{{showcase.number_of_project}}</span> -->
+        <!-- </li> -->
         <li class="social-stat">
           <i class="fa fa-eye"></i>
           <span class="info">{{showcase.views_count}}</span>
