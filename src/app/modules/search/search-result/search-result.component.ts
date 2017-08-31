@@ -68,15 +68,15 @@ export class SearchResultComponent implements OnInit {
               } else if (element.tm_name && element.tm_name.length > 0) {
                 if (element.tm_field_first_name) {
                   newResult.push(
-                    element.tm_field_first_name[0] +
-                      ' ' +
-                      element.tm_field_last_name[0],
+                    element.tm_field_first_name[0] + ' ' + element.tm_field_last_name[0],
                   );
                 } else {
                   newResult.push(element.tm_name[0]);
                 }
               }
             });
+
+            console.log(newResult, newResult.length);
 
             return newResult;
           });

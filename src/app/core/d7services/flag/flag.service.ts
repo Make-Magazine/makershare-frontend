@@ -14,6 +14,13 @@ export class FlagService {
     };
     return this.mainService.custompost('flag/is_flagged', obj);
   }
+  isFeatureFlagged(nid: number, flag_name: string): Observable<any> {
+    var obj = {
+      flag_name: flag_name, // like, fork, node_bookmark
+      entity_id: nid,
+    };
+    return this.mainService.custompost('flag/is_flagged', obj);
+  }
   flag(
     nid: number,
     uid: number,

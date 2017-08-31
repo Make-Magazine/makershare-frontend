@@ -1,3 +1,15 @@
 .profile-sidebar {
 	// transition: padding-top 0.8s ease;	
 }
+
+.first-photo-upload {
+    margin: 2rem auto;
+    width: 100%;
+    a {
+        margin: auto !important;
+    	display: block !important;
+    	text-align: center !important;
+    	position: relative !important;
+    	bottom: inherit !important;
+    }
+}

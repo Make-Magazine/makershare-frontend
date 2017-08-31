@@ -5,7 +5,7 @@
 
   <div class="form-group required">
     <div class="form-label">
-      <label for="orgName">Organization Name</label>
+      <label for="orgName">Group Name</label>
     </div>
     <div class="form-ctl">
       <input type="text"
@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <div class="form-label">
-      <label>Organization Type</label>
+      <label>Group Type</label>
     </div>
     <div class="form-ctl">
       <input type="radio"
@@ -54,7 +54,7 @@
 
   <div class="form-group required">
     <div class="form-label">
-      <label>Organization Logo</label>
+      <label>Group Logo</label>
       <span>logo must work at small size (20 x 20)</span>
     </div>
     <div class="form-ctl">
@@ -100,7 +100,7 @@
 
   <div class="form-group required">
     <div class="form-label">
-      <label>Organization Avatar</label>
+      <label>Group Avatar</label>
       <span>Should be at max 104px square</span>
     </div>
     <div class="form-ctl">
@@ -436,8 +436,8 @@
                          [image]="imageData"
                          [settings]="cropperSettings"></img-cropper>
             <div>
-              <p>Drag a photo here</p>
-              <p>or</p>
+             <!--  <p>Drag a photo here</p>
+              <p>or</p> -->
             </div>
             <button class="btn btn-load-more"
                     [ngClass]="{big:imageData.original}"

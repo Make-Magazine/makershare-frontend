@@ -1,11 +1,11 @@
 <div>
   <a class="report" *ngIf="!isReported && EntityType=='user'" (click)="open(content)">Report this user</a>
-  <a class="report" *ngIf="!isReported && typeOfNode=='orgs'" (click)="open(content)">Report this organization</a>
+  <a class="report" *ngIf="!isReported && typeOfNode=='orgs'" (click)="open(content)">Report this group</a>
   <a class="report" *ngIf="!isReported && typeOfNode=='project'" (click)="open(content)">Report this project</a>
   <a class="report" *ngIf="!isReported && EntityType=='comment'" (click)="onSubmit($event)">Report this comment</a>
 
   <p *ngIf="isReported && EntityType=='user'"> User has been reported </p>
-  <p *ngIf="isReported && typeOfNode=='orgs'"> Organization has been reported </p>
+  <p *ngIf="isReported && typeOfNode=='orgs'"> Group has been reported </p>
   <p *ngIf="isReported  && typeOfNode=='project'"> Project has been reported </p>
   <p *ngIf="isReported && EntityType=='comment'"> Comment has been reported </p>
 
@@ -25,7 +25,7 @@
                   <option *ngIf="typeOfNode=='project' || typeofNode=='orgs'"  value="not_safe">Not safe for work</option>
                   <option *ngIf="typeOfNode=='project'" value="hate_language">Uses hate language</option>
                   <option *ngIf="typeOfNode=='project'" value="copyright">Violates a copyright</option> 
-                  <option *ngIf="typeOfNode=='orgs'" value="misrepresented">This organization is misrepresenting projects</option>
+                  <option *ngIf="typeOfNode=='orgs'" value="misrepresented">This group is misrepresenting projects</option>
                   <option *ngIf="EntityType=='user'" value="annoying">This person is annoying me</option>
                   <option *ngIf="EntityType=='user'" value="pretending">They're pretending to be me or someone </option>
                   <option *ngIf="EntityType=='user'" value="safe">This profile Isn't safe for work</option>

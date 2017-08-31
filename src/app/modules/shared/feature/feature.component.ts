@@ -22,18 +22,21 @@ export class FeatureComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userId = localStorage.getItem('user_id');
+    // this.userId = localStorage.getItem('user_id');
 
-    this.userService.isLogedIn().subscribe(data => {
-      this.checkUserLogin = data;
-      if (data) {
+    // this.userService.isLogedIn().subscribe(data => {
+    //   this.checkUserLogin = data;
+    //   if (data) {
         this.flagService
-          .isFlagged(this.id, this.userId, 'feature_' + this.type)
+          .isFeatureFlagged(this.id, 'feature_' + this.type)
           .subscribe(data => {
+            console.log('data');
+            console.log(data);
+
             this.isFeatured = data[0];
           });
-      }
-    });
+    //   }
+    // });
   }
 
   feature(e: Event) {

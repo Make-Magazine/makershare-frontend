@@ -44,6 +44,7 @@ export class MissionCardComponent implements OnInit {
       .subscribe(
         data => {
           const tmpChallenge = data[0];
+          console.log(data[0].followers);
           // calculate days difference
           if (this.challenge) {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -88,6 +89,8 @@ export class MissionCardComponent implements OnInit {
             tmpChallenge.winners_announcement_date.value,
           );
 
+          tmpChallenge.nbFollowers = tmpChallenge.followers;
+
           Object.assign(this.challenge, tmpChallenge);
         },
         err => {},
@@ -100,7 +103,7 @@ export class MissionCardComponent implements OnInit {
       .getView('maker_count_project_challenge_api/' + this.challengeNid)
       .subscribe(
         d => {
-          this.challenge.nbProjects = d ? 0 : d;
+          this.challenge.nbProjects = d[0] > 0 ? d[0] : 0;
         },
         err => {},
       );
@@ -135,8 +138,8 @@ export class MissionCardComponent implements OnInit {
     });
   }
 
-  followersCounter(count) {
-    this.challenge.nbFollowers = count;
+  followersCounter() {
+    // this.challenge.nbFollowers = this.challenge.followers > 0 ? this.challenge.followers : 0;
   }
 
   emitFeatured() {
