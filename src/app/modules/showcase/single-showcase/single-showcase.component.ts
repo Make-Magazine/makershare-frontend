@@ -83,8 +83,9 @@ export class SingleShowcaseComponent implements OnInit {
       .getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
+        
         // this.showcase.nid = this.showcaseNid;
-        console.log(this.showcase);
+        // console.log(this.showcase);
         this.contentCount = data[0].projects_makers_count;
 
         if (this.showcase['showcase_type'] == 'Project') {
