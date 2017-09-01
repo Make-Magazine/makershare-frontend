@@ -24,6 +24,10 @@
   position: relative;
   min-height: 100%;
   flex-basis: 100%;
+  overflow: visible;
+  * {
+    overflow: visible;
+  }
   //cursor: default;
   //pointer-events: none;
 
