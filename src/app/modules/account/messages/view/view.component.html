@@ -10,7 +10,7 @@
       <div class="single-msg-user" *ngFor="let participant of participants;  let i=index;">
         <!--<a (click)="userProfile(participant.first_name,participant.last_name)"><img class="paricipent-img" src="{{participant?.user_photo}}"> </a>-->
         <p class="sender">
-          <a class="send_to_user" *ngIf="participant.status == 'active'" (click)="userProfile(participant.first_name,participant.last_name)">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
+          <a class="send_to_user" *ngIf="participant.status == 'active'" (click)="userProfile(participant.first_name, participant.last_name)">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
           <a class="send_to_user" *ngIf="participant.status == 'blocked'">{{toTitleCase(participant?.first_name)}} {{toTitleCase(participant?.last_name)}}{{i===participants.length -1 ? ' ' : ',&nbsp;'}}</a>
         </p>
       </div>

@@ -308,7 +308,11 @@ export class ViewComponent implements OnInit {
   }
 
   userProfile(fName, lName) {
-    this.router.navigate(['/portfolio/', `${fName}-${lName}`]);
+    if(fName.indexOf(" ") >= 0) {
+      fName = fName.split(" ").pop();
+    }
+    let path = fName + "-" + lName;
+    this.router.navigate(['/portfolio/', path]);
   }
 
   // capitalize First Letter
