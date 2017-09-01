@@ -14,7 +14,7 @@
         <div class="wrapper d-flex d-row" *ngIf="message" (click)="viewMessage(message.thread_id)">
           <div class="media message-info">
             <div class="media-left">
-              <a *ngIf="message.status == 'active'" [routerLink]="['/portfolio/',message.alias]">
+              <a *ngIf="message.status == 'active'">
                 <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
               </a>
               <a *ngIf="message.status == 'blocked'">
