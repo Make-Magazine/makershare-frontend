@@ -523,9 +523,9 @@
         <div class="right-section col-lg-8 col-md-6">
           <!-- Start Content-region -->
           <div class="profile-view-control-container" *ngIf="CurrentLoggedUserId != uid">
-            <i *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'showcase'"
+            <i ngbTooltip="Showcase View/Grid View" *ngIf="profile.projects_view == 'grid'" [ngClass]="{'not_active': profile.projects_view != 'grid'}" (click)="profile.projects_view = 'showcase'"
                class="grid-view fa fa-th-large"></i>
-            <i *ngIf="profile.projects_view == 'showcase'" [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'"
+            <i ngbTooltip="Showcase View/Grid View" *ngIf="profile.projects_view == 'showcase'" [ngClass]="{'not_active': profile.projects_view != 'showcase'}" (click)="profile.projects_view = 'grid'"
                class="fa fa-bars"></i>
           </div>
 
