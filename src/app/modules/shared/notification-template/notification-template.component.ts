@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {
   MainService,
   UserService,
+  ViewService,
   PmService,
   NodeService,
 } from '../../../core/d7services';
@@ -27,6 +28,7 @@ export class NotificationTemplateComponent implements OnInit {
   constructor(
     private router: Router,
     private mainService: MainService,
+    private viewService: ViewService,
     private userService: UserService,
     private pm: PmService,
     private nodeService: NodeService,
@@ -37,6 +39,13 @@ export class NotificationTemplateComponent implements OnInit {
       this.notification.fullname =
         this.notification.first_name + ' ' + this.notification.last_name;
       this.notification.date = this.timeago(this.notification.date);
+
+      if(this.notification.type === "project_collaborator_added") {
+        this.viewService.getView('api-project-card', [['nid', this.notification.nid]])
+          .subscribe(res => {
+            this.notification.title = res[0].project_name;
+          });
+        }
     }
     this.messageNotifications();
   }
@@ -102,7 +111,7 @@ export class NotificationTemplateComponent implements OnInit {
 
   GoToProfile(path: string) {
     // should redirect to profile
-    this.router.navigate(['portfolio', 'abdulrahman-alhomsi']);
+    // this.router.navigate(['portfolio', 'abdulrahman-alhomsi']);
   }
 
   GoToNode(nid: number, type: string) {
