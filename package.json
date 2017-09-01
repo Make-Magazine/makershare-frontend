@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "makershare",
   "main": "dist-server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Make-Magazine/makershare-frontend.git"
+  },
   "scripts": {
     "build": "npm-run-all --parallel build:client build:server",
     "build:client": "webpack -p --config webpack-client.config.js",

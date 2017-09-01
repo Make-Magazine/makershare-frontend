@@ -29,10 +29,19 @@ $ ng serve --lr=false
 
 # For Universal
 ---------------------
+`npm install pm2@latest -g` // if you haven't done that yet
+- `npm run build`
+- `cp -r src/assets dist/assets`
+- `sass dist/assets/css/style.scss dist/assets/css/style.css`
+- `pm2 start dist-server/index.js --max-memory-restart 800M`
+
+/////// old code ////////
 - `npm run build`
 - `cp -r src/assets dist/assets`
 - `sass dist/assets/css/style.scss dist/assets/css/style.css`
 - `npm run start`
+/////// end old code //////////
+
 
 
 
