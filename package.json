@@ -18,7 +18,7 @@
     "run-server": "nodemon ./dist-server/index.js",
     "start:watch": "nodemon -C ./dist-server/index.js",
     "buildall": "npm install && npm run build && pm2 stop all && sudo cp -r src/assets dist/assets && sass dist/assets/css/style.scss dist/assets/css/style.css && pm2 restart all",
-    "postmerge": "npm run builall"
+    "postmerge": "npm run builall --no-verify"
   },
   "license": "BSD-2-Clause",
   "browserslist": [
