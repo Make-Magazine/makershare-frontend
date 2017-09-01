@@ -21,7 +21,7 @@
     "copyassets": "cp -r src/assets dist/assets",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
     "startServer": "pm2 restart all",
-    "postupdate": "npm run buildall" 
+    "postcheckout": "npm run buildall" 
   },
   "license": "BSD-2-Clause",
   "browserslist": [
