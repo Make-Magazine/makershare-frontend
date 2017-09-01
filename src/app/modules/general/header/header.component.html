@@ -99,7 +99,7 @@
           <!--</a>-->
         </li>
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
-          <a class="button" [routerLink]="['/projects/create']">+</a>
+          <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
         <li class="nav-item">
           <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
