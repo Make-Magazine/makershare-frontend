@@ -4,6 +4,7 @@ html {
   background: $lighter-grey;
   height: 100%;
   background: red !important; // just an obvious test for integrating git post-merge hook on the server
+  color: green !important;
 }
 
 body {
