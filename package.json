@@ -21,7 +21,7 @@
     "copyassets": "cp -r src/assets dist/assets",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
     "startServer": "pm2 restart all",
-    "postcheckout": "npm run buildall"
+    "postmerge": "npm run buildall" 
   },
   "license": "BSD-2-Clause",
   "browserslist": [
@@ -71,7 +71,6 @@
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
-    "pmx": "^1.2.0",
     "preboot": "^4.5.2",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.10",
