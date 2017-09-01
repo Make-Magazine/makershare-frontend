@@ -46,7 +46,9 @@ export class NotificationPanelComponent implements OnInit {
       ])
       .subscribe(
         data => {
-          this.notifications = data;
+          // console.log(data);
+         
+            this.notifications = data;
 
           /*this.notifications.push({
             title: 'title of not',
