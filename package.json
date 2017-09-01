@@ -19,7 +19,7 @@
     "start:watch": "nodemon -C ./dist-server/index.js",
     "buildall": "./build.sh && npm run copyassets && npm run sassIt && npm run startServer",
     "copyassets": "cp -r src/assets dist/assets",
-    "sassIt": "sass dist/assets/css/style.scss dist/assets/css/style.css",
+    "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
     "startServer": "pm2 restart all",
     "postmerge": "npm run buildall" 
   },
