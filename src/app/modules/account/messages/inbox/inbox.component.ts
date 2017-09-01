@@ -209,7 +209,7 @@ export class InboxComponent implements OnInit {
       if (this.msg.length == 0) {
         this.noMessage = true;
       }
-
+      console.log(this.msg);
       this.loadMoreVisibilty();
     })
   }
