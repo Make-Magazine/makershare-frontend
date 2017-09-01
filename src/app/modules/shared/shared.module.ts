@@ -182,6 +182,7 @@ import { FollowOrgsComponent } from './follow-orgs/follow-orgs.component';
     FollowOrgsComponent,
   ],
 })
+
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {

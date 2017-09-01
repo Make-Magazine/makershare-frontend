@@ -4,6 +4,7 @@ import {Singleton} from '../../core/models/application/singleton';
 import * as auth0 from 'auth0-js';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 import {
   NotificationBarService,
   NotificationType,
@@ -29,6 +30,7 @@ export class Auth {
 
   constructor(
     public router: Router,
+    private http:Http,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -71,6 +73,23 @@ export class Auth {
         },
       );
     });
+  }
+    /**
+   * signupNewsletter
+   *
+   * @param {string} email
+   */
+  public signupNewsletter(email: string) {
+    let url = "http://whatcounts.com/bin/listctrl";
+    let params = {
+      'slid': '6B5869DC547D3D46072290AE725EC932',
+      'cmd': 'subscribe',
+      'goto': '',
+      'email': email
+    }
+    this.http.post(url, JSON.stringify(params)).subscribe((data:any) => {
+      console.log(data);
+    })
   }
 
   /**
