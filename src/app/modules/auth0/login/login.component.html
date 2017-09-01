@@ -67,6 +67,10 @@
             <div class="text-center">
               <a class="forgot-link" (click)="current_active_tab = 'forgetPass'">Forgot your password?</a>
             </div>
+            <div class="text-center">
+              <input type="checkbox" name="signupForNewsletter" (change)="this.subscribeUpdate()" checked>
+              <label for="signupForNewsletter">Subscribe to newsletter</label>
+            </div>
 
             <button type="submit"
                     [disabled]="loading"
@@ -99,6 +103,7 @@
             <button class="login-main-action" (click)="resetPassword(forgetEmail.email)">Submit</button>
             <p *ngIf="resetSent == true">an email with reset link has been sent to your email</p>
           </form>
+
 
           <form #signupForm="ngForm" *ngIf="current_active_tab == 'signup'" id="signup">
             <div class="alert alert-danger"
@@ -281,6 +286,11 @@
                   Please accept the license agreement
                 </div>
               </div>
+            </div>
+
+            <div class="text-center">
+              <input type="checkbox" name="signupForNewsletter" (change)="this.subscribeUpdate()" checked>
+              <label for="signupForNewsletter">Subscribe to newsletter</label>
             </div>
 
             <button type="submit"
