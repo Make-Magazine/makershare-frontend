@@ -99,11 +99,11 @@ export class InboxComponent implements OnInit {
                 if (this.messages[key].recipient[i].recipient != this.userId) {
                   //console.log(this.messages[key].recipient[i].recipient);
                   this.user.getUser(this.messages[key].recipient[i].recipient).subscribe(res => {
-                    // console.log(res);
+                    console.log(res);
                     if (this.messages[key].recipient.length > 2) {
                       var temp_user = {};
                       temp_user['send_group_msg'] = true;
-                      temp_user['user_photo'] = res.user_photo;
+                      temp_user['user_photo'] = res.user_photo_with_style;
                       temp_user['first_name'] = res.first_name;
                       temp_user['last_name'] = res.last_name;
                       temp_user['alias'] = res.path_alias;
@@ -111,7 +111,7 @@ export class InboxComponent implements OnInit {
                       this.messages[key].recivers.push(temp_user);
                     } else {
                       this.messages[key].sender_msg = true;
-                      this.messages[key].user_photo = res.user_photo;
+                      this.messages[key].user_photo = res.user_photo_with_style;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
                       this.messages[key].alias = res.path_alias;
@@ -212,7 +212,7 @@ export class InboxComponent implements OnInit {
       if (this.msg.length == 0) {
         this.noMessage = true;
       }
-      console.log(this.msg);
+      // console.log(this.msg);
       this.loadMoreVisibilty();
     })
   }
