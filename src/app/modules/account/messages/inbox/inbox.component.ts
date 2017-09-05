@@ -1,5 +1,6 @@
 import { Location } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
+import {Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { PmService, UserService, ViewService } from '../../../../core/d7services'
@@ -47,11 +48,13 @@ export class InboxComponent implements OnInit {
     private viewService: ViewService,
     private _location: Location,
     private config: NgbTooltipConfig,
+    private title: Title,
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
   }
   ngOnInit(): void {
+    this.title.setTitle('Inbox | Maker Share');
     this.getStatus();
     this.CountMessages();
     this.getMessages();
