@@ -435,6 +435,7 @@
       cursor: pointer;
     }
     &.wide {
+      overflow: hidden;
       .card-title {
         margin-bottom: 0;
       }
