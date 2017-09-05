@@ -1,6 +1,6 @@
 <div ngbTooltip="{{isLiked ? 'Unlike this idea' : 'Like this idea'}}"
      (click)="likeThis($event)"
      class="app-views">
-  <i class="fa fa-lightbulb-o {{isLiked ? 'is-liked' : ''}}"></i>
+  <i class="fa fa-lightbulb-o {{isLiked ? 'is-liked' : ''}}" style="cursor: pointer;"></i>
   <span class="info">{{countlikes}}</span>
 </div>
