@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 // import { PmService, UserService } from 'app/CORE/d7services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -57,6 +58,7 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private pm: PmService,
     private router: Router,
+     private title: Title,
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,
@@ -68,6 +70,7 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('Inbox | Maker Share');
     // this.getBlockedUser();
     this.getStatus();
     this.buildForm();
