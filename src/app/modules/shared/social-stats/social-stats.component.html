@@ -21,6 +21,10 @@
     <app-message-modal class="profile-message" [uid]="uid"></app-message-modal>
   </li>
   <li class="right social-stat" *ngIf="profileView">
-    <app-btn-share [PageTitle]="'Maker Portfolio'"></app-btn-share>
+    <!-- <app-btn-share [PageTitle]="'Maker Portfolio'"></app-btn-share> -->
+    <app-btn-share [showLabel]="false"
+                           [PageTitle]="'Maker Portfolio'"
+                           [PageDescription]="null"
+                           [PageImage]="null"></app-btn-share>
   </li>
 </ul>
