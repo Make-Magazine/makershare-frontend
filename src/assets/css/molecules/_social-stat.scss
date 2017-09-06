@@ -4,7 +4,7 @@
   }
   i, span, .icon, .info {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     width: auto !important; // unkown source is continuing to inject .profile-container .profile-sidebar i { width: 25px; }
   }
   span.icon {
@@ -31,4 +31,28 @@
 }
 i.is-liked {
     color: $yellow;
+  }
+
+
+  .meta-controls-profile {
+    margin-top: 20px;
+    display: flex;
+    .edit-your-profile {
+      flex: 0 60%;
+      font-size: 1.43rem !important;
+    }
+    app-follow-user {
+      flex: 0 40%;
+      .follow-control {
+        flex: 0 50%;
+        &:last-child {
+          border-right: 0px;
+        }
+      }
+    }
+
+  }
+  .wrap-it-up {
+    padding-left: 15px;
+    padding-right: 15px;
   }
