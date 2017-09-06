@@ -832,6 +832,7 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
+            font-family: 'Messina Sans Regular';
 						word-wrap: break-word;
 						color: $shade-4;
         }
