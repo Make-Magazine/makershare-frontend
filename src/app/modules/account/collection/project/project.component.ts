@@ -26,8 +26,14 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.getProjectBookmark();
     this.userId = localStorage.getItem('user_id');
-
-
+  }
+  loadProject(project) {
+    this.viewService.getView('maker_project_api/' + project.nid)
+      .subscribe(data => {
+        project.sant_image = data.field_cover_photo.styled_url;
+        this.projects.push(project);
+        console.log(data);
+      })
   }
   getProjectBookmark() {
     // get the projects
@@ -45,7 +51,11 @@ export class ProjectComponent implements OnInit {
     // get project Has Bookmark from a view
     this.viewService.getView('bookmark', [args, this.page_arg]).subscribe(res => {
       //this.projects = res;
-      this.projects = this.projects.concat(res);
+      for (let project of res) {
+        this.loadProject(project);
+      }
+      // this.projects = this.projects.concat(res);
+      // console.log(res);
       this.loadMoreVisibilty();
 
     }, err => {
