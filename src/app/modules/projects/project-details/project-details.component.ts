@@ -34,7 +34,7 @@ export class ProjectDetailsComponent implements OnInit {
   tags = [];
   toolTips = {
     'like': 'Like this idea',
-    'bookmark': 'Bookmark this project',
+    'bookmark': 'Save for Later',
     'share': 'Share this project',
   }
   userLogin;
