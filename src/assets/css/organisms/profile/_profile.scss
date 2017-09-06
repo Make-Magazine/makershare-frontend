@@ -608,3 +608,12 @@
     }
   }
 }
+
+.button.-vote, button.-vote {
+  width: 100px;
+}
+app-project-vote {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
