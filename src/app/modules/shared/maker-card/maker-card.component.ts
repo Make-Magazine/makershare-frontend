@@ -52,7 +52,7 @@ export class MakerCardComponent implements OnInit {
       .subscribe(data => {
         // console.log('maker');
         this.card = data[0];
-        // console.log(this.uid, data);
+        console.log(this.uid, data);
         this.getFollowersCount();
       });
   }
