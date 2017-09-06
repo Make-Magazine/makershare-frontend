@@ -596,3 +596,15 @@
     }
   }
 }
+
+
+.profile-container {
+  .card {
+    .info-top {
+      cursor: initial;
+    }
+    .card-owner-link {
+      pointer-events: none;
+    }
+  }
+}
