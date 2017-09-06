@@ -598,9 +598,9 @@
 }
 
 
-.profile-container {
+.profile-container, .page-challenge-summary {
   .card {
-    .info-top {
+    .info-top, .card-image {
       cursor: initial;
     }
     .card-owner-link {
