@@ -9,15 +9,15 @@
         <div class="left-section col-lg-4 col-md-6">
           <div class="profile-sidebar">
             <div class="profile-container" *ngIf="CurrentLoggedUserId == uid">
-              <app-follow-user [targetUid]="uid"></app-follow-user>
               <div class="container-override">
                 <app-maker-card [uid]="uid" [state]="'tall'"></app-maker-card>
               </div>
-              <div class="container-override mt-3">
+              <div class="meta-controls-profile">
                 <a class="edit-your-profile" (click)="OpenModal(editinfomodal,'Portfolio Photo')">
                   <i class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
+                <app-follow-user [targetUid]="uid"></app-follow-user>
               </div>
-              <div class="container-override mt-3 mb-3"
+              <div class="container-override  wrap-it-up mt-3 mb-3"
                    *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
                 <button class="-full -big" [routerLink]="['/orgs/create']">Create Group</button>
               </div>
@@ -327,8 +327,8 @@
             <!--- WHAT THE HELL????? -->
             <!-- asldkfjsdlkfjsdlfkjsdlkfjsdlkfjsldkfjsldkfjsdlkfjdsf -->
             <div class="profile-container" *ngIf="CurrentLoggedUserId != uid">
-              <app-follow-user [targetUid]="uid"></app-follow-user>
               <app-maker-card class="card-wrapper" [uid]="uid" [state]="'tall'" [profile]="true"></app-maker-card>
+              <app-follow-user [targetUid]="uid"></app-follow-user>
               <div class="profile-info">
                 <div class="bio hideData">
                   <div *ngIf="ProfileInfo.bio" class="bio">
