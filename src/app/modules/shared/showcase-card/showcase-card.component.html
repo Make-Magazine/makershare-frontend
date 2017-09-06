@@ -84,47 +84,6 @@
   </div>
 
   <!--showcase card for mobile-->
-  <div class="showcase-card-backlayer-mobile hidden-sm-up">
-    <div class="showcase-card-backlayer-mobile-2">
-      <div class="showcase-card " *ngIf="showcaseCard" (click)="showSingleShowcase(showcaseCard.path)">
-        <div class="content-container h-100">
-          <div class="card-container">
-            <div class="card">
-              <div class="showcase-type">
-                <p>Showcase</p>
-              </div>
-              <h2 class="card-title">{{showcaseCard.showcase_name}}</h2>
-              <div class="card-description" *ngIf="showcaseCard.description_trim">
-                <p [innerHTML]="showcaseCard.description_trim"></p>
-              </div>
-              <div class="showcase-card-footer mt-auto mb-3 d-flex">
-                <div class="showcase-card-footer-2">
-                  <div class="showcase-card-count d-felx">
-                    <div class="projects-count-div">
-                      <span class="projects-count" *ngIf="projects_makers_count !=1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}s</span>
-                      <span class="projects-count" *ngIf="projects_makers_count ==1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}</span>
-                    </div>
-                    <div class="likes-count-div">
-                      <img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png"
-                           alt="">
-                      <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
-                      <img class="showcase-likes" *ngIf="numLikes == 0"
-                           src="./assets/images/icons/light-not-selected.png" alt="">
-                      <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>
-                    </div>
-                    <div class="views-count-div">
-                      <img src="./assets/images/icons/views.png" alt="">
-                      <span class="views-count">{{showcaseCard.views_count}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--End card-container -->
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
 </div>
