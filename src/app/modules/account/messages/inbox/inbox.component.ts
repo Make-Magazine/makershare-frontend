@@ -99,7 +99,7 @@ export class InboxComponent implements OnInit {
                 if (this.messages[key].recipient[i].recipient != this.userId) {
                   //console.log(this.messages[key].recipient[i].recipient);
                   this.user.getUser(this.messages[key].recipient[i].recipient).subscribe(res => {
-                    console.log(res);
+                    // console.log(res);
                     if (this.messages[key].recipient.length > 2) {
                       var temp_user = {};
                       temp_user['send_group_msg'] = true;
