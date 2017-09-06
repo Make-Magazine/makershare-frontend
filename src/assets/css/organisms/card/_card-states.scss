@@ -498,8 +498,15 @@
 }
 
 
+
 @include phone() {
-  .card.mission.wide {
+  .page-challenge-summary {
+    iframe {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .card.mission.wide, .card.showcase.full {
     // faking the .mission.tall class here
     // there must be a better way to do it
     padding-top: 56.25%;
@@ -535,6 +542,30 @@
       width: 100%;
       left: 1.5rem;
       bottom: 0;
+    }
+  }
+  .card.mission.full {
+    &.single-view {
+      .info-bottom {
+        padding-top: 50%;
+        margin-top: 0;
+        position: initial;
+      }
+    }
+  }
+  .card.showcase.full {
+    &.single-view {
+      padding-top: 0;
+      .social-stat-group {
+        left: -1rem;
+      }
+    }
+    .info-bottom {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+    .social-stat-group {
+      bottom: .5rem !important;
     }
   }
 }
