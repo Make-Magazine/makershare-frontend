@@ -23,6 +23,7 @@ export class ShowcaseCardComponent implements OnInit {
   ngOnInit() {
     this.Manager = this.auth.IsCommuintyManager();
     this.userId = localStorage.getItem('user_id');
+    console.log(this.showcaseCard);
   }
 
   /**
