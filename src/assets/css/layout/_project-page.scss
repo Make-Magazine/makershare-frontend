@@ -482,14 +482,14 @@
 		}
 	}
 	.license-report {
-		.license {
-			font-size: 14px;
-   		color: $text-color-2;
-		}
-		.report {
-			font-size: 0.8rem;
-			color: $text-color-6;
-		}
+		// .license {
+		// 	font-size: 14px;
+  //  		color: $text-color-2;
+		// }
+		// .report {
+		// 	font-size: 0.8rem;
+		// 	color: $text-color-6;
+		// }
 	}
 	.panel {	
 		border-width:3px;
@@ -990,10 +990,10 @@ header.showcase-project {
 				}
 	}
 }
-.report{
+/* .report{
 	color:$title-color;
 	font-size: 0.9rem;
-}
+} */
 textarea {
 		border: 1px solid $shade-2;
 		color: $text-color-3;
@@ -1016,10 +1016,10 @@ textarea {
 		}
 }
 
-.license-report {
-	font-size: 0.8rem;
-	text-align: center;
-}
+// .license-report {
+// 	font-size: 0.8rem;
+// 	text-align: center;
+// }
 
 .page-explore{
 	.card-type-blue{

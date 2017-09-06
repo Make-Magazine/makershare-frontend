@@ -8,7 +8,7 @@
   <a class="btn btn-transparent delete" (click)=" deleteMessages()">Delete</a>-->
   <div class="media bookmark-item bookmark-project" *ngFor="let project of projects let i=index;">
     <div class="media-left">
-      <div class="book-img" [routerLink]="['/projects',project.path_proejct]" *ngIf="project"><img class="d-flex mr-3" src="{{project.project_cover_photo}}" alt="" class="img-responsive"></div>
+      <div class="book-img" [routerLink]="['/projects',project.path_proejct]" *ngIf="project"><img class="d-flex mr-3" src="{{project.sant_image}}" alt="" class="img-responsive"></div>
     </div>
     <div class="media-body">
       <!--<div class="select" *ngIf="project">-->
