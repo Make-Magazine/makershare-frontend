@@ -3,13 +3,13 @@
      *ngIf="showcaseCard">
   <div class="card-image"
        *ngIf="!singleView"
-       [ngStyle]="{'background-image':'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'}"></div>
+       [routerLink]="['/showcases/', showcaseCard.path]" [ngStyle]="{'background-image':'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'}"></div>
 
   <div class="card-info">
-    <div class="info-top">
+    <div class="info-top" [routerLink]="['/showcases/', showcaseCard.path]">
       <div class="image-container"
            *ngIf="singleView">
-        <img [src]="showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png'"
+        <img  [src]="showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png'"
              alt=""
              class="img-responsive">
       </div>
@@ -24,7 +24,7 @@
     <div class="info-bottom">
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
-          <h3 class="card-title">{{showcaseCard.showcase_name}}</h3>
+          <h3 [routerLink]="['/showcases/', showcaseCard.path]" class="card-title">{{showcaseCard.showcase_name}}</h3>
 
           <app-feature *ngIf="Manager && showcaseCard.nid"
                        [id]="showcaseCard.nid"
