@@ -80,13 +80,13 @@ export class Auth {
    * @param {string} email
    */
   public signupNewsletter(email: string) {
-    let url = "http://whatcounts.com/bin/listctrl";
     let params = {
       'slid': '6B5869DC547D3D46072290AE725EC932',
       'cmd': 'subscribe',
       'email': email
     }
-    this.http.post(url, JSON.stringify(params)).subscribe((data:any) => {
+    let url = 'http://whatcounts.com/bin/listctrl?slid='+params.slid+'&cmd='+params.cmd+'&email='+params.email+'';
+    this.http.post(url, null).subscribe((data:any) => {
       console.log(data);
     })
   }
