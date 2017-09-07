@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.auth.signupNewsletter('testyfacelorem@gmail.com');
     const currYear: number = (new Date()).getFullYear();
     for (let i = 1930; i < currYear; i++) {
       this.formYears.push(i);
