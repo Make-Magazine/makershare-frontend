@@ -84,7 +84,6 @@ export class Auth {
     let params = {
       'slid': '6B5869DC547D3D46072290AE725EC932',
       'cmd': 'subscribe',
-      'goto': '',
       'email': email
     }
     this.http.post(url, JSON.stringify(params)).subscribe((data:any) => {
