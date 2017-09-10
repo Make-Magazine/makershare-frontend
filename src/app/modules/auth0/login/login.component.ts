@@ -37,20 +37,8 @@ export class LoginComponent implements OnInit {
 
   formYears: number[] = [];
 
-  userlogin = {
-    email: '',
-    password: '',
-  };
-  userSignup = {
-    emailUp: '',
-    passwordUp: '',
-    firstName: '',
-    lastName: '',
-    checkbox: 0,
-    month: null,
-    day: null,
-    year: null,
-  };
+  userlogin;
+  userSignup;
 
   constructor(public auth: Auth, private modalService: NgbModal) {
     this.auth.toggleModal$.subscribe(() => {
@@ -66,7 +54,37 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  reset() {
+    this.current_active_tab = 'login';
+    this.loginBtnLabel = 'Log in';
+    this.signupBtnLabel = 'Sign Up';
+    this.errorMessage = null;
+    this.errorSignupMessage = null;
+    this.extraErrorDetails = null;
+    this.loading = false;
+    this.submitted = false;
+    this.signingUp = false;
+    this.userlogin = {
+      email: '',
+      password: '',
+    };
+    this.userSignup = {
+      emailUp: '',
+      passwordUp: '',
+      firstName: '',
+      lastName: '',
+      checkbox: 0,
+      month: null,
+      day: null,
+      year: null,
+    };
+  }
+
   open(content) {
+    // Reset view model
+    this.reset();
+
+    // Open modal
     this.modalRef = this.modalService.open(content);
 
     this.modalRef.result.then(
@@ -98,7 +116,6 @@ export class LoginComponent implements OnInit {
     if (this.userlogin.email && this.userlogin.password) {
       this.loading = true;
       this.loginBtnLabel = 'Logging in...';
-      console.log(this.subscribe);
       if(this.subscribe) {
         this.auth.signupNewsletter(this.userlogin.email);
       }
