@@ -61,6 +61,7 @@
 
 /* Notifications container () */
 .notifications-container {
+  z-index: 100 !important;
   .success {
     background-color: $highlight-bright-blue !important;
     border-bottom: .1rem solid $highlight-bright-blue !important;
@@ -84,10 +85,10 @@
     }
   }
   .error, .warning {
-    height: 4.5rem !important;
+    // height: 4.5rem !important;
     text-align: center !important;
     font-size: 1.6rem !important;
-    padding-top: 1rem !important;
+    padding: 1rem 0 !important;
   }
   .warning {
     background-color: $dark-grey !important;

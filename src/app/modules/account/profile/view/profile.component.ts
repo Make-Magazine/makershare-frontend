@@ -255,6 +255,7 @@ export class ProfileComponent implements OnInit {
         this.CurrentLoggedUserId = data.user.uid;
       }
     });
+
     // check if navigating to profile with username paramter => get uid from name else get uid from local storage
     if (userName) {
       this.userService.getIdFromUrl(userName).subscribe(
