@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import {Singleton} from '../../core/models/application/singleton';
-import * as auth0 from 'auth0-js';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
-import {
-  NotificationBarService,
-  NotificationType,
-} from 'ngx-notification-bar/release';
+import { Router } from '@angular/router';
+import * as auth0 from 'auth0-js';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { UserService } from '../../core/d7services';
+import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
 @Injectable()
@@ -30,7 +27,7 @@ export class Auth {
 
   constructor(
     public router: Router,
-    private http:Http,
+    private http: Http,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -63,11 +60,8 @@ export class Auth {
           if (err) {
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
-            // this.setSession(authResult);
             observer.next(true);
-
             this.doLogin(authResult);
-
             observer.complete();
           }
         },
@@ -178,7 +172,9 @@ export class Auth {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
       };
-      if (user.email_verified == true) {
+
+      // If email verified, authenticate
+      if (user.email_verified) {
         this.userService.auth0_authenticate(data).subscribe(res => {
           if (res.user.uid != 0) {
             localStorage.setItem('access_token', authResult.accessToken);
@@ -194,27 +190,33 @@ export class Auth {
             );
             // update profile picture globally
             this.profilePictureService.update(res.user_photo);
-            // redirect to the profile page if it's first time
-            if (res.first_time == true) {
-              setTimeout(function() {
-                this.router.navigate(['portfolio']);
-                window.location.reload();
-              }, 1000);
 
-            } else if (res.user_photo.indexOf('profile-default') < 0) {
-              this.router.navigate(['/']);
-              window.location.reload();
-            } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+            // Set session
+            this.setSession(authResult);
+
+            // redirect to the profile page if it's first time
+            if (res.first_time) {
+              // Notification to visit portfolio page
               this.notificationBarService.create({
                 message:
-                  'Please upload a profile photo now to get started creating projects.',
+                  'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
                 type: NotificationType.Warning,
-                autoHide: false,
+                autoHide: true,
+                isHtml: true,
                 allowClose: true,
                 hideOnHover: false,
               });
-              this.router.navigate(['/portfolio']);
-              window.location.reload();
+            } else if (res.user_photo.indexOf('profile-default') < 0) {
+              this.router.navigateByUrl('/');
+            } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+              this.notificationBarService.create({
+                message:
+                  'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
+                type: NotificationType.Warning,
+                autoHide: true,
+                allowClose: true,
+                hideOnHover: false,
+              });
             }
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
@@ -222,7 +224,7 @@ export class Auth {
           }
         });
       } else {
-        // not verified
+        // Email not verified
         this.notificationBarService.create({
           message:
             'For your security, check email for our Welcome message and activate your Maker Share account.',
@@ -232,7 +234,6 @@ export class Auth {
           hideOnHover: false,
         });
       }
-      this.setSession(authResult);
     });
   }
 
