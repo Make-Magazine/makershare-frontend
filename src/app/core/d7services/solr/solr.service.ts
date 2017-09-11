@@ -147,7 +147,7 @@ export class SolrService {
           query +
           '") OR tm_profile_maker$field_maker_interests$name:("' +
           category +
-          '") AND tm_profile_maker$field_user_photo$file$url:(sites)&indent=on&fl=is_uid&wt=json&rows=' +
+          '")&indent=on&fl=is_uid&wt=json&rows=' +
           count,
       ).map(res => res.json())
       .timeout(10000);
