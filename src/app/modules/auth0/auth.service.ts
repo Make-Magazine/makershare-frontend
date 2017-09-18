@@ -216,6 +216,7 @@ export class Auth {
                 autoHide: true,
                 allowClose: true,
                 hideOnHover: false,
+                isHtml: true,
               });
             }
           } else {
