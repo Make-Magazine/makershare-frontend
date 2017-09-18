@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Observable } from 'rxjs/Observable';
@@ -37,7 +37,7 @@ export /**
  * this component is used to managing the project like editing or creating new projects
  * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :) - Breaker "Wasim Nabil"
  */
-class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
+class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
   CanNavigate: boolean = true;
 
   // // @HostListener allows us to also guard against browser refresh, close, etc.
@@ -68,8 +68,12 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     InvitationEmails: { uid: '', project: '', mails: [] },
   };
 
+  // Whether or not we are in edit mode
+  editMode: boolean = false;
+  projectId: number;
+
   /**
-   * the project object with empty values which will be transfared to the sub components to set the values inside it before posting them
+   * the project object with empty values which will be transferred to the sub components to set the values inside it before posting them
    */
   project: ProjectForm = new ProjectForm();
 
@@ -92,6 +96,9 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     return this.CanNavigate;
   }
 
+  /**
+   * ngOnInit
+   */
   ngOnInit(): void {
     let path;
     this.ProjectLoaded = false;
@@ -103,27 +110,42 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       if (path && !ids[0]) {
         nid = path;
       }
+
+      // Edit mode
       if (nid) {
-        this.GetProject(nid);
+        this.projectId = nid;
+        this.editMode = true;
+        this.getProject(nid);
       } else {
-        this.SetProjectOwner();
+        // Or creation mode
+        this.setProjectOwner();
       }
+
       this.current_active_tab = 'Your Story';
       // set default tab according to url parameter "tab"
       this.defaultTabObs = this.route.queryParams.map(
         params => params['redirectTo'],
       );
       this.defaultTabObs.subscribe(tab => {
-        if (tab != undefined || tab != '') {
+        if (typeof tab !== 'undefined' && tab != '') {
           this.missionRedirection = decodeURIComponent(tab);
-        } else if ((tab = undefined)) {
-          //  console.log("asdsadsadsadsa");
         }
       });
     });
   }
 
-  UpdateHolder() {
+  /**
+   * ngOnDestroy
+   */
+  ngOnDestroy() {
+    // Destroy project on destroy
+    this.project = null;
+  }
+
+  /**
+   * updateHolder
+   */
+  updateHolder() {
     setInterval(() => {
       const projectHold = new ProjectHold(
         this.project.getField('title') +
@@ -140,7 +162,13 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }, 180000);
   }
 
-  GetProject(nid: number) {
+  /**
+   * getProject
+   *
+   * @param {number} nid
+   * @constructor
+   */
+  getProject(nid: number) {
     this.nodeService.getNode(nid).subscribe((project: ProjectView) => {
       this.viewService
         .getView('api_project_hold', [['nid', nid]])
@@ -156,17 +184,17 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             if (hold.length == 0) {
               this.nodeService.createNode(projectHold).subscribe(node => {
                 this.Holder = node;
-                this.ConvertProjectToCreateForm(project);
+                this.convertProjectToCreateForm(project);
               });
             } else {
               projectHold.setField('nid', hold[0].nid);
               delete projectHold.field_project_to_edit;
               this.nodeService.updateNode(projectHold).subscribe(node => {
                 this.Holder = hold[0];
-                this.ConvertProjectToCreateForm(project);
+                this.convertProjectToCreateForm(project);
               });
             }
-            this.UpdateHolder();
+            this.updateHolder();
           } else {
             swal(
               {
@@ -182,11 +210,11 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
               },
               confirm => {
                 if (confirm) {
-                  const hoder = {
+                  const holder = {
                     nid: hold[0].nid,
                     uid: localStorage.getItem('user_id'),
                   };
-                  this.mainService.custompost('maker_project_api/hold_queue', hoder).subscribe(data => {
+                  this.mainService.custompost('maker_project_api/hold_queue', holder).subscribe(data => {
                     this.notificationBarService.create({
                       message: 'Successfully added to notify list',
                       type: NotificationType.Success,
@@ -204,7 +232,12 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     });
   }
 
-  ConvertProjectToCreateForm(data: ProjectView) {
+  /**
+   * convertProjectToCreateForm
+   *
+   * @param {ProjectView} data
+   */
+  convertProjectToCreateForm(data: ProjectView) {
     const tasks = [];
     const NotReadyFields = [
       'field_creation_date',
@@ -439,7 +472,7 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             index++;
           }
         } else {
-          this.SetProjectOwner();
+          this.setProjectOwner();
         }
       },
       err => {
@@ -534,14 +567,17 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
             } else {
               this.ProjectLoaded = true;
             }
-            this.ReInitEmptyFields();
+            this.reInitEmptyFields();
           },
         );
       },
     );
   }
 
-  ReInitEmptyFields() {
+  /**
+   * reInitEmptyFields
+   */
+  reInitEmptyFields() {
     const newproject: ProjectForm = new ProjectForm();
     for (const index in this.project) {
       if (!this.project[index] || NodeHelper.isEmpty(this.project[index])) {
@@ -550,7 +586,10 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }
   }
 
-  SetProjectOwner() {
+  /**
+   * setProjectOwner
+   */
+  setProjectOwner() {
     const owner: FieldCollectionItemMember = {
       field_team_member: {
         und: [
@@ -569,7 +608,10 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     this.ProjectLoaded = true;
   }
 
-  RemoveStaticFields() {
+  /**
+   * removeStaticFields
+   */
+  removeStaticFields() {
     delete this.project.field_original_team_members;
     delete this.project.field_forks;
     delete this.project.field_faire_name;
@@ -578,37 +620,39 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   /**
+   * saveProject
+   *
    * final function witch will post the project object to drupal after finishing all the functions to map the values
    */
-  SaveProject() {
+  saveProject() {
     this.ProjectLoaded = false;
     this.project.CheckIfReadyToPublic();
     delete this.project.field_creation_date.und[0].value.time;
     if (this.project.field_categories.und.length == 0) {
       this.project.field_categories.und = [''];
     }
-    if (this.project.getField('nid')) {
-      this.RemoveStaticFields();
+
+    // If project id exists, we are in edit mode
+    if (this.editMode && this.projectId) {
+      this.removeStaticFields();
       this.nodeService.updateNode(this.project).subscribe(
         (project: ProjectView) => {
           this.CanNavigate = true;
-          this.FormPrintableValues.InvitationEmails.project = project
-            .getField('nid')
-            .toString();
+          this.FormPrintableValues.InvitationEmails.project = `${this.projectId}`;
           this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
+
+          // If draft, reload project (I guess ?)
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.GetProject(+project.getField('nid'));
+            this.getProject(this.projectId);
           }
           this.showSuccessMessage(
             'update',
             this.project.field_visibility2['und'][0],
           );
-          this.project = new ProjectForm();
         },
         err => {
-          // console.log(err);
           this.notificationBarService.create({
-            message: 'Project not saved , check the logs please',
+            message: 'Project not saved, check the logs please',
             type: NotificationType.Error,
           });
         },
@@ -618,23 +662,23 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
         (project: ProjectView) => {
           this.CanNavigate = true;
           this.FormPrintableValues.InvitationEmails.project = project.nid.toString();
-          if (
-            !NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)
-          ) {
+          if (!NodeHelper.isEmpty(this.FormPrintableValues.InvitationEmails.mails)) {
             this.sendInvitedEmails(this.FormPrintableValues.InvitationEmails);
           }
+          // If draft, reload project ?
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.GetProject(+project.nid);
+            this.projectId = +project.nid;
+            this.editMode = true;
+            this.getProject(+project.nid);
           }
           this.showSuccessMessage(
             'create',
             this.project.field_visibility2['und'][0],
           );
-          this.project = new ProjectForm();
         },
         err => {
           this.notificationBarService.create({
-            message: 'Project not saved , check the logs please',
+            message: 'Project not saved, check the logs please',
             type: NotificationType.Error,
           });
         },
@@ -642,6 +686,11 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     }
   }
 
+  /**
+   * sendInvitedEmails
+   *
+   * @param emails
+   */
   sendInvitedEmails(emails) {
     this.mainService.custompost('team_service/send', emails).subscribe(
       data => {},
@@ -652,10 +701,14 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   /**
+   * updateFields
+   *
    * form update handler from all sub components
+   *
    * @param event : the value of the object from sub componet emitter
+   * @param component
    */
-  UpdateFields(event, component) {
+  updateFields(event, component) {
     if (component === 'Your Story') {
       this.FormPrintableValues.tags = event;
     } else if (component === 'Team') {
@@ -666,14 +719,20 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
   }
 
   /**
+   * gettingFieldsReady
+   *
    * form saving function for all types of the project
-   * @param Visibility : the field value witch has 3 types "public ,private and draft"
-   * @param Status : the status of the project dependent on visibility type
+   *
+   * @param {number} Status : the status of the project dependent on visibility type
+   * @param {number} visibility : the field value witch has 3 types "public ,private and draft"
    */
-  GettingFieldsReady(Status: number, Visibility: number) {
+  gettingFieldsReady(status: number, visibility: number) {
     this.current_active_tab = 'Your Story';
+    const saveAsDraft: boolean = visibility === 1115;
+
+    // If 'private' or 'public', check  required fields
     if (
-      Visibility != 1115 &&
+      visibility != 1115 &&
       !this.StoryFormValid &&
       this.project.field_visibility2['und'][0] == 1115
     ) {
@@ -684,28 +743,37 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       this.TryToSubmitPrivatePublic = true;
       return;
     }
-    this.project.setField('field_visibility2', Visibility);
-    this.project.setField('status', Status);
-    console.log(this.project);
-    if (!this.project.title) {
+    this.project.setField('field_visibility2', visibility);
+    this.project.setField('status', status);
+
+    // if not project title, set to 'untitled'
+    if (saveAsDraft && !this.project.title) {
       this.project.setField('title', 'Untitled');
     }
-    if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
-      delete this.project.field_show_tell_video_as_default.und;
+    if (this.project.field_show_tell_video_as_default.und) {
+      if (this.project.field_show_tell_video_as_default.und[0].value == 0) {
+        delete this.project.field_show_tell_video_as_default.und;
+      }
     }
-    this.SetPrjectValues();
+    this.setProjectValues();
   }
 
   /**
+   * setProjectValues
+   *
    * function to migrate and map the values from the forms to the project object
    * for example you must upload the file image then reference the project cover_image field to this fid
    */
-  SetPrjectValues() {
+  setProjectValues() {
     const tasks = [];
+
+    // Field tags
     this.project.setField(
       'field_tags',
       this.FormPrintableValues.tags.toString(),
     );
+
+    // Cover Image
     const image = {
       file: this.FormPrintableValues.cover_image.file,
       filename: this.FormPrintableValues.cover_image.filename,
@@ -766,12 +834,15 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
       err => {
       },
       () => {
-        this.ResetFieldCollectionEmptyRows();
+        this.resetFieldCollectionEmptyRows();
       },
     );
   }
 
-  ResetFieldCollectionEmptyRows() {
+  /**
+   * resetFieldCollectionEmptyRows
+   */
+  resetFieldCollectionEmptyRows() {
     for (
       let i = this.project.field_maker_memberships.und.length - 1;
       i < 6;
@@ -791,10 +862,13 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
     for (let i = this.project.field_resources.und.length - 1; i < 19; i++) {
       this.project.field_resources.und.push(new FieldCollectionItemResource());
     }
-    this.InviteTeam();
+    this.inviteTeam();
   }
 
-  InviteTeam() {
+  /**
+   * inviteTeam
+   */
+  inviteTeam() {
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
       this.mainService
         .custompost(
@@ -817,103 +891,67 @@ class ProjectFormComponent implements OnInit, ComponentCanDeactivate {
               },
             );
           }
-          this.SaveProject();
+          this.saveProject();
         });
     } else {
-      this.SaveProject();
+      this.saveProject();
     }
   }
 
   /**
-   * form update handler from all sub components
-   * @param action : the action (save/update)
-   * @param visibility : the tid of the visibility status
+   * showSuccessMessage
+   *
+   * Shows a success message as notification
+   *
+   * @param {string} action : the action (save/update)
+   * @param {number} visibility : the tid of the visibility status
    */
   showSuccessMessage(action: string, visibility: number) {
-    // update success messages
-    let tab: string = 'public';
-    if (action == 'update') {
-      if (visibility == 1115) {
-        // updates as draft
-        this.notificationBarService.create({
-          message:
-            'Your project is saved as a Draft. Publish to make it public.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        tab = 'draft';
-      } else if (visibility == 371) {
-        // save as private
-        this.notificationBarService.create({
-          message: 'Your project has been updated as private.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        tab = 'private';
-      } else {
-        // save is public
-        this.notificationBarService.create({
-          message: 'Your project has been updated.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        tab = 'public';
-      }
-    } else if (action == 'create') {
-      if (visibility == 1115) {
-        // updates as draft
-        this.notificationBarService.create({
-          message:
-            'Your project is saved as a Draft. Publish to make it public.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        tab = 'draft';
-      } else if (visibility == 371) {
-        // save as private
-        this.notificationBarService.create({
-          message: 'Your project has been saved as private.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        tab = 'private';
-      } else {
-        // save is public
-        this.notificationBarService.create({
-          message: 'Your project has been created.',
-          type: NotificationType.Success,
-          allowClose: true,
-          autoHide: false,
-          hideOnHover: false,
-        });
-        if (this.missionRedirection.includes('/missions/enter-mission/')) {
-          const navExtras: NavigationExtras = {
-            queryParams: { projectId: 'newproject' },
-          };
-          this.router.navigate([this.missionRedirection], navExtras);
-        }
-        tab = 'public';
-      }
+    let state: string = 'public';
+    const actionVerb: string = `${action}d`;
+    let notificationMessage: string = '';
+
+    switch (visibility) {
+      case 1115:
+      default:
+        notificationMessage = `Your project has been ${actionVerb} as a Draft. Publish to make it public.`;
+        state = 'draft';
+        break;
+      case 371:
+        notificationMessage = `Your project has been ${actionVerb} as private.`;
+        state = 'private';
+        break;
+      case 370:
+        notificationMessage = `Your project has been ${actionVerb}.`;
+        break;
     }
-    // navigate to the portfolio with required tab
-    const navigationExtras: NavigationExtras = {
-      queryParams: { tab: tab },
-    };
-    const userID = +localStorage.getItem('user_id');
-    if (visibility != 1115 && this.missionRedirection == 'undefined') {
-      this.userService.getUrlFromId(userID).subscribe(res => {
-        this.router.navigate(['/portfolio/' + res.url], navigationExtras);
-      });
+
+    this.notificationBarService.create({
+      message: notificationMessage,
+      type: NotificationType.Success,
+      allowClose: true,
+      autoHide: false,
+      hideOnHover: false,
+    });
+
+    // If public && just created
+    if (state === 'public' && !this.editMode) {
+      if (this.missionRedirection.includes('/missions/enter-mission/')) {
+        const navExtras: NavigationExtras = {
+          queryParams: { projectId: 'newproject' },
+        };
+        this.router.navigate([this.missionRedirection], navExtras);
+      }
+    } else {
+      // Navigate to portfolio if not draft
+      if (state !== 'draft' && this.missionRedirection == 'undefined') {
+        const userID = +localStorage.getItem('user_id');
+        this.userService.getUrlFromId(userID).subscribe(res => {
+          this.router.navigate(['/portfolio/' + res.url], <NavigationExtras>{
+            queryParams: { tab: state },
+          });
+        });
+      }
     }
   }
 }

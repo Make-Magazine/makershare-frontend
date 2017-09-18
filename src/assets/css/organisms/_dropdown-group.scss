@@ -9,6 +9,7 @@
 
   &.-no-margin {
     margin: 0;
+    min-width: 100%;
   }
 
   i.dropdownIcon {
@@ -40,4 +41,8 @@
   select::-ms-expand {
     display: none;
   }
+}
+
+.btn-advance {
+  cursor: pointer;
 }

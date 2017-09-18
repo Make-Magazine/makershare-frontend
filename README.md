@@ -29,10 +29,16 @@ $ ng serve --lr=false
 
 # For Universal
 ---------------------
+`npm install pm2@latest -g` // if you haven't done that yet
+- `npm run buildall`
+
+/////// old code ////////
 - `npm run build`
 - `cp -r src/assets dist/assets`
 - `sass dist/assets/css/style.scss dist/assets/css/style.css`
 - `npm run start`
+/////// end old code //////////
+
 
 
 

@@ -61,13 +61,24 @@
 
 /* Notifications container () */
 .notifications-container {
-  .success {
-    background-color: $highlight-bright-blue !important;
-    border-bottom: .1rem solid $highlight-bright-blue !important;
-    height: 4.5rem !important;
+  z-index: 100 !important;
+  .notification {
     text-align: center !important;
     font-size: 1.6rem !important;
-    padding-top: 1rem !important;
+    padding: 1rem 0 !important;
+    &.success {
+      background-color: $highlight-bright-blue !important;
+      border-bottom: .1rem solid $highlight-bright-blue !important;
+    }
+    &.warning {
+      background-color: $dark-grey !important;
+      border-bottom: .1rem solid $dark-grey !important;
+    }
+    &.error {
+      background-color: $highlight-red !important;
+      border-bottom: .1rem solid $highlight-red !important;
+    }
+
     .message {
       margin-top: 1rem;
       color: $white !important;
@@ -75,40 +86,13 @@
     .close-click {
       position: absolute;
       right: 1rem;
-      top: 0;
-      font-size: 2em !important;
-      color: $white*.8 !important;
+      top: auto;
+      padding: 0 10px;
+      font-size: 2rem !important;
+      color: rgba($white, .8);
       &:hover {
         color: $white !important;
       }
-    }
-  }
-  .error, .warning {
-    height: 4.5rem !important;
-    text-align: center !important;
-    font-size: 1.6rem !important;
-    padding-top: 1rem !important;
-  }
-  .warning {
-    background-color: $dark-grey !important;
-    border-bottom: .1rem solid $dark-grey !important;
-  }
-  .error {
-    background-color: $highlight-red !important;
-    border-bottom: .1rem solid $highlight-red !important;
-  }
-  .message {
-    margin-top: 1rem;
-    color: $white !important;
-  }
-  .close-click {
-    position: absolute;
-    right: 1rem;
-    top: 0;
-    font-size: 3.2rem !important;
-    color: $white*.8;
-    &:hover {
-      color: $white !important;
     }
   }
 }

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "makershare",
   "main": "dist-server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Make-Magazine/makershare-frontend.git"
+  },
   "scripts": {
     "build": "npm-run-all --parallel build:client build:server",
     "build:client": "webpack -p --config webpack-client.config.js",
@@ -12,7 +16,12 @@
     "watch": "npm-run-all --parallel build:client:watch build:server:watch start:watch",
     "start": "npm run run-server",
     "run-server": "nodemon ./dist-server/index.js",
-    "start:watch": "nodemon -C ./dist-server/index.js"
+    "start:watch": "nodemon -C ./dist-server/index.js",
+    "buildall": "./build.sh && npm run copyassets && npm run sassIt && npm run startServer",
+    "copyassets": "cp -r src/assets dist/assets",
+    "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
+    "startServer": "pm2 restart all",
+    "postmerge": "npm run buildall" 
   },
   "license": "BSD-2-Clause",
   "browserslist": [
@@ -76,6 +85,7 @@
   "devDependencies": {
     "@angular/cli": "^1.2.5",
     "codelyzer": "^3.1.2",
+    "husky": "^0.14.3",
     "tslint": "^5.5.0"
   }
 }

@@ -2,7 +2,8 @@
   <div class="region region-content">
     <div class="container items-container">
       <app-showcase-card [showcaseCard]="showcase"
-                         [projectsCount]="contentCount"
+                          [nid]="showcaseNid"
+                         [projectsCount]="showcase.number_of_project"
                          [singleView]="true"></app-showcase-card>
     </div>
 

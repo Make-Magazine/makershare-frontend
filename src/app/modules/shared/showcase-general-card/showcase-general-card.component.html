@@ -4,29 +4,29 @@
   <app-feature *ngIf="Manager && showcaseNid"
                [id]="showcaseNid"
                [type]="'node'" (Featured)="emitFeatured()"></app-feature>
-  <div class="card-image card-image-grid" *ngIf="makers.length > 0">
+  <div class="card-image card-image-grid" [routerLink]="['/showcases/', showcase.path]" *ngIf="makers.length > 0">
     <!-- <div > -->
     <app-maker-photo *ngFor="let maker of makers; let j = index" [maker]="maker"></app-maker-photo>
     <!-- </div> -->
   </div>
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt" *ngIf="makers.length == 0"
+      <div class="card-image alt" [routerLink]="['/showcases/', showcase.path]" *ngIf="makers.length == 0"
            [style.background-image]="'url('+showcase.cover_photo+')'"></div>
       <div class="card-image alt" *ngIf="makers.length > 0"></div>
       <!-- no alt bg for projects but we still need the div here for hovers -->
       <div class="flag project">showcase</div>
-      <a class="flex-text-container" href="showcases/{{showcase.path}}">
+      <div class="flex-text-container" [routerLink]="['/showcases/', showcase.path]">
         <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
         <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)"
            innerHTML="{{showcase.description_trim}}"></p>
-      </a>
+      </div>
     </div>
     <div class="info-bottom">
       <div class="card-owner-meta">
         <img class="card-owner-media" src="{{showcase.cover_photo}}"/>
         <div class="card-owner-meta-info">
-          <span class="card-title" innerHTML="{{showcase.showcase_name}}"></span>
+          <span class="card-title" [routerLink]="['/showcases/', showcase.path]" innerHTML="{{showcase.showcase_name}}"></span>
           <div class="card-owners-group">
             <!-- <a class="card-owner-link" href="showcases/{{showcase.showcase_path}" innerHTML="{{showcase.updated_date}}"></a> -->
           </div>
@@ -38,11 +38,11 @@
           <!-- <i class="fa fa-lightbulb-o"></i> -->
           <!-- <span class="info">54678</span> -->
         </li>
-        <li class="social-stat" *ngIf="showcase.number_of_project">
+        <!-- <li class="social-stat" *ngIf="showcase.number_of_project"> -->
           <!-- <app-likes [nodeNid]="showcase.nid" [project]="true"></app-likes> -->
-          <i class="fa fa-dot-circle-o"></i>
-          <span class="info">{{showcase.number_of_project}}</span>
-        </li>
+          <!-- <i class="fa fa-dot-circle-o"></i> -->
+          <!-- <span class="info">{{showcase.number_of_project}}</span> -->
+        <!-- </li> -->
         <li class="social-stat">
           <i class="fa fa-eye"></i>
           <span class="info">{{showcase.views_count}}</span>

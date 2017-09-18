@@ -1,6 +1,15 @@
-a, .link {
+a, .link, .add-project-header-button {
 	text-decoration: none;
 	color: $highlight-bright-blue;
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+
+.add-project-header-button {
+	&:hover {
+		color: white;
+	}
 }
 
 a.report {

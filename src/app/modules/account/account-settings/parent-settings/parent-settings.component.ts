@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-parent-settings',
@@ -10,9 +11,11 @@ current_active_tab: string;
 roles;
 user_role;
   constructor(
+    private title: Title
   ) { }
 
   ngOnInit() {
+     this.title.setTitle('Settings | Maker Share');
     this.roles = JSON.parse(localStorage.getItem('roles'));
     // console.log(this.roles);
     if ('4' in this.roles){

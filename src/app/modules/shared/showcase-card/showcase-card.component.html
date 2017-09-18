@@ -3,13 +3,13 @@
      *ngIf="showcaseCard">
   <div class="card-image"
        *ngIf="!singleView"
-       [ngStyle]="{'background-image':'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'}"></div>
+       [routerLink]="['/showcases/', showcaseCard.path]" [ngStyle]="{'background-image':'url('+(showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png')+')'}"></div>
 
   <div class="card-info">
-    <div class="info-top">
+    <div class="info-top" [routerLink]="['/showcases/', showcaseCard.path]">
       <div class="image-container"
            *ngIf="singleView">
-        <img [src]="showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png'"
+        <img  [src]="showcaseCard.Cover_Photo || showcaseCard.cover_photo || './assets/images/placeholder.png'"
              alt=""
              class="img-responsive">
       </div>
@@ -24,7 +24,7 @@
     <div class="info-bottom">
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
-          <h3 class="card-title">{{showcaseCard.showcase_name}}</h3>
+          <h3 [routerLink]="['/showcases/', showcaseCard.path]" class="card-title">{{showcaseCard.showcase_name}}</h3>
 
           <app-feature *ngIf="Manager && showcaseCard.nid"
                        [id]="showcaseCard.nid"
@@ -34,12 +34,12 @@
                *ngIf="showcaseCard.description">
             <p [innerHTML]="showcaseCard.description"></p>
           </div>
-          <div class="projects-count-div"
+          <!-- <div class="projects-count-div"
                *ngIf="showcaseCard.projects_makers_count || projectsCount">
             <span class="projects-count">
               <span>{{showcaseCard.projects_makers_count || projectsCount}} {{showcaseCard.showcase_type}}{{(showcaseCard.projects_makers_count || projectsCount) > 1 ? 's' : ''}}</span>
             </span>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -57,21 +57,18 @@
         </li>
 
         <li class="social-stat">
-          <app-likes [likesCount]="showcaseCard.likes_count"
-                     [nodeNid]="showcaseCard.nid"
-                     [userId]="userId"
-                     (countNumber)="likesCounter($event)"></app-likes>
+          <app-likes *ngIf="showcaseCard.nid" [nodeNid]="showcaseCard.nid"></app-likes>
         </li>
 
         <li class="social-stat">
           <app-views [viewsCount]="showcaseCard.views_count"></app-views>
         </li>
 
-        <li class="social-stat">
+       <!--  <li class="social-stat">
           <app-bookmark *ngIf="singleView"
                         [nodeNid]="showcaseCard.nid"
                         [nodeType]="'showcase'"></app-bookmark>
-        </li>
+        </li> -->
 
         <li class="social-stat fl-r">
           <div class="profile-share"
@@ -87,47 +84,6 @@
   </div>
 
   <!--showcase card for mobile-->
-  <div class="showcase-card-backlayer-mobile hidden-sm-up">
-    <div class="showcase-card-backlayer-mobile-2">
-      <div class="showcase-card " *ngIf="showcaseCard" (click)="showSingleShowcase(showcaseCard.path)">
-        <div class="content-container h-100">
-          <div class="card-container">
-            <div class="card">
-              <div class="showcase-type">
-                <p>Showcase</p>
-              </div>
-              <h2 class="card-title">{{showcaseCard.showcase_name}}</h2>
-              <div class="card-description" *ngIf="showcaseCard.description_trim">
-                <p [innerHTML]="showcaseCard.description_trim"></p>
-              </div>
-              <div class="showcase-card-footer mt-auto mb-3 d-flex">
-                <div class="showcase-card-footer-2">
-                  <div class="showcase-card-count d-felx">
-                    <div class="projects-count-div">
-                      <span class="projects-count" *ngIf="projects_makers_count !=1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}s</span>
-                      <span class="projects-count" *ngIf="projects_makers_count ==1">{{showcaseCard.projects_makers_count}} {{showcaseCard.showcase_type}}</span>
-                    </div>
-                    <div class="likes-count-div">
-                      <img class="showcase-likes" *ngIf="numLikes >0" src="./assets/images/icons/light-selected.png"
-                           alt="">
-                      <span class="likes-count" *ngIf="numLikes >0">{{numLikes}} </span>
-                      <img class="showcase-likes" *ngIf="numLikes == 0"
-                           src="./assets/images/icons/light-not-selected.png" alt="">
-                      <span class="likes-count" *ngIf="numLikes == 0">{{numLikes}}</span>
-                    </div>
-                    <div class="views-count-div">
-                      <img src="./assets/images/icons/views.png" alt="">
-                      <span class="views-count">{{showcaseCard.views_count}}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--End card-container -->
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
 </div>

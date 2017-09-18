@@ -99,6 +99,7 @@
       }
       i {
         width: 25px;
+        font-size: 1.5rem;
       }
       .global-title {
         @include card-header-font-sm();
@@ -240,6 +241,7 @@
           line-height: 150% !important;
           font-size: 1.44rem;
           color: $dark-grey;
+        }
           .read-less {
             display: block;
             font-size: 1rem;
@@ -253,7 +255,6 @@
             cursor: pointer;
             font-size: 1.44rem;
           }
-        }
         .makerspaces,
         .websites {
           a {
@@ -595,4 +596,25 @@
       @include boxShadow(.2rem, .2rem, .8rem, $light-grey);
     }
   }
+}
+
+
+.profile-container, .page-challenge-summary {
+  .card {
+    .info-top, .card-image {
+      cursor: initial;
+    }
+    .card-owner-link {
+      pointer-events: none;
+    }
+  }
+}
+
+.button.-vote, button.-vote {
+  width: 100px;
+}
+app-project-vote {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
 }
