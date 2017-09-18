@@ -16,7 +16,7 @@
       <!-- Start Feature Company -->
        <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'" (Featured)="emitFeatured()"></app-feature> 
       <!-- End Feature Company -->
-      <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/orgs/',cardData.path]">
+      <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/groups/',cardData.path]">
       </span>
     </div>
     <div class="info-bottom">
