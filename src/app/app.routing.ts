@@ -54,7 +54,7 @@ const APP_ROUTES: Routes = [
     { path: '404', component: Four04Component },
     { path: 'access-restricted', component: AccessRestrictedComponent },
     { path: 'login', component: LoginComponent },
-    { path: '**', redirectTo: '/404' },
+    { path: '**', redirectTo: '' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
