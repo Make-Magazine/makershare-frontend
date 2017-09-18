@@ -7,6 +7,10 @@
     box-shadow: 2px 2px 8px $light-grey;
     display: block;
 
+    @include phone() {
+      padding-bottom: 4rem;
+    }
+
     &.wide {
       .info-top {
         padding-bottom: 100%;
