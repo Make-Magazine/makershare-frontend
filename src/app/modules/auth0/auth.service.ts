@@ -208,6 +208,7 @@ export class Auth {
               });
             } else if (res.user_photo.indexOf('profile-default') < 0) {
               this.router.navigateByUrl('/');
+              window.location.reload();
             } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
               this.notificationBarService.create({
                 message:
@@ -218,6 +219,7 @@ export class Auth {
                 hideOnHover: false,
                 isHtml: true,
               });
+              window.location.reload();  
             }
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
