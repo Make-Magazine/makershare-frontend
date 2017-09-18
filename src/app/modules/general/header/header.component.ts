@@ -113,6 +113,7 @@ export class HeaderComponent implements OnInit {
       })
       .subscribe(res => {
         this.org_data = res[0];
+        this.org_data.path = this.org_data.path.replace('orgs', 'groups');
       });
   }
 }
