@@ -51,3 +51,14 @@
     }
   }
 }
+
+.card.mission.full.single-view {
+  @include phone() {
+    .card-image {
+      height: 25%;
+    }
+    .info-bottom {
+      width: 100%;
+    }
+  }
+}
