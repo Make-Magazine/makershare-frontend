@@ -99,7 +99,7 @@
           <!--</a>-->
         </li>
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
-          <a class="button" [routerLink]="['/projects/create']">+</a>
+          <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
         <li class="nav-item">
           <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
@@ -147,7 +147,7 @@
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/account/collection/bookmark']">
-                  <span class="nav-link">Bookmarks</span>
+                  <span class="nav-link">Saved Projects</span>
                 </a>
               </li>
               <li class="dropdown-item">
@@ -226,4 +226,4 @@
   <app-registration-collect *ngIf="registrationFormStatus"
                             [registrationFormState]="registrationFormState"></app-registration-collect>
 </header>
-<!--<notification-bar></notification-bar>-->
+<notification-bar></notification-bar>

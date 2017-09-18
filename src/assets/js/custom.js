@@ -40,7 +40,12 @@ setTimeout(function () {
 }, 6000); // need a promise here instead of relying on this timeoutf
 // look into promise for dom content loaded
 
-
+$('.mobile-menu-item').each(function() {
+  $(this).on('click', function() {
+    console.log('what');
+    $('#makerMenu').hide();
+  })
+})
 /// olllllld javascript
 ////////////////////////
 
@@ -251,8 +256,10 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('click', '#search-icon', function () {
-    $('#search-box-input').focus();
+  $('.icon-search.nav-link').on('click', function () {
+    setTimeout(function() {
+      $('#search-box-input').focus();
+    }, 200);
   })
 
   // Toggle profile sidebar view

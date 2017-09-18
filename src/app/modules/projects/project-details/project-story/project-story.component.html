@@ -18,7 +18,7 @@
         <div class="project-collaborates" *ngIf="project.field_maker_memberships">
           <div class="collaborate" *ngFor="let collaborator of project.field_maker_memberships; let i=index">
 
-            <app-maker-card class="card-wrapper" [uid]="collaborator.membership_team" [state]="'short'"></app-maker-card>
+            <app-maker-card class="card-wrapper" *ngIf="collaborator.membership_team" [uid]="collaborator.membership_team" [state]="'short'"></app-maker-card>
             <div class="collaborate-role">
               <p>ROLE ON THE PROJECT</p>
               <p class="capitalize">{{collaborator.membership_role}}</p>

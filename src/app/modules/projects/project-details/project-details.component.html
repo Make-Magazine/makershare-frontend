@@ -33,8 +33,10 @@
                         <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [nodeType]="'project'"></app-bookmark>
                       </li>
                       <li ngbTooltip="{{toolTips.share}}">
-                        <app-btn-share [PageTitle]="customTitle"
-                                       [PageDescription]="customDescription" [PageImage]="customImage"></app-btn-share>
+                        <app-btn-share 
+                           [PageTitle]="'Maker Share'"
+                           [PageDescription]="'Maker Share Portfolio'"
+                           [PageImage]="'https://makershare.comassets/images/logos/maker-share-logo-clr@2x-100.jpg'"></app-btn-share>
                       </li>
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
@@ -66,9 +68,9 @@
                         <p innerHTML="{{project.field_teaser?.value}}"></p>
                       </div>
                       <div class="card-date mt-auto">
-                        <span class="project-date pr-2">Project Creation Date: {{project.created}}</span>
+                        <span class="project-date pr-2">Created: {{project.created}}</span>
                         <br>
-                        <span class="project-date">Updated on: {{project.changed}}</span>
+                        <span class="project-date">Updated: {{project.changed}}</span>
                       </div>
                       <div class="topics d-flex flex-row mt-auto mb-3">
                         <div class="card-tags" *ngIf="project.field_categories">
@@ -107,7 +109,7 @@
       </div>
       <!-- End top-content-wrapper -->
       <div class="container">
-        <app-project-story [project]="projectDetails" *ngIf="current_active_tab == 'project-story'"></app-project-story>
+        <app-project-story [project]="project" *ngIf="current_active_tab == 'project-story'"></app-project-story>
         <app-project-how-to [project]="projectDetails"
                             *ngIf="current_active_tab == 'project-how-to'"></app-project-how-to>
       </div>

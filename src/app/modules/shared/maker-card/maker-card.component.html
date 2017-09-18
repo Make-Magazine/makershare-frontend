@@ -1,6 +1,6 @@
 <div class="card maker {{state}}" *ngIf="card">
-  <div class="card-image" *ngIf="card.photo_lg" [style.background-image]="'url('+card.photo_lg+')'"></div>
-  <div class="card-image" *ngIf="!card.photo_lg"></div>
+  <div class="card-image" *ngIf="card.default_profile_photo" [style.background-image]="'url('+card.default_profile_photo+')'"></div>
+  <div class="card-image" *ngIf="!card.default_profile_photo"></div>
   <div class="card-info">
     <div class="info-top"
          [routerLink]="['/portfolio/', card.profile_url]">

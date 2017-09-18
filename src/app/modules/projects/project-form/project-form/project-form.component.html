@@ -24,18 +24,18 @@
             <li class="create-project-buttons project-draft">
               <button class="btn btn-grey"
                       [ngClass]="{'disabled':!StoryFormValid}"
-                      (click)="GettingFieldsReady(0,370)">
+                      (click)="gettingFieldsReady(0,370)">
                 Public
               </button>
             </li>
             <li class="create-project-buttons project-draft">
               <button class="btn btn-grey"
                       [ngClass]="{'disabled':!StoryFormValid}"
-                      (click)="GettingFieldsReady(null,371)">Private
+                      (click)="gettingFieldsReady(null,371)">Private
               </button>
             </li>
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" (click)="GettingFieldsReady(null,1115)">Save Draft</button>
+              <button class="btn btn-grey" (click)="gettingFieldsReady(null,1115)">Save Draft</button>
             </li>
           </ul>
         </div>
@@ -61,17 +61,17 @@
           <p class="mr-2 ml-auto">PUBLISH AS</p>
           <ul class="list-unstyled d-flex flex-row align-items-center controls mb-0">
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">
+              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,370)">
                 Public
               </button>
             </li>
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">
+              <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,371)">
                 Private
               </button>
             </li>
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button>
+              <button class="btn btn-grey" (click)="gettingFieldsReady(0,1115)">Save Draft</button>
             </li>
           </ul>
         </div>
@@ -98,16 +98,16 @@
           <ul class="list-unstyled d-flex flex-row align-items-center controls mb-0">
             <li class="create-project-buttons project-draft">
               <button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}"
-                      (click)="GettingFieldsReady(0,370)">Public
+                      (click)="gettingFieldsReady(0,370)">Public
               </button>
             </li>
             <li class="create-project-buttons project-draft">
               <button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}"
-                      (click)="GettingFieldsReady(0,371)">Private
+                      (click)="gettingFieldsReady(0,371)">Private
               </button>
             </li>
             <li class="create-project-buttons project-draft">
-              <button class="btn btn-grey p-2" (click)="GettingFieldsReady(0,1115)">Save Draft</button>
+              <button class="btn btn-grey p-2" (click)="gettingFieldsReady(0,1115)">Save Draft</button>
             </li>
           </ul>
         </div>
@@ -119,17 +119,17 @@
         <div>
           <app-project-form-your-story [TryToSubmitPrivatePublic]="TryToSubmitPrivatePublic"
                                        (CanNavigate)="CanNavigate = $event"
-                                       (emitter)="UpdateFields($event,'Your Story')"
+                                       (emitter)="updateFields($event,'Your Story')"
                                        [FormPrintableValues]="FormPrintableValues"
                                        (StoryFormValid)="StoryFormValid = $event"
                                        [project]="project"
                                        *ngIf="current_active_tab == 'Your Story'"
                                        class="row"></app-project-form-your-story>
-          <app-project-form-how-to (CanNavigate)="CanNavigate = $event" (emitter)="UpdateFields($event,'How To')"
+          <app-project-form-how-to (CanNavigate)="CanNavigate = $event" (emitter)="updateFields($event,'How To')"
                                    [FormPrintableValues]="FormPrintableValues"
                                    [project]="project" *ngIf="current_active_tab == 'How To'"
                                    class="row"></app-project-form-how-to>
-          <app-project-form-team (CanNavigate)="CanNavigate = $event" (emitter)="UpdateFields($event,'Team')"
+          <app-project-form-team (CanNavigate)="CanNavigate = $event" (emitter)="updateFields($event,'Team')"
                                  [FormPrintableValues]="FormPrintableValues"
                                  [project]="project" *ngIf="current_active_tab == 'Team'"
                                  class="row"></app-project-form-team>
@@ -156,17 +156,17 @@
         <p>PUBLISH AS</p>
         <ul class="list-unstyled d-flex flex-row align-items-center controls mb-0">
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">
+            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,370)">
               Public
             </button>
           </li>
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">
+            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,371)">
               Private
             </button>
           </li>
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button>
+            <button class="btn btn-grey" (click)="gettingFieldsReady(0,1115)">Save Draft</button>
           </li>
         </ul>
       </div>
@@ -191,17 +191,17 @@
         <p class="mr-2 ml-auto">PUBLISH AS</p>
         <ul class="list-unstyled d-flex flex-row align-items-center controls mb-0">
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,370)">
+            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,370)">
               Public
             </button>
           </li>
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="GettingFieldsReady(0,371)">
+            <button class="btn btn-grey" [ngClass]="{'disabled':!StoryFormValid}" (click)="gettingFieldsReady(0,371)">
               Private
             </button>
           </li>
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey" (click)="GettingFieldsReady(0,1115)">Save Draft</button>
+            <button class="btn btn-grey" (click)="gettingFieldsReady(0,1115)">Save Draft</button>
           </li>
         </ul>
       </div>
@@ -233,16 +233,16 @@
         <ul class="list-unstyled d-flex flex-row align-items-center controls mb-0">
           <li class="create-project-buttons project-draft">
             <button class="btn btn-grey -in-group p-2" [ngClass]="{'disabled':!StoryFormValid}"
-                    (click)="GettingFieldsReady(0,370)">Public
+                    (click)="gettingFieldsReady(0,370)">Public
             </button>
           </li>
           <li class="create-project-buttons project-draft">
             <button class="btn btn-grey p-2" [ngClass]="{'disabled':!StoryFormValid}"
-                    (click)="GettingFieldsReady(0,371)">Private
+                    (click)="gettingFieldsReady(0,371)">Private
             </button>
           </li>
           <li class="create-project-buttons project-draft">
-            <button class="btn btn-grey p-2" (click)="GettingFieldsReady(0,1115)">Save Draft</button>
+            <button class="btn btn-grey p-2" (click)="gettingFieldsReady(0,1115)">Save Draft</button>
           </li>
         </ul>
       </div>

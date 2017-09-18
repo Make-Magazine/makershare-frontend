@@ -100,6 +100,7 @@
             <p *ngIf="resetSent == true">an email with reset link has been sent to your email</p>
           </form>
 
+
           <form #signupForm="ngForm" *ngIf="current_active_tab == 'signup'" id="signup">
             <div class="alert alert-danger"
                  *ngIf="errorSignupMessage">
@@ -281,6 +282,11 @@
                   Please accept the license agreement
                 </div>
               </div>
+            </div>
+
+            <div class="text-center">
+              <input type="checkbox" name="signupForNewsletter" (change)="this.subscribeUpdate()" checked>
+              <label for="signupForNewsletter">Subscribe to newsletter</label>
             </div>
 
             <button type="submit"

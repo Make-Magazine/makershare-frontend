@@ -1,15 +1,19 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Auth } from './../auth.service';
+// import { FormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NetworkError, NetworkErrorCode } from '../../../core/models/error';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
+
 export class LoginComponent implements OnInit {
   private CancelTitle: string = 'Cancel';
   private closeResult: string;
+  subscribe: boolean = true;
   resetSent;
   selected_day = '';
   selected_month = '';
@@ -33,20 +37,8 @@ export class LoginComponent implements OnInit {
 
   formYears: number[] = [];
 
-  userlogin = {
-    email: '',
-    password: '',
-  };
-  userSignup = {
-    emailUp: '',
-    passwordUp: '',
-    firstName: '',
-    lastName: '',
-    checkbox: 0,
-    month: null,
-    day: null,
-    year: null,
-  };
+  userlogin;
+  userSignup;
 
   constructor(public auth: Auth, private modalService: NgbModal) {
     this.auth.toggleModal$.subscribe(() => {
@@ -55,13 +47,44 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.auth.signupNewsletter('testyfacelorem@gmail.com');
     const currYear: number = (new Date()).getFullYear();
     for (let i = 1930; i < currYear; i++) {
       this.formYears.push(i);
     }
   }
 
+  reset() {
+    this.current_active_tab = 'login';
+    this.loginBtnLabel = 'Log in';
+    this.signupBtnLabel = 'Sign Up';
+    this.errorMessage = null;
+    this.errorSignupMessage = null;
+    this.extraErrorDetails = null;
+    this.loading = false;
+    this.submitted = false;
+    this.signingUp = false;
+    this.userlogin = {
+      email: '',
+      password: '',
+    };
+    this.userSignup = {
+      emailUp: '',
+      passwordUp: '',
+      firstName: '',
+      lastName: '',
+      checkbox: 0,
+      month: null,
+      day: null,
+      year: null,
+    };
+  }
+
   open(content) {
+    // Reset view model
+    this.reset();
+
+    // Open modal
     this.modalRef = this.modalService.open(content);
 
     this.modalRef.result.then(
@@ -93,6 +116,9 @@ export class LoginComponent implements OnInit {
     if (this.userlogin.email && this.userlogin.password) {
       this.loading = true;
       this.loginBtnLabel = 'Logging in...';
+      /*if(this.subscribe) {
+        this.auth.signupNewsletter(this.userlogin.email);
+      }*/
       this.auth.login(this.userlogin.email, this.userlogin.password).subscribe((val: boolean) => {
         this.errorMessage = null;
         this.loginBtnLabel = 'Retrieving user info...';
@@ -121,6 +147,13 @@ export class LoginComponent implements OnInit {
   }
 
   /**
+   * subscribeUpdate
+   */
+  public subscribeUpdate() {
+    this.subscribe = !this.subscribe;
+  }
+
+  /**
    * signup
    *
    * @param user
@@ -141,6 +174,9 @@ export class LoginComponent implements OnInit {
     ) {
       this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
+       if(this.subscribe) {
+          this.auth.signupNewsletter(this.userSignup.emailUp);
+        }
       this.auth.signup(
         this.userSignup.emailUp,
         this.userSignup.passwordUp,

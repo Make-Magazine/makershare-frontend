@@ -4,6 +4,10 @@
   }
 }
 
+.card.single-view {
+  cursor: initial;
+}
+
 // ///////////////////
 // homepage
 .col-lg-8 + .col-lg-8 {
@@ -210,6 +214,7 @@
       }
       .social-stat-group {
         padding-top: 1.6rem;
+        position: relative;
         div {
           text-align: left;
         }
@@ -430,7 +435,11 @@
   // ///////////////////
   // project - wide
   &.project {
+    .card-title, .card-owner-media {
+      cursor: pointer;
+    }
     &.wide {
+      overflow: hidden;
       .card-title {
         margin-bottom: 0;
       }
@@ -488,6 +497,79 @@
         transition: all 1.25s ease-in-out;
       }
       // END COMPONENTS FOR EDIT MODE
+    }
+  }
+}
+
+
+
+@include phone() {
+  .page-challenge-summary {
+    iframe {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .card.mission.wide, .card.showcase.full {
+    // faking the .mission.tall class here
+    // there must be a better way to do it
+    padding-top: 56.25%;
+    .card-image {
+      padding-bottom: 56.25%;
+      width: 100%;
+      left: 0;
+      height: auto;
+      &.alt {
+        width: 100%;
+      }
+    }
+    .card-info {
+      margin-left: 0;
+      width: 100%;
+      padding-bottom: 0;
+      height: auto;
+    }
+    .info-top {
+      width: 100%;
+    }
+    .info-bottom {
+      position: relative;
+      padding-top: 5rem;
+      padding-bottom: 4rem !important;
+      width: 100%;
+      &.-no-sponsor {
+        padding: 2rem 1.5rem;
+      }
+    }
+    .social-stat-group {
+      margin-top: 2.5rem;
+      width: 100%;
+      left: 1.5rem;
+      bottom: 0;
+    }
+  }
+  .card.mission.full {
+    &.single-view {
+      .info-bottom {
+        padding-top: 50%;
+        margin-top: 0;
+        position: initial;
+      }
+    }
+  }
+  .card.showcase.full {
+    &.single-view {
+      padding-top: 0;
+      .social-stat-group {
+        left: -1rem;
+      }
+    }
+    .info-bottom {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+    .social-stat-group {
+      bottom: .5rem !important;
     }
   }
 }

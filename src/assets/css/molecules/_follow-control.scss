@@ -11,6 +11,9 @@ app-follow-user {
 		border-right: 0px;
 		cursor: pointer;
 	}
+	&:last-child {
+		border-right: 0px;
+	}
 	border-right: 1px solid #333;
 	text-align: center;
 	// padding: 1rem 0;

@@ -12,7 +12,7 @@
     <span class="info">{{profileViews}}</span>
   </li>
   <li class="social-stat" *ngIf="projectsCount">
-    <i class="fa fa-cube"></i>
+    <i class="fa fa-wrench"></i>
     <span class="info">{{projectsCount}}</span>
   </li>
 
@@ -21,6 +21,10 @@
     <app-message-modal class="profile-message" [uid]="uid"></app-message-modal>
   </li>
   <li class="right social-stat" *ngIf="profileView">
-    <app-btn-share [PageTitle]="'Maker Portfolio'"></app-btn-share>
+    <!-- <app-btn-share [PageTitle]="'Maker Portfolio'"></app-btn-share> -->
+    <app-btn-share 
+                           [PageTitle]="'Maker Share'"
+                           [PageDescription]="'Maker Share Portfolio'"
+                           [PageImage]="'https://makershare.comassets/images/logos/maker-share-logo-clr@2x-100.jpg'"></app-btn-share>
   </li>
 </ul>

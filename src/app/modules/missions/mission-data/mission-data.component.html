@@ -65,7 +65,7 @@
                              [followers]="followers"></app-followers>
             </div>
           </div>
-          <div class="content-wrapper mt-5">
+          <div class="content-wrapper mt-5" *ngIf="activeTab == 'brief'">
             <app-summary [hideLoadMore]="hideloadmoreproject"
                          (sortType)="getSortType($event)"
                          (pageNumber)="getPageNumber($event)"

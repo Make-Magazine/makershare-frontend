@@ -133,7 +133,11 @@
 			.story-video {
 				margin-top: -15px;
 			}
-			@include boxShadow(2px, 2px ,8px, $shade-3);
+			img {
+				width: 100%;
+				height: auto !important;
+			}
+			// @include boxShadow(2px, 2px ,8px, $shade-3);
 			// p {
 			// 	 @include desc-font-1();
 			// 	 line-height: inherit !important;
@@ -145,7 +149,7 @@
 	.feedback-group {
 		padding: 16px;
 		background-color: white;
-		@include boxShadow(2px, 2px ,8px, $shade-3);
+		// @include boxShadow(2px, 2px ,8px, $shade-3);
 
 		// .login-link {
 		// 	padding: 10px;
@@ -199,7 +203,7 @@
 			.project-body-content {
 			padding: 16px;
 			background-color: white;
-		 	@include boxShadow(2px, 2px ,8px, $shade-3);
+		 	// @include boxShadow(2px, 2px ,8px, $shade-3);
 			p {
 				@include desc-font-1();
 				line-height: inherit !important;
@@ -213,7 +217,7 @@
 				padding: 18px 10px 34px 10px;
 				text-align: center;
 				margin-bottom: 25px;
-				@include boxShadow(2px, 2px ,8px, $shade-3);
+				// @include boxShadow(2px, 2px ,8px, $shade-3);
 				p {
 					color: $red !important;
 					text-align: center;
@@ -234,7 +238,7 @@
 			.tools-kits {
 				background-color: white;
 				padding: 10px 10px 26px 10px;
-				@include boxShadow(2px, 2px ,8px, $shade-3);
+				// @include boxShadow(2px, 2px ,8px, $shade-3);
 				.tools, .materials, .boards-kits {
 					margin-bottom: 30px;
 					p {
@@ -438,7 +442,7 @@
 	.aha {
 		margin-bottom: 20px;
 		border: none;
-		@include boxShadow(2px, 2px ,8px, $shade-3);
+		// @include boxShadow(2px, 2px ,8px, $shade-3);
 		.card-heading {
 			padding: 6px 8px 0px 8px;
 			p {
@@ -459,7 +463,7 @@
 	.uh-oh {
 		margin-bottom: 20px;
 		border: none;
-		@include boxShadow(2px, 2px ,8px, $shade-3);
+		// @include boxShadow(2px, 2px ,8px, $shade-3);
 		.card-heading {
 			padding: 6px 8px 0px 8px;
 			p {
@@ -478,14 +482,14 @@
 		}
 	}
 	.license-report {
-		.license {
-			font-size: 14px;
-   		color: $text-color-2;
-		}
-		.report {
-			font-size: 0.8rem;
-			color: $text-color-6;
-		}
+		// .license {
+		// 	font-size: 14px;
+  //  		color: $text-color-2;
+		// }
+		// .report {
+		// 	font-size: 0.8rem;
+		// 	color: $text-color-6;
+		// }
 	}
 	.panel {	
 		border-width:3px;
@@ -762,11 +766,11 @@ header.showcase-project {
     position: relative;
     background-color: white;
 		padding: 0px;
-		@include boxShadow(2px, 2px ,8px, $shade-3);
+		// @include boxShadow(2px, 2px ,8px, $shade-3);
 		.left-side {
 			padding-left: 0px;
 			  .image-container {
-						@include boxShadow(2px, 2px ,8px, $shade-3);
+						// @include boxShadow(2px, 2px ,8px, $shade-3);
 						position: relative;
         img {
             width: 100%;
@@ -828,6 +832,7 @@ header.showcase-project {
 				}
         .card-title {
             @include card-header-font-lg();
+            font-family: 'Messina Sans Regular';
 						word-wrap: break-word;
 						color: $shade-4;
         }
@@ -901,7 +906,7 @@ header.showcase-project {
         padding-bottom: 0;
         padding-left: 0;
 				border: 1px solid #4ab0d8;
-        @include boxShadow(2px, 2px ,8px, $shade-3);
+        // @include boxShadow(2px, 2px ,8px, $shade-3);
 				&:hover {
 					cursor: pointer;
 				}
@@ -986,10 +991,10 @@ header.showcase-project {
 				}
 	}
 }
-.report{
+/* .report{
 	color:$title-color;
 	font-size: 0.9rem;
-}
+} */
 textarea {
 		border: 1px solid $shade-2;
 		color: $text-color-3;
@@ -1012,10 +1017,10 @@ textarea {
 		}
 }
 
-.license-report {
-	font-size: 0.8rem;
-	text-align: center;
-}
+// .license-report {
+// 	font-size: 0.8rem;
+// 	text-align: center;
+// }
 
 .page-explore{
 	.card-type-blue{

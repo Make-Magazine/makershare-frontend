@@ -2,7 +2,9 @@
      [ngClass]="{'single-view': singleView}"
      *ngIf="challenge">
   <div class="card-image"
-       [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}"></div>
+       *ngIf="!singleView" [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}" [routerLink]="['/missions/', challenge.path]"></div>
+  <div class="card-image"
+       *ngIf="singleView" [ngStyle]="{'background-image':'url(' + (challenge.cover_image || './assets/images/placeholder.png') + ')'}"></div>
 
   <app-feature *ngIf="Manager && challengeNid"
                [id]="challengeNid"
@@ -10,7 +12,7 @@
 
   <div class="card-info">
     <div class="info-top">
-      <div class="card-image alt"></div> <!-- no alt image for missions -->
+      <div class="card-image alt" [routerLink]="['/missions/', challenge.path]"></div> <!-- no alt image for missions -->
       <div class="flag mission">mission</div>
     </div>
 
@@ -21,7 +23,8 @@
 
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
-          <span class="card-title">{{challenge.title}}</span>
+          <span class="card-title" *ngIf="!singleView" [routerLink]="['/missions/', challenge.path]">{{challenge.title}}</span>
+          <span class="card-title" *ngIf="singleView">{{challenge.title}}</span>
 
           <p class="card-description-long"
              [innerHTML]="singleView ? challenge.body : challenge.summary_trim">
@@ -51,7 +54,7 @@
 
         <!-- Projects -->
         <li class="social-stat">
-          <i class="fa fa-dot-circle-o"></i>
+          <i class="fa fa-wrench"></i>
           <span class="info">{{challenge.nbProjects}}</span>
         </li>
 
