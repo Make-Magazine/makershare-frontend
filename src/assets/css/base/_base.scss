@@ -17,6 +17,14 @@ body {
   max-width: 100% !important;
 }
 
+.center-me {
+  margin: auto;
+  text-align: center;
+  button {
+    font-size: 1.4rem;
+  }
+}
+
 /*
 application {
   display: flex;
