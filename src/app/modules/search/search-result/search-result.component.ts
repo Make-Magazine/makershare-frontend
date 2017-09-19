@@ -27,11 +27,11 @@ export class SearchResultComponent implements OnInit {
   usersCount = 0;
 
   // Query Counts
-  projectsCountQuery = 6999999999999;
-  challengesCountQuery = 3999999999999;
-  showcasesCountQuery = 3999999999999;
-  workshopsCountQuery = 3999999999999;
-  usersCountQuery = 6999999999999;
+  projectsCountQuery = 200;
+  challengesCountQuery = 200;
+  showcasesCountQuery = 200;
+  workshopsCountQuery = 200;
+  usersCountQuery = 200;
 
   project_view = 'grid';
 
