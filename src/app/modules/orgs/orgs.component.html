@@ -85,7 +85,7 @@
             <a href="mailto:{{company.contact}}" target="_top"><i class="fa fa-envelope-o"></i> <span>Send Email</span></a>
           </p>
           <div *ngIf="company.website_or_blog">
-            <h2 class="text-left mt-8" style="margin-bottom: .5rem;">Websites</h2>
+           <h2 class="text-left -secondary">Websites</h2>
             <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
           </div>
           <div *ngIf="company.field_social_accounts">
