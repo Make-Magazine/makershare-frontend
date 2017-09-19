@@ -140,7 +140,7 @@ export class BasicInfoComponent implements OnInit {
    *
    * @returns {CropperSettings}
    */
-  cropperSettingsFactory(x, y) {
+  cropperSettingsFactory(x = null, y = null) {
     const cropperSettings = new CropperSettings();
     cropperSettings.width = x;
     cropperSettings.height = y;
@@ -158,7 +158,7 @@ export class BasicInfoComponent implements OnInit {
    * setCropperSettings
    */
   setCropperSettings() {
-    this.cropperLogoSettings = this.cropperSettingsFactory(0, 0);
+    this.cropperLogoSettings = this.cropperSettingsFactory();
     this.cropperCoverSettings = this.cropperSettingsFactory(2200, 1100);
     this.cropperAvatarSettings = this.cropperSettingsFactory(600, 600);
 
