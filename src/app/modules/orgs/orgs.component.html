@@ -72,7 +72,7 @@
 
           <h2 class="text-left -secondary">Contact</h2>
           <ul class="org-contact-list">
-            <li><span class="org-contact-key">Phone:</span> {{company.phone_number}}</li>
+            <li *ngIf="company.phone_number"><span class="org-contact-key">Phone:</span> {{company.phone_number}}</li>
             <li><span class="org-contact-key">Location:</span> {{company.address.locality}},
               {{company.address.administrative_area}}
             </li>
