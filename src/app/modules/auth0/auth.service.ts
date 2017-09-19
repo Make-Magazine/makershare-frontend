@@ -224,6 +224,7 @@ export class Auth {
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
             localStorage.setItem('user_id', '0');
+            window.location.reload();  
           }
         });
       } else {
