@@ -8,8 +8,8 @@
               <div class="challenge-card row">
                 <div class="col-md-4 left-side">
                   <div class="image-container">
-                    <img src="{{challangeData.cover_image}}" alt="" *ngIf="challangeData.cover_image" class="img-responsive">
-                    <img src="{{challangeData.sponsor_bar}}" alt="" *ngIf="challangeData.sponsor_bar" class="sponsor_bar img-responsive">
+                    <img src="{{challangeData.cover_image}}" style="max-width: 100%;" alt="" *ngIf="challangeData.cover_image" class="img-responsive">
+                    <img src="{{challangeData.sponsor_bar}}" style="max-width: 100%;" alt="" *ngIf="challangeData.sponsor_bar" class="sponsor_bar img-responsive">
                     <div class="card-type-grey">
                       <div class="type-layer-2">
                         Mission
@@ -121,7 +121,7 @@
                 </div>
                 <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
                 <div class="button-container-main-1 w-100">
-                  <span class="btn btn-main w-100 create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</span>
+                  <button class="btn btn-main w-100 create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
                 </div>
               </div>
             </div>
