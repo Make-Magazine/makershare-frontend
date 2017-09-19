@@ -10,11 +10,11 @@
                   <div class="image-container">
                     <img src="{{challangeData.cover_image}}" style="max-width: 100%;" alt="" *ngIf="challangeData.cover_image" class="img-responsive">
                     <img src="{{challangeData.sponsor_bar}}" style="max-width: 100%;" alt="" *ngIf="challangeData.sponsor_bar" class="sponsor_bar img-responsive">
-                    <div class="card-type-grey">
+                   <!--  <div class="card-type-grey">
                       <div class="type-layer-2">
                         Mission
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <!-- End image-container -->
@@ -88,11 +88,11 @@
         </div>-->
         <div class="container">
           <div class="region region-content col-sm-12 mb-5">
-            <i class="lnr lnr-cross close-submit"  (click)="onCancel()"></i>
+            <!-- <i class="lnr lnr-cross close-submit"  (click)="onCancel()"></i> -->
             <div class="content-wrapper row pt-5">
-              <div class="challenge-enter col-md-5">
+              <div class="challenge-enter center-me col-md-5">
                  
-                   <p *ngIf="projects?.length == 0 && enterStatus==true" class="text-center text-red"> You Don't have any Public Project</p>
+                   <p *ngIf="projects?.length == 0 && enterStatus==true" class="text-center text-red"> You Don't have any Public Projects</p>
                    
                 <div *ngIf="projects?.length > 0 && enterStatus==true">
                   <p *ngIf="enterStatus==true">Select an existing project from your portfolio.</p>
@@ -121,7 +121,7 @@
                 </div>
                 <p>Want to create a new project for this Challenge? Add it to your Portfolio now</p>
                 <div class="button-container-main-1 w-100">
-                  <button class="btn btn-main w-100 create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
+                  <button class="btn btn-main create" (click)="createNewProjectForChallenge()">Create a new project for this challenge</button>
                 </div>
               </div>
             </div>
