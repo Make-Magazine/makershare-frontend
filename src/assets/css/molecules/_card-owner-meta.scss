@@ -30,7 +30,7 @@
 
   .card-meta-row {
     margin-bottom: .625rem;
-    overflow: hidden;
+    overflow: hidden !important;
 
     &-description, &-icon {
       float: left;
