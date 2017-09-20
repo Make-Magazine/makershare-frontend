@@ -4,7 +4,7 @@
   }
   i, span, .icon, .info {
     display: inline-block;
-    font-size: 1.5rem;
+    // font-size: 1.5rem;
     width: auto !important; // unkown source is continuing to inject .profile-container .profile-sidebar i { width: 25px; }
   }
   span.icon {
