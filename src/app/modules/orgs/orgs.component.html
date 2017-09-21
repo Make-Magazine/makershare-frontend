@@ -9,8 +9,7 @@
               <img class="org-logo" height="100" src="{{company.company_logo}}">
             </div>
             <div class="row justify-content-center" height="10">
-              <!-- <img src="{{company.field_badges}}" alt=""> -->
-              <app-card-badges [badges]="company.field_badges"></app-card-badges>
+              <img src="{{company.field_badges}}" style="width: 30px; height: auto;" ngbTooltip="Charter Member " alt="">
             </div>
             <div class="row justify-content-center org-name">
               <span>{{company.company_name}}</span>
