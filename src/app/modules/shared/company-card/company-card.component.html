@@ -15,6 +15,9 @@
       <!-- <div class="flag project">Group </div> -->
       <!-- Start Feature Company -->
        <app-feature *ngIf="Manager && cardData.nid" [id]="cardData.nid" [type]="'node'" (Featured)="emitFeatured()"></app-feature> 
+
+       <app-card-badges [badges]="badges"></app-card-badges>
+       
       <!-- End Feature Company -->
       <span class="flex-text-container" *ngIf="cardData.path" [routerLink]="['/groups/',cardData.path]">
       </span>
