@@ -71,7 +71,7 @@ export class SingleShowcaseComponent implements OnInit {
         if (this.showcaseNid) {
           this.getShowcase();
         } else {
-          // this.router.navigateByUrl('404');
+          this.router.navigateByUrl('404');
         }
       });
     }
