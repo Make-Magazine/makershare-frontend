@@ -540,10 +540,16 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
                     if (element.field_team_member.und) {
                       const id = this.project.field_maker_memberships.und[ind]
                         .field_team_member.und[0].target_id;
+                      if (parseInt(id, null)) {
                       this.project.field_maker_memberships.und[
                         ind
                       ].field_team_member.und[0].target_id =
                         member['name'] + ' (' + id + ')';
+                    } else {
+                      this.project.field_maker_memberships.und[
+                        ind
+                      ].field_team_member.und[0].target_id = id;
+                    }
                       subindex++;
                     }
                   },
