@@ -4,7 +4,7 @@
     <h3>Search Anything</h3>
     <div class="search-form-group">
       <form (keydown)="keyDownFunction($event)">
-        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" #searchBox id="search-box-input"/>
+        <input [(ngModel)]="searchQuery" type="text" (input)="searchQuery = $event.target.value" name="searchQuery" #searchBox id="search-box-input" autofocus/>
         <span (click)="goSearch()" class="lnr lnr-chevron-right go-search" aria-hidden="true"></span>
         <span (click)="clearSearch()" [hidden]="searchQuery == ''" class="lnr lnr-cross clear-search" aria-hidden="true"></span>
       </form>
