@@ -350,7 +350,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
           }
         }
       } else if (index == 'field_creation_date' && !field.und) {
-        const created = new Date(+data.getField('created') * 1000);
+        const created = new Date(+data.created * 1000);
         let date = new Date(
           created.getUTCFullYear(),
           created.getUTCMonth(),
