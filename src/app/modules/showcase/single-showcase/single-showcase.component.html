@@ -44,7 +44,7 @@
               <app-project-card 
                                 [nid]="item.nid"
                                 *ngIf="contentType == 1"
-                                [clickAction]="navigateShowcaseItem(item.nid)"
+                              (onClick)="navigateShowcaseItem(item.nid)"
                                 [state]="'tall'"></app-project-card>
           </div>
         </div>

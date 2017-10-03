@@ -83,7 +83,6 @@ export class SingleShowcaseComponent implements OnInit {
       .getView('showcase', [['nid', this.showcaseNid]])
       .subscribe(data => {
         this.showcase = data[0];
-        
         // this.showcase.nid = this.showcaseNid;
         // console.log(this.showcase);
         this.contentCount = data[0].projects_makers_count;
@@ -206,6 +205,7 @@ export class SingleShowcaseComponent implements OnInit {
   }
 
   navigateShowcaseItem(id: string) {
+    console.log(id);
     this.router.navigate([
       'projects/',
       this.path,
