@@ -55,6 +55,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    */
   defaultTabObs: Observable<string>;
   missionRedirection: string = 'no';
+  isSaving: boolean = false;
 
   Holder;
   ProjectLoaded: boolean;
@@ -183,6 +184,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
             projectHold.setField('title', project.title);
             if (hold.length == 0) {
               this.nodeService.createNode(projectHold).subscribe(node => {
+                this.isSaving = false;
                 this.Holder = node;
                 this.convertProjectToCreateForm(project);
               });
@@ -190,6 +192,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
               projectHold.setField('nid', hold[0].nid);
               delete projectHold.field_project_to_edit;
               this.nodeService.updateNode(projectHold).subscribe(node => {
+                this.isSaving = false;
                 this.Holder = hold[0];
                 this.convertProjectToCreateForm(project);
               });
@@ -537,10 +540,16 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
                     if (element.field_team_member.und) {
                       const id = this.project.field_maker_memberships.und[ind]
                         .field_team_member.und[0].target_id;
+                      if (parseInt(id, null)) {
                       this.project.field_maker_memberships.und[
                         ind
                       ].field_team_member.und[0].target_id =
                         member['name'] + ' (' + id + ')';
+                    } else {
+                      this.project.field_maker_memberships.und[
+                        ind
+                      ].field_team_member.und[0].target_id = id;
+                    }
                       subindex++;
                     }
                   },
@@ -727,6 +736,10 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    * @param {number} visibility : the field value witch has 3 types "public ,private and draft"
    */
   gettingFieldsReady(status: number, visibility: number) {
+    if (this.isSaving) {
+      return;
+    }
+    this.isSaving = true;
     this.current_active_tab = 'Your Story';
     const saveAsDraft: boolean = visibility === 1115;
 
