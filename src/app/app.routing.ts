@@ -33,7 +33,6 @@ const APP_ROUTES: Routes = [
     { path: 'portfolio', loadChildren: './modules/account/profile/profile.module#ProfileModule' },
     { path: 'account', loadChildren: './modules/account/account.module#AccountModule' },
     { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
-    { path: 'learning', loadChildren: './modules/learn/learn.module#LearnModule' },
     { path: 'access-denied', component: AccessDeniedComponent },
     { path: 'the-maker-movement', component: MakerMovementComponent },
     { path: 'make-intel', component: IntelMakeComponent },
