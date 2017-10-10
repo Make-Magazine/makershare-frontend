@@ -123,7 +123,6 @@ export class ProjectDetailsComponent implements OnInit {
         this.project = data;
         this.getBadgesProject();
         if (this.project) {
-          // console.log(this.project);
           // let photo = this.project.field_cover_photo.url;
           this.meta_title.setTitle(this.project.title.value + ' | Maker Share');
           // if(this.project.field_show_tell_video_as_default.value == 1) {
