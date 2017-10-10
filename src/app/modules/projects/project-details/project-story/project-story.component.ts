@@ -35,7 +35,6 @@ export class ProjectStoryComponent implements OnInit {
   storyHTML;
   ngOnInit() {
     this.checkLoggedUser();
-    // console.log(this.project);
     if (this.project.field_story) {
       this.story = true;
       this.storyHTML = this.sanitizer.bypassSecurityTrustHtml(this.project.field_story.value);
@@ -46,13 +45,11 @@ export class ProjectStoryComponent implements OnInit {
     this.getComments();
     this.buildForm();
     // var source = Observable.create(observer => {
-      console.log(this.project.field_maker_memberships);
     if (this.project.field_collaborators) {
       let i = 0;
       for (let maker of this.project.field_collaborators) {
         // observer.next(
         this.viewService.getView('maker_profile_card_data', [['uid', maker['target_id']],]).subscribe(data => {
-          // console.log(data)
           this.collabs[i] = {};
           this.collabs[i] = data[0];
         })
@@ -81,10 +78,7 @@ export class ProjectStoryComponent implements OnInit {
   }
   getComments() {
     this.viewService.getView('node-comments', [['nid', this.project.nid],]).subscribe(data => {
-      // console.log(data);
       this.comments = data;
-      //console.log(this.comments)
-
     });
   }
 
@@ -113,11 +107,8 @@ export class ProjectStoryComponent implements OnInit {
           nickname: this.currentUser.nickname,
           photo: this.currentUser.photo,
         }
-        // console.log(tempComm)
-        // console.log(this.commentData)
         // this.getComments();
         this.comments.push(tempComm)
-        // console.log(tempComm)
       }, err => {
       });
     }
