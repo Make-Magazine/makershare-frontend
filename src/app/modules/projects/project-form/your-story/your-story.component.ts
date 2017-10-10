@@ -17,6 +17,7 @@ import { CustomValidators } from 'ng2-validation';
 import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
 import { UsaDate } from '../../../../angular/validations/usa-date.validation';
 import { YoutubeOrVimeoLink } from '../../../../angular/validations/youtube-or-vimeo-link.validation';
+import { NotFuture } from '../../../../angular/validations/not-future.validation';
 import {
   FileEntity,
   NodeHelper,
@@ -103,6 +104,7 @@ export class YourStoryComponent implements OnInit {
     field_teaser: '',
     field_aha_moment: '',
     field_uh_oh_moment: '',
+    field_creation_date: '',
   };
 
   /**
@@ -139,6 +141,11 @@ export class YourStoryComponent implements OnInit {
     },
     field_uh_oh_moment: {
       maxlength: 'Max number of characters is 350',
+    },
+    field_creation_date: {
+      notfuture: "You can't enter a future date.",
+      usadate: "Please use the USA format, ex:09/18/2018.",
+      required: "Creation date field is required"
     },
   };
 
@@ -316,7 +323,7 @@ export class YourStoryComponent implements OnInit {
       ],
       field_creation_date: [
         this.project.field_creation_date.und[0].value.date,
-        [Validators.required, UsaDate()],
+        [Validators.required, UsaDate(), NotFuture()],
       ],
     });
     this.YourStoryForm.valueChanges.subscribe(data => {

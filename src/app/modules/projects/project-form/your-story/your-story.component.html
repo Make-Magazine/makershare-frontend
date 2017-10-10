@@ -158,7 +158,7 @@
              formControlName="field_creation_date"
              placeholder="ex:09/18/2018"
              validate-onfocusout>
-      <!--{{YourStoryForm.controls['field_creation_date'].valid}}-->
+      <small class="text-danger" *ngIf="formErrors.field_creation_date">{{ formErrors.field_creation_date }}</small>
     </div>
   </div>
 
