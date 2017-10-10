@@ -947,17 +947,17 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
       hideOnHover: false,
     });
 
-    // If public && just created
-    if (state === 'public' && !this.editMode) {
-      if (this.missionRedirection.includes('/missions/enter-mission/')) {
-        const navExtras: NavigationExtras = {
-          queryParams: { projectId: 'newproject' },
-        };
-        this.router.navigate([this.missionRedirection], navExtras);
-      }
-    } else {
+    // // If public && just created
+    // if (state === 'public' && !this.editMode) {
+    //   if (this.missionRedirection.includes('/missions/enter-mission/')) {
+    //     const navExtras: NavigationExtras = {
+    //       queryParams: { projectId: 'newproject' },
+    //     };
+    //     this.router.navigate([this.missionRedirection], navExtras);
+    //   }
+    // } else {
       // Navigate to portfolio if not draft
-      if (state !== 'draft' && this.missionRedirection == 'undefined') {
+      if (state !== 'draft') {
         const userID = +localStorage.getItem('user_id');
         this.userService.getUrlFromId(userID).subscribe(res => {
           this.router.navigate(['/portfolio/' + res.url], <NavigationExtras>{
@@ -965,6 +965,6 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
           });
         });
       }
-    }
+    // }
   }
 }
