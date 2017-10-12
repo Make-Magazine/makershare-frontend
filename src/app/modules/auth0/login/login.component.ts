@@ -174,9 +174,9 @@ export class LoginComponent implements OnInit {
     ) {
       this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
-       if(this.subscribe) {
-          this.auth.signupNewsletter(this.userSignup.emailUp);
-        }
+      if ( this.subscribe) {
+        this.auth.signupNewsletter(this.userSignup.emailUp);
+      }
       this.auth.signup(
         this.userSignup.emailUp,
         this.userSignup.passwordUp,
