@@ -80,9 +80,7 @@ export class Auth {
       'email': email
     }
     let url = 'http://whatcounts.com/bin/listctrl?slid='+params.slid+'&cmd='+params.cmd+'&email='+params.email+'';
-    this.http.post(url, null).subscribe((data:any) => {
-      //console.log(data);
-    })
+    return this.http.post(url, {});
   }
 
   /**
