@@ -6,14 +6,14 @@
         <video-viewer [link]="CurrentObject.video"></video-viewer>
       </div>
       <div *ngIf="type == 'PDF'">
-        <div *ngIf="PDFLink" [innerHTML]="PDFLink"></div>
+        <div *ngIf="PDFLink" class="inner-html" [innerHTML]="PDFLink"></div>
       </div>
       <div *ngIf="type == 'Book'">
         <div *ngIf="CurrentObject.book.endsWith('epub', CurrentObject.book.length);">
           <app-book [link]="CurrentObject.book"></app-book>
         </div>
         <div *ngIf="!CurrentObject.book.endsWith('epub', CurrentObject.book.length);">
-          <div *ngIf="NotEpubLink" [innerHTML]="NotEpubLink"></div>
+          <div *ngIf="NotEpubLink" class="inner-html" [innerHTML]="NotEpubLink"></div>
         </div>
       </div>
       <div *ngIf="type == 'HTML'">

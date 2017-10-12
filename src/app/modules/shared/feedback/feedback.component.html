@@ -17,7 +17,7 @@
                 <label>I want to submit:	</label>
                 <select type="text" class="form-control"  (change)="CurrentType = $event.target.value">
                    <option disabled selected value="_none_" > -- select an option -- </option>
-                   <option *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" [innerHTML]="feedback_type.name"></option>
+                   <option class="inner-html" *ngFor="let feedback_type of feedback_types; let i=index" value="{{feedback_type.tid}}" [innerHTML]="feedback_type.name"></option>
                 </select>
               </div>
               <div *ngIf="formErrors.field_want_submit && !CurrentType" class="alert alert-danger error-msg">

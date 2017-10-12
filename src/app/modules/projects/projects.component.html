@@ -37,7 +37,7 @@
          *ngIf="filteredSubCategories.length > 0">
       <button *ngFor="let term of filteredSubCategories"
               (click)="selectSubCategory(term)"
-              class="button -big {{subCategoryId == term.tid ? 'active':''}}"
+              class="button -big {{subCategoryId == term.tid ? 'active':''}} inner-html"
               data-id="{{term.tid}}"
               [innerHTML]="term.name"></button>
     </div>
