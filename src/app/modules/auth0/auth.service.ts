@@ -74,12 +74,12 @@ export class Auth {
    * @param {string} email
    */
   public signupNewsletter(email: string) {
-    let params = {
-      'slid': '6B5869DC547D3D46072290AE725EC932',
+    const params = {
+      'slid': '6B5869DC547D3D4690C43FE9E066FBC6',
       'cmd': 'subscribe',
       'email': email
     }
-    let url = 'http://whatcounts.com/bin/listctrl?slid='+params.slid+'&cmd='+params.cmd+'&email='+params.email+'';
+    const url = 'http://whatcounts.com/bin/listctrl?slid=' + params.slid + '&cmd=' + params.cmd + '&email=' + params.email + '&custom_url=https://makershare.com/';
     return this.http.post(url, {});
   }
 
@@ -217,12 +217,12 @@ export class Auth {
                 hideOnHover: false,
                 isHtml: true,
               });
-              window.location.reload();  
+              window.location.reload();
             }
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
             localStorage.setItem('user_id', '0');
-            window.location.reload();  
+            window.location.reload();
           }
         });
       } else {

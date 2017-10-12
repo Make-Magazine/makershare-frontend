@@ -116,9 +116,6 @@ export class LoginComponent implements OnInit {
     if (this.userlogin.email && this.userlogin.password) {
       this.loading = true;
       this.loginBtnLabel = 'Logging in...';
-      /*if(this.subscribe) {
-        this.auth.signupNewsletter(this.userlogin.email);
-      }*/
       this.auth.login(this.userlogin.email, this.userlogin.password).subscribe((val: boolean) => {
         this.errorMessage = null;
         this.loginBtnLabel = 'Retrieving user info...';
@@ -174,7 +171,7 @@ export class LoginComponent implements OnInit {
     ) {
       this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
-      if ( this.subscribe) {
+      if ( this.subscribe ) {
         this.auth.signupNewsletter(this.userSignup.emailUp);
       }
       this.auth.signup(
