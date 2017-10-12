@@ -9,10 +9,10 @@ import { LoaderService } from '../../shared/loader/loader.service';
   template: `
       <section class="page-node">
         <div class="container">
-          <h3 class="page-title" *ngIf="title" [innerHTML]="title"></h3>
-          <div class="page-body" *ngIf="body" [innerHTML]="body"></div>
+          <h3 class="page-title inner-html" *ngIf="title" [innerHTML]="title"></h3>
+          <div class="page-body inner-html" *ngIf="body" [innerHTML]="body"></div>
         </div>
-      </section>  
+      </section>
   `,
 })
 export class MakezineComponent implements OnInit {

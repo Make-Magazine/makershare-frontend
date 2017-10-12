@@ -26,7 +26,7 @@
               <h2>{{infoCard.title}}</h2>
               <h3>{{infoCard.subtitle}}</h3>
               <p *ngIf="infoCard.description"
-                 [innerHTML]="infoCard.description"></p>
+                 class="inner-html" [innerHTML]="infoCard.description"></p>
               <div class="button-container-onboarding"
                    *ngIf="infoCard.action && infoCard.button">
                 <button class="button"

@@ -105,7 +105,7 @@
             <div class="alert alert-danger"
                  *ngIf="errorSignupMessage">
               <span>{{errorSignupMessage}}</span>
-              <span *ngIf="extraErrorDetails" [innerHTML]="extraErrorDetails"></span>
+              <span *ngIf="extraErrorDetails" class="inner-html" [innerHTML]="extraErrorDetails"></span>
             </div>
 
             <div class="form-group required">

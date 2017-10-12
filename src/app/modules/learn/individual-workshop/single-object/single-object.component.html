@@ -15,14 +15,14 @@
             <!--<a class="close-hamburger"><img src="./assets/images/icons/close.png"></a>-->
             <ul class="list-unstyled content-list">
               <li class="dropdown-item" *ngFor="let object of ObjectsList;let i = index" (click)="GoToIndex(i)">
-                <a *ngIf="object.lesson_name" [ngClass]="{'highlight':CurrentObjectIndex == i}" [innerHTML]="object.lesson_name"></a>
+                <a *ngIf="object.lesson_name" [ngClass]="{'highlight':CurrentObjectIndex == i}" class="inner-html" [innerHTML]="object.lesson_name"></a>
               </li>
             </ul>
           </div>
         </ul>
 
         <div *ngIf="CurrentObject" class="nav-title">
-          <div [innerHTML]="CurrentObject.object_title"> </div>
+          <div class="inner-html" [innerHTML]="CurrentObject.object_title"> </div>
         </div>
 
         <div class="ml-auto">

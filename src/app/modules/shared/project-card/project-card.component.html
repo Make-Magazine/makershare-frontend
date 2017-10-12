@@ -24,7 +24,7 @@
       <a class="flex-text-container"
          [routerLink]="['/projects/', project.path]"
          *ngIf="!editMode">
-        <p class="card-description-long" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
+        <p class="card-description-long inner-html" *ngIf="project.teaser" innerHTML="{{project.teaser}}"></p>
         <p class="card-description-long" *ngIf="project.challenge_name"> Entered in <a (click)="challengePage(project.challenge_nid)">{{project.challenge_name}}</a></p>
       </a>
       <div class="flex-text-container" *ngIf="editMode">
@@ -71,9 +71,9 @@
       <div class="card-owner-meta">
         <img class="card-owner-media"[routerLink]="[project.maker_url]"  src="{{project.maker_photo}}" />
         <div class="card-owner-meta-info">
-          <span class="card-title" [routerLink]="['/projects/', project.path]" innerHTML="{{project.project_name}}"></span>
+          <span class="card-title inner-html" [routerLink]="['/projects/', project.path]" innerHTML="{{project.project_name}}"></span>
           <div class="card-owners-group">
-            <a class="card-owner-link"
+            <a class="card-owner-link inner-html"
                [routerLink]="[project.maker_url]"
                innerHTML="By {{project.first_name}} {{project.last_name}}"></a>
           </div>

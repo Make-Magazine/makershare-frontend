@@ -9,7 +9,7 @@
             </div>
             <h3 class="card-title" (click)="ShowSingleShowcase(showcase.path)">{{showcase.showcase_name}}</h3>
             <div class="card-description hidden-md-down" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)">
-              <p [innerHTML]="showcase.description_trim"></p>
+              <p class="inner-html" [innerHTML]="showcase.description_trim"></p>
             </div>
             <div class="showcase-card-footer mt-auto d-flex">
               <div class="showcase-card-footer-2">
