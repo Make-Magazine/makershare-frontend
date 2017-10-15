@@ -24,7 +24,7 @@
                      [ngClass]="{'active': activeTab =='brief', 'disabled': isDisabled}"
                      (click)="activeTab = 'brief'">Design Brief</a></li>
                 <li>
-                  <a class="button -link"
+                  <a class="button -link" *ngIf="awards && awards[0].no_of_winners"
                      [ngClass]="{'active': activeTab =='awards', 'disabled': isDisabled}"
                      (click)="activeTab = 'awards'">Awards &amp; Prizes <span class="badge"><!-- Count Followers {{no_of_awards}}--></span></a>
                 </li>
