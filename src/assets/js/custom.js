@@ -1,5 +1,4 @@
 setTimeout(function () {
-  console.log('fired timeout');
   if ($('.profile-page').length) {
     var st,
       $ot = $('.profile-sidebar'),
