@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, RequestOptionsArgs, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -74,13 +74,15 @@ export class Auth {
    * @param {string} email
    */
   public signupNewsletter(email: string) {
-    const params = {
-      'slid': '6B5869DC547D3D4690C43FE9E066FBC6',
-      'cmd': 'subscribe',
-      'email': email
-    }
-    const url = 'http://whatcounts.com/bin/listctrl?slid=' + params.slid + '&cmd=' + params.cmd + '&email=' + params.email + '&custom_url=https://makershare.com/';
-    return this.http.post(url, {});
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    headers.set('Accept', 'application/json');
+    headers.set('Authorization', 'Basic bWFrZXJtZWRpYTpsaWFibGVhYjM2NzU=');
+    const options: RequestOptionsArgs = new RequestOptions();
+    options.headers = headers;
+    options.withCredentials = true;
+    const url = 'https://api.whatcounts.net/rest/subscribers';
+    return this.http.post(url, {email: email}, options);
   }
 
   /**
