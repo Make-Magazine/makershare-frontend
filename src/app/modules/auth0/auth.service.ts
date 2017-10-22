@@ -76,7 +76,7 @@ export class Auth {
   public signupNewsletter(email: string) {
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');
-    headers.set('Accept', 'application/json');
+    headers.set('Accept', 'application/vnd.whatcounts-v1+json');
     headers.set('Authorization', 'Basic bWFrZXJtZWRpYTpsaWFibGVhYjM2NzU=');
     const options: RequestOptionsArgs = new RequestOptions();
     options.headers = headers;
