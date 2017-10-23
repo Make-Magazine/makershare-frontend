@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   signingUp: boolean = false;
   loginBtnLabel: string = 'Log in';
   signupBtnLabel: string = 'Sign Up';
+  recaptchaIsValidated: boolean = false;
   forgetEmail = {
     email: '',
   };
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
     this.extraErrorDetails = null;
     this.loading = false;
     this.submitted = false;
+    this.recaptchaIsValidated = false;
     this.signingUp = false;
     this.userlogin = {
       email: '',
@@ -86,7 +88,6 @@ export class LoginComponent implements OnInit {
 
     // Open modal
     this.modalRef = this.modalService.open(content);
-
     this.modalRef.result.then(
       result => {
         this.CancelTitle = 'Cancel';
@@ -156,6 +157,7 @@ export class LoginComponent implements OnInit {
    * @param user
    */
   public signup() {
+
     this.errorSignupMessage = null;
     this.extraErrorDetails = null;
     this.submitted = true;
@@ -167,7 +169,8 @@ export class LoginComponent implements OnInit {
       this.userSignup.checkbox &&
       this.userSignup.month &&
       this.userSignup.day &&
-      this.userSignup.year
+      this.userSignup.year &&
+      this.recaptchaIsValidated
     ) {
       this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
@@ -202,5 +205,9 @@ export class LoginComponent implements OnInit {
         this.modalRef.close();
       });
     }
+  }
+
+  resolved(captchaResponse: string) {
+    this.recaptchaIsValidated = true;
   }
 }

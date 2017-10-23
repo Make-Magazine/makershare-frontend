@@ -9,7 +9,7 @@ import { NetworkError, NetworkErrorCode } from '../../../core/models/error';
 })
 export class SignupComponent implements OnInit {
 
-  signingUp: boolean = false;
+  signingUp: boolean = true;
   subscribe: boolean = true;
   signupBtnLabel = 'Sign Up';
   errorMessage = null;
@@ -31,7 +31,7 @@ export class SignupComponent implements OnInit {
   constructor(
     public auth: Auth,
   ) { }
-  
+
   ngOnInit() {
     const currYear: number = (new Date()).getFullYear();
     for (let i = 1930; i < currYear; i++) {
@@ -46,6 +46,10 @@ export class SignupComponent implements OnInit {
    */
   public signup() {
     this.submitted = true;
+    if(this.signingUp){
+      return;
+    }
+
     if (
       this.userSignup.emailUp &&
       this.userSignup.passwordUp &&
@@ -56,7 +60,6 @@ export class SignupComponent implements OnInit {
       this.userSignup.day &&
       this.userSignup.year
     ) {
-      this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
       if ( this.subscribe ) {
         this.auth.signupNewsletter(this.userSignup.emailUp);
@@ -83,7 +86,7 @@ export class SignupComponent implements OnInit {
         } else {
           this.errorSignupMessage = err.description;
         }
-        this.signingUp = false;
+        
       }, () => {
         
       });
@@ -95,6 +98,10 @@ export class SignupComponent implements OnInit {
    */
   public subscribeUpdate() {
     this.subscribe = !this.subscribe;
+  }
+
+  resolved(captchaResponse: string) {
+    this.signingUp = false;
   }
 
 }
