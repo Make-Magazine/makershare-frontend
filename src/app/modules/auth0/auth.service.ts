@@ -171,10 +171,12 @@ export class Auth {
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
+        dob: user['http://makershare.com/dob'],
       };
 
       // If email verified, authenticate
       if (user.email_verified) {
+        
         this.userService.auth0_authenticate(data).subscribe(res => {
           if (res.user.uid != 0) {
             localStorage.setItem('access_token', authResult.accessToken);
