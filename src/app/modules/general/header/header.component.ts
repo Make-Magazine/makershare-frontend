@@ -116,6 +116,7 @@ export class HeaderComponent implements OnInit {
         if (this.org_data.path) {
           this.org_data.path = this.org_data.path.replace('orgs', 'groups');
         }
+
       });
   }
 }
