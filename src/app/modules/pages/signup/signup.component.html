@@ -194,8 +194,9 @@
               <span>Subscribe to newsletter</span>
           </label>
         </div>
-      </div>
+    </div>
 
+    <re-captcha (resolved)="resolved($event)" siteKey="6LeAgTUUAAAAANKee-33MZypHvye5gkZbwZSUJ90"></re-captcha>      
 
     <button type="submit"
             [disabled]="signingUp"

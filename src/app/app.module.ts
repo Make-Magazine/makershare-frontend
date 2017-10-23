@@ -42,6 +42,7 @@ import { WhyPortfolioComponent } from './modules/pages/why-portfolio/why-portfol
 import { SharedModule } from './modules/shared/shared.module';
 import { LoginComponent } from './modules/auth0/login/login.component';
 import { SignupComponent } from './modules/pages/signup/signup.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -59,7 +60,8 @@ import { SignupComponent } from './modules/pages/signup/signup.component';
     DndModule.forRoot(),
     ShareButtonsModule.forRoot(),
     HttpModule,
-    StoreModule.forRoot({ currentUser: CurrentUserReducer })
+    StoreModule.forRoot({ currentUser: CurrentUserReducer }),
+    RecaptchaModule.forRoot()
   ],
   declarations: [
     AppComponent,
