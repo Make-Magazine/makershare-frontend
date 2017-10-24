@@ -32,7 +32,7 @@
 
           <div class="card-description"
                *ngIf="showcaseCard.description">
-            <p [innerHTML]="showcaseCard.description"></p>
+            <p class="inner-html" [innerHTML]="showcaseCard.description"></p>
           </div>
           <!-- <div class="projects-count-div"
                *ngIf="showcaseCard.projects_makers_count || projectsCount">

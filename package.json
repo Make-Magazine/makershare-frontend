@@ -21,7 +21,7 @@
     "copyassets": "cp -r src/assets dist/assets",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
     "startServer": "pm2 restart all",
-    "postmerge": "npm run buildall" 
+    "postmerge": "npm run buildall"
   },
   "license": "BSD-2-Clause",
   "browserslist": [
@@ -58,6 +58,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "hammerjs": "^2.0.8",
     "html-webpack-plugin": "^2.29.0",
+    "ng-recaptcha": "^3.0.2",
     "ng2-ckeditor": "^1.1.9",
     "ng2-dnd": "^4.2.0",
     "ng2-file-drop": "^1.1.0",

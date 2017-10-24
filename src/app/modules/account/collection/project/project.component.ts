@@ -32,7 +32,6 @@ export class ProjectComponent implements OnInit {
       .subscribe(data => {
         project.sant_image = data.field_cover_photo.styled_url;
         this.projects.push(project);
-        console.log(data);
       })
   }
   getProjectBookmark() {

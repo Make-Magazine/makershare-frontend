@@ -18,7 +18,7 @@
       <div class="flag project">showcase</div>
       <div class="flex-text-container" [routerLink]="['/showcases/', showcase.path]">
         <!-- <p class="card-description-long" (click)="ShowSingleShowcase(showcase.path)" innerHTML="{{showcase.showcase_name}}"></p> -->
-        <p class="card-description-long" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)"
+        <p class="card-description-long inner-html" *ngIf="showcase.description_trim" (click)="ShowSingleShowcase(showcase.path)"
            innerHTML="{{showcase.description_trim}}"></p>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="card-owner-meta">
         <img class="card-owner-media" src="{{showcase.cover_photo}}"/>
         <div class="card-owner-meta-info">
-          <span class="card-title" [routerLink]="['/showcases/', showcase.path]" innerHTML="{{showcase.showcase_name}}"></span>
+          <span class="card-title inner-html" [routerLink]="['/showcases/', showcase.path]" innerHTML="{{showcase.showcase_name}}"></span>
           <div class="card-owners-group">
             <!-- <a class="card-owner-link" href="showcases/{{showcase.showcase_path}" innerHTML="{{showcase.updated_date}}"></a> -->
           </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, RequestOptionsArgs, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -74,15 +74,15 @@ export class Auth {
    * @param {string} email
    */
   public signupNewsletter(email: string) {
-    let params = {
-      'slid': '6B5869DC547D3D46072290AE725EC932',
-      'cmd': 'subscribe',
-      'email': email
-    }
-    let url = 'http://whatcounts.com/bin/listctrl?slid='+params.slid+'&cmd='+params.cmd+'&email='+params.email+'';
-    this.http.post(url, null).subscribe((data:any) => {
-      //console.log(data);
-    })
+    const headers = new Headers();
+    headers.set('Content-Type', 'application/json');
+    headers.set('Accept', 'application/vnd.whatcounts-v1+json');
+    headers.set('Authorization', 'Basic bWFrZXJtZWRpYTpsaWFibGVhYjM2NzU=');
+    const options: RequestOptionsArgs = new RequestOptions();
+    options.headers = headers;
+    options.withCredentials = true;
+    const url = 'https://api.whatcounts.net/rest/subscribers';
+    return this.http.post(url, {email: email}, options);
   }
 
   /**
@@ -171,10 +171,12 @@ export class Auth {
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
+        dob: user['http://makershare.com/dob'],
       };
 
       // If email verified, authenticate
       if (user.email_verified) {
+        
         this.userService.auth0_authenticate(data).subscribe(res => {
           if (res.user.uid != 0) {
             localStorage.setItem('access_token', authResult.accessToken);
@@ -219,12 +221,12 @@ export class Auth {
                 hideOnHover: false,
                 isHtml: true,
               });
-              window.location.reload();  
+              window.location.reload();
             }
           } else {
             // localStorage.setItem('user_photo', res.user_photo);
             localStorage.setItem('user_id', '0');
-            window.location.reload();  
+            window.location.reload();
           }
         });
       } else {

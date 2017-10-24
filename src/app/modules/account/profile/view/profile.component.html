@@ -89,10 +89,10 @@
                   <div *ngIf="ProfileInfo.bio" class="bio">
                     <div *ngIf="ReadMoreFields.bio">
                       <span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
-                      <div [innerHTML]="ProfileInfo.bio"></div>
+                      <div class="inner-html" [innerHTML]="ProfileInfo.bio"></div>
                     </div>
                     <div *ngIf="!ReadMoreFields.bio">
-                      <div [innerHTML]="ProfileInfo.bioShort"></div>
+                      <div class="inner-html" [innerHTML]="ProfileInfo.bioShort"></div>
                       <span class="read-more" *ngIf="ProfileInfo.bio.length > 160" (click)="ReadMoreFields.bio = true">Read More</span>
                     </div>
                   </div>
@@ -243,10 +243,10 @@
                       <div *ngIf="ReadMoreFields.started_making">
                         <span class="read-less" (click)="ReadMoreFields.started_making = false"><i
                             class="lnr lnr-cross"></i></span>
-                        <div [innerHTML]="ProfileInfo.started_making"></div>
+                        <div class="inner-html" [innerHTML]="ProfileInfo.started_making"></div>
                       </div>
                       <div *ngIf="!ReadMoreFields.started_making">
-                        <div [innerHTML]="ProfileInfo.started_making_short"></div>
+                        <div class="inner-html" [innerHTML]="ProfileInfo.started_making_short"></div>
                         <span class="read-more" *ngIf="ProfileInfo.started_making.length > 160"
                               (click)="ReadMoreFields.started_making = true">Read More</span>
                       </div>
@@ -266,9 +266,9 @@
                 <p class="hideData topic-tags">
                   <span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
                     <i *ngIf="i != ProfileInfo.maker_interests.length-1 && interest.name && interest.tid"><span
-                        [innerHTML]="interest.name"></span>,</i>
+                        class="inner-html" [innerHTML]="interest.name"></span>,</i>
                   <i *ngIf="i == ProfileInfo.maker_interests.length-1 && interest.name && interest.tid"><span
-                      [innerHTML]="interest.name"></span></i>
+                      class="inner-html" [innerHTML]="interest.name"></span></i>
                   </span>
                 </p>
                 <span class="hideData toggleProfile" (click)="ToggleProfile()">
@@ -334,10 +334,10 @@
                   <div *ngIf="ProfileInfo.bio" class="bio">
                     <div *ngIf="ReadMoreFields.bio">
                       <span class="read-less" (click)="ReadMoreFields.bio = false"><i class="lnr lnr-cross"></i></span>
-                      <p [innerHTML]="ProfileInfo.bio"></p>
+                      <p class="inner-html" [innerHTML]="ProfileInfo.bio"></p>
                     </div>
                     <div *ngIf="!ReadMoreFields.bio">
-                      <p [innerHTML]="ProfileInfo.bioShort"></p><span class="read-more"
+                      <p class="inner-html" [innerHTML]="ProfileInfo.bioShort"></p><span class="read-more"
                                                                       *ngIf="ProfileInfo.bio.length > 160"
                                                                       (click)="ReadMoreFields.bio = true">Read More</span>
                     </div>
@@ -476,10 +476,10 @@
                     <div *ngIf="ReadMoreFields.started_making">
                       <span class="read-less" (click)="ReadMoreFields.started_making = false"><i
                           class="lnr lnr-cross"></i></span>
-                      <div [innerHTML]="ProfileInfo.started_making"></div>
+                      <div class="inner-html" [innerHTML]="ProfileInfo.started_making"></div>
                     </div>
                     <div *ngIf="!ReadMoreFields.started_making">
-                      <div [innerHTML]="ProfileInfo.started_making_short"></div>
+                      <div class="inner-html" [innerHTML]="ProfileInfo.started_making_short"></div>
                       <span class="read-more" *ngIf="ProfileInfo.started_making.length > 160"
                             (click)="ReadMoreFields.started_making = true">Read More</span>
                     </div>
@@ -496,8 +496,8 @@
                 </p>
                 <p class="hideData topic-tags" *ngIf="ProfileInfo.maker_interests">
                   <span *ngFor="let interest of ProfileInfo.maker_interests; let i = index">
-										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span>,</i>
-                  <i *ngIf="i == ProfileInfo.maker_interests.length-1"><span [innerHTML]="interest.name"></span></i>
+										<i *ngIf="i != ProfileInfo.maker_interests.length-1"><span class="inner-html" [innerHTML]="interest.name"></span>,</i>
+                  <i *ngIf="i == ProfileInfo.maker_interests.length-1"><span class="inner-html" [innerHTML]="interest.name"></span></i>
                   </span>
                 </p>
                 <!--<a class="report">Report this user</a>-->
@@ -1037,7 +1037,7 @@
                         <option value="_none" disabled>Choose</option>
                         <option *ngFor="let parentInterest of ParentIntersets" [value]="parentInterest.tid"
                                 [selected]="SelectedParentInterest == parentInterest.tid"><span
-                            [innerHTML]="parentInterest.name"></span></option>
+                            class="inner-html" [innerHTML]="parentInterest.name"></span></option>
                       </select>
                     </div>
                   </div>
@@ -1049,7 +1049,7 @@
                         <option value="_none" disabled [selected]="!SelectedChildInterest">Choose</option>
                         <option *ngFor="let childInterest of ChildrenIntersets" [value]="childInterest.tid"
                                 [selected]="SelectedChildInterest == childInterest.tid"><span
-                            [innerHTML]="childInterest.name"></span></option>
+                            class="inner-html" [innerHTML]="childInterest.name"></span></option>
                       </select>
                     </div>
                   </div>
@@ -1059,8 +1059,8 @@
                       <div *ngFor="let interest of allIntersets" class="">
                         <p *ngIf="interest.parent_tid && selected_interest.tid == interest.tid"
                            class="cate-name list-group-item">
-                          <span [innerHTML]="interest.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp;
-                          <span [innerHTML]="selected_interest.name"></span>
+                          <span class="inner-html" [innerHTML]="interest.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp;
+                          <span class="inner-html" [innerHTML]="selected_interest.name"></span>
                           <i class="remove-cate ml-auto lnr lnr-cross" (click)="RemoveInterest(selected_interest.tid)"
                              aria-hidden="true"></i>
                         </p>

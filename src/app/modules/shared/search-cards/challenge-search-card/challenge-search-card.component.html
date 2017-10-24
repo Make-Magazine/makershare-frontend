@@ -67,10 +67,10 @@
         <div class="card-partership hidden-md-down" *ngIf="challenge.sponsored_by">
           <p>Sponsored by {{challenge.sponsored_by}}</p>
         </div>
-        <h3 class="card-title hidden-md-down" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
-        <h3 class="card-title pt-2 hidden-lg-up" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
+        <h3 class="card-title hidden-md-down inner-html" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
+        <h3 class="card-title pt-2 hidden-lg-up inner-html" *ngIf="challenge.title" (click)="ShowChallengeDetails(challenge.path)" innerHTML="{{challenge.title}}"></h3>
         <div class="card-description  hidden-md-down" *ngIf="challenge.summary_trim">
-          <p [innerHTML]="challenge.summary_trim"></p>
+          <p class="inner-html" [innerHTML]="challenge.summary_trim"></p>
         </div>
         <div class="challene-card-footer d-flex flex-column flex-md-row mt-auto align-items-md-center hidden-md-down">
           <div class="challene-card-footer-1" *ngIf="challenge.nid">

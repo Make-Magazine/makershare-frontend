@@ -21,14 +21,14 @@
       <div class="card-owner-meta">
         <img class="card-owner-media" *ngIf="card.photo_lg" src="{{card.photo_lg}}"/>
         <div class="card-owner-meta-info">
-          <a class="card-owner-link" *ngIf="card.first_name && card.last_name"
+          <a class="card-owner-link inner-html" *ngIf="card.first_name && card.last_name"
              [routerLink]="['/portfolio/', card.profile_url]"
              innerHTML="{{card.first_name}} {{card.last_name}}"></a>
           <a class="card-owner-link" *ngIf="!card.first_name && !card.last_name" [routerLink]="['/portfolio/', card.profile_url]" innerHTML="{{card.username}}"></a>
 
           <div class="card-meta-row" *ngIf="card.nickname">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
-            <p class="maker-nickname card-meta-row-description" innerHTML="{{card.nickname}}"></p>
+            <p class="maker-nickname card-meta-row-description inner-html" innerHTML="{{card.nickname}}"></p>
           </div>
 
 
@@ -44,7 +44,7 @@
 
           <div class="card-meta-row" *ngIf="card.descripe_yourself">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-bullhorn"></span>
-            <p class="maker-description card-meta-row-description" innerHTML="{{card.descripe_yourself}}"></p>
+            <p class="maker-description card-meta-row-description inner-html" innerHTML="{{card.descripe_yourself}}"></p>
           </div>
 
 
@@ -87,14 +87,14 @@
       <div class="card-owner-meta">
         <img class="card-owner-media" *ngIf="cardData.photo_lg" src="{{cardData.photo_lg}}"/>
         <div class="card-owner-meta-info">
-          <a class="card-owner-link" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);"
+          <a class="card-owner-link inner-html" *ngIf="cardData.first_name && cardData.last_name" href="javascript:void(0);"
              innerHTML="{{cardData.first_name}} {{cardData.last_name}}"></a>
-          <a class="card-owner-link" *ngIf="!cardData.first_name && !cardData.last_name"
+          <a class="card-owner-link inner-html" *ngIf="!cardData.first_name && !cardData.last_name"
              innerHTML="{{cardData.username}}"></a>
 
           <div class="card-meta-row" *ngIf="cardData.nickname">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-user"></span>
-            <p class="maker-nickname card-meta-row-description" innerHTML="{{cardData.nickname}}"></p>
+            <p class="maker-nickname card-meta-row-description inner-html" innerHTML="{{cardData.nickname}}"></p>
           </div>
 
 
@@ -112,7 +112,7 @@
 
           <div class="card-meta-row" *ngIf="cardData.descripe_yourself">
             <span class="lnr card-meta-row-icon maker-card-ico lnr-bullhorn"></span>
-            <p class="maker-description card-meta-row-description" innerHTML="{{cardData.descripe_yourself}}"></p>
+            <p class="maker-description card-meta-row-description inner-html" innerHTML="{{cardData.descripe_yourself}}"></p>
           </div>
 
 

@@ -6,7 +6,7 @@
     <option value="1">All Makers</option>
     <option *ngFor="let parent of data;let i = index"
             value="{{parent.tid}}"
-            [innerHTML]="parent.name">
+            class="inner-html" [innerHTML]="parent.name">
     </option>
   </select>
 </div>

@@ -25,8 +25,8 @@
     <div class="info-bottom">
       <div class="card-owner-meta">
         <div class="card-owner-meta-info">
-          <span class="card-title" innerHTML="{{cardData.Orgs_name}}"></span>
-          <p class="card-description-long" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
+          <span class="card-title inner-html" innerHTML="{{cardData.Orgs_name}}"></span>
+          <p class="card-description-long inner-html" *ngIf="cardData.breif_info" innerHTML="{{cardData.breif_info}}"></p>
         </div>
       </div>
       <social-stats [followerCount]="cardData.followers_count" [profileViews]="cardData.ord_views" [projectsCount]="cardData.total_projects"></social-stats>
