@@ -84,7 +84,7 @@
                   (change)="SelectTerm($event.target.value,'parent')">
             <option disabled selected value="_none_"> Select Topics</option>
             <option *ngFor="let parent_category of project_categories_parents; let i=index"
-                    value="{{parent_category.tid}}" [innerHTML]="parent_category.name"></option>
+                    value="{{parent_category.tid}}" class="inner-html" [innerHTML]="parent_category.name"></option>
           </select>
         </div>
       </div>
@@ -102,7 +102,7 @@
             <option disabled selected value> Select Topic</option>
             <option *ngFor="let child_category of child_categories; let i=index"
                     value="{{child_category.tid}}"
-                    [innerHTML]="child_category.name"></option>
+                    class="inner-html" [innerHTML]="child_category.name"></option>
           </select>
         </div>
       </div>
@@ -121,7 +121,7 @@
              class="category-container">
           <p class="cate-name list-group-item"
              *ngIf="cate.parent_tid && selected_cate == cate.tid">
-            <span [innerHTML]="cate.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="cate.name"></span>
+            <span class="inner-html" [innerHTML]="cate.parentName"></span> &nbsp; &nbsp; &nbsp; : &nbsp; &nbsp; &nbsp; <span [innerHTML]="cate.name"></span>
             <button class="-icon -grey ml-auto"
                     (click)="RemoveCategory(cate.tid,cate.parent_tid)">
               <i class="lnr lnr-cross"
@@ -158,7 +158,7 @@
              formControlName="field_creation_date"
              placeholder="ex:09/18/2018"
              validate-onfocusout>
-      <!--{{YourStoryForm.controls['field_creation_date'].valid}}-->
+      <small class="text-danger" *ngIf="formErrors.field_creation_date">{{ formErrors.field_creation_date }}</small>
     </div>
   </div>
 

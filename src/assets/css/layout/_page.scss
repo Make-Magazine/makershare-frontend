@@ -8,3 +8,31 @@
     color: $medium-grey;
   }
 }
+
+.bookmark-page {
+  padding-top: 20px;
+}
+
+#signup-page {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  #signup {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;    
+
+    .login-main-action {
+      width: 180px;
+      padding: 1rem;
+      margin: 0 auto;
+      float: none;
+      display: block;      
+    }
+
+  }
+}
+#signup {
+  .newsletter-group {
+    margin-top: 0;
+  }
+}

@@ -241,6 +241,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    * @param {ProjectView} data
    */
   convertProjectToCreateForm(data: ProjectView) {
+    this.project = new ProjectForm();
     const tasks = [];
     const NotReadyFields = [
       'field_creation_date',
@@ -571,12 +572,11 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
                     file.filemime,
                   );
                   this.FormPrintableValues.cover_image = file;
-                  this.ProjectLoaded = true;
+                  this.reInitEmptyFields();
                 });
-            } else {
-              this.ProjectLoaded = true;
+            }else {
+              this.reInitEmptyFields();
             }
-            this.reInitEmptyFields();
           },
         );
       },
@@ -593,6 +593,8 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
         this.project[index] = newproject[index];
       }
     }
+
+    this.ProjectLoaded = true;
   }
 
   /**
@@ -652,7 +654,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
 
           // If draft, reload project (I guess ?)
           if (this.project.field_visibility2.und[0] == 1115) {
-            this.getProject(this.projectId);
+            this.getProject(project.nid);
           }
           this.showSuccessMessage(
             'update',
@@ -947,17 +949,17 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
       hideOnHover: false,
     });
 
-    // If public && just created
-    if (state === 'public' && !this.editMode) {
-      if (this.missionRedirection.includes('/missions/enter-mission/')) {
-        const navExtras: NavigationExtras = {
-          queryParams: { projectId: 'newproject' },
-        };
-        this.router.navigate([this.missionRedirection], navExtras);
-      }
-    } else {
+    // // If public && just created
+    // if (state === 'public' && !this.editMode) {
+    //   if (this.missionRedirection.includes('/missions/enter-mission/')) {
+    //     const navExtras: NavigationExtras = {
+    //       queryParams: { projectId: 'newproject' },
+    //     };
+    //     this.router.navigate([this.missionRedirection], navExtras);
+    //   }
+    // } else {
       // Navigate to portfolio if not draft
-      if (state !== 'draft' && this.missionRedirection == 'undefined') {
+      if (state !== 'draft') {
         const userID = +localStorage.getItem('user_id');
         this.userService.getUrlFromId(userID).subscribe(res => {
           this.router.navigate(['/portfolio/' + res.url], <NavigationExtras>{
@@ -965,6 +967,6 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
           });
         });
       }
-    }
+    // }
   }
 }
