@@ -17,7 +17,7 @@ export class MissionProjectComponent implements OnInit {
   addProjectForm: FormGroup;
   tab: string;
   path: string;
-  submittedBefore: boolean;
+  submittedBefore: boolean=true;
   countProjects = 0;
   button = false;
   projects: IMissionProject[];
