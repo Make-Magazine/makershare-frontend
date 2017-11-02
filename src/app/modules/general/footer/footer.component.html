@@ -76,26 +76,15 @@
 
           <div class="form-group">
             <label for="newsletter" class="footer-subtitle mt-2">Sign Up</label>
-            <form class="whatcounts-signup" method="POST">
+            <div class="whatcounts-signup" method="POST">
               <p for="newsletter" class="footer-subtitle">Stay inspired with the Make: community newsletter</p>
-              <input type="hidden" name="slid" value="6B5869DC547D3D4690C43FE9E066FBC6"/><!-- Confirmation -->
-              <input type="hidden" name="custom_list_makermedia" value="yes"/><!-- Maker Media -->
-              <input type="hidden" name="custom_list_maker_share" value="yes"/><!-- Make Share -->
-              <input type="hidden" name="cmd" value="subscribe"/>
-              <input type="hidden" name="custom_source" value="Maker Share footer"/>
-              <input type="hidden" name="custom_incentive" value="none"/>
-              <input type="hidden" name="custom_url" value="https://makershare.com/"/>
-              <!-- TO DO: add dynamic function to insert curent page url in this value attribute -->
-              <input type="hidden" id="format_mime" name="format" value="mime"/>
-              <input type="hidden" name="goto" value="https://makershare.com/?status=subscription"/>
-              <input type="hidden" name="custom_host" value="https://makershare.com/"/>
               <div class="mz-form-horizontal input-group">
                 <input id="wc-email" class="form-control" name="email" placeholder="Enter your Email" #subscribeEmail
                        required type="text">
                 <button class="input-group-addon" type="submit" (click)="validateEmail(subscribeEmail.value)">GO
                 </button>
               </div>
-            </form>
+            </div>
           </div>
 
         </div>
