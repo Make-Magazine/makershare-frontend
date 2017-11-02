@@ -44,7 +44,6 @@ export class MissionCardComponent implements OnInit {
       .subscribe(
         data => {
           const tmpChallenge = data[0];
-          console.log(data[0].followers);
           // calculate days difference
           if (this.challenge) {
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds

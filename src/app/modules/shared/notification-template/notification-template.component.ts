@@ -43,7 +43,9 @@ export class NotificationTemplateComponent implements OnInit {
       if(this.notification.type === "project_collaborator_added") {
         this.viewService.getView('api-project-card', [['nid', this.notification.nid]])
           .subscribe(res => {
-            this.notification.title = res[0].project_name;
+            if(res.length > 0){
+              this.notification.title = res[0].project_name;
+            }
           });
         }
     }

@@ -27,5 +27,7 @@ import { FeedComponent } from '../feed/feed.component';
     OnboardingComponent,
     FeedComponent,
   ],
+
 })
 export class HomeModule {}
+
