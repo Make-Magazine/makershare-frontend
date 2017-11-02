@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { DOCUMENT } from '@angular/platform-browser';
 import { Auth } from '../../auth0/auth.service';
 import { NetworkError, NetworkErrorCode } from '../../../core/models/error';
 
-
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
+  templateUrl: './signup.component.html'
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
   signingUp: boolean = true;
   subscribe: boolean = true;
@@ -30,13 +30,19 @@ export class SignupComponent implements OnInit {
   
   constructor(
     public auth: Auth,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit() {
+    this.document.body.classList.add('signup');
     const currYear: number = (new Date()).getFullYear();
     for (let i = 1930; i < currYear; i++) {
       this.formYears.push(i);
     }    
+  }
+
+  ngOnDestroy() {
+    this.document.body.classList.remove('signup');
   }
 
   /**
