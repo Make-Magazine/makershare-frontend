@@ -17,6 +17,8 @@ export class FooterComponent implements OnInit {
     if (regexp.test(email)) {
       this.authService.signupNewsletter(email).subscribe(data => {
         console.log(data);
+      }, err => {
+        console.log(err);
       });
         // this.notificationBarService.create({ message: 'Thank you for subscribing!', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
     }
