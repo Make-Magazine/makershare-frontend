@@ -81,8 +81,8 @@ export class Auth {
     const options: RequestOptionsArgs = new RequestOptions();
     options.headers = headers;
     options.withCredentials = true;
-    const url = 'https://api.whatcounts.net/rest/subscribers';
-    return this.http.post(url, {email: email}, options);
+    const url = 'http://api.whatcounts.net/rest/subscribers';
+    return this.http.post(url, {email: email, firstName: '', lastName: ''}, options);
   }
 
   /**
@@ -174,73 +174,64 @@ export class Auth {
         dob: user['http://makershare.com/dob'],
       };
 
-      // If email verified, authenticate
-      if (user.email_verified) {
-        
-        this.userService.auth0_authenticate(data).subscribe(res => {
-          if (res.user.uid != 0) {
-            localStorage.setItem('access_token', authResult.accessToken);
-            localStorage.setItem('id_token', authResult.idToken);
-            localStorage.setItem('user_id', res.user.uid);
-            localStorage.setItem('user_name', res.user.name);
-            localStorage.setItem('roles', JSON.stringify(res.user.roles));
+      console.log(data);
+      this.userService.auth0_authenticate(data).subscribe(res => {
+        console.log(res)
+        if (res.user.uid != 0) {
+          localStorage.setItem('access_token', authResult.accessToken);
+          localStorage.setItem('id_token', authResult.idToken);
+          localStorage.setItem('user_id', res.user.uid);
+          localStorage.setItem('user_name', res.user.name);
+          localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
-            this.userService.saveCookies(
-              res['token'],
-              res['session_name'],
-              res['sessid'],
-            );
-            // update profile picture globally
-            this.profilePictureService.update(res.user_photo);
+          this.userService.saveCookies(
+            res['token'],
+            res['session_name'],
+            res['sessid'],
+          );
+          // update profile picture globally
+          this.profilePictureService.update(res.user_photo);
 
-            // Set session
-            this.setSession(authResult);
+          // Set session
+          this.setSession(authResult);
 
-            // redirect to the profile page if it's first time
-            if (res.first_time) {
-              // Notification to visit portfolio page
-              this.notificationBarService.create({
-                message:
-                  'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
-                type: NotificationType.Warning,
-                autoHide: true,
-                isHtml: true,
-                allowClose: true,
-                hideOnHover: false,
-              });
-            } else if (res.user_photo.indexOf('profile-default') < 0) {
-              this.router.navigateByUrl('/');
-              window.location.reload();
-            } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-              this.notificationBarService.create({
-                message:
-                  'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
-                type: NotificationType.Warning,
-                autoHide: true,
-                allowClose: true,
-                hideOnHover: false,
-                isHtml: true,
-              });
-              window.location.reload();
-            }
-          } else {
-            // localStorage.setItem('user_photo', res.user_photo);
-            localStorage.setItem('user_id', '0');
+          // redirect to the profile page if it's first time
+          if (res.first_time) {
+            // Notification to visit portfolio page
+            this.notificationBarService.create({
+              message:
+                'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
+              type: NotificationType.Warning,
+              autoHide: true,
+              isHtml: true,
+              allowClose: true,
+              hideOnHover: false,
+            });
+          } else if (res.user_photo.indexOf('profile-default') < 0) {
+            this.router.navigateByUrl('/');
             window.location.reload();
+          } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+            this.notificationBarService.create({
+              message:
+                'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
+              type: NotificationType.Warning,
+              autoHide: true,
+              allowClose: true,
+              hideOnHover: false,
+              isHtml: true,
+            });
+            window.location.href = Singleton.Settings.appURL;
           }
-        });
-      } else {
-        // Email not verified
-        this.notificationBarService.create({
-          message:
-            'For your security, check email for our Welcome message and activate your Maker Share account.',
-          type: NotificationType.Warning,
-          autoHide: false,
-          allowClose: true,
-          hideOnHover: false,
-          isHtml: true,
-        });
-      }
+        } else {
+          // localStorage.setItem('user_photo', res.user_photo);
+          localStorage.setItem('user_id', '0');
+          window.location.href = Singleton.Settings.appURL;
+        }
+      }, err => {
+        console.log(err);
+      });
+
+
     });
   }
 
