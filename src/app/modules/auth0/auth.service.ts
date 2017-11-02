@@ -81,8 +81,8 @@ export class Auth {
     const options: RequestOptionsArgs = new RequestOptions();
     options.headers = headers;
     options.withCredentials = true;
-    const url = 'https://api.whatcounts.net/rest/subscribers';
-    return this.http.post(url, {email: email}, options);
+    const url = 'http://api.whatcounts.net/rest/subscribers';
+    return this.http.post(url, {email: email, firstName: '', lastName: ''}, options);
   }
 
   /**
