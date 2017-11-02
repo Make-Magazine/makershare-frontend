@@ -30,9 +30,6 @@ export class FeatureComponent implements OnInit {
         this.flagService
           .isFeatureFlagged(this.id, 'feature_' + this.type)
           .subscribe(data => {
-            console.log('data');
-            console.log(data);
-
             this.isFeatured = data[0];
           });
     //   }

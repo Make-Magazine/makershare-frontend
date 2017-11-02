@@ -284,9 +284,20 @@
               </div>
             </div>
 
-            <div class="text-center">
-              <input type="checkbox" name="signupForNewsletter" (change)="subscribeUpdate()" checked>
-              <label for="signupForNewsletter">Subscribe to newsletter</label>
+            <div class="form-group newsletter-group">
+                <div class="form-ctl">
+                  <label>
+                      <input type="checkbox" name="signupForNewsletter" (change)="subscribeUpdate()" checked>
+                      <span>Subscribe to newsletter</span>
+                  </label>
+                </div>
+            </div>
+            <div class="form-group recaptcha-group">
+              <re-captcha (resolved)="resolved($event)" siteKey="6LeAgTUUAAAAANKee-33MZypHvye5gkZbwZSUJ90"></re-captcha>
+              <div class="alert alert-danger -small"
+                    *ngIf="!recaptchaIsValidated && submitted ">
+                Please validate the reCAPTCHA
+              </div>              
             </div>
 
             <button type="submit"

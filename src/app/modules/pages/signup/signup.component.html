@@ -1,0 +1,285 @@
+<section class="container padded">
+  <div id="homeBanner" class="text-center mx-auto">
+    <h2>Welcome to Maker Share</h2>
+    <h1>A community of makers sharing what they can do.</h1>
+    <img src="./assets/images/makers_intro.png"
+         alt=""
+         class="img-fluid pt-4 pb-4"/>
+    <div *ngIf="!auth.authenticated()"
+         class="button-container-main-1">
+      <button class="button"
+              (click)="openLogin()">Add a Project
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-scroll">
+  <div class="info-w-parallax parallax-bg">
+    <img src="assets/images/Home-Page-Science-Drawing.jpg"
+         alt="Science drawing background"/>
+    <div class="parallax-container">
+      <div class="container padded-half">
+        <div *ngFor="let infoCard of infoCards" class="row">
+          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
+            <div class="info-card">
+              <h2>{{infoCard.title}}</h2>
+              <h3>{{infoCard.subtitle}}</h3>
+              <p *ngIf="infoCard.description"
+                 class="inner-html" [innerHTML]="infoCard.description"></p>
+              <div class="button-container-onboarding"
+                   *ngIf="infoCard.action && infoCard.button">
+                <button class="button"
+                        (click)="infoCard.action()">{{infoCard.button}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="padded">
+  <div class="container">
+    <h2>A Project By:</h2>
+    <div class="row">
+      <div class="col-12 mt-3 mb-4 inline-logos d-flex align-items-center justify-content-center">
+        <a href="http://www.makezine.com"
+           target="_blank">
+          <img src="./assets/images/logos/make-logo.png"
+               alt="Maker Share Logo"/>
+        </a>
+        <span class="vertical-line -large"></span>
+        <a href="https://www.intel.com"
+           target="_blank">
+          <img src="./assets/images/logos/intel-logo.png"
+               alt="Intel logo"/>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h5>Make: and Intel</h5>
+        <h5>supporting innovation and collaboration among Makers around the world.</h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="what-is-ms p-0 mt-4 mb-5"
+         *ngIf="!auth.authenticated()">
+  <div class="container">
+    <h1 class="big">Explore Maker Share</h1>
+  </div>
+</section>
+
+<div id="signup-page">
+  <form #signupForm="ngForm" id="signup">
+    <h3>Sign Up</h3>
+
+
+    <div class="alert alert-danger"
+         *ngIf="errorSignupMessage">
+      <span>{{errorSignupMessage}}</span>
+      <span *ngIf="extraErrorDetails" class="inner-html" [innerHTML]="extraErrorDetails"></span>
+    </div>
+
+    <div class="form-group required">
+      <div class="form-label -small">
+        <label for="emailUp">Email</label>
+      </div>
+      <div class="form-ctl">
+        <input id="emailUp"
+               name="emailUp"
+               [(ngModel)]="userSignup.emailUp"
+               type="email"
+               class="form-control"
+               #emailUp="ngModel"
+               placeholder="you@example.com" required/>
+        <div class="alert alert-danger -small"
+             *ngIf="(emailUp.invalid && (emailUp.dirty || emailUp.touched)) || (emailUp.invalid && submitted) ">
+          Email is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <div class="form-label -small">
+        <label for="firstName">First Name</label>
+      </div>
+      <div class="form-ctl">
+        <input id="firstName"
+               name="firstName"
+               [(ngModel)]="userSignup.firstName"
+               type="text"
+               class="form-control"
+               #firstName="ngModel"
+               placeholder="First Name" required/>
+        <div class="alert alert-danger -small"
+             *ngIf="(firstName.invalid && (firstName.dirty || firstName.touched)) || (firstName.invalid && submitted)">
+          First Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <div class="form-label -small">
+        <label for="lastName">Last Name</label>
+      </div>
+      <div class="form-ctl">
+        <input id="lastName"
+               name="lastName"
+               [(ngModel)]="userSignup.lastName"
+               type="text"
+               class="form-control"
+               #lastName="ngModel"
+               placeholder="Last Name" required/>
+        <div class="alert alert-danger -small"
+             *ngIf="(lastName.invalid && (lastName.dirty || lastName.touched)) || (lastName.invalid && submitted)">
+          Last Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <div class="form-label -small">
+        <label for="passwordUp">Password</label>
+      </div>
+      <div class="form-ctl">
+        <input id="passwordUp"
+               name="passwordUp"
+               [(ngModel)]="userSignup.passwordUp"
+               type="password"
+               class="form-control"
+               #passwordUp="ngModel"
+               placeholder="Enter your password" required/>
+        <div class="alert alert-danger -small"
+             *ngIf="(passwordUp.invalid && (passwordUp.dirty || passwordUp.touched)) || (passwordUp.invalid && submitted) ">
+          Password is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <div class="form-label -small">
+        <label>Birthdate</label>
+      </div>
+      <div class="form-ctl">
+        <select id="month"
+                name="month"
+                [(ngModel)]="userSignup.month"
+                #month="ngModel"
+                required>
+          <option selected disabled value>-- month --</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        -
+        <select id="day"
+                [(ngModel)]="userSignup.day"
+                name="day"
+                #day="ngModel"
+                required>
+          <option selected disabled value>-- day --</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>13</option>
+          <option>14</option>
+          <option>15</option>
+          <option>16</option>
+          <option>17</option>
+          <option>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>
+          <option>25</option>
+          <option>26</option>
+          <option>27</option>
+          <option>28</option>
+          <option>29</option>
+          <option>30</option>
+          <option>31</option>
+        </select>
+        -
+        <select id="year"
+                [(ngModel)]="userSignup.year"
+                name="year"
+                #year="ngModel"
+                required>
+          <option selected disabled value>-- year --</option>
+          <option *ngFor="let year of formYears"
+                  value="{{year}}">{{year}}</option>
+        </select>
+        <div class="alert alert-danger -small"
+             *ngIf="submitted && (month.invalid || day.invalid || year.invalid)">
+          Date is not valid
+        </div>
+      </div>
+
+      <!--<input type="checkbox" #birthdate value="true" hidden>-->
+    </div>
+
+    <div class="form-group required">
+      <div class="form-ctl">
+        <label>
+          <input type="checkbox"
+                 id="chx-agree"
+                 #checkbox
+                 name="checkbox"
+                 [(ngModel)]="userSignup.checkbox"
+                 required>
+          <span>I agree to the <a href='http://makermedia.com/terms' target='_new'>terms of service</a> and <a href='http://makermedia.com/privacy' target='_new'>privacy policy</a>.</span>
+        </label>
+        <div class="alert alert-danger -small"
+             *ngIf="submitted && !userSignup.checkbox">
+          Please accept the license agreement
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group newsletter-group">
+        <div class="form-ctl">
+          <label>
+              <input type="checkbox" name="signupForNewsletter" (change)="subscribeUpdate()" checked>
+              <span>Subscribe to newsletter</span>
+          </label>
+        </div>
+    </div>
+
+    <re-captcha (resolved)="resolved($event)" siteKey="6LeAgTUUAAAAANKee-33MZypHvye5gkZbwZSUJ90"></re-captcha>      
+
+    <button type="submit"
+            [disabled]="signingUp"
+            class="login-main-action mt-4"
+            (click)="signup()">
+      {{signupBtnLabel}}
+    </button>
+  </form>
+
+
+</div>

@@ -21,9 +21,6 @@
           <li class="nav-item hide-mobile">
             <a class="nav-link" [routerLink]="['groups-overview']">Groups</a>
           </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link coming-soon" href="/learning/">Learning<span class="coming-soon-text">NEW!</span></a>
-          </li>
           <li class="nav-item has-dropdown">
             <a href="#"
                class="nav-link dropdown-toggle hover hide-mobile navbar-left"
@@ -55,11 +52,11 @@
                   <a [routerLink]="['missions']" class="nav-link">Missions</a>
                 </li>
                 <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['organizations']" class="nav-link">Groups</a>
+                  <a class="nav-link" [routerLink]="['groups-overview']">Groups</a>
                 </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a href="/learning/" class="nav-link">Learning</a>
-                </li>
+                <!-- <li class="sub-nav-item dropdown-item mobile-menu-item">
+                  <a class="disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
+                </li> -->
                 <hr class="line-mobile">
                 <li class="dropdown-item">
                   <a [routerLink]="['make-intel']" class="nav-link">Make + Intel</a>
@@ -85,7 +82,9 @@
               </ul>
             </div>
           </li>
-          
+          <li class="nav-item hide-mobile">
+            <a class="nav-link" href="/learning-center/">Learning</a>
+          </li>
         </ul>
       </nav>
     </div>
