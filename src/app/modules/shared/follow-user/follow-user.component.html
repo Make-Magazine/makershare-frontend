@@ -1,5 +1,4 @@
-<div class="follow-control action" *ngIf="CurrentLoggedUserId != targetUid" (click)="followThis($event)"
-     [class.active]="!isFollowed">
+<div class="follow-control action" *ngIf="CurrentLoggedUserId != targetUid" (click)="followThis($event)" [class.active]="!isFollowed">
   <span class="follow-item">{{ButtonFollow}}</span>
 </div>
 
@@ -23,15 +22,19 @@
     </div>
     <div class="modal-body" *ngIf="myFollowers">
       <div class="model-likes" *ngFor="let follow of myFollowers; ">
-        <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo"
-             src="{{follow?.default_profile_photo}}"
-             [routerLink]="['/portfolio', follow.profile_url]"
-             (click)="d('Cross click')">
+        <img *ngIf="follow?.default_profile_photo && follow.profile_url " class="like-photo" src="{{follow?.default_profile_photo}}"
+          [routerLink]="['/portfolio', follow.profile_url]" (click)="d('Cross click')">
         <span *ngIf="follow?.default_profile_photo && follow.profile_url " class="new-tooltiptext like-name">
           {{follow?.first_name}} {{follow?.last_name}} </span><br>
       </div>
       <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollow && myFollowers.length > 0 ">
         <a class="btn btn-load-more" (click)="getWhoFollow(true)">Load more</a>
+      </div>
+    </div>
+    <div class="modal-body" *ngIf="myFollowers?.length==0">
+      <div class="model-likes text-center pt-3 pb-5">
+        <span class="text-center pt-3 pb-5">There are no Followers</span>
+
       </div>
     </div>
   </div>
@@ -49,23 +52,22 @@
     </div>
     <div class="modal-body" *ngIf="meFollowing">
       <div class="model-likes" *ngFor="let following of meFollowing; ">
-        <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo"
-             src="{{following?.portfolio_photo}}"
-             [routerLink]="['/portfolio', following.profile_url]"
-             (click)="d('Cross click')">
-        <span *ngIf="following?.portfolio_photo && following.profile_url "
-              class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
-        <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo"
-             src="./assets/images/Gears-Grey.svg"
-             [routerLink]="['/portfolio', following.profile_url]"
-             (click)="d('Cross click')">
-        <span *ngIf="!following?.portfolio_photo && following.profile_url "
-              [routerLink]="['/portfolio', following.profile_url]"
-              (click)="d('Cross click')"
-              class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
+        <img *ngIf="following?.portfolio_photo && following.profile_url " class="like-photo" src="{{following?.portfolio_photo}}"
+          [routerLink]="['/portfolio', following.profile_url]" (click)="d('Cross click')">
+        <span *ngIf="following?.portfolio_photo && following.profile_url " class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
+        <img *ngIf="!following?.portfolio_photo && following.profile_url " class="like-photo" src="./assets/images/Gears-Grey.svg"
+          [routerLink]="['/portfolio', following.profile_url]" (click)="d('Cross click')">
+        <span *ngIf="!following?.portfolio_photo && following.profile_url " [routerLink]="['/portfolio', following.profile_url]"
+          (click)="d('Cross click')" class="new-tooltiptext like-name"> {{following?.first_name}} {{following?.last_name}}</span><br>
       </div>
       <div class="text-center pt-3 pb-5" *ngIf="!hideloadmorefollowing && meFollowing.length > 0 ">
         <a class="btn btn-load-more" (click)="getWhoFollowing(true)">Load more</a>
+      </div>
+    </div>
+    <div class="modal-body" *ngIf="meFollowing?.length==0">
+      <div class="model-likes text-center pt-3 pb-5">
+        <span class="text-center pt-3 pb-5">There are no Following</span>
+
       </div>
     </div>
   </div>
