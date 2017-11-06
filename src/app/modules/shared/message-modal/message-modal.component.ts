@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { PmService,UserService } from '../../../core/d7services';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-message-modal',
@@ -27,7 +26,6 @@ export class MessageModalComponent implements OnInit {
     private pm: PmService,
     private userService: UserService,
     private modalService: NgbModal,
-    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -100,8 +98,15 @@ export class MessageModalComponent implements OnInit {
     this.userService.isLogedIn().subscribe(data => {
       this.checkUserLogin = data;
       if (data == false) {
-        localStorage.setItem('redirectUrl', this.router.url);
-        this.router.navigate(['/access-denied']);
+        this.notificationBarService.create({
+          message:
+            'LOGIN/SIGNUP to connect with this maker.',
+          type: NotificationType.Warning,
+          autoHide: true,
+          allowClose: true,
+          hideOnHover: false,
+          isHtml: true,
+        });           
       } else {
         this.modalService.open(content).result.then((result) => {
           this.closeResult = `Closed with: ${result}`;

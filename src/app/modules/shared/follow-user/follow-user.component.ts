@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   FlagService,
   UserService,
   ViewService,
 } from '../../../core/d7services';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
+
 
 @Component({
   selector: 'app-follow-user',
@@ -31,11 +32,11 @@ export class FollowUserComponent implements OnInit {
   ifLoggedIn: boolean;
 
   constructor(
-    private router: Router,
     private viewService: ViewService,
     private userService: UserService,
     private flagService: FlagService,
     private modalService: NgbModal,
+    private notificationBarService: NotificationBarService,
   ) {}
 
   ngOnInit() {
@@ -75,7 +76,15 @@ export class FollowUserComponent implements OnInit {
 
   followThis(e: Event) {
     if (!this.ifLoggedIn) {
-      this.router.navigate(['/access-denied']);
+      this.notificationBarService.create({
+        message:
+          'LOGIN/SIGNUP to follow this maker.',
+        type: NotificationType.Warning,
+        autoHide: true,
+        allowClose: true,
+        hideOnHover: false,
+        isHtml: true,
+      });      
     }
     this.flagToggler = this.isFollowed ? 'unflag' : 'flag';
     this.flagService
