@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbTooltipConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FlagService, UserService } from '../../../core/d7services';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 
 @Component({
   selector: 'app-likes',
@@ -20,6 +21,7 @@ export class LikesComponent implements OnInit {
     private userService: UserService,
     private flagService: FlagService,
     private config: NgbTooltipConfig,
+    private notificationBarService: NotificationBarService,
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
@@ -50,12 +52,32 @@ export class LikesComponent implements OnInit {
 
   likeThis(e: Event) {
     e.preventDefault();
-    this.toggleFlag = this.isLiked ? 'unflag' : 'flag';
-    this.flagService
-      [this.toggleFlag](this.nodeNid, this.userId, 'like')
-      .subscribe(response => {
-        this.countlikes = this.isLiked ? --this.countlikes : ++this.countlikes;
-        this.isLiked = !this.isLiked;
-      });
+    this.userService.isLogedIn().subscribe(status => {
+      console.log(status);
+      if(status == true){
+        this.toggleFlag = this.isLiked ? 'unflag' : 'flag';
+        this.flagService
+          [this.toggleFlag](this.nodeNid, this.userId, 'like')
+          .subscribe(response => {
+            this.countlikes = this.isLiked ? --this.countlikes : ++this.countlikes;
+            this.isLiked = !this.isLiked;
+          });
+      }else {
+        this.notificationBarService.create({
+          message:
+            'LOGIN/SIGNUP to be able to Like projects.',
+          type: NotificationType.Warning,
+          autoHide: true,
+          allowClose: true,
+          hideOnHover: false,
+          isHtml: true,
+        });
+      }
+    });
+
+
+
+    
+
   }
 }
