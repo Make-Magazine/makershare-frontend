@@ -1,19 +1,18 @@
 <ul class="social-stat-group">
-  <li class="social-stat" *ngIf="followerCount">
-    <i class="fa fa-users"></i>
-    <span class="info">{{followerCount}}</span>
+  <li class="social-stat">
+    <i class="lnr lnr-users"></i>
+    <span class="info" *ngIf="followerCount > 0">{{followerCount}}</span>
   </li>
-
+  <li class="social-stat">
+    <i class="fa fa-wrench"></i>
+    <span class="info" *ngIf="projectsCount > 0">{{projectsCount}}</span>
+  </li>
   <li class="social-stat" *ngIf="like && nid">
     <app-likes [nodeNid]="nid"></app-likes> <!--[project]="true"-->
   </li>
-  <li class="social-stat" *ngIf="profileViews">
+  <li class="social-stat">
     <i class="fa fa-eye"></i>
-    <span class="info">{{profileViews}}</span>
-  </li>
-  <li class="social-stat" *ngIf="projectsCount">
-    <i class="fa fa-wrench"></i>
-    <span class="info">{{projectsCount}}</span>
+    <span class="info" *ngIf="profileViews > 0">{{profileViews}}</span>
   </li>
 
   <!-- profile view -->
