@@ -55,7 +55,7 @@ export class Auth {
           realm: 'Username-Password-Authentication',
           username,
           password,
-        },
+        }, 
         (err, authResult) => {
           if (err) {
             observer.error(err);
@@ -167,6 +167,7 @@ export class Auth {
         user[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
+      data.email_verified = true;  
       data.email = user.name;
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
