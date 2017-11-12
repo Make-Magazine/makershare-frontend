@@ -198,7 +198,7 @@ export class MissionDataComponent implements OnInit {
 
   getProjects() {
     this.loaderService.display(true);
-    this.projects = [];
+    // this.projects = [];
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
@@ -224,7 +224,7 @@ export class MissionDataComponent implements OnInit {
 
   myEnteriesProject() {
     this.userId = localStorage.getItem('user_id');
-    this.projects = [];
+    // this.projects = [];
     if (this.pageNo >= 0) {
       this.page_arg = ['page', this.pageNo];
     }
