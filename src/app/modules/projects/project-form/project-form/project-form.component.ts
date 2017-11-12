@@ -638,7 +638,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
   saveProject() {
     this.ProjectLoaded = false;
     this.project.CheckIfReadyToPublic();
-    delete this.project.field_creation_date.und[0].value.time;
+    // delete this.project.field_creation_date.und[0].value.time;
     if (this.project.field_categories.und.length == 0) {
       this.project.field_categories.und = [''];
     }
