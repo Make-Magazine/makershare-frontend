@@ -145,7 +145,7 @@ export class ProjectForm extends NodeEntity implements ProjectForm {
   }
 
   getField(FieldName: string): any {
-    this[FieldName];
+    return this[FieldName];
   }
 
   /**
