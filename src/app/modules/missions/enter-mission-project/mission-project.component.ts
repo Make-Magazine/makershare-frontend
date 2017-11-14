@@ -294,7 +294,7 @@ export class MissionProjectComponent implements OnInit {
   createNewProjectForChallenge() {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        redirectTo: encodeURIComponent('/missions/enter-mission/' + this.nid),
+        nid: this.nid,
       },
     };
     this.router.navigate(['/projects/create'], navigationExtras);
