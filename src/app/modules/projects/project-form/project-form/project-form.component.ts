@@ -37,7 +37,7 @@ export /**
  * this component is used to managing the project like editing or creating new projects
  * WARNING : MY ENGLISH IS NOT THAT GOOD AND YOU MAY HAS A CANCER WHILE READING THE COMMENTS :) - Breaker "Wasim Nabil"
  */
-class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
+  class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
   CanNavigate: boolean = true;
 
   // // @HostListener allows us to also guard against browser refresh, close, etc.
@@ -53,10 +53,11 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    * because the values what drupal returns are just a references to the entity
    * so we need a separated variables to store the display values
    */
-  defaultTabObs: Observable<string>;
-  missionRedirection: string = 'no';
-  isSaving: boolean = false;
 
+  missionNid: number;
+  missionMessageShowed: boolean = false;
+  missionConfirmed: boolean = false;
+  isSaving: boolean = false;
   Holder;
   ProjectLoaded: boolean;
   StoryFormValid: boolean = false;
@@ -88,7 +89,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
     private router: Router,
     private route: ActivatedRoute,
     private mainService: MainService,
-  ) {}
+  ) { }
 
   canDeactivate(): Observable<boolean> | boolean {
     // insert logic to check if there are pending changes here;
@@ -123,14 +124,9 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
       }
 
       this.current_active_tab = 'Your Story';
-      // set default tab according to url parameter "tab"
-      this.defaultTabObs = this.route.queryParams.map(
-        params => params['redirectTo'],
-      );
-      this.defaultTabObs.subscribe(tab => {
-        if (typeof tab !== 'undefined' && tab != '') {
-          this.missionRedirection = decodeURIComponent(tab);
-        }
+      this.route.queryParams.subscribe(params => {
+        // getting mession id from params
+        this.missionNid = params['nid'];
       });
     });
   }
@@ -150,9 +146,9 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
     setInterval(() => {
       const projectHold = new ProjectHold(
         this.project.getField('title') +
-          ' (' +
+        ' (' +
         this.project.getField('nid') +
-          ')',
+        ')',
       );
       projectHold.setField('title', this.project.getField('title'));
       projectHold.setField('nid', this.Holder.nid);
@@ -203,32 +199,43 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
               {
                 title: 'Wait!',
                 text:
-                  hold[0].name +
-                  ' is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#4F4F4F',
-                confirmButtonText: 'Yes, notify me!',
-                closeOnConfirm: true,
-              },
-              confirm => {
-                if (confirm) {
-                  const holder = {
-                    nid: hold[0].nid,
-                    uid: localStorage.getItem('user_id'),
-                  };
-                  this.mainService.custompost('maker_project_api/hold_queue', holder).subscribe(data => {
-                    this.notificationBarService.create({
-                      message: 'Successfully added to notify list',
-                      type: NotificationType.Success,
-                    });
-                    this.router.navigate(['/portfolio']);
+                hold[0].name +
+                ' is currently editing this project. Only one editor can make changes at a time, Do you want to be notified when he finishes?',
+                icon: 'warning',
+                buttons: {
+                  cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                  },
+                  confirm: {
+                    text: "Yes, notify me!",
+                    value: true,
+                    visible: true,
+                    className: "",
+                    closeModal: true
+                  }
+                },
+              }
+            ).then((value) => {
+              if (value) {
+                const holder = {
+                  nid: hold[0].nid,
+                  uid: localStorage.getItem('user_id'),
+                };
+                this.mainService.custompost('maker_project_api/hold_queue', holder).subscribe(data => {
+                  this.notificationBarService.create({
+                    message: 'Successfully added to notify list',
+                    type: NotificationType.Success,
                   });
-                } else {
                   this.router.navigate(['/portfolio']);
-                }
-              },
-            );
+                });
+              } else {
+                this.router.navigate(['/portfolio']);
+              }
+            });
             return;
           }
         });
@@ -542,15 +549,15 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
                       const id = this.project.field_maker_memberships.und[ind]
                         .field_team_member.und[0].target_id;
                       if (parseInt(id, null)) {
-                      this.project.field_maker_memberships.und[
-                        ind
-                      ].field_team_member.und[0].target_id =
-                        member['name'] + ' (' + id + ')';
-                    } else {
-                      this.project.field_maker_memberships.und[
-                        ind
-                      ].field_team_member.und[0].target_id = id;
-                    }
+                        this.project.field_maker_memberships.und[
+                          ind
+                        ].field_team_member.und[0].target_id =
+                          member['name'] + ' (' + id + ')';
+                      } else {
+                        this.project.field_maker_memberships.und[
+                          ind
+                        ].field_team_member.und[0].target_id = id;
+                      }
                       subindex++;
                     }
                   },
@@ -564,8 +571,8 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
             if (this.project.field_cover_photo.und) {
               this.fileService
                 .getFileById(
-                  this.project.field_cover_photo.und[0].fid as number,
-                )
+                this.project.field_cover_photo.und[0].fid as number,
+              )
                 .subscribe((file: FileEntity) => {
                   file.file = NodeHelper.AddFileTypeToBase64(
                     file.file,
@@ -574,7 +581,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
                   this.FormPrintableValues.cover_image = file;
                   this.reInitEmptyFields();
                 });
-            }else {
+            } else {
               this.reInitEmptyFields();
             }
           },
@@ -606,10 +613,10 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
         und: [
           {
             target_id:
-              localStorage.getItem('user_name') +
-              ' (' +
-              localStorage.getItem('user_id') +
-              ')',
+            localStorage.getItem('user_name') +
+            ' (' +
+            localStorage.getItem('user_id') +
+            ')',
           },
         ],
       },
@@ -657,10 +664,32 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
           if (this.project.field_visibility2.und[0] == 1115) {
             this.getProject(project.nid);
           }
-          this.showSuccessMessage(
-            'update',
-            this.project.field_visibility2['und'][0],
-          );
+          if (this.missionConfirmed) {
+            const body = {
+              type: 'challenge_entry',
+              field_entry_project: project.nid,
+              field_entry_challenge: this.missionNid,
+            };
+            this.mainService.custompost('maker_challenge_entry_api', body).subscribe(data => {
+              this.showSuccessMessage(
+                'create',
+                this.project.field_visibility2['und'][0],
+              );
+            }, err => {
+              this.notificationBarService.create({
+                message: "Your project has been saved, but it doesn't meet the mission requirements",
+                type: NotificationType.Warning,
+              });
+              this.projectId = +project.nid;
+              this.editMode = true;
+              this.getProject(+project.nid);
+            });
+          } else {
+            this.showSuccessMessage(
+              'create',
+              this.project.field_visibility2['und'][0],
+            );
+          }
         },
         err => {
           this.notificationBarService.create({
@@ -683,10 +712,32 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
             this.editMode = true;
             this.getProject(+project.nid);
           }
-          this.showSuccessMessage(
-            'create',
-            this.project.field_visibility2['und'][0],
-          );
+          if (this.missionConfirmed) {
+            const body = {
+              type: 'challenge_entry',
+              field_entry_project: project.nid,
+              field_entry_challenge: this.missionNid,
+            };
+            this.mainService.custompost('maker_challenge_entry_api', body).subscribe(data => {
+              this.showSuccessMessage(
+                'create',
+                this.project.field_visibility2['und'][0],
+              );
+            }, err => {
+              this.notificationBarService.create({
+                message: "Your project has been saved, but it doesn't meet the mission requirements",
+                type: NotificationType.Warning,
+              });
+              this.projectId = +project.nid;
+              this.editMode = true;
+              this.getProject(+project.nid);
+            });
+          } else {
+            this.showSuccessMessage(
+              'create',
+              this.project.field_visibility2['und'][0],
+            );
+          }
         },
         err => {
           this.notificationBarService.create({
@@ -705,7 +756,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    */
   sendInvitedEmails(emails) {
     this.mainService.custompost('team_service/send', emails).subscribe(
-      data => {},
+      data => { },
       err => {
         //  console.log(err);
       },
@@ -740,6 +791,11 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
    */
   gettingFieldsReady(status: number, visibility: number) {
     if (this.isSaving) {
+      return;
+    }
+    // if the user pressed public and he is coming from mession enter page
+    if (!this.missionMessageShowed && (visibility == 370 && this.missionNid && this.StoryFormValid)) {
+      this.showMessionConfirmationMessage();
       return;
     }
     this.isSaving = true;
@@ -836,7 +892,7 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
             if (
               !this.FormPrintableValues.resources_files[i].fid &&
               item.field_resource_file.und[0].filename ==
-                this.FormPrintableValues.resources_files[i].filename
+              this.FormPrintableValues.resources_files[i].filename
             ) {
               this.project.field_resources.und[
                 resourcesindex
@@ -888,9 +944,9 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
     if (this.FormPrintableValues.InvitationEmails.mails.length !== 0) {
       this.mainService
         .custompost(
-          'team_service/build',
-          this.FormPrintableValues.InvitationEmails,
-        )
+        'team_service/build',
+        this.FormPrintableValues.InvitationEmails,
+      )
         .subscribe(data => {
           for (const email in data) {
             const user = data[email];
@@ -938,7 +994,15 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
         state = 'private';
         break;
       case 370:
-        notificationMessage = `Your project has been ${actionVerb}.`;
+        if (this.missionNid) {
+          if (this.missionConfirmed) {
+            notificationMessage = `Your project has been entered. Thank you for participating!.`;
+          } else {
+            notificationMessage = `Your project is published but not entered into the mission. You can enter it later.`;
+          }
+        } else {
+          notificationMessage = `Your project has been ${actionVerb}.`;
+        }
         break;
     }
 
@@ -949,25 +1013,51 @@ class ProjectFormComponent implements OnInit, OnDestroy, ComponentCanDeactivate 
       autoHide: false,
       hideOnHover: false,
     });
-
-    // // If public && just created
-    // if (state === 'public' && !this.editMode) {
-    //   if (this.missionRedirection.includes('/missions/enter-mission/')) {
-    //     const navExtras: NavigationExtras = {
-    //       queryParams: { projectId: 'newproject' },
-    //     };
-    //     this.router.navigate([this.missionRedirection], navExtras);
-    //   }
-    // } else {
-      // Navigate to portfolio if not draft
-      if (state !== 'draft') {
-        const userID = +localStorage.getItem('user_id');
+    // Navigate to portfolio if not draft
+    if (state !== 'draft') {
+      const userID = +localStorage.getItem('user_id');
+      if (this.missionConfirmed) {
+        this.nodeService.getUrlFromId(this.missionNid, 'challenge').subscribe(res => {
+          this.router.navigate(['/missions/' + res[0]]);
+        });
+      } else {
         this.userService.getUrlFromId(userID).subscribe(res => {
           this.router.navigate(['/portfolio/' + res.url], <NavigationExtras>{
             queryParams: { tab: state },
           });
         });
       }
-    // }
+    }
+  }
+
+  showMessionConfirmationMessage() {
+    this.missionMessageShowed = true;
+    swal(
+      {
+        title: 'Please Confirm',
+        text: 'Do you still want to enter this project into the mission?',
+        icon: 'success',
+        buttons: {
+          cancel: {
+            text: "No",
+            value: null,
+            visible: true,
+            className: "",
+            closeModal: true,
+          },
+          confirm: {
+            text: "Yes",
+            value: true,
+            visible: true,
+            className: "",
+            closeModal: true
+          }
+        },
+      }).then((confirm) => {
+        if (confirm) {
+          this.missionConfirmed = true;
+        }
+        this.gettingFieldsReady(0, 370);
+      });
   }
 }
