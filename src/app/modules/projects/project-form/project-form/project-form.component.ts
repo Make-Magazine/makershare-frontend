@@ -679,6 +679,7 @@ export /**
               this.notificationBarService.create({
                 message: "Your project has been saved, but it doesn't meet the mission requirements",
                 type: NotificationType.Warning,
+                autoHide: false,
               });
               this.projectId = +project.nid;
               this.editMode = true;
@@ -727,6 +728,7 @@ export /**
               this.notificationBarService.create({
                 message: "Your project has been saved, but it doesn't meet the mission requirements",
                 type: NotificationType.Warning,
+                autoHide: false,
               });
               this.projectId = +project.nid;
               this.editMode = true;
