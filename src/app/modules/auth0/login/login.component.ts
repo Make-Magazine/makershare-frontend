@@ -4,16 +4,15 @@ import { Auth } from './../auth.service';
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { NetworkError, NetworkErrorCode } from '../../../core/models/error';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 
 export class LoginComponent implements OnInit {
+  subscribeToNewsletter: boolean = true;
   private CancelTitle: string = 'Cancel';
   private closeResult: string;
-  subscribe: boolean = true;
   resetSent;
   selected_day = '';
   selected_month = '';
@@ -48,7 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.auth.signupNewsletter('testyfacelorem@gmail.com');
     const currYear: number = (new Date()).getFullYear();
     for (let i = 1930; i < currYear; i++) {
       this.formYears.push(i);
@@ -145,19 +143,17 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   * subscribeUpdate
-   */
-  public subscribeUpdate() {
-    this.subscribe = !this.subscribe;
-  }
-
-  /**
    * signup
    *
    * @param user
    */
   public signup() {
-
+    if(this.subscribeToNewsletter) {
+      localStorage.setItem('subscribeToNewsletter', 'true');
+    } else {
+      localStorage.setItem('subscribeToNewsletter', 'false');
+    }
+    
     this.errorSignupMessage = null;
     this.extraErrorDetails = null;
     this.submitted = true;
@@ -174,9 +170,6 @@ export class LoginComponent implements OnInit {
     ) {
       this.signingUp = true;
       this.signupBtnLabel = 'Signing Up...';
-      if ( this.subscribe ) {
-        this.auth.signupNewsletter(this.userSignup.emailUp);
-      }
       this.auth.signup(
         this.userSignup.emailUp,
         this.userSignup.passwordUp,
@@ -210,4 +203,5 @@ export class LoginComponent implements OnInit {
   resolved(captchaResponse: string) {
     this.recaptchaIsValidated = true;
   }
+
 }
