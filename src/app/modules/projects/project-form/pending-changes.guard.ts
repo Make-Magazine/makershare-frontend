@@ -25,17 +25,30 @@ export class PendingChangesGuard
         swal(
           {
             title: 'Are you sure?',
-            text:
-              'You have unsaved changes, are you sure you want to leave this page?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#4F4F4F',
-            confirmButtonText: 'Yes, discard changes!',
-            closeOnConfirm: false,
-          },
-          confirm => {
-            if (confirm) window.location.href = nextState.url;
-          },
-        );
+            text: 'You have unsaved changes, are you sure you want to leave this page?',
+            icon: 'warning',
+            dangerMode: true,
+            buttons: {
+              cancel: {
+                text: "Cancel",
+                value: null,
+                visible: true,
+                className: "",
+                closeModal: true,
+              },
+              confirm: {
+                text: "Yes, discard changes!",
+                value: true,
+                visible: true,
+                className: "",
+                closeModal: true
+              }
+            },
+          }
+        ).then((value) => {
+          if (value) {
+            window.location.href = nextState.url;
+          }
+        });
   }
 }

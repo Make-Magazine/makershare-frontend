@@ -124,6 +124,12 @@ export class UserService {
     });
   }
 
+  newsletterSubscribe(email: string): Observable<any> {
+    return this.mainService.custompost('maker_wc/subscribe', {
+      'email': email,
+    });
+  }
+
   saveCookies(token: string, session_name: string, sessid: string): void {
     const expires = new Date();
     expires.setDate(expires.getDate() + 23);
