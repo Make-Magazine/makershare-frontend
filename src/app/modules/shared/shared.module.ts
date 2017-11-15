@@ -68,7 +68,7 @@ import { VideoViewerComponent } from './video-viewer/video-viewer.component';
 import { ViewsComponent } from './views/views.component';
 import { ReportComponent } from './report/report.component';
 import { FollowOrgsComponent } from './follow-orgs/follow-orgs.component';
-
+import { TimeagoPipe } from '../../angular/pipes/timeago';
 
 @NgModule({
   imports: [
@@ -132,7 +132,7 @@ import { FollowOrgsComponent } from './follow-orgs/follow-orgs.component';
     // pipes
     ReverseArray,
     FollowOrgsComponent,
-
+    TimeagoPipe
   ],
   exports: [
     CommentComponent,
@@ -180,6 +180,7 @@ import { FollowOrgsComponent } from './follow-orgs/follow-orgs.component';
 
     ReportComponent,
     FollowOrgsComponent,
+    TimeagoPipe
   ],
 })
 
