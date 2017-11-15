@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, RequestOptionsArgs, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -27,7 +26,6 @@ export class Auth {
 
   constructor(
     public router: Router,
-    private http: Http,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -55,7 +53,7 @@ export class Auth {
           realm: 'Username-Password-Authentication',
           username,
           password,
-        }, 
+        },
         (err, authResult) => {
           if (err) {
             observer.error(err);
@@ -74,15 +72,9 @@ export class Auth {
    * @param {string} email
    */
   public signupNewsletter(email: string) {
-    const headers = new Headers();
-    headers.set('Content-Type', 'application/json');
-    headers.set('Accept', 'application/vnd.whatcounts-v1+json');
-    headers.set('Authorization', 'Basic bWFrZXJtZWRpYTpsaWFibGVhYjM2NzU=');
-    const options: RequestOptionsArgs = new RequestOptions();
-    options.headers = headers;
-    options.withCredentials = true;
-    const url = 'http://api.whatcounts.net/rest/subscribers';
-    return this.http.post(url, {email: email, firstName: '', lastName: ''}, options);
+    return this.userService.newsletterSubscribe(email).subscribe(data => {
+      this.notificationBarService.create({ message: 'Thank you for your subscription.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
+    });
   }
 
   /**
@@ -168,6 +160,7 @@ export class Auth {
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;  
+      data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
@@ -175,9 +168,7 @@ export class Auth {
         dob: user['http://makershare.com/dob'],
       };
 
-      console.log(data);
       this.userService.auth0_authenticate(data).subscribe(res => {
-        console.log(res)
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
