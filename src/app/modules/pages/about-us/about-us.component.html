@@ -6,16 +6,16 @@
         <p style="width: 59%; margin:auto;">Our Community Managers curate Makers and Projects and are your contacts for questions and concerns about the site. Maker Share is a project from Make: and Intel.</p>
       </div>
     </header>
-    
+
     <!-- community managers -->
     <h2 class="sub-header red">COMMUNITY MANAGERS</h2>
     <div class="projects-grid row" *ngIf="communityManagers">
       <app-maker-card class="col-md-6 col-lg-4 pull-left card-wrapper" *ngFor="let maker of communityManagers" [uid]="maker.uid" [state]="'tall'" [showFlag]="false"></app-maker-card>
     </div>
 
-    <!-- make: + intel -->
+    <!-- make: -->
     <div style="margin-top: 4rem;">
-      <h2 class="sub-header red">MAKE: + INTEL</h2>
+      <h2 class="sub-header red">MAKE:</h2>
       <div class="projects-grid row" *ngIf="makeIntel">
         <app-maker-card class="col-md-6 col-lg-4 pull-left card-wrapper" *ngFor="let maker of makeIntel" [uid]="maker.uid" [state]="'tall'" [showFlag]="false"></app-maker-card>
       </div>
