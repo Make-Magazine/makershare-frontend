@@ -1,48 +1,12 @@
 <section class="container padded">
-  <div id="homeBanner" class="text-center mx-auto">
-    <h2>Welcome to Maker Share</h2>
-    <h1>A community of makers sharing what they can do.</h1>
-    <img src="./assets/images/makers_intro.png"
-         alt=""
-         class="img-fluid pt-4 pb-4"/>
-    <div *ngIf="!auth.authenticated()"
-         class="button-container-main-1">
-      <button class="button"
-              (click)="openLogin()">Add a Project
-      </button>
-    </div>
+  <div id="homeBanner" class="d-flex align-content-center flex-column">
+    <h2>Build Your Portfolio</h2>
+    <h1>Share your projects. Connect with other makers. Find inspiration.</h1>
+    <button class="button btn-simple-large" (click)="openLogin()">Sign Up</button>
   </div>
 </section>
 
-<section class="parallax-scroll">
-  <div class="info-w-parallax parallax-bg">
-    <img src="assets/images/Home-Page-Science-Drawing.jpg"
-         alt="Science drawing background"/>
-    <div class="parallax-container">
-      <div class="container padded-half">
-        <div *ngFor="let infoCard of infoCards" class="row">
-          <div class="col-12 offset-lg-1 col-lg-10 offset-xl-2 col-xl-8 add-animation">
-            <div class="info-card">
-              <h2>{{infoCard.title}}</h2>
-              <h3>{{infoCard.subtitle}}</h3>
-              <p *ngIf="infoCard.description"
-                 class="inner-html" [innerHTML]="infoCard.description"></p>
-              <div class="button-container-onboarding"
-                   *ngIf="infoCard.action && infoCard.button">
-                <button class="button"
-                        (click)="infoCard.action()">{{infoCard.button}}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="what-is-ms p-0 mt-4 mb-5"
-         *ngIf="!auth.authenticated()">
+<section class="what-is-ms p-0 mt-4 mb-5" *ngIf="!auth.authenticated()">
   <div class="container">
     <h1 class="big">Explore Maker Share</h1>
   </div>
