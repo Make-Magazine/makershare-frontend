@@ -1,6 +1,8 @@
 #homeBanner {
   height: 410px;
   padding-top: 60px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -18,13 +20,14 @@
   -ms-flex-pack: center;
   justify-content: center;
   @media (max-width: 575px) {
-
+    height: 60vh;
   }
   h2 {
     color: #fff;
     font-size: 64px;
     line-height: 1em;
     margin-bottom: 0px;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.2);
     @media (min-width: 576px) and (max-width: 991px) {
       font-size: 52px;
     }
@@ -39,6 +42,7 @@
     padding: 0 15px;
     margin-bottom: 30px;
     max-width: 800px;
+    text-shadow: 0px 0px 5px rgba(0,0,0,0.2);
     @media (max-width: 575px) {
       line-height: 1.1em;
       font-size: 22px;

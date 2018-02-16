@@ -68,7 +68,7 @@ nav {
   &.secondary {
     position: absolute;
     right: 2rem;
-    top: 34px;
+    top: 23px;
     .nav-item {
       padding: .5rem .9rem;
       &:last-child {
@@ -76,6 +76,10 @@ nav {
       }
     }
   }
+}
+
+.shrink nav.secondary {
+  top: 15px;
 }
 
 .mobile-menu-item {
