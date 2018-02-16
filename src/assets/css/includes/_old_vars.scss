@@ -123,6 +123,13 @@ $showcase-layer-2: $dark-blue;
 		 url("../fonts/MessinaModernWeb-Bold.woff") format("woff"),
 		 url("../fonts/MessinaModern-Bold.otf") format('opentype')
 }
+@font-face {
+	font-family: "Messina Modern Light";
+	src: url("../fonts/MessinaSansWeb-Light.eot") format("eot"),
+		 url("../fonts/MessinaSansWeb-Light.woff2") format("woff2"),
+		 url("../fonts/MessinaSansWeb-Light.woff") format("woff"),
+		 url("../fonts/MessinaSans-Light.otf") format('opentype')
+}
 
 // Font size on mobile devices
 // card title 2.6em --> 2em
