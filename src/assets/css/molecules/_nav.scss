@@ -40,7 +40,7 @@ nav.primary, nav.secondary {
 
 .nav-link {
   display: block;
-  font-size: 2rem;
+  font-size: 15px;
   color: lighten($dark-grey, 15%) !important;
   transition: all .3s ease;
   cursor: pointer;
@@ -58,10 +58,8 @@ nav.primary, nav.secondary {
 
 nav {
   &.primary {
-    @include tablet() {
-      .nav-item {
-        padding: 1rem;
-      }
+    .nav-item {
+      padding: 1rem;
     }
   }
 
