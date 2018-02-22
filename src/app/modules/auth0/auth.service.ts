@@ -203,7 +203,6 @@ export class Auth {
             this.router.navigateByUrl('/');
             window.location.reload();
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            window.location.href = Singleton.Settings.appURL;
             this.notificationBarService.create({
               message:
                 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
@@ -213,6 +212,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
+            //window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
