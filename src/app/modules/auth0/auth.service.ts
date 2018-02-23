@@ -212,7 +212,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            //window.location.href = Singleton.Settings.appURL;
+            window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
