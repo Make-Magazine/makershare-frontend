@@ -89,6 +89,13 @@ $showcase-layer-2: $dark-blue;
 // font-family: 'Open Sans', sans-serif;
 // font-family: 'Trirong', serif;
 @font-face {
+	font-family: "Messina Sans Light";
+	src: url("../fonts/MessinaSansWeb-Light.eot") format("eot"),
+		 url("../fonts/MessinaSansWeb-Light.woff2") format("woff2"),
+		 url("../fonts/MessinaSansWeb-Light.woff") format("woff"),
+		 url("../fonts/MessinaSans-Light.otf") format('opentype')
+}
+@font-face {
 	font-family: "Messina Sans SemiBold";
 	src: url("../fonts/MessinaSansWeb-SemiBold.eot") format("eot"),
 		 url("../fonts/MessinaSansWeb-SemiBold.woff2") format("woff2"),
