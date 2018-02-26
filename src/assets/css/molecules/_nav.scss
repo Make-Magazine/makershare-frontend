@@ -40,7 +40,7 @@ nav.primary, nav.secondary {
 
 .nav-link {
   display: block;
-  font-size: 2rem;
+  font-size: 15px;
   color: lighten($dark-grey, 15%) !important;
   transition: all .3s ease;
   cursor: pointer;
@@ -58,17 +58,15 @@ nav.primary, nav.secondary {
 
 nav {
   &.primary {
-    @include tablet() {
-      .nav-item {
-        padding: 1rem;
-      }
+    .nav-item {
+      padding: 1rem;
     }
   }
 
   &.secondary {
     position: absolute;
     right: 2rem;
-    top: 34px;
+    top: 23px;
     .nav-item {
       padding: .5rem .9rem;
       &:last-child {
@@ -76,6 +74,10 @@ nav {
       }
     }
   }
+}
+
+.shrink nav.secondary {
+  top: 15px;
 }
 
 .mobile-menu-item {

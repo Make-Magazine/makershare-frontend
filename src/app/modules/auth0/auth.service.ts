@@ -261,6 +261,7 @@ export class Auth {
     localStorage.removeItem('user_photo');
     // Go back to the home route
     this.router.navigate(['/']);
+    window.location.reload();
   }
 
   /**
