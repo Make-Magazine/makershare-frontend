@@ -14,14 +14,14 @@ export class Auth {
   toggleModal$ = this._toggleModal.asObservable();
 
   auth0 = new auth0.WebAuth({
-    clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
+    clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     // responseType: 'token id_token access_token profile',
     responseType: 'token',
     audience: 'https://makermedia.auth0.com/userinfo',
     // redirectUri: 'http://localhost:4200/',
-    redirectUri: Singleton.Settings.appURL,
     scope: 'openid id_token access_token profile',
+    redirectUri: Singleton.Settings.appURL,
   });
 
   constructor(
@@ -46,27 +46,11 @@ export class Auth {
    * @param {string} username
    * @param {string} password
    */
-  public login(username: string, password: string): Observable<Error | boolean> {
-    return Observable.create(observer => {
-      this.auth0.client.login(
-        {
-          realm: 'Username-Password-Authentication',
-          username,
-          password,
-        },
-        (err, authResult) => {
-          if (err) {
-            observer.error(err);
-          } else if (authResult && authResult.accessToken && authResult.idToken) {
-            observer.next(true);
-            this.doLogin(authResult);
-            observer.complete();
-          }
-        },
-      );
-    });
+  public login(username: string, password: string) {
+    this.auth0.authorize();
   }
-    /**
+
+  /**
    * signupNewsletter
    *
    * @param {string} email
@@ -122,6 +106,30 @@ export class Auth {
         },
       );
     });
+  }
+
+  private setSession(authResult): void {
+    // Set the time that the Access Token will expire at
+    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+  }
+
+  public logout(): void {
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    // Go back to the home route
+    this.router.navigate(['/']);
+  }
+
+  public isAuthenticated(): boolean {
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
   }
 
   /**
@@ -222,8 +230,6 @@ export class Auth {
       }, err => {
         console.log(err);
       });
-
-
     });
   }
 
