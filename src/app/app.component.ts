@@ -4,6 +4,7 @@ import { UserService } from './core/d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
+import { CropperSettings } from 'ng2-img-cropper';
 
 declare var ga: Function;
 
@@ -13,6 +14,10 @@ declare var ga: Function;
 })
 export class AppComponent implements OnInit {
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
+
+  // image cropper
+  cropperSettings: CropperSettings;
+  imageData: any;
 
   showLoader: boolean;
   siteMap;
@@ -25,6 +30,7 @@ export class AppComponent implements OnInit {
     public router: Router,
   ) {
     auth.handleAuthentication();
+    checkProfileSetup();
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -79,5 +85,40 @@ export class AppComponent implements OnInit {
     // setTimeout(function() {
     //   window.scrollTo(0, 1);
     // }, 0);
+  }
+ 
+  checkProfileSetup() {
+    if(auth.isAuthenticated()) {
+      if(!hasProfileImage()) {
+         return            
+            // Notification to visit portfolio page
+            this.notificationBarService.create({
+              message:
+                'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
+              type: NotificationType.Warning,
+              autoHide: true,
+              isHtml: true,
+              allowClose: true,
+              hideOnHover: false,
+            });
+      }
+    }  
+  }
+
+  hasProfileImage() {
+    var image:any = new Image();
+    var filename = $event.target.files[0];
+    //var myReader:FileReader = new FileReader();
+    //var that = this;
+    /**myReader.onloadend = function (loadEvent:any) {
+      image.src = loadEvent.target.result;
+      that.cropper.setImage(image);
+    };*/
+    fs.stats(filename, function(err, stats) {
+      if(err) {
+         return false;
+      }
+      return true;
+    }
   }
 }
