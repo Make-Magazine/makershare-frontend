@@ -4,7 +4,7 @@ import { UserService } from './core/d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
-import { CropperSettings } from 'ng2-img-cropper';
+import { MainService } from '../main/main.service';
 
 declare var ga: Function;
 
@@ -15,9 +15,7 @@ declare var ga: Function;
 export class AppComponent implements OnInit {
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
 
-  // image cropper
-  cropperSettings: CropperSettings;
-  imageData: any;
+  private mainService: MainService;
 
   showLoader: boolean;
   siteMap;
@@ -27,10 +25,11 @@ export class AppComponent implements OnInit {
     public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
+    private profilePictureService: ProfilePictureService,
     public router: Router,
   ) {
     auth.handleAuthentication();
-    checkProfileSetup();
+    this.checkProfileSetup();
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -89,7 +88,7 @@ export class AppComponent implements OnInit {
  
   checkProfileSetup() {
     if(auth.isAuthenticated()) {
-      if(!hasProfileImage()) {
+      if(!this.hasProfileImage()) {
          return            
             // Notification to visit portfolio page
             this.notificationBarService.create({
@@ -106,19 +105,12 @@ export class AppComponent implements OnInit {
   }
 
   hasProfileImage() {
-    var image:any = new Image();
-    var filename = $event.target.files[0];
-    //var myReader:FileReader = new FileReader();
-    //var that = this;
-    /**myReader.onloadend = function (loadEvent:any) {
-      image.src = loadEvent.target.result;
-      that.cropper.setImage(image);
-    };*/
-    fs.stats(filename, function(err, stats) {
-      if(err) {
-         return false;
-      }
-      return true;
+    // update profile picture globally
+    var image = this.mainService.custompost('maker_profile_api/get_picture', {
+      uid: uid,
+    });
+    if(image.indexOf('profile-default.png')  >= 0) {
+    
     }
   }
 }
