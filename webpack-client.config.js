@@ -1,6 +1,7 @@
 const path = require('path');
 const loaders = require('./src/webpack/loaders');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -20,7 +21,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'body'
-    })
+    }),
+
+    new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators for Windows and MacOS
+        /(.+)?angular(\\|\/)core(.+)?/,
+        path.join(__dirname, 'src'), // location of your src
+        {} // a map of your routes 
+    ),
   ],
   module: {
     rules: [loaders.tsjit, loaders.html, loaders.css]

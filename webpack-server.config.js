@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const  path = require('path');
 const {join, resolve} = require('path');
 
 const loaders = require('./src/webpack/loaders');
@@ -24,7 +25,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({ "global.GENTLY": false })
+    new webpack.DefinePlugin({ "global.GENTLY": false }),
+
+    new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators for Windows and MacOS
+        /(.+)?angular(\\|\/)core(.+)?/,
+        path.join(__dirname, 'src'), // location of your src
+        {} // a map of your routes 
+    ),
   ],
   externals: [
     '@angular/animations',
