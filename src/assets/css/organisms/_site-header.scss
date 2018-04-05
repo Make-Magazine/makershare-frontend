@@ -1,7 +1,7 @@
 .main-header {
   padding: 0 !important;
   margin: 0 !important;
-  color: #333333;
+  color: #333;
   width: 100vw;
   background-color: $white;
   position: fixed;
@@ -41,6 +41,10 @@
     .nav-item {
       padding-left: 1rem;
       padding-right: 1rem;
+      opacity: .6;
+        &:hover {
+            opacity: 1;
+        }
     }
   }
 }
