@@ -4,7 +4,6 @@ import { UserService } from './core/d7services';
 import { Router, NavigationEnd } from '@angular/router';
 import { Auth } from './modules/auth0/auth.service';
 import { isPlatformBrowser } from '@angular/common';
-import { MainService } from '../main/main.service';
 
 declare var ga: Function;
 
@@ -15,8 +14,6 @@ declare var ga: Function;
 export class AppComponent implements OnInit {
   private isBrowser: boolean = isPlatformBrowser(this.platform_id);
 
-  private mainService: MainService;
-
   showLoader: boolean;
   siteMap;
   public location = '';
@@ -25,11 +22,9 @@ export class AppComponent implements OnInit {
     public auth: Auth,
     private loaderService: LoaderService,
     private userService: UserService,
-    private profilePictureService: ProfilePictureService,
     public router: Router,
   ) {
     auth.handleAuthentication();
-    this.checkProfileSetup();
     router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
@@ -84,33 +79,5 @@ export class AppComponent implements OnInit {
     // setTimeout(function() {
     //   window.scrollTo(0, 1);
     // }, 0);
-  }
- 
-  checkProfileSetup() {
-    if(auth.isAuthenticated()) {
-      if(!this.hasProfileImage()) {
-         return            
-            // Notification to visit portfolio page
-            this.notificationBarService.create({
-              message:
-                'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
-              type: NotificationType.Warning,
-              autoHide: true,
-              isHtml: true,
-              allowClose: true,
-              hideOnHover: false,
-            });
-      }
-    }  
-  }
-
-  hasProfileImage() {
-    // update profile picture globally
-    var image = this.mainService.custompost('maker_profile_api/get_picture', {
-      uid: uid,
-    });
-    if(image.indexOf('profile-default.png')  >= 0) {
-    
-    }
   }
 }
