@@ -1,14 +1,15 @@
+.loading {display:none;}
 .main-header {
   padding: 0 !important;
   margin: 0 !important;
   color: #333333;
   width: 100vw;
-  background-color: $dark-blue;
+  background-color: $white;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
-  // height: 110px;
+  height: 75px;
 
   .header-wrapper {
     margin: auto;
