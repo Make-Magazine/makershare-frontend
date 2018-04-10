@@ -22,7 +22,7 @@ header.universal-nav {
   .nav-level-1-nav {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 170px;
+    margin-left: 130px;
     padding: 0;
     list-style: none;
     display: inline-block;
@@ -226,6 +226,7 @@ header.universal-nav {
     align-items: center;
     li, a {
       height: 100%;
+      margin-top: 5px;
     }
     a {
       color: #fff;
@@ -265,8 +266,8 @@ header.universal-nav {
         font-size: 14px;
       }
     }
-    li:nth-child(2) span {
-          width: 160px;
+    li:nth-child(2) span, li:nth-child(3) span {
+          border-right: 0px;
     }
     li:last-child span {
       border-right: none;
