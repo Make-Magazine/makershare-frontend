@@ -298,6 +298,9 @@ function isElementInViewport(elem) {
   return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
 }
 
+//////////////////////////////////////
+/////// Navigation and Search ////////
+//////////////////////////////////////
 
 (function($) {   
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
@@ -439,5 +442,4 @@ function isElementInViewport(elem) {
     default:
           break;
   }
-    
 })(jQuery);
