@@ -71,16 +71,16 @@
             <li id="nav-item" class="nav-item"><a title="Showcases" [routerLink]="['showcases']"><span>Makers</span></a></li>
             <li id="nav-item" class="nav-item"><a title="Missions" [routerLink]="['missions']"><span>Mission</span></a></li>
           </ul>
+          <ul class="search-button">
+            <li class="nav-item">
+              <div id="sb-search" class="sb-search">
+                <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
+              </div>
+            </li>
+          </ul>
       </div>
     </div>
   </div><!-- .nav-level-2 -->
-    <ul class="search-button">
-        <li class="nav-item">
-          <div id="sb-search" class="sb-search">
-            <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
-          </div>
-        </li>
-    </ul>
   <div id="nav-flyout">
   <div class="container">
     <div class="nav-flyout-logo">
