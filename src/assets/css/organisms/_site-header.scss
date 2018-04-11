@@ -51,7 +51,7 @@ header.universal-nav {
           margin-left: 166px;
         }
         @media screen and (min-width: 768px) and (max-width: 991px) {
-          margin-left: 134px;
+          margin-left: 114px;
         }
       }
       a {
@@ -281,8 +281,10 @@ header.universal-nav {
     li.second-nav-banner {
         padding: 0px;
         min-width: 178px;
+        transition: .1s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
             max-width: 120px;
+            min-width: 120px;
         }
         a {
             opacity: 1;
