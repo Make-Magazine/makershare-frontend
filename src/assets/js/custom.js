@@ -454,6 +454,7 @@ $(window).on('load', function () {
     firstpath.toLowerCase();
     firstpath = firstpath.split("/")[1];
   var shareSection = site + "/" + firstpath;
+  console.log(shareSection);
   function universalNavActive( site ) {
     jQuery(".nav-" + site).addClass("active-site");
     jQuery(".nav-" + site + " .nav-level-2-arrow").addClass("active-site")
@@ -483,13 +484,19 @@ $(window).on('load', function () {
     case "makerfaire.com":
         universalNavActive("faire")
         break;
+    case "maker-share":
+    case "makershare":
+    case "preview.makershare.com":
+    case "makershare.com":
+        universalNavActive("share-p")
+        break;
     default:
-          break;
+        break;
   }
   switch(shareSection) {
     case "maker-share/learning":
     case "makershare/learning":
-    case "preview.makershare.com":
+    case "preview.makershare.com/learning":
     case "makershare.com/learning":
         universalNavActive("share")
         break;
@@ -500,6 +507,6 @@ $(window).on('load', function () {
         universalNavActive("share-p")
         break;
     default:
-          break;
+        break;
   }
 });
