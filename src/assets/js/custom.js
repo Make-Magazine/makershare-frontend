@@ -407,7 +407,6 @@ $(window).on('load', function () {
 //////////////////////////////////////
 
 $(window).on('load', function () {   
-  console.log("putty");
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
