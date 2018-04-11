@@ -3,6 +3,12 @@
 header.universal-nav {
   position: relative;
   background: #fff;
+  nav.container {
+    padding: 0px;
+    @media screen and (max-width: 767px) {
+        width: 90%;
+    }
+  }
 }
 .nav-level-1 {
   height: 75px;
@@ -226,6 +232,9 @@ header.universal-nav {
     justify-content: center;
     align-items: center;
     margin-left: 40px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        margin-left: 0px;
+    }
     li, a {
       height: 100%;
       margin-top: 5px;
@@ -266,12 +275,14 @@ header.universal-nav {
       }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         font-size: 14px;
+        padding: 0 5px;
       }
     }
     li:nth-child(2) span, li:nth-child(3) span, li:last-child span {
         border-right: none;
     }
     li.second-nav-banner {
+        padding: 0px;
         min-width: 178px;
         a {
             opacity: 1;
