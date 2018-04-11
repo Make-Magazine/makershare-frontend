@@ -186,34 +186,17 @@ header.universal-nav {
 }
 
 // Nav Level 2
-.universal-nav.main-nav-scrolled .nav-level-2, .universal-nav.main-nav-scrolled .search-button {
+.universal-nav.main-nav-scrolled .nav-level-2 {
   position: fixed;
-  width: 100%;
+  width: 100px;
   top: 0;
   z-index: 999;
-  /*#menu-secondary_universal_menu {
-      margin-left: -22px;
-      li:nth-child(2) {
-          a { float: left; }
-          span {
-            border-right: 0px;
-          }
-          &:after {
-              background-image: url('../assets/images/Make_logo-white.svg');
-              background-size: 134px 40px;
-              display: inline-block;
-              width: 134px; 
-              height: 40px;
-              content: "";
-              margin-top: 8px;
-              float: left;
-          }
-      }
-  }*/
 }
 .universal-nav.main-nav-scrolled .search-button {
-    top: 5px;
-    right: 14%;
+    top: 4px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
 }
 .nav-level-2 {
   height: 55px;
@@ -379,7 +362,7 @@ header.universal-nav {
       width: 100px;
     }
     h2 {
-      font-family: $roboto, serif;
+      font-family: 'Roboto', serif;
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.04em;
@@ -428,7 +411,7 @@ header.universal-nav {
         opacity: .85;
         font-size: 20px;
         font-weight: 500;
-        font-family: $roboto, serif;
+        font-family: 'Roboto', serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
         display: inline;
