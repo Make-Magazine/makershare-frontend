@@ -379,7 +379,7 @@ header.universal-nav {
       width: 100px;
     }
     h2 {
-      font-family: 'Roboto', serif;
+      font-family: $roboto, serif;
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.04em;
@@ -428,7 +428,7 @@ header.universal-nav {
         opacity: .85;
         font-size: 20px;
         font-weight: 500;
-        font-family: 'Roboto', serif;
+        font-family: $roboto, serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
         display: inline;

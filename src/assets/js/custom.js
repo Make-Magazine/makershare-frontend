@@ -454,41 +454,6 @@ $(window).on('load', function () {
       }
   });
     
-  $("#search-modal").fancybox({
-        wrapCSS : 'search-modal-wrapper',
-        autoSize : true,
-        //width  : 400,
-        autoHeight : true,
-        padding : 0,
-        overlay: {
-            opacity: 0.8, // or the opacity you want 
-            css: {'background-color': '#ff0000'} // or your preferred hex color value
-        }, // overlay 
-        closeClick  : false, 
-        afterShow   : function() {
-            // keep it from reloading upon clicks
-            $('#search-modal').bind('click', false);
-            $(".sb-search-submit").click(function(e){
-                if($("#search").val() && $("#search").val() != ""){
-                    var searchForm = $(".search-form");
-                    window.location.href = searchForm.attr("action") +"?s=" + $("#search").val();
-                }else{
-                    $("#search").attr('placeholder', "Please enter in some text to search for...");            
-                }
-            });
-            $(".sb-search-input").focus();
-        },
-        afterClose: function () {
-            $('#search-modal').unbind('click', false);
-        }
-  });
-
-  $(".fa-search").click(function(e){
-       $("#search-modal").trigger('click');
-       // essb sharing popup is being triggered when logged in to admin
-       $(".essb-live-customizer-main, .essb-live-buttons-customizer").attr('style', 'display: none !important');
-  });
-    
   // to keep this nav universal, let's not have each site's style sheet highlight a different active manually
   var site = window.location.hostname;
   var firstpath = $(location).attr('pathname');
@@ -531,16 +496,14 @@ $(window).on('load', function () {
   switch(shareSection) {
     case "maker-share/learning":
     case "makershare/learning":
-    case "makeshare.wpengine.com/learning":
-    case "makershare.staging.wpengine.com/learning":
+    case "preview.makershare.com":
     case "makershare.com/learning":
         universalNavActive("share")
         break;
-    case "maker-share/makers":
-    case "makershare/makers":
-    case "makeshare.wpengine.com/makers":
-    case "makershare.staging.wpengine.com/makers":
-    case "makershare.com/makers":
+    case "maker-share":
+    case "makershare":
+    case "preview.makershare.com"::
+    case "makershare.com":
         universalNavActive("share-p")
         break;
     default:
