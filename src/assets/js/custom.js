@@ -426,17 +426,14 @@ $(window).on('load', function () {
   var e = $(".universal-nav");
   var hamburger = $(".nav-hamburger");
   var y_pos = $(".nav-level-2").offset().top;
-  var nextItemUnderNav = $("#home-featured");
     if($(".second-nav").length) {
         nextItemUnderNav = $(".second-nav");
     }
   $(window).on('resize', function(){
       if ($(window).width() < 767) {
           y_pos = 0;
-          nextItemUnderNav.css("margin-top", "55px");
       }else{
-          y_pos = 75;
-          nextItemUnderNav.css("margin-top", "0px");
+          y_pos = 77;
       }
   });
   jQuery(document).scroll(function() {
@@ -444,13 +441,9 @@ $(window).on('load', function () {
       if(scrollTop > y_pos && $(window).width() > 767){
           e.addClass("main-nav-scrolled"); 
           hamburger.addClass("ham-menu-animate");
-          nextItemUnderNav.css("margin-top", "55px");
       }else if(scrollTop <= y_pos){
           e.removeClass("main-nav-scrolled"); 
           hamburger.removeClass("ham-menu-animate");
-          if ($(window).width() > 767) {
-            nextItemUnderNav.css("margin-top", "0px");
-          }
       }
   });
     
@@ -502,7 +495,7 @@ $(window).on('load', function () {
         break;
     case "maker-share":
     case "makershare":
-    case "preview.makershare.com"::
+    case "preview.makershare.com":
     case "makershare.com":
         universalNavActive("share-p")
         break;
