@@ -1,4 +1,8 @@
 // Nav Level 1
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Light.ttf");
+}
 
 header.universal-nav {
   position: relative;
@@ -46,12 +50,12 @@ header.universal-nav {
       float: left;
       position: relative;
       &:nth-child(4) {
-        margin-left: 180px;
+        margin-left: 220px;
         @media screen and (min-width: 992px) and (max-width: 1199px) {
-          margin-left: 166px;
+          margin-left: 176px;
         }
         @media screen and (min-width: 768px) and (max-width: 991px) {
-          margin-left: 114px;
+          margin-left: 124px;
         }
       }
       a {
@@ -117,6 +121,9 @@ header.universal-nav {
         .nav-level-2-arrow {
           opacity: 1;
         }
+      }
+      &:.second-nav-banner{
+          padding: 0 5px !important;
       }
     }
   }
@@ -363,7 +370,7 @@ header.universal-nav {
       width: 100px;
     }
     h2 {
-      font-family: 'Roboto', serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.04em;
@@ -412,7 +419,7 @@ header.universal-nav {
         opacity: .85;
         font-size: 20px;
         font-weight: 500;
-        font-family: 'Roboto', serif;
+        font-family: 'Roboto', sans-serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
         display: inline;
