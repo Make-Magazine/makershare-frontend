@@ -188,15 +188,16 @@ header.universal-nav {
 // Nav Level 2
 .universal-nav.main-nav-scrolled .nav-level-2 {
   position: fixed;
-  width: 100px;
+  width: 100%;
   top: 0;
   z-index: 999;
 }
 .universal-nav.main-nav-scrolled .search-button {
     top: 4px;
     position: fixed;
-    top: 0;
     z-index: 999;
+    left: 83%;
+    transform: translate(-50%);
 }
 .nav-level-2 {
   height: 55px;
