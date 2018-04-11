@@ -22,7 +22,7 @@ header.universal-nav {
   .nav-level-1-nav {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 130px;
+    margin-left: 140px;
     padding: 0;
     list-style: none;
     display: inline-block;
@@ -59,6 +59,7 @@ header.universal-nav {
           opacity: .6;
           line-height: 1em;
           padding-top: 1px;
+          font-size: 16px;
         }
         &:hover, &:active {
           text-decoration: none;
@@ -192,7 +193,7 @@ header.universal-nav {
             border-right: 0px;
           }
           &:after {
-              background-image: url('../assets/iamges/Make_logo-white.svg');
+              background-image: url('../assets/images/Make_logo-white.svg');
               background-size: 134px 40px;
               display: inline-block;
               width: 134px; 
@@ -224,6 +225,7 @@ header.universal-nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    margin-left: 50px;
     li, a {
       height: 100%;
       margin-top: 5px;
