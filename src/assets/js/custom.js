@@ -546,5 +546,4 @@ $(window).on('load', function () {
     default:
           break;
   }
-    
 })(jQuery);
