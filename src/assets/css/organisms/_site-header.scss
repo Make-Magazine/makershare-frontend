@@ -3,6 +3,9 @@
 header.universal-nav {
   position: relative;
   background: #fff;
+  .container {
+       padding: 0px;
+  }
 }
 .nav-level-1 {
   height: 75px;
@@ -75,6 +78,7 @@ header.universal-nav {
           color: transparent;
           overflow: hidden;
           visibility: hidden;
+          font-size: 16px;
         }
         @media screen and (min-width: 992px) and (max-width: 1199px) {
           padding: 0 19px;
@@ -140,9 +144,6 @@ header.universal-nav {
   float: right;
   position: absolute;
   right: 0px;
-  @media screen and (max-width: 1200px) {
-    right: 8%;
-  }
   @media screen and (max-width: 576px) {
     display: none;
   }
@@ -225,7 +226,7 @@ header.universal-nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
+    margin-left: 40px;
     li, a {
       height: 100%;
       margin-top: 5px;
@@ -253,7 +254,7 @@ header.universal-nav {
     span {
       font-size: 16px;
       height: 35px;
-      width: 115px;
+      min-width: 90px;
       border-right: 1px solid #999;
       padding: 0 23px;
       text-align: center;
@@ -281,9 +282,9 @@ header.universal-nav {
   }
 }
 .search-button {
-    position: absolute;
-    right: 8%;
-    top: 80px;
+    position: relative;
+    right: 0%;
+    top: -40px;
     @media (max-width: 767px) {
         right: 2%;
         top: 10px;

@@ -187,7 +187,7 @@ $(document).ready(function () {
   // 404 Search
   $(document).on('click', '#static-search-term', function () {
     let searchVal = $('#search-box-input-404').val();
-    window.location.replace('http://preview.makershare.com/search?query=' + searchVal);
+    window.location.replace('/search?query=' + searchVal);
   })
 
   // Show and hide project stats on project card
