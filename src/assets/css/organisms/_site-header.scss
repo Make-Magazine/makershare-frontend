@@ -213,6 +213,7 @@ header.universal-nav {
 }
 .universal-nav.main-nav-scrolled .search-button {
     top: 5px;
+    right: 14%;
 }
 .nav-level-2 {
   height: 55px;
@@ -516,6 +517,7 @@ header.universal-nav {
       text-decoration: none;
       display: block;
       span {
+        font-size: 13px;
         line-height: 1.2em;
         color: #333;
         opacity: .6;
