@@ -3,9 +3,6 @@
 header.universal-nav {
   position: relative;
   background: #fff;
-  .container {
-       padding: 0px;
-  }
 }
 .nav-level-1 {
   height: 75px;
@@ -52,6 +49,7 @@ header.universal-nav {
         }
       }
       a {
+        font-size: 16px;
         padding: 0 23px;
         height: 100%;
         display: flex;
@@ -62,7 +60,6 @@ header.universal-nav {
           opacity: .6;
           line-height: 1em;
           padding-top: 1px;
-          font-size: 16px;
         }
         &:hover, &:active {
           text-decoration: none;
@@ -78,6 +75,8 @@ header.universal-nav {
           color: transparent;
           overflow: hidden;
           visibility: hidden;
+          // display none is replacing visibility hidden to get the padding to behave the same way as other sites
+          display: none;
           font-size: 16px;
         }
         @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -274,8 +273,7 @@ header.universal-nav {
     }
     li.second-nav-banner {
         min-width: 178px;
-        padding: 0 20px;
-        span {
+        a {
             opacity: 1;
         }
     }
