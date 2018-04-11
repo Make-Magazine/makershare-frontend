@@ -232,9 +232,6 @@ header.universal-nav {
     justify-content: center;
     align-items: center;
     margin-left: 40px;
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-        margin-left: 0px;
-    }
     li, a {
       height: 100%;
       margin-top: 5px;
@@ -284,6 +281,9 @@ header.universal-nav {
     li.second-nav-banner {
         padding: 0px;
         min-width: 178px;
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            max-width: 120px;
+        }
         a {
             opacity: 1;
         }
