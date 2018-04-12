@@ -1,7 +1,7 @@
 // Nav Level 1
 @font-face {
     font-family: "Roboto";
-    src: url("../fonts/Roboto-Light.ttf");
+    src: url("../fonts/Roboto-Regular.ttf");
 }
 
 header.universal-nav {
@@ -122,7 +122,7 @@ header.universal-nav {
           opacity: 1;
         }
       }
-      &.second-nav-banner{
+      &.second-nav-banner span{
           padding: 0 5px !important;
       }
     }
@@ -352,6 +352,7 @@ header.universal-nav {
     overflow: scroll;
   }
   .container {
+    padding: 0px;
     position: relative;
   }
   .nav-flyout-logo {
@@ -644,9 +645,12 @@ header.universal-nav {
     position: fixed;
   }
   .container {
+    padding: 0px;
     @media screen and (max-width: 767px) {
       margin-right: 0;
       margin-left: 0;
+      padding: 0 15px;
+      width: 100%;
     }
   }
   #hamburger-click-event {
