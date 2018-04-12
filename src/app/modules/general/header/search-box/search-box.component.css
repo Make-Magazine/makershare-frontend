@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
 #search-box-layer {
   position: fixed;
   z-index: 1000;
@@ -11,7 +16,7 @@
     float: right;
     color: white;
     font-size: 30px;
-    margin-right: 25%;
+    margin-right: 15%;
     margin-top: 10%;
 }
 #search-box-form {
@@ -32,12 +37,15 @@
     border: 0 none;
     border-bottom: 1px solid white;
     padding: 10px;
+    font-size: 16px;
+}
+#search-box-input::placeholder {
+    color:#fff;
 }
 .search-form-group {
     position: relative;
-    max-width: 100%;
     margin-top: 20px;
-    width: 400px;
+    width: 70%;
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -46,8 +54,9 @@
     background: #ED1C24;
     border: none;
     border-radius: 20px;
-    padding: 8px 25px;
+    padding: 15px 25px;
     color: #fff;
     font-weight: normal;
     font-size: 22px;
+    float: right;
 }

@@ -1,8 +1,4 @@
 // Nav Level 1
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto-Regular.ttf");
-}
 
 header.universal-nav {
   position: relative;
@@ -203,7 +199,7 @@ header.universal-nav {
     top: 4px;
     position: fixed;
     z-index: 999;
-    left: 83%;
+    left: 90%;
     transform: translate(-50%);
 }
 .nav-level-2 {
@@ -223,7 +219,10 @@ header.universal-nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin-left: 44px;
+    margin-left: 62px;
+    @media screen and (max-width: 767px) {
+        margin-left: 44px;
+    }
     li, a {
       height: 100%;
       margin-top: 5px;
