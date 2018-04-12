@@ -218,7 +218,7 @@ header.universal-nav {
     justify-content: center;
     align-items: center;
     margin-left: 60px;
-    @media screen and (min-width: 767px) {
+    @media screen and (max-width: 991px) {
         margin-left: 44px;
     }
     li, a {
