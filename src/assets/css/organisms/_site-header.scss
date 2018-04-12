@@ -354,6 +354,9 @@ header.universal-nav {
   .container {
     padding: 0px;
     position: relative;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
   }
   .nav-flyout-logo {
     display: flex;
@@ -423,6 +426,7 @@ header.universal-nav {
         font-family: 'Roboto', sans-serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
+        text-align: left;
         display: inline;
         position: relative;
         overflow: hidden;
