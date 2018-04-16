@@ -132,12 +132,16 @@ $showcase-layer-2: $dark-blue;
 }
 
 @font-face {
-    font-family: "Roboto-Light";
+    font-family: "Roboto Light";
     src: url("../fonts/Roboto-Light.ttf");
 }
 @font-face {
     font-family: "Roboto";
     src: url("../fonts/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../fonts/Roboto-Bold.ttf");
 }
 
 // Font size on mobile devices
