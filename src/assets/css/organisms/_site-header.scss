@@ -483,9 +483,9 @@ header.universal-nav {
           top: 0;
           width: 20px;
           height: 20px;
-            &:hover, &:active, &:focus {
-                opacity: 1;
-            }
+          &:hover, &:active, &:focus {
+              opacity: 1;
+          }
         }
       }
     }
@@ -497,7 +497,7 @@ header.universal-nav {
     list-style: none;
     display: inline-block;
     @media screen and (max-width: 576px) {
-      display: none;
+        display: none;
     }
     li {
       &:nth-child(5) {
@@ -761,7 +761,6 @@ header.universal-nav {
     height: 55px;
   }
   animation: easeDown .5s 0.1s ease-out forwards;
-  #hamburger-icon span {
   #hamburger-icon span {
     background: #fff;
   }
