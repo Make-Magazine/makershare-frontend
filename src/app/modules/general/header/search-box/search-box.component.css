@@ -26,7 +26,8 @@
     margin-bottom: 80px;
 }
 #search-box-input {
-    width: 100%;
+    width: 75%;
+    margin-bottom: 20px;
     color: white;
     background: transparent;
     border: 0 none;
