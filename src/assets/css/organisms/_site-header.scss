@@ -378,13 +378,13 @@ header.universal-nav {
       width: 100px;
     }
     h2 {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto Light', sans-serif;
       font-size: 13px;
       font-weight: 300;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.045em;
       text-transform: uppercase;
       color: #4a4a4a;
-      margin-top: 0;
+      margin-top: 1px;
       margin-bottom: 0;
       @media screen and (max-width: 576px) {
         display: none;
@@ -427,7 +427,7 @@ header.universal-nav {
         opacity: .85;
         font-size: 20px;
         font-weight: 500;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto Bold', sans-serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
         text-align: left;
@@ -512,12 +512,13 @@ header.universal-nav {
       }
     }
     a {
+      font-family: 'Roboto', sans-serif;
       padding: 7px 0;
       margin-bottom: 2px;
       text-decoration: none;
       display: block;
       span {
-        font-size: 13px;
+        font-size: 16px;
         line-height: 1.2em;
         color: #333;
         opacity: .6;
@@ -754,11 +755,13 @@ header.universal-nav {
   top:0;
   z-index: 999;
   height: 55px;
+  margin-top: 10px;
   @media screen and (max-width: 767px) {
     position: fixed;
     height: 55px;
   }
   animation: easeDown .5s 0.1s ease-out forwards;
+  #hamburger-icon span {
   #hamburger-icon span {
     background: #fff;
   }
