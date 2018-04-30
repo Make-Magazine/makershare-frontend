@@ -787,3 +787,10 @@ header.universal-nav {
     top:32px;
   }
 }
+
+.safari-mac {
+    .ham-menu-animate {
+        position: fixed;
+        animation: none;
+    }
+}

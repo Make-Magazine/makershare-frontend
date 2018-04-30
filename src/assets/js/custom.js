@@ -412,6 +412,7 @@ $(window).on('load', function () {
     $('#hamburger-makey').animate({opacity: 'toggle'});
     $('#nav-flyout').animate({opacity: 'toggle'});
     $('body').toggleClass('nav-open-no-scroll');
+    $('html').toggleClass('nav-open-no-scroll');
     $('.nav-flyout-underlay').animate({opacity: 'toggle'});
   });
 
@@ -510,7 +511,7 @@ $(window).on('load', function () {
 //////////////// Auth0.js stuff ////////////////
 ////////////////////////////////////////////////
 
-var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
+/*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
 var AUTH0_DOMAIN       = 'makermedia.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
 var AUTH0_REDIRECT_URL = location.href;
@@ -627,4 +628,15 @@ window.addEventListener('load', function() {
 
   //handle authentication
   handleAuthentication();
-});
+}); */
+
+
+// Add styles for Safari
+(function($){
+    // console.log(navigator.userAgent);
+    /* Adjustments for Safari on Mac */
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Mac') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+        // console.log('Safari on Mac detected, applying class...');
+        $('html').addClass('safari-mac'); // provide a class for the safari-mac specific css to filter with
+    }
+})(jQuery);
