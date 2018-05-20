@@ -121,17 +121,17 @@ $(document).ready(function () {
     var trident = ua.indexOf('Trident/');
     var edge = ua.indexOf('Edge/');
     if (msie > 0) {
-      // IE 10 or older 
+      // IE 10 or older
       //Do some stuff
       $('html').addClass('ie');
     }
     else if (trident > 0) {
-      // IE 11 
+      // IE 11
       //Do some stuff
       $('html').addClass('ie ie-11');
     }
     else if (edge > 0) {
-      // Edge 
+      // Edge
       //Do some stuff
       $('html').addClass('ie ie-plus');
     }
@@ -401,7 +401,9 @@ function isElementInViewport(elem) {
 if ( window.location.pathname == '/' ){
     $(window).on('load', function () {
       var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
-      document.getElementById('homeBanner').style.backgroundImage = 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')';
+      if(document.body.contains('homeBanner')){
+        document.getElementById('homeBanner').style.backgroundImage = 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')';
+      }
     });
 }
 
@@ -409,7 +411,7 @@ if ( window.location.pathname == '/' ){
 /////// Navigation and Search ////////
 //////////////////////////////////////
 
-$(window).on('load', function () {   
+$(window).on('load', function () {
     console.log( "Is anything going through from the custom script");
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
@@ -421,7 +423,7 @@ $(window).on('load', function () {
   });
 
   $('.nav-flyout-column').on('click', '.expanding-underline', function(event) {
-    if ($(window).width() < 577) { 
+    if ($(window).width() < 577) {
       event.preventDefault();
       $(this).toggleClass('underline-open');
       $(this).next('.nav-flyout-ul').slideToggle();
@@ -444,16 +446,16 @@ $(window).on('load', function () {
   jQuery(document).scroll(function() {
       var scrollTop = $(this).scrollTop();
       if(scrollTop > y_pos && $(window).width() > 767){
-          e.addClass("main-nav-scrolled"); 
+          e.addClass("main-nav-scrolled");
           hamburger.addClass("ham-menu-animate");
           $(".main-container").css("margin-top", "55px");
       }else if(scrollTop <= y_pos){
-          e.removeClass("main-nav-scrolled"); 
+          e.removeClass("main-nav-scrolled");
           hamburger.removeClass("ham-menu-animate");
           $(".main-container").css("margin-top", "0px");
       }
   });
-    
+
   // to keep this nav universal, let's not have each site's style sheet highlight a different active manually
   var site = window.location.hostname;
   var firstpath = $(location).attr('pathname');
@@ -482,7 +484,7 @@ $(window).on('load', function () {
         break;
     case "makershed.com":
         universalNavActive("shed")
-        break;  
+        break;
     case "maker-faire":
     case "makerfaire":
     case "makerfaire.wpengine.com":
@@ -514,7 +516,7 @@ $(window).on('load', function () {
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////
 ////////////////////////////////////////////////
-
+/*
 var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
 var AUTH0_DOMAIN       = 'makermedia.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
@@ -632,7 +634,7 @@ window.addEventListener('load', function() {
 
   //handle authentication
   handleAuthentication();
-});
+});*/
 
 
 // Add styles for Safari
