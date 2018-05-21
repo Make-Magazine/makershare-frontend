@@ -179,6 +179,107 @@ header.universal-nav {
     }
     span { padding: 0; }
   }
+  #qsLoginBtn { display: none; }
+  #profile-view {
+      display: none;
+      #dropdownMenuLink {
+          position: relative;
+          z-index: 999;
+          opacity: 1;
+          &:active {
+              box-shadow: none;
+              -webkit-box-shadow: none;
+          }
+      }
+      .avatar {
+        display: none;
+        opacity: .9;
+        &:hover {
+          opacity: .6;
+        }
+      }
+      .dropdown-menu {
+          padding: 90px 25px 25px;
+          font-family: 'Roboto', serif;
+          margin-left: -175px;
+          margin-top: -70px;
+          width: 660px;
+          border-radius: none;
+          z-index: 998;
+          @media screen and (min-width: 576px) and (max-width: 768px) {
+              margin-left: -175px;
+          }
+          @media screen and (max-width: 576px) {
+              margin-left: -55px;
+              padding-left: 55px;
+              width: 400px;
+          }
+          &:after {
+            font-family: 'Linearicons-Free';
+            content: "\e870";
+            color: #ED1C24;
+            font-size: 36px;
+            position: absolute;
+            top: 25px;
+            left: 35%;
+            border: none;
+            @media screen and (min-width: 568px) and (max-width: 768px) {
+                display: none;
+            }
+          }
+          h3 { 
+              margin-top: 0px; 
+              margin-bottom: 20px;
+              display: block;
+              position: relative;
+              line-height: .8em;
+              color: #333;
+              padding-bottom: 2px;
+              opacity: .85;
+              font-size: 20px;
+              font-weight: 500;
+              font-family: 'Roboto', serif;
+              transition: font-weight .1s ease-in-out;
+              line-height: 1em;
+              display: inline;
+              position: relative;
+              overflow: hidden;
+              &:after {
+                  content: "";
+                  position: absolute;
+                  z-index: -1;
+                  left: 0;
+                  right: 50%;
+                  bottom: -5px;
+                  background: #ED1C24;
+                  height: 4px;
+                  transition-property: left right;
+                  transition-duration: 0.3s;
+                  transition-timing-function: ease-out;
+                }
+                @media screen and (min-width: 768px) and (max-width: 991px) {
+                    font-size: 18px;
+                }
+                @media screen and (min-width: 576px) and (max-width: 767px) {
+                    font-size: 16px;
+                }
+                @media screen and (max-width: 576px) {
+                    margin-top: 35px;
+                    display: block;
+                    overflow: visible;
+                    text-align: left;
+                }
+          }
+          a, #qsLogoutBtn {
+              margin-bottom: 15px;
+              margin-top: 20px;
+              font-size: 16px;
+              padding: 0px;
+              font-weight: 400;
+              cursor: pointer;
+          }
+      }
+  }
   // ye olde version
   .nav-link {
       font-size: 14px;
