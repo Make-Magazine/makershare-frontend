@@ -401,9 +401,7 @@ function isElementInViewport(elem) {
 if ( window.location.pathname == '/' ){
     $(window).on('load', function () {
       var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
-      if($('#homeBanner').length){
-        $('#homeBanner')css("background", 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
-      }
+      document.getElementById('homeBanner').style.backgroundImage = 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')';
     });
 }
 
@@ -517,7 +515,7 @@ $(window).on('load', function () {
 //////////////// Auth0.js stuff ////////////////
 ////////////////////////////////////////////////
 
-var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
+/*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
 var AUTH0_DOMAIN       = 'makermedia.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
 var AUTH0_REDIRECT_URL = location.href;
@@ -634,7 +632,7 @@ window.addEventListener('load', function() {
 
   //handle authentication
   handleAuthentication();
-});
+});*/
 
 
 // Add styles for Safari
