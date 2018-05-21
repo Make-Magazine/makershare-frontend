@@ -578,7 +578,8 @@ window.addEventListener('load', function() {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         setSession(authResult);
-        loginBtn.style.display = 'none';
+        // error here is keeping the login invisible
+        //loginBtn.style.display = 'none';
 
         //after login redirect to previous page (after 5 second delay)
         var redirect_url = localStorage.getItem('redirect_to');
