@@ -410,7 +410,6 @@ if ( window.location.pathname == '/' ){
 //////////////////////////////////////
 
 $(window).on('load', function () {
-    console.log( "Is anything going through from the custom script");
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
@@ -515,7 +514,7 @@ $(window).on('load', function () {
 //////////////// Auth0.js stuff ////////////////
 ////////////////////////////////////////////////
 
-/*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
+var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
 var AUTH0_DOMAIN       = 'makermedia.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
 var AUTH0_REDIRECT_URL = location.href;
@@ -632,7 +631,7 @@ window.addEventListener('load', function() {
 
   //handle authentication
   handleAuthentication();
-});*/
+});
 
 
 // Add styles for Safari
