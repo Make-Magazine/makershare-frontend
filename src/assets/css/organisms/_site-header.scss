@@ -186,13 +186,22 @@ header.universal-nav {
           position: relative;
           z-index: 999;
           opacity: 1;
+          background: transparent;
+          border: none;
           &:active {
               box-shadow: none;
               -webkit-box-shadow: none;
           }
+          &:hover {
+              background: transparent;
+              border: none;
+          }
+          &::after {
+              display: none;
+          }
       }
       .avatar {
-        display: none;
+        //display: none;
         opacity: .9;
         &:hover {
           opacity: .6;
