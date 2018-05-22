@@ -525,7 +525,7 @@ window.addEventListener('load', function() {
   var logoutBtn   = document.getElementById('qsLogoutBtn');
   var profileView = document.getElementById('profile-view');
   //default profile view to hidden
-  loginBtn.style.display    = 'none';
+  //loginBtn.style.display    = 'none';
   profileView.style.display = 'none';
 
   var userProfile;
