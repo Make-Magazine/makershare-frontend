@@ -196,9 +196,9 @@
         <h1 class="p-2" *ngIf="!team">No team members in organization yet</h1>
       </div>
       <div class="row p-2" *ngIf="team">
-        <div class="col-md-4" *ngFor="let teams of team">
+        <div class="col-md-4 card-wrapper" *ngFor="let teams of team">
           <div *ngIf="teams.field_membership_role">
-            <P>Role: {{teams.field_membership_role}}</P>
+            <p class="team-role">Role: {{teams.field_membership_role}}</p>
           </div>
           <app-maker-card [uid]="teams.field_team_member" [state]="'tall'"></app-maker-card>
         </div>
