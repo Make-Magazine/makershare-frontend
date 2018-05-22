@@ -1,19 +1,9 @@
 .ff {
 	.card.tall {
 		padding-top: 0;
-		.card-image {
-			padding-bottom: 80%;
-		}
-        .info-top {
-            padding-bottom: 105%;
-        }
 		.info-bottom {
 			margin-top: 75%;
 			position: relative;
-		}
-
-		.card-image.alt {
-			padding-bottom: 106.5%;
 		}
 
 		.card-owner-meta-info {
@@ -25,10 +15,11 @@
 		}
 	}
 
-
 	.card.wide {
 		.info-bottom {
-			padding-top: 60%;
+            margin-top: 20px;
+			padding-top: 80%;
+            width: 85%;
 			position: relative;
 		}
 		.card-image.alt {
@@ -54,7 +45,6 @@
 		}
 		.social-stat-group {
 			position: absolute;
-    		top: -70px;
 		}
 	}
 
@@ -68,7 +58,4 @@
 		}
 	}
     
-    .orgs-logo {
-        bottom: 7rem;
-    }
 }

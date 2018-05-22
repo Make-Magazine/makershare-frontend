@@ -42,7 +42,7 @@
       <a href="https://makezine.com/" class="navbar-brand">
         <img src="../assets/images/Make_logo.svg" class="img-responsive" alt="Make: brand logo">
       </a>
-      <!--<ul class="nav-level-1-auth" style="position:absolute;z-index:999;top:50px;height:20px;">
+      <ul class="nav-level-1-auth" style="position:absolute;z-index:999;top:50px;height:20px;">
         <li class="nav-item">
           <button id="qsLoginBtn" style="display: flex;">Login | Signup new</button>
           <div id="profile-view" class="dropdown show" style="display: none;">
@@ -57,9 +57,9 @@
             </div>
           </div>
         </li>
-      </ul> -->
+      </ul>
       <ul class="nav-level-1-auth">
-        <li class="nav-item" id="qsLoginBtn" *ngIf="!auth.authenticated()">
+        <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
           <app-login></app-login>
           <!--</a>-->
