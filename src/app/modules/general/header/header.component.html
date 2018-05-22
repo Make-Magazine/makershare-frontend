@@ -42,12 +42,12 @@
       <a href="https://makezine.com/" class="navbar-brand">
         <img src="../assets/images/Make_logo.svg" class="img-responsive" alt="Make: brand logo">
       </a>
-      <ul class="nav-level-1-auth" style="position:absolute;z-index:999;top:50px;height:20px;">
+      <!--<ul class="nav-level-1-auth" style="position:absolute;z-index:999;top:50px;height:20px;">
         <li class="nav-item">
           <button id="qsLoginBtn" style="display: flex;">Login | Signup new</button>
           <div id="profile-view" class="dropdown show" style="display: none;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="avatar" style="width:38px" alt="avatar">
+              
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="https://www.makershare.com/portfolio">MakerShare Profile</a>
@@ -57,7 +57,7 @@
             </div>
           </div>
         </li>
-      </ul>
+      </ul> -->
       <ul class="nav-level-1-auth">
         <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
@@ -69,13 +69,23 @@
         </li>
         <li class="nav-item" *ngIf="auth.authenticated()">
           <div ngbDropdown
-               class="dropdown sub-nav user-menu">
+               class="dropdown sub-nav user-menu" id="profile-view">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
-              <img class="profile-photo"
+              <img class="avatar" style="width:38px" alt="avatar">
+              <!--<img class="profile-photo"
                    src="{{user_photo || './assets/images/icons/no-profile-pic.png'}}"
-                   alt="Profile Photo">
+                   alt="Profile Photo"> -->
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
+              <li class="dropdown-item">
+                  <a href="https://www.makershare.com/portfolio">MakerShare Profile</a>
+              </li>
+              <li class="dropdown-item">
+                  <a href="https://www.makerfaire.com/manage-entries">MakerFaire Portfolio</a>
+              </li>
+              <li class="dropdown-item">
+                  <a href="https://make.co/myaccount">My Membership Account</a>
+              </li>
               <li class="dropdown-item" *ngIf="isManager">
                 <a class="nav-link"
                    target="_blank"

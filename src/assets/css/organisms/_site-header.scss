@@ -182,7 +182,7 @@ header.universal-nav {
   #qsLoginBtn { display: none; }
   #profile-view {
       display: none;
-      #dropdownMenuLink {
+      #dropdownMenuLink, #userMenu {
           position: relative;
           z-index: 999;
           opacity: 1;
