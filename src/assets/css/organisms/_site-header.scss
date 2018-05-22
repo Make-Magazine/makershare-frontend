@@ -191,8 +191,10 @@ header.universal-nav {
           &:active {
               box-shadow: none;
               -webkit-box-shadow: none;
+              background: transparent;
+              border: none;
           }
-          &:hover {
+          &:hover, &:focus {
               background: transparent;
               border: none;
           }
