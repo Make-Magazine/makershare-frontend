@@ -4,8 +4,11 @@
 		.card-image {
 			padding-bottom: 80%;
 		}
+        .info-top {
+            padding-bottom: 105%;
+        }
 		.info-bottom {
-			margin-top: 60%;
+			margin-top: 75%;
 			position: relative;
 		}
 
@@ -13,22 +16,10 @@
 			padding-bottom: 106.5%;
 		}
 
-		.badge-group {
-			top: 75%;
-			left: 1rem;
-			right: initial;
-			width: 100%;
-			background: white;
-			left: 0;
-			padding-left: 1rem;
-			padding-bottom: 100%;
-			padding-top: 1rem;
-		}
-
 		.card-owner-meta-info {
 			padding: 0rem 1rem;
 			left: -1rem;
-			position: relaive;
+			position: relative;
 			max-width: calc(100% - 60px - 2rem);
 			width: calc(100% + 3rem);
 		}
