@@ -540,7 +540,6 @@ window.addEventListener('load', function() {
   });
 
   loginBtn.addEventListener('click', function(e) {
-    console.log("tst");
     e.preventDefault();
     localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
     webAuth.authorize();

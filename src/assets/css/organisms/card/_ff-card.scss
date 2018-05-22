@@ -5,9 +5,8 @@
 			padding-bottom: 80%;
 		}
 		.info-bottom {
-			margin-top: 105%;
+			margin-top: 60%;
 			position: relative;
-			// top: -80%;
 		}
 
 		.card-image.alt {
@@ -27,11 +26,10 @@
 		}
 
 		.card-owner-meta-info {
-			// background: white;
-			padding: 2rem 1rem;
+			padding: 0rem 1rem;
 			left: -1rem;
-			position: relative;
-			max-width: calc(100% + 3rem);
+			position: relaive;
+			max-width: calc(100% - 60px - 2rem);
 			width: calc(100% + 3rem);
 		}
 	}
@@ -78,4 +76,8 @@
 			padding-bottom: 8rem;
 		}
 	}
+    
+    .orgs-logo {
+        bottom: 7rem;
+    }
 }
