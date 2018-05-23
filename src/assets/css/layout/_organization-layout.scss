@@ -1,7 +1,6 @@
 .organization-layout {
 	// padding-top: 110px;
 }
-
 .org-hero {
 	height: 50vh;
 	display: flex;
@@ -11,7 +10,6 @@
 	.org-logo {
 		margin-bottom: 2rem;
 	}
-
 	.flexer {
 		min-height: 50vh;
 		display: flex;
@@ -21,7 +19,6 @@
 		}
 	}	
 }
-
 .org-feature-photo {
 	position: absolute;
     top: 170px;
@@ -34,25 +31,21 @@
     background-color: rgba(0,0,0,0.5);
     background-blend-mode: multiply;
 }
-
 .main-nav-scrolled .org-feature-photo {
     position: fixed;
     top: 55px;
 }
-
 .org-content {
 	padding: 8rem 4rem;
 	background: $site-bg;
     overflow: hidden;
     position: relative;
 }
-
 .main-org-content {
 	img {
 		max-width: 100%;
 	}
 }
-
 .org-name {
 	font-size: 4rem;
 	 margin-bottom: 3rem;
@@ -60,14 +53,12 @@
 	 text-align: center;
 	color: white;
 }
-
 .org-tabber {
 	margin: 4rem auto;
 	a.btn h5 {
 		color: white;
 	}
 }
-
 // for cards
 .orgs-logo {
 	width: 6rem;
