@@ -319,13 +319,9 @@ function isElementInViewport(elem) {
     }
   });
   // fix nav to top on scrolldown, stay fixed for transition from mobile to desktop
-  var e = $(".universal-nav");
+  var e = $(".main-container");
   var hamburger = $(".nav-hamburger");
   var y_pos = $(".nav-level-2").offset().top;
-  var nextItemUnderNav = $("#home-featured");
-    if($(".second-nav").length) {
-        nextItemUnderNav = $(".second-nav");
-    }
   $(window).on('resize', function(){
       if ($(window).width() < 767) {
           y_pos = 0;
