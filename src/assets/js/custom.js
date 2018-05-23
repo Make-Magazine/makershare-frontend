@@ -443,10 +443,12 @@ $(window).on('load', function () {
   jQuery(document).scroll(function() {
       var scrollTop = $(this).scrollTop();
       if(scrollTop > y_pos && $(window).width() > 767){
+          body.addClass("scrolled");
           e.addClass("main-nav-scrolled");
           hamburger.addClass("ham-menu-animate");
           $(".main-container").css("margin-top", "55px");
       }else if(scrollTop <= y_pos){
+          body.removeClass("scrolled");
           e.removeClass("main-nav-scrolled");
           hamburger.removeClass("ham-menu-animate");
           $(".main-container").css("margin-top", "0px");

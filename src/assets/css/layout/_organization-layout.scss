@@ -21,17 +21,17 @@
 }
 .org-feature-photo {
 	position: absolute;
-    top: 170px;
+    top: -70px;
     left: 0;
     right: 0;
-    height: 0;
+    height: 120%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-color: rgba(0,0,0,0.5);
     background-blend-mode: multiply;
 }
-.main-nav-scrolled .org-feature-photo {
+.scrolled .org-feature-photo {
     position: fixed;
     top: 55px;
 }
