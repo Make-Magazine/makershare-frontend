@@ -23,17 +23,21 @@
 }
 
 .org-feature-photo {
-	position: fixed;
-    top: 88px;
+	position: absolute;
+    top: 170px;
     left: 0;
     right: 0;
     height: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding-bottom: calc(50vh + 22px);
     background-color: rgba(0,0,0,0.5);
     background-blend-mode: multiply;
+}
+
+.main-nav-scrolled .org-feature-photo {
+    position: fixed;
+    top: 55px;
 }
 
 .org-content {
