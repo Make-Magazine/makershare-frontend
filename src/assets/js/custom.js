@@ -516,6 +516,15 @@ $(window).on('load', function () {
 //////////////// Auth0.js stuff ////////////////
 ////////////////////////////////////////////////
 
+// buttons and event listeners
+var loginBtn    = document.getElementById('qsLoginBtn');
+var logoutBtn   = document.getElementById('qsLogoutBtn');
+loginBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+  webAuth.authorize();
+});
+
 /*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
 var AUTH0_DOMAIN       = 'makermedia.auth0.com';
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";

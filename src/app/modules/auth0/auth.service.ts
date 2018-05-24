@@ -42,16 +42,6 @@ export class Auth {
     this._toggleModal.next(enable);
   }
 
-  // buttons and event listeners
-  var loginBtn    = document.getElementById('qsLoginBtn');
-  var logoutBtn   = document.getElementById('qsLogoutBtn');
-
-  loginBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-//    localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
-    webAuth.authorize();
-  });
-
   /**
    * login
    *
