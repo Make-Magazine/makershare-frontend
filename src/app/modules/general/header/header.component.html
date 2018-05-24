@@ -47,7 +47,7 @@
           <button id="qsLoginBtn" style="display: flex;">Login | Signup new</button>
           <div id="profile-view" class="dropdown show" style="display: none;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
+
             </a>
             really this should all be removed
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -61,8 +61,9 @@
       </ul>-->
       <ul class="nav-level-1-auth">
         <li class="nav-item" *ngIf="!auth.authenticated()">
+          <button id="qsLoginBtn" style="display: flex;">Login | Signup new</button>
           <!--<a class="nav-link">-->
-          <app-login></app-login>
+          <!--<app-login></app-login>-->
           <!--</a>-->
         </li>
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">

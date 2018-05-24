@@ -17,11 +17,13 @@ export class Auth {
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
     // responseType: 'token id_token access_token profile',
-    responseType: 'token',
+    responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
     // redirectUri: 'http://localhost:4200/',
     redirectUri: Singleton.Settings.appURL,
-    scope: 'openid id_token access_token profile',
+    //scope: 'openid id_token access_token profile',
+    scope: 'openid profile',
+    leeway: 60
   });
 
   constructor(
@@ -39,6 +41,16 @@ export class Auth {
   public toggle(enable: boolean) {
     this._toggleModal.next(enable);
   }
+
+  // buttons and event listeners
+  var loginBtn    = document.getElementById('qsLoginBtn');
+  var logoutBtn   = document.getElementById('qsLogoutBtn');
+
+  loginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+//    localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+    webAuth.authorize();
+  });
 
   /**
    * login
@@ -66,7 +78,8 @@ export class Auth {
       );
     });
   }
-    /**
+
+  /**
    * signupNewsletter
    *
    * @param {string} email
@@ -159,7 +172,7 @@ export class Auth {
         user[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
-      data.email_verified = true;  
+      data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
       data.user_metadata = {
