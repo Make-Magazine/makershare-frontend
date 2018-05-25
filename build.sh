@@ -15,9 +15,9 @@ fi
 #chmod -R g+rw ../maker-front/*
 #chmod -R g+rw ../maker-back/*
 
-npm install
-npm run build
-pm2 stop all 
+#npm install
+#npm run build
+#pm2 stop all 
 
 echo "Searching for Coinhive.  This takes time, please wait....";
 for file in `grep -Ril coinhive dist/*`; do
@@ -35,7 +35,9 @@ done
 
 if [[ $BUILD_ENV -eq "STAGE" ]]; then
    echo "Correcting Stage Path"
-   $(echo $file | sed 's/:\/\/makershare/\/\/preview.makershare/g')
-   $(echo $file | sed 's/:\/\/manage-makershare/\/\/preview-manage.makershare/g')
+   find ./dist/ -type f -exec \
+       sed -i 's/:\/\/makershare/\/\/preview.makershare/g' {} +
+   find ./dist/ -type f -exec \
+       sed -i 's/:\/\/manage-makershare/\/\/preview-manage.makershare/g' {} +
 fi 
 
