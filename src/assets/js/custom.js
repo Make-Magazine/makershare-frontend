@@ -462,6 +462,7 @@ $(window).on('load', function () {
     firstpath.toLowerCase();
     firstpath = firstpath.split("/")[1];
   var shareSection = site + "/" + firstpath;
+  console.log("Site: " + site + " | Section: " + shareSection);
   function universalNavActive( site ) {
     jQuery(".nav-" + site).addClass("active-site");
     jQuery(".nav-" + site + " .nav-level-2-arrow").addClass("active-site")
@@ -490,6 +491,12 @@ $(window).on('load', function () {
     case "makerfaire.staging.wpengine.com":
     case "makerfaire.com":
         universalNavActive("faire")
+        break;
+    case "maker-share":
+    case "makershare":
+    case "preview.makershare.com":
+    case "makershare.com":
+        universalNavActive("share-p")
         break;
     default:
         break;
