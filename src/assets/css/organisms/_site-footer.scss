@@ -6,6 +6,8 @@ footer {
   background: white;
   border-top: 5px solid $blue;
   font-family: $font-messina-regular;
+  position: relative;
+  z-index: 9;
   .newsletter {
     p {
       font-size: 1rem;
