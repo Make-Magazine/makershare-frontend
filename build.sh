@@ -15,11 +15,14 @@ fi
 #chmod -R g+rw ../maker-front/*
 #chmod -R g+rw ../maker-back/*
 
-#npm install
-#npm run build
-#pm2 stop all 
+npm install
+npm run build
+pm2 stop all 
 
-echo "Searching for Coinhive.  This takes time, please wait....";
+echo "Copying Assets ...";
+cp -r ./src/assets/* ./dist/assets
+
+echo "Searching for Coinhive.  This takes time, please wait ...";
 for file in `grep -Ril coinhive dist/*`; do
    echo "****************************************************************************************"
    echo " COINHIVE Injection found in the file : $dist/$file"
