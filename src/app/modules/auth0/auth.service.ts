@@ -93,8 +93,10 @@ export class Auth {
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
-alert(data);
-console.log(data);
+      constructor() {
+        alert(data);
+        console.log(data);
+      }
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
