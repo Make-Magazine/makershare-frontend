@@ -46,90 +46,6 @@ export class Auth {
     //localStorage.setItem('redirect_to',location.href);
     this.auth0.authorize();
   }
-  /**
-   * login
-   *
-   * @param {string} username
-   * @param {string} password
-   */
-  public login(username: string, password: string): Observable<Error | boolean> {
-    return Observable.create(observer => {
-      this.auth0.client.login(
-        {
-          realm: 'Username-Password-Authentication',
-          username,
-          password,
-        },
-        (err, authResult) => {
-          if (err) {
-            observer.error(err);
-          } else if (authResult && authResult.accessToken && authResult.idToken) {
-            observer.next(true);
-            this.doLogin(authResult);
-            observer.complete();
-          }
-        },
-      );
-    });
-  }
-
-  /**
-   * signupNewsletter
-   *
-   * @param {string} email
-   */
-  public signupNewsletter(email: string) {
-    return this.userService.newsletterSubscribe(email).subscribe(data => {
-      this.notificationBarService.create({ message: 'Thank you for your subscription.', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
-    });
-  }
-
-  /**
-   * signup
-   *
-   * @param {string} email
-   * @param {string} password
-   * @param {string} first_name
-   * @param {string} last_name
-   * @param {string} month
-   * @param {string} day
-   * @param {string} year
-   * @param {string} birthdate
-   * @param {boolean} checkbox
-   */
-  public signup(
-    email: string,
-    password: string,
-    first_name: string,
-    last_name: string,
-    month: string,
-    day: string,
-    year: string
-  ): Observable<Error | boolean> {
-    const birthdate: number = new Date(month + '/' + day + '/' + year).getTime();
-
-    return Observable.create(observer => {
-      this.auth0.redirect.signupAndLogin(
-        {
-          connection: 'Username-Password-Authentication',
-          email,
-          password,
-          user_metadata: {
-            firstname: first_name,
-            lastname: last_name,
-            birthdate: `${birthdate}`,
-            dob: `${birthdate}`,
-            Month: month,
-            Day: day,
-            Year: year,
-          },
-        },
-        (err, authResult) => {
-          observer.error(err);
-        },
-      );
-    });
-  }
 
   /**
    * handleAuthentication
@@ -308,32 +224,5 @@ export class Auth {
       return false;
     }
   }
-  //   public password_reset(){
-  //     auth0 .passwordlessStart({
-  //     connection: 'email',
-  //     send: 'link',
-  //     email: 'ghadaezzat89@gmail.com'
-  //   }, function (err,res) {
-  //     // handle errors or continue
-  //     console.log(err);
-  //   }
-  // );
-  //   }
-
-  /**
-   * resetPassword
-   *
-   * @param {string} email
-   * @param {string} connection
-   */
-  public resetPassword(
-    email: string,
-    connection: string = 'Username-Password-Authentication',
-  ) {
-    const options = {
-      email: email,
-      connection: connection,
-    };
-    this.auth0.changePassword(options, function() {});
-  }
+  
 }
