@@ -344,7 +344,7 @@ header.universal-nav {
     align-items: center;
     margin-left: -35px;
     @media screen and (max-width: 991px) {
-        margin-left: 44px;
+        margin-left: 24px;
     }
     li, a {
       height: 100%;
@@ -398,6 +398,7 @@ header.universal-nav {
             max-width: 140px;
             min-width: 140px;
         }
+        span { padding: 0 15px; }
         a { opacity: 1; }
     }
   }
