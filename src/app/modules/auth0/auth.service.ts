@@ -43,7 +43,7 @@ export class Auth {
   }
 
   public Auth0Login(): void {
-    localStorage.setItem('redirect_to',location.href);
+    //localStorage.setItem('redirect_to',location.href);
     this.auth0.authorize();
   }
   /**
@@ -154,6 +154,7 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
+alert('you logged in!!');
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
