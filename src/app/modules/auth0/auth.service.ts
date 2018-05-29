@@ -42,6 +42,12 @@ export class Auth {
     this._toggleModal.next(enable);
   }
 
+  public Auth0Login(): void {
+
+    e.preventDefault();
+    localStorage.setItem('redirect_to',location.href);
+    this.auth0.authorize();
+  }
   /**
    * login
    *
@@ -329,19 +335,4 @@ export class Auth {
     };
     this.auth0.changePassword(options, function() {});
   }
-
-  //SSO and auth0.js changes
-  const auth0_redirect_url = location.href;
-
-  window.addEventListener('load', function() {
-    // buttons and event listeners
-    const loginBtn    = document.getElementById('qsLoginBtn');
-    //var logoutBtn   = document.getElementById('qsLogoutBtn');
-    loginBtn.addEventListener('click', function(e) {
-      alert('you clicked me');
-      e.preventDefault();
-      localStorage.setItem('redirect_to',auth0_redirect_url);
-      auth0.authorize();
-    });
-  });
 }
