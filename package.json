@@ -87,7 +87,6 @@
   "devDependencies": {
     "@angular/cli": "1.4.7",
     "codelyzer": "3.2.1",
-    "husky": "0.14.3",
     "tslint": "5.7.0"
   }
 }
