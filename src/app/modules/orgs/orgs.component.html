@@ -44,7 +44,6 @@
     </div>
   </div>
 
-
   <!-- org body content -->
   <div class="org-content">
     <div class="container">
@@ -65,6 +64,9 @@
 
           <h2 class="text-left -secondary">Contact</h2>
           <ul class="org-contact-list">
+            <li *ngIf="company.contact">
+                <span class="org-contact-key">Email:</span><a href="mailto:{{company.contact}}" target="_top">{{company.contact}}</a>
+            </li>
             <li *ngIf="company.phone_number"><span class="org-contact-key">Phone:</span> {{company.phone_number}}</li>
             <li><span class="org-contact-key">Location:</span> {{company.address.locality}},
               {{company.address.administrative_area}}
