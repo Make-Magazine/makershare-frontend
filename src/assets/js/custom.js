@@ -518,6 +518,7 @@ $(window).on('load', function () {
 ////////////////////////////////////////////////
 var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
 var AUTH0_REDIRECT_URL = location.href;
+
 window.addEventListener('load', function() {
   // buttons and event listeners
   var loginBtn    = document.getElementById('qsLoginBtn');
@@ -526,7 +527,7 @@ window.addEventListener('load', function() {
     alert('you clicked me');
     e.preventDefault();
     localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
-    webAuth.authorize();
+    auth0.authorize();
   });
 });
 /*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
