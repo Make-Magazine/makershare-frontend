@@ -331,17 +331,16 @@ export class Auth {
   }
 
   //SSO and auth0.js changes
-  //var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
-  var AUTH0_REDIRECT_URL = location.href;
+  const auth0_redirect_url = location.href;
 
   window.addEventListener('load', function() {
     // buttons and event listeners
-    var loginBtn    = document.getElementById('qsLoginBtn');
+    const loginBtn    = document.getElementById('qsLoginBtn');
     //var logoutBtn   = document.getElementById('qsLogoutBtn');
     loginBtn.addEventListener('click', function(e) {
       alert('you clicked me');
       e.preventDefault();
-      localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+      localStorage.setItem('redirect_to',auth0_redirect_url);
       auth0.authorize();
     });
   });
