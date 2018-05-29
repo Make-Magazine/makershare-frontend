@@ -154,7 +154,6 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-alert('you logged in!!');
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
@@ -175,6 +174,9 @@ alert('you logged in!!');
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob'],
       };
+
+      // Set session to let the browser know the user is now logged in
+      this.setSession(authResult);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
