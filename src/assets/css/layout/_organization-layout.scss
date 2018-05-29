@@ -71,13 +71,12 @@
 }
 
 .org-social {
-	bottom: 2rem;
-	right: 0;
+	bottom: 12.5rem;
+	left: 15rem;
 	position: absolute;
 	font-size: 3rem;
 	.fa {
 		font-size: 3rem;
-		color: white;
 	}
 }
 
@@ -118,4 +117,8 @@
     @media screen and (max-width: 768px) {
           top: 360px;
     }
+}
+
+app-follow-org {
+    margin: 20px 0px;
 }
