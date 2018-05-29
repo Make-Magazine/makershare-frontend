@@ -74,25 +74,25 @@
             <li><span class="org-contact-key">Founded:</span> {{company.founded_date}}</li>
             <li><span class="org-contact-key">Type of business:</span> {{company.business}}</li>
           </ul>
-          <p class="push mt-5">
+          <p class="push">
             <a href="mailto:{{company.contact}}" target="_top"><i class="fa fa-envelope-o"></i> <span>Send Email</span></a>
           </p>
           <div *ngIf="company.website_or_blog">
            <h2 class="text-left -secondary">Websites</h2>
-              <p class="push mt-5">
+              <p class="push">
                 <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
               </p>
           </div>
-          <div *ngIf="company.field_social_accounts">
+          <div *ngIf="company.field_social_accounts" style="clear:both;">
             <h2 class="text-left -secondary">Social</h2>
-            <div class="row justify-content-end org-social">
+            <span class="org-social">
                 <a class="profile-share">
-                    <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name"
+                    <app-btn-share class="text-grey" [showLabel]="false" [PageTitle]="company.company_name"
                        [PageDescription]="company.company_description.text"
                        [PageImage]="company.company_cover_photo"></app-btn-share>
                     </a>
                 <!--<app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>-->
-            </div>
+            </span>
             <div class="social-links d-flex flex-wrap">
               <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
                 <a class="nav-link social fb" target="_blank"
@@ -188,7 +188,9 @@
             <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
           </div>
           <a *ngIf="CurrentLoggedUserId != company.admin">
+            <br />
             <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
+            <br />
             <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
           </a>
         </div>
