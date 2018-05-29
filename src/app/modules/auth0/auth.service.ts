@@ -19,7 +19,6 @@ export class Auth {
     // responseType: 'token id_token access_token profile',
     responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    // redirectUri: 'http://localhost:4200/',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
     scope: 'openid profile',
@@ -83,7 +82,6 @@ export class Auth {
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
-      data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
@@ -93,7 +91,7 @@ export class Auth {
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
-
+console.log(data);
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
@@ -224,5 +222,5 @@ export class Auth {
       return false;
     }
   }
-  
+
 }
