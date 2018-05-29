@@ -43,8 +43,6 @@ export class Auth {
   }
 
   public Auth0Login(): void {
-
-    e.preventDefault();
     localStorage.setItem('redirect_to',location.href);
     this.auth0.authorize();
   }
