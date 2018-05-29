@@ -58,7 +58,7 @@
         <div class="col-md-8">
           <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"
                              [description]="company.company_description"></app-orgs-about-us>
-          <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
+          <app-orgs-projects *ngIf="current_active_tab == 'projects'" class="projects-tab"></app-orgs-projects>
         </div>
         <div class="col-md-4" *ngIf="company">
           <!-- About Us Side Bar  -->
@@ -83,8 +83,8 @@
                 <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
               </p>
           </div>
-          <div *ngIf="company.field_social_accounts" style="clear:both;">
-            <h2 class="text-left -secondary">Social</h2>
+          <div *ngIf="company.field_social_accounts">
+            <h2 class="text-left -secondary" style="float: left;">Social</h2>
             <span class="org-social">
                 <a class="profile-share">
                     <app-btn-share class="text-grey" [showLabel]="false" [PageTitle]="company.company_name"
@@ -190,8 +190,7 @@
           <a *ngIf="CurrentLoggedUserId != company.admin">
             <br />
             <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
-            <br />
-            <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
+            <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'" class="report"></app-report>
           </a>
         </div>
       </div>
