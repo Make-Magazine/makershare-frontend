@@ -42,6 +42,9 @@
 	background: $site-bg;
     overflow: hidden;
     position: relative;
+    .social-links {
+        clear: both;
+    }
 }
 .main-org-content {
 	img {
@@ -71,9 +74,7 @@
 }
 
 .org-social {
-	bottom: 12.5rem;
-	left: 15rem;
-	position: absolute;
+
 	font-size: 3rem;
 	.fa {
 		font-size: 3rem;

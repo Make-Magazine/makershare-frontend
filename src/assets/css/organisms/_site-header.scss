@@ -342,7 +342,7 @@ header.universal-nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin-left: 60px;
+    margin-left: -35px;
     @media screen and (max-width: 991px) {
         margin-left: 44px;
     }
@@ -387,7 +387,7 @@ header.universal-nav {
         padding: 0 5px;
       }
     }
-    li:nth-child(2) span, li:nth-child(3) span, li:last-child span {
+    li:nth-child(3) span, li:nth-child(4) span, li:last-child span {
         border-right: none;
     }
     li.second-nav-banner {
