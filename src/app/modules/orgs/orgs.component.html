@@ -79,17 +79,19 @@
           </p>
           <div *ngIf="company.website_or_blog">
            <h2 class="text-left -secondary">Websites</h2>
-            <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+              <p class="push mt-5">
+                <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+              </p>
           </div>
           <div *ngIf="company.field_social_accounts">
-            <h1 class="text-left mt-5">Social!</h1>
+            <h2 class="text-left -secondary">Social</h2>
             <div class="row justify-content-end org-social">
                 <a class="profile-share">
                     <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name"
                        [PageDescription]="company.company_description.text"
                        [PageImage]="company.company_cover_photo"></app-btn-share>
                     </a>
-                <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
+                <!--<app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>-->
             </div>
             <div class="social-links d-flex flex-wrap">
               <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
@@ -179,7 +181,7 @@
             <div class="clearfix"></div>
           </div>
           <div *ngIf="followers && company.minimum_followers <= followersCount">
-            <p>Followers</p>
+            <h2 class="text-left -secondary">Followers</h2>
             <div *ngFor="let maker of followers;" class="d-inline">
               <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
             </div>
