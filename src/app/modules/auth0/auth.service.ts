@@ -77,10 +77,12 @@ export class Auth {
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
+
+      /*
       (data.email_verified =
         user[
           'http://makershare.com/email_verified'
-        ]), (data.access_token = authResult.accessToken);
+        ]), (data.access_token = authResult.accessToken);*/
       data.email_verified = true;
       data.email = user.name;
       data.user_metadata = {
@@ -91,6 +93,7 @@ export class Auth {
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
+alert(data);
 console.log(data);
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
