@@ -36,7 +36,7 @@
                         <app-btn-share 
                            [PageTitle]="'Maker Share'"
                            [PageDescription]="'Maker Share Portfolio'"
-                           [PageImage]="'https://makershare.com/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg'"></app-btn-share>
+                           [PageImage]="project.field_cover_photo?.styled_url"></app-btn-share>
                       </li>
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
@@ -48,7 +48,6 @@
                     </ul>
                   </div>
                 </div>
-                {{project.field_cover_photo?.styled_url | json}}
                 <!-- End image-container -->
                 <div class="col-lg-4 col-md-12 right-side">
                   <div class="card-container">
