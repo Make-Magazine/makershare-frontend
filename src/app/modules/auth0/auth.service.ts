@@ -164,19 +164,8 @@ console.log(user);
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
-
-      /*
-      (data.email_verified =
-        user[
-          'http://makershare.com/email_verified'
-        ]), (data.access_token = authResult.accessToken);*/
       data.email_verified = true;
       data.email = user.name;
-      data.user_metadata = {
-        firstname: 'Alicia',
-        lastname: 'Williams',
-        dob: '1/11/1976',
-      };
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
@@ -184,6 +173,7 @@ console.log('after update');
 console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
+        alert('res.user.uid='+res.user.uid);
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
