@@ -141,7 +141,9 @@ export class Auth {
       },
       (err, authResult) => {
         if (authResult) {
+          observer.next(true);
           this.doLogin(authResult);
+          observer.complete();
         } else if (err) {
 
         }
@@ -184,7 +186,7 @@ console.log('after update');
 console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
-alert('res.user.uid='+res.user.uid)
+alert('res.user.uid='+res.user.uid);
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
