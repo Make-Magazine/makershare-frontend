@@ -52,8 +52,8 @@ export class Auth {
    * @param {string} username
    * @param {string} password
    */
-   
-  
+
+
   public login(username: string, password: string): Observable<Error | boolean> {
     return Observable.create(observer => {
 
@@ -147,7 +147,7 @@ export class Auth {
           if (authResult) {
             console.log("it worked?");
             observer.next(true);
-            this.doLogin(authResult);
+            this.doLogin(authResult); //login to drupal
             observer.complete();
           } else if (err) {
             console.log("Failure!");
@@ -280,6 +280,8 @@ alert('res.user.uid='+res.user.uid);
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
@@ -294,14 +296,18 @@ alert('res.user.uid='+res.user.uid);
    * @returns {boolean}
    */
   public authenticated(): boolean {
-    if (
+    /*if (
       localStorage.getItem('access_token') &&
       localStorage.getItem('id_token')
     ) {
       return true;
     } else {
       return false;
-    }
+    }*/
+    // Check whether the current time is past the
+    // Access Token's expiry time
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
+    return new Date().getTime() < expiresAt;
   }
 
   /**
