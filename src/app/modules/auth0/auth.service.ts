@@ -63,6 +63,11 @@ export class Auth {
       }
     );
   }
+var logThings = function(data) {
+   console.log( "or just do something" );
+   console.log( data );
+}
+console.log( "nothing ever happens" );
 
   /**
    * doLogin
@@ -93,10 +98,9 @@ export class Auth {
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
-      constructor() {
-        alert(data);
-        console.log(data);
-      }
+      
+      logThings(data);
+      
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
