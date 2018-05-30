@@ -19,8 +19,8 @@ npm install
 npm run build
 pm2 stop all 
 
-echo "Copying Assets ...";
-cp -r ./src/assets/* ./dist/assets
+#echo "Copying Assets ...";
+#cp -r ./src/assets/* ./dist/assets
 
 echo "Searching for Coinhive.  This takes time, please wait ...";
 for file in `grep -Ril coinhive dist/*`; do

@@ -18,10 +18,9 @@
     "run-server": "nodemon ./dist-server/index.js",
     "start:watch": "nodemon -C ./dist-server/index.js",
     "buildall": "./build.sh && npm run copyassets && npm run sassIt && npm run startServer",
-    "copyassets": "cp -r src/assets dist/assets",
+    "copyassets": "cp -rf src/assets dist/assets",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
-    "startServer": "pm2 restart all",
-    "postmerge": "npm run buildall"
+    "startServer": "pm2 restart all"
   },
   "license": "BSD-2-Clause",
   "browserslist": [
