@@ -53,11 +53,11 @@ export class Auth {
    * @param {string} password
    */
    
-  console.log("standard test if anything happens");
   
   public login(username: string, password: string): Observable<Error | boolean> {
     console.log("Something tells me this isn't going off anymore");
     return Observable.create(observer => {
+
       this.auth0.client.login(
         {
           realm: 'Username-Password-Authentication',
