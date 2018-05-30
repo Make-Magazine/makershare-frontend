@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     title: Title,
     meta: Meta,
   ) {
-    title.setTitle(' Maker Share | Create. Connect. Learn. | By Make: + Intel');
+    title.setTitle('Maker Share | Make What You Love. Share What You Make.);
     meta.addTags([
       {
         name: 'og:description',
