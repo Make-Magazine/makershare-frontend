@@ -52,8 +52,13 @@ export class Auth {
    * @param {string} username
    * @param {string} password
    */
+   
+  console.log("standard test if anything happens");
+  
   public login(username: string, password: string): Observable<Error | boolean> {
+    console.log("Something tells me this isn't going off anymore");
     return Observable.create(observer => {
+      console.log("but if it does");
       this.auth0.client.login(
         {
           realm: 'Username-Password-Authentication',
@@ -62,8 +67,10 @@ export class Auth {
         },
         (err, authResult) => {
           if (err) {
+            console.log("err");
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
+            console.log("at least we'll know something's going on");
             observer.next(true);
             this.doLogin(authResult);
             observer.complete();
