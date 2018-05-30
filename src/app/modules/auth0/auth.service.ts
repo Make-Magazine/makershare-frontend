@@ -161,6 +161,8 @@ export class Auth {
         console.log(err);
         return;
       }
+console.log('auth0 user');
+console.log(user);
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
@@ -180,7 +182,7 @@ export class Auth {
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
-
+console.log('after update');
 console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
