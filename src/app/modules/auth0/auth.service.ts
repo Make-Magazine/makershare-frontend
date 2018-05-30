@@ -175,13 +175,12 @@ export class Auth {
       data.user_metadata = {
         firstname: 'Alicia',
         lastname: 'Williams',
-        dob: `${birthdate}`,
+        dob: '1/11/1976',
       };
 
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
 
-alert(data);
 console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
