@@ -8,6 +8,8 @@ import { UserService } from '../../core/d7services';
 import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
+console.log("outside of class");
+
 @Injectable()
 export class Auth {
   private _toggleModal = new Subject<boolean>();
@@ -63,11 +65,6 @@ export class Auth {
       }
     );
   }
-var logThings = function(data) {
-   console.log( "or just do something" );
-   console.log( data );
-}
-console.log( "nothing ever happens" );
 
   /**
    * doLogin
@@ -99,8 +96,9 @@ console.log( "nothing ever happens" );
       // Set session to let the browser know the user is now logged in
       this.setSession(authResult);
       
-      logThings(data);
-      
+//alert(data);
+//console.log(data);
+
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
