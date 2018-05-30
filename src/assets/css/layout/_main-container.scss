@@ -10,6 +10,7 @@ section,
 
 .main-container {
   height: 100%;
+  padding-top: 70px;
   @include phone() {
     padding-bottom: 0;
   }
