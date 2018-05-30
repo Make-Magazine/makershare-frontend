@@ -35,8 +35,8 @@
                       <li ngbTooltip="{{toolTips.share}}">
                         <app-btn-share 
                            [PageTitle]="'Maker Share'"
-                           [PageDescription]="'Maker Share Portfolio'"
-                           [PageImage]="project.field_cover_photo.value"></app-btn-share>
+                           [PageDescription]="project.field_teaser?.value"
+                           [PageImage]="project.field_cover_photo?.styled_url"></app-btn-share>
                       </li>
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->

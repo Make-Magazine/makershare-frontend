@@ -8,8 +8,6 @@ import { UserService } from '../../core/d7services';
 import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
-console.log("is the build broken again?");
-
 @Injectable()
 export class Auth {
   private _toggleModal = new Subject<boolean>();
@@ -57,7 +55,6 @@ export class Auth {
    
   
   public login(username: string, password: string): Observable<Error | boolean> {
-    console.log("Something tells me this isn't going off anymore");
     return Observable.create(observer => {
 
       this.auth0.client.login(
@@ -68,11 +65,8 @@ export class Auth {
         },
         (err, authResult) => {
           if (err) {
-            console.log("err");
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
-            console.log("at least we'll know something's going on");
-            
             observer.next(true);
             this.doLogin(authResult);
             observer.complete();
@@ -151,11 +145,12 @@ export class Auth {
         },
         (err, authResult) => {
           if (authResult) {
+            console.log("it worked?");
             observer.next(true);
             this.doLogin(authResult);
             observer.complete();
           } else if (err) {
-
+            console.log("Failure!");
           }
         }
       );
