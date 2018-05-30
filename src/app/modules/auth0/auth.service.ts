@@ -8,8 +8,6 @@ import { UserService } from '../../core/d7services';
 import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
-console.log("outside of class");
-
 @Injectable()
 export class Auth {
   private _toggleModal = new Subject<boolean>();
