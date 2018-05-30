@@ -184,7 +184,7 @@ console.log('after update');
 console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
-alert('res.user.uid='+res.user.uid)
+//alert('res.user.uid='+res.user.uid) so this was here without a semicolon
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
