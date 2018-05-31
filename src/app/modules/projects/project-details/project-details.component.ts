@@ -59,7 +59,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.meta.addTags([
       {
         name: 'og:description',
-        content: this.project.field_teaser.value,
+        content: "this is the test description",
       },
       {
         name: 'og:image',

@@ -68,6 +68,8 @@ export class Auth {
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
             observer.next(true);
+            console.log(authResult);
+            this.auth0.authorize(); // auth0 was never being authorized...
             this.doLogin(authResult);
             observer.complete();
           }
