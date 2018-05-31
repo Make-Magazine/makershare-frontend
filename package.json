@@ -18,10 +18,11 @@
     "run-server": "nodemon ./dist-server/index.js",
     "start:watch": "nodemon -C ./dist-server/index.js",
     "buildall": "./build.sh && npm run copyassets && npm run sassIt && npm run startServer",
-    "buildlocal": "./build.sh && npm run copyassets && npm run sassIt",
+    "buildlocal": "./build.sh && npm run copyassets && npm run sassIt && npm run startLocalServer",
     "copyassets": "cp -rf src/assets dist/assets",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
-    "startServer": "pm2 restart all"
+    "startServer": "pm2 restart all",
+    "startLocalServer": "ng serve"
   },
   "license": "BSD-2-Clause",
   "browserslist": [
