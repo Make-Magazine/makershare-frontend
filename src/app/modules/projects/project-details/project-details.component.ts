@@ -56,7 +56,7 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
-    this.meta.addTags([
+    this.meta.updateTag([
       {
         name: 'og:description',
         content: "this is the test description",

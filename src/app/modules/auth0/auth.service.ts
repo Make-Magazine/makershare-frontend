@@ -55,6 +55,7 @@ export class Auth {
 
 
   public login(username: string, password: string): Observable<Error | boolean> {
+    console.log("this one isn't being called, right?");
     return Observable.create(observer => {
 
       this.auth0.client.login(
@@ -147,6 +148,7 @@ export class Auth {
           (err, authResult) => {
             if (authResult) {
                 console.log("Success");
+                this.auth0.authorize(); // auth0 was never being authorized...
                 this.doLogin(authResult);
             } else if (err) {
                 console.log("Failure!");
