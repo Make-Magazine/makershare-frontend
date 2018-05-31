@@ -56,6 +56,18 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
+    this.meta.addTags([
+      {
+        name: 'og:description',
+        content: this.project.field_teaser.value,
+      },
+      {
+        name: 'og:image',
+        content:
+          Singleton.Settings.appURL +
+          '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+      },
+    ]);
   }
 
   ngOnInit() {
