@@ -64,8 +64,7 @@ export class ProjectDetailsComponent implements OnInit {
       {
         name: 'og:image',
         content:
-          Singleton.Settings.appURL +
-          '/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
+          'https://preview.makershare.com/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
       },
     ]);
   }
