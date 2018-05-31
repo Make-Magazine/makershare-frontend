@@ -33,11 +33,13 @@
                         <app-bookmark *ngIf="userLogin" [nodeNid]="project.nid" [nodeType]="'project'"></app-bookmark>
                       </li>
                       <li ngbTooltip="{{toolTips.share}}">
-                        <app-btn-share 
+                        <app-btn-share></app-btn-share>
+                      </li>
+                        <!--  
                            [PageTitle]="'Maker Share'"
                            [PageDescription]="project.field_teaser?.value"
-                           [PageImage]="project.field_cover_photo?.styled_url"></app-btn-share>
-                      </li>
+                           [PageImage]="project.field_cover_photo?.value"
+                        -->
                       <li>
                         <app-likes [nodeNid]="project.nid"></app-likes> <!--[project]="true"-->
                       </li>

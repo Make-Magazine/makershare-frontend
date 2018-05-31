@@ -177,9 +177,9 @@ console.log(user);
       data.email_verified = true;
       data.email = user.name;
       data.user_metadata = {
-        firstname: 'Alicia',
-        lastname: 'Williams',
-        dob: '1/11/1976',
+        firstname: user.http://makershare.com/firstname,
+        lastname: user.http://makershare.com/lastname,
+        dob: user.http://makershare.com/dob,
       };
 
       // Set session to let the browser know the user is now logged in
