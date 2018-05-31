@@ -56,17 +56,6 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
-    this.meta.updateTag([
-      {
-        name: 'og:description',
-        content: "this is the test description",
-      },
-      {
-        name: 'og:image',
-        content:
-          'https://preview.makershare.com/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg',
-      },
-    ]);
   }
 
   ngOnInit() {
@@ -139,7 +128,7 @@ export class ProjectDetailsComponent implements OnInit {
           // if(this.project.field_show_tell_video_as_default.value == 1) {
 
           // }
-          this.meta.addTags([
+          this.meta.updateTags([
             {
               name: 'og:description', content: this.project.field_teaser.value
             },
