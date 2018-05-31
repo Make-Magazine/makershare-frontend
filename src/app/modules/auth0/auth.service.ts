@@ -178,9 +178,9 @@ export class Auth {
       data.email_verified = true;
       data.email = user.name;
       data.user_metadata = {
-        firstname: data['http://makershare.com/firstname'] + " first name",
-        lastname: data['http://makershare.com/lastname'] + " last name",
-        dob: data['http://makershare.com/dob'] + " dob",
+        firstname: data["http://makershare.com/firstname"] + " first name",
+        lastname: 'data["http://makershare.com/lastname"]' + " last name",
+        dob: 'data["http://makershare.com/dob"]' + " dob",
       };
 
       // Set session to let the browser know the user is now logged in
