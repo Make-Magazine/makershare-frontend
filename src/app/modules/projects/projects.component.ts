@@ -51,10 +51,6 @@ export class ProjectsComponent implements OnInit {
     );
     this.meta.addTags([
       {
-        name: 'description',
-        content: 'Where Makers come to show & tell what they can do. Create your Maker Portfolio and share your projects, participate in community missions, and learn new skills.' ,
-      },
-      {
         name: 'og:description',
         content:
           'From 3D printing to robots to yarncraft, browse projects from Maker Faire and all the Maker community. Maker Share is a project by Make: + Intel.',
@@ -76,7 +72,6 @@ export class ProjectsComponent implements OnInit {
     this.countAllProjects();
     this.getProjects();
     this.getProjectCategories();
-    this.meta.updateTag({name:'description',content:'Seeing about rewriting the meta description the fly, since it facebook doesnt seem to care about og:description'});
   }
 
   /**

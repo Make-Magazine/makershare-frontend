@@ -62,6 +62,7 @@
     padding-top: $card_tallRatio;
     .card-image, .info-top {
       padding-bottom: $card_tallRatio;
+      opactiy: 1;
     }
     .badge-group {
       bottom: -($badge-height * 0.65);
