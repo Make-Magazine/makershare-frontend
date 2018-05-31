@@ -144,14 +144,13 @@ export class Auth {
           },
           (err, authResult) => {
             if (authResult) {
-              observer.next(true);
-              this.doLogin(authResult);
-              observer.complete();
+                console.log("Success");
+                this.doLogin(authResult);
             } else if (err) {
                 console.log("Failure!");
             }
-        }
-      );
+          }
+        );
     }
 
   /**
