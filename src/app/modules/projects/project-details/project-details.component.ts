@@ -56,7 +56,7 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
-    this.meta.removeTagElement(og:descriptio); 
+    this.meta.removeTag('name="og:description"'); 
     this.meta.updateTag({ name: 'og:description', content: 'what ever you want this to be' });
   }
 
