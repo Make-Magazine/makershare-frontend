@@ -56,6 +56,7 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
+    this.meta.removeTagElement(og:descriptio); 
     this.meta.updateTag({ name: 'og:description', content: 'what ever you want this to be' });
   }
 
@@ -129,7 +130,8 @@ export class ProjectDetailsComponent implements OnInit {
           // if(this.project.field_show_tell_video_as_default.value == 1) {
 
           // }
-          this.meta.updateTag({ name: 'og:image', content: this.project.field_cover_photo.url });
+          this.meta.updateTag({ name: 'og:description', content: 'what ever you want this to be 2' });
+          this.meta.updateTag({ name: 'og:image', content: this.project.field_cover_photo.url + "?mychange"});
         }
 
         let i = 0;
