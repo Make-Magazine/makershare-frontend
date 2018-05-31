@@ -137,25 +137,22 @@ export class Auth {
   /**
    * handleAuthentication
    */
-  public handleAuthentication(): Observable<Error | boolean> {
-    return Observable.create(observer => {
-      this.auth0.parseHash(
-        {
-          hash: window.location.hash,
-        },
-        (err, authResult) => {
-          if (authResult) {
-            console.log("it worked?");
-            observer.next(true);
-            this.doLogin(authResult); //login to drupal
-            observer.complete();
-          } else if (err) {
-            console.log("Failure!");
-          }
+   public handleAuthentication(): void {
+        this.auth0.parseHash(
+          {
+            hash: window.location.hash,
+          },
+          (err, authResult) => {
+            if (authResult) {
+              observer.next(true);
+              this.doLogin(authResult);
+              observer.complete();
+            } else if (err) {
+                console.log("Failure!");
+            }
         }
       );
-    });
-  }
+    }
 
   /**
    * doLogin
