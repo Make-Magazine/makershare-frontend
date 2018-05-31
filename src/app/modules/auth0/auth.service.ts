@@ -163,8 +163,9 @@ export class Auth {
         console.log(err);
         return;
       }
-console.log('auth0 user');
-console.log(user);
+      console.log('auth0 user');
+      console.log(user);
+      console.log("user end");
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
@@ -177,9 +178,9 @@ console.log(user);
       data.email_verified = true;
       data.email = user.name;
       data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob'],
+        firstname: data['http://makershare.com/firstname'] + " first name",
+        lastname: data['http://makershare.com/lastname'] + " last name",
+        dob: data['http://makershare.com/dob'] + " dob",
       };
 
       // Set session to let the browser know the user is now logged in
