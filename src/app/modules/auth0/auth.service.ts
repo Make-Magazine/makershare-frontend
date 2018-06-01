@@ -17,12 +17,11 @@ export class Auth {
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
     // responseType: 'token id_token access_token profile',
-    responseType: 'token id_token',
+    responseType: 'token',
     audience: 'https://makermedia.auth0.com/userinfo',
+    // redirectUri: 'http://localhost:4200/',
     redirectUri: Singleton.Settings.appURL,
-    //scope: 'openid id_token access_token profile',
-    scope: 'openid profile',
-    leeway: 60
+    scope: 'openid id_token access_token profile',
   });
 
   constructor(
@@ -41,23 +40,14 @@ export class Auth {
     this._toggleModal.next(enable);
   }
 
-  public Auth0Login(): void {
-    //localStorage.setItem('redirect_to',location.href);
-    this.auth0.authorize();
-  }
-
   /**
    * login
    *
    * @param {string} username
    * @param {string} password
    */
-
-
   public login(username: string, password: string): Observable<Error | boolean> {
-    console.log("this one isn't being called, right?");
     return Observable.create(observer => {
-
       this.auth0.client.login(
         {
           realm: 'Username-Password-Authentication',
@@ -69,8 +59,6 @@ export class Auth {
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
             observer.next(true);
-            console.log(authResult);
-            this.auth0.authorize(); // auth0 was never being authorized...
             this.doLogin(authResult);
             observer.complete();
           }
@@ -78,8 +66,7 @@ export class Auth {
       );
     });
   }
-
-  /**
+    /**
    * signupNewsletter
    *
    * @param {string} email
@@ -140,22 +127,20 @@ export class Auth {
   /**
    * handleAuthentication
    */
-   public handleAuthentication(): void {
-        this.auth0.parseHash(
-          {
-            hash: window.location.hash,
-          },
-          (err, authResult) => {
-            if (authResult) {
-                console.log("Success");
-               // this.auth0.authorize(); /this calls auth0 twice
-                this.doLogin(authResult);
-            } else if (err) {
-                console.log("Failure!");
-            }
-          }
-        );
-    }
+  public handleAuthentication(): void {
+    this.auth0.parseHash(
+      {
+        hash: window.location.hash,
+      },
+      (err, authResult) => {
+        if (authResult) {
+          this.doLogin(authResult);
+        } else if (err) {
+
+        }
+      }
+    );
+  }
 
   /**
    * doLogin
@@ -167,33 +152,23 @@ export class Auth {
         console.log(err);
         return;
       }
-      console.log('auth0 user');
-      console.log(user);
-      console.log("user end");
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
-
-      /*
       (data.email_verified =
         user[
           'http://makershare.com/email_verified'
-        ]), (data.access_token = authResult.accessToken);*/
-      data.email_verified = true;
+        ]), (data.access_token = authResult.accessToken);
+      data.email_verified = true;  
+      data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
       data.user_metadata = {
-        firstname: data["http://makershare.com/firstname"] + " first name",
-        lastname: 'data["http://makershare.com/lastname"]' + " last name",
-        dob: 'data["http://makershare.com/dob"]' + " dob",
+        firstname: user['http://makershare.com/firstname'],
+        lastname: user['http://makershare.com/lastname'],
+        dob: user['http://makershare.com/dob'],
       };
 
-      // Set session to let the browser know the user is now logged in
-      this.setSession(authResult);
-console.log('after update');
-console.log(data);
-
       this.userService.auth0_authenticate(data).subscribe(res => {
-alert('res.user.uid='+res.user.uid);
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
@@ -281,8 +256,6 @@ alert('res.user.uid='+res.user.uid);
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
@@ -297,18 +270,14 @@ alert('res.user.uid='+res.user.uid);
    * @returns {boolean}
    */
   public authenticated(): boolean {
-    /*if (
+    if (
       localStorage.getItem('access_token') &&
       localStorage.getItem('id_token')
     ) {
       return true;
     } else {
       return false;
-    }*/
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
-    return new Date().getTime() < expiresAt;
+    }
   }
 
   /**
@@ -357,5 +326,4 @@ alert('res.user.uid='+res.user.uid);
     };
     this.auth0.changePassword(options, function() {});
   }
-
 }
