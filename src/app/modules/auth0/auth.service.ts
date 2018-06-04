@@ -14,14 +14,14 @@ export class Auth {
   toggleModal$ = this._toggleModal.asObservable();
 
   auth0 = new auth0.WebAuth({
-    clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     domain: 'makermedia.auth0.com',
+    clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     // responseType: 'token id_token access_token profile',
     responseType: 'token',
     audience: 'https://makermedia.auth0.com/userinfo',
     // redirectUri: 'http://localhost:4200/',
-    redirectUri: Singleton.Settings.appURL,
     scope: 'openid id_token access_token profile',
+    redirectUri: Singleton.Settings.appURL,
   });
 
   constructor(
@@ -327,3 +327,4 @@ export class Auth {
     this.auth0.changePassword(options, function() {});
   }
 }
+
