@@ -24,7 +24,16 @@ export class Auth {
     scope: 'openid profile',
     leeway: 60
   });
-
+  //check if logged in another place
+  auth0.checkSession({},
+    function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    }
+  );
   constructor(
     public router: Router,
     private userService: UserService,
