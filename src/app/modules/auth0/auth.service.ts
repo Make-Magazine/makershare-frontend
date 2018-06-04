@@ -10,7 +10,7 @@ import { ProfilePictureService } from '../shared/profile-picture/profile-picture
 
 @Injectable()
 export class Auth {
-  ngOnInit(){
+ public ngOnInit(): any {
   alert('on init');
     //check if logged in another place
     this.auth0.checkSession({},
