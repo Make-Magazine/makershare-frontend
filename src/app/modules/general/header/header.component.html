@@ -46,9 +46,11 @@
       <ul class="nav-level-1-auth">
         <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
-          <app-login></app-login>
+          <!--<app-login></app-login>-->
           <!--</a>-->
+          <button id="qsLoginBtn" style="display: flex;" (click)="auth.Auth0Login()">New Login | Signup</button>
         </li>
+              
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
