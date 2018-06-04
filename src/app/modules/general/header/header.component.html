@@ -52,9 +52,6 @@
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
-        <li class="nav-item">
-          <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
-        </li>
         <li class="nav-item" *ngIf="auth.authenticated()">
           <div ngbDropdown
                class="dropdown sub-nav user-menu">
