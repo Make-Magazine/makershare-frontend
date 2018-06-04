@@ -40,6 +40,11 @@ export class Auth {
     this._toggleModal.next(enable);
   }
 
+  public Auth0Login(): void {
+    //localStorage.setItem('redirect_to',location.href);
+    this.auth0.authorize();
+  }
+
   /**
    * login
    *
@@ -271,16 +276,6 @@ export class Auth {
    * @returns {boolean}
    */
   public authenticated(): boolean {
-    //check if logged in another place
-    this.auth0.checkSession({},
-      function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          this.setSession(result);
-        }
-      }
-    );
     // Check whether the current time is past the
     // access token's expiry time
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
