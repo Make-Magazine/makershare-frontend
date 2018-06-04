@@ -14,14 +14,15 @@ export class Auth {
   toggleModal$ = this._toggleModal.asObservable();
 
   auth0 = new auth0.WebAuth({
-    domain: 'makermedia.auth0.com',
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
+    domain: 'makermedia.auth0.com',
     // responseType: 'token id_token access_token profile',
-    responseType: 'token id_token ',
+    responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    // redirectUri: 'http://localhost:4200/',
-    scope: 'openid id_token access_token profile',
     redirectUri: Singleton.Settings.appURL,
+    //scope: 'openid id_token access_token profile',
+    scope: 'openid profile',
+    leeway: 60
   });
 
   constructor(
