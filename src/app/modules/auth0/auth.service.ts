@@ -31,17 +31,6 @@ export class Auth {
     private notificationBarService: NotificationBarService,
   ) {}
 
-  //check if logged in another place
-  auth0.checkSession({},
-    function(err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setSession(result);
-      }
-    }
-  );
-
   /**
    * toggle
    *
@@ -282,6 +271,17 @@ export class Auth {
    * @returns {boolean}
    */
   public authenticated(): boolean {
+    //check if logged in another place
+    auth0.checkSession({},
+      function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setSession(result);
+        }
+      }
+    );
+
     // Check whether the current time is past the
     // access token's expiry time
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
