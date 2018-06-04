@@ -272,7 +272,7 @@ export class Auth {
    */
   public authenticated(): boolean {
     //check if logged in another place
-    auth0.checkSession({},
+    this.auth0.checkSession({},
       function(err, result) {
         if (err) {
           console.log(err);
@@ -281,7 +281,6 @@ export class Auth {
         }
       }
     );
-
     // Check whether the current time is past the
     // access token's expiry time
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
