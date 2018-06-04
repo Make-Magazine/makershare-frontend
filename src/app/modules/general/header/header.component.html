@@ -44,37 +44,26 @@
       </a>
 
       <ul class="nav-level-1-auth">
-        <!--<li class="nav-item" *ngIf="!auth.authenticated()">
-          <button id="qsLoginBtn" style="display: flex;" (click)="auth.Auth0Login()">New Login | Signup</button>
-        </li>-->
         <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
           <app-login></app-login>
           <!--</a>-->
         </li>
-
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
+        <li class="nav-item">
+          <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
+        </li>
         <li class="nav-item" *ngIf="auth.authenticated()">
           <div ngbDropdown
-               class="dropdown sub-nav user-menu" id="profile-view">
+               class="dropdown sub-nav user-menu">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
-              <img class="avatar" style="width:38px" alt="avatar">
-              <!--<img class="profile-photo"
+              <img class="profile-photo"
                    src="{{user_photo || './assets/images/icons/no-profile-pic.png'}}"
-                   alt="Profile Photo"> -->
+                   alt="Profile Photo">
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
-              <li class="dropdown-item">
-                  <a href="https://www.makershare.com/portfolio"><span class="nav-link">Maker Share Profile</span></a>
-              </li>
-              <li class="dropdown-item">
-                  <a href="https://www.makerfaire.com/manage-entries"><span class="nav-link">Maker Faire Portfolio</span></a>
-              </li>
-              <li class="dropdown-item">
-                  <a href="https://make.co/myaccount"><span class="nav-link">My Membership Account</span></a>
-              </li>
               <li class="dropdown-item" *ngIf="isManager">
                 <a class="nav-link"
                    target="_blank"
