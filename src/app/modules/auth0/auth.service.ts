@@ -9,7 +9,7 @@ import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
 @Injectable()
-export class Auth  implements OnInit {
+export class Auth implements OnInit {
  public ngOnInit(): any {
   alert('on init');
     //check if logged in another place
