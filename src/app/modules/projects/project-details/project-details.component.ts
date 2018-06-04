@@ -56,8 +56,6 @@ export class ProjectDetailsComponent implements OnInit {
   ) {
     this.config.placement = 'bottom';
     this.config.triggers = 'hover';
-    this.meta.removeTag('name="og:description"'); 
-    this.meta.updateTag({ name: 'og:description', content: 'what ever you want this to be' });
   }
 
   ngOnInit() {
@@ -130,8 +128,14 @@ export class ProjectDetailsComponent implements OnInit {
           // if(this.project.field_show_tell_video_as_default.value == 1) {
 
           // }
-          this.meta.updateTag({ name: 'og:description', content: 'what ever you want this to be 2' });
-          this.meta.updateTag({ name: 'og:image', content: this.project.field_cover_photo.url + "?mychange"});
+          this.meta.addTags([
+            {
+              name: 'og:description', content: this.project.field_teaser.value
+            },
+            {
+              name: 'og:image', content: this.project.field_cover_photo.url
+            }
+          ])
         }
 
         let i = 0;
