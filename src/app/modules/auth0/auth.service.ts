@@ -10,6 +10,18 @@ import { ProfilePictureService } from '../shared/profile-picture/profile-picture
 
 @Injectable()
 export class Auth {
+  ngOnInit(){
+    //check if logged in another place
+    this.auth0.checkSession({},
+      function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setSession(result);
+        }
+      }
+    );
+  }
   private _toggleModal = new Subject<boolean>();
   toggleModal$ = this._toggleModal.asObservable();
 
@@ -24,16 +36,7 @@ export class Auth {
     scope: 'openid profile',
     leeway: 60
   });
-  //check if logged in another place
-  auth0.checkSession({},
-    function(err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setSession(result);
-      }
-    }
-  );
+
   constructor(
     public router: Router,
     private userService: UserService,
