@@ -17,7 +17,7 @@ export class Auth {
     domain: 'makermedia.auth0.com',
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
     // responseType: 'token id_token access_token profile',
-    responseType: 'token',
+    responseType: 'token id_token ',
     audience: 'https://makermedia.auth0.com/userinfo',
     // redirectUri: 'http://localhost:4200/',
     scope: 'openid id_token access_token profile',
@@ -159,7 +159,7 @@ export class Auth {
         user[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
-      data.email_verified = true;  
+      data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
       data.user_metadata = {
@@ -256,6 +256,7 @@ export class Auth {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
@@ -270,6 +271,11 @@ export class Auth {
    * @returns {boolean}
    */
   public authenticated(): boolean {
+    // Check whether the current time is past the
+    // access token's expiry time
+    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+*/
     if (
       localStorage.getItem('access_token') &&
       localStorage.getItem('id_token')
@@ -277,7 +283,7 @@ export class Auth {
       return true;
     } else {
       return false;
-    }
+    }*/
   }
 
   /**
