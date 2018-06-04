@@ -31,6 +31,17 @@ export class Auth {
     private notificationBarService: NotificationBarService,
   ) {}
 
+  //check if logged in another place
+  auth0.checkSession({},
+    function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    }
+  );
+
   /**
    * toggle
    *
@@ -275,15 +286,6 @@ export class Auth {
     // access token's expiry time
     var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
-*/
-    if (
-      localStorage.getItem('access_token') &&
-      localStorage.getItem('id_token')
-    ) {
-      return true;
-    } else {
-      return false;
-    }*/
   }
 
   /**
