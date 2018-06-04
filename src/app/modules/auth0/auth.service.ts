@@ -10,19 +10,6 @@ import { ProfilePictureService } from '../shared/profile-picture/profile-picture
 
 @Injectable()
 export class Auth implements OnInit {
- public ngOnInit(): any {
-  alert('on init');
-    //check if logged in another place
-    this.auth0.checkSession({},
-      function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          this.setSession(result);
-        }
-      }
-    );
-  }
   private _toggleModal = new Subject<boolean>();
   toggleModal$ = this._toggleModal.asObservable();
 
@@ -344,3 +331,16 @@ export class Auth implements OnInit {
   }
 }
 
+ngOnInit() {
+  alert('on init');
+    //check if logged in another place
+    this.auth0.checkSession({},
+      function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setSession(result);
+        }
+      }
+    );
+  }
