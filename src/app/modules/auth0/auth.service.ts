@@ -331,7 +331,7 @@ export class Auth {
 }
 
 //check if logged in another place
-    Auth.auth0.checkSession({},
+    auth0.checkSession({},
       function(err, result) {
         if (err) {
           console.log(err);
