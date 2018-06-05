@@ -24,14 +24,13 @@ export class Auth {
     scope: 'openid profile',
     leeway: 60
   });
-  this.checkSession();
 
   constructor(
     public router: Router,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
-  ) {}
+  ) {   this.checkSession();}
 
   public checkSession(): void {
     alert('checking session here');
