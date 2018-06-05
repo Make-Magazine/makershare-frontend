@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
@@ -9,7 +9,7 @@ import { Singleton } from '../../core/models/application/singleton';
 import { ProfilePictureService } from '../shared/profile-picture/profile-picture.service';
 
 @Injectable()
-export class Auth implements OnInit {
+export class Auth {
   private _toggleModal = new Subject<boolean>();
   toggleModal$ = this._toggleModal.asObservable();
 
@@ -42,7 +42,6 @@ export class Auth implements OnInit {
   }
 
   public Auth0Login(): void {
-    //localStorage.setItem('redirect_to',location.href);
     this.auth0.authorize();
   }
 
@@ -332,7 +331,7 @@ export class Auth implements OnInit {
 }
 
 //check if logged in another place
-    auth.auth0.checkSession({},
+    Auth.auth0.checkSession({},
       function(err, result) {
         if (err) {
           console.log(err);
