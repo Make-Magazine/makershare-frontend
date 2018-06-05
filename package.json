@@ -87,6 +87,7 @@
   },
   "devDependencies": {
     "@angular/cli": "1.4.7",
+    "@types/jquery": "^3.3.2",
     "codelyzer": "3.2.1",
     "tslint": "5.7.0"
   }
