@@ -40,7 +40,7 @@ export class Auth {
         if (err) {
           console.log(err);
         } else {
-          this.setSession(result);
+          setSession(result);
         }
       }
     );
