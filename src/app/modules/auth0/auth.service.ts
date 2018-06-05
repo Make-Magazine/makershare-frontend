@@ -95,7 +95,7 @@ export class Auth {
    * @param {string} birthdate
    * @param {boolean} checkbox
    */
-  public signup(
+  public signup(c
     email: string,
     password: string,
     first_name: string,
@@ -328,10 +328,9 @@ export class Auth {
     };
     this.auth0.changePassword(options, function() {});
   }
-}
 
-//check if logged in another place
-    auth0.checkSession({},
+  //check if logged in another place
+    this.checkSession({},
       function(err, result) {
         if (err) {
           console.log(err);
@@ -340,3 +339,5 @@ export class Auth {
         }
       }
     );
+}
+
