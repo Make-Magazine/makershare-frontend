@@ -191,6 +191,7 @@ export class Auth {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob'],
+        ms_login: true
       };
 
       this.userService.auth0_authenticate(data).subscribe(res => {
