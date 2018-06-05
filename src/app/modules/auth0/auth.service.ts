@@ -265,7 +265,7 @@ export class Auth {
       domain: 'makermedia.auth0.com',
       token: accessToken
     });
-    auth0Manage.patchUserMetadata(data.user_id,{user.user_metadata.ms_user:true}, function(err){
+    auth0Manage.patchUserMetadata(data.user_id,{"user_metadata": {"ms_user": true}}, function(err){
           console.log(err);
     });
   }
