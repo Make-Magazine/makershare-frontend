@@ -41,7 +41,13 @@ export class Auth {
         if (err) {
           console.log(err);
         } else {
-          setSession(result);
+          // Set the time that the access token will expire at
+          const expiresAt = JSON.stringify(
+            result.expiresIn * 1000 + new Date().getTime(),
+          );
+          localStorage.setItem('access_token', result.accessToken);
+          localStorage.setItem('id_token', result.idToken);
+          localStorage.setItem('expires_at', expiresAt);
         }
       }
     );
