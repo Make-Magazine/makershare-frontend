@@ -95,7 +95,7 @@ export class Auth {
    * @param {string} birthdate
    * @param {boolean} checkbox
    */
-  public signup(c
+  public signup(
     email: string,
     password: string,
     first_name: string,
