@@ -32,19 +32,6 @@ export class Auth implements OnInit {
     private notificationBarService: NotificationBarService,
   ) {}
 
-  ngOnInit() {
-    alert('on init');
-    //check if logged in another place
-    this.auth0.checkSession({},
-      function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          this.setSession(result);
-        }
-      }
-    );
-  }
   /**
    * toggle
    *
@@ -343,3 +330,14 @@ export class Auth implements OnInit {
     this.auth0.changePassword(options, function() {});
   }
 }
+
+//check if logged in another place
+    auth.auth0.checkSession({},
+      function(err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          this.setSession(result);
+        }
+      }
+    );
