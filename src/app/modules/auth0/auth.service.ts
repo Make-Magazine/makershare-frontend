@@ -24,6 +24,7 @@ export class Auth {
     scope: 'openid profile',
     leeway: 60
   });
+  this.checkSession();
 
   constructor(
     public router: Router,
@@ -31,6 +32,10 @@ export class Auth {
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
   ) {}
+
+  public checkSession(): void {
+    alert('checking session here');
+  }
 
   /**
    * toggle
@@ -71,7 +76,8 @@ export class Auth {
       );
     });
   }
-    /**
+
+  /**
    * signupNewsletter
    *
    * @param {string} email
@@ -328,16 +334,5 @@ export class Auth {
     };
     this.auth0.changePassword(options, function() {});
   }
-
-  //check if logged in another place
-    this.checkSession({},
-      function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          Auth.setSession(result);
-        }
-      }
-    );
 }
 
