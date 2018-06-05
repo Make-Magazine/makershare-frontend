@@ -34,13 +34,14 @@ export class Auth {
 
   public checkSession(): void {
     alert('checking session here');
+
     //check if logged in another place
     this.auth0.checkSession({},
       function(err, result) {
         if (err) {
           console.log(err);
         } else {
-          this.setSession(result);
+          setSession(result);
         }
       }
     );
