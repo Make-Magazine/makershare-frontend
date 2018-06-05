@@ -33,8 +33,6 @@ export class Auth {
   ) {   this.checkSession();}
 
   public checkSession(): void {
-    alert('checking session here');
-
     //check if logged in another place
     this.auth0.checkSession({},
       function(err, result) {
