@@ -260,13 +260,22 @@ export class Auth {
    * @param accessToken
    *        res
    */
-  public updUserMeta(accessToken, res, data): void {
-    var auth0Manage = new this.auth0.Management({
-      domain: 'makermedia.auth0.com',
-      token: accessToken
-    });
-    auth0Manage.patchUserMetadata(data.user_id,{"user_metadata": {"ms_user": true}}, function(err){
-          console.log(err);
+  public updUserMeta(accessToken, res, data) {
+    const settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://makermedia.auth0.com/api/v2/users",
+      "method": "POST",
+      "headers": {
+        "authorization": "Bearer ABCD",
+        "content-type": "application/json"
+      },
+      "processData": false,
+      "data": "{\"email\": data.email, \"user_metadata\": {\"ms_user\": \"true\"}}"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
     });
   }
 
