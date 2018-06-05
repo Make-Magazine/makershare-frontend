@@ -190,8 +190,7 @@ export class Auth {
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob'],
-        ms_login: true
+        dob: user['http://makershare.com/dob']
       };
 
       this.userService.auth0_authenticate(data).subscribe(res => {
@@ -212,6 +211,9 @@ export class Auth {
 
           // Set session
           this.setSession(authResult);
+
+          //update userMeta on auth0
+          this.updUserMeta(authResult.accessToken, res, data);
 
           // redirect to the profile page if it's first time
           if (res.first_time) {
@@ -250,6 +252,21 @@ export class Auth {
       });
 
 
+    });
+  }
+
+  /*
+   * updUserMeta
+   * @param accessToken
+   *        res
+   */
+  public updUserMeta(accessToken, res, data): void {
+    var auth0Manage = new this.auth0.Management({
+      domain: 'makermedia.auth0.com',
+      token: accessToken
+    });
+    auth0Manage.patchUserMetadata(data.user_id,{user.user_metadata.ms_user:true}, function(err){
+          console.log(err);
     });
   }
 
