@@ -336,7 +336,7 @@ export class Auth {
         if (err) {
           console.log(err);
         } else {
-          this.setSession(result);
+          Auth.setSession(result);
         }
       }
     );
