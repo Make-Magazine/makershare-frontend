@@ -40,7 +40,7 @@ export class Auth {
         if (err) {
           console.log(err);
         } else {
-          setSession(result);
+          this.setSession(result);
         }
       }
     );
@@ -251,7 +251,7 @@ export class Auth {
    * setSession
    * @param authResult
    */
-  private setSession(authResult): void {
+  public setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime(),
