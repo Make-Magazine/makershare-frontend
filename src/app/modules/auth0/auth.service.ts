@@ -271,7 +271,7 @@ export class Auth {
         "content-type": "application/json"
       },
       "processData": false,
-      "data": "{\"email\": data.email, \"user_metadata\": {\"ms_user\": \"true\"}}"
+      "data": {"email": data.email, "user_metadata": {"ms_user": true}}
     }
 
     $.ajax(settings).done(function (response) {
