@@ -43,10 +43,10 @@ export class Auth {
           this.doLogin(authResult); //login to drupal
           // Set the time that the access token will expire at
           const expiresAt = JSON.stringify(
-            result.expiresIn * 1000 + new Date().getTime(),
+            authResult.expiresIn * 1000 + new Date().getTime(),
           );
-          localStorage.setItem('access_token', result.accessToken);
-          localStorage.setItem('id_token', result.idToken);
+          localStorage.setItem('access_token', authResult.accessToken);
+          localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('expires_at', expiresAt);
         } else if (err) {
           console.log(err);
