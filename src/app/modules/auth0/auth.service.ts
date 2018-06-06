@@ -211,7 +211,7 @@ export class Auth {
           this.setSession(authResult);
 
           //update userMeta on auth0
-          this.updUserMeta(authResult.accessToken, res, data);
+          //this.updUserMeta(authResult.accessToken, res, data);
 
           // redirect to the profile page if it's first time
           if (res.first_time) {
