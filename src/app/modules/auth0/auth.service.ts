@@ -39,6 +39,8 @@ export class Auth {
         if (err) {
           console.log(err);
         } else {
+          //login to drupal
+          this.doLogin(result);
           // Set the time that the access token will expire at
           const expiresAt = JSON.stringify(
             result.expiresIn * 1000 + new Date().getTime(),
