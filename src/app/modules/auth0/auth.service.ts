@@ -308,13 +308,14 @@ export class Auth {
     localStorage.removeItem('user_photo');
 
     // logout of auth0
-    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-    /*this.auth0.logout({
+//    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+    this.auth0.logout({
       returnTo: Singleton.Settings.appURL
     });
+
     // Go back to the home route
     this.router.navigate(['/']);
-    window.location.reload();*/
+    window.location.reload();
   }
 
   /**
