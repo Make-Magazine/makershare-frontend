@@ -34,13 +34,13 @@ export class Auth {
 
   public checkSession(): void {
     //check if logged in another place
-    this.auth0.checkSession({},
-      function(err, result) {
-        if (err) {
-          console.log(err);
-        } else {
-          //login to drupal
-          this.doLogin(result);
+    this.auth0.checkSession(
+      {
+        hash: window.location.hash,
+      },
+      (err, authResult) => {
+        if (authResult) {
+          this.doLogin(authResult); //login to drupal
           // Set the time that the access token will expire at
           const expiresAt = JSON.stringify(
             result.expiresIn * 1000 + new Date().getTime(),
@@ -48,6 +48,8 @@ export class Auth {
           localStorage.setItem('access_token', result.accessToken);
           localStorage.setItem('id_token', result.idToken);
           localStorage.setItem('expires_at', expiresAt);
+        } else if (err) {
+          console.log(err);
         }
       }
     );
