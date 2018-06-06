@@ -295,6 +295,7 @@ export class Auth {
    * logout
    */
   public logout(): void {
+
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
@@ -302,7 +303,7 @@ export class Auth {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
-
+    alert('logging out of auth0 '+Singleton.Settings.appURL);
     // logout of auth0
     this.auth0.logout({
       returnTo: Singleton.Settings.appURL
