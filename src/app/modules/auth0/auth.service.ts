@@ -30,7 +30,7 @@ export class Auth {
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
-  ) {   this.checkSession();}
+  ) {this.checkSession();}
 
   public checkSession(): void {
     //check if logged in another place
@@ -40,14 +40,8 @@ export class Auth {
       },
       (err, authResult) => {
         if (authResult) {
-          this.doLogin(authResult); //login to drupal
-          // Set the time that the access token will expire at
-          const expiresAt = JSON.stringify(
-            authResult.expiresIn * 1000 + new Date().getTime(),
-          );
-          localStorage.setItem('access_token', authResult.accessToken);
-          localStorage.setItem('id_token', authResult.idToken);
-          localStorage.setItem('expires_at', expiresAt);
+          //this.doLogin(authResult); //login to drupal
+          this.setSession(authResult);
         } else if (err) {
           console.log(err);
         }
