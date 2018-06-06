@@ -308,6 +308,7 @@ export class Auth {
     localStorage.removeItem('user_photo');
 
     // logout of auth0
+    window.location.replace('https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL);
     this.auth0.logout({
       returnTo: Singleton.Settings.appURL
     });
