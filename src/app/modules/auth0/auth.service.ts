@@ -306,9 +306,7 @@ export class Auth {
 
     alert('logging out of auth0 '+Singleton.Settings.appURL);
     // logout of auth0
-    this.auth0.logout({
-      'returnTo': Singleton.Settings.appURL
-    });
+    this.auth0.logout();
 
     // logout from back-end
     this.userService.auth0_logout().subscribe(
