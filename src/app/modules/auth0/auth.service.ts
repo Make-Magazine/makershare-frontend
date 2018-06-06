@@ -307,10 +307,10 @@ export class Auth {
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
 
-    alert('logging out of auth0 '+Singleton.Settings.appURL);
     // logout of auth0
-    this.auth0.logout();
-
+    this.auth0.logout({
+      returnTo: Singleton.Settings.appURL
+    });
     // Go back to the home route
     this.router.navigate(['/']);
     window.location.reload();
