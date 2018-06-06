@@ -297,6 +297,18 @@ export class Auth {
    * logout
    */
   public logout(): void {
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_photo');
+
+    // logout of auth0
+    this.auth0.logout({
+      returnTo: Singleton.Settings.appURL
+    });
     // logout from back-end
     this.userService.auth0_logout().subscribe(
       res => {
@@ -305,16 +317,7 @@ export class Auth {
       },
       err => {},
     );
-    // Remove tokens and expiry time from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('user_name');
-    localStorage.removeItem('user_photo');
-    this.auth0.logout({
-      returnTo: Singleton.Settings.appURL
-    });
+
     // Go back to the home route
     this.router.navigate(['/']);
     window.location.reload();
