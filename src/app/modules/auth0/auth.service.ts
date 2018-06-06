@@ -312,6 +312,9 @@ export class Auth {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
+    this.auth0.logout({
+      returnTo: Singleton.Settings.appURL
+    });
     // Go back to the home route
     this.router.navigate(['/']);
     window.location.reload();
