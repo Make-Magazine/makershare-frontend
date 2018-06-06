@@ -34,10 +34,7 @@ export class Auth {
 
   public checkSession(): void {
     //check if logged in another place
-    this.auth0.checkSession(
-      {
-        hash: window.location.hash,
-      },
+    this.auth0.checkSession({},
       (err, authResult) => {
         if (authResult) {
           //this.doLogin(authResult); //login to drupal
