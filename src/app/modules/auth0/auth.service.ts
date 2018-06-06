@@ -303,11 +303,13 @@ export class Auth {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
+
     alert('logging out of auth0 '+Singleton.Settings.appURL);
     // logout of auth0
     this.auth0.logout({
-      returnTo: Singleton.Settings.appURL
+      'returnTo': Singleton.Settings.appURL
     });
+
     // logout from back-end
     this.userService.auth0_logout().subscribe(
       res => {
