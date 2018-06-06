@@ -37,7 +37,6 @@ export class Auth {
     this.auth0.checkSession({},
       (err, authResult) => {
         if (authResult) {
-          //this.doLogin(authResult); //login to drupal
           this.setSession(authResult);
         } else if (err) {
           console.log(err);
@@ -292,7 +291,14 @@ export class Auth {
    * logout
    */
   public logout(): void {
-
+    // logout from back-end
+    this.userService.auth0_logout().subscribe(
+      res => {
+        this.userService.removeCookies();
+        this.router.navigateByUrl('/');
+      },
+      err => {},
+    );
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
@@ -304,15 +310,6 @@ export class Auth {
     alert('logging out of auth0 '+Singleton.Settings.appURL);
     // logout of auth0
     this.auth0.logout();
-
-    // logout from back-end
-    this.userService.auth0_logout().subscribe(
-      res => {
-        this.userService.removeCookies();
-        this.router.navigateByUrl('/');
-      },
-      err => {},
-    );
 
     // Go back to the home route
     this.router.navigate(['/']);
