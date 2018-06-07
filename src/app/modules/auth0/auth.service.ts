@@ -188,41 +188,12 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
-/*
-      //if first name or last name are undefined, get values from auth0
-      if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
-          typeof user['http://makershare.com/lastname']  === 'undefined' ||
-          user['http://makershare.com/firstname']        === ''          ||
-          user['http://makershare.com/lastname']         === '') {
-        //get usermetadata
-        auth0Manage.getUser(user.user_id, (err, usermeta) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log('usermeta');
-          console.log(usermeta);
-          //let user_dob: number = new Date(usermeta.user_metadata.Month + '/' + usermeta.user_metadata.Day + '/' + usermeta.user_metadata.Year).getTime();
-          user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
-          user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
-          user['http://makershare.com/dob']       = '1/11/1976';
-          console.log('user');
-          console.log(user);
-        });
-
-        setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
-      }else{
-        data.user_metadata = {
-          firstname: user['http://makershare.com/firstname'],
-          lastname: user['http://makershare.com/lastname'],
-          dob: user['http://makershare.com/dob']
-        };
-      }*/
-        data.user_metadata = {
-          firstname: user['http://makershare.com/firstname'],
-          lastname: user['http://makershare.com/lastname'],
-          dob: user['http://makershare.com/dob']
-        };
+      data.user_metadata = {
+        firstname: user['http://makershare.com/firstname'],
+        lastname: user['http://makershare.com/lastname'],
+        dob: user['http://makershare.com/dob']
+      };
+alert(user['http://makershare.com/firstname']+' = '+data.user_metadata.firstname);
 console.log('data.user_metadata');
 console.log(data.user_metadata);
 
