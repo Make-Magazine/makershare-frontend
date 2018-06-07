@@ -201,9 +201,10 @@ export class Auth {
           }
           console.log('usermeta');
           console.log(usermeta);
+          let user_dob: number = new Date(usermeta.user_metadata.Month + '/' + usermeta.user_metadata.Day + '/' + usermeta.user_metadata.Year).getTime();
           user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
           user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
-          user['http://makershare.com/dob']       = usermeta.user_metadata.dob
+          user['http://makershare.com/dob']       = user_dob;
           console.log('user');
           console.log(user);
         });
@@ -215,9 +216,9 @@ export class Auth {
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
       };
-      console.log ('since adding the timeout, all these appear as undefined?'); 
+      console.log ('since adding the timeout, all these appear as undefined?');
       console.log (data.user_metadata);*/
-      
+
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
