@@ -216,9 +216,8 @@ export class Auth {
         };
       }
 
-      /*
-      console.log ('since adding the timeout, all these appear as undefined?');
-      console.log (data.user_metadata);*/
+      console.log ('prior to the authenticate');
+      console.log (data.user_metadata);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
