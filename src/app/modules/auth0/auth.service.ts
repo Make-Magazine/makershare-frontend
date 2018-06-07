@@ -166,15 +166,6 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    console.log(authResult);
-/*
-    //get usermetadata
-    this.auth0.client.getUser(authResult.accessToken, (err, user) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-    });*/
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
@@ -193,6 +184,21 @@ export class Auth {
 
       const firstname = user['http://makershare.com/firstname'];
       const lastname  = user['http://makershare.com/lastname'];
+
+      //if first name or last name are undefined, get values from auth0
+      if(firstname=='undefined' || lastname=='undefined){
+        //get usermetadata
+        this.auth0.client.getUser(user.user_id, (err, usermeta) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          firstname=usermeta.first_name;
+          lastname=usermeta.last_name;
+alert('auth0 results '+firstname+' '+ lastname);
+        });
+      }
+
 console.log ('firstname='+firstname+', lastname='+lastname);
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
