@@ -187,9 +187,6 @@ export class Auth {
       data.email = user.name;
 
 
-      let user_firstname = '';
-      let user_lastname  = '';
-
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname']  === 'undefined' ||
@@ -203,19 +200,15 @@ export class Auth {
             return;
           }
           console.log(usermeta);
-          user_firstname=usermeta.user_metadata.first_name;
-          user_lastname=usermeta.user_metadata.last_name;
-          alert('auth0 results '+user_firstname+' '+ user_lastname);
+          user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
+          user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
+          user['http://makershare.com/dob']       = usermeta.user_metadata.dob
         });
-      }else {
-        alert ('set using user fields');
-        user_firstname = user['http://makershare.com/firstname'];
-        user_lastname  = user['http://makershare.com/lastname'];
       }
-      alert(user_firstname + ' ' + user_lastname);
+
       data.user_metadata = {
-        firstname: user_firstname,
-        lastname: user_lastname,
+        firstname: user['http://makershare.com/firstname'],
+        lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
       };
 console.log (data.user_metadata);
