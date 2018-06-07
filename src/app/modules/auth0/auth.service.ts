@@ -183,6 +183,8 @@ export class Auth {
       data.email = user.name;
 
 
+      let firstname = '';
+      let lastname = '';
 
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
@@ -194,13 +196,13 @@ export class Auth {
             console.log(err);
             return;
           }
-          let firstname=usermeta.first_name;
-          let lastname=usermeta.last_name;
+          firstname=usermeta.first_name;
+          lastname=usermeta.last_name;
           alert('auth0 results '+firstname+' '+ lastname);
         });
       }else {
-        let firstname = user['http://makershare.com/firstname'];
-        let lastname  = user['http://makershare.com/lastname'];
+        firstname = user['http://makershare.com/firstname'];
+        lastname  = user['http://makershare.com/lastname'];
       }
 
 console.log ('firstname='+firstname+', lastname='+lastname);
