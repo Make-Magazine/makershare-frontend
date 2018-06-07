@@ -207,6 +207,15 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
+        console.log('before sleep');
+        sleep(function() {
+          let start = new Date().getTime();
+          for (let i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+              break;
+            }
+          }
+        }, 3000);
         setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
       }else{
         data.user_metadata = {
