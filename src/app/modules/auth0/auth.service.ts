@@ -182,21 +182,25 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
-      let firstname = user['http://makershare.com/firstname'];
-      let lastname  = user['http://makershare.com/lastname'];
+
 
       //if first name or last name are undefined, get values from auth0
-      if(firstname=='undefined' || lastname=='undefined'){
+      if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
+          typeof user['http://makershare.com/lastname'] === 'undefined') {
+
         //get usermetadata
         this.auth0.client.getUser(user.user_id, (err, usermeta) => {
           if (err) {
             console.log(err);
             return;
           }
-          firstname=usermeta.first_name;
-          lastname=usermeta.last_name;
+          let firstname=usermeta.first_name;
+          let lastname=usermeta.last_name;
           alert('auth0 results '+firstname+' '+ lastname);
         });
+      }else {
+        let firstname = user['http://makershare.com/firstname'];
+        let lastname  = user['http://makershare.com/lastname'];
       }
 
 console.log ('firstname='+firstname+', lastname='+lastname);
