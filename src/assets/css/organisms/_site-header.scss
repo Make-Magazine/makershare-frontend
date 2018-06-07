@@ -177,8 +177,16 @@ header.universal-nav {
     }
     span { padding: 0; }
   }
-  #qsLoginBtn { display: none; margin-top: -25px; }
-  .hide-mobile { float: left; }
+  #qsLoginBtn { 
+      display: none; 
+      margin-top: -25px;
+      color: #000;
+  }
+  .hide-mobile { 
+      float: left; 
+      position: relative; 
+      z-index: 999; 
+  }
   #profile-view {
       padding-left: 15px; 
       #dropdownMenuLink, #userMenu {
