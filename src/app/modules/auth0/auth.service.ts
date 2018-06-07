@@ -181,6 +181,10 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
+console.log(authResult);
+      const firstname = user['http://makershare.com/firstname'];
+      const lastname  = user['http://makershare.com/lastname'];
+console.log ('firstname='+firstname+', lastname='+lastname);
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
@@ -309,13 +313,6 @@ export class Auth {
 
     // logout of auth0
     window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-/*    this.auth0.logout({
-      returnTo: Singleton.Settings.appURL
-    });
-
-    // Go back to the home route
-    this.router.navigate(['/']);
-    window.location.reload();*/
   }
 
   /**
