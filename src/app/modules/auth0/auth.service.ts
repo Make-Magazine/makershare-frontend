@@ -188,12 +188,13 @@ export class Auth {
 
 
       let firstname = '';
-      let lastname = '';
+      let lastname  = '';
 
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname'] === 'undefined') {
         //get usermetadata
+alert('undefined');
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
             console.log(err);
