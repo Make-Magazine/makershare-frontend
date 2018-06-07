@@ -200,6 +200,7 @@ alert('undefined');
             console.log(err);
             return;
           }
+          console.log(usermeta);
           firstname=usermeta.first_name;
           lastname=usermeta.last_name;
           alert('auth0 results '+firstname+' '+ lastname);
