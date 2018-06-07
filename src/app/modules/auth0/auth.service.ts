@@ -194,8 +194,8 @@ export class Auth {
         dob: user['http://makershare.com/dob']
       };
 alert(user['http://makershare.com/firstname']+' = '+data.user_metadata.firstname);
-console.log('data.user_metadata');
-console.log(data.user_metadata);
+console.log('data');
+console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
