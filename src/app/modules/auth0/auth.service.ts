@@ -161,7 +161,7 @@ export class Auth {
     );
   }
   
-  public assignData(data, user) {
+  let assignData = function(data, user) {
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
