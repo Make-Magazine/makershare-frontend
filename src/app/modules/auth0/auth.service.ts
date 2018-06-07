@@ -166,6 +166,10 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
+  auth0Manage = new auth0.Management({
+                domain: 'makermedia.auth0.com',
+                token: authResult.idToken,
+              });
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
@@ -189,9 +193,8 @@ export class Auth {
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname'] === 'undefined') {
-
         //get usermetadata
-        this.auth0.client.getUser(user.user_id, (err, usermeta) => {
+        auth0Manage.client.getUser(user.user_id, (err, usermeta) => {
           if (err) {
             console.log(err);
             return;
