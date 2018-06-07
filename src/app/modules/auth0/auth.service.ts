@@ -188,7 +188,7 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
-
+/*
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname']  === 'undefined' ||
@@ -209,7 +209,7 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
-        
+
         setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
       }else{
         data.user_metadata = {
@@ -217,10 +217,14 @@ export class Auth {
           lastname: user['http://makershare.com/lastname'],
           dob: user['http://makershare.com/dob']
         };
-      }
-
-      console.log ('prior to the authenticate');
-      console.log (data.user_metadata);
+      }*/
+        data.user_metadata = {
+          firstname: user['http://makershare.com/firstname'],
+          lastname: user['http://makershare.com/lastname'],
+          dob: user['http://makershare.com/dob']
+        };
+console.log('data.user_metadata');
+console.log(data.user_metadata);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
