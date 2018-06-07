@@ -279,7 +279,7 @@ export class Auth {
     });
   }
 
-public function wait(ms){
+public function wait(ms): void {
    let start = new Date().getTime();
    let end = start;
    while(end < start + ms) {
