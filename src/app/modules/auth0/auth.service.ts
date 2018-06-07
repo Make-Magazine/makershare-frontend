@@ -200,7 +200,7 @@ export class Auth {
           }
           console.log('usermeta');
           console.log(usermeta);
-          let user_dob: number = new Date(usermeta.user_metadata.Month + '/' + usermeta.user_metadata.Day + '/' + usermeta.user_metadata.Year).getTime();
+          //let user_dob: number = new Date(usermeta.user_metadata.Month + '/' + usermeta.user_metadata.Day + '/' + usermeta.user_metadata.Year).getTime();
           user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
           user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
           user['http://makershare.com/dob']       = '1/11/1976';
