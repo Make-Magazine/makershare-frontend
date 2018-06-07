@@ -1,21 +1,4 @@
 .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 16rem;
-  padding: .5rem 0;
-  margin: .2rem 0 0;
-  font-size: 1.4rem;
-  text-align: left;
-  list-style: none;
-  background-color: $white;
-  background-clip: padding-box;
-  border: .1rem solid $medium-light-grey;
-  border-radius: .4rem;
-  box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, 0.175);
 
   &.pull-right,
   .pull-right & {

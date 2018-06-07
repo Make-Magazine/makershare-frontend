@@ -150,10 +150,9 @@ header.universal-nav {
   @media screen and (max-width: 576px) {
     display: none;
   }
-  #profile-view {
+  li {
     display: inline-block;
     float: left;
-    padding-left: 15px;
     a { 
         position: relative;
         top: 2px;
@@ -181,7 +180,7 @@ header.universal-nav {
   #qsLoginBtn { display: none; margin-top: -25px; }
   .hide-mobile { float: left; }
   #profile-view {
-      //display: none
+      padding-left: 15px; 
       #dropdownMenuLink, #userMenu {
           position: relative;
           z-index: 999;
@@ -322,7 +321,7 @@ header.universal-nav {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 999;
+  z-index: 997;
 }
 .universal-nav.main-nav-scrolled .search-button {
     top: 5px;
