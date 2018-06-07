@@ -192,7 +192,10 @@ export class Auth {
 
       //if first name or last name are undefined, get values from auth0
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
-          typeof user['http://makershare.com/lastname'] === 'undefined') {
+          typeof user['http://makershare.com/lastname']  === 'undefined' ||
+          user['http://makershare.com/firstname']        === ''          ||
+          user['http://makershare.com/lastname']         === '') {
+        alert ('set using auth0 user metadata');
         //get usermetadata
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -205,10 +208,11 @@ export class Auth {
           alert('auth0 results '+user_firstname+' '+ user_lastname);
         });
       }else {
+        alert ('set using user fields');
         user_firstname = user['http://makershare.com/firstname'];
         user_lastname  = user['http://makershare.com/lastname'];
       }
-
+      alert(user_firstname + ' ' + user_lastname);
       data.user_metadata = {
         firstname: user_firstname,
         lastname: user_lastname,
