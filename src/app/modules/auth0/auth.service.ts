@@ -174,6 +174,7 @@ export class Auth {
       //debug
       console.log('auth0 first data');
       console.log(user);
+alert(user['http://makershare.com/firstname']);
 
       const data = user;
       data.idToken = authResult.idToken;
@@ -185,7 +186,7 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
-alert(user['http://makershare.com/firstname']);
+
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
