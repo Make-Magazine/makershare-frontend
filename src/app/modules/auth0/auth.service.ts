@@ -194,7 +194,7 @@ export class Auth {
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname'] === 'undefined') {
         //get usermetadata
-        auth0Manage.client.getUser(user.user_id, (err, usermeta) => {
+        auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
             console.log(err);
             return;
