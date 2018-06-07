@@ -160,15 +160,6 @@ export class Auth {
       }
     );
   }
-  
-  let assignData = function(data, user) {
-      data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob']
-      };
-  
-  }
 
   /**
    * doLogin
@@ -216,10 +207,10 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
-        assignData(data, user);
+        setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; }, 300 );
       }
 
-     /* data.user_metadata = {
+      /*data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
