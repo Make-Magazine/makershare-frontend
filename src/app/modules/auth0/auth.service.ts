@@ -207,7 +207,7 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
-        await delay(300);
+        setTimeout( () => { /*Your Code*/ }, 300 );
       }
 
       data.user_metadata = {
@@ -274,13 +274,7 @@ export class Auth {
       }, err => {
         console.log(err);
       });
-
-
     });
-  }
-
-  public function delay(ms: number) {
-      return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   /*
