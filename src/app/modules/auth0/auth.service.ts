@@ -186,7 +186,7 @@ export class Auth {
       const lastname  = user['http://makershare.com/lastname'];
 
       //if first name or last name are undefined, get values from auth0
-      if(firstname=='undefined' || lastname=='undefined){
+      if(firstname=='undefined' || lastname=='undefined'){
         //get usermetadata
         this.auth0.client.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -195,7 +195,7 @@ export class Auth {
           }
           firstname=usermeta.first_name;
           lastname=usermeta.last_name;
-alert('auth0 results '+firstname+' '+ lastname);
+          alert('auth0 results '+firstname+' '+ lastname);
         });
       }
 
