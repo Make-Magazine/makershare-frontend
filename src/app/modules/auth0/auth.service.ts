@@ -199,6 +199,7 @@ export class Auth {
             console.log(err);
             return;
           }
+          console.log('usermeta');
           console.log(usermeta);
           user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
           user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
@@ -211,7 +212,8 @@ export class Auth {
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
       };
-console.log (data.user_metadata);
+      console.log ('data.user_metadata');
+      console.log (data.user_metadata);
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
