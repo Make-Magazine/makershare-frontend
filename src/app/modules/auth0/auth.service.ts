@@ -166,7 +166,7 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-  const auth0Manage = new auth0.Management({
+    const auth0Manage = new auth0.Management({
                 domain: 'makermedia.auth0.com',
                 token: authResult.idToken,
               });
@@ -175,6 +175,8 @@ export class Auth {
         console.log(err);
         return;
       }
+      console.log('auth0 first data');
+      console.log(user);
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
