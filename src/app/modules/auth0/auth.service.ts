@@ -166,6 +166,15 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
+    console.log(authResult);
+/*
+    //get usermetadata
+    this.auth0.client.getUser(authResult.accessToken, (err, user) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+    });*/
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
@@ -181,7 +190,7 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
-console.log(user.user_metadata);
+
       const firstname = user['http://makershare.com/firstname'];
       const lastname  = user['http://makershare.com/lastname'];
 console.log ('firstname='+firstname+', lastname='+lastname);
