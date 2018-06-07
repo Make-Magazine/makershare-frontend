@@ -181,7 +181,7 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
-console.log(authResult);
+console.log(user);
       const firstname = user['http://makershare.com/firstname'];
       const lastname  = user['http://makershare.com/lastname'];
 console.log ('firstname='+firstname+', lastname='+lastname);
