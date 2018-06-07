@@ -166,17 +166,15 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    /*const auth0Manage = new auth0.Management({
-                domain: 'makermedia.auth0.com',
-                token: authResult.idToken,
-              });*/
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
         return;
       }
+      //debug
       console.log('auth0 first data');
       console.log(user);
+
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
@@ -187,13 +185,14 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
-
+alert(user['http://makershare.com/firstname']);
       data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
       };
-alert(user['http://makershare.com/firstname']+' = '+data.user_metadata.firstname);
+//debug
+alert(data['http://makershare.com/firstname']+' = '+data.user_metadata.firstname);
 console.log('data');
 console.log(data);
 
