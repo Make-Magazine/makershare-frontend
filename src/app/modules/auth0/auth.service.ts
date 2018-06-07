@@ -210,11 +210,12 @@ export class Auth {
         setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
       }
 
-      /*data.user_metadata = {
+      data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
-      };*/
+      };
+      console.log ('does the dob show up later?'); console.log (data.user_metadata);
       
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {

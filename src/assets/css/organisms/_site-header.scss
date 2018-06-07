@@ -150,13 +150,14 @@ header.universal-nav {
   @media screen and (max-width: 576px) {
     display: none;
   }
-  li {
+  #profile-view {
     display: inline-block;
     float: left;
     padding-left: 15px;
     a { 
         position: relative;
         top: 2px;
+        z-index: 999;
     }
     button {
       border: none;
@@ -213,10 +214,11 @@ header.universal-nav {
           padding: 90px 25px 25px;
           font-family: 'Roboto', serif;
           right: -440px;
-          margin-top: -6tpx;
+          margin-top: -63px;
           width: 660px;
           border-radius: none;
           z-index: 998;
+          font-family: 'Roboto',serif;
           @media screen and (min-width: 576px) and (max-width: 768px) {
               margin-left: -175px;
           }
@@ -291,6 +293,8 @@ header.universal-nav {
           }
           .dropdown-item {
               width: 41%;
+              color: #333;
+              font-size: 16px;
           }
       }
   }
