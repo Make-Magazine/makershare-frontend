@@ -193,7 +193,7 @@ export class Auth {
           user['http://makershare.com/firstname']        === ''          ||
           user['http://makershare.com/lastname']         === '') {
         alert ('set using auth0 user metadata');
-        wait(7000);  // pause 7 seconds to give auth0 a chance to reply
+        pauseProcess(7000);  // pause 7 seconds to give auth0 a chance to reply
         //get usermetadata
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -279,7 +279,7 @@ export class Auth {
     });
   }
 
-public function wait(ms): void {
+public function pauseProcess(ms): void {
    let start = new Date().getTime();
    let end = start;
    while(end < start + ms) {
