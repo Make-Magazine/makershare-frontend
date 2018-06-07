@@ -205,7 +205,7 @@ export class Auth {
           user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
           user['http://makershare.com/dob']       = usermeta.user_metadata.dob
           console.log('user');
-          console.loog(user);
+          console.log(user);
         });
       }
 
