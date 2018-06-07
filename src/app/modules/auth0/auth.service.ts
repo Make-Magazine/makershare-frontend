@@ -201,8 +201,8 @@ alert('undefined');
             return;
           }
           console.log(usermeta);
-          firstname=usermeta.first_name;
-          lastname=usermeta.last_name;
+          firstname=usermeta.user_metadata.firstname;
+          lastname=usermeta.user_metadata.lastname;
           alert('auth0 results '+firstname+' '+ lastname);
         });
       }else {
