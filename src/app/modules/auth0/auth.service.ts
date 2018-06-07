@@ -194,15 +194,14 @@ export class Auth {
       if (typeof user['http://makershare.com/firstname'] === 'undefined' ||
           typeof user['http://makershare.com/lastname'] === 'undefined') {
         //get usermetadata
-alert('undefined');
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
             console.log(err);
             return;
           }
           console.log(usermeta);
-          firstname=usermeta.user_metadata.firstname;
-          lastname=usermeta.user_metadata.lastname;
+          firstname=usermeta.user_metadata.first_name;
+          lastname=usermeta.user_metadata.last_name;
           alert('auth0 results '+firstname+' '+ lastname);
         });
       }else {
