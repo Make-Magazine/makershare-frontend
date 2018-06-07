@@ -166,10 +166,10 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    const auth0Manage = new auth0.Management({
+    /*const auth0Manage = new auth0.Management({
                 domain: 'makermedia.auth0.com',
                 token: authResult.idToken,
-              });
+              });*/
     this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
