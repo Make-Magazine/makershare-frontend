@@ -182,8 +182,8 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
-      const firstname = user['http://makershare.com/firstname'];
-      const lastname  = user['http://makershare.com/lastname'];
+      let firstname = user['http://makershare.com/firstname'];
+      let lastname  = user['http://makershare.com/lastname'];
 
       //if first name or last name are undefined, get values from auth0
       if(firstname=='undefined' || lastname=='undefined'){
