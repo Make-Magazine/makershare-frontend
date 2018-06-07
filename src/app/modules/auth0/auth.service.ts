@@ -192,7 +192,6 @@ export class Auth {
           typeof user['http://makershare.com/lastname']  === 'undefined' ||
           user['http://makershare.com/firstname']        === ''          ||
           user['http://makershare.com/lastname']         === '') {
-        alert ('set using auth0 user metadata');
         //get usermetadata
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -204,18 +203,20 @@ export class Auth {
           let user_dob: number = new Date(usermeta.user_metadata.Month + '/' + usermeta.user_metadata.Day + '/' + usermeta.user_metadata.Year).getTime();
           user['http://makershare.com/firstname'] = usermeta.user_metadata.first_name;
           user['http://makershare.com/lastname']  = usermeta.user_metadata.last_name;
-          user['http://makershare.com/dob']       = user_dob;
+          user['http://makershare.com/dob']       = '1/11/1976';
           console.log('user');
           console.log(user);
         });
         setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
+      }else{
+        data.user_metadata = {
+          firstname: user['http://makershare.com/firstname'],
+          lastname: user['http://makershare.com/lastname'],
+          dob: user['http://makershare.com/dob']
+        };
       }
 
-      /*data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob']
-      };
+      /*
       console.log ('since adding the timeout, all these appear as undefined?');
       console.log (data.user_metadata);*/
 
