@@ -212,8 +212,8 @@ header.universal-nav {
       .dropdown-menu {
           padding: 90px 25px 25px;
           font-family: 'Roboto', serif;
-          margin-left: -440px;
-          margin-top: -50px;
+          right: -440px;
+          margin-top: -6tpx;
           width: 660px;
           border-radius: none;
           z-index: 998;
@@ -231,7 +231,7 @@ header.universal-nav {
             color: #ED1C24;
             font-size: 36px;
             position: absolute;
-            top: 25px;
+            top: 33px;
             left: 35%;
             border: none;
             @media screen and (min-width: 568px) and (max-width: 768px) {
@@ -290,7 +290,7 @@ header.universal-nav {
               cursor: pointer;
           }
           .dropdown-item {
-              width: 40%;
+              width: 41%;
           }
       }
   }

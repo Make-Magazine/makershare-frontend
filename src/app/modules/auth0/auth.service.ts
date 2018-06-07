@@ -207,7 +207,7 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
-        setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; }, 300 );
+        setTimeout( () => { data.user_metadata = {firstname: user['http://makershare.com/firstname'], lastname: user['http://makershare.com/lastname'],dob: user['http://makershare.com/dob']}; console.log ('data.user_metadata'); console.log (data.user_metadata); }, 300 );
       }
 
       /*data.user_metadata = {
@@ -215,8 +215,7 @@ export class Auth {
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
       };*/
-      console.log ('data.user_metadata');
-      console.log (data.user_metadata);
+      
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
