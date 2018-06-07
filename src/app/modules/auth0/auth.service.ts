@@ -174,7 +174,7 @@ export class Auth {
       //debug
       console.log('auth0 first data');
       console.log(user);
-alert(user['http://makershare.com/firstname']);
+alert(user["http://makershare.com/Day"]);
 
       const data = user;
       data.idToken = authResult.idToken;
@@ -188,12 +188,12 @@ alert(user['http://makershare.com/firstname']);
       data.email = user.name;
 
       data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob']
+        firstname: user["http://makershare.com/firstname"],
+        lastname: user["http://makershare.com/lastname"],
+        dob: user["http://makershare.com/dob"]
       };
 //debug
-alert(data['http://makershare.com/firstname']+' = '+data.user_metadata.firstname);
+alert(data["http://makershare.com/firstname"]+' = '+data.user_metadata.firstname);
 console.log('data');
 console.log(data);
 

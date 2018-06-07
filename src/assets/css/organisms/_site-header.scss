@@ -143,6 +143,14 @@ header.universal-nav {
     }
   }
 }
+
+.universal-nav.main-nav-scrolled .hide-mobile {
+    position: fixed;
+    top: 12px;
+    .add-project-header-button {
+        right: 80px;
+    }
+}
 .nav-level-1-auth {
   position: absolute;
   right: 0px;
@@ -155,7 +163,7 @@ header.universal-nav {
     float: left;
     a { 
         position: relative;
-        top: 2px;
+        top: -3px;
         z-index: 999;
     }
     button {
@@ -186,6 +194,19 @@ header.universal-nav {
       float: left; 
       position: relative; 
       z-index: 999; 
+      top: 63px;
+      .add-project-header-button {
+          background: none;
+          font-size: 28px;
+          &:hover, &:focus, &:active {
+              background: none;
+          }
+          &::after {
+          }
+      }
+      .bs-tooltip-top {
+          top: -33px !important;
+      }
   }
   #profile-view {
       padding-left: 15px; 
@@ -333,7 +354,7 @@ header.universal-nav {
 }
 .universal-nav.main-nav-scrolled .search-button {
     top: 5px;
-    right: -1px;
+    right: -16px;
     position: absolute;
     z-index: 999;
     transform: translate(-50%);
@@ -347,6 +368,7 @@ header.universal-nav {
   }
   .container {
     height: 100%;
+    padding: 0px;
   }
   #menu-secondary_universal_menu {
     height: 100%;
