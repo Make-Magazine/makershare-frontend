@@ -211,8 +211,8 @@ export class Auth {
 
 console.log ('firstname='+firstname+', lastname='+lastname);
       data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
+        firstname: firstname,
+        lastname: lastname,
         dob: user['http://makershare.com/dob']
       };
 
