@@ -193,7 +193,6 @@ export class Auth {
           user['http://makershare.com/firstname']        === ''          ||
           user['http://makershare.com/lastname']         === '') {
         alert ('set using auth0 user metadata');
-        pauseProcess(7000);  // pause 7 seconds to give auth0 a chance to reply
         //get usermetadata
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -208,6 +207,7 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
+        await delay(300);
       }
 
       data.user_metadata = {
@@ -279,13 +279,10 @@ export class Auth {
     });
   }
 
-public function pauseProcess(ms): void {
-   let start = new Date().getTime();
-   let end = start;
-   while(end < start + ms) {
-     end = new Date().getTime();
+  public function delay(ms: number) {
+      return new Promise( resolve => setTimeout(resolve, ms) );
   }
-}
+
   /*
    * updUserMeta
    * @param accessToken
