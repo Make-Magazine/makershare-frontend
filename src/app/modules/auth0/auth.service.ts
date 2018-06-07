@@ -193,6 +193,7 @@ export class Auth {
           user['http://makershare.com/firstname']        === ''          ||
           user['http://makershare.com/lastname']         === '') {
         alert ('set using auth0 user metadata');
+        wait(7000);  // pause 7 seconds to give auth0 a chance to reply
         //get usermetadata
         auth0Manage.getUser(user.user_id, (err, usermeta) => {
           if (err) {
@@ -278,6 +279,13 @@ export class Auth {
     });
   }
 
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
   /*
    * updUserMeta
    * @param accessToken
