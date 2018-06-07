@@ -209,13 +209,12 @@ export class Auth {
         lastname  = user['http://makershare.com/lastname'];
       }
 
-console.log ('firstname='+firstname+', lastname='+lastname);
       data.user_metadata = {
         firstname: firstname,
         lastname: lastname,
         dob: user['http://makershare.com/dob']
       };
-
+console.log (data.user_metadata);
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
