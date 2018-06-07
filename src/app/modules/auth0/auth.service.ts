@@ -279,9 +279,9 @@ export class Auth {
     });
   }
 
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
+public function wait(ms){
+   let start = new Date().getTime();
+   let end = start;
    while(end < start + ms) {
      end = new Date().getTime();
   }
