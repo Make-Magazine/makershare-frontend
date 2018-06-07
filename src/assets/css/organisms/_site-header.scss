@@ -146,7 +146,7 @@ header.universal-nav {
 .nav-level-1-auth {
   position: absolute;
   right: 0px;
-  top: 20px;
+  top: 25px;
   @media screen and (max-width: 576px) {
     display: none;
   }
@@ -154,7 +154,10 @@ header.universal-nav {
     display: inline-block;
     float: left;
     padding-left: 15px;
-    a { margin-top: 15px; }
+    a { 
+        position: relative;
+        top: 2px;
+    }
     button {
       border: none;
       background: transparent;
@@ -176,7 +179,7 @@ header.universal-nav {
     }
     span { padding: 0; }
   }
-  #qsLoginBtn { display: none; }
+  #qsLoginBtn { display: none; margin-top: -25px; }
   #profile-view {
       //display: none;
       #dropdownMenuLink, #userMenu {
@@ -286,6 +289,9 @@ header.universal-nav {
               font-weight: 400;
               cursor: pointer;
           }
+          .dropdown-item {
+              width: 40%;
+          }
       }
   }
   // ye olde version
@@ -393,6 +399,7 @@ header.universal-nav {
         transition: .4s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
             min-width: 140px;
+            max-width: 160px;
         }
         span { padding: 0 15px; }
         a { opacity: 1; }
@@ -748,7 +755,7 @@ header.universal-nav {
 }
 .nav-hamburger {
   position: absolute;
-  z-index: 999;
+  z-index: 101;
   top: 0;
   left: 0;
   right: 0;
@@ -857,12 +864,12 @@ header.universal-nav {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 999;
+  z-index: 100;
 }
 .ham-menu-animate {
   position:absolute;
   top:0;
-  z-index: 999;
+  z-index: 101;
   height: 55px;
   @media screen and (max-width: 767px) {
     position: fixed;

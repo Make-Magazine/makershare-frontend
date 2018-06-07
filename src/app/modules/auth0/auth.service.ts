@@ -160,6 +160,15 @@ export class Auth {
       }
     );
   }
+  
+  public assignData(data, user) {
+      data.user_metadata = {
+        firstname: user['http://makershare.com/firstname'],
+        lastname: user['http://makershare.com/lastname'],
+        dob: user['http://makershare.com/dob']
+      };
+  
+  }
 
   /**
    * doLogin
@@ -207,14 +216,14 @@ export class Auth {
           console.log('user');
           console.log(user);
         });
-        setTimeout( () => { /*Your Code*/ }, 300 );
+        assignData(data, user);
       }
 
-      data.user_metadata = {
+     /* data.user_metadata = {
         firstname: user['http://makershare.com/firstname'],
         lastname: user['http://makershare.com/lastname'],
         dob: user['http://makershare.com/dob']
-      };
+      };*/
       console.log ('data.user_metadata');
       console.log (data.user_metadata);
       this.userService.auth0_authenticate(data).subscribe(res => {

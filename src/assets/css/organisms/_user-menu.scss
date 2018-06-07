@@ -1,7 +1,7 @@
 .user-menu {
   .profile-photo {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 35px;
+    height: 35px;
   }
   .dropdown-toggle {
     line-height: 0;
@@ -11,17 +11,6 @@
       right: -1.4rem !important;
     }
   }
-}
-@include phone() {
- .show>.dropdown-menu {
-    left: auto;
-    width: 100vw;
-    position: fixed;
-    top: 65px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border: 0;
- } 
 }
 
 .right-menu {
