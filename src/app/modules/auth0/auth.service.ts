@@ -10,7 +10,6 @@ import { ProfilePictureService } from '../shared/profile-picture/profile-picture
 
 @Injectable()
 export class Auth {
-  user_avatar ?: string;
   private _toggleModal = new Subject<boolean>();
   toggleModal$ = this._toggleModal.asObservable();
 
@@ -212,7 +211,8 @@ export class Auth {
 
           // update profile picture globally
           this.profilePictureService.update(res.user_photo);
-          this.user_avatar = user.picture;
+          //temp overwrite profile picture with auth0 avatar
+          $("#user_avatar").attr("src",user.picture);
 
           // Set session
           this.setSession(authResult);
