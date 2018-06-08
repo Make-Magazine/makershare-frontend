@@ -66,8 +66,8 @@ export class HeaderComponent implements OnInit {
       alert(this.user_id);
       this.userService.getUrlFromId(this.user_id).subscribe(data => {
         this.user_url = data.url;
+        alert(data.url);
       });
-      alert(this.user_url);
     }
     this.profilePictureService.url.subscribe((val: string) => {
       this.user_photo = val;
