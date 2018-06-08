@@ -175,7 +175,8 @@ export class Auth {
       console.log('auth0 first data');
       console.log(user);
       alert(user['\"http://makershare.com/Day\"']);
-      alert(user.nickname);
+      const namespace = 'http://makershare.com/';
+      alert('first name = '+ user[namespace + 'firstname']); 
 
       const data = user;
       data.idToken = authResult.idToken;
