@@ -171,12 +171,6 @@ export class Auth {
         console.log(err);
         return;
       }
-      //debug
-      console.log('auth0 first data');
-      console.log(user);
-      alert(user['\"http://makershare.com/Day\"']);
-      //const namespace = 'http://makershare.com/';
-      alert('first name = '+ user["http://makershare.com/first_name"]);
 
       const data = user;
       data.idToken = authResult.idToken;
@@ -194,15 +188,6 @@ export class Auth {
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
       };
-      data.user_metadata = {
-        firstname: "Alicia",
-        lastname: "Williams",
-        dob: "1/11/1976"
-      };
-//debug
-alert(data["http://makershare.com/firstname"]+' = '+data.user_metadata.firstname);
-console.log('data');
-console.log(data);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
