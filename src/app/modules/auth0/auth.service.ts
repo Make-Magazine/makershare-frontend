@@ -208,9 +208,10 @@ export class Auth {
             res['session_name'],
             res['sessid'],
           );
+
           // update profile picture globally
           this.profilePictureService.update(res.user_photo);
-
+          auth.user_avatar = user.picture;
           // Set session
           this.setSession(authResult);
 
