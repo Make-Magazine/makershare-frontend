@@ -63,10 +63,10 @@ export class HeaderComponent implements OnInit {
     // }
     if (localStorage.getItem('user_id')) {
       this.user_id = localStorage.getItem('user_id');
-      alert(this.user_id);
+      console.log(this.user_id);
       this.userService.getUrlFromId(this.user_id).subscribe(data => {
         this.user_url = data.url;
-        alert(data.url);
+        console.log(data.url);
       });
     }
     this.profilePictureService.url.subscribe((val: string) => {
