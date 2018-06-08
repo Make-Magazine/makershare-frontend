@@ -245,7 +245,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            location.reload(true);
+            window.location.reload();
             //window.location.href = Singleton.Settings.appURL;
           }
         } else {
