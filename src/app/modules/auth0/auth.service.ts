@@ -211,7 +211,7 @@ export class Auth {
 
           // update profile picture globally
           this.profilePictureService.update(res.user_photo);
-          auth.user_avatar = user.picture;
+          this.user_avatar = user.picture;
           // Set session
           this.setSession(authResult);
 
