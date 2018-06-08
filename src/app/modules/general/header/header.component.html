@@ -116,15 +116,15 @@
             </ul>
           </div>
           <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
-            <li class="dropdown-item"
+            <!--<li class="dropdown-item"
                 *ngIf="isManager">
               <a target="_blank" href="{{Back_End_Domain}}">
                 <span class="nav-link">Manage</span>
               </a>
-            </li>
+            </li>-->
             <li class="dropdown-item">
               <a [routerLink]="['/portfolio/']">
-                <span class="nav-link">Profile</span>
+                <span class="nav-link">Maker Share Profile</span>
               </a>
             </li>
             <li *ngIf="org_data && org_data.path"
@@ -133,7 +133,7 @@
                 <span class="nav-link">Group Profile</span>
               </a>
             </li>
-            <li *ngIf="!org_data" class="dropdown-item">
+            <!--<li *ngIf="!org_data" class="dropdown-item">
               <a [routerLink]="['/orgs/create']">
                 <span class="nav-link">Create Group</span>
               </a>
@@ -142,7 +142,7 @@
               <a [routerLink]="['/feed']">
                 <span class="nav-link">My Feed</span>
               </a>
-            </li>
+            </li>-->
             <li class="dropdown-item">
               <a [routerLink]="['/inbox-notifications']">
                 <span class="nav-link">Inbox</span>
