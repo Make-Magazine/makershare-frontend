@@ -246,9 +246,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            setTimeout(function(){ location.reload(true); }, 3000);
-
-            console.log("this is the reload that happens when you log in to make.co and then come here");
+            setTimeout(function(){ alert("this really happens"); location.reload(true); }, 3000);
             //window.location.href = Singleton.Settings.appURL;
           }
         } else {
