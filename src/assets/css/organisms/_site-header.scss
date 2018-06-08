@@ -148,7 +148,7 @@ header.universal-nav {
     position: fixed;
     top: 12px;
     .add-project-header-button {
-        right: 80px;
+        right: 94px;
     }
 }
 .nav-level-1-auth {
@@ -193,13 +193,17 @@ header.universal-nav {
   .hide-mobile { 
       float: left; 
       position: relative; 
-      z-index: 999; 
+      z-index: 900; 
       top: 63px;
+      @media screen and (max-width: 991px) {
+          display: none;
+      }
       .add-project-header-button {
           background: none;
           font-size: 28px;
           &:hover, &:focus, &:active {
               background: none;
+              color: #fff;
           }
           &::after {
           }
@@ -212,7 +216,7 @@ header.universal-nav {
       padding-left: 15px; 
       #dropdownMenuLink, #userMenu {
           position: relative;
-          z-index: 999;
+          z-index: 98;
           opacity: 1;
           background: transparent;
           border: none;
@@ -368,7 +372,9 @@ header.universal-nav {
   }
   .container {
     height: 100%;
-    padding: 0px;
+    @media screen and (min-width: 992px) {
+        padding: 0px;
+      }
   }
   #menu-secondary_universal_menu {
     height: 100%;
@@ -495,7 +501,7 @@ header.universal-nav {
   right: 0;
   height: 560px;
   background-color: #fff;
-  z-index: 999;
+  z-index: 99;
   box-shadow:0px 5px 10px #000;
   @media screen and (max-width: 576px) {
     width: 360px;

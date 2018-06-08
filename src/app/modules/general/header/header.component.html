@@ -59,7 +59,7 @@
                class="dropdown dropdownMenuLink sub-nav user-menu">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
               <img class="profile-photo"
-                   src="{{auth.user_avatar || './assets/images/icons/no-profile-pic.png'}}"
+                   src="{{user_photo || './assets/images/icons/no-profile-pic.png'}}"
                    alt="Profile Photo">
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
@@ -130,7 +130,7 @@
             <li *ngIf="org_data && org_data.path"
                 class="dropdown-item">
               <a [routerLink]="[org_data.path]">
-                <span class="nav-link">Group Profile</span>
+                <span class="nav-link">&nbsp;&nbsp;Group Profile</span>
               </a>
             </li>
             <!--<li *ngIf="!org_data" class="dropdown-item">
@@ -145,17 +145,27 @@
             </li>-->
             <li class="dropdown-item">
               <a [routerLink]="['/inbox-notifications']">
-                <span class="nav-link">Inbox</span>
+                <span class="nav-link">&nbsp;&nbsp;Inbox</span>
               </a>
             </li>
             <li class="dropdown-item">
               <a [routerLink]="['/account/collection/bookmark']">
-                <span class="nav-link">Bookmarks</span>
+                <span class="nav-link">&nbsp;&nbsp;Bookmarks</span>
               </a>
             </li>
             <li class="dropdown-item">
               <a [routerLink]="['/account/settings/notifications']">
-                <span class="nav-link">Account Settings</span>
+                <span class="nav-link">&nbsp;&nbsp;Account Settings</span>
+              </a>
+            </li>
+            <li class="dropdown-item">
+              <a href="https://www.makerfaire.com/manage-entries">
+                <span class="nav-link">Maker Faire Portal</span>
+              </a>
+            </li>
+            <li class="dropdown-item">
+              <a href="https://make.co/myaccount">
+                <span class="nav-link">My Account</span>
               </a>
             </li>
             <li class="dropdown-item">
