@@ -175,7 +175,7 @@ export class Auth {
       console.log('auth0 first data');
       console.log(user);
       alert(user['\"http://makershare.com/Day\"']);
-      const namespace = 'http://makershare.com/';
+      //const namespace = 'http://makershare.com/';
       alert('first name = '+ user["http://makershare.com/first_name"]);
 
       const data = user;
