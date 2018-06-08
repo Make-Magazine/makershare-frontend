@@ -234,8 +234,9 @@ export class Auth {
               hideOnHover: false,
             });
           } else if (res.user_photo.indexOf('profile-default') < 0) {
+            alert("test");
             this.router.navigateByUrl('/');
-            window.location.reload(true);
+            $state.go($state.current, {}, {reload: true});
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             this.notificationBarService.create({
               message:
@@ -246,11 +247,13 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
+            alert("test2");
             window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
+          alert("test3");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
@@ -281,8 +284,7 @@ export class Auth {
     $.ajax(settings).done(function (response) {
       console.log(response);
     });
-    // just want to see if this is the right data and it's there at the right time
-    console.log("User Meta-data: " + settings.data.user_metadata);
+
   }
 
   /**

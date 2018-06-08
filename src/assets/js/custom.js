@@ -500,13 +500,13 @@ $(window).on('load', function () {
     case "makershare/learning":
     case "preview.makershare.com/learning":
     case "makershare.com/learning":
-        universalNavActive("share")
+        universalNavActive("share-1")
         break;
     case "maker-share/":
     case "makershare/":
     case "preview.makershare.com/":
     case "makershare.com/":
-        universalNavActive("share-p")
+        universalNavActive("share-p-1")
         break;
     default:
         break;
