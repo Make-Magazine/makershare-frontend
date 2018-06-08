@@ -178,6 +178,9 @@ export class Auth {
         return;
       }
 
+      //temp overwrite profile picture with auth0 avatar
+      $("#user_avatar").attr("src",user.picture);
+
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
@@ -211,8 +214,6 @@ export class Auth {
 
           // update profile picture globally
           this.profilePictureService.update(res.user_photo);
-          //temp overwrite profile picture with auth0 avatar
-          $("#user_avatar").attr("src",user.picture);
 
           // Set session
           this.setSession(authResult);
