@@ -235,7 +235,7 @@ export class Auth {
             });
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
-            $state.reload();
+            window.location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             this.notificationBarService.create({
               message:
@@ -246,14 +246,12 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            $state.reload();
-            //window.location.href = Singleton.Settings.appURL;
+            window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
-          $state.reload();
-          //window.location.href = Singleton.Settings.appURL;
+          window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
         console.log(err);
@@ -284,7 +282,7 @@ export class Auth {
       console.log(response);
     });
     // just want to see if this is the right data and it's there at the right time
-    console.log(settings.data.user_metadata);
+    console.log("User Meta-data: " + settings.data.user_metadata);
   }
 
   /**
