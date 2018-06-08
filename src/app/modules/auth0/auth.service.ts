@@ -38,6 +38,7 @@ export class Auth {
       (err, authResult) => {
         if (authResult) {
           this.setSession(authResult);
+          this.doLogin(authResult);
         } else if (err) {
           console.log(err);
         }
