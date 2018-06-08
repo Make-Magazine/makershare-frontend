@@ -234,9 +234,10 @@ export class Auth {
               hideOnHover: false,
             });
           } else if (res.user_photo.indexOf('profile-default') < 0) {
-            alert("test");
             this.router.navigateByUrl('/');
-            $state.go($state.current, {}, {reload: true});
+            //window.location.reload();
+            alert("reload 1");
+            location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             this.notificationBarService.create({
               message:
@@ -247,13 +248,13 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            alert("test2");
+            alert("reload 2");
             window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
-          alert("test3");
+          alert("reload 3");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
