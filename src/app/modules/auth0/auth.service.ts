@@ -174,7 +174,7 @@ export class Auth {
       //debug
       console.log('auth0 first data');
       console.log(user);
-      alert(user['"http://makershare.com/Day"']);
+      alert(user["http://makershare.com/Day"]);
       alert(user['nickname']);
 
       const data = user;
