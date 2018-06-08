@@ -194,6 +194,11 @@ export class Auth {
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
       };
+      data.user_metadata = {
+        firstname: "Alicia",
+        lastname: "Williams",
+        dob: "1/11/1976"
+      };
 //debug
 alert(data["http://makershare.com/firstname"]+' = '+data.user_metadata.firstname);
 console.log('data');
