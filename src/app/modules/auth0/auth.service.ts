@@ -10,6 +10,7 @@ import { ProfilePictureService } from '../shared/profile-picture/profile-picture
 
 @Injectable()
 export class Auth {
+  user_avatar ?: string;
   private _toggleModal = new Subject<boolean>();
   toggleModal$ = this._toggleModal.asObservable();
 
