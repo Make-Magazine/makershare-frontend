@@ -38,7 +38,12 @@ export class Auth {
       (err, authResult) => {
         if (authResult) {
           this.setSession(authResult);
-          this.doLogin(authResult);
+
+          //if the user isn't logged into drupal, log them in
+          if (!localStorage.getItem('user_id') ) {
+            this.doLogin(authResult);
+          }
+
         } else if (err) {
           console.log(err);
         }
