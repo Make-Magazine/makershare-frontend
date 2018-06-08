@@ -246,9 +246,10 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            location.reload(true);
+            setTimeout(function(){ location.reload(true); }, 3000);
+
             console.log("this is the reload that happens when you log in to make.co and then come here");
-            window.location.href = Singleton.Settings.appURL;
+            //window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
