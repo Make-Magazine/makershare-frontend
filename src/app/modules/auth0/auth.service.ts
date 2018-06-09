@@ -166,15 +166,7 @@ export class Auth {
       }
     );
   }
-  
-  public hardRefresh(): void {
-    var ask = window.confirm("Please bear with me while my cogs spin");
-    if (ask) {
-        window.alert("Your all set to make something special!");
-        window.location.href = "/portfolio";
-    }
-  }
-  
+
   /**
    * doLogin
    * @param authResult
@@ -393,4 +385,3 @@ export class Auth {
     this.auth0.changePassword(options, function() {});
   }
 }
-
