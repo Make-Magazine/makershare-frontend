@@ -239,6 +239,8 @@ export class Auth {
             alert("reload 1");
             location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+            alert('I am so sorry. Our cogs got all messed up. Please refresh your page to help straighten them out!');
+              /*
             this.notificationBarService.create({
               message:
                 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
@@ -248,8 +250,8 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            alert("reload 2");
-            window.location.href = Singleton.Settings.appURL;
+            //alert("reload 2");
+            //window.location.href = Singleton.Settings.appURL;*/
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
