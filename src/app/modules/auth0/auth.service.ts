@@ -43,7 +43,9 @@ export class Auth {
           if (!localStorage.getItem('user_id') ) {
             this.doLogin(authResult);
           }
-          $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
+          if(localStorage.getItem('user_avatar')) && localStorage.getItem('user_avatar')!=''){
+            $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
+          }
         } else if (err) {
           console.log(err);
         }
