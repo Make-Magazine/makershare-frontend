@@ -262,13 +262,13 @@ export class Auth {
       });
     });
   }
-  
+
   /* Just the refresh code */
   public hardRefresh(): void {
         window.alert("Your all set to make something special!");
-        window.location.href = "/portfolio”;
+        //window.location.href = "/portfolio”;
   }
-  
+
 
   /*
    * updUserMeta
