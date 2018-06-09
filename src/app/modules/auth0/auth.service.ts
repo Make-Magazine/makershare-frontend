@@ -167,15 +167,14 @@ export class Auth {
     );
   }
   
-  
-    public hardRefresh(): void {
-        var ask = window.confirm("Please bear with me while my cogs spin");
-        if (ask) {
-            window.alert("Your all set to make something special!");
-            window.location.href = "/portfolio";
-        }
+  public hardRefresh(): void {
+    var ask = window.confirm("Please bear with me while my cogs spin");
+    if (ask) {
+        window.alert("Your all set to make something special!");
+        window.location.href = "/portfolio";
     }
-    
+  }
+  
   /**
    * doLogin
    * @param authResult
@@ -244,7 +243,9 @@ export class Auth {
             });
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
-            window.location.reload();
+            //window.location.reload();
+            alert("reload 1");
+            location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             this.notificationBarService.create({
               message:
@@ -255,15 +256,13 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-
-            this.hardRefresh();
-            alert("test");
-            setTimeout(function(){ alert("this really happens"); location.reload(true); }, 3000);
+            alert("reload 2");
             window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
+          alert("reload 3");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
