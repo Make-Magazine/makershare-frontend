@@ -239,7 +239,7 @@ export class Auth {
             alert("reload 1");
             location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            alert('I am so sorry. Our cogs got all messed up. Please refresh your page to help straighten them out!');
+            alert('We are sorry. It appears our cogs got all messed up.<br/>Please refresh your page to help straighten them out!');
               /*
             this.notificationBarService.create({
               message:
