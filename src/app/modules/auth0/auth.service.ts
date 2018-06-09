@@ -265,11 +265,8 @@ export class Auth {
   
   /* Just the refresh code */
   public hardRefresh(): void {
-    const ask = window.confirm("Please bear with me while my cogs spin");
-    if (ask) {
         window.alert("Your all set to make something special!");
         window.location.href = "/portfolio”;
-    }
   }
   
 
