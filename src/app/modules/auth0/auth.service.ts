@@ -246,8 +246,17 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
+            function hardRefresh() {
+                var ask = window.confirm("Please bear with me while my cogs spin");
+                if (ask) {
+                    window.alert("Your all set to make something special!");
+                    window.location.href = "/portfolio";
+                }
+            }
+            hardRefresh();
+            alert("test");
             setTimeout(function(){ alert("this really happens"); location.reload(true); }, 3000);
-            //window.location.href = Singleton.Settings.appURL;
+            window.location.href = Singleton.Settings.appURL;
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
