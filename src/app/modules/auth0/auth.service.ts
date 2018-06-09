@@ -238,7 +238,7 @@ export class Auth {
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
             //window.location.reload();
-            alert("reload 1");
+            //alert("reload 1");
             location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
@@ -258,7 +258,7 @@ export class Auth {
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
-          alert("reload 3");
+          //alert("reload 3");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
