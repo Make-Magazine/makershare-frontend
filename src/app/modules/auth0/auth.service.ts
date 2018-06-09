@@ -43,7 +43,7 @@ export class Auth {
           if (!localStorage.getItem('user_id') ) {
             this.doLogin(authResult);
           }
-
+          $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
         } else if (err) {
           console.log(err);
         }
@@ -179,7 +179,7 @@ export class Auth {
       }
 
       //temp overwrite profile picture with auth0 avatar
-      $("#user_avatar").attr("src",user.picture);
+      localStorage.setItem('user_avatar', user.picture);
 
       const data = user;
       data.idToken = authResult.idToken;
