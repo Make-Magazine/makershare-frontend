@@ -256,7 +256,7 @@ export class Auth {
               isHtml: true,
             });
 
-            hardRefresh();
+            this.hardRefresh();
             alert("test");
             setTimeout(function(){ alert("this really happens"); location.reload(true); }, 3000);
             window.location.href = Singleton.Settings.appURL;
