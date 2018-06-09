@@ -131,5 +131,18 @@ $showcase-layer-2: $dark-blue;
 		 url("../fonts/MessinaModern-Bold.otf") format('opentype')
 }
 
+@font-face {
+    font-family: "Roboto Light";
+    src: url("../fonts/Roboto-Light.ttf");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
 // Font size on mobile devices
 // card title 2.6em --> 2em

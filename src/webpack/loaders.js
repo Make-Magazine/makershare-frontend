@@ -14,3 +14,8 @@ exports.css = {
   test: /\.css$/,
   use: ['to-string-loader', 'css-loader']
 };
+
+exports.js = {
+  test: /\.js$/,
+  use: ['to-string-loader', 'js-loader']
+};

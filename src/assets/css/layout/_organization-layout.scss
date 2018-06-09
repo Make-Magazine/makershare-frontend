@@ -1,7 +1,6 @@
 .organization-layout {
 	// padding-top: 110px;
 }
-
 .org-hero {
 	height: 50vh;
 	display: flex;
@@ -11,7 +10,6 @@
 	.org-logo {
 		margin-bottom: 2rem;
 	}
-
 	.flexer {
 		min-height: 50vh;
 		display: flex;
@@ -21,34 +19,38 @@
 		}
 	}	
 }
-
 .org-feature-photo {
-	position: fixed;
-    top: 88px;
+	position: absolute;
+    top: -70px;
     left: 0;
     right: 0;
-    height: 0;
+    height: 120%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    padding-bottom: calc(50vh + 22px);
+    background-position: top center;
     background-color: rgba(0,0,0,0.5);
     background-blend-mode: multiply;
 }
-
+.scrolled .org-feature-photo {
+    position: fixed;
+    top: 55px;
+    background-position: top center;
+    background-size: 100%;   
+}
 .org-content {
 	padding: 8rem 4rem;
 	background: $site-bg;
     overflow: hidden;
     position: relative;
+    .social-links {
+        clear: both;
+    }
 }
-
 .main-org-content {
 	img {
 		max-width: 100%;
 	}
 }
-
 .org-name {
 	font-size: 4rem;
 	 margin-bottom: 3rem;
@@ -56,17 +58,15 @@
 	 text-align: center;
 	color: white;
 }
-
 .org-tabber {
 	margin: 4rem auto;
 	a.btn h5 {
 		color: white;
 	}
 }
-
 // for cards
 .orgs-logo {
-	    width: 6rem;
+	width: 6rem;
     height: auto;
     position: absolute;
     bottom: .5rem;
@@ -74,13 +74,10 @@
 }
 
 .org-social {
-	bottom: 2rem;
-	right: 0;
-	position: absolute;
+    margin-left: 15px;
 	font-size: 3rem;
 	.fa {
 		font-size: 3rem;
-		color: white;
 	}
 }
 
@@ -103,4 +100,44 @@
 		font-size: 1.5rem;
     	line-height: 3rem;
 	}
+}
+
+.team-role {
+    position: absolute;
+    top: 245px;
+    z-index: 9;
+    left: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 8px #000000;
+    @media screen and (max-width: 1192px) {
+          top: 200px;
+    }
+    @media screen and (max-width: 988px) {
+          top: 140px;
+    }
+    @media screen and (max-width: 768px) {
+          top: 360px;
+    }
+    @media screen and (max-width: 580px) {
+        top: 70%;
+        font-size: 16px;
+    }
+    @media screen and (max-width: 480px) {
+        top: 65%;
+    }
+    @media screen and (max-width: 360px) {
+        top: 50%;
+    }
+}
+
+.report {
+    top: 10px;
+    position: relative;
+}
+
+.projects-tab {
+    margin: 20px 0px;
+    .col-6 {
+        margin-bottom: 30px;
+    }
 }

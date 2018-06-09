@@ -121,17 +121,17 @@ $(document).ready(function () {
     var trident = ua.indexOf('Trident/');
     var edge = ua.indexOf('Edge/');
     if (msie > 0) {
-      // IE 10 or older 
+      // IE 10 or older
       //Do some stuff
       $('html').addClass('ie');
     }
     else if (trident > 0) {
-      // IE 11 
+      // IE 11
       //Do some stuff
       $('html').addClass('ie ie-11');
     }
     else if (edge > 0) {
-      // Edge 
+      // Edge
       //Do some stuff
       $('html').addClass('ie ie-plus');
     }
@@ -187,7 +187,7 @@ $(document).ready(function () {
   // 404 Search
   $(document).on('click', '#static-search-term', function () {
     let searchVal = $('#search-box-input-404').val();
-    window.location.replace('http://preview.makershare.com/search?query=' + searchVal);
+    window.location.replace('/search?query=' + searchVal);
   })
 
   // Show and hide project stats on project card
@@ -304,6 +304,7 @@ $(window).on('load', function () {
   $('html,body').animate({scrollTop: 0}, 'slow');
 
 });
+// this stuff seems redundant
 $(window).scroll(function () {
   var $sticky = $('header'),
     scroll = $(window).scrollTop();
@@ -396,9 +397,265 @@ function isElementInViewport(elem) {
 }
 
 
-// Home page hero image randomizer
+// Home page hero image randomizer - run only on homepage
+
+if ( window.location.pathname == '/' && $('#homeBanner').length ){
+    $(window).on('load', function () {
+      var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
+      $('#homeBanner').css('background', 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
+    });
+}
+
+//////////////////////////////////////
+/////// Navigation and Search ////////
+//////////////////////////////////////
+
 $(window).on('load', function () {
-  var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
-  document.getElementById('homeBanner').style.backgroundImage = 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')';
+  $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
+    $('#hamburger-icon').toggleClass('open');
+    $('#hamburger-makey').animate({opacity: 'toggle'});
+    $('#nav-flyout').animate({opacity: 'toggle'});
+    $('body').toggleClass('nav-open-no-scroll');
+    $('html').toggleClass('nav-open-no-scroll');
+    $('.nav-flyout-underlay').animate({opacity: 'toggle'});
+  });
+
+  $('.nav-flyout-column').on('click', '.expanding-underline', function(event) {
+    if ($(window).width() < 577) {
+      event.preventDefault();
+      $(this).toggleClass('underline-open');
+      $(this).next('.nav-flyout-ul').slideToggle();
+    }
+  });
+  // fix nav to top on scrolldown, stay fixed for transition from mobile to desktop
+  var e = $(".universal-nav");
+  var hamburger = $(".nav-hamburger");
+  var y_pos = $(".nav-level-2").offset().top; // 75
+
+  $(window).on('resize', function(){
+      if ($(window).width() < 767) {
+          y_pos = 0;
+          $(".main-container").css("margin-top", "55px");
+      }else{
+          y_pos = 75;
+          $(".main-container").css("margin-top", "0px");
+      }
+  });
+  jQuery(document).scroll(function() {
+      var scrollTop = $(this).scrollTop();
+      if(scrollTop > y_pos && $(window).width() > 767){
+          $("body").addClass("scrolled");
+          e.addClass("main-nav-scrolled");
+          hamburger.addClass("ham-menu-animate");
+          $(".main-container").css("margin-top", "55px");
+      }else if(scrollTop <= y_pos){
+          $("body").removeClass("scrolled");
+          e.removeClass("main-nav-scrolled");
+          hamburger.removeClass("ham-menu-animate");
+          $(".main-container").css("margin-top", "0px");
+      }
+  });
+
+  // to keep this nav universal, let's not have each site's style sheet highlight a different active manually
+  var site = window.location.hostname;
+  var firstpath = $(location).attr('pathname');
+    firstpath.indexOf(1);
+    firstpath.toLowerCase();
+    firstpath = firstpath.split("/")[1];
+  var shareSection = site + "/" + firstpath;
+  function universalNavActive( site ) {
+    jQuery(".nav-" + site).addClass("active-site");
+    jQuery(".nav-" + site + " .nav-level-2-arrow").addClass("active-site")
+  }
+  // each one has to apply to a number of environments
+  switch(site) {
+    case "make-zine":
+    case "makezine":
+    case "makezine.wpengine.com":
+    case "makezine.staging.wpengine.com":
+    case "makezine.com":
+        universalNavActive("zine");
+        break;
+    case "makeco":
+    case "makeco.wpengine.com":
+    case "makeco.staging.wpengine.com/":
+    case "makeco.com":
+        universalNavActive("make");
+        break;
+    case "makershed.com":
+        universalNavActive("shed")
+        break;
+    case "maker-faire":
+    case "makerfaire":
+    case "makerfaire.wpengine.com":
+    case "makerfaire.staging.wpengine.com":
+    case "makerfaire.com":
+        universalNavActive("faire")
+        break;
+    default:
+        break;
+  }
+  switch(shareSection) {
+    case "maker-share/learning":
+    case "makershare/learning":
+    case "preview.makershare.com/learning":
+    case "makershare.com/learning":
+        universalNavActive("share-1")
+        break;
+    case "maker-share/":
+    case "makershare/":
+    case "preview.makershare.com/":
+    case "makershare.com/":
+        universalNavActive("share-p-1")
+        break;
+    default:
+        break;
+  }
 });
 
+////////////////////////////////////////////////
+//////////////// Auth0.js stuff ////////////////
+////////////////////////////////////////////////
+/*
+var AUTH0_CALLBACK_URL = window.location.hostname + "/authenticated/";
+var AUTH0_REDIRECT_URL = location.href;
+
+window.addEventListener('load', function() {
+  // buttons and event listeners
+  var loginBtn    = document.getElementById('qsLoginBtn');
+  var logoutBtn   = document.getElementById('qsLogoutBtn');
+  loginBtn.addEventListener('click', function(e) {
+    alert('you clicked me');
+    e.preventDefault();
+    localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+    auth0.authorize();
+  });
+});*/
+/*var AUTH0_CLIENT_ID    = '0sR3MQz8ihaSnLstc1dABgENHS5PQR8d';
+var AUTH0_DOMAIN       = 'makermedia.auth0.com';
+
+
+window.addEventListener('load', function() {
+  // buttons and event listeners
+  var loginBtn    = document.getElementById('qsLoginBtn');
+  var logoutBtn   = document.getElementById('qsLogoutBtn');
+  var profileView = document.getElementById('profile-view');
+  //default profile view to hidden
+  //loginBtn.style.display    = 'none';
+  profileView.style.display = 'none';
+
+  var userProfile;
+  var webAuth = new auth0.WebAuth({
+    domain: AUTH0_DOMAIN,
+    clientID: AUTH0_CLIENT_ID,
+    redirectUri: AUTH0_CALLBACK_URL,
+    audience: 'https://' + AUTH0_DOMAIN + '/userinfo',
+    responseType: 'token id_token',
+    scope: 'openid profile',
+    leeway: 60
+  });
+
+  loginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+    webAuth.authorize();
+  });
+
+  logoutBtn.addEventListener('click', logout);
+
+  function setSession(authResult) {
+    // Set the time that the access token will expire at
+    var expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+  }
+
+  function logout() {
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    displayButtons();
+  }
+
+  function isAuthenticated() {
+    // Check whether the current time is past the
+    // access token's expiry time
+    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
+  }
+
+  function handleAuthentication() {
+    webAuth.parseHash(function(err, authResult) {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        window.location.hash = '';
+        setSession(authResult);
+        // error here is keeping the login invisible
+        //loginBtn.style.display = 'none';
+
+        //after login redirect to previous page (after 5 second delay)
+        var redirect_url = localStorage.getItem('redirect_to');
+        setTimeout(function(){location.href=redirect_url} , 3000);
+
+      } else if (err) {
+        console.log(err);
+        alert(
+          'Error: ' + err.error + '. Check the console for further details.'
+        );
+      }
+      displayButtons();
+    });
+  }
+
+  function displayButtons() {
+    if (isAuthenticated()) {
+      loginBtn.style.display = 'none';
+      getProfile();
+      profileView.style.display = 'flex';
+    } else {
+      loginBtn.style.display = 'flex';
+      profileView.style.display = 'none';
+    }
+  }
+
+  function getProfile() {
+    if (!userProfile) {
+      var accessToken = localStorage.getItem('access_token');
+
+      if (!accessToken) {
+        console.log('Access token must exist to fetch profile');
+      }
+
+      webAuth.client.userInfo(accessToken, function(err, profile) {
+        if (profile) {
+          userProfile = profile;
+          displayProfile();
+        }
+      });
+    } else {
+      displayProfile();
+    }
+  }
+
+  function displayProfile() {
+    // display the avatar
+    document.querySelector('#profile-view img').src = userProfile.picture;
+  }
+
+  //handle authentication
+  handleAuthentication();
+});*/
+
+
+// Add styles for Safari
+(function($){
+    // console.log(navigator.userAgent);
+    /* Adjustments for Safari on Mac */
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Mac') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+        // console.log('Safari on Mac detected, applying class...');
+        $('html').addClass('safari-mac'); // provide a class for the safari-mac specific css to filter with
+    }
+})(jQuery);

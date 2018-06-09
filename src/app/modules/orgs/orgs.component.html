@@ -40,17 +40,9 @@
         </div>
 
       </div>
-    <div class="row justify-content-end org-social">
-      <a class="profile-share">
-        <app-btn-share class="text-white" [showLabel]="false" [PageTitle]="company.company_name"
-                       [PageDescription]="company.company_description.text"
-                       [PageImage]="company.company_cover_photo"></app-btn-share>
-      </a>
-      <app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>
-    </div>
+    
     </div>
   </div>
-
 
   <!-- org body content -->
   <div class="org-content">
@@ -65,13 +57,16 @@
         <div class="col-md-8">
           <app-orgs-about-us *ngIf="current_active_tab == 'about-us'"
                              [description]="company.company_description"></app-orgs-about-us>
-          <app-orgs-projects *ngIf="current_active_tab == 'projects'"></app-orgs-projects>
+          <app-orgs-projects *ngIf="current_active_tab == 'projects'" class="projects-tab"></app-orgs-projects>
         </div>
         <div class="col-md-4" *ngIf="company">
           <!-- About Us Side Bar  -->
 
           <h2 class="text-left -secondary">Contact</h2>
           <ul class="org-contact-list">
+            <li *ngIf="company.contact">
+                <span class="org-contact-key">Email:</span><a href="mailto:{{company.contact}}" target="_top">{{company.contact}}</a>
+            </li>
             <li *ngIf="company.phone_number"><span class="org-contact-key">Phone:</span> {{company.phone_number}}</li>
             <li><span class="org-contact-key">Location:</span> {{company.address.locality}},
               {{company.address.administrative_area}}
@@ -81,15 +76,25 @@
             <li><span class="org-contact-key">Founded:</span> {{company.founded_date}}</li>
             <li><span class="org-contact-key">Type of business:</span> {{company.business}}</li>
           </ul>
-          <p class="push mt-5">
+          <p class="push">
             <a href="mailto:{{company.contact}}" target="_top"><i class="fa fa-envelope-o"></i> <span>Send Email</span></a>
           </p>
           <div *ngIf="company.website_or_blog">
            <h2 class="text-left -secondary">Websites</h2>
-            <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+              <p class="push">
+                <a *ngFor="let website of company.website_or_blog" target="_blank" href="{{website}}">{{website}}</a>
+              </p>
           </div>
           <div *ngIf="company.field_social_accounts">
-            <h1 class="text-left mt-5">Social</h1>
+            <h2 class="text-left -secondary" style="float: left;">Social</h2>
+            <span class="org-social">
+                <a class="profile-share">
+                    <app-btn-share class="text-grey" [showLabel]="false" [PageTitle]="company.company_name"
+                       [PageDescription]="company.company_description.text"
+                       [PageImage]="company.company_cover_photo"></app-btn-share>
+                    </a>
+                <!--<app-bookmark [nodeNid]="nid" [nodeType]="'company_profile'"></app-bookmark>-->
+            </span>
             <div class="social-links d-flex flex-wrap">
               <div class="social-container" *ngIf="company.field_social_accounts[0].field_facebook != '' ">
                 <a class="nav-link social fb" target="_blank"
@@ -178,15 +183,16 @@
             <div class="clearfix"></div>
           </div>
           <div *ngIf="followers && company.minimum_followers <= followersCount">
-            <p>Followers</p>
+            <h2 class="text-left -secondary">Followers</h2>
             <div *ngFor="let maker of followers;" class="d-inline">
               <img *ngIf="maker.user_photo" width="50" height="50" src="{{maker.user_photo}}">
             </div>
             <span *ngIf="followersCount"><span (click)="open(content)" *ngIf="followersCount > 3">+ {{followersCount-3}} loadmore</span></span>
           </div>
           <a *ngIf="CurrentLoggedUserId != company.admin">
+            <br />
             <app-follow-orgs *ngIf="nid" (countNumber)="followersCounter($event)" [nodeNid]="nid"></app-follow-orgs>
-            <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'"></app-report>
+            <app-report *ngIf="nid" [EntityId]="nid" [EntityType]="'node'" [typeOfNode]="'orgs'" class="report"></app-report>
           </a>
         </div>
       </div>
@@ -196,9 +202,9 @@
         <h1 class="p-2" *ngIf="!team">No team members in organization yet</h1>
       </div>
       <div class="row p-2" *ngIf="team">
-        <div class="col-md-4" *ngFor="let teams of team">
+        <div class="col-md-4 card-wrapper" *ngFor="let teams of team">
           <div *ngIf="teams.field_membership_role">
-            <P>Role: {{teams.field_membership_role}}</P>
+            <p class="team-role">Role: {{teams.field_membership_role}}</p>
           </div>
           <app-maker-card [uid]="teams.field_team_member" [state]="'tall'"></app-maker-card>
         </div>

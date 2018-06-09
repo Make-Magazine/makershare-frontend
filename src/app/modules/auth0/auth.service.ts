@@ -14,14 +14,15 @@ export class Auth {
   toggleModal$ = this._toggleModal.asObservable();
 
   auth0 = new auth0.WebAuth({
-    domain: 'makermedia.auth0.com',
     clientID: 'yvcmke0uOoc2HYv0L2LYWijpGi0K1LlU',
+    domain: 'makermedia.auth0.com',
     // responseType: 'token id_token access_token profile',
-    responseType: 'token',
+    responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    // redirectUri: 'http://localhost:4200/',
-    scope: 'openid id_token access_token profile',
     redirectUri: Singleton.Settings.appURL,
+    //scope: 'openid id_token access_token profile',
+    scope: 'openid profile',
+    leeway: 60
   });
 
   constructor(
@@ -29,7 +30,28 @@ export class Auth {
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
-  ) {}
+  ) {this.checkSession();}
+
+  public checkSession(): void {
+    //check if logged in another place
+    this.auth0.checkSession({},
+      (err, authResult) => {
+        if (authResult) {
+          this.setSession(authResult);
+
+          //if the user isn't logged into drupal, log them in
+          if (!localStorage.getItem('user_id') ) {
+            this.doLogin(authResult);
+          }
+          if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
+            $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
+          }
+        } else if (err) {
+          console.log(err);
+        }
+      }
+    );
+  }
 
   /**
    * toggle
@@ -38,6 +60,10 @@ export class Auth {
    */
   public toggle(enable: boolean) {
     this._toggleModal.next(enable);
+  }
+
+  public Auth0Login(): void {
+    this.auth0.authorize();
   }
 
   /**
@@ -66,7 +92,8 @@ export class Auth {
       );
     });
   }
-    /**
+
+  /**
    * signupNewsletter
    *
    * @param {string} email
@@ -152,6 +179,10 @@ export class Auth {
         console.log(err);
         return;
       }
+
+      //temp overwrite profile picture with auth0 avatar
+      localStorage.setItem('user_avatar', user.picture);
+
       const data = user;
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
@@ -159,13 +190,14 @@ export class Auth {
         user[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
-      data.email_verified = true;  
+      data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
+
       data.user_metadata = {
-        firstname: user['http://makershare.com/firstname'],
-        lastname: user['http://makershare.com/lastname'],
-        dob: user['http://makershare.com/dob'],
+        firstname: user["http://makershare.com/firstname"],
+        lastname: user["http://makershare.com/lastname"],
+        dob: user["http://makershare.com/dob"]
       };
 
       this.userService.auth0_authenticate(data).subscribe(res => {
@@ -181,14 +213,20 @@ export class Auth {
             res['session_name'],
             res['sessid'],
           );
+
           // update profile picture globally
           this.profilePictureService.update(res.user_photo);
 
           // Set session
           this.setSession(authResult);
 
+          //update userMeta on auth0
+          //this.updUserMeta(authResult.accessToken, res, data);
+
           // redirect to the profile page if it's first time
           if (res.first_time) {
+            alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
+            /*
             // Notification to visit portfolio page
             this.notificationBarService.create({
               message:
@@ -198,11 +236,13 @@ export class Auth {
               isHtml: true,
               allowClose: true,
               hideOnHover: false,
-            });
+            });*/
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
             window.location.reload();
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+            alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
+              /*
             this.notificationBarService.create({
               message:
                 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
@@ -212,7 +252,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-            window.location.href = Singleton.Settings.appURL;
+            //window.location.href = Singleton.Settings.appURL;*/
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
@@ -222,16 +262,46 @@ export class Auth {
       }, err => {
         console.log(err);
       });
-
-
     });
+  }
+
+  /* Just the refresh code */
+  public hardRefresh(): void {
+        window.alert("Your all set to make something special!");
+        //window.location.href = "/portfolio”;
+  }
+
+
+  /*
+   * updUserMeta
+   * @param accessToken
+   *        res
+   */
+  public updUserMeta(accessToken, res, data) {
+    const settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://makermedia.auth0.com/api/v2/users",
+      "method": "POST",
+      "headers": {
+        "authorization": "Bearer ABCD",
+        "content-type": "application/json"
+      },
+      "processData": false,
+      "data": {"email": data.email, "user_metadata": {"ms_user": true}}
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+
   }
 
   /**
    * setSession
    * @param authResult
    */
-  private setSession(authResult): void {
+  public setSession(authResult): void {
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime(),
@@ -256,12 +326,13 @@ export class Auth {
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
-    // Go back to the home route
-    this.router.navigate(['/']);
-    window.location.reload();
+
+    // logout of auth0
+    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
   }
 
   /**
@@ -270,14 +341,10 @@ export class Auth {
    * @returns {boolean}
    */
   public authenticated(): boolean {
-    if (
-      localStorage.getItem('access_token') &&
-      localStorage.getItem('id_token')
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    // Check whether the current time is past the
+    // access token's expiry time
+    var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
   }
 
   /**
@@ -327,4 +394,3 @@ export class Auth {
     this.auth0.changePassword(options, function() {});
   }
 }
-
