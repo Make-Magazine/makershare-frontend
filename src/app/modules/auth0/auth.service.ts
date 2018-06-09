@@ -223,6 +223,8 @@ export class Auth {
 
           // redirect to the profile page if it's first time
           if (res.first_time) {
+            alert('We are sorry. It appears our cogs got all messed up.<br/>Please refresh your page to help straighten them out!');
+            /*
             // Notification to visit portfolio page
             this.notificationBarService.create({
               message:
@@ -232,7 +234,7 @@ export class Auth {
               isHtml: true,
               allowClose: true,
               hideOnHover: false,
-            });
+            });*/
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
             //window.location.reload();
