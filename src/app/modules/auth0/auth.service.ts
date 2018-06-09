@@ -223,7 +223,7 @@ export class Auth {
 
           // redirect to the profile page if it's first time
           if (res.first_time) {
-            alert('We are sorry. It appears our cogs got all messed up.<br/>Please refresh your page to help straighten them out!');
+            alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
             /*
             // Notification to visit portfolio page
             this.notificationBarService.create({
@@ -241,7 +241,7 @@ export class Auth {
             alert("reload 1");
             location.reload(true);
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            alert('We are sorry. It appears our cogs got all messed up.<br/>Please refresh your page to help straighten them out!');
+            alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
               /*
             this.notificationBarService.create({
               message:
