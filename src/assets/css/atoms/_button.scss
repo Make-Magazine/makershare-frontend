@@ -302,6 +302,7 @@ a:not([href]):not([tabindex]).btn-tabs {
     cursor: pointer;
     color: $dark-grey;
     border-bottom: .5rem solid $highlight-bright-blue;
+    padding-bottom: 23px;
   }
 }
 

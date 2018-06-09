@@ -1,118 +1,65 @@
-<header class="main-header">
-  <div class="header-wrapper container">
-    <div class="header-inner">
-      <a class="make-logo" [routerLink]="['/']"></a>
+<header id="universal-nav" class="universal-nav">
+  <div class="nav-level-1">
+    <nav class="container">
+      <ul class="nav-level-1-nav">
+        <li class="nav-item nav-zine">
+          <a href="https://makezine.com/">
+            <span title="Latest">Latest</span>
+          </a>
+          <div class="nav-level-2-arrow active-site"></div>
+        </li>
+        <li class="nav-item nav-make">
+          <a href="http://make.co/">
+            <span title="Membership">Membership</span>
+          </a>
+          <div class="nav-level-2-arrow"></div>
+        </li>
+        <li class="nav-item nav-shed">
+          <a href="https://makershed.com/">
+            <span title="Shop">Shop</span>
+          </a>
+          <div class="nav-level-2-arrow"></div>
+        </li>
+        <li class="nav-item nav-share">
+          <a [routerLink]="['/learning']">
+            <span title="Learn">Learn</span>
+          </a>
+          <div class="nav-level-2-arrow"></div>
+        </li>
+        <li class="nav-item nav-share-p">
+          <a [routerLink]="['/makers']">
+            <span title="Portfolios">Portfolios</span>
+          </a>
+          <div class="nav-level-2-arrow"></div>
+        </li>
+        <li class="nav-item nav-faire">
+          <a href="https://makerfaire.com/">
+            <span title="Events">Events</span>
+          </a>
+          <div class="nav-level-2-arrow"></div>
+        </li>
+      </ul>
+      <a href="https://makezine.com/" class="navbar-brand">
+        <img src="../assets/images/Make_logo.svg" class="img-responsive" alt="Make: brand logo">
+      </a>
 
-      <!-- main nav -->
-      <nav class="primary">
-        <ul class="nav-content">
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" [routerLink]="['makers']">Makers</a>
-          </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" [routerLink]="['projects']">Projects</a>
-          </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" [routerLink]="['showcases']">Showcases</a>
-          </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" [routerLink]="['missions']">Missions</a>
-          </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" [routerLink]="['groups-overview']">Groups</a>
-          </li>
-          <li class="nav-item has-dropdown">
-            <a href="#"
-               class="nav-link dropdown-toggle hover hide-mobile navbar-left"
-               data-toggle="dropdown"
-               data-target="makerMenu"
-               role="button"
-               aria-haspopup="true"
-               aria-expanded="false">
-              About
-            </a>
-            <span class="mobile-menu-item nav-link fa fa-bars" ></span>
-            <div class="dropdown-menu rel" id="makerMenu" aria-labelledby="makerMenu">
-              <ul class="subnav">
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['projects/create']" class="add-project nav-link">Add a
-                    Project</a>
-                </li>
-                <hr class="line-mobile">
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['makers']" class="nav-link">Makers</a>
-                </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['projects']" class="nav-link">Projects</a>
-                </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['showcases']" class="nav-link">Showcases</a>
-                </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a [routerLink]="['missions']" class="nav-link">Missions</a>
-                </li>
-                <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a class="nav-link" [routerLink]="['groups-overview']">Groups</a>
-                </li>
-                <!-- <li class="sub-nav-item dropdown-item mobile-menu-item">
-                  <a class="disabled nav-link">Learning<span class="coming-soon-text">Coming soon</span></a>
-                </li> -->
-                <hr class="line-mobile">
-                <li class="dropdown-item">
-                  <a [routerLink]="['make-intel']" class="nav-link">Maker Share</a>
-                </li>
-                <li class="dropdown-item">
-                  <a [routerLink]="['guidelines']" class="nav-link">Community Guidelines</a>
-                </li>
-                <li class="dropdown-item">
-                  <a [routerLink]="['badges']" class="nav-link">About Badges</a>
-                </li>
-                <li class="dropdown-item">
-                  <a [routerLink]="['why-portfolio']" class="nav-link">Why Makers Need Portfolios</a>
-                </li>
-                <li class="dropdown-item">
-                  <a [routerLink]="['about-us']" class="nav-link">About Us</a>
-                </li>
-                <li class="dropdown-item">
-                  <a href="/learning" class="nav-link">Learning</a>
-                </li>
-                <hr class="line-mobile">
-                <li class="dropdown-item">
-                  <a class="beta-feedback nav-link">
-                    <app-feedback></app-feedback>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item hide-mobile">
-            <a class="nav-link" href="/learning-center/">Learning</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-  </div>
-    <!-- secondary nav -->
-    <nav class="secondary">
-      <ul class="nav-content">
+      <ul class="nav-level-1-auth">
         <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
-          <app-login></app-login>
+          <!--<app-login></app-login>-->
           <!--</a>-->
+          <button id="qsLoginBtn" style="display: flex;" (click)="auth.Auth0Login()">Login | Signup</button>
         </li>
+
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
-        <li class="nav-item">
-          <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
-        </li>
-        <li class="nav-item" *ngIf="auth.authenticated()">
+        <li class="nav-item" id="profile-view" *ngIf="auth.authenticated()">
           <div ngbDropdown
-               class="dropdown sub-nav user-menu">
+               class="dropdown dropdownMenuLink sub-nav user-menu">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
-              <img class="profile-photo"
-                   src="{{user_photo || './assets/images/icons/no-profile-pic.png'}}"
+              <img id="user_avatar" class="profile-photo"
+                   src="./assets/images/icons/no-profile-pic.png"
                    alt="Profile Photo">
             </div>
             <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
@@ -123,16 +70,16 @@
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
-                  <span class="nav-link">Profile</span>
+                  <span class="nav-link">Maker Share Profile</span>
                 </a>
               </li>
               <li *ngIf="org_data && org_data.path"
                   class="dropdown-item">
                 <a [routerLink]="[org_data.path,'edit']">
-                  <span class="nav-link">Group Profile</span>
+                  <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
                 </a>
               </li>
-              <li *ngIf="!org_data && isManager"
+              <!--<li *ngIf="!org_data && isManager"
                   class="dropdown-item">
                 <a [routerLink]="['/groups/create']">
                   <span class="nav-link">Create Group</span>
@@ -142,52 +89,61 @@
                 <a [routerLink]="['/']" fragment="feed">
                   <span class="nav-link">My Feed</span>
                 </a>
-              </li>
+              </li>-->
               <li class="dropdown-item">
                 <a [routerLink]="['/inbox-notifications']">
-                  <span class="nav-link">Inbox</span>
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
                 </a>
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/account/collection/bookmark']">
-                  <span class="nav-link">Saved Projects</span>
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
                 </a>
               </li>
               <li class="dropdown-item">
                 <a [routerLink]="['/account/settings/notifications']">
-                  <span class="nav-link">Account Settings</span>
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
+                </a>
+              </li>
+              <li class="dropdown-item">
+                <a href="https://www.makerfaire.com/manage-entries">
+                    <span class="nav-link">Maker Faire Portal</span>
+                </a>
+              </li>
+              <li class="dropdown-item">
+                <a href="https://make.co/myaccount">
+                    <span class="nav-link">My Account</span>
                 </a>
               </li>
               <li class="dropdown-item">
                 <button (click)="auth.logout()">
-                  <span class="nav-link">Logout</span>
+                    <span class="nav-link">Logout</span>
                 </button>
               </li>
-              <hr/>
               <li class="dropdown-item">
                 <app-notification-panel></app-notification-panel>
               </li>
             </ul>
           </div>
           <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
-            <li class="dropdown-item"
+            <!--<li class="dropdown-item"
                 *ngIf="isManager">
               <a target="_blank" href="{{Back_End_Domain}}">
                 <span class="nav-link">Manage</span>
               </a>
-            </li>
+            </li>-->
             <li class="dropdown-item">
-              <a [routerLink]="['/portfolio/']">
-                <span class="nav-link">Profile</span>
+              <a [routerLink]="['/portfolio']">
+                <span class="nav-link">Maker Share Profile</span>
               </a>
             </li>
             <li *ngIf="org_data && org_data.path"
                 class="dropdown-item">
               <a [routerLink]="[org_data.path]">
-                <span class="nav-link">Group Profile</span>
+                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
               </a>
             </li>
-            <li *ngIf="!org_data" class="dropdown-item">
+            <!--<li *ngIf="!org_data" class="dropdown-item">
               <a [routerLink]="['/orgs/create']">
                 <span class="nav-link">Create Group</span>
               </a>
@@ -196,20 +152,30 @@
               <a [routerLink]="['/feed']">
                 <span class="nav-link">My Feed</span>
               </a>
-            </li>
+            </li>-->
             <li class="dropdown-item">
               <a [routerLink]="['/inbox-notifications']">
-                <span class="nav-link">Inbox</span>
+                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
               </a>
             </li>
             <li class="dropdown-item">
               <a [routerLink]="['/account/collection/bookmark']">
-                <span class="nav-link">Bookmarks</span>
+                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
               </a>
             </li>
             <li class="dropdown-item">
               <a [routerLink]="['/account/settings/notifications']">
-                <span class="nav-link">Account Settings</span>
+                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
+              </a>
+            </li>
+            <li class="dropdown-item">
+              <a href="https://www.makerfaire.com/manage-entries">
+                <span class="nav-link">Maker Faire Portal</span>
+              </a>
+            </li>
+            <li class="dropdown-item">
+              <a href="https://make.co/myaccount">
+                <span class="nav-link">My Account</span>
               </a>
             </li>
             <li class="dropdown-item">
@@ -217,7 +183,6 @@
                 <span class="nav-link">Logout</span>
               </button>
             </li>
-            <hr/>
             <li class="dropdown-item">
               <app-notification-panel></app-notification-panel>
             </li>
@@ -225,8 +190,301 @@
         </li>
       </ul>
     </nav>
+  </div><!-- .nav-level-1 -->
+  <div id="nav-level-2" class="nav-level-2">
+    <div class="container">
+      <div class="nav-2-banner">
+          <ul id="menu-secondary_universal_menu">
+            <li id="nav-item" class="nav-item"><a title="Makers" [routerLink]="['makers']"><span>Makers</span></a></li>
+            <li id="nav-item" class="nav-item"><a title="Projects" [routerLink]="['projects']"><span>Projects</span></a></li>
+            <li id="nav-item" class="nav-item"><a title="Groups" [routerLink]="['groups-overview']"><span>Groups</span></a></li>
+            <li id="nav-item" class="nav-item second-nav-banner"><a title="MakerShare" [routerLink]="['/']"><span><img src="../assets/images/maker-share-logo.png" /></span></a></li>
+            <li id="nav-item" class="nav-item"><a title="Showcases" [routerLink]="['showcases']"><span>Showcases</span></a></li>
+            <li id="nav-item" class="nav-item"><a title="Missions" [routerLink]="['missions']"><span>Mission</span></a></li>
+          </ul>
+          <ul class="search-button">
+            <li class="nav-item">
+              <div id="sb-search" class="sb-search">
+                <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div><!-- .nav-level-2 -->
   <app-search-box *ngIf="showSearchBox" [boxStatus]="showSearchBox" (notify)="onNotify($event)"></app-search-box>
   <app-registration-collect *ngIf="registrationFormStatus"
                             [registrationFormState]="registrationFormState"></app-registration-collect>
+  <div id="nav-flyout">
+    <div class="container">
+    <div class="nav-flyout-logo">
+      <a href="https://makezine.com/" class="navbar-brand">
+        <img src="../assets/images/Make_logo.svg" class="img-responsive" alt="Make: brand logo" />
+        <h2>We are all makers</h2>
+      </a>
+    </div>
+
+    <div class="nav-flyout-columns">
+      <div class="nav-flyout-column">
+        <a href="https://makezine.com/" class="expanding-underline">
+          <h3>Make: Magazine</h3>
+          <img class="nav-close-icon" src="../assets/images/cross-circle.svg" alt="Nav close icon" />
+        </a>
+        <ul class="nav-flyout-ul">
+          <li>
+            <a href="https://readerservices.makezine.com/mk/default.aspx">
+              <span title="Subscribe">Subscribe</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://readerservices.makezine.com/mk/SubGiftSplash.aspx">
+              <span title="Gift Subscription">Gift Subscription</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://readerservices.makezine.com/mk/SubInfo.aspx">
+              <span title="Manage Subscription">Manage Subscription</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/collections/make-magazine">
+              <span title="Back Issues">Back Issues</span>
+            </a>
+          </li>
+          <li>
+            <a href="/digital-library">
+              <span title="Make: Digital Library"><strong>Make:</strong> Digital Library</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makezine.com/blog/">
+              <span title="Latest Stories">Latest Stories</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makezine.com/projects/">
+              <span title="Make: Tested Projects"><strong>Make:</strong> Tested Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makezine.com/tag/guides/">
+              <span title="Tool Guides">Tool Guides</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-flyout-column">
+        <a href="https://makerfaire.com/" class="expanding-underline">
+          <h3>Maker Faire</h3>
+          <img class="nav-close-icon" src="../assets/images/cross-circle.svg" alt="Nav close icon" />
+        </a>
+        <ul class="nav-flyout-ul">
+          <li>
+            <a href="https://makerfaire.com/bay-area/">
+              <span title="Maker Faire Bay Area">Maker Faire Bay Area</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makerfaire.com/new-york/">
+              <span title="World Maker Faire">World Maker Faire</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makerfaire.com/map/">
+              <span title="Faires Around the World">Faires Around the World</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makerfaire.com/global/">
+              <span title="Start a Maker Faire">Start a Maker Faire</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makerfaire.com/makerfairehistory/">
+              <span title="What is a Maker Faire?">What is a Maker Faire?</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://help.makermedia.com/hc/en-us/categories/200333245-Maker-Faire">
+              <span title="FAQs & Support">FAQs & Support</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-flyout-column">
+        <a href="https://www.makershed.com/" class="expanding-underline">
+          <h3>Maker Shed</h3>
+          <img class="nav-close-icon" src="../assets/images/cross-circle.svg" alt="Nav close icon" />
+        </a>
+        <ul class="nav-flyout-ul">
+          <li>
+            <a href="https://www.makershed.com/collections/most-popular">
+              <span title="Best Sellers">Best Sellers</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/collections/make-kits">
+              <span title="Hands-on Kits">Hands-on Kits</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/collections/books">
+              <span title="Digital Books">Digital Books</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/collections/make-gear">
+              <span title="Make: Swag"><strong>Make:</strong> Swag</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/collections/just-arrived">
+              <span title="What's New">What's New</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://help.makermedia.com/hc/en-us/articles/203708999-Processing-Shipping-Time">
+              <span title="Shipping">Shipping</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://help.makermedia.com/hc/en-us/articles/203710909-Returns-Exchanges">
+              <span title="Returns">Returns</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.makershed.com/pages/affiliate">
+              <span title="Become an Affiliate">Become an Affiliate</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-flyout-column">
+        <a href="https://makershare.com/" class="expanding-underline">
+          <h3>Maker Share</h3>
+          <img class="nav-close-icon" src="../assets/images/cross-circle.svg" alt="Nav close icon" />
+        </a>
+        <ul class="nav-flyout-ul">
+          <li>
+            <a href="https://makershare.com/makers">
+              <span title="Maker Portfolios">Maker Portfolios</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/groups-overview">
+              <span title="Maker Groups">Maker Groups</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/showcases">
+              <span title="Making Showcases">Making Showcases</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/learning">
+              <span title="Make: Workshops"><strong>Make:</strong> Workshops</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/missions">
+              <span title="Participate in a Mission">Participate in a Mission</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/guidelines">
+              <span title="Community Guidelines">Community Guidelines</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/badges">
+              <span title="About Badges">About Badges</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/why-portfolio">
+              <span title="About Portfolios">About Portfolios</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-flyout-column">
+        <a href="https://makermedia.com/" class="expanding-underline">
+          <h3>About Make:</h3>
+          <img class="nav-close-icon" src="../assets/images/cross-circle.svg" alt="Nav close icon" />
+        </a>
+        <ul class="nav-flyout-ul">
+          <li>
+            <a href="https://makermedia.com/maker-movement/">
+              <span title="The Maker Movement">The Maker Movement</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makermedia.com/our-team/">
+              <span title="Our Team">Our Team</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makermedia.com/advertise-with-us/">
+              <span title="Partners">Partners</span>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <span title="Membership">Membership</span>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://help.makermedia.com/hc/en-us">
+              <span title="Help Center">Help Center</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makermedia.com/jobs/">
+              <span title="Careers">Careers</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://makershare.com/missions/mission-make">
+              <span title="Write for Make:">Write for <b>Make:</b></span>
+            </a>
+          <li>
+            <a href="https://makermedia.com/press/">
+              <span title="Press Center">Press Center</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="auth-target"></div>
+
+    </div>
+
+    <div class="social-network-container text-center">
+      <ul class="social-network social-circle">
+        <li><a href="//twitter.com/make" class="icoTwitter" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="//facebook.com/makemagazine" class="icoFacebook" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="//www.instagram.com/makemagazine/" class="icoInstagram" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="//www.youtube.com/user/makemagazine" class="icoYoutube" title="Youtube" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div id="nav-hamburger" class="nav-hamburger">
+    <div class="container">
+      <div id="hamburger-click-event">
+        <div id="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <img id="hamburger-makey" src="../assets/images/makey_outlined.svg" alt="Makey roboto logo">
+      </div>
+    </div>
+  </div><!-- .nav-hamburger -->
 </header>
 <notification-bar></notification-bar>
