@@ -26,7 +26,9 @@ fi
 #echo "Copying Assets ...";
 #cp -r ./src/assets/* ./dist/assets
 
-if [[ $BUILD_ENV -eq "STAGE" ]] || [[ $BUILD_ENV -eq "DEV" ]]; then
+if [[ $BUILD_ENV -ne "STAGE" ]] && [[ $BUILD_ENV -ne "DEV" ]]; then
+   echo "Production build Path will not change."
+else
    echo "Correcting Stage Path"
    find ./dist/ -type f -exec \
        sed -i 's/:\/\/makershare/\/\/preview.makershare/g' {} +
@@ -48,3 +50,4 @@ for file in `grep -Ril coinhive dist-server/*`; do
    echo "****************************************************************************************"
 done
 
+chmod 755 -R dist/ dist-server/
