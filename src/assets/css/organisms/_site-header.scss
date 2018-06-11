@@ -3,6 +3,7 @@
 header.universal-nav {
   position: relative;
   background: #fff;
+  font-family: 'Roboto', serif;
   nav.container {
     padding: 0px;
     @media screen and (max-width: 767px) {
@@ -28,15 +29,12 @@ header.universal-nav {
   .nav-level-1-nav {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 140px;
+    margin-left: 150px;
     padding: 0;
     list-style: none;
     display: inline-block;
-    @media screen and (min-width: 992px) and (max-width: 1199px) {
-      margin-left: 98px;
-    }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      margin-left: 100px;
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      margin-left: 105px;
     }
     @media screen and (max-width: 767px) {
       display: none;
@@ -189,6 +187,7 @@ header.universal-nav {
       display: none; 
       margin-top: -25px;
       color: #000;
+      font-family: 'Roboto', serif;
   }
   .hide-mobile { 
       float: left; 
