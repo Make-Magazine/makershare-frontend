@@ -412,8 +412,7 @@ $(window).on('load', function () {
 $(window).bind('hashchange', function() {
     console.log("maybe this loads more often");
 });
-$(document).ready(function () {
-  console.log("does this only load once or something");
+$(document).on('load', function () {
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
@@ -511,7 +510,7 @@ $(document).ready(function () {
     case "makershare.com/learning":
         universalNavActive("share")
         break;
-    // secondary nav highlightin
+    /* secondary nav highlightin
     case "maker-share/makers":
     case "makershare/makers":
     case "preview.makershare.com/makers":
@@ -541,7 +540,7 @@ $(document).ready(function () {
     case "preview.makershare.com/missions":
     case "makershare.com/missions":
           jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
-          break;
+          break;*/
     default:
         break;
   }
