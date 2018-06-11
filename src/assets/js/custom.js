@@ -409,10 +409,10 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-$(window).bind('hashchange', function() {
+/*$(window).bind('hashchange', function() {
     console.log("maybe this loads more often");
-});
-$(document).on('load', function () {
+});*/
+$(window).on('load', function () {
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
