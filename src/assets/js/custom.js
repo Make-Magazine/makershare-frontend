@@ -399,18 +399,20 @@ function isElementInViewport(elem) {
 
 // Home page hero image randomizer - run only on homepage
 
-if ( window.location.pathname == '/' && $('#homeBanner').length ){
-    $(window).on('load', function () {
+$(window).on('load', function () {
+  if ( window.location.pathname == '/' && $('#homeBanner').length ){
       var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
       $('#homeBanner').css('background', 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
-    });
-}
+  }
+});
 
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-
-$(window).on('load', function () {
+$(window).bind('hashchange', function() {
+    console.log("maybe this loads more often");
+});
+$(document).on('load', function () {
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
@@ -492,6 +494,12 @@ $(window).on('load', function () {
     case "makerfaire.com":
         universalNavActive("faire")
         break;
+    case "maker-share":
+    case "makershare":
+    case "preview.makershare.com":
+    case "makershare.com":
+        universalNavActive("share-p")
+        break;
     default:
         break;
   }
@@ -502,15 +510,41 @@ $(window).on('load', function () {
     case "makershare.com/learning":
         universalNavActive("share")
         break;
-    case "maker-share/":
-    case "makershare/":
-    case "preview.makershare.com/":
-    case "makershare.com/":
-        universalNavActive("share-p")
-        break;
+    /* secondary nav highlightin
+    case "maker-share/makers":
+    case "makershare/makers":
+    case "preview.makershare.com/makers":
+    case "makershare.com/makers":
+          jQuery("#menu-secondary_universal_menu li a[href*='/makers']").addClass("active");
+          break;
+    case "maker-share/projects":
+    case "makershare/projects":
+    case "preview.makershare.com/projects":
+    case "makershare.com/projects":
+          jQuery("#menu-secondary_universal_menu li a[href*='/projects']").addClass("active");
+          break;
+    case "maker-share/groups-overview":
+    case "makershare/groups-overview":
+    case "preview.makershare.com/groups-overview":
+    case "makershare.com/groups-overview":
+          jQuery("#menu-secondary_universal_menu li a[href*='/groups-overview']").addClass("active");
+          break;
+    case "maker-share/showcases":
+    case "makershare/showcases":
+    case "preview.makershare.com/showcases":
+    case "makershare.com/showcases":
+          jQuery("#menu-secondary_universal_menu li a[href*='/showcases']").addClass("active");
+          break;
+    case "maker-share/missions":
+    case "makershare/missions":
+    case "preview.makershare.com/missions":
+    case "makershare.com/missions":
+          jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
+          break;*/
     default:
         break;
   }
+    
 });
 
 ////////////////////////////////////////////////

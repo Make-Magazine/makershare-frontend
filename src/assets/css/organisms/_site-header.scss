@@ -3,6 +3,7 @@
 header.universal-nav {
   position: relative;
   background: #fff;
+  font-family: $font-roboto, serif;
   nav.container {
     padding: 0px;
     @media screen and (max-width: 767px) {
@@ -28,15 +29,12 @@ header.universal-nav {
   .nav-level-1-nav {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 140px;
+    margin-left: 150px;
     padding: 0;
     list-style: none;
     display: inline-block;
-    @media screen and (min-width: 992px) and (max-width: 1199px) {
-      margin-left: 98px;
-    }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      margin-left: 100px;
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      margin-left: 105px;
     }
     @media screen and (max-width: 767px) {
       display: none;
@@ -189,6 +187,7 @@ header.universal-nav {
       display: none; 
       margin-top: -25px;
       color: #000;
+      font-family: $font-roboto, serif;
   }
   .hide-mobile { 
       float: left; 
@@ -243,13 +242,12 @@ header.universal-nav {
       }
       .dropdown-menu {
           padding: 90px 25px 25px;
-          font-family: 'Roboto', serif;
           right: -440px;
           margin-top: -63px;
           width: 660px;
           border-radius: none;
           z-index: 97;
-          font-family: 'Roboto',serif;
+          font-family: $font-roboto, sans-serif;
           @media screen and (min-width: 576px) and (max-width: 768px) {
               margin-left: -175px;
           }
@@ -282,7 +280,7 @@ header.universal-nav {
               opacity: .85;
               font-size: 20px;
               font-weight: 500;
-              font-family: 'Roboto', serif;
+              font-family: $font-roboto, serif;
               transition: font-weight .1s ease-in-out;
               line-height: 1em;
               display: inline;
@@ -387,9 +385,23 @@ header.universal-nav {
     @media screen and (max-width: 991px) {
         margin-left: 24px;
     }
-    li, a {
-      height: 100%;
-      margin-top: 5px;
+    li {
+        border-right: 1px solid #999;
+        margin-top: 10px;
+    }
+    li:nth-child(3), li:nth-child(4), li:last-child {
+        border-right: none;
+    }
+    li.second-nav-banner {
+        padding: 0px;
+        min-width: 178px;
+        transition: .4s ease-in-out;
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            min-width: 140px;
+            max-width: 160px;
+        }
+        span { padding: 0 15px; }
+        a { opacity: 1; }
     }
     a {
       color: #fff;
@@ -406,14 +418,14 @@ header.universal-nav {
         opacity: 1;
       }
     }
-    li.active {
-        a { opacity: 1; }
+    li{
+        a.active { opacity: 1; }
     }
     span {
       font-size: 16px;
+      font-family: $font-roboto-light, sans-serif;
       height: 35px;
       min-width: 90px;
-      border-right: 1px solid #999;
       padding: 0 23px;
       text-align: center;
       display: flex;
@@ -427,20 +439,6 @@ header.universal-nav {
         font-size: 14px;
         padding: 0 5px;
       }
-    }
-    li:nth-child(3) span, li:nth-child(4) span, li:last-child span {
-        border-right: none;
-    }
-    li.second-nav-banner {
-        padding: 0px;
-        min-width: 178px;
-        transition: .4s ease-in-out;
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            min-width: 140px;
-            max-width: 160px;
-        }
-        span { padding: 0 15px; }
-        a { opacity: 1; }
     }
   }
 }
@@ -516,6 +514,9 @@ header.universal-nav {
         width: 100%;
     }
   }
+  b, strong {
+    font-weight: bolder !important;
+  }
   .nav-flyout-logo {
     display: flex;
   }
@@ -532,7 +533,7 @@ header.universal-nav {
       width: 100px;
     }
     h2 {
-      font-family: 'Roboto Light', sans-serif;
+      font-family: $font-roboto-light, sans-serif;
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.045em;
@@ -581,7 +582,7 @@ header.universal-nav {
         opacity: .85;
         font-size: 20px;
         font-weight: 500;
-        font-family: 'Roboto Bold', sans-serif;
+        font-family: $font-roboto-bold, sans-serif;
         transition: font-weight .1s ease-in-out;
         line-height: 1em;
         text-align: left;
@@ -666,7 +667,7 @@ header.universal-nav {
       }
     }
     a {
-      font-family: 'Roboto', sans-serif;
+      font-family: $font-roboto, sans-serif;
       padding: 7px 0;
       margin-bottom: 2px;
       text-decoration: none;
