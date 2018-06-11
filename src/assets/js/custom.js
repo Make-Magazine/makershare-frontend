@@ -531,13 +531,15 @@ $(window).on('load', function () {
     case "makershare/showcases":
     case "preview.makershare.com/showcases":
     case "makershare.com/showcases":
-          jQuery("#menu-secondary_universal_menu li a[href*='/showcases']").addClass("active");
+          console.log("showcased");
+          jQuery("#menu-secondary_universal_menu li a[href^='/showcases']").addClass("active");
           break;
     case "maker-share/missions":
     case "makershare/missions":
     case "preview.makershare.com/missions":
     case "makershare.com/missions":
-          jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
+          console.log("on a mission");
+          jQuery("#menu-secondary_universal_menu li a[href='/missions']").addClass("active");
           break;
     default:
         break;

@@ -385,9 +385,12 @@ header.universal-nav {
     @media screen and (max-width: 991px) {
         margin-left: 24px;
     }
+    li {
+        border-right: 1px solid #999;
+        margin-top: 10px;
+    }
     li, a {
       height: 100%;
-      margin-top: 5px;
     }
     a {
       color: #fff;
