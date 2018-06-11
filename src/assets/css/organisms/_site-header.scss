@@ -515,6 +515,9 @@ header.universal-nav {
         width: 100%;
     }
   }
+  b, strong {
+    font-weight: bolder !important;
+  }
   .nav-flyout-logo {
     display: flex;
   }

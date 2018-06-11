@@ -513,31 +513,31 @@ $(window).on('load', function () {
     case "makershare/makers":
     case "preview.makershare.com/makers":
     case "makershare.com/makers":
-          jQuery("#menu-secondary_universal_menu li a[href*='/makers/']").addClass("active");
+          jQuery("#menu-secondary_universal_menu li a[href*='/makers']").addClass("active");
           break;
     case "maker-share/projects":
     case "makershare/projects":
     case "preview.makershare.com/projects":
     case "makershare.com/projects":
-          jQuery("#menu-secondary_universal_menu li a[href*='/projects/']").addClass("active");
+          jQuery("#menu-secondary_universal_menu li a[href*='/projects']").addClass("active");
           break;
     case "maker-share/groups-overview":
     case "makershare/groups-overview":
     case "preview.makershare.com/groups-overview":
     case "makershare.com/groups-overview":
-          jQuery("#menu-secondary_universal_menu li a[href*='/groups-overview/']").addClass("active");
+          jQuery("#menu-secondary_universal_menu li a[href*='/groups-overview']").addClass("active");
           break;
     case "maker-share/showcases":
     case "makershare/showcases":
     case "preview.makershare.com/showcases":
     case "makershare.com/showcases":
-          jQuery("#menu-secondary_universal_menu li a[href*='/showcases/']").addClass("active");
+          jQuery("#menu-secondary_universal_menu li a[href*='/showcases']").addClass("active");
           break;
     case "maker-share/missions":
     case "makershare/missions":
     case "preview.makershare.com/missions":
     case "makershare.com/missions":
-          jQuery("#menu-secondary_universal_menu li a[href*='/missions/']").addClass("active");
+          jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
           break;
     default:
         break;
