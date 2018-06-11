@@ -409,8 +409,11 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-
+$(document).ready(function(){
+    console.log("maybe this loads more often");
+})
 $(window).on('load', function () {
+  console.log("does this only load once or something");
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
@@ -537,7 +540,6 @@ $(window).on('load', function () {
     case "makershare/missions":
     case "preview.makershare.com/missions":
     case "makershare.com/missions":
-          console.log("on a mission");
           jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
           break;
     default:
