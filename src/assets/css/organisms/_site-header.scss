@@ -389,7 +389,7 @@ header.universal-nav {
         border-right: 1px solid #999;
         margin-top: 10px;
     }
-    li:nth-child(3) span, li:nth-child(4) span, li:last-child {
+    li:nth-child(3), li:nth-child(4), li:last-child {
         border-right: none;
     }
     li.second-nav-banner {
@@ -426,7 +426,6 @@ header.universal-nav {
       font-family: $font-roboto-light, sans-serif;
       height: 35px;
       min-width: 90px;
-      border-right: 1px solid #999;
       padding: 0 23px;
       text-align: center;
       display: flex;
