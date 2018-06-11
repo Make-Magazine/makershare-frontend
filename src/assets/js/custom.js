@@ -409,10 +409,10 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-$(document).ready(function(){
+$(window).bind('hashchange', function() {
     console.log("maybe this loads more often");
-})
-$(window).on('load', function () {
+});
+$(document).ready(function () {
   console.log("does this only load once or something");
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
