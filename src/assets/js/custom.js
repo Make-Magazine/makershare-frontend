@@ -398,15 +398,15 @@ function isElementInViewport(elem) {
 
 
 // Home page hero image randomizer - run only on homepage
-console.log(window.location.pathname);
-console.log($('#homeBanner').length);
-if ( window.location.pathname == '/' && $('#homeBanner').length ){
-    $(window).on('load', function () {
+
+$(window).on('load', function () {
+  console.log($('#homeBanner').length);
+  if ( window.location.pathname == '/' && $('#homeBanner').length ){
       console.log("test if this is going off anymore");
       var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
       $('#homeBanner').css('background', 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
-    });
-}
+  }
+});
 
 //////////////////////////////////////
 /////// Navigation and Search ////////
