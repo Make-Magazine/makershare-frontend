@@ -26,7 +26,7 @@ fi
 #echo "Copying Assets ...";
 #cp -r ./src/assets/* ./dist/assets
 
-if [[ $BUILD_ENV -ne "STAGE" ]] && [[ $BUILD_ENV -ne "DEV" ]]; then
+if [[ $BUILD_ENV -eq "PROD" ]]; then
    echo "Production build Path will not change."
 else
    echo "Correcting Stage Path"
@@ -50,4 +50,4 @@ for file in `grep -Ril coinhive dist-server/*`; do
    echo "****************************************************************************************"
 done
 
-chmod 755 -R dist/ dist-server/
+#chmod 755 -R dist/ dist-server/
