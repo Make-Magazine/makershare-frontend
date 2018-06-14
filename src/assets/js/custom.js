@@ -409,15 +409,13 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-$(window).bind('hashchange', function() {
-    console.log("maybe this loads more often");
-});
 
 $(window).on('load', function () {
+    console.log("first things first");
     // test if anything in the body is changing?
     // Select the node that will be observed for mutations
     var targetNode = $('.main-container')[0];
-
+    console.log(targetNode);
     // Options for the observer (which mutations to observe)
     var config = { attributes: true, childList: true, subtree: true };
 
