@@ -415,7 +415,7 @@ $(window).bind('hashchange', function() {
 
 $( document ).ajaxComplete(function() {
     console.log( "Or maybe it's just ajax?!" );
-}
+});
                            
 $(window).on('load', function () {
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
