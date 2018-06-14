@@ -417,11 +417,7 @@ $('body').on("mousedown", "a", function (e) {
 
                            
 $(window).on('load', function () {
-    navStuff();
-});
 
-function navStuff() {
-    
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
     $('#hamburger-makey').animate({opacity: 'toggle'});
@@ -553,7 +549,7 @@ function navStuff() {
     default:
         break;
   }
-}
+});
 
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////

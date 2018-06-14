@@ -489,6 +489,19 @@ header.universal-nav {
   }
 }
 
+// Specifically for highlighting the appropriate category in the secondary nav
+app-header[class^="/makers"] {
+    #universal-nav {
+        background: #ff0000;
+        #menu-secondary_universal_menu {
+            .nav-item:nth-of-type(1) a {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
 // Nav Flyout
 #nav-flyout {
   display: none;
