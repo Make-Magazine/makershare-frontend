@@ -413,8 +413,9 @@ $(window).bind('hashchange', function() {
     console.log("maybe this loads more often");
 });
 
-$( document ).ajaxComplete(function() {
-    console.log( "Or maybe it's just ajax?!" );
+// test if anything in the body is changing?
+$('.main-container').bind("DOMSubtreeModified",function(){
+  alert('changed');
 });
                            
 $(window).on('load', function () {
