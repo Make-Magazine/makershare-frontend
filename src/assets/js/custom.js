@@ -409,9 +409,14 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-/*$(window).bind('hashchange', function() {
+$(window).bind('hashchange', function() {
     console.log("maybe this loads more often");
-});*/
+});
+
+$( document ).ajaxComplete(function() {
+    console.log( "Or maybe it's just ajax?!" );
+}
+                           
 $(window).on('load', function () {
   $('#hamburger-icon, #hamburger-makey, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
@@ -510,7 +515,7 @@ $(window).on('load', function () {
     case "makershare.com/learning":
         universalNavActive("share")
         break;
-    /* secondary nav highlightin
+    // secondary nav highlightin
     case "maker-share/makers":
     case "makershare/makers":
     case "preview.makershare.com/makers":
@@ -540,7 +545,7 @@ $(window).on('load', function () {
     case "preview.makershare.com/missions":
     case "makershare.com/missions":
           jQuery("#menu-secondary_universal_menu li a[href*='/missions']").addClass("active");
-          break;*/
+          break;
     default:
         break;
   }
