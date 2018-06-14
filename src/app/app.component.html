@@ -1,5 +1,5 @@
 <app-header *ngIf="router.url != '/404'"></app-header>  
-<div class="main-container {{router.url != '/404' ? '' : '-no-pad'}}">
+<div class="main-container {{router.url}}">
   <router-outlet></router-outlet>
   <!--Routing loader-->
   <div *ngIf="showLoader">
