@@ -59,6 +59,7 @@ header.universal-nav {
         display: flex;
         align-items: center;
         justify-content: stretch;
+        font-family: $font-roboto, serif;
         span {
           color: #333;
           opacity: .6;
@@ -139,6 +140,7 @@ header.universal-nav {
     @media screen and (max-width: 767px) {
       width: 90px;
     }
+    img { width: 134px; }
   }
 }
 
@@ -394,7 +396,7 @@ header.universal-nav {
     }
     li.second-nav-banner {
         padding: 0px;
-        min-width: 178px;
+        min-width: 241px;
         transition: .4s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
             min-width: 140px;
@@ -542,6 +544,7 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
     @media screen and (max-width: 576px) {
       width: 100px;
     }
+    img { width: 134px; }
     h2 {
       font-family: $font-roboto-light, sans-serif;
       font-size: 13px;
