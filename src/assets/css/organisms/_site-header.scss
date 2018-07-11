@@ -148,7 +148,7 @@ header.universal-nav {
     position: fixed;
     top: 12px;
     .add-project-header-button {
-        right: 94px;
+        right: 36px;
     }
 }
 .nav-level-1-auth {
@@ -194,7 +194,7 @@ header.universal-nav {
   .hide-mobile { 
       float: left; 
       position: relative; 
-      z-index: 96; 
+      z-index: 999; 
       top: 63px;
       @media screen and (max-width: 991px) {
           display: none;
@@ -205,8 +205,6 @@ header.universal-nav {
           &:hover, &:focus, &:active {
               background: none;
               color: #fff;
-          }
-          &::after {
           }
       }
       .bs-tooltip-top {
@@ -396,7 +394,7 @@ header.universal-nav {
     }
     li.second-nav-banner {
         padding: 0px;
-        min-width: 241px;
+        min-width: 178px;
         transition: .4s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
             min-width: 140px;
