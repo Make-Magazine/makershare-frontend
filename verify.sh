@@ -18,15 +18,24 @@ do
       echo "****************************************************************************************"
    done
    for file in `grep -Ril "$injection" node_modules/* | grep -vi readme.md`; do
-      #if [[ $file  == *.md* ]]; then
-      #   # Ignore the README files in the node_modules
-      #else
-         echo "****************************************************************************************"
-         echo " $injection Injection found in the file : $file"
-         echo " Please correct the file before running the code!!"
-         echo "****************************************************************************************"
-      #fi
-     #echo $file
+      echo "****************************************************************************************"
+      echo " $injection Injection found in the file : $file"
+      echo " Please correct the file before running the code!!"
+      echo "****************************************************************************************"
+   done
+   ## scan the Drupal code
+   for file in `grep -Ril "$injection" ../maker-back/*`; do
+      echo "****************************************************************************************"
+      echo " $injection Injection found in the file : $file"
+      echo " Please correct the file before running the code!!"
+      echo "****************************************************************************************"
+   done
+   ## scan the Rio Drupal code
+   for file in `grep -Ril "$injection" ../makershare/* | grep -vi readme.md`; do
+      echo "****************************************************************************************"
+      echo " $injection Injection found in the file : $file"
+      echo " Please correct the file before running the code!!"
+      echo "****************************************************************************************"
    done
 done
 
