@@ -148,7 +148,7 @@ header.universal-nav {
     position: fixed;
     top: 12px;
     .add-project-header-button {
-        right: 36px;
+        right: 93px;
     }
 }
 .nav-level-1-auth {
@@ -394,7 +394,7 @@ header.universal-nav {
     }
     li.second-nav-banner {
         padding: 0px;
-        min-width: 178px;
+        max-width: 178px;
         transition: .4s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
             min-width: 140px;
