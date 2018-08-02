@@ -400,7 +400,10 @@ header.universal-nav {
             min-width: 140px;
             max-width: 160px;
         }
-        span { padding: 0 15px; }
+        span { 
+			  padding: 0 5px;
+			  img { width: 100%; }
+		  }
         a { opacity: 1; }
     }
     a {
