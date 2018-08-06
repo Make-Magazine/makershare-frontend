@@ -381,9 +381,12 @@ header.universal-nav {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin-left: -35px;
+    margin-left: 10px;
     @media screen and (max-width: 991px) {
-        margin-left: 24px;
+        margin-left: 0px;
+		 li:nth-child(3) {
+			 padding: 0px 10px;
+		 }
     }
     li {
         border-right: 1px solid #999;
@@ -397,8 +400,8 @@ header.universal-nav {
         max-width: 178px;
         transition: .4s ease-in-out;
         @media screen and (min-width: 768px) and (max-width: 991px) {
-            min-width: 140px;
-            max-width: 160px;
+            min-width: 120px;
+            max-width: 120px;
         }
         span { 
 			  padding: 0 5px;
@@ -440,7 +443,8 @@ header.universal-nav {
       }
       @media screen and (min-width: 768px) and (max-width: 991px) {
         font-size: 14px;
-        padding: 0 5px;
+        padding: 0px;
+		  min-width: 80px;
       }
     }
   }
