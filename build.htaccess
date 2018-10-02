@@ -1,0 +1,126 @@
+RewriteEngine on
+  
+RewriteCond %{HTTP_REFERER} !^http://manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.makershare.com$      [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule .*\.()$ - [F,NC]
+
+DirectoryIndex index.html index.htm
+
+ErrorDocument 404 /index.html
+
+# Don't show directory listings for URLs which map to a directory.
+#Options -Indexes
+
+# Follow symbolic links in this directory.
+#Options +FollowSymLinks
+#Options MultiViews
+
+#  RewriteEngine on
+#  RewriteCond %{HTTP:X-Forwarded-Port} !443
+#  RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  #RewriteRule "/\.|^\.(?!well-known/)" - [F]
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+  RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+  RewriteRule ^ index.html [L]
+
+  RewriteRule    "^sitemap.xml/(.*)$"  "https://manage.makershare.com/sitemap.xml"  [P]
+
+  <IfModule mod_headers.c>
+    # Serve gzip compressed CSS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule ^(.*)\.css $1\.css\.gz [QSA]
+
+    # Serve gzip compressed JS files if they exist and the client accepts gzip.
+    RewriteCond %{HTTP:Accept-encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}\.gz -s
+    RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule ^(.*)\.js $1\.js\.gz [QSA]
+
+    # Serve correct content types, and prevent mod_deflate double gzip.
+    RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule \.css\.gz$ - [T=text/css,E=no-gzip:1]
+    RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule \.js\.gz$ - [T=text/javascript,E=no-gzip:1]
+
+    # Rewrite all requests for JS and CSS files to files of the same name, without
+    # any numbers in them. This lets the JS and CSS be force out of cache easily
+    # by putting a number at the end of the filename
+    # e.g. a request for static/js/site-52.js will get the file static/js/site.js instead.
+    #RewriteRule ^static/(js|css)/([a-z]+)-([0-9]+)\.(js|css)$ /site/$1/$2.$4 [R=302,NC,L]
+
+    <FilesMatch "(\.js\.gz|\.css\.gz)$">
+      # Serve correct encoding type.
+      Header set Content-Encoding gzip
+      # Force proxies to cache gzipped & non-gzipped css/js files separately.
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+<IfModule mod_expires.c>
+  # Enable expirations.
+  ExpiresActive On
+
+  # Cache all files for 2 weeks after access (A).
+  ExpiresDefault A1209600
+
+  <FilesMatch \.php$>
+    # Do not allow PHP scripts to be cached unless they explicitly send cache
+    # headers themselves. Otherwise all scripts would have to overwrite the
+    # headers set by mod_expires if they want another caching behavior. This may
+    # fail if an error occurs early in the bootstrap process, and it may cause
+    # problems if a non-Drupal PHP file is installed in a subdirectory.
+    ExpiresActive Off
+  </FilesMatch>
+</IfModule>
+
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options nosniff
+  Header add Access-Control-Allow-Origin "https://manage.makershare.com"
+  Header add Access-Control-Allow-Origin "https://fonts.gstatic.com"
+  Header add Access-Control-Allow-Origin "https://sumo.com/api/site"
+  Header add Access-Control-Allow-Origin "https://cdn.auth0.com"
+  Header add Access-Control-Allow-Origin "https://oss.maxcdn.com" 
+  Header add Access-Control-Allow-Origin "https://www.google-analytics.com"
+  Header add Access-Control-Allow-Origin "https://unpkg.com" 
+  Header set Access-Control-Allow-Credentials "true" 
+  Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-Token"
+  Header set Access-Control-Expose-Headers "Authorization"
+  Header set Access-Control-Allow-Methods "POST,PUT,GET,DELETE,OPTIONS"
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# NOTE this account's php is controlled via FPM and the vhost, this is a place holder.
+# Do not edit. This next line is to support the cPanel php wrapper (php_cli).
+# AddType application/x-httpd-ea-php70 .php .phtml
+# php -- END cPanel-generated handler, do not edit
