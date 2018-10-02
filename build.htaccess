@@ -104,21 +104,6 @@ ErrorDocument 404 /index.html
 </IfModule>
 
 
-<IfModule mod_headers.c>
-  Header always set X-Content-Type-Options nosniff
-  Header add Access-Control-Allow-Origin "https://manage.makershare.com"
-  Header add Access-Control-Allow-Origin "https://fonts.gstatic.com"
-  Header add Access-Control-Allow-Origin "https://sumo.com/api/site"
-  Header add Access-Control-Allow-Origin "https://cdn.auth0.com"
-  Header add Access-Control-Allow-Origin "https://oss.maxcdn.com" 
-  Header add Access-Control-Allow-Origin "https://www.google-analytics.com"
-  Header add Access-Control-Allow-Origin "https://unpkg.com" 
-  Header set Access-Control-Allow-Credentials "true" 
-  Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization, X-CSRF-Token"
-  Header set Access-Control-Expose-Headers "Authorization"
-  Header set Access-Control-Allow-Methods "POST,PUT,GET,DELETE,OPTIONS"
-</IfModule>
-
 # php -- BEGIN cPanel-generated handler, do not edit
 # NOTE this account's php is controlled via FPM and the vhost, this is a place holder.
 # Do not edit. This next line is to support the cPanel php wrapper (php_cli).
