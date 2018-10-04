@@ -1,29 +1,60 @@
 RewriteEngine on
   
+## Preview-Manage.makershare.com
 RewriteCond %{HTTP_REFERER} !^http://preview-manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview-manage.makershare.com/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://preview-manage.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview-manage.makershare.com$      [NC]
+
 RewriteCond %{HTTP_REFERER} !^http://www.preview-manage.makershare.com/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://www.preview-manage.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.preview.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.preview.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.riosnewmakershare.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^http://www.riosnewmakershare.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://preview-manage.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://preview-manage.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://riosnewmakershare.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://riosnewmakershare.makershare.com$      [NC]
 RewriteCond %{HTTP_REFERER} !^https://www.preview-manage.makershare.com/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^https://www.preview-manage.makershare.com$      [NC]
+
+## Preview.makershare.com
+RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://preview.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://preview.makershare.com$      [NC]
+
+RewriteCond %{HTTP_REFERER} !^http://www.preview.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.preview.makershare.com$      [NC]
 RewriteCond %{HTTP_REFERER} !^https://www.preview.makershare.com/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^https://www.preview.makershare.com$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.riosnewmakershare.makershare.com/.*$      [NC]
-RewriteCond %{HTTP_REFERER} !^https://www.riosnewmakershare.makershare.com$      [NC]
+
+## Riosnewmakershare.makershare.com
+RewriteCond %{HTTP_REFERER} !^https://riosnewmakershare.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://riosnewmakershare.makershare.com$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://riosnewmakershare.makershare.com/.*$      [NC]
 RewriteCond %{HTTP_REFERER} !^http://riosnewmakershare.makershare.com$      [NC]
+
+RewriteCond %{HTTP_REFERER} !^http://www.riosnewmakershare.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.riosnewmakershare.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.riosnewmakershare.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.riosnewmakershare.makershare.com$      [NC]
+
+## Manage.makershare.com
+RewriteCond %{HTTP_REFERER} !^http://manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://manage.makershare.com$      [NC]
+
+RewriteCond %{HTTP_REFERER} !^http://www.manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.manage.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.manage.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.manage.makershare.com$      [NC]
+
+## Makershare.com
+RewriteCond %{HTTP_REFERER} !^http://makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://makershare.com$      [NC]
+
+RewriteCond %{HTTP_REFERER} !^http://www.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.makershare.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.makershare.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.makershare.com$      [NC]
+
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule .*\.()$ - [F,NC]
