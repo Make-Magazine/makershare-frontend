@@ -409,12 +409,6 @@ $(window).on('load', function () {
 //////////////////////////////////////
 /////// Navigation and Search ////////
 //////////////////////////////////////
-
-$('body').on("mousedown", "a", function (e) {
-    console.log("a link was pressed");
-    navStuff();
-});
-
                            
 $(window).on('load', function () {
 
