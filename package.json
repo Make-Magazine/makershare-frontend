@@ -32,6 +32,8 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@angular-devkit/core": "0.0.29",
+    "@angular-devkit/schematics": "0.0.34",
     "@angular/animations": "4.4.5",
     "@angular/common": "4.4.5",
     "@angular/compiler": "4.4.5",
@@ -42,6 +44,7 @@
     "@angular/platform-browser": "4.4.5",
     "@angular/platform-browser-dynamic": "4.4.5",
     "@angular/router": "4.4.5",
+    "@angular/service-worker": "^1.0.0-beta.8",
     "@angular/tsc-wrapped": "4.4.5",
     "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.5",
     "@ngrx/store": "4.0.3",
@@ -55,6 +58,7 @@
     "auth0-js": "^9.3.3",
     "auth0-lock": "^11.3.1",
     "cookie-parser": "1.4.3",
+    "core-js": "^2.5.7",
     "css-loader": "0.28.7",
     "express": "4.16.2",
     "express-blank-favicon": "1.0.1",
@@ -83,6 +87,7 @@
     "ts-loader": "2.3.7",
     "ts-node": "3.3.0",
     "typescript": "2.3.2",
+    "typings": "^2.1.1",
     "web-animations-js": "2.3.1",
     "webpack": "3.6.0",
     "zone.js": "0.8.18"
