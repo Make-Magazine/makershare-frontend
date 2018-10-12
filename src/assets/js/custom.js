@@ -410,7 +410,7 @@ $(window).on('load', function () {
 /////// Navigation and Search ////////
 //////////////////////////////////////
                            
-$(window).on('load', function () {
+/*$(window).on('load', function () {
 
   $('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
@@ -512,7 +512,7 @@ $(window).on('load', function () {
     default:
         break;
   }
-});
+});*/
 
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////
