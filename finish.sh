@@ -20,8 +20,8 @@ if [ ! -L "dist/learning" ]; then
 #  echo "Learning does not exists";
 fi
 if [ ! -L "dist/static-assets" ]; then 
-   ln - s assets/static-pages/static-assets/ static-assets
+   ln -s assets/static-pages/static-assets/ static-assets
 fi
 if [ ! -L "dist/fonts" ]; then 
-   ln - s assets/fonts fonts
+   ln -s assets/fonts fonts
 fi
