@@ -77,6 +77,8 @@ ErrorDocument 404 /index.html
   </If>
   <Else>
      RewriteRule    "^sitemap.xml/(.*)$"  "https://manage.makershare.com/sitemap.xml"  [P]
+     RewriteCond %{HTTP_HOST} www.makershare.com
+     RewriteRule (.*) https://makershare.com/$1 [R=301,L]
   </Else>
 
   <IfModule mod_headers.c>
