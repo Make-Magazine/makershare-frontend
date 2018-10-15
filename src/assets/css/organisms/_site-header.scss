@@ -1,5 +1,5 @@
 // Nav Level 1
-
+/*
 header.universal-nav {
   position: relative;
   background: #fff;
@@ -188,8 +188,10 @@ header.universal-nav {
   #qsLoginBtn { 
       display: none; 
       margin-top: -25px;
-      color: #000;
-      font-family: $font-roboto, serif;
+      color: red;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: $font-roboto-bold, serif;
   }
   .hide-mobile { 
       float: left; 
@@ -350,164 +352,6 @@ header.universal-nav {
     }
 }
 
-// Nav Level 2
-.universal-nav.main-nav-scrolled .nav-level-2 {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 96;
-}
-.universal-nav.main-nav-scrolled .search-button {
-    top: 5px;
-    right: -16px;
-    position: absolute;
-    z-index: 999;
-    transform: translate(-50%);
-}
-.nav-level-2 {
-  height: 55px;
-  background-color: #333;
-  position: relative;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-  .container {
-    height: 100%;
-    @media screen and (min-width: 992px) {
-        padding: 0px;
-      }
-  }
-  #menu-secondary_universal_menu {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    @media screen and (max-width: 991px) {
-        margin-left: 0px;
-		 li:nth-child(3) {
-			 padding: 0px 10px;
-		 }
-    }
-    li {
-        border-right: 1px solid #999;
-        margin-top: 10px;
-    }
-    li:nth-child(3), li:nth-child(4), li:last-child {
-        border-right: none;
-    }
-    li.second-nav-banner {
-        padding: 0px;
-        max-width: 178px;
-        transition: .4s ease-in-out;
-        @media screen and (min-width: 768px) and (max-width: 991px) {
-            min-width: 120px;
-            max-width: 120px;
-        }
-        span { 
-			  padding: 0 5px;
-			  img { width: 100%; }
-		  }
-        a { opacity: 1; }
-    }
-    a {
-      color: #fff;
-      font-weight: 300;
-      line-height: 1.2em;
-      padding: 0;
-      text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: .6;
-      &:hover {
-        background-color: transparent;;
-        opacity: 1;
-      }
-    }
-    li{
-        a.active { opacity: 1; }
-    }
-    span {
-      font-size: 16px;
-      font-family: $font-roboto-light, sans-serif;
-      height: 35px;
-      min-width: 90px;
-      padding: 0 23px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: font-weight .1s ease-in-out;
-      @media screen and (min-width: 992px) and (max-width: 1199px) {
-        padding: 0 19px;
-      }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        font-size: 14px;
-        padding: 0px;
-		  min-width: 80px;
-      }
-    }
-  }
-}
-.search-button {
-    position: relative;
-    right: 0%;
-    top: -40px;
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-        right: -2%;
-    }
-    li { list-style: none; }
-  .sb-search {
-    position: relative;
-    width: 0%;
-    min-width: 32px;
-    height: 32px;
-    float: right;
-    overflow: hidden;
-    cursor: pointer;
-    -webkit-transition: width 0.3s;
-    -moz-transition: width 0.3s;
-    transition: width 0.3s;
-    -webkit-backface-visibility: hidden;
-    top: 10px;
-    @media (max-width: 767px) {
-       bottom: 12px;
-    }
-    .fa-search {
-      color: #fff;
-      width: 32px;
-      height: 32px;
-      display: block;
-      background: #333;
-      z-index: 101;
-      font-size: 22px;
-      speak: none;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      @media (max-width: 767px) {
-        color: #ED1C24;
-        background: #fff;
-      }   
-    }
-  }
-}
-
-// Specifically for highlighting the appropriate category in the secondary nav
-app-header[class^="/makers"], app-header[class^="/portfolio"] {
-    #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(1) a { opacity: 1; }
-}
-app-header[class^="/projects"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(2) a { opacity: 1; }
-app-header[class^="/groups"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(3) a { opacity: 1; }
-app-header[class^="/showcases"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(5) a { opacity: 1; }
-app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(6) a { opacity: 1; }
-
 
 // Nav Flyout
 #nav-flyout {
@@ -528,10 +372,11 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
     overflow: scroll;
   }
   .container {
-    padding: 0px;
     position: relative;
+	 padding: 0px;
     @media screen and (max-width: 768px) {
-        width: 100%;
+       width: 100%;
+		 padding: 20px;
     }
   }
   b, strong {
@@ -698,6 +543,12 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
         line-height: 1.2em;
         color: #333;
         opacity: .6;
+		  @media screen and (min-width: 768px) and (max-width: 991px) {
+			  font-size: 13px;
+		  }
+		  @media screen and (min-width: 576px) and (max-width: 767px) {
+			  font-size: 12px;
+		  }
       }
       &:hover, &:active {
         text-decoration: none;
@@ -715,12 +566,7 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
         overflow: hidden;
         visibility: hidden;
       }
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        font-size: 13px;
-      }
-      @media screen and (min-width: 576px) and (max-width: 767px) {
-        font-size: 12px;
-      }
+      
     }
   }
   .nav-level-1-auth {
@@ -844,6 +690,7 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
 		padding-left: 10px;
 	   color: #ED1C24;
   		font-weight: 400;
+		font-size: 16px;
 		pointer-events: auto;
 		cursor: pointer;
    }
@@ -980,4 +827,172 @@ app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .na
         position: fixed;
         animation: none;
     }
+}*/
+
+#hamburger-text { font-size: 16px; }
+
+#qsLoginBtn { 
+      display: none; 
+      color: red;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: $font-roboto-bold, serif;
 }
+
+// Nav Level 2
+.universal-nav.main-nav-scrolled .nav-level-2 {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 96;
+}
+.universal-nav.main-nav-scrolled .search-button {
+    top: 5px;
+    right: -16px;
+    position: absolute;
+    z-index: 999;
+    transform: translate(-50%);
+}
+.nav-level-2 {
+  height: 55px;
+  background-color: #333;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  .container {
+    height: 100%;
+    @media screen and (min-width: 992px) {
+        padding: 0px;
+      }
+  }
+  #menu-secondary_universal_menu {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    @media screen and (max-width: 991px) {
+        margin-left: 0px;
+		 li:nth-child(3) {
+			 padding: 0px 10px;
+		 }
+    }
+    li {
+        border-right: 1px solid #999;
+        margin-top: 10px;
+    }
+    li:nth-child(3), li:nth-child(4), li:last-child {
+        border-right: none;
+    }
+    li.second-nav-banner {
+        padding: 0px;
+        max-width: 178px;
+        transition: .4s ease-in-out;
+        @media screen and (min-width: 768px) and (max-width: 991px) {
+            min-width: 120px;
+            max-width: 120px;
+        }
+        span { 
+			  padding: 0 5px;
+			  img { width: 100%; }
+		  }
+        a { opacity: 1; }
+    }
+    a {
+      color: #fff;
+      font-weight: 300;
+      line-height: 1.2em;
+      padding: 0;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: .6;
+      &:hover {
+        background-color: transparent;;
+        opacity: 1;
+      }
+    }
+    li{
+        a.active { opacity: 1; }
+    }
+    span {
+      font-size: 16px;
+      font-family: $font-roboto-light, sans-serif;
+      height: 35px;
+      min-width: 90px;
+      padding: 0 23px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: font-weight .1s ease-in-out;
+      @media screen and (min-width: 992px) and (max-width: 1199px) {
+        padding: 0 19px;
+      }
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        font-size: 14px;
+        padding: 0px;
+		  min-width: 80px;
+      }
+    }
+  }
+}
+.search-button {
+    position: relative;
+    right: 0%;
+    top: -40px;
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        right: -2%;
+    }
+    li { list-style: none; }
+  .sb-search {
+    position: relative;
+    width: 0%;
+    min-width: 32px;
+    height: 32px;
+    float: right;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    transition: width 0.3s;
+    -webkit-backface-visibility: hidden;
+    top: 10px;
+    @media (max-width: 767px) {
+       bottom: 12px;
+    }
+    .fa-search {
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      display: block;
+      background: #333;
+      z-index: 101;
+      font-size: 22px;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      @media (max-width: 767px) {
+        color: #ED1C24;
+        background: #fff;
+      }   
+    }
+  }
+}
+
+// Specifically for highlighting the appropriate category in the secondary nav
+app-header[class^="/makers"], app-header[class^="/portfolio"] {
+    #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(1) a { opacity: 1; }
+}
+app-header[class^="/projects"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(2) a { opacity: 1; }
+app-header[class^="/groups"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(3) a { opacity: 1; }
+app-header[class^="/showcases"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(5) a { opacity: 1; }
+app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(6) a { opacity: 1; }

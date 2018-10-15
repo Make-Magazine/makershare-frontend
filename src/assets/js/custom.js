@@ -399,10 +399,14 @@ function isElementInViewport(elem) {
 
 // Home page hero image randomizer - run only on homepage
 
-$(window).on('load', function () {
+jQuery(window).on('load', function () {
   if ( window.location.pathname == '/' && $('#homeBanner').length ){
       var images = ['3DPrint-4.jpg','Art-15.jpg','Biology-7.jpg','CNC-5.jpg','Cosplay-1.jpg','Electronics-3.jpg','Electronics-7.jpg','Engineering-2.jpg','Engineering-4.jpg','Fashion-9.jpg','Food-7.jpg','Home-2.jpg','Kinetic-2.jpg','MetalArt-1.jpg','Microcontrollers-6.jpg','Music-3.jpg','Robotics-3.jpg','Robotics-8.jpg','Rocketry-4.jpg','Science-1.jpg','Science-7.jpg','Science-11.jpg','Science-16.jpg','SustainNature.jpg','Vehicles-2.jpg','Vehicles-11.jpg','Wearables-2.jpg','Yarncraft-5.jpg'];
-      $('#homeBanner').css('background', 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
+      jQuery('#homeBanner').css('background', 'url(../assets/images/home-hero-images/' + images[Math.floor(Math.random() * images.length)] + ')');
+	   // also for the home page make the build portfolio button act as a Login button
+	  jQuery("#homeBanner button").on( "click", function() {
+			jQuery("#qsLoginBtn").click(); 
+	  });
   }
 });
 
@@ -410,7 +414,7 @@ $(window).on('load', function () {
 /////// Navigation and Search ////////
 //////////////////////////////////////
                            
-$(window).on('load', function () {
+/*$(window).on('load', function () {
 
   $('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
@@ -512,7 +516,7 @@ $(window).on('load', function () {
     default:
         break;
   }
-});
+});*/
 
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////
@@ -528,7 +532,7 @@ window.addEventListener('load', function() {
   loginBtn.addEventListener('click', function(e) {
     alert('you clicked me');
     e.preventDefault();
-    localStorage.setItem('redirect_to',AUTH0_REDIRECT_URL);
+    localStorage.setItem('redirect_to',AUTHAUTH0_REDIRECT_URL);
     auth0.authorize();
   });
 });*/
