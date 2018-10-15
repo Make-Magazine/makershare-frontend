@@ -9,7 +9,6 @@
 	flex-wrap: wrap;
 }
 
-
 .card-wrapper {
   min-height: calc(100% + 2rem);
   margin-bottom: 4rem;
@@ -17,6 +16,7 @@
   app-project-card, app-company-card, app-showcase-gen-card, app-showcase-card, app-mission-card, app-maker-card {
     min-width: 100%; //this may be bad
     display: flex;
+	 border: solid 1px #ccc;
     * {
       overflow: visible !important;
     }
