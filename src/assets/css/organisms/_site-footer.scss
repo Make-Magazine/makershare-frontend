@@ -4,6 +4,11 @@
 		display: flex !important;
 		flex-wrap: wrap;
 	}
+	.newsletter-footer form {
+		input[type="email"] {
+			padding-bottom: 4px;
+		}
+	}
 	.magazine-footer {
 		img.float-right {
 			float: none !important;
