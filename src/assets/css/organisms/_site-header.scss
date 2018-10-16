@@ -162,7 +162,7 @@ header.universal-nav {
     }
     img { width: 134px; }
   }
-}
+} */
 
 .universal-nav.main-nav-scrolled .hide-mobile {
     position: fixed;
@@ -171,7 +171,7 @@ header.universal-nav {
         right: 93px;
     }
 }
-*/
+
 
 .nav-level-1-auth {
   position: absolute;
@@ -219,13 +219,14 @@ header.universal-nav {
       float: left; 
       position: relative; 
       z-index: 999; 
-      top: 63px;
+      top: 42px;
       @media screen and (max-width: 991px) {
           display: none;
       }
       .add-project-header-button {
           background: none;
           font-size: 28px;
+			 color: #fff;
           &:hover, &:focus, &:active {
               background: none;
               color: #fff;
@@ -237,15 +238,17 @@ header.universal-nav {
   }
   #profile-view {
       padding-left: 15px; 
+	   display: block !important;
 	   @media screen and (max-width: 991px) {
     		margin-top: -13px;
   	   }
       #dropdownMenuLink, #userMenu {
           position: relative;
-          z-index: 98;
+          z-index: 1001;
           opacity: 1;
           background: transparent;
           border: none;
+			 line-height: normal !important;
           &:active {
               box-shadow: none;
               -webkit-box-shadow: none;
@@ -289,7 +292,7 @@ header.universal-nav {
             color: #ED1C24;
             font-size: 36px;
             position: absolute;
-            top: 33px;
+            top: 33px !important;
             left: 35%;
             border: none;
             @media screen and (min-width: 568px) and (max-width: 768px) {
@@ -341,7 +344,7 @@ header.universal-nav {
           }
           a, #qsLogoutBtn {
               margin-bottom: 15px;
-              margin-top: 20px;
+              margin-top: 0px;
               font-size: 16px;
               padding: 0px;
               font-weight: 400;
