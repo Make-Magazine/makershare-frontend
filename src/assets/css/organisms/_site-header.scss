@@ -9,7 +9,7 @@
 		}
 	}
 	.bs-tooltip-top {
-		margin-top: -30px;
+		margin-top: -40px;
 	}
 	#nav-flyout {
 		@media screen and (max-width: 768px) and (min-width: 574px) {
@@ -24,6 +24,7 @@
 				}
 			}
 		}
+		strong { font-family: "Roboto Bold"; }
 	}
 }
 
