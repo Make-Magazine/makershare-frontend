@@ -1,5 +1,4 @@
 #universal-nav {
-	container { padding: 0px; }
 	.nav-level-1 .nav-level-1-nav {
 		margin-left: 160px;
 		@media screen and (max-width: 1199px) and (min-width: 992px) {
@@ -11,6 +10,20 @@
 	}
 	.bs-tooltip-top {
 		margin-top: -30px;
+	}
+	#nav-flyout {
+		@media screen and (max-width: 768px) and (min-width: 574px) {
+			.container { width: 680px; }
+		}
+		a.expanding-underline {
+			display: flex;
+			h3 {
+				padding-bottom: 8px;
+				&::after {
+					bottom: 0px;
+				}
+			}
+		}
 	}
 }
 
@@ -167,17 +180,6 @@ header.universal-nav {
   }
 } */
 
-.universal-nav.main-nav-scrolled {
-  .hide-mobile {
-    position: fixed;
-    top: 12px;
-	  .add-project-header-button {
-		  position: relative;
-		  left: -20px;
-	  }
-  }
-}
-
 
 .nav-level-1-auth {
   position: absolute;
@@ -215,9 +217,9 @@ header.universal-nav {
   }
   #qsLoginBtn { 
       display: none; 
-      margin-top: -50px;
+      margin-top: -25px;
       color: red;
-      font-weight: 700;
+      font-weight: 500;
       font-size: 16px;
       font-family: $font-roboto-bold, serif;
   }
@@ -349,7 +351,7 @@ header.universal-nav {
                     text-align: left;
                 }
           }
-          a, #qsLogoutBtn {
+          a {
               margin-bottom: 5px !important;
               margin-top: 0px !important;
               font-size: 16px;
@@ -361,6 +363,15 @@ header.universal-nav {
               width: 41%;
               color: #333;
               font-size: 16px;
+				 .list-group {
+					 margin-top: 20px;
+					 .view-all { 
+						 color: #00AEEF;
+						 &:hover {
+							 color: #262626;
+						 }
+					 }
+				 }
           }
       }
   }
@@ -376,6 +387,9 @@ header.universal-nav {
       &:hover {
           opacity: 1;
       }
+	  &.logout {
+		  color: #333 !important;
+	  }
   }
 }
 
@@ -866,19 +880,31 @@ header.universal-nav {
 #hamburger-text { font-size: 16px; }
 
 // Nav Level 2
-.universal-nav.main-nav-scrolled .nav-level-2 {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 96;
-}
-.universal-nav.main-nav-scrolled .search-button {
+
+.universal-nav.main-nav-scrolled {
+  .hide-mobile {
+    position: fixed;
+    top: 12px;
+	  .add-project-header-button {
+		  position: relative;
+		  left: -20px;
+	  }
+  }
+  .search-button {
     top: 5px;
     right: -16px;
     position: absolute;
     z-index: 999;
     transform: translate(-50%);
+  }
+  .nav-level-2 {
+	  position: fixed;
+	  width: 100%;
+	  top: 0;
+	  z-index: 96;
+	}
 }
+
 .nav-level-2 {
   height: 55px;
   background-color: #333;

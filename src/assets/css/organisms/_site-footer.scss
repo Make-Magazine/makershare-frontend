@@ -45,7 +45,7 @@
 	.btn-red { 
 		padding: 15px 50px; 
 		@media screen and (max-width: 991px) {
-			width: 65%;
+			width: 65% !important;
 		}
 	}
 	.bottom-footer .footer-copyright {
