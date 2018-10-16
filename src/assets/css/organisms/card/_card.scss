@@ -3,12 +3,6 @@
 @import "variables";
 // ///////////////////
 
-// add flexbox to row since we're changing from bootstrap 4 to 3
-.row {
-	display: flex;
-	flex-wrap: wrap;
-	clear: both;
-}
 
 .card-wrapper {
   min-height: calc(100% + 2rem);
@@ -17,7 +11,6 @@
   app-project-card, app-company-card, app-showcase-gen-card, app-showcase-card, app-mission-card, app-maker-card {
     min-width: 100%; //this may be bad
     display: flex;
-	 border: solid 1px #ccc;
     * {
       overflow: visible !important;
     }

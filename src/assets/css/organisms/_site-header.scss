@@ -1,3 +1,23 @@
+#universal-nav {
+	container { padding: 0px; }
+	.nav-level-1 .nav-level-1-nav {
+		margin-left: 160px;
+		@media screen and (max-width: 1199px) and (min-width: 992px) {
+			margin-left: 88px;
+		}
+		@media screen and (max-width: 991px) and (min-width: 768px) {
+			margin-left: 76px;
+		}
+	}
+}
+
+#nav-level-2 .container {
+	.nav-2-banner {
+		margin-left: 50px;
+		display: flex;
+	}
+}
+
 // Nav Level 1
 /*
 header.universal-nav {
@@ -944,7 +964,7 @@ header.universal-nav {
 .search-button {
     position: relative;
     right: 0%;
-    top: -40px;
+    top: 5px;
     @media screen and (min-width: 768px) and (max-width: 991px) {
         right: -2%;
     }

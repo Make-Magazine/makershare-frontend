@@ -414,7 +414,7 @@ jQuery(window).on('load', function () {
 /////// Navigation and Search ////////
 //////////////////////////////////////
                            
-/*$(window).on('load', function () {
+$(window).on('load', function () {
 
   $('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
     $('#hamburger-icon').toggleClass('open');
@@ -516,7 +516,75 @@ jQuery(window).on('load', function () {
     default:
         break;
   }
-});*/
+});
+
+// Newsletter code
+// When you submit a newsletter
+jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
+  e.preventDefault();
+  	var bla = jQuery('#wc-email').val();
+	jQuery.post('https://secure.whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
+	jQuery('.fancybox-thx').trigger('click');
+	jQuery("#wc-email").val("");
+	jQuery('.nl-modal-email-address').text(bla);
+	jQuery('.whatcounts-signup2 #email').val(bla);
+	jQuery(".newsletter-footer").removeClass("scrolling");
+	localStorage.setItem("newsletterClosed", "yes");
+	toggledClosed = true;
+});
+
+var toggledClosed = false;
+
+jQuery(document).ready(function(){
+  if(!localStorage.newsletterClosed && !jQuery('html').hasClass('mobile')) {
+	  var footerHeight = jQuery(".universal-footer").height();
+	  jQuery(".newsletter-footer").addClass("scrolling");
+	  jQuery(window).on('resize', function(){
+		  footerHeight = jQuery(".universal-footer").height();
+	  });
+	  jQuery(document).scroll(function() {
+			if (toggledClosed == false && (window.innerHeight + window.pageYOffset + (jQuery(".universal-footer").height() - jQuery(".newsletter-footer").innerHeight())) <= document.body.offsetHeight - 25) {		
+			  jQuery(".newsletter-footer").addClass("scrolling");
+			} else  {
+			  jQuery(".newsletter-footer").removeClass("scrolling");
+			}
+	  });
+  }
+
+  //get current year for footer, if we could include a php file from a different domain, we'd do it that way
+  var currentYear = (new Date()).getFullYear();
+  jQuery(".footer-copyright .current-year").text(currentYear);
+	
+  jQuery(".close-newsletter").on('click', function(){
+	  jQuery(".newsletter-footer").removeClass("scrolling");
+	  localStorage.setItem("newsletterClosed", "yes");
+	  toggledClosed = true;
+  });
+	
+});
+
+jQuery(document).ready(function(jQuery){
+  // Thank you modal with more newsletter options
+  jQuery(".fancybox-thx").fancybox({
+    autoSize : false,
+    width  : 400,
+    autoHeight : true,
+    padding : 0,
+    afterLoad   : function() {
+      this.content = this.content.html();
+    }
+  });
+  // reCAPRCHA error message
+  jQuery(".nl-modal-error").fancybox({
+    autoSize : false,
+    width  : 250,
+    autoHeight : true,
+    padding : 0,
+    afterLoad   : function() {
+      this.content = this.content.html();
+    }
+  });
+});
 
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////
