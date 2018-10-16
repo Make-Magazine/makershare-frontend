@@ -9,6 +9,9 @@
 			margin-left: 76px;
 		}
 	}
+	.bs-tooltip-top {
+		margin-top: -20px;
+	}
 }
 
 #nav-level-2 .container {
@@ -164,10 +167,11 @@ header.universal-nav {
   }
 } */
 
-.universal-nav.main-nav-scrolled .hide-mobile {
+.universal-nav.main-nav-scrolled {
+  .hide-mobile {
     position: fixed;
     top: 12px;
-    right: 65px;
+  }
 }
 
 
