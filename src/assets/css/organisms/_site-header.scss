@@ -167,9 +167,7 @@ header.universal-nav {
 .universal-nav.main-nav-scrolled .hide-mobile {
     position: fixed;
     top: 12px;
-    .add-project-header-button {
-        right: 93px;
-    }
+    right: 65px;
 }
 
 
@@ -219,7 +217,8 @@ header.universal-nav {
       float: left; 
       position: relative; 
       z-index: 999; 
-      top: 42px;
+      top: 62px;
+	   height: auto;
       @media screen and (max-width: 991px) {
           display: none;
       }
@@ -227,9 +226,9 @@ header.universal-nav {
           background: none;
           font-size: 28px;
 			 color: #fff;
+			 opacity: 1;
           &:hover, &:focus, &:active {
               background: none;
-              color: #fff;
           }
       }
       .bs-tooltip-top {
@@ -857,14 +856,6 @@ header.universal-nav {
 }*/
 
 #hamburger-text { font-size: 16px; }
-
-#qsLoginBtn { 
-      display: none; 
-      color: red;
-      font-weight: 700;
-      font-size: 16px;
-      font-family: $font-roboto-bold, serif;
-}
 
 // Nav Level 2
 .universal-nav.main-nav-scrolled .nav-level-2 {
