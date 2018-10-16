@@ -10,7 +10,7 @@
 		}
 	}
 	.bs-tooltip-top {
-		margin-top: -20px;
+		margin-top: -30px;
 	}
 }
 
@@ -171,6 +171,10 @@ header.universal-nav {
   .hide-mobile {
     position: fixed;
     top: 12px;
+	  .add-project-header-button {
+		  position: relative;
+		  left: -20px;
+	  }
   }
 }
 
