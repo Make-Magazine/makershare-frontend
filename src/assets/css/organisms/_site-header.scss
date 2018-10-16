@@ -209,7 +209,7 @@ header.universal-nav {
   }
   #qsLoginBtn { 
       display: none; 
-      margin-top: -25px;
+      margin-top: -50px;
       color: red;
       font-weight: 700;
       font-size: 16px;
@@ -343,7 +343,7 @@ header.universal-nav {
                 }
           }
           a, #qsLogoutBtn {
-              margin-bottom: 15px;
+              margin-bottom: 5px !important;
               margin-top: 0px;
               font-size: 16px;
               padding: 0px;
@@ -360,9 +360,9 @@ header.universal-nav {
   // ye olde version
   .nav-link {
       font-size: 16px;
-      margin-top: 5px;
+      margin-top: 0px !important;
       opacity:.6;
-      color: #333 !important;
+      color: #000 !important;
       @media screen and (min-width: 1275px) {
           margin-top: 5px;
       }
