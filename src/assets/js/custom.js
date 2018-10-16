@@ -516,6 +516,11 @@ $(window).on('load', function () {
     default:
         break;
   }
+	
+	// fix nav to top on scrolldown, stay fixed for transition from mobile to desktop
+		if (jQuery(window).width() < 578) {
+			jQuery(".auth-target").append(jQuery(".nav-level-1-auth"));
+		}
 });
 
 // Newsletter code

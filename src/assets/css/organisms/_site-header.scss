@@ -17,6 +17,9 @@
 		}
 		a.expanding-underline {
 			display: flex;
+			@media screen and (max-width: 768px) {
+				margin-top: 0px;
+			}
 			h3 {
 				padding-bottom: 8px;
 				&::after {
@@ -25,6 +28,12 @@
 			}
 		}
 		strong { font-family: "Roboto Bold"; }
+		.auth-target {
+			.nav-level-1-auth {
+				position: relative;
+				margin-top: 45px;
+			}
+		}
 	}
 }
 
@@ -218,11 +227,11 @@ header.universal-nav {
   }
   #qsLoginBtn { 
       display: none; 
-      margin-top: -25px;
+      margin-top: -50px;
       color: red;
       font-weight: 500;
       font-size: 16px;
-      font-family: $font-roboto-bold, serif;
+      font-family: $font-roboto-bold, sans-serif;
   }
   .hide-mobile { 
       float: left; 
