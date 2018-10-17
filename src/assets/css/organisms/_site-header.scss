@@ -39,8 +39,11 @@
 
 #nav-level-2 .container {
 	.nav-2-banner {
-		margin-left: 50px;
+		margin-left: -40px;
 		display: flex;
+		@media screen and (max-width: 991px) {
+			margin-left: 0px;
+		}
 	}
 }
 

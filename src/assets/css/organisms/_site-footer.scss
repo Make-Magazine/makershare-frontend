@@ -52,6 +52,9 @@
 		@media screen and (max-width: 991px) {
 			width: 65% !important;
 		}
+		@media screen and (max-width: 400px) {
+    		width: 100% !important;
+		}
 	}
 	.bottom-footer .footer-copyright {
 		font-family: "Roboto";
