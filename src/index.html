@@ -10,8 +10,7 @@
   <meta name="og:image" content="https://preview-manage.makershare.com/assets/images/logos/maker-share-logo-clr@2x-100.jpg.jpg">
     
   <link rel="icon" type="image/x-icon" href="assets/images/icons/m-favicon.ico?v=2">
-  <!-- <link rel="stylesheet" href="assets/css/libs/bootstrap.min.css"> trying to update bootstrap version -->
-  <link rel="stylesheet" id="bootstrap-css-css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ver=all" type="text/css" media="all">
+  <link rel="stylesheet" href="assets/css/libs/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="assets/css/libs/slick.css"> -->
   <!-- <link rel="stylesheet" href="assets/css/libs/slick-theme.css" /> -->
@@ -20,6 +19,7 @@
   <link rel="stylesheet" href="assets/css/libs/linear-style.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/libs/sweetalert.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.6/css/jquery.fancybox.min.css">
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <!--  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -60,9 +60,24 @@
   <!--<script src="assets/js/epubjs/reader/js/hooks.min.js"></script>-->
   <!-- <script src="assets/js/epubjs/reader/js/reader.min.js"></script> -->
   <!--<script src="assets/js/epubjs/reader/js/libs/screenfull.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.6/js/jquery.fancybox.min.js"></script>
   <script src="assets/js/custom.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript" src="https://make.co/wp-content/themes/memberships/universal-nav/js/min/universal.min.js"></script>
+	<div class="fancybox-thx" style="display:none;">
+	  <div class="nl-modal-cont nl-thx-p2 row">
+		 <div class="col-md-4 hidden-sm-down nl-modal">
+			<span class="fa-stack fa-4x">
+			  <i class="fa fa-circle-thin fa-stack-2x"></i>
+			  <i class="fa fa-thumbs-o-up fa-stack-1x"></i>
+			</span>
+		 </div>
+		 <div class="col-md-8 col-sm-12 nl-modal">
+			<h3 style="margin-top:20px;">Awesome!</h3>
+			<p style="color:#333;text-align:center;margin-top:20px;">Thanks for signing up.</p>
+		 </div>
+		 <div class="clearfix"></div>
+	  </div>
+	</div>
 </body>
 
 

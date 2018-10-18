@@ -1,3 +1,52 @@
+#universal-nav {
+	.nav-level-1 .nav-level-1-nav {
+		margin-left: 160px;
+		@media screen and (max-width: 1199px) and (min-width: 992px) {
+			margin-left: 88px;
+		}
+		@media screen and (max-width: 991px) and (min-width: 768px) {
+			margin-left: 76px;
+		}
+	}
+	.bs-tooltip-top {
+		margin-top: -40px;
+	}
+	#nav-flyout {
+		@media screen and (max-width: 768px) and (min-width: 574px) {
+			.container { width: 680px; }
+		}
+		a.expanding-underline {
+			display: flex;
+			@media screen and (max-width: 768px) {
+				margin-top: 0px;
+			}
+			h3 {
+				padding-bottom: 8px;
+				&::after {
+					bottom: 0px;
+				}
+			}
+		}
+		strong { font-family: "Roboto Bold"; }
+		.auth-target {
+			.nav-level-1-auth {
+				position: relative;
+				margin-top: 45px;
+			}
+		}
+	}
+}
+
+#nav-level-2 .container {
+	.nav-2-banner {
+		margin-left: -40px;
+		display: flex;
+		@media screen and (max-width: 991px) {
+			margin-left: 0px;
+		}
+	}
+}
+
 // Nav Level 1
 /*
 header.universal-nav {
@@ -142,15 +191,9 @@ header.universal-nav {
     }
     img { width: 134px; }
   }
-}
+} */
 
-.universal-nav.main-nav-scrolled .hide-mobile {
-    position: fixed;
-    top: 12px;
-    .add-project-header-button {
-        right: 93px;
-    }
-}
+
 .nav-level-1-auth {
   position: absolute;
   right: 0px;
@@ -187,26 +230,28 @@ header.universal-nav {
   }
   #qsLoginBtn { 
       display: none; 
-      margin-top: -25px;
+      margin-top: -50px;
       color: red;
-      font-weight: 700;
+      font-weight: 500;
       font-size: 16px;
-      font-family: $font-roboto-bold, serif;
+      font-family: $font-roboto-bold, sans-serif;
   }
   .hide-mobile { 
       float: left; 
       position: relative; 
       z-index: 999; 
-      top: 63px;
+      top: 62px;
+	   height: auto;
       @media screen and (max-width: 991px) {
           display: none;
       }
       .add-project-header-button {
           background: none;
           font-size: 28px;
+			 color: #fff;
+			 opacity: 1;
           &:hover, &:focus, &:active {
               background: none;
-              color: #fff;
           }
       }
       .bs-tooltip-top {
@@ -215,15 +260,17 @@ header.universal-nav {
   }
   #profile-view {
       padding-left: 15px; 
+	   display: block !important;
 	   @media screen and (max-width: 991px) {
     		margin-top: -13px;
   	   }
       #dropdownMenuLink, #userMenu {
           position: relative;
-          z-index: 98;
+          z-index: 1001;
           opacity: 1;
           background: transparent;
           border: none;
+			 line-height: normal !important;
           &:active {
               box-shadow: none;
               -webkit-box-shadow: none;
@@ -267,7 +314,7 @@ header.universal-nav {
             color: #ED1C24;
             font-size: 36px;
             position: absolute;
-            top: 33px;
+            top: 33px !important;
             left: 35%;
             border: none;
             @media screen and (min-width: 568px) and (max-width: 768px) {
@@ -317,9 +364,9 @@ header.universal-nav {
                     text-align: left;
                 }
           }
-          a, #qsLogoutBtn {
-              margin-bottom: 15px;
-              margin-top: 20px;
+          a {
+              margin-bottom: 5px !important;
+              margin-top: 0px !important;
               font-size: 16px;
               padding: 0px;
               font-weight: 400;
@@ -329,23 +376,37 @@ header.universal-nav {
               width: 41%;
               color: #333;
               font-size: 16px;
+				 .list-group {
+					 margin-top: 20px;
+					 .view-all { 
+						 color: #00AEEF;
+						 &:hover {
+							 color: #262626;
+						 }
+					 }
+				 }
           }
       }
   }
   // ye olde version
   .nav-link {
       font-size: 16px;
-      margin-top: 5px;
+      margin-top: 0px !important;
       opacity:.6;
-      color: #333 !important;
+      color: #000 !important;
       @media screen and (min-width: 1275px) {
           margin-top: 5px;
       }
       &:hover {
           opacity: 1;
       }
+	  &.logout {
+		  color: #333 !important;
+	  }
   }
 }
+
+/*
 @media screen and (max-width: 767px) {
     #page-content .front-page.container{
         margin-top: 55px;
@@ -831,28 +892,32 @@ header.universal-nav {
 
 #hamburger-text { font-size: 16px; }
 
-#qsLoginBtn { 
-      display: none; 
-      color: red;
-      font-weight: 700;
-      font-size: 16px;
-      font-family: $font-roboto-bold, serif;
-}
-
 // Nav Level 2
-.universal-nav.main-nav-scrolled .nav-level-2 {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 96;
-}
-.universal-nav.main-nav-scrolled .search-button {
+
+.universal-nav.main-nav-scrolled {
+  .hide-mobile {
+    position: fixed;
+    top: 12px;
+	  .add-project-header-button {
+		  position: relative;
+		  left: -20px;
+	  }
+  }
+  .search-button {
     top: 5px;
     right: -16px;
     position: absolute;
     z-index: 999;
     transform: translate(-50%);
+  }
+  .nav-level-2 {
+	  position: fixed;
+	  width: 100%;
+	  top: 0;
+	  z-index: 96;
+	}
 }
+
 .nav-level-2 {
   height: 55px;
   background-color: #333;
@@ -944,7 +1009,7 @@ header.universal-nav {
 .search-button {
     position: relative;
     right: 0%;
-    top: -40px;
+    top: 5px;
     @media screen and (min-width: 768px) and (max-width: 991px) {
         right: -2%;
     }

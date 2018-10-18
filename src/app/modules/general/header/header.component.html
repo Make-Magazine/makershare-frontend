@@ -40,7 +40,7 @@
         </li>
       </ul>
       <a href="https://makezine.com/" class="navbar-brand">
-        <img src="../assets/images/Make_logo.svg" class="img-responsive" alt="Make: brand logo">
+        <img src="../assets/images/Make_logo.svg" class="img-fluid" alt="Make: brand logo">
       </a>
 
       <ul class="nav-level-1-auth">
@@ -54,6 +54,7 @@
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
         </li>
+			
         <li class="nav-item" id="profile-view" *ngIf="auth.authenticated()">
           <div ngbDropdown
                class="dropdown dropdownMenuLink sub-nav user-menu">
@@ -112,12 +113,12 @@
               </li>
               <li class="dropdown-item">
                 <a href="https://make.co/myaccount">
-                    <span class="nav-link">My Account</span>
+                    <span class="nav-link">My Member Account</span>
                 </a>
               </li>
               <li class="dropdown-item">
                 <button (click)="auth.logout()">
-                    <span class="nav-link">Logout</span>
+                    <span class="nav-link logout">Logout</span>
                 </button>
               </li>
               <li class="dropdown-item">
@@ -201,7 +202,6 @@
             <li id="nav-item" class="nav-item second-nav-banner"><a title="MakerShare" [routerLink]="['/']"><span><img src="../assets/images/maker-share-logo.jpg" /></span></a></li>
             <li id="nav-item" class="nav-item"><a title="Showcases" [routerLink]="['showcases']"><span>Showcases</span></a></li>
             <li id="nav-item" class="nav-item"><a title="Missions" [routerLink]="['missions']"><span>Missions</span></a></li>
-				<li id="nav-item" class="nav-item"><a title="Jobs" href="https://make.co/job-board"><span>Jobs</span></a></li>
           </ul>
           <ul class="search-button">
             <li class="nav-item">
@@ -220,7 +220,7 @@
      <div class="container">
         <div class="nav-flyout-logo">
           <a href="https://makezine.com/" class="navbar-brand">
-            <img src="https://make.co/wp-content/themes/memberships/img/make_logo.svg" class="img-responsive" alt="Make: brand logo" />
+            <img src="https://make.co/wp-content/themes/memberships/img/make_logo.svg" class="img-fluid" alt="Make: brand logo" />
             <h2>We are all makers</h2>
           </a>
         </div>
@@ -232,7 +232,7 @@
 				 <img class="nav-close-icon" src="https://make.co/wp-content/themes/memberships/img/cross-circle.svg" alt="Nav close icon">
 			  </a>
 			  <ul class="nav-flyout-ul">
-				 <li class="hidden-sm hidden-md hidden-lg">
+				 <li class="hidden-md-up">
 					<a href="https://makezine.com/">
 					  <span title="Make Magazine Home">Make Magazine Home</span>
 					</a>
@@ -286,7 +286,7 @@
 				 <img class="nav-close-icon" src="https://make.co/wp-content/themes/memberships/img/cross-circle.svg" alt="Nav close icon">
 			  </a>
 			  <ul class="nav-flyout-ul">
-				 <li class="hidden-sm hidden-md hidden-lg">
+				 <li class="hidden-md-up">
 					<a href="https://makerfaire.com/">
 					  <span title="Maker Faire Home">Maker Faire Home</span>
 					</a>
@@ -335,7 +335,7 @@
 				 <img class="nav-close-icon" src="https://make.co/wp-content/themes/memberships/img/cross-circle.svg" alt="Nav close icon">
 			  </a>
 			  <ul class="nav-flyout-ul">
-				  <li class="hidden-sm hidden-md hidden-lg">
+				  <li class="hidden-md-up">
 					<a target="_blank" href="https://www.makershed.com//">
 					  <span title="Maker Shed Home">Maker Shed Home</span>
 					</a>
@@ -389,7 +389,7 @@
 				 <img class="nav-close-icon" src="https://make.co/wp-content/themes/memberships/img/cross-circle.svg" alt="Nav close icon">
 			  </a>
 			  <ul class="nav-flyout-ul">
-				 <li class="hidden-sm hidden-md hidden-lg">
+				 <li class="hidden-md-up">
 					<a href="https://makeshare.com/">
 					  <span title="Maker Share Home">Maker Share Home</span>
 					</a>
@@ -438,7 +438,7 @@
 				 <img class="nav-close-icon" src="https://make.co/wp-content/themes/memberships/img/cross-circle.svg" alt="Nav close icon">
 			  </a>
 			  <ul class="nav-flyout-ul">
-				 <li class="hidden-xs hidden-sm hidden-md hidden-lg"><!-- never really necessary to show because Memberships links to the same place -->
+				 <li class="hidden-md-up"><!-- never really necessary to show because Memberships links to the same place -->
 					<a href="https://make.co/">
 					  <span title="Make.co">Make.co</span>
 					</a>

@@ -3,12 +3,6 @@
 @import "variables";
 // ///////////////////
 
-// add flexbox to row since we're changing from bootstrap 4 to 3
-.row {
-	display: flex;
-	flex-wrap: wrap;
-}
-
 
 .card-wrapper {
   min-height: calc(100% + 2rem);

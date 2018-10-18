@@ -1,6 +1,100 @@
-.universal-footer .bottom-footer .footer-copyright {
-    font-family: Roboto;
+.universal-footer {
+	position: relative;
+	.row { 
+		width: 100%; 
+		display: flex !important;
+		flex-wrap: wrap;
+	}
+	.newsletter-footer form {
+		input[type="email"] {
+			padding-bottom: 4px;
+		}
+	}
+	.magazine-footer {
+		img.float-right {
+			float: none !important;
+			display: flex;
+			width: 100%;
+			@media screen and (max-width: 991px) {
+				width: 430px !important;
+			}
+		}
+	}
+	.bottom-footer {
+		.footer-legal {
+			padding: 0px;
+		}
+		@media screen and (max-width: 768px) {
+			.footer-legal {
+				position: relative;
+				top: -30px;
+				padding-left: 20px
+			}
+		   .footer-copyright {
+				position: relative;
+				top: 30px;
+				padding-left: 20px;
+			}
+		}
+	}
+	.link-footer .container {
+		.footer-branding {
+			margin-top: 20px !important;
+			margin-bottom: 30px;
+			@media screen and (min-width: 1290px) {
+				margin-top: 65px;
+				img { margin-bottom: 0px; }
+			}
+		}
+	}
+	hr { margin-left: -150px !important; }
+	.btn-red { 
+		padding: 15px 50px; 
+		@media screen and (max-width: 991px) {
+			width: 65% !important;
+		}
+		@media screen and (max-width: 400px) {
+    		width: 100% !important;
+		}
+	}
+	.bottom-footer .footer-copyright {
+		font-family: "Roboto";
+	}  
+	.col-sm-offset-2 {
+		@media screen and (min-width: 768px) {
+			padding-left: 16.66666667%;
+		}
+	}
+	.col-md-offset-2 {
+		@media screen and (min-width: 992px) {
+			padding-left: 16.66666667%;
+		}
+	}
+	@media screen and (max-width: 576px) {
+		.col-sm-5 {
+			 -webkit-box-flex: 0;
+			 -webkit-flex: 0 0 41.666667%;
+			 -ms-flex: 0 0 41.666667%;
+			 flex: 0 0 41.666667%;
+			 max-width: 41.666667%;
+		}
+		.col-sm-7 {
+			 -webkit-box-flex: 0;
+			 -webkit-flex: 0 0 58.333333%;
+			 -ms-flex: 0 0 58.333333%;
+			 flex: 0 0 58.333333%;
+			 max-width: 58.333333%;
+		}
+		.col-sm-4 {
+			  -webkit-box-flex: 0;
+			 -webkit-flex: 0 0 33.333333%;
+			 -ms-flex: 0 0 33.333333%;
+			 flex: 0 0 33.333333%;
+			 max-width: 33.333333%;
+		}
+	}
 }
+
 /*footer {
   padding-top: 25px;
   padding-bottom: 25px;

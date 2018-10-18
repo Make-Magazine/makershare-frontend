@@ -19,14 +19,14 @@
 				<div id="recapcha-panel" class="g-recaptcha" data-size="invisible" style=""><div class="grecaptcha-badge" data-style="bottomright" style="visibility: hidden; width: 256px; height: 60px; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; top: 62px;" data-sumo-smart-bar-data="{&quot;originalInlineStyles&quot;:{&quot;top&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;14px&quot;,&quot;marginTop&quot;:&quot;&quot;,&quot;marginBottom&quot;:&quot;&quot;},&quot;originalOffset&quot;:{&quot;top&quot;:&quot;auto&quot;,&quot;bottom&quot;:&quot;14px&quot;},&quot;originalOffsetTop&quot;:0,&quot;originalTransition&quot;:&quot;&quot;,&quot;originalInlineTransition&quot;:&quot;right 0.3s ease 0s&quot;,&quot;originalMarginTop&quot;:&quot;0px&quot;,&quot;originalMarginBottom&quot;:&quot;0px&quot;}"><div class="grecaptcha-logo"><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lf_-kEUAAAAAHtDfGBAleSvWSynALMcgI1hc_tP&amp;co=aHR0cHM6Ly9tYWtlcmZhaXJlLmNvbTo0NDM.&amp;hl=en&amp;v=v1531759913576&amp;size=invisible&amp;cb=2araqksnp13q" role="presentation" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" width="256" height="60" frameborder="0"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; "></textarea></div></div>
 				<input name="multiadd" value="1" type="hidden">
 				<div class="row row-eq-height">
-					<div class="newsletter-section col-xs-12 col-sm-6">
+					<div class="newsletter-section col-sm-12 col-md-6">
 						<h3>Sign up for the Maker Share newsletter</h3>
 						<!--<p class="more-details">For Make: Members &mdash; thoughts on how makers earn, learn, and live, plus new platform updates and exclusive members-only content</p>-->
 						
 					</div>
-					<div class="newsletter-section col-xs-12 col-sm-6 align-middle">
+					<div class="newsletter-section col-sm-12 col-md-6 align-middle">
 						<div class="row row-eq-height" style="width:100%">
-							<div class="col-xs-12 col-sm-offset-2 col-sm-10 align-middle">
+							<div class="col-xs-12 col-sm-offset-2 col-sm-12 align-middle">
 								<input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required="" type="email">
 								<input class="form-control btn-w-ghost" value="Go" type="submit">
 							</div>
@@ -39,12 +39,13 @@
 	
 	<section class="magazine-footer">
 		<div class="container">
-			<div class="col-md-5 col-sm-12">
+		  <div class="row">
+			<div class="col-lg-5 col-md-12">
 				<!-- this will eventually have to just be the live version of the image -->
-				<img class="img-responsive float-right" src="https://make.co/wp-content/themes/memberships/img/make-magazine-covers.png?ver=100218c">
+				<img class="img-fluid float-right" src="https://make.co/wp-content/themes/memberships/img/make-magazine-covers.png?ver=100218c">
 			</div>
-			<div class="col-md-5 col-md-offset-2 col-sm-12">
-				<ul class="hidden-sm hidden-xs">
+			<div class="col-lg-5 col-md-offset-2 col-md-12">
+				<ul class="hidden-md-down">
 					<li>Dozens of projects in every issue covering Robots, Drones, 3D printing, craft and more</li>
 					<li>Tips and skill-building tutorials with inspiration from the leaders of the maker community</li>
 					<li>Save over 40% off the annual cover price!</li>
@@ -52,21 +53,24 @@
 				</ul>
 				<a href="https://readerservices.makezine.com/mk/default.aspx?pc=MK&amp;pk=M8JMKZ" class="btn btn-red" target="_blank">SUBSCRIBE TO MAKE: MAGAZINE</a>
 			</div>
+		  </div>
 		</div>
 	</section>
    <section class="link-footer">
 		<div class="container">
-			<div class="footer-branding col-md-4 hidden-sm hidden-xs">
-				<a href="https://make.co">
-					<img src="https://make.co/wp-content/themes/memberships/img/make_logo.svg" class="img-responsive" alt="Make: brand logo">
+		  <div class="row">
+			<div class="footer-branding col-lg-4 hidden-md-down">
+				<a href="https://make.co" style="display:flex;">
+					<img src="https://make.co/wp-content/themes/memberships/img/make_logo.svg" class="img-fluid" alt="Make: brand logo">
 				</a>
 				<span>Producers of</span>
 				<a href="https://makerfaire.com">
-					<img src="https://make.co/wp-content/themes/memberships/img/Maker_Faire_Logo.svg" class="img-responsive" alt="Maker Faire Logo">
+					<img src="https://make.co/wp-content/themes/memberships/img/Maker_Faire_Logo.svg" class="img-fluid" alt="Maker Faire Logo" style="margin-top:-10px;">
 				</a>
 			</div>
-			<div class="footer-links col-md-8 col-sm-12">
-				<div class="col-md-4 col-sm-3 col-xs-5">
+			<div class="footer-links col-lg-8 col-md-12">
+			  <div class="row">
+				<div class="col-lg-4 col-md-3 col-sm-5">
 					<ul>
 						<li><a href="https://makermedia.com">About us</a></li>
 						<li><a href="https://makermedia.com/our-team">Our team</a></li>
@@ -75,7 +79,7 @@
 						<li><a href="https://makermedia.com/contact">Contact us</a></li>
 					</ul>
 				</div>
-				<div class="faire-links col-md-4 col-sm-4 col-xs-7">
+				<div class="faire-links col-lg-4 col-md-4 col-sm-7">
 					<ul>
 						<li><a href="https://makezine.com/join">Newsletters</a></li>
 						<li><a href="https://makerfaire.com/media-center">Press center</a></li>
@@ -84,8 +88,8 @@
 						<li><a href="https://makerfaire.com/map">Find a Maker Faire</a></li>
 					</ul>
 				</div>
-				<div class="footer-social col-md-4 col-sm-5 col-xs-12">
-					<hr class="hidden-lg hidden-md hidden-sm">
+				<div class="footer-social col-lg-4 col-md-5 col-sm-12">
+					<hr class="hidden-md-up">
 					<div class="footer-social-section">
 						<span class="footer-label">Make:</span>
 						<ul>
@@ -105,22 +109,28 @@
 						</ul>
 					</div>
 				</div>
+			  </div>
 			</div>
+		  </div>
 		</div>
 	</section>
 	<section class="bottom-footer">
 		<div class="container">
-			<div class="col-lg-9 col-md-8 col-sm-7 col-xs-12 footer-legal">
-			   <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+		  <div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12 footer-copyright">
+				<span>©2004 - <span class="current-year">2018</span> Maker Media, Inc. All rights reserved</span>
+			</div>
+			<div class="col-lg-8 col-md-6 col-sm-12 footer-legal">
+			  <div class="row">
+			   <div class="col-lg-3 col-md-5 col-sm-4 col-xs-4">
 					<a href="https://makermedia.com/privacy/">Privacy Policy</a>
 				</div>
 				<div class="col-xs-4">
 					<a href="https://makermedia.com/terms/">Terms of Use</a>
 				</div>
+			  </div>
 			</div>
-			<div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 footer-copyright">
-				<span>©2004 - <span class="current-year">2018</span> Maker Media, Inc. All rights reserved</span>
-			</div>
+		  </div>
 		</div>
 	</section>
 </footer>
