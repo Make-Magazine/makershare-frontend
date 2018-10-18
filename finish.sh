@@ -10,7 +10,7 @@ echo "Dir = $RDIR";
 
 ## Ensure the links exists
 if [ ! -L "dist/learning" ]; then
-  if [ "$RDIR" =~ "preview.makershare" ]; then
+  if [[ "$RDIR" =~ "preview.makershare.com" ]]; then
     ln -s /home/jazminel/public_html/preview-learning/_site dist/learning
     echo "Directory Preview";
   else
