@@ -15,11 +15,17 @@
             margin-top: 10px;
 		}
 	}
+	.card.mission.wide {
+		@media screen and (max-width: 768px) {
+			height: 11.5rem;
+			padding-bottom: 5rem;
+		}
+	}
 
 	.card.wide {
 		.info-bottom {
-            margin-top: 20px;
-            width: 85%;
+         margin-top: 20px;
+         width: 85%;
 			position: relative;
             padding: 3.5rem 1rem !important;
 		}
@@ -43,7 +49,7 @@
 		}
 		.social-stat-group {
             left: 20px;
-            top: 200px;
+            top: 300px;
             @media screen and (min-width: 768px) and (max-width: 968px) {
                 display:none;
             }
