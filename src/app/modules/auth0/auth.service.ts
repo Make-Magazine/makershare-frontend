@@ -45,7 +45,9 @@ export class Auth {
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
-          }
+          } else {
+			   logout();
+			 }
         } else if (err) {
           console.log(err);
         }
