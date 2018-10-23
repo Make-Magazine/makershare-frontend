@@ -48,7 +48,9 @@ export class Auth {
           } 
         } else if (err) {
           console.log(err);
-			 this.logout(); 
+			 if(localStorage.getItem('user_photo') && localStorage.getItem('user_photo') != '') {
+			 	this.logout(); 
+			}
         }
       }
     );
