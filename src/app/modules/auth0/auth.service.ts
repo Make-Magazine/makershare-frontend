@@ -48,7 +48,7 @@ export class Auth {
           } 
         } else if (err) {
           console.log(err);
-			 if(localStorage.getItem('user_photo') && localStorage.getItem('user_photo') != '') {
+			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
 			 	this.logout(); 
 			}
         }
