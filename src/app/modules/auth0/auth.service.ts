@@ -45,9 +45,12 @@ export class Auth {
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
-          }
+          } 
         } else if (err) {
           console.log(err);
+			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
+			 	this.logout(); 
+			}
         }
       }
     );
