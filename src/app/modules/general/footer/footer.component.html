@@ -16,19 +16,17 @@
 				<input name="custom_url" value="custom_url" type="hidden">
 				<input id="format_mime" name="format" value="mime" type="hidden">
 				<input name="custom_host" value="makeco" type="hidden">
-				<div id="recapcha-panel" class="g-recaptcha" data-size="invisible" style=""><div class="grecaptcha-badge" data-style="bottomright" style="visibility: hidden; width: 256px; height: 60px; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; top: 62px;" data-sumo-smart-bar-data="{&quot;originalInlineStyles&quot;:{&quot;top&quot;:&quot;&quot;,&quot;bottom&quot;:&quot;14px&quot;,&quot;marginTop&quot;:&quot;&quot;,&quot;marginBottom&quot;:&quot;&quot;},&quot;originalOffset&quot;:{&quot;top&quot;:&quot;auto&quot;,&quot;bottom&quot;:&quot;14px&quot;},&quot;originalOffsetTop&quot;:0,&quot;originalTransition&quot;:&quot;&quot;,&quot;originalInlineTransition&quot;:&quot;right 0.3s ease 0s&quot;,&quot;originalMarginTop&quot;:&quot;0px&quot;,&quot;originalMarginBottom&quot;:&quot;0px&quot;}"><div class="grecaptcha-logo"><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lf_-kEUAAAAAHtDfGBAleSvWSynALMcgI1hc_tP&amp;co=aHR0cHM6Ly9tYWtlcmZhaXJlLmNvbTo0NDM.&amp;hl=en&amp;v=v1531759913576&amp;size=invisible&amp;cb=2araqksnp13q" role="presentation" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" width="256" height="60" frameborder="0"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;  display: none; "></textarea></div></div>
 				<input name="multiadd" value="1" type="hidden">
 				<div class="row row-eq-height">
 					<div class="newsletter-section col-sm-12 col-md-6">
 						<h3>Sign up for the Maker Share newsletter</h3>
 						<!--<p class="more-details">For Make: Members &mdash; thoughts on how makers earn, learn, and live, plus new platform updates and exclusive members-only content</p>-->
-						
 					</div>
 					<div class="newsletter-section col-sm-12 col-md-6 align-middle">
 						<div class="row row-eq-height" style="width:100%">
 							<div class="col-xs-12 col-sm-offset-2 col-sm-12 align-middle">
 								<input id="wc-email" class="form-control nl-panel-input" name="email" placeholder="Enter your Email" required="" type="email">
-								<input class="form-control btn-w-ghost" value="Go" type="submit">
+                        <input class="form-control btn-w-ghost g-recaptcha"  name="subscribe" id="mc-embedded-subscribe" value="Go" type="submit" data-sitekey="6Lf_-kEUAAAAAHtDfGBAleSvWSynALMcgI1hc_tP" data-callback='newsSignup'>
 							</div>
 						</div>
 					</div>
