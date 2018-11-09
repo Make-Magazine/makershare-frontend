@@ -1,7 +1,12 @@
 #!/bin/bash
 
 cp build.htaccess dist/.htaccess
-#cp 401.html dist/401.html
+
+echo "Minifying the Javascript now...."
+for jsfile in $(find dist -type f -name "*.js" | grep -v learning); do
+    uglifyjs $jsfile -c -m -o $jsfile 2>/dev/null
+done
+
 
 SOURCE="${BASH_SOURCE[0]}";
 RDIR="$( pwd )"
