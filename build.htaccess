@@ -74,6 +74,7 @@ ErrorDocument 404 /index.html
 
   <If "%{HTTP_HOST} == 'preview-manage.makershare.com'">
      RewriteRule    "^sitemap.xml/(.*)$"  "https://preview-manage.makershare.com/sitemap.xml"  [P]
+     RewriteRule ^robots\.txt$  /robots.php [L]
   </If>
   <Else>
      RewriteRule    "^sitemap.xml/(.*)$"  "https://manage.makershare.com/sitemap.xml"  [P]
