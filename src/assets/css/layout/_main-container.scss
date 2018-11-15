@@ -18,3 +18,11 @@ section,
     padding-top: 0;
   }
 }
+
+// Move the UserSnap affordance to the left side
+// to avoid overlapping with recaptcha affordance
+// Not sure if there's a better place for this styling
+// in the scss files, but this doesn't seem incorrect
+iframe[class*="us–style-manager"] {
+   left: 20px;
+}
