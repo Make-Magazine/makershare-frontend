@@ -415,15 +415,16 @@ jQuery(window).on('load', function () {
 //////////////////////////////////////
                            
 $(window).on('load', function () {
-
-  $('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
-    $('#hamburger-icon').toggleClass('open');
-    $('#hamburger-text').animate({opacity: 'toggle'});
-    $('#nav-flyout').animate({opacity: 'toggle'});
-    $('body').toggleClass('nav-open-no-scroll');
-    $('html').toggleClass('nav-open-no-scroll');
-    $('.nav-flyout-underlay').animate({opacity: 'toggle'});
-  });
+   var topElementOffset = jQuery("#menu- secondary_universal_menu").height();
+	
+	$('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
+		$('#hamburger-icon').toggleClass('open');
+		$('#hamburger-text').animate({opacity: 'toggle'});
+		$('#nav-flyout').animate({opacity: 'toggle'});
+		$('body').toggleClass('nav-open-no-scroll');
+		$('html').toggleClass('nav-open-no-scroll');
+		$('.nav-flyout-underlay').animate({opacity: 'toggle'});
+	});
 
   $('.nav-flyout-column').on('click', '.expanding-underline', function(event) {
     if ($(window).width() < 577) {
@@ -438,9 +439,12 @@ $(window).on('load', function () {
   var y_pos = $(".nav-level-2").offset().top; // 75
 
   $(window).on('resize', function(){
+	  if( document.querySelector(".sumome-smartbar-popup") != null ) {
+			topElementOffset += jQuery(".sumome-smartbar-popup").height();
+		}
       if ($(window).width() < 767) {
           y_pos = 0;
-          $(".main-container").css("margin-top", "55px");
+          $(".main-container").css("margin-top", topElementOffset + "px");
       }else{
           y_pos = 75;
           $(".main-container").css("margin-top", "0px");
@@ -452,10 +456,15 @@ $(window).on('load', function () {
           $("body").addClass("scrolled");
           e.addClass("main-nav-scrolled");
           hamburger.addClass("ham-menu-animate");
-          $(".main-container").css("margin-top", "55px");
+			 /*if( document.querySelector(".sumome-smartbar-popup") != null ) {
+				 jQuery(".nav-hamburger").css("margin-top", jQuery(".sumome-smartbar-popup").height() + "px");
+			 }*/
+			 hamburger.css("margin-top", topElementOffset + "px");
+          $(".main-container").css("margin-top", topElementOffset + "px");
       }else if(scrollTop <= y_pos){
           $("body").removeClass("scrolled");
           e.removeClass("main-nav-scrolled");
+			 //jQuery(".nav-hamburger").css("margin-top", "0px");
           hamburger.removeClass("ham-menu-animate");
           $(".main-container").css("margin-top", "0px");
       }
@@ -516,7 +525,6 @@ $(window).on('load', function () {
     default:
         break;
   }
-	
 	// fix nav to top on scrolldown, stay fixed for transition from mobile to desktop
 		if (jQuery(window).width() < 578) {
 			jQuery(".auth-target").append(jQuery(".nav-level-1-auth"));
@@ -540,6 +548,12 @@ jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
 
 var toggledClosed = false;
 
+function beltOff() {
+	jQuery(".newsletter-footer").removeClass("scrolling");
+   localStorage.setItem("newsletterClosed", "yes");
+   toggledClosed = true;
+}
+
 jQuery(document).ready(function(){
   if(!localStorage.newsletterClosed && !jQuery('html').hasClass('mobile')) {
 	  var footerHeight = jQuery(".universal-footer").height();
@@ -555,6 +569,7 @@ jQuery(document).ready(function(){
 			}
 	  });
   }
+  beltOff();
 
   //get current year for footer, if we could include a php file from a different domain, we'd do it that way
   var currentYear = (new Date()).getFullYear();
