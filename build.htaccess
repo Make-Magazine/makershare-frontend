@@ -72,7 +72,7 @@ ErrorDocument 404 /index.html
   RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
   RewriteRule ^ index.html [L]
 
-  <If "%{HTTP_HOST} == 'preview-manage.makershare.com'">
+  <If "%{HTTP_HOST} == 'preview.makershare.com'">
      RewriteRule    "^sitemap.xml/(.*)$"  "https://preview-manage.makershare.com/sitemap.xml"  [P]
      RewriteRule ^robots\.txt$  /robots.php [L]
   </If>
