@@ -952,9 +952,17 @@ header.universal-nav {
         border-right: 1px solid #999;
         margin-top: 10px;
     }
-    li:nth-child(3), li:nth-child(4), li:last-child {
+    li:last-child {
         border-right: none;
+		 @media screen and (max-width: 991px) {
+			 margin-left: 20px;
+		 }
     }
+	  li:nth-child(4) {
+		  @media screen and (max-width: 991px) {
+			  padding: 0 10px;
+		  }
+	  }
     li.second-nav-banner {
         padding: 0px;
         max-width: 178px;
