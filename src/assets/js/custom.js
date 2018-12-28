@@ -536,18 +536,26 @@ $(window).on('load', function () {
 
 // Newsletter code
 // When you submit a newsletter
-jQuery(document).on('submit', '.whatcounts-signup1', function (e) {
-  e.preventDefault();
-  	var bla = jQuery('#wc-email').val();
-	jQuery.post('https://secure.whatcounts.com/bin/listctrl', jQuery('.whatcounts-signup1').serialize());
-	jQuery('.fancybox-thx').trigger('click');
-	jQuery("#wc-email").val("");
-	jQuery('.nl-modal-email-address').text(bla);
-	jQuery('.whatcounts-signup2 #email').val(bla);
-	jQuery(".newsletter-footer").removeClass("scrolling");
-	localStorage.setItem("newsletterClosed", "yes");
-	toggledClosed = true;
-});
+
+// When you submit a newsletter
+//jQuery(document).on('submit', '.newsletter-signup1', function (e) {
+
+function newsSignup() {
+  // e.preventDefault();
+	var bla = jQuery('#wc-email').val();
+	if(!bla) {
+		grecaptcha.reset();
+		return;
+	} else {
+		jQuery.post('https://secure.whatcounts.com/bin/listctrl', jQuery('#wc-embedded-subscribe-form').serialize());
+		jQuery("#wc-email").val("");
+		jQuery('.fancybox-thx').trigger('click');
+	}
+}
+
+
+
+
 
 var toggledClosed = false;
 
@@ -573,6 +581,29 @@ jQuery(document).ready(function(){
 	  });
   }
   beltOff();
+
+
+  jQuery('#mc-embedded-subscribe, #wc-embedded-subscribe').on('click',function(event) {
+      //don't fire reCAPTCHA until we have a valid input
+      var input,
+         emailHasValue = false;
+
+      input = jQuery('#wc-email');
+      emailHasValue = input[0].checkValidity();
+
+      if(emailHasValue) {
+			console.log(emailHasValue);
+         input.next().addClass('hidden');
+         event.preventDefault();
+         grecaptcha.execute();
+      } else {
+			alert("why is recaptcha going off");
+			grecaptcha.reset();
+			console.log(input.next());
+         input.next().removeClass('hidden');
+      }
+
+   });
 
   //get current year for footer, if we could include a php file from a different domain, we'd do it that way
   var currentYear = (new Date()).getFullYear();

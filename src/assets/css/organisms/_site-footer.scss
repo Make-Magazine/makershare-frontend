@@ -9,6 +9,20 @@
 		input[type="email"] {
 			padding-bottom: 4px;
 		}
+		.error-message {
+			position: absolute;
+			top: 0px;
+			left: 90px;
+			display: block;
+			font-size: 12px;
+			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+			transform: translate3d(0, 0, 0);
+			backface-visibility: hidden;
+			perspective: 1000px;
+			color: #fff!important;
+			padding: 0;
+		}
+		.hidden { display: none; }
 	}
 	.magazine-footer {
       img {
