@@ -537,9 +537,6 @@ $(window).on('load', function () {
 // Newsletter code
 // When you submit a newsletter
 
-// When you submit a newsletter
-//jQuery(document).on('submit', '.newsletter-signup1', function (e) {
-
 function newsSignup() {
   // e.preventDefault();
 	var bla = jQuery('#wc-email').val();
@@ -552,19 +549,12 @@ function newsSignup() {
 		jQuery('.fancybox-thx').trigger('click');
 	}
 }
-
-
-
-
-
 var toggledClosed = false;
-
 function beltOff() {
 	jQuery(".newsletter-footer").removeClass("scrolling");
    localStorage.setItem("newsletterClosed", "yes");
    toggledClosed = true;
 }
-
 jQuery(document).ready(function(){
   if(!localStorage.newsletterClosed && !jQuery('html').hasClass('mobile')) {
 	  var footerHeight = jQuery(".universal-footer").height();
@@ -581,8 +571,6 @@ jQuery(document).ready(function(){
 	  });
   }
   beltOff();
-
-
   jQuery('#mc-embedded-subscribe, #wc-embedded-subscribe').on('click',function(event) {
       //don't fire reCAPTCHA until we have a valid input
       var input,
@@ -592,14 +580,11 @@ jQuery(document).ready(function(){
       emailHasValue = input[0].checkValidity();
 
       if(emailHasValue) {
-			console.log(emailHasValue);
          input.next().addClass('hidden');
          event.preventDefault();
          grecaptcha.execute();
       } else {
-			alert("why is recaptcha going off");
 			grecaptcha.reset();
-			console.log(input.next());
          input.next().removeClass('hidden');
       }
 
