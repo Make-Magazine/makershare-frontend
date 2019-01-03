@@ -42,7 +42,15 @@
       <a href="https://makezine.com/" class="navbar-brand">
         <img src="../assets/images/Make_logo.svg" class="img-fluid" alt="Make: brand logo">
       </a>
-
+		 
+      <ul class="search-button"> 
+			<li class="nav-item">
+			  <div id="sb-search" class="sb-search">
+				 <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
+			  </div>
+			</li>
+		</ul>
+		 
       <ul class="nav-level-1-auth">
         <li class="nav-item" *ngIf="!auth.authenticated()">
           <!--<a class="nav-link">-->
@@ -191,13 +199,6 @@
         </li>
       </ul>
 		 
-		<ul class="search-button"> 
-			<li class="nav-item">
-			  <div id="sb-search" class="sb-search">
-				 <span class="icon-search nav-link fa fa-search" (click)="openSearchBox()"></span>
-			  </div>
-			</li>
-		</ul>
     </nav>
   </div><!-- .nav-level-1 --> 
 	

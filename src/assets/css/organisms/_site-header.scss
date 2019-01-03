@@ -201,9 +201,6 @@ header.universal-nav {
   position: absolute;
   right: 0px;
   top: 25px;
-  @media screen and (max-width: 767px) {
-	  right: 50px;
-	}
   @media screen and (max-width: 576px) {
     display: none;
   }
@@ -1028,8 +1025,11 @@ header.universal-nav {
     right: 0%;
     top: 80px;
 	 z-index: 999;
-    @media screen and (max-width: 767px) {
+	 @media screen and (max-width:767px) {
 		 top: 5px;
+		 right: 60px;
+	 }
+    @media screen and (max-width: 576px) {
 		 right: 2%;
     }
     li { list-style: none; }
