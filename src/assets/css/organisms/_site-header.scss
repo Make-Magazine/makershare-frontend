@@ -201,6 +201,9 @@ header.universal-nav {
   position: absolute;
   right: 0px;
   top: 25px;
+  @media screen and (max-width: 767px) {
+	  right: 50px;
+	}
   @media screen and (max-width: 576px) {
     display: none;
   }
@@ -908,10 +911,13 @@ header.universal-nav {
   }
   .search-button {
     top: 5px;
-    right: -16px;
-    position: absolute;
+	 right: 0%;
+    position: fixed;
     z-index: 999;
     transform: translate(-50%);
+	 @media screen and (min-width: 767px) {
+		 right: 5%;
+	 }
   }
   .nav-level-2 {
 	  position: fixed;
@@ -1018,11 +1024,13 @@ header.universal-nav {
   }
 }
 .search-button {
-    position: relative;
+    position: absolute;
     right: 0%;
-    top: 5px;
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-        right: -2%;
+    top: 80px;
+	 z-index: 999;
+    @media screen and (max-width: 767px) {
+		 top: 5px;
+		 right: 2%;
     }
     li { list-style: none; }
   .sb-search {
