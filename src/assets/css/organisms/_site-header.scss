@@ -375,7 +375,7 @@
       font-family: $font-roboto-light, sans-serif;
       height: 35px;
       min-width: 90px;
-      padding: 0 23px;
+      padding: 0 32px;
       text-align: center;
       display: flex;
       justify-content: center;
@@ -454,6 +454,4 @@ app-header[class^="/makers"], app-header[class^="/portfolio"] {
     #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(1) a { opacity: 1; }
 }
 app-header[class^="/projects"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(2) a { opacity: 1; }
-app-header[class^="/groups"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(3) a { opacity: 1; }
-app-header[class^="/showcases"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(4) a { opacity: 1; }
-app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(5) a { opacity: 1; }
+app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(3) a { opacity: 1; }
