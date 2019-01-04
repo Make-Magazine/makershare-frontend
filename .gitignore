@@ -7,6 +7,9 @@ app/**/*.js
 app/**/*.map
 /tmp
 
+# STAGE has a robots.txt file to stop crawling that shouldn't be overwritten by deploys
+/src/robots.txt
+
 # dependencies
 /node_modules
 
