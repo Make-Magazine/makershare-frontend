@@ -113,7 +113,7 @@
       float: left; 
       position: relative; 
       z-index: 999; 
-      top: 62px;
+      top: 87px;
 	   height: auto;
       @media screen and (max-width: 991px) {
           display: none;
@@ -133,7 +133,7 @@
   }
   #profile-view {
       padding-left: 15px; 
-	   display: block !important;
+	   display: flex !important;
 	   @media screen and (max-width: 991px) {
     		margin-top: -13px;
   	   }
@@ -273,9 +273,6 @@
       &:hover {
           opacity: 1;
       }
-	  &.logout {
-		  color: #333 !important;
-	  }
   }
 }
 
