@@ -55,13 +55,16 @@
 .nav-level-1-auth {
   position: absolute;
   right: 0px;
-  top: 25px;
+  top: 0px;
   @media screen and (max-width: 576px) {
     display: none;
   }
   li {
     display: inline-block;
     float: left;
+	 align-items: center;
+    display: flex;
+    justify-content: center;
     a { 
         position: relative;
         top: -3px;
@@ -88,11 +91,24 @@
   }
   #qsLoginBtn { 
       display: none; 
-      margin-top: -50px;
-      color: red;
+      color: #eb002a;
       font-weight: 500;
       font-size: 16px;
-      font-family: $font-roboto-bold, sans-serif;
+      font-family: $font-roboto, sans-serif;
+	   border: solid #eb002a 1px;
+	   border-radius: 2px;
+	   padding: 11px 23px;
+      height: auto;
+	   opacity: 1;
+	  	   @media screen and (max-width: 1200px) {
+			font-size: 14px;
+			padding: 8px 10px;
+	  }
+	   &:hover, &:active, &:focus {
+		  color: #fff;
+		  background: #ff0000;
+		  border-color: #ff0000;
+	  }
   }
   .hide-mobile { 
       float: left; 

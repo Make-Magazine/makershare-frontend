@@ -56,7 +56,7 @@
           <!--<a class="nav-link">-->
           <!--<app-login></app-login>-->
           <!--</a>-->
-          <button id="qsLoginBtn" style="display: flex;" (click)="auth.Auth0Login()">Login</button>
+          <button id="qsLoginBtn" style="display: flex;" (click)="auth.Auth0Login()">LOG IN</button>
         </li>
 
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
@@ -126,7 +126,7 @@
               </li>
               <li class="dropdown-item">
                 <button (click)="auth.logout()">
-                    <span class="nav-link logout">Logout</span>
+                    <span class="nav-link logout">LOG OUT</span>
                 </button>
               </li>
               <li class="dropdown-item">
