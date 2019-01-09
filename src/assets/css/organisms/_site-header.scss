@@ -115,7 +115,7 @@
       z-index: 999; 
       top: 87px;
 	   height: auto;
-      @media screen and (max-width: 991px) {
+      @media screen and (max-width: 767px) {
           display: none;
       }
       .add-project-header-button {
@@ -134,7 +134,7 @@
   #profile-view {
       padding-left: 15px; 
 	   display: flex !important;
-	   @media screen and (max-width: 991px) {
+	   @media screen and (max-width: 767px) {
     		margin-top: -13px;
   	   }
       #dropdownMenuLink, #userMenu {
@@ -287,7 +287,7 @@
     top: 12px;
 	  .add-project-header-button {
 		  position: relative;
-		  left: -20px;
+		  left: -50px;
 	  }
   }
   .search-button {
