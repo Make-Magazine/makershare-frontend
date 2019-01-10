@@ -5,11 +5,17 @@
     background: $darker-grey;
     color: $white;
     box-shadow: 2px 2px 8px $light-grey;
-    display: block;
+    display: block;	
 
     @include phone() {
-      padding-bottom: 4rem;
+       padding-bottom: 4rem;
+		 min-height: 55rem;
+
     }
+	  @media screen and (min-width: 768px) {
+		  min-height: 58rem;
+		  margin-bottom: 40%;
+	  }
 
     &.wide {
       .info-top {
