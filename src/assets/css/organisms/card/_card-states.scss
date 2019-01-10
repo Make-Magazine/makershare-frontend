@@ -109,7 +109,7 @@
       padding: 1rem;
       &:hover {
         .card-owners-group {
-          left: -1rem;
+           left: -1rem;  
         }
       }
     }
@@ -125,10 +125,11 @@
       left: -100%;
       bottom: 100%; // calc(100% + 1rem) may be more appropriate here
       padding: 1rem;
-
+      pointer-events: none;
       transition: all 0.5s ease;
       .card-owner-link {
-        margin-bottom: .625rem;
+         margin-bottom: .625rem;
+			pointer-events: auto;
       }
     }
     .social-stat-group {
