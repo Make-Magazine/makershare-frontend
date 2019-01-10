@@ -22,8 +22,8 @@ export class ProjectVoteComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.checkUserVote();
-	 console.log(jQuery(".votable")[0].html() + " test");
 	 if(jQuery(".votable")[0]){
+	    console.log("true");
 	    this.isVotable = true;
 	 } 
   }
