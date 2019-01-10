@@ -80,9 +80,9 @@
           <span class="info challenge-end-date"
                 *ngIf="challenge.status_id == 1108"><!-- Closed for submissions. Winners announced: -->Closed: Winners Announced</span>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 376 && challenge.challengeDate < 0"><!--Closed for submissions. Winners announced: -->Closed</span>
-          <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0"><!--Closed for submissions. Winners to be announced: -->Closed</span>
+                *ngIf="challenge.status_id == 376"><!--  && challenge.challengeDate < 0 Closed for submissions. Winners announced: -->Closed</span>
+          <!--<span class="info challenge-end-date"
+                *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0"><!--Closed for submissions. Winners to be announced</span> -->
         </li>
 
         <li class="social-stat fl-r"

@@ -15,8 +15,11 @@
       overflow: visible !important;
     }
   }
-	app-mission-card {
-		@media screen and (min-width: 767px) {
+
+}
+.missions {
+	.card-wrapper { 
+	@media screen and (min-width: 767px) {
 			min-height: 500px;
 		}
 	}
