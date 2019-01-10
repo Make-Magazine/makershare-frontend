@@ -65,7 +65,8 @@
                              [followers]="followers"></app-followers>
             </div>
           </div>
-          <div class="content-wrapper mt-5" *ngIf="activeTab == 'brief'">
+			 {{challenge.status_id}}
+          <div class="content-wrapper mt-5" *ngIf="activeTab == 'brief'" [ngClass]="{'votable': challenge.status_id == '375'}">
             <app-summary [hideLoadMore]="hideloadmoreproject"
                          (sortType)="getSortType($event)"
                          (pageNumber)="getPageNumber($event)"
