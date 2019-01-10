@@ -8,6 +8,7 @@ import { FlagService, UserService } from '../../../core/d7services';
 export class ProjectVoteComponent implements OnInit {
   @Input() nodeNid;
   isVoted;
+  isVotable;
   ButtonVoted;
   userId;
   checkUserLogin;
@@ -21,6 +22,9 @@ export class ProjectVoteComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.checkUserVote();
+	 if(jQuery(".votable")[0]){
+	    this.isVotable = false;
+	 }
   }
 
   checkUserVote() {
@@ -38,7 +42,7 @@ export class ProjectVoteComponent implements OnInit {
           } /* end else if  */
         },
         err => {
-          // this.notificationBarService.create({ message: 'Sorry, somthing went wrong, try again later.', type: NotificationType.Error});
+          // this.notificationBarService.create({ message: 'Sorry, something went wrong, try again later.', type: NotificationType.Error});
         },
       );
   }
