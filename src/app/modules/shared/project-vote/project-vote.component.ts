@@ -22,11 +22,10 @@ export class ProjectVoteComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.checkUserVote();
-	 console.log(jQuery(".votable")[0] + " test");
-	 alert(jQuery(".votable")[0] + " test");
+	 console.log(jQuery(".votable")[0].html() + " test");
 	 if(jQuery(".votable")[0]){
-	    this.isVotable = false;
-	 }
+	    this.isVotable = true;
+	 } 
   }
 
   checkUserVote() {
