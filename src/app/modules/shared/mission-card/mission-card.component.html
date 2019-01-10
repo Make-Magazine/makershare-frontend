@@ -47,6 +47,7 @@
         </li>
 		 <li class="social-stat" *ngIf="challenge.status_id != 375">
           <button class="button-cta"
+						*ngIf="!singleView"
                   [routerLink]="['/missions/', challenge.path]">View Entries
           </button>
         </li>
