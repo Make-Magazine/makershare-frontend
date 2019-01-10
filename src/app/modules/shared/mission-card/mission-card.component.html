@@ -34,7 +34,7 @@
 
       <ul class="social-stat-group">
 
-        <li class="social-stat">
+        <li class="social-stat" *ngIf="challenge.status_id == 375">
           <button class="button-cta"
                   *ngIf="!singleView"
                   [routerLink]="['/missions/', challenge.path]">Participate
@@ -43,6 +43,11 @@
           <button class="button-cta"
                   *ngIf="singleView"
                   (click)="enterToChallengeProject(challenge.nid)">Participate
+          </button>
+        </li>
+		 <li class="social-stat" *ngIf="challenge.status_id != 375">
+          <button class="button-cta"
+                  [routerLink]="['/missions/', challenge.path]">View Entries
           </button>
         </li>
 
@@ -68,15 +73,15 @@
         <li class="social-stat">
           <i class="fa fa-calendar-times-o"></i>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 375"><!-- Submissions close: -->{{challenge.challenge_end_date.value}}</span>
+                *ngIf="challenge.status_id == 375"><!-- Submissions close: -->Open Until: {{challenge.challenge_end_date.value}}</span>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 1107"><!-- In review. Winners to be announced: -->{{challenge.winners_announcement_date.value}}</span>
+                *ngIf="challenge.status_id == 1107"><!-- In review. Winners to be announced: -->Closed: Voting in Progress</span>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 1108"><!-- Closed for submissions. Winners announced: -->{{challenge.winners_announcement_date.value}}</span>
+                *ngIf="challenge.status_id == 1108"><!-- Closed for submissions. Winners announced: -->Closed: Winners Announced</span>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 376 && challenge.challengeDate < 0"><!--Closed for submissions. Winners announced: -->{{challenge.winners_announcement_date.value}}</span>
+                *ngIf="challenge.status_id == 376 && challenge.challengeDate < 0"><!--Closed for submissions. Winners announced: -->Closed</span>
           <span class="info challenge-end-date"
-                *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0"><!--Closed for submissions. Winners to be announced: -->{{challenge.winners_announcement_date.value}}</span>
+                *ngIf="challenge.status_id == 376 && challenge.challengeDate >= 0"><!--Closed for submissions. Winners to be announced: -->Closed</span>
         </li>
 
         <li class="social-stat fl-r"
