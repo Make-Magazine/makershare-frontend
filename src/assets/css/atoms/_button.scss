@@ -7,6 +7,13 @@
   }
 }
 
+app-project-vote .btns-container {
+	display: none;
+}
+app-project-vote .votable .btns-container {
+	display: block;
+}
+
 .button, button {
   -webkit-appearance: none;
   background: $highlight-bright-blue;

@@ -45,9 +45,8 @@
                   (click)="enterToChallengeProject(challenge.nid)">Participate
           </button>
         </li>
-		 <li class="social-stat" *ngIf="challenge.status_id != 375">
+		 <li class="social-stat" *ngIf="challenge.status_id != 375 && !singleView">
           <button class="button-cta"
-						*ngIf="!singleView"
                   [routerLink]="['/missions/', challenge.path]">View Entries
           </button>
         </li>
