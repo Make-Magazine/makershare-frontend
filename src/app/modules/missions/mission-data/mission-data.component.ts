@@ -123,9 +123,7 @@ export class MissionDataComponent implements OnInit {
       .getView<IMissionData>('challenge_data', [['nid', this.idFromUrl]])
       .subscribe(d => {
         this.challenge = d[0];
-		  console.log(this.challenge);
 		  this.votable = this.challenge.public_voting;
-		  console.log(this.votable);
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
         this.hideButton = false;
