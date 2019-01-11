@@ -20,7 +20,7 @@ export class MissionDataComponent implements OnInit {
 
   customDescription: string;
   customImage: string;
-  votable: number;
+  isVotable: number;
   submittedBefore: boolean;
   challenge: MissionData;
   idFromUrl: number;
@@ -123,7 +123,8 @@ export class MissionDataComponent implements OnInit {
       .getView<IMissionData>('challenge_data', [['nid', this.idFromUrl]])
       .subscribe(d => {
         this.challenge = d[0];
-		  this.votable = this.challenge.public_voting;
+		  this.isVotable = this.challenge.public_voting;
+		  console.log(this.isVotable);
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
         this.hideButton = false;
