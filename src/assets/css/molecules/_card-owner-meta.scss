@@ -8,6 +8,7 @@
   .card-owner-meta-info {
     max-width: calc(100% - 60px - 2rem); // width of media and margins
     width: 100%;
+	 pointer-events: none;
   }
 
   .card-owner-media {
