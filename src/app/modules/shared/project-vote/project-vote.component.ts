@@ -23,7 +23,6 @@ export class ProjectVoteComponent implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.checkUserVote();
 	 if(jQuery(".votable")[0]){
-	    console.log("true");
 	    this.isVotable = true;
 	 } 
   }

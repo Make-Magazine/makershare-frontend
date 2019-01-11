@@ -20,7 +20,7 @@ export class MissionDataComponent implements OnInit {
 
   customDescription: string;
   customImage: string;
-  votable: boolean;
+  votable: number;
   submittedBefore: boolean;
   challenge: MissionData;
   idFromUrl: number;
@@ -125,6 +125,7 @@ export class MissionDataComponent implements OnInit {
         this.challenge = d[0];
 		  console.log(this.challenge);
 		  this.votable = this.challenge.public_voting;
+		  console.log(this.votable);
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
         this.hideButton = false;
