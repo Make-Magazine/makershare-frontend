@@ -127,6 +127,9 @@ export class MissionDataComponent implements OnInit {
 		  console.log(this.challenge);
 		  
 		  this.isVotable = this.challenge.public_voting;
+		  
+		  console.log("isVotable: " + this.isVotable);
+		  
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
         this.hideButton = false;
