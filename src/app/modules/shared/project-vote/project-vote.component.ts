@@ -8,6 +8,7 @@ import { FlagService, UserService } from '../../../core/d7services';
 export class ProjectVoteComponent implements OnInit {
   @Input() nodeNid;
   isVoted;
+  isVotable;
   ButtonVoted;
   userId;
   checkUserLogin;
@@ -21,6 +22,9 @@ export class ProjectVoteComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('user_id');
     this.checkUserVote();
+	 if(jQuery(".votable")[0]){
+	    this.isVotable = true;
+	 } 
   }
 
   checkUserVote() {

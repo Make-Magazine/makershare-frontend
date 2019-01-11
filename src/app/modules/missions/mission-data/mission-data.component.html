@@ -65,10 +65,6 @@
                              [followers]="followers"></app-followers>
             </div>
           </div>
-			 Is Votable: {{isVotable}}
-			 Challenge Status: {{challenge.status_id}}
-			 Public Voting: {{challenge.public_voting}}
-			 Challenge Date: {{challenge.challengeDate}}
           <div class="content-wrapper mt-5" *ngIf="activeTab == 'brief'" [ngClass]="{'votable': challenge.status_id == '375' || isVotable != '0'}">
             <app-summary [hideLoadMore]="hideloadmoreproject"
                          (sortType)="getSortType($event)"
