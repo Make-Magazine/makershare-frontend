@@ -20,6 +20,7 @@ export class MissionDataComponent implements OnInit {
 
   customDescription: string;
   customImage: string;
+  votable: boolean;
   submittedBefore: boolean;
   challenge: MissionData;
   idFromUrl: number;
@@ -56,7 +57,6 @@ export class MissionDataComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.challenge);
     this.path = this.route.snapshot.params['path'];
     this.userId = localStorage.getItem('user_id');
     if (this.path) {
@@ -123,6 +123,8 @@ export class MissionDataComponent implements OnInit {
       .getView<IMissionData>('challenge_data', [['nid', this.idFromUrl]])
       .subscribe(d => {
         this.challenge = d[0];
+		  console.log(this.challenge);
+		  this.votable = this.challenge.public_voting;
         this.customDescription = this.challenge.body;
         this.customImage = this.challenge.cover_image;
         this.hideButton = false;
