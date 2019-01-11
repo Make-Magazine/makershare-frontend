@@ -24,6 +24,13 @@
     display: block;
   }
 
+  .card-owners-group {
+     pointer-events: none;
+	  .card-owner-link {
+		  pointer-events: auto;
+	  }
+  }
+
   .card-meta-row {
     margin-bottom: .625rem;
     overflow: hidden !important;

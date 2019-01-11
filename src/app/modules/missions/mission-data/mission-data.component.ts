@@ -56,6 +56,7 @@ export class MissionDataComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(MissionData);
     this.path = this.route.snapshot.params['path'];
     this.userId = localStorage.getItem('user_id');
     if (this.path) {
