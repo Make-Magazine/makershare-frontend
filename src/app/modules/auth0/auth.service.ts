@@ -236,8 +236,7 @@ export class Auth {
 			 }
 			 if(querystringArray[0] = "/#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
-				 console.log(querystringArray);
-				 alert(errorDesc[1]); // see if any data from router is available at this point
+				 alert(errorDesc[1].replace("%20", " ")); // Let user know about that error
 			  }
            
           // redirect to the profile page if it's first time
