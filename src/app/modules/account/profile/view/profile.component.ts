@@ -580,11 +580,7 @@ export class ProfileComponent implements OnInit {
       err => {},
       () => {
         if (this.CurrentLoggedUserId == this.uid) {
-		    if(this.profile.user_photo) {
-          	this.profilePictureService.update(this.profile.user_photo);
-			 } else {
-			   alert("Please set a profile picture");
-			 }
+          this.profilePictureService.update(this.profile.user_photo);
         }
       },
     );
@@ -618,7 +614,8 @@ export class ProfileComponent implements OnInit {
         },
       ]);
     }
-
+	 
+	 console.log(user.user_photo);
     this.FileName = user.user_photo.substring(
       user.user_photo.lastIndexOf('/') + 1,
     );

@@ -234,7 +234,8 @@ export class Auth {
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
-			 alert(querystringvals[1]); // see if any data from router is available at this point
+			 console.log(querystringvals);
+			 alert(querystringvals[0]); // see if any data from router is available at this point
            
           // redirect to the profile page if it's first time
           if (res.first_time) {
