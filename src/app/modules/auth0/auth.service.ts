@@ -240,7 +240,7 @@ export class Auth {
           if (res.first_time) {
             // Notification to visit portfolio page
             this.notificationBarService.create({
-              message: 'Welcome! Please <a href="/portfolio">visit your profile page</a> to complete your portfolio',
+              message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
               type: NotificationType.Warning,
               autoHide: true,
               isHtml: true,
