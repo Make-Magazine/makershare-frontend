@@ -15,13 +15,13 @@
           <div class="media message-info">
             <div class="media-left">
               <a *ngIf="message.status == 'active'">
-                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+                <img class="d-flex mr-3 mactive" src="{{message.user_photo}}" alt="{{message.first_name}}" class="img-responsive">
               </a>
               <a *ngIf="message.status == 'blocked'">
-                <img class="d-flex mr-3" src="{{message.user_photo}}" alt="" class="img-responsive">
+                <img class="d-flex mr-3 mblocked" src="{{message.user_photo}}" alt="{{message.first_name}}" class="img-responsive">
               </a>
               <a *ngIf="message.recivers.length > 0">
-                <img class="d-flex mr-3" src="{{message.recivers[0].user_photo}}" alt="" class="img-responsive">
+                <img class="d-flex mr-3 mnone" src="{{message.recivers[0].user_photo}}" alt="{{message.first_name}}" class="img-responsive">
               </a>
             </div>
 

@@ -83,7 +83,7 @@ export class InboxComponent implements OnInit {
     }
     this.pm.getInboxOrSent('maker_get_pm_author/retrieve_all_msgs', [status_arg, page_arg]).subscribe(data => {
       this.messages = data;
-      console.log(this.messages);
+      // console.log(this.messages);
       var msg_arr = [];
       var i = 0
       for (let key in this.messages) {
@@ -102,8 +102,6 @@ export class InboxComponent implements OnInit {
                     // console.log(res);
                     if (this.messages[key].recipient.length > 2) {
                       var temp_user = {};
-                      console.log('res');
-                      console.log(res);
                       temp_user['send_group_msg'] = true;
                       temp_user['user_photo'] = res.user_photo_with_style;
                       temp_user['first_name'] = res.first_name;
@@ -126,7 +124,7 @@ export class InboxComponent implements OnInit {
               // i am the reciver            
               this.user.getUser(this.messages[key].sender).subscribe(res => {
                 this.messages[key].reciver_msg = true;
-                console.log(res);
+                // console.log(res);
                 this.messages[key].user_photo = res.user_photo_with_style || res.photo_lg;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
@@ -145,7 +143,7 @@ export class InboxComponent implements OnInit {
                   if (this.messages[key].recipient[i].recipient != this.userId) {
                     this.user.getUser(this.messages[key].recipient[i].recipient).subscribe(res => {
                       this.messages[key].i_am_replyed = true;
-                      console.log(res);
+                      // console.log(res);
                       this.messages[key].user_photo = res.user_photo_with_style || res.photo_lg;
                       this.messages[key].first_name = res.first_name;
                       this.messages[key].last_name = res.last_name;
@@ -168,7 +166,7 @@ export class InboxComponent implements OnInit {
             } else {
               this.user.getUser(this.reply_author[0].author).subscribe(res => {
                 this.messages[key].another_user_reply = true;
-                console.log(res);
+                // console.log(res);
                 this.messages[key].user_photo = res.user_photo_with_style || res.photo_lg;
                 this.messages[key].first_name = res.first_name;
                 this.messages[key].last_name = res.last_name;
