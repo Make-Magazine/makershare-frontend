@@ -227,6 +227,8 @@ export class Auth {
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // if we get an error_description, we should let the user know
+			 console.log("Test");
+			 console.log(this.router.routerState);
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
@@ -258,8 +260,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
-				alert(Singleton.Settings.appURL);
-            window.location.href = Singleton.Settings.appURL;
+            window.location.href = Singleton.Settings.appURL + "/portfolio";
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
