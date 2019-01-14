@@ -227,11 +227,11 @@ export class Auth {
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // if we get an error_description, we should let the user know
-			 alert("Test");
 			 console.log(this.router.routerState);
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
+			 alert("test"); // see if any data from router is available at this point
            
           // redirect to the profile page if it's first time
           if (res.first_time) {

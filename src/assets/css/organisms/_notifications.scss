@@ -61,7 +61,7 @@
 
 /* Notifications container () */
 .notifications-container {
-   margin-bottom: 100px;
+	position: relative;
    z-index: 9999 !important;
 	display: block;
 	.notification {
