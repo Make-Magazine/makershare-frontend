@@ -615,7 +615,8 @@ export class ProfileComponent implements OnInit {
       ]);
     }
 	 
-	 console.log(user.user_photo);
+	 var photoFile = user.user_photo.LastIndexOf('/');
+	 console.log(photoFile);
     this.FileName = user.user_photo.substring(
       user.user_photo.lastIndexOf('/') + 1,
     );

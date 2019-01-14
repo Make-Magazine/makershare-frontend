@@ -230,12 +230,15 @@ export class Auth {
 			 // if we get an error_description, we should let the user know
 			 console.log(this.router.routerState.snapshot.url);
 			 var querystring = this.router.routerState.snapshot.url;
-			 var querystringvals = querystring.split("&");
+			 var querystringArray = querystring.split("&");
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
-			 console.log(querystringvals);
-			 alert(querystringvals[0]); // see if any data from router is available at this point
+			 if(querystringArray[0] = "/#error=unauthorized") {
+			    var errorDesc = querystringArray[0].split("=");
+				 console.log(querystringvals);
+				 alert(errorDesc[1]); // see if any data from router is available at this point
+			  }
            
           // redirect to the profile page if it's first time
           if (res.first_time) {
