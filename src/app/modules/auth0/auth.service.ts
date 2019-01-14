@@ -231,12 +231,9 @@ export class Auth {
 			 console.log(this.router.routerState.snapshot.url);
 			 var querystring = this.router.routerState.snapshot.url;
 			 var querystringArray = querystring.split("&");
-			 if(this.router.routerState.root.queryParams["error_description"]){
-			 	alert(this.router.routerState.root.queryParams["error_description"]);
-			 }
 			 if(querystringArray[0] = "/#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
-				 alert(errorDesc[1].replace("%20", " ")); // Let user know about that error
+				 alert(errorDesc[1].replace(/%20/g, " "));
 			  }
            
           // redirect to the profile page if it's first time
