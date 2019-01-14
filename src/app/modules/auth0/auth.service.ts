@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Observable } from 'rxjs/Observable';
@@ -27,6 +27,7 @@ export class Auth {
 
   constructor(
     public router: Router,
+	 private route: ActivatedRoute,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -225,7 +226,12 @@ export class Auth {
 
           //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
-
+			 
+			 // if we get an error_description, we should let the user know
+			 if(this.route.snapshot.queryParams["error_description"]){
+			 	alert(this.route.snapshot.queryParams["error_description"]);
+			 }
+           
           // redirect to the profile page if it's first time
           if (res.first_time) {
             alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
@@ -253,6 +259,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
+				alert(Singleton.Settings.appURL);
             window.location.href = Singleton.Settings.appURL;
           }
         } else {
