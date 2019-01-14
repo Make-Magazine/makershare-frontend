@@ -235,7 +235,7 @@ export class Auth {
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
 			 if(querystringArray[0] = "/#error=unauthorized") {
-			    var errorDesc = querystringArray[0].split("=");
+			    var errorDesc = querystringArray[1].split("=");
 				 console.log(querystringArray);
 				 alert(errorDesc[1]); // see if any data from router is available at this point
 			  }

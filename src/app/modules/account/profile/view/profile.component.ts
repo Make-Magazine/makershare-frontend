@@ -7,6 +7,7 @@ import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import { Observable } from 'rxjs/Observable';
 import { URLNoProtocol } from '../../../../angular/validations/url-no-protocol.validation';
 import { FileEntityManage, NodeHelper } from '../../../../core';
+import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import {
   FileService,
   MainService,
@@ -126,6 +127,7 @@ export class ProfileComponent implements OnInit {
     private statisticsService: StatisticsService,
     private title: Title,
     private meta: Meta,
+	 private notificationBarService: NotificationBarService,
   ) {
     this.ProfilecropperSettings = new CropperSettings();
     this.ProfilecropperSettings.width = 660;
@@ -621,7 +623,14 @@ export class ProfileComponent implements OnInit {
     );
 	 console.log(this.FileName);
 	 if(this.FileName == "profile-default.png") {
-	   alert("Please upload a profile photo to start adding projects");
+		this.notificationBarService.create({
+		  message: 'Please upload a profile photo now to start creating projects.',
+		  type: NotificationType.Warning,
+		  autoHide: true,
+		  allowClose: true,
+		  hideOnHover: false,
+		  isHtml: true,
+		});
 	 }
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
