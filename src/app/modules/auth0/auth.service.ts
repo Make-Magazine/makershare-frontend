@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
 import { NotificationBarService, NotificationType } from 'ngx-notification-bar/release';
 import { Observable } from 'rxjs/Observable';
@@ -27,7 +27,6 @@ export class Auth {
 
   constructor(
     public router: Router,
-	 private route: ActivatedRoute,
     private userService: UserService,
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
@@ -228,8 +227,8 @@ export class Auth {
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // if we get an error_description, we should let the user know
-			 if(this.route.snapshot.queryParams["error_description"]){
-			 	alert(this.route.snapshot.queryParams["error_description"]);
+			 if(this.router.routerState.root.queryParams["error_description"]){
+			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
            
           // redirect to the profile page if it's first time
