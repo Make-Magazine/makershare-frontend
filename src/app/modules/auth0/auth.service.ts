@@ -236,25 +236,23 @@ export class Auth {
 				 // this.logout();  Maybe later it would be a good idea to log out the user as well
 			  }
            
-          // redirect to the profile page if it's first time
+          // redirect to the profile page if it's a user's first time
           if (res.first_time) {
-            alert('We are sorry. It appears our cogs got all messed up.\nPlease refresh your page to help straighten them out!');
-            /*
             // Notification to visit portfolio page
             this.notificationBarService.create({
-              message: 'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
+              message: 'Welcome! Please <a href="/portfolio">visit your profile page</a> to complete your portfolio',
               type: NotificationType.Warning,
               autoHide: true,
               isHtml: true,
               allowClose: true,
               hideOnHover: false,
-            });*/
+            });
+				window.location.href = Singleton.Settings.appURL + "/portfolio";
           } else if (res.user_photo.indexOf('profile-default') < 0) {
             this.router.navigateByUrl('/');
             window.location.reload();
+			 // User doesn't have a profile picture	
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-            window.location.href = Singleton.Settings.appURL + "/portfolio";
-				//alert("Please upload a profile photo now to start creating projects.");
 				this.notificationBarService.create({
               message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
               type: NotificationType.Warning,
@@ -263,6 +261,7 @@ export class Auth {
               hideOnHover: false,
               isHtml: true,
             });
+				window.location.href = Singleton.Settings.appURL + "/portfolio";
           }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
