@@ -230,7 +230,7 @@ export class Auth {
 			 // if we get an error_description, we should let the user know
 			 var querystring = this.router.routerState.snapshot.url;
 			 var querystringArray = querystring.split("&");
-			 if(querystringArray[0] = "/#error=unauthorized") {
+			 if(querystringArray[0] == "/#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
 				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
 				 // this.logout();  Maybe later it would be a good idea to log out the user as well
