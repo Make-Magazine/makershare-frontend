@@ -228,6 +228,7 @@ export class Auth {
 			 
 			 // if we get an error_description, we should let the user know
 			 console.log(this.router.routerState);
+			 console.log(this.router.routerState.snapshot);
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
@@ -239,8 +240,7 @@ export class Auth {
             /*
             // Notification to visit portfolio page
             this.notificationBarService.create({
-              message:
-                'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
+              message: 'Welcome! Please <a href="/portfolio">visit you profile page</a> to complete your portfolio',
               type: NotificationType.Warning,
               autoHide: true,
               isHtml: true,
@@ -252,9 +252,9 @@ export class Auth {
             window.location.reload();
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             window.location.href = Singleton.Settings.appURL + "/portfolio";
+				alert("Please upload profile photo now to start creating projects.");
 				this.notificationBarService.create({
-              message:
-                'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
+              message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
               type: NotificationType.Warning,
               autoHide: true,
               allowClose: true,
