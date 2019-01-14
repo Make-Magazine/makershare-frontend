@@ -62,8 +62,8 @@
 /* Notifications container () */
 .notifications-container {
    margin-bottom: 100px;
-   z-index: 100 !important;
-	display
+   z-index: 9999 !important;
+	display: block;
 	.notification {
 		text-align: center !important;
 		font-size: 1.6rem !important;
