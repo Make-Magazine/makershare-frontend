@@ -31,6 +31,7 @@ export class Auth {
     private profilePictureService: ProfilePictureService,
     private notificationBarService: NotificationBarService,
   ) {this.checkSession();}
+  
 
   public checkSession(): void {
     //check if logged in another place
@@ -227,12 +228,13 @@ export class Auth {
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // if we get an error_description, we should let the user know
-			 console.log(this.router.routerState);
-			 console.log(this.router.routerState.snapshot);
+			 console.log(this.router.routerState.snapshot.url);
+			 var querystring = this.router.routerState.snapshot.url;
+			 var querystringvals = querystring.split("&");
 			 if(this.router.routerState.root.queryParams["error_description"]){
 			 	alert(this.router.routerState.root.queryParams["error_description"]);
 			 }
-			 alert("test"); // see if any data from router is available at this point
+			 alert(querystringvals[1]); // see if any data from router is available at this point
            
           // redirect to the profile page if it's first time
           if (res.first_time) {
@@ -252,7 +254,7 @@ export class Auth {
             window.location.reload();
           } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
             window.location.href = Singleton.Settings.appURL + "/portfolio";
-				alert("Please upload profile photo now to start creating projects.");
+				//alert("Please upload a profile photo now to start creating projects.");
 				this.notificationBarService.create({
               message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
               type: NotificationType.Warning,
@@ -401,4 +403,5 @@ export class Auth {
     };
     this.auth0.changePassword(options, function() {});
   }
+  
 }

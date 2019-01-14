@@ -580,7 +580,11 @@ export class ProfileComponent implements OnInit {
       err => {},
       () => {
         if (this.CurrentLoggedUserId == this.uid) {
-          this.profilePictureService.update(this.profile.user_photo);
+		    if(this.profile.user_photo) {
+          	this.profilePictureService.update(this.profile.user_photo);
+			 } else {
+			   alert("Please set a profile picture");
+			 }
         }
       },
     );
