@@ -625,8 +625,7 @@ export class ProfileComponent implements OnInit {
 		this.notificationBarService.create({
 		  message: 'Please upload a profile photo now to start creating projects.',
 		  type: NotificationType.Warning,
-		  autoHide: true,
-		  hideDelay: 6000,
+		  autoHide: false,
 		  allowClose: true,
 		  hideOnHover: false,
 		  isHtml: true,
