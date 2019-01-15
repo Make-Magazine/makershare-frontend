@@ -252,6 +252,7 @@ export class Auth {
 					window.location.reload();
 				 // User doesn't have a profile picture	
 				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+					/* User sees this notification on the portfolio page we're bring them to, no need to show here
 					this.notificationBarService.create({
 					  message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
 					  type: NotificationType.Warning,
@@ -259,7 +260,7 @@ export class Auth {
 					  allowClose: true,
 					  hideOnHover: false,
 					  isHtml: true,
-					});
+					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 }
 			 }

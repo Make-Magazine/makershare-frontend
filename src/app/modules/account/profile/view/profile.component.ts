@@ -626,6 +626,7 @@ export class ProfileComponent implements OnInit {
 		  message: 'Please upload a profile photo now to start creating projects.',
 		  type: NotificationType.Warning,
 		  autoHide: true,
+		  hideDelay: 6000,
 		  allowClose: true,
 		  hideOnHover: false,
 		  isHtml: true,
