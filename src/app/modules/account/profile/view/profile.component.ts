@@ -624,8 +624,8 @@ export class ProfileComponent implements OnInit {
 	 if(this.FileName == "profile-default.png" && this.uid == this.CurrentLoggedUserId) {
 		this.notificationBarService.create({
 		  message: 'Please upload a profile photo.',
-		  type: NotificationType.Warning,
-		  autoHide: false,
+		  type: NotificationType.Success,
+		  autoHide: true,
 		  hideDelay: 10000,
 		  allowClose: true,
 		  hideOnHover: false,
