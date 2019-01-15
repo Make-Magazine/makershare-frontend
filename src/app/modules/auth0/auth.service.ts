@@ -240,28 +240,28 @@ export class Auth {
 					// Notification to visit portfolio page
 					this.notificationBarService.create({
 					  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
-					  type: NotificationType.Warning,
+					  type: NotificationType.Success,
 					  autoHide: true,
 					  isHtml: true,
 					  allowClose: true,
 					  hideOnHover: false,
 					});
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
-				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-					this.router.navigateByUrl('/');
-					window.location.reload();
 				 // User doesn't have a profile picture	
 				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
 					/* User sees this notification on the portfolio page we're bring them to, no need to show here
 					this.notificationBarService.create({
-					  message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
-					  type: NotificationType.Warning,
+					  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
+					  type: NotificationType.Success,
 					  autoHide: true,
 					  allowClose: true,
 					  hideOnHover: false,
 					  isHtml: true,
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
+				 } else if (res.user_photo.indexOf('profile-default') < 0) {
+					this.router.navigateByUrl('/');
+					window.location.reload();
 				 }
 			 }
         } else {
