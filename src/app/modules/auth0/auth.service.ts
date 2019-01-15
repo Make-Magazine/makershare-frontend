@@ -227,42 +227,42 @@ export class Auth {
           //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
-			 // if we get an error_description, we should let the user know
+			 // Check if user has errors like being underage, if so log them out and let them know
 			 var querystring = this.router.routerState.snapshot.url;
 			 var querystringArray = querystring.split("&");
 			 if(querystringArray[0] == "/#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
 				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
 				 this.logout();
-			  }
-           
-          // redirect to the profile page if it's a user's first time
-          if (res.first_time) {
-            // Notification to visit portfolio page
-            this.notificationBarService.create({
-              message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
-              type: NotificationType.Warning,
-              autoHide: true,
-              isHtml: true,
-              allowClose: true,
-              hideOnHover: false,
-            });
-				window.location.href = Singleton.Settings.appURL + "/portfolio";
-          } else if (res.user_photo.indexOf('profile-default') < 0) {
-            this.router.navigateByUrl('/');
-            window.location.reload();
-			 // User doesn't have a profile picture	
-          } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-				this.notificationBarService.create({
-              message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
-              type: NotificationType.Warning,
-              autoHide: true,
-              allowClose: true,
-              hideOnHover: false,
-              isHtml: true,
-            });
-				window.location.href = Singleton.Settings.appURL + "/portfolio";
-          }
+			 } else {
+				 // redirect to the profile page if it's a user's first time
+				 if (res.first_time) {
+					// Notification to visit portfolio page
+					this.notificationBarService.create({
+					  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
+					  type: NotificationType.Warning,
+					  autoHide: true,
+					  isHtml: true,
+					  allowClose: true,
+					  hideOnHover: false,
+					});
+					window.location.href = Singleton.Settings.appURL + "/portfolio";
+				 } else if (res.user_photo.indexOf('profile-default') < 0) {
+					this.router.navigateByUrl('/');
+					window.location.reload();
+				 // User doesn't have a profile picture	
+				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+					this.notificationBarService.create({
+					  message: 'Please <a href="/portfolio">upload a profile photo</a> now to start creating projects.',
+					  type: NotificationType.Warning,
+					  autoHide: true,
+					  allowClose: true,
+					  hideOnHover: false,
+					  isHtml: true,
+					});
+					window.location.href = Singleton.Settings.appURL + "/portfolio";
+				 }
+			 }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
