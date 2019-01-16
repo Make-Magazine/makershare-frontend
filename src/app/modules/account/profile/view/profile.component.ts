@@ -311,7 +311,7 @@ export class ProfileComponent implements OnInit {
       uid: this.uid,
       user_photo: SelectedFile.fid.toString(),
     };
-    this.SaveUser(user);
+    this.SaveUser(user, false);
   }
 
   GetUserDetails() {
@@ -459,7 +459,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.user_photo = data.fid;
       this.ProfilePicData = {};
       this.FileName = '';
-      this.SaveUser(this.ProfileInfo);
+      this.SaveUser(this.ProfileInfo, false);
     });
   }
 
