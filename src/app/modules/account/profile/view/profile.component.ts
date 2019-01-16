@@ -64,12 +64,12 @@ export class ProfileComponent implements OnInit {
   };
   ProfileInfo: UserProfile = {
     address: {
-      country: '',
+      country: 'test',
     },
-    nickname: '',
-    describe_yourself: '',
-    bio: '',
-    bioShort: '',
+    nickname: 'test',
+    describe_yourself: 'test',
+    bio: 'test',
+    bioShort: 'test',
     field_social_accounts: new ProfileSocial(),
     started_making: '',
     started_making_short: '',
