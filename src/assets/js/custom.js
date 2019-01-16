@@ -1,5 +1,7 @@
 setTimeout(function () {
   if ($('.profile-page').length) {
+	 console.log($('.profile-sidebar').html);
+	 console.log("offset is " + $('.profile-sidebar').offset().top);
     var st,
       $ot = $('.profile-sidebar'),
       ot = $ot.offset().top,
@@ -7,7 +9,6 @@ setTimeout(function () {
       pad = 30,
       $c = $('.card', $ot),
       cd;
-	 console.log(st);
     $(document).on('scroll', function () {
       st = $('body').scrollTop();
 

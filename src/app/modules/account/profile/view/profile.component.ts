@@ -496,13 +496,13 @@ export class ProfileComponent implements OnInit {
     } else {
       this.SaveUser(this.ProfileInfo);
     }
-	 window.location.reload();
   }
 
   SaveUser(user: UserProfile) {
     user.uid = this.uid;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
+		window.location.reload();
     });
   }
 
