@@ -311,7 +311,7 @@ export class ProfileComponent implements OnInit {
       uid: this.uid,
       user_photo: SelectedFile.fid.toString(),
     };
-    this.SaveUser(user, false);
+    this.SaveUser(user);
   }
 
   GetUserDetails() {
@@ -459,7 +459,7 @@ export class ProfileComponent implements OnInit {
       this.ProfileInfo.user_photo = data.fid;
       this.ProfilePicData = {};
       this.FileName = '';
-      this.SaveUser(this.ProfileInfo, false);
+      this.SaveUser(this.ProfileInfo);
     });
   }
 
@@ -476,7 +476,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  SaveInfo(closebtn: HTMLButtonElement, reload: boolean) {
+  SaveInfo(closebtn: HTMLButtonElement) {
     if (this.ProfileInfo.address.governorate == '_none') {
       this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails[
         'administrative_areas'
@@ -494,17 +494,15 @@ export class ProfileComponent implements OnInit {
     if (this.ProfilePicData.image) {
       this.SaveImage();
     } else {
-      this.SaveUser(this.ProfileInfo, reload);
+      this.SaveUser(this.ProfileInfo);
     }
   }
 
-  SaveUser(user: UserProfile, reload: boolean) {
+  SaveUser(user: UserProfile) {
     user.uid = this.uid;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
-		if(reload == true) {
-			window.location.reload();
-		}
+		//window.location.reload();
     });
   }
 
