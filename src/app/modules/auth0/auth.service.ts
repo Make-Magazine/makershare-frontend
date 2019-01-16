@@ -261,7 +261,7 @@ export class Auth {
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
 					this.router.navigateByUrl('/');
-					//window.location.reload();
+					window.location.reload();
 				 }
 			 }
         } else {

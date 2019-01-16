@@ -130,14 +130,14 @@ export class ProfileComponent implements OnInit {
 	 private notificationBarService: NotificationBarService,
   ) {
     this.ProfilecropperSettings = new CropperSettings();
-    this.ProfilecropperSettings.width = 660;
-    this.ProfilecropperSettings.height = 660;
-    this.ProfilecropperSettings.croppedWidth = 660;
-    this.ProfilecropperSettings.croppedHeight = 660;
+    this.ProfilecropperSettings.width = 700;
+    this.ProfilecropperSettings.height = 560;
+    this.ProfilecropperSettings.croppedWidth = 700;
+    this.ProfilecropperSettings.croppedHeight = 560;
     this.ProfilecropperSettings.canvasWidth = 430;
     this.ProfilecropperSettings.canvasHeight = 315;
-    this.ProfilecropperSettings.minWidth = 330;
-    this.ProfilecropperSettings.minHeight = 330;
+    this.ProfilecropperSettings.minWidth = 350;
+    this.ProfilecropperSettings.minHeight = 280;
     this.ProfilecropperSettings.noFileInput = true;
   }
 
@@ -502,7 +502,7 @@ export class ProfileComponent implements OnInit {
     user.uid = this.uid;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
-		window.location.reload();
+		// window.location.reload();
     });
   }
 

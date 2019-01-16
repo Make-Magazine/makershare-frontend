@@ -1,8 +1,5 @@
 setTimeout(function () {
   if ($('.profile-sidebar').length) {
-	 console.log("test");
-	 console.log($('.profile-sidebar').html());
-	 console.log("offset is " + $('.profile-sidebar').offset().top);
     var st,
       $ot = $('.profile-sidebar'),
       ot = $ot.offset().top,
