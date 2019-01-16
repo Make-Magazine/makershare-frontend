@@ -1073,12 +1073,12 @@
           </div>
         </div>
         <div class="modal-footer mt-auto ml-auto">
-          <button #closebtn type="button" class="button btn-load-more" (click)="c('Close click');SaveInfo(closebtn);">
+          <button #closebtn type="button" class="button btn-load-more" (click)="c('Close click');SaveInfo(closebtn, true);">
             Save
             &amp;&nbsp;Close
           </button>
           <button *ngIf="ModalTabs.indexOf(CurrentInfoTab) != ModalTabs.length-1" type="button"
-                  class="button btn-load-more" (click)="SaveInfo(closebtn);nextTab()">Save &amp; Next
+                  class="button btn-load-more" (click)="SaveInfo(closebtn, false);nextTab()">Save &amp; Next
           </button>
         </div>
       </div>

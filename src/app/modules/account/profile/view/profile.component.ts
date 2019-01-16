@@ -476,7 +476,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  SaveInfo(closebtn: HTMLButtonElement) {
+  SaveInfo(closebtn: HTMLButtonElement, reload: boolean) {
     if (this.ProfileInfo.address.governorate == '_none') {
       this.ProfileInfo.address.governorate = this.CountryFieldsAndDetails[
         'administrative_areas'
@@ -494,15 +494,17 @@ export class ProfileComponent implements OnInit {
     if (this.ProfilePicData.image) {
       this.SaveImage();
     } else {
-      this.SaveUser(this.ProfileInfo);
+      this.SaveUser(this.ProfileInfo, reload);
     }
   }
 
-  SaveUser(user: UserProfile) {
+  SaveUser(user: UserProfile, reload: boolean) {
     user.uid = this.uid;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
-		// window.location.reload();
+		if(reload == true) {
+			window.location.reload();
+		}
     });
   }
 
