@@ -3,10 +3,11 @@ setTimeout(function () {
     var st,
       $ot = $('.profile-sidebar'),
       ot = $ot.offset().top,
-      hh = $('.main-header').outerHeight(true),
+      hh = $('.universal-nav').outerHeight(true),
       pad = 30,
       $c = $('.card', $ot),
       cd;
+	 console.log(st);
     $(document).on('scroll', function () {
       st = $('body').scrollTop();
 

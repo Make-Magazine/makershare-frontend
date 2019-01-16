@@ -496,6 +496,7 @@ export class ProfileComponent implements OnInit {
     } else {
       this.SaveUser(this.ProfileInfo);
     }
+	 window.location.reload();
   }
 
   SaveUser(user: UserProfile) {
