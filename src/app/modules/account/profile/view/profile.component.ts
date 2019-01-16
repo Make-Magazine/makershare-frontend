@@ -64,12 +64,12 @@ export class ProfileComponent implements OnInit {
   };
   ProfileInfo: UserProfile = {
     address: {
-      country: 'test',
+      country: '',
     },
-    nickname: 'test',
-    describe_yourself: 'test',
-    bio: 'test',
-    bioShort: 'test',
+    nickname: '',
+    describe_yourself: '',
+    bio: '',
+    bioShort: '',
     field_social_accounts: new ProfileSocial(),
     started_making: '',
     started_making_short: '',
@@ -502,7 +502,7 @@ export class ProfileComponent implements OnInit {
     user.uid = this.uid;
     this.profileService.updateProfile(user.uid, user).subscribe(data => {
       this.UpdateUser();
-		//window.location.reload();
+		window.location.reload();
     });
   }
 
@@ -635,9 +635,7 @@ export class ProfileComponent implements OnInit {
 	 }
     this.ImageFile = new Image();
     this.ImageFile.src = user.user_photo;
-	 if(user.nickname) {
-    	this.ProfileInfo.nickname = user.nickname;
-	 }
+    this.ProfileInfo.nickname = user.nickname;
 
     if (user.bio.length > 160) {
       this.ProfileInfo.bioShort = user.bio.substring(0, 160) + '...';
@@ -648,15 +646,11 @@ export class ProfileComponent implements OnInit {
     if (user.address) {
       this.ProfileInfo.address = user.address;
     }
-	 if (user.describe_yourself) {
-    	this.ProfileInfo.describe_yourself = user.describe_yourself;
-		}
+    this.ProfileInfo.describe_yourself = user.describe_yourself;
     if (user.bio) {
       this.ProfileInfo.bio = user.bio;
     }
-	 if(user.address_publish) {
-    	this.ProfileInfo.address_publish = user.address_publish;
-		}
+    this.ProfileInfo.address_publish = user.address_publish;
     if (!this.ProfileInfo.address_publish) {
       this.ProfileInfo.address_publish = 1;
     }
