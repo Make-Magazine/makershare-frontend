@@ -21,7 +21,6 @@ import { D7ServicesForRoot } from '../../core/d7services';
 import { AuthGuardService } from '../auth0/auth-guard.service';
 import { Auth } from '../auth0/auth.service';
 import { AccessRestrictedComponent } from './access-restricted/access-restricted.component';
-import { BookmarkComponent } from './bookmark/bookmark.component';
 import { BtnFollowComponent } from './btn-follow/btn-follow.component';
 import { BtnShareComponent } from './btn-share/btn-share.component';
 import { CardBadges } from './card-badges/card-badges.component';
@@ -85,7 +84,6 @@ import { TimeagoPipe } from '../../angular/pipes/timeago';
   declarations: [
     BtnFollowComponent,
     BtnShareComponent,
-    BookmarkComponent,
     CommentComponent,
     CommentsComponent,
     CommentFormComponent,
@@ -139,7 +137,7 @@ import { TimeagoPipe } from '../../angular/pipes/timeago';
     BtnFollowComponent,
     BtnShareComponent,
     FollowUserComponent,
-    BookmarkComponent,
+
     LikesComponent,
     ForkComponent,
     ViewsComponent,
