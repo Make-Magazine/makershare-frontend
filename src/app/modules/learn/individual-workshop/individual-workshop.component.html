@@ -41,7 +41,6 @@
                 </div>
 
                 <ul class="list-unstyled workshop-actions pull-right">
-                  <app-bookmark [nodeNid]="workshop.nid"></app-bookmark>
                   <app-btn-share *ngIf="workshop.workshop_title" [PageTitle]="workshop.workshop_title" [PageDescription]="workshop.brief_description"
                     [PageImage]="workshop.cover_photo"></app-btn-share>
                 </ul>

@@ -687,14 +687,7 @@ ngb-typeahead-window {
         }
     }
 }
-.app-bookmark {
-    .fa-bookmark-o {
-        &:hover {
-            color: $blue;
-            // @include transition(0.5s)
-        }
-    }
-}
+
 .fa-share:hover {
     color: $blue;
 }
