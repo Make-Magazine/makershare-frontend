@@ -17,10 +17,10 @@
                   <i class="lnr lnr-pencil"></i> EDIT YOUR PROFILE</a>
                 <app-follow-user [targetUid]="uid"></app-follow-user>
               </div>
-              <div class="container-override  wrap-it-up mt-3 mb-3"
+              <!-- <div class="container-override  wrap-it-up mt-3 mb-3"
                    *ngIf="CurrentLoggedUserId == uid && profile.field_can_create_org_ == '1' && canCreateOrNot">
                 <button class="-full -big" [routerLink]="['/orgs/create']">Create Group</button>
-              </div>
+              </div> -->
               <div class="profile-group">
                 <div class="profile-pic">
                   <div *ngIf="!profile.user_photo_with_style">

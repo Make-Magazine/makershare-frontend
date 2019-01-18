@@ -18,9 +18,9 @@
       <!-- End Feature Project -->
       <app-card-badges [badges]="badges"></app-card-badges>
 
-      <div class="float-right" *ngIf="project.orgs_logo">
+      <!-- <div class="float-right" *ngIf="project.orgs_logo">
         <img class="orgs-logo" src="{{project.orgs_logo}}" alt="">
-      </div>
+      </div> -->
       <a class="flex-text-container"
          [routerLink]="['/projects/', project.path]"
          *ngIf="!editMode">

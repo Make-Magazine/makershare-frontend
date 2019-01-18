@@ -13,9 +13,9 @@
       </div>
       <app-feature *ngIf="Manager && uid" [id]="uid" [type]="'maker'" (Featured)="emitFeatured()"></app-feature>
       <app-card-badges [badges]="badges"></app-card-badges>
-      <div class="float-right" *ngIf="card.orgs_logo">
+      <!-- <div class="float-right" *ngIf="card.orgs_logo">
         <img class="orgs-logo" src="{{card.orgs_logo}}" alt="">
-      </div>
+      </div> -->
     </div>
     <div class="info-bottom {{showFlag ? '' : 'no-flag'}}">
       <div class="card-owner-meta">
