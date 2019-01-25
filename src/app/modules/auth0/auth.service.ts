@@ -215,15 +215,19 @@ export class Auth {
       };
 		
 		localStorage.setItem('user_email', data.email);
-		localStorage.setItem('user_name', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
+		localStorage.setItem('user_fullname', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
+		  console.log(res);
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
           localStorage.setItem('roles', JSON.stringify(res.user.roles));
+			 
+			 localStorage.setItem('user_email', data.email);
+		    localStorage.setItem('user_fullname', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
 
           this.userService.saveCookies(
             res['token'],
