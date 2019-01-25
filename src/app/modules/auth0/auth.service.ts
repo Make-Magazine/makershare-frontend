@@ -211,26 +211,22 @@ export class Auth {
         lastname: profile["http://makershare.com/lastname"],
         dob: profile["http://makershare.com/dob"]
       };
-		console.log("user metadata");
-		console.log(data.user_metadata);
-		console.log("but data shows");
-		console.log(data);
 		
+		// store email data to display in profile dropdown
 		localStorage.setItem('user_email', data.email);
-		localStorage.setItem('user_fullname', data["http://makershare.com/firstname"] + " " + data["http://makershare.com/lastname"]);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
-		  console.log("this is the res");
-		  console.log(res);
-		  console.log(res.user.field_first_name);
-		  console.log(res.user.field_first_name['und'][0]);
+
+        // first and last name for email dropdown
+		  console.log(res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
+		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
 		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
-          localStorage.setItem('roles', JSON.stringify(res.profile.roles));
+          localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
           this.userService.saveCookies(
             res['token'],
