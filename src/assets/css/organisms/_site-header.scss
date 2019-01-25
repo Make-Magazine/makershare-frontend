@@ -134,6 +134,7 @@
   #profile-view {
       padding-left: 15px; 
 	   display: flex !important;
+	   #user_avatar.avatar { display: block; } // it's always on on makershare
       #dropdownMenuLink, #userMenu {
           position: relative;
           z-index: 1001;

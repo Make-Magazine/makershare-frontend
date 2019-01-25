@@ -88,7 +88,6 @@ export class Auth {
           if (err) {
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
-			   $(".avatar").css("display","block");
             observer.next(true);
             this.doLogin(authResult);
             observer.complete();
