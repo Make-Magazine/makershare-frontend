@@ -211,20 +211,16 @@ export class Auth {
         lastname: profile["http://makershare.com/lastname"],
         dob: profile["http://makershare.com/dob"]
       };
-		console.log("but data shows");
-		console.log(data);
 		
 		localStorage.setItem('user_email', data.email);
 		
 
       this.userService.auth0_authenticate(data).subscribe(res => {
 
-		  console.log(res);
-		  console.log(res.user.field_first_name['und'][0]);
-		  console.log(res.user.field_last_name['und'][0]);
+		  console.log(res.user.field_first_name['und'][0]['value']);
+		  console.log(res.user.field_last_name['und'][0]['value']);
 		  alert("Tst");
-		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
-		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
+		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
 		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
