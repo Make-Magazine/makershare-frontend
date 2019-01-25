@@ -49,12 +49,10 @@ export class Auth {
 				$(".profile-info .avatar").attr("src",localStorage.getItem('user_avatar'));
           } 
 			 if(localStorage.getItem('user_email') && localStorage.getItem('user_email')!=''){
-			   console.log(localStorage.getItem('user_email'));
 			 	$('.dropdown-links .profile-email').html(localStorage.getItem('user_email'));
 			 }
-			 if(localStorage.getItem('user_name') && localStorage.getItem('user_name')!=''){
-			   console.log(localStorage.getItem('user_name'));
-			 	$('.profile-info .profile-name').html(localStorage.getItem('user_name'));
+			 if(localStorage.getItem('user_fullname') && localStorage.getItem('user_fullname')!=''){
+			 	$('.profile-info .profile-name').html(localStorage.getItem('user_fullname'));
 			 }
 			 
         } else if (err) {
@@ -225,9 +223,6 @@ export class Auth {
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
           localStorage.setItem('roles', JSON.stringify(res.user.roles));
-			 
-			 localStorage.setItem('user_email', data.email);
-		    localStorage.setItem('user_fullname', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
 
           this.userService.saveCookies(
             res['token'],
