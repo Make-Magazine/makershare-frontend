@@ -54,7 +54,7 @@ export class Auth {
 			 }
 			 if(localStorage.getItem('user_name') && localStorage.getItem('user_name')!=''){
 			   console.log(localStorage.getItem('user_name'));
-			 	$(.profile-info .profile-name').html(localStorage.getItem('user_name'));
+			 	$('.profile-info .profile-name').html(localStorage.getItem('user_name'));
 			 }
 			 
         } else if (err) {
