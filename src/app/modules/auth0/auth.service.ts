@@ -48,6 +48,15 @@ export class Auth {
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
 				$(".profile-info .avatar").attr("src",localStorage.getItem('user_avatar'));
           } 
+			 if(localStorage.getItem('user_email') && localStorage.getItem('user_email')!=''){
+			   console.log(localStorage.getItem('user_email'));
+			 	$('.dropdown-links .profile-email').html(localStorage.getItem('user_email'));
+			 }
+			 if(localStorage.getItem('user_name') && localStorage.getItem('user_name')!=''){
+			   console.log(localStorage.getItem('user_name'));
+			 	$(.profile-info .profile-name').html(localStorage.getItem('user_name'));
+			 }
+			 
         } else if (err) {
           console.log(err);
 			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
@@ -187,6 +196,8 @@ export class Auth {
 
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', user.picture);
+		localStorage.setItem('user_email', user.email);
+		localStorage.setItem('user_name', user["http://makershare.com/firstname"] + " " + user["http://makershare.com/lastname"]);
 
       const data = user;
       data.idToken = authResult.idToken;
@@ -205,8 +216,6 @@ export class Auth {
         dob: user["http://makershare.com/dob"]
       };
 		
-		$('.profile-info .profile-name').text(data.user_metadata['firstname'] + " test " + data.user_metadata['lastname']);
-		$('.dropdown-links .profile-email').html(data.email + "hello");
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
@@ -271,7 +280,6 @@ export class Auth {
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
-			 $('.dropdown-links .profile-email').html(data.email + " hello again");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
