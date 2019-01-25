@@ -65,74 +65,61 @@
 			
         <li class="nav-item" id="profile-view" *ngIf="auth.authenticated()">
           <div ngbDropdown
-               class="dropdown dropdownMenuLink sub-nav user-menu">
+               class="dropdown dropdownMenuLink">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
               <img id="user_avatar" class="avatar"
                    src="./assets/images/icons/no-profile-pic.png"
-                   alt="Profile Photo">
+                   alt="Profile Photo" style="width:38px;">
             </div>
-            <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
-              <li class="dropdown-item" *ngIf="isManager">
-                <a class="nav-link"
-                   target="_blank"
-                   href="{{Back_End_Domain}}">Manage</a>
-              </li>
-              <li class="dropdown-item">
-                <a [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
-                  <span class="nav-link">Maker Share Profile</span>
-                </a>
-              </li>
-              <li *ngIf="org_data && org_data.path"
-                  class="dropdown-item">
-                <a [routerLink]="[org_data.path,'edit']">
-                  <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
-                </a>
-              </li>
-              <!--<li *ngIf="!org_data && isManager"
-                  class="dropdown-item">
-                <a [routerLink]="['/groups/create']">
-                  <span class="nav-link">Create Group</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <a [routerLink]="['/']" fragment="feed">
-                  <span class="nav-link">My Feed</span>
-                </a>
-              </li>-->
-              <li class="dropdown-item">
-                <a [routerLink]="['/inbox-notifications']">
-                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <a [routerLink]="['/account/collection/bookmark']">
-                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <a [routerLink]="['/account/settings/notifications']">
-                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <a href="https://www.makerfaire.com/manage-entries">
-                    <span class="nav-link">Maker Faire Portal</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <a href="https://make.co/myaccount">
-                    <span class="nav-link">My Member Account</span>
-                </a>
-              </li>
-              <li class="dropdown-item">
-                <button (click)="auth.logout()">
-                    <span class="nav-link logout">Log Out</span>
-                </button>
-              </li>
-              <li class="dropdown-item">
-                <app-notification-panel></app-notification-panel>
-              </li>
-            </ul>
+            <div class="subnav dropdown-menu" aria-labelledby="userMenu">
+				  <div class="profile-info">
+						<img class="avatar" style="width:80px" alt="avatar">
+						<div class="profile-name"></div>	
+				  </div>
+				  <div class="dropdown-links">
+					  <a class="nav-link dropdown-item" *ngIf="isManager"
+							 target="_blank"
+							 href="{{Back_End_Domain}}">Manage</a>
+					  <a class="dropdown-item" [routerLink]="['/portfolio']">
+						  <span class="nav-link">Maker Share Profile</span>
+					  </a>
+					  <a *ngIf="org_data && org_data.path"
+							class="dropdown-item" [routerLink]="[org_data.path,'edit']">
+							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
+					  </a>
+					  <!--<li *ngIf="!org_data && isManager"
+							class="dropdown-item">
+						 <a [routerLink]="['/groups/create']">
+							<span class="nav-link">Create Group</span>
+						 </a>
+					  </li>
+					  <li class="dropdown-item">
+						 <a [routerLink]="['/']" fragment="feed">
+							<span class="nav-link">My Feed</span>
+						 </a>
+					  </li>-->
+					  <a [routerLink]="['/inbox-notifications']" class="dropdown-item">
+							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
+					  </a>
+					  <a class="dropdown-item" [routerLink]="['/account/collection/bookmark']">
+							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
+					  </a>
+					  <a class="dropdown-item" [routerLink]="['/account/settings/notifications']">
+							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
+					  </a>
+					  <a class="dropdown-item" href="https://www.makerfaire.com/manage-entries">
+							<span class="nav-link">Maker Faire Portal</span>
+					  </a>
+					  <a class="dropdown-item" href="https://make.co/myaccount">
+							<span class="nav-link">My Member Account</span>
+					  </a>
+					  <a id="newLogoutBtn"  (click)="auth.logout()">
+							<span class="nav-link logout">Log Out</span>
+					  </a>
+					  <div class="dropdown-item">
+						 <app-notification-panel></app-notification-panel>
+					  </div>
+            </div>
           </div>
           <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
             <!--<li class="dropdown-item"
