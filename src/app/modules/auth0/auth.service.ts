@@ -43,7 +43,6 @@ export class Auth {
           //if the user isn't logged into drupal, log them in
           if (!localStorage.getItem('user_id') ) {
             this.doLogin(authResult);
-				jQuery(".avatar").show();
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
@@ -89,6 +88,7 @@ export class Auth {
           if (err) {
             observer.error(err);
           } else if (authResult && authResult.accessToken && authResult.idToken) {
+			   $(".avatar").css("display","block");
             observer.next(true);
             this.doLogin(authResult);
             observer.complete();
