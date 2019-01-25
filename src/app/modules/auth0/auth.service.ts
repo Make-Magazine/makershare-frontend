@@ -211,7 +211,7 @@ export class Auth {
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
       };
-		console.log(data.user_metadata);
+		console.log(user);
 		
 		localStorage.setItem('user_email', data.email);
 		localStorage.setItem('user_fullname', user["http://makershare.com/firstname"] + " " + user["http://makershare.com/lastname"]);
