@@ -46,6 +46,7 @@ export class Auth {
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
+				$(".profile-info .avatar").attr("src",localStorage.getItem('user_avatar'));
           } 
         } else if (err) {
           console.log(err);
@@ -203,6 +204,9 @@ export class Auth {
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
       };
+		
+		document.querySelector('.profile-info .profile-name').innerHTML = data.user_metadata['firstname'] + " " + data.user_metadata['lastname'];
+		document.querySelector('.dropdown-links .profile-email').innerHTML = data.email;
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
@@ -274,13 +278,6 @@ export class Auth {
       });
     });
   }
-
-  /* Just the refresh code */
-  public hardRefresh(): void {
-        window.alert("Your all set to make something special!");
-        //window.location.href = "/portfolio”;
-  }
-
 
   /*
    * updUserMeta
