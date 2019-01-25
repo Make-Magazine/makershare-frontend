@@ -205,8 +205,6 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = profile.name;
-		data.firstname = profile['http://makershare.com/first_name'];
-		console.log(data.firstname);
 
       data.user_metadata = {
         firstname: profile["http://makershare.com/firstname"],
@@ -222,12 +220,17 @@ export class Auth {
 		localStorage.setItem('user_fullname', data["http://makershare.com/firstname"] + " " + data["http://makershare.com/lastname"]);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
+		  console.log("this is the res");
 		  console.log(res);
-        if (res.profile.uid != 0) {
+		  console.log(res.user.field_first_name);
+		  console.log(res.user.field_first_name[und][0]);
+		  console.log(res.user.field_first_name['und'][0]);
+		  
+        if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
-          localStorage.setItem('user_id', res.profile.uid);
-          localStorage.setItem('user_name', res.profile.name);
+          localStorage.setItem('user_id', res.user.uid);
+          localStorage.setItem('user_name', res.user.name);
           localStorage.setItem('roles', JSON.stringify(res.profile.roles));
 
           this.userService.saveCookies(
