@@ -72,53 +72,52 @@
                    alt="Profile Photo" style="width:38px;">
             </div>
             <div class="subnav dropdown-menu" aria-labelledby="userMenu">
-				  <div class="profile-info">
+				   <div class="profile-info">
 						<img class="avatar" style="width:80px" alt="avatar">
 						<div class="profile-name"></div>	
-				  </div>
-				  <div class="dropdown-links">
-					  <a class="nav-link dropdown-item" *ngIf="isManager"
-							 target="_blank"
-							 href="{{Back_End_Domain}}">Manage</a>
-					  <a class="dropdown-item" [routerLink]="['/portfolio']">
-						  <span class="nav-link">Maker Share Profile</span>
-					  </a>
-					  <a *ngIf="org_data && org_data.path"
-							class="dropdown-item" [routerLink]="[org_data.path,'edit']">
-							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
-					  </a>
-					  <!--<li *ngIf="!org_data && isManager"
-							class="dropdown-item">
-						 <a [routerLink]="['/groups/create']">
-							<span class="nav-link">Create Group</span>
-						 </a>
-					  </li>
-					  <li class="dropdown-item">
-						 <a [routerLink]="['/']" fragment="feed">
-							<span class="nav-link">My Feed</span>
-						 </a>
-					  </li>-->
-					  <a [routerLink]="['/inbox-notifications']" class="dropdown-item">
-							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
-					  </a>
-					  <a class="dropdown-item" [routerLink]="['/account/collection/bookmark']">
-							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
-					  </a>
-					  <a class="dropdown-item" [routerLink]="['/account/settings/notifications']">
-							<span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
-					  </a>
-					  <a class="dropdown-item" href="https://www.makerfaire.com/manage-entries">
-							<span class="nav-link">Maker Faire Portal</span>
-					  </a>
-					  <a class="dropdown-item" href="https://make.co/myaccount">
-							<span class="nav-link">My Member Account</span>
-					  </a>
-					  <a id="newLogoutBtn"  (click)="auth.logout()">
-							<span class="nav-link logout">Log Out</span>
-					  </a>
+				   </div>
+					<div class="dropdown-links">
+                 <a class="nav-link dropdown-item" *ngIf="isManager"
+                   target="_blank"
+                   href="{{Back_End_Domain}}">Manage</a>
+                 <a class="dropdown-item" [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
+                  <span class="nav-link">Maker Share Profile</span>
+                 </a>
+                 <a *ngIf="org_data && org_data.path"
+                  class="dropdown-item" [routerLink]="[org_data.path,'edit']">
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
+                 </a>
+              <!--
+                <a *ngIf="!org_data && isManager"
+                  class="dropdown-item" [routerLink]="['/groups/create']">
+                  <span class="nav-link">Create Group</span>
+                </a>
+                <a class="dropdown-item" [routerLink]="['/']" fragment="feed">
+                  <span class="nav-link">My Feed</span>
+                </a>
+              -->
+                 <a class="dropdown-item" [routerLink]="['/inbox-notifications']">
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
+                 </a>
+                 <a class="dropdown-item" [routerLink]="['/account/collection/bookmark']">
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Bookmarks</span>
+                 </a>
+                 <a class="dropdown-item" [routerLink]="['/account/settings/notifications']">
+                    <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
+                 </a>
+                 <a class="dropdown-item" href="https://www.makerfaire.com/manage-entries">
+                    <span class="nav-link">Maker Faire Portal</span>
+                 </a>
+                 <a class="dropdown-item" href="https://make.co/myaccount">
+                    <span class="nav-link">My Member Account</span>
+                 </a>
+                 <a (click)="auth.logout()" id="newLogoutBtn" title="Log Out">>
+                    <span class="nav-link logout">Log Out</span>
+                 </a>
 					  <div class="dropdown-item">
 						 <app-notification-panel></app-notification-panel>
 					  </div>
+					</div>
             </div>
           </div>
           <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
