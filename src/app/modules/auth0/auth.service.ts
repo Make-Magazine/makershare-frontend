@@ -206,20 +206,11 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = profile.name;
 
-      data.user_metadata = {
-        firstname: profile["http://makershare.com/firstname"],
-        lastname: profile["http://makershare.com/lastname"],
-        dob: profile["http://makershare.com/dob"]
-      };
-		
 		localStorage.setItem('user_email', data.email);
 		
-
       this.userService.auth0_authenticate(data).subscribe(res => {
 
-		  console.log(res.user.field_first_name['und'][0]['value']);
-		  console.log(res.user.field_last_name['und'][0]['value']);
-		  alert("Tst");
+        // here's we can get the user name without dealing with the http:// named nonsense
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
 		  
         if (res.user.uid != 0) {
