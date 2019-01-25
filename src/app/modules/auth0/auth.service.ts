@@ -211,9 +211,10 @@ export class Auth {
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
       };
+		console.log(data.user_metadata);
 		
 		localStorage.setItem('user_email', data.email);
-		localStorage.setItem('user_fullname', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
+		localStorage.setItem('user_fullname', user["http://makershare.com/firstname"] + " " + user["http://makershare.com/lastname"]);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
 		  console.log(res);
