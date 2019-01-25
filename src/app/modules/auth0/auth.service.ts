@@ -186,47 +186,49 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         console.log(err);
         return;
       }
 
       //temp overwrite profile picture with auth0 avatar
-      localStorage.setItem('user_avatar', user.picture);
+      localStorage.setItem('user_avatar', profile.picture);
 
-      const data = user;
+      const data = profile;
       data.idToken = authResult.idToken;
-      data.user_id = user.sub;
+      data.user_id = profile.sub;
       (data.email_verified =
-        user[
+        profile[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
-      data.email = user.name;
+      data.email = profile.name;
+		data.firstname = profile['http://makershare.com/first_name'];
+		console.log(data.firstname);
 
       data.user_metadata = {
-        firstname: user["http://makershare.com/firstname"],
-        lastname: user["http://makershare.com/lastname"],
-        dob: user["http://makershare.com/dob"]
+        firstname: profile["http://makershare.com/firstname"],
+        lastname: profile["http://makershare.com/lastname"],
+        dob: profile["http://makershare.com/dob"]
       };
-		console.log(user);
+		console.log("user metadata");
+		console.log(data.user_metadata);
 		console.log("but data shows");
 		console.log(data);
-		console.log(user["http://makershare.com/firstname"]);
 		
 		localStorage.setItem('user_email', data.email);
 		localStorage.setItem('user_fullname', data["http://makershare.com/firstname"] + " " + data["http://makershare.com/lastname"]);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
 		  console.log(res);
-        if (res.user.uid != 0) {
+        if (res.profile.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
-          localStorage.setItem('user_id', res.user.uid);
-          localStorage.setItem('user_name', res.user.name);
-          localStorage.setItem('roles', JSON.stringify(res.user.roles));
+          localStorage.setItem('user_id', res.profile.uid);
+          localStorage.setItem('user_name', res.profile.name);
+          localStorage.setItem('roles', JSON.stringify(res.profile.roles));
 
           this.userService.saveCookies(
             res['token'],
