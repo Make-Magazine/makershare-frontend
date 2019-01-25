@@ -211,16 +211,19 @@ export class Auth {
         lastname: profile["http://makershare.com/lastname"],
         dob: profile["http://makershare.com/dob"]
       };
+		console.log("but data shows");
+		console.log(data);
 		
-		// store email data to display in profile dropdown
 		localStorage.setItem('user_email', data.email);
+		
 
       this.userService.auth0_authenticate(data).subscribe(res => {
 
-        // first and last name for email dropdown
 		  console.log(res);
 		  console.log(res.user.field_first_name['und'][0]);
 		  console.log(res.user.field_last_name['und'][0]);
+		  alert("Tst");
+		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0] + " " + res.user.field_last_name['und'][0]);
 		  
         if (res.user.uid != 0) {
