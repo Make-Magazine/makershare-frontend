@@ -205,8 +205,8 @@ export class Auth {
         dob: user["http://makershare.com/dob"]
       };
 		
-		document.querySelector('.profile-info .profile-name').innerHTML = data.user_metadata['firstname'] + " " + data.user_metadata['lastname'];
-		document.querySelector('.dropdown-links .profile-email').innerHTML = data.email;
+		$('.profile-info .profile-name').text(data.user_metadata['firstname'] + " test " + data.user_metadata['lastname']);
+		$('.dropdown-links .profile-email').html(data.email + "hello");
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
@@ -271,6 +271,7 @@ export class Auth {
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
+			 $('.dropdown-links .profile-email').html(data.email + " hello again");
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
