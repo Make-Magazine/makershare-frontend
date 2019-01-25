@@ -196,8 +196,6 @@ export class Auth {
 
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', user.picture);
-		localStorage.setItem('user_email', user.email);
-		localStorage.setItem('user_name', user["http://makershare.com/firstname"] + " " + user["http://makershare.com/lastname"]);
 
       const data = user;
       data.idToken = authResult.idToken;
@@ -216,6 +214,8 @@ export class Auth {
         dob: user["http://makershare.com/dob"]
       };
 		
+		localStorage.setItem('user_email', data.email);
+		localStorage.setItem('user_name', data.user_metadata['firstname] + " " + data.user_metadata['lastname]);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {

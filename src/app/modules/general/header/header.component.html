@@ -78,7 +78,7 @@
 				   </div>
 					<div class="dropdown-links">
 					  <div class="profile-email"></div>
-                 <a class="nav-link dropdown-item" *ngIf="isManager"
+                 <a class="dropdown-item" *ngIf="isManager"
                    target="_blank"
                    href="{{Back_End_Domain}}">Manage</a>
                  <a class="dropdown-item" [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
@@ -118,64 +118,7 @@
 				   </div>
             </div>
           </div>
-          <ul class="subnav dropdown-menu" aria-labelledby="userMenu">
-            <!--<li class="dropdown-item"
-                *ngIf="isManager">
-              <a target="_blank" href="{{Back_End_Domain}}">
-                <span class="nav-link">Manage</span>
-              </a>
-            </li>-->
-            <li class="dropdown-item">
-              <a [routerLink]="['/portfolio']">
-                <span class="nav-link">Maker Share Profile</span>
-              </a>
-            </li>
-            <li *ngIf="org_data && org_data.path"
-                class="dropdown-item">
-              <a [routerLink]="[org_data.path]">
-                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
-              </a>
-            </li>
-            <!--<li *ngIf="!org_data" class="dropdown-item">
-              <a [routerLink]="['/orgs/create']">
-                <span class="nav-link">Create Group</span>
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <a [routerLink]="['/feed']">
-                <span class="nav-link">My Feed</span>
-              </a>
-            </li>-->
-            <li class="dropdown-item">
-              <a [routerLink]="['/inbox-notifications']">
-                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <a [routerLink]="['/account/settings/notifications']">
-                <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <a href="https://www.makerfaire.com/manage-entries">
-                <span class="nav-link">Maker Faire Portal</span>
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <a href="https://make.co/myaccount">
-                <span class="nav-link">My Account</span>
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <button (click)="auth.logout()">
-                <span class="nav-link">Logout</span>
-              </button>
-            </li>
-            <li class="dropdown-item">
-              <app-notification-panel></app-notification-panel>
-            </li>
-          </ul>
-        </li>
+			</li>
       </ul>
 		 
     </nav>
