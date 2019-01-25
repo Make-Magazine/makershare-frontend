@@ -223,7 +223,6 @@ export class Auth {
 		  console.log("this is the res");
 		  console.log(res);
 		  console.log(res.user.field_first_name);
-		  console.log(res.user.field_first_name[und][0]);
 		  console.log(res.user.field_first_name['und'][0]);
 		  
         if (res.user.uid != 0) {
