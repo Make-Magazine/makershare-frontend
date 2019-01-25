@@ -157,11 +157,12 @@
           }
       }
       .dropdown-menu {
-          padding: 90px 25px 25px;
-          right: -440px;
-          margin-top: -63px;
-          width: 660px;
-          border-radius: none;
+			 padding: 0px !important; // bad rio, but most of these can be removed entirely once makershare overrides in universal css is removed
+			 margin-left: -255px !important;
+			 margin-top: 18px !important;
+			 width: 300px !important;
+			 border-radius: 0px;
+			 border-top: 0px;
           z-index: 97;
           font-family: $font-roboto, sans-serif;
           @media screen and (min-width: 576px) and (max-width: 768px) {
@@ -172,74 +173,8 @@
               padding-left: 55px;
               width: 400px;
           }
-          &:after {
-            font-family: 'Linearicons-Free';
-            content: "\e870";
-            color: #ED1C24;
-            font-size: 36px;
-            position: absolute;
-            top: 33px !important;
-            left: 35%;
-            border: none;
-            @media screen and (min-width: 568px) and (max-width: 768px) {
-                display: none;
-            }
-          }
-          h3 { 
-              margin-top: 0px; 
-              margin-bottom: 20px;
-              display: block;
-              position: relative;
-              line-height: .8em;
-              color: #333;
-              padding-bottom: 2px;
-              opacity: .85;
-              font-size: 20px;
-              font-weight: 500;
-              font-family: $font-roboto, serif;
-              transition: font-weight .1s ease-in-out;
-              line-height: 1em;
-              display: inline;
-              position: relative;
-              overflow: hidden;
-              &:after {
-                  content: "";
-                  position: absolute;
-                  z-index: -1;
-                  left: 0;
-                  right: 50%;
-                  bottom: -5px;
-                  background: #ED1C24;
-                  height: 4px;
-                  transition-property: left right;
-                  transition-duration: 0.3s;
-                  transition-timing-function: ease-out;
-                }
-                @media screen and (min-width: 768px) and (max-width: 991px) {
-                    font-size: 18px;
-                }
-                @media screen and (min-width: 576px) and (max-width: 767px) {
-                    font-size: 16px;
-                }
-                @media screen and (max-width: 576px) {
-                    margin-top: 35px;
-                    display: block;
-                    overflow: visible;
-                    text-align: left;
-                }
-          }
-          a {
-              margin-bottom: 5px !important;
-              margin-top: 0px !important;
-              font-size: 16px;
-              padding: 0px;
-              font-weight: 400;
-              cursor: pointer;
-          }
+			.profile-info { margin-top: 0px; }
           .dropdown-item {
-              width: 41%;
-              color: #333;
-              font-size: 16px;
 				 .list-group {
 					 margin-top: 20px;
 					 .view-all { 
@@ -250,19 +185,6 @@
 					 }
 				 }
           }
-      }
-  }
-  // ye olde version
-  .nav-link {
-      font-size: 16px;
-      margin-top: 0px !important;
-      opacity:.6;
-      color: #000 !important;
-      @media screen and (min-width: 1275px) {
-          margin-top: 5px;
-      }
-      &:hover {
-          opacity: 1;
       }
   }
 }
