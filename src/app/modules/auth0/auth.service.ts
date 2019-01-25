@@ -215,7 +215,7 @@ export class Auth {
       };
 		
 		localStorage.setItem('user_email', data.email);
-		localStorage.setItem('user_name', data.user_metadata['firstname] + " " + data.user_metadata['lastname]);
+		localStorage.setItem('user_name', data.user_metadata['firstname'] + " " + data.user_metadata['lastname']);
 
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
