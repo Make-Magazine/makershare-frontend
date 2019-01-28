@@ -326,6 +326,7 @@ export class Auth {
    * logout
    */
   public logout(): void {
+    console.log("logging out");
     // logout from back-end
     this.userService.auth0_logout().subscribe(
       res => {
@@ -341,9 +342,12 @@ export class Auth {
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
     localStorage.removeItem('user_photo');
+	 localStorage.removeItem('user_avatar');
+	 localStorage.removeItem('roles');
 
     // logout of auth0
     window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+	 console.log("logged out");
   }
 
   /**
