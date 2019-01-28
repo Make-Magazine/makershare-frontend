@@ -334,20 +334,6 @@ export class Auth {
       },
       err => {},
     );
-	 
-	 $.post( "https://preview-manage.makershare.com/user/logout", function() {
-	   alert( "success" );
-	 })
-		.done(function() {
-			alert( "second success" );
-		})
-		.fail(function() {
-			alert( "error" );
-		})
-		.always(function() {
-			alert( "finished" );
-		});
-
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
@@ -360,17 +346,41 @@ export class Auth {
 	 localStorage.removeItem('user_avatar');
 	 localStorage.removeItem('roles');
 	 
-    const logoutsettings = {
-      "async": true,
+	 const logoutUrl = "https://manage.makershare.com/user/logout";
+	 if(window.location.href.indexOf("preview") > -1) {
+	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
+	  }
+	  alert(logoutUrl);
+	  
+    const logoutSettings = {
+	   "type": 'POST',
+      "async": false,
       "crossDomain": true,
-      "url": "https://preview-manage.makershare.com/user/logout",
+      "url": logoutUrl,
       "method": "POST",
     }
 
-    $.ajax(logoutsettings).done(function (response) {
-	   alert("hit logout");
+    $.ajax(this.logoutSettings).done(function (response) {
+	   alert("logging out);
       console.log(response);
     });
+	 
+	 $.post( "https://preview-manage.makershare.com/user/logout", function() {
+	   alert( "success" );
+	 })
+		.done(function() {
+			alert( "second success" );
+		})
+		.success(function() {
+		   alert("hello");
+		})
+		.fail(function() {
+			alert( "error" );
+		})
+		.always(function() {
+			alert( "finished" );
+		});
+
 
 
     // logout of auth0
