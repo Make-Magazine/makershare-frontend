@@ -58,7 +58,7 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private pm: PmService,
     private router: Router,
-     private title: Title,
+    private title: Title,
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,
@@ -74,15 +74,19 @@ export class ViewComponent implements OnInit {
     // this.getBlockedUser();
     this.getStatus();
     this.buildForm();
-    this.getThreads();
     this.getCurrentUser();
+	 console.log(this.getCurrentUser);
+	 this.getThreads();
     this.loaderService.display(true);
     this.userId = parseInt(localStorage.getItem('user_id'), 10);
   }
   getThreads() {
+    console.log("where can we get data?");
+    console.log(this.getCurrentUser);
     this.route.params
       .switchMap(thread_id => this.pm.getMessage(thread_id['thread_id']))
       .subscribe(data => {
+		  
         let check = false;
         /*check if this user participent of this message or not*/
         for (let iP = 0; iP < data.participants.length; iP++) {
