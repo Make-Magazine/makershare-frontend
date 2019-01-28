@@ -327,6 +327,20 @@ export class Auth {
    */
   public logout(): void {
     // logout from back-end
+
+	 $.post( "https://preview-manage.makershare.com/user/logout", function() {
+	   alert( "success" );
+	 })
+		.done(function() {
+			alert( "second success" );
+		})
+		.fail(function() {
+			alert( "error" );
+		})
+		.always(function() {
+			alert( "finished" );
+		});
+ 
     this.userService.auth0_logout().subscribe(
       res => {
         this.userService.removeCookies();
@@ -346,16 +360,6 @@ export class Auth {
 	 localStorage.removeItem('user_avatar');
 	 localStorage.removeItem('roles');
 	 
-	 var xhr = new XMLHttpRequest();
-		xhr.open('POST', 'https://preview-manage.makershare.com/user/logout);
-		xhr.onload = function() {
-			 if (xhr.status === 200) {
-				  console.log("logged out");
-			 }
-				  alert('Request failed.  Returned status of ' + xhr.status);
-			 }
-		};
-		xhr.send();
 
     // logout of auth0
     window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
