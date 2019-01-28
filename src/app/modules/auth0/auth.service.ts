@@ -346,7 +346,7 @@ export class Auth {
 	 localStorage.removeItem('user_avatar');
 	 localStorage.removeItem('roles');
 	 
-	 const logoutUrl = "https://manage.makershare.com/user/logout";
+	 let logoutUrl = "https://manage.makershare.com/user/logout";
 	 if(window.location.href.indexOf("preview") > -1) {
 	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
 	  }
@@ -360,19 +360,16 @@ export class Auth {
       "method": "POST",
     }
 
-    $.ajax(this.logoutSettings).done(function (response) {
-	   alert("logging out);
+    $.ajax(logoutSettings).done(function (response) {
+	   alert("logging out");
       console.log(response);
     });
 	 
-	 $.post( "https://preview-manage.makershare.com/user/logout", function() {
+	 $.post( logoutUrl, function() {
 	   alert( "success" );
 	 })
 		.done(function() {
 			alert( "second success" );
-		})
-		.success(function() {
-		   alert("hello");
 		})
 		.fail(function() {
 			alert( "error" );
@@ -381,7 +378,10 @@ export class Auth {
 			alert( "finished" );
 		});
 
-
+		$.get(logoutUrl).done(function (data) {
+		    alert("get finished");
+			 console.log(data);
+		});
 
     // logout of auth0
     window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
