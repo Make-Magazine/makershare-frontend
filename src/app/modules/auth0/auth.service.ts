@@ -334,6 +334,20 @@ export class Auth {
       },
       err => {},
     );
+	 
+	 $.post( "https://preview-manage.makershare.com/user/logout", function() {
+	   alert( "success" );
+	 })
+		.done(function() {
+			alert( "second success" );
+		})
+		.fail(function() {
+			alert( "error" );
+		})
+		.always(function() {
+			alert( "finished" );
+		});
+
     // Remove tokens and expiry time from localStorage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
@@ -354,6 +368,7 @@ export class Auth {
     }
 
     $.ajax(logoutsettings).done(function (response) {
+	   alert("hit logout");
       console.log(response);
     });
 
