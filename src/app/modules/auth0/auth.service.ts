@@ -21,7 +21,7 @@ export class Auth {
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
-    scope: 'openid user user_metadata',
+    scope: 'openid profile user_metadata',
     leeway: 60
   });
 
@@ -283,13 +283,6 @@ export class Auth {
       });
     });
   }
-  
- /* Just the refresh code */
-  public hardRefresh(): void {
-        window.alert("Your all set to make something special!");
-        //window.location.href = "/portfolio”;
-  }
-
 
   /*
    * updUserMeta

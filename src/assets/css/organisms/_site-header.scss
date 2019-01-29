@@ -118,15 +118,20 @@
       @media screen and (min-width: 767px) {
           display: block !important;
       }
-      .add-project-header-button {
+      .add-project-header-button, .notification-button {
           background: none;
           font-size: 28px;
 			 color: #fff;
 			 opacity: 1;
+			 float: left;
           &:hover, &:focus, &:active {
               background: none;
           }
       }
+	  .notification-button {
+		  font-size: 18px;
+		  margin-top: 10px;
+	  }
       .bs-tooltip-top {
           top: -33px !important;
       }
