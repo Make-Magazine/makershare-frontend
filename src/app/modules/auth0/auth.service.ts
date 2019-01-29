@@ -349,39 +349,21 @@ export class Auth {
 	 let logoutUrl = "https://manage.makershare.com/user/logout";
 	 if(window.location.href.indexOf("preview") > -1) {
 	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
-	  }
-	  alert(logoutUrl);
-	  
-    const logoutSettings = {
-	   "type": 'POST',
-      "async": false,
-      "crossDomain": true,
-      "url": logoutUrl,
-      "method": "POST",
-    }
-
-    $.ajax(logoutSettings).done(function (response) {
-	   alert("logging out");
-      console.log(response);
-    });
+	 }
 	 
 	 $.post( logoutUrl, function() {
-	   alert( "success" );
+	   console.log( "success" );
 	 })
 		.done(function() {
-			alert( "second success" );
+			console.log( "second success" );
 		})
 		.fail(function() {
-			alert( "error" );
+			console.log( "error" );
 		})
 		.always(function() {
-			alert( "finished" );
+			console.log( "finished" );
 		});
 
-		$.get(logoutUrl).done(function (data) {
-		    alert("get finished");
-			 console.log(data);
-		});
 
     // logout of auth0
     window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
