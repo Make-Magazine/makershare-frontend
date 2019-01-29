@@ -61,6 +61,7 @@
 
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
+			 <a class="dropdown-item" [routerLink]="['/inbox-notifications']"><i class="fa fa-bell"></i></a>
         </li>
 			
         <li class="nav-item" id="profile-view" *ngIf="auth.authenticated()">
@@ -82,7 +83,7 @@
                    target="_blank"
                    href="{{Back_End_Domain}}">Manage</a>
                  <a class="dropdown-item" [routerLink]="['/portfolio']"> <!-- need a page refresh here -->
-                  <span class="nav-link">Maker Share Profile</span>
+                  <span class="nav-link">Maker Profile</span>
                  </a>
                  <a *ngIf="org_data && org_data.path"
                   class="dropdown-item" [routerLink]="[org_data.path,'edit']">
@@ -96,13 +97,13 @@
                 <a class="dropdown-item" [routerLink]="['/']" fragment="feed">
                   <span class="nav-link">My Feed</span>
                 </a>
-              -->
                  <a class="dropdown-item" [routerLink]="['/inbox-notifications']">
                     &nbsp;&nbsp;&nbsp;&nbsp;Inbox
                  </a>
                  <a class="dropdown-item" [routerLink]="['/account/settings/notifications']">
                     &nbsp;&nbsp;&nbsp;&nbsp;Account Settings
                  </a>
+              -->
                  <a class="dropdown-item" href="https://www.makerfaire.com/manage-entries">
                     Maker Faire Portal
                  </a>
@@ -113,9 +114,9 @@
 					<a (click)="auth.logout()" id="newLogoutBtn" title="Log Out">
 					   <span class="logout">Log Out</span>
 				   </a>
-				   <div class="dropdown-item">
+				   <!--<div class="dropdown-item">
 					   <app-notification-panel></app-notification-panel>
-				   </div>
+				   </div>-->
             </div>
           </div>
 			</li>

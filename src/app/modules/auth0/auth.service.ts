@@ -21,7 +21,7 @@ export class Auth {
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
-    scope: 'openid profile user_metadata',
+    scope: 'openid user user_metadata',
     leeway: 60
   });
 
@@ -193,18 +193,18 @@ export class Auth {
       }
 
       //temp overwrite profile picture with auth0 avatar
-      localStorage.setItem('user_avatar', profile.picture);
+      localStorage.setItem('user_avatar', user.picture);
 
-      const data = profile;
+      const data = user;
       data.idToken = authResult.idToken;
-      data.user_id = profile.sub;
+      data.user_id = user.sub;
       (data.email_verified =
         profile[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
-      data.email = profile.name;
+      data.email = user.name;
 
 		localStorage.setItem('user_email', data.email);
 		
@@ -283,6 +283,13 @@ export class Auth {
       });
     });
   }
+  
+ /* Just the refresh code */
+  public hardRefresh(): void {
+        window.alert("Your all set to make something special!");
+        //window.location.href = "/portfolio”;
+  }
+
 
   /*
    * updUserMeta
