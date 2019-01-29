@@ -350,7 +350,6 @@ export class Auth {
 	 if(window.location.href.indexOf("preview") > -1) {
 	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
 	  }
-	  alert(logoutUrl);
 	  
     const logoutSettings = {
 	   "type": 'POST',
@@ -375,15 +374,15 @@ export class Auth {
 			alert( "error" );
 		})
 		.always(function() {
-			alert( "finished" );
+			alert("post");
+    		window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
 		});
 
 		$.get(logoutUrl).done(function (data) {
 			 console.log(data);
 		});
 
-    // logout of auth0
-    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+
   }
 
   /**
