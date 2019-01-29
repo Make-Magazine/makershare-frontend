@@ -67,7 +67,7 @@
           <div ngbDropdown
                class="dropdown dropdownMenuLink sub-nav user-menu">
             <div class="dropdown-toggle" id="userMenu" ngbDropdownToggle>
-              <img id="user_avatar" class="profile-photo"
+              <img id="user_avatar" class="avatar"
                    src="./assets/images/icons/no-profile-pic.png"
                    alt="Profile Photo">
             </div>
@@ -146,13 +146,13 @@
                 <span class="nav-link">Maker Share Profile</span>
               </a>
             </li>
-            <li *ngIf="org_data && org_data.path"
+            <!--<li *ngIf="org_data && org_data.path"
                 class="dropdown-item">
               <a [routerLink]="[org_data.path]">
                 <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Group Profile</span>
               </a>
             </li>
-            <!--<li *ngIf="!org_data" class="dropdown-item">
+            <li *ngIf="!org_data" class="dropdown-item">
               <a [routerLink]="['/orgs/create']">
                 <span class="nav-link">Create Group</span>
               </a>
@@ -161,7 +161,7 @@
               <a [routerLink]="['/feed']">
                 <span class="nav-link">My Feed</span>
               </a>
-            </li>-->
+            </li>
             <li class="dropdown-item">
               <a [routerLink]="['/inbox-notifications']">
                 <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Inbox</span>
@@ -176,7 +176,7 @@
               <a [routerLink]="['/account/settings/notifications']">
                 <span class="nav-link">&nbsp;&nbsp;&nbsp;&nbsp;Account Settings</span>
               </a>
-            </li>
+            </li>-->
             <li class="dropdown-item">
               <a href="https://www.makerfaire.com/manage-entries">
                 <span class="nav-link">Maker Faire Portal</span>
