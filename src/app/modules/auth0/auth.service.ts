@@ -186,7 +186,7 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
       if (err) {
         console.log(err);
         return;
@@ -199,7 +199,7 @@ export class Auth {
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
       (data.email_verified =
-        profile[
+        user[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
