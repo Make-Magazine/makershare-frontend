@@ -210,8 +210,6 @@ export class Auth {
 		
       this.userService.auth0_authenticate(data).subscribe(res => {
 		  console.log(res);
-		  //update userMeta on auth0
-        this.updUserMeta(authResult.accessToken, res, data);
 
         // here's we can get the user name without dealing with the http:// named nonsense
 		  //localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
@@ -235,6 +233,8 @@ export class Auth {
           // Set session
           this.setSession(authResult);
 
+			 //update userMeta on auth0
+          //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // Check if user has errors like being underage, if so log them out and let them know
 			 var querystring = this.router.routerState.snapshot.url;
@@ -246,6 +246,7 @@ export class Auth {
 			 } else {
 				 // redirect to the profile page if it's a user's first time
 				 if (res.first_time) {
+				   alert("first timer here");
 					// Notification to visit portfolio page
 					this.notificationBarService.create({
 					  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
@@ -258,17 +259,9 @@ export class Auth {
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 // User doesn't have a profile picture	
 				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
-					/* User sees this notification on the portfolio page we're bring them to, no need to show here
-					this.notificationBarService.create({
-					  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
-					  type: NotificationType.Success,
-					  autoHide: true,
-					  allowClose: true,
-					  hideOnHover: false,
-					  isHtml: true,
-					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
+				   alert(res.user_photo);
 					this.router.navigateByUrl('/');
 					window.location.reload();
 				 }
@@ -276,6 +269,7 @@ export class Auth {
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
+			 alert(Singleton.Settings.appURL);
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
