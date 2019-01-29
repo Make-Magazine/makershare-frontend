@@ -191,6 +191,7 @@ export class Auth {
         console.log(err);
         return;
       }
+		console.log("user");
       console.log(user);
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', user.picture);
@@ -205,10 +206,17 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
+		
+		data.user_metadata = {
+        firstname: user["http://makershare.com/firstname"],
+        lastname: user["http://makershare.com/lastname"],
+        dob: user["http://makershare.com/dob"]
+	   };
 
 		localStorage.setItem('user_email', data.email);
 		
       this.userService.auth0_authenticate(data).subscribe(res => {
+		  console.log("res");
 		  console.log(res);
 
         // here's we can get the user name without dealing with the http:// named nonsense
