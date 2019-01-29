@@ -58,7 +58,7 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private pm: PmService,
     private router: Router,
-    private title: Title,
+     private title: Title,
     private userService: UserService,
     private fb: FormBuilder,
     private _location: Location,

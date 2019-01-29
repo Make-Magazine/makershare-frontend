@@ -21,7 +21,7 @@ export class Auth {
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
-    scope: 'openid profile user_metadata',
+    scope: 'openid profile',
     leeway: 60
   });
 
@@ -46,15 +46,7 @@ export class Auth {
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
-				$(".profile-info .avatar").attr("src",localStorage.getItem('user_avatar'));
           } 
-			 if(localStorage.getItem('user_email') && localStorage.getItem('user_email')!=''){
-			 	$('.dropdown-links .profile-email').html(localStorage.getItem('user_email'));
-			 }
-			 if(localStorage.getItem('user_fullname') && localStorage.getItem('user_fullname')!=''){
-			 	$('.profile-info .profile-name').html(localStorage.getItem('user_fullname'));
-			 }
-			 
         } else if (err) {
           console.log(err);
 			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
@@ -191,8 +183,7 @@ export class Auth {
         console.log(err);
         return;
       }
-		console.log("user");
-      console.log(user);
+
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', user.picture);
 
@@ -206,22 +197,14 @@ export class Auth {
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
-		
-		data.user_metadata = {
+
+      data.user_metadata = {
         firstname: user["http://makershare.com/firstname"],
         lastname: user["http://makershare.com/lastname"],
         dob: user["http://makershare.com/dob"]
-		};
+      };
 
-		localStorage.setItem('user_email', data.email);
-		
       this.userService.auth0_authenticate(data).subscribe(res => {
-		  console.log("res");
-		  console.log(res);
-
-        // here's we can get the user name without dealing with the http:// named nonsense
-		  //localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
-		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
@@ -241,7 +224,7 @@ export class Auth {
           // Set session
           this.setSession(authResult);
 
-			 //update userMeta on auth0
+          //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // Check if user has errors like being underage, if so log them out and let them know
@@ -254,7 +237,6 @@ export class Auth {
 			 } else {
 				 // redirect to the profile page if it's a user's first time
 				 if (res.first_time) {
-				   alert("first timer here");
 					// Notification to visit portfolio page
 					this.notificationBarService.create({
 					  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
@@ -267,9 +249,17 @@ export class Auth {
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 // User doesn't have a profile picture	
 				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+					/* User sees this notification on the portfolio page we're bring them to, no need to show here
+					this.notificationBarService.create({
+					  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
+					  type: NotificationType.Success,
+					  autoHide: true,
+					  allowClose: true,
+					  hideOnHover: false,
+					  isHtml: true,
+					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-				   alert(res.user_photo);
 					this.router.navigateByUrl('/');
 					window.location.reload();
 				 }
@@ -277,7 +267,6 @@ export class Auth {
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
-			 alert(Singleton.Settings.appURL);
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
@@ -285,6 +274,13 @@ export class Auth {
       });
     });
   }
+
+  /* Just the refresh code */
+  public hardRefresh(): void {
+        window.alert("Your all set to make something special!");
+        //window.location.href = "/portfolio”;
+  }
+
 
   /*
    * updUserMeta
@@ -343,25 +339,10 @@ export class Auth {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
-	 localStorage.removeItem('user_fullname');
-	 localStorage.removeItem('user_email');
     localStorage.removeItem('user_photo');
-	 localStorage.removeItem('user_avatar');
-	 localStorage.removeItem('roles');
-	 
-	 let logoutUrl = "https://manage.makershare.com/user/logout";
-	 if(window.location.href.indexOf("preview") > -1) {
-	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
-	 }
-	 // getting a response isn't in the cards here as the admin page is access restricted, luckily just hitting the page and failing to get a response is enough to logout out of drupal, so when that's complete, logout out of auth0 too
-	 $.post( logoutUrl )
-		.done(function() {
-    		window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-		}) 
-		.fail(function(jqXHR, textStatus, errorThrown) {
-		   window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-		});
 
+    // logout of auth0
+    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
   }
 
   /**
