@@ -260,8 +260,10 @@ export class Auth {
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
+				   console.log(res);
+					alert("tst");
 					this.router.navigateByUrl('/');
-					window.location.reload();
+					//window.location.reload();
 				 }
 			 }
         } else {
