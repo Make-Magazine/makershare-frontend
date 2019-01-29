@@ -191,7 +191,7 @@ export class Auth {
         console.log(err);
         return;
       }
-
+      console.log(user);
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', user.picture);
 
@@ -214,7 +214,7 @@ export class Auth {
         this.updUserMeta(authResult.accessToken, res, data);
 
         // here's we can get the user name without dealing with the http:// named nonsense
-		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
+		  //localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
 		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
