@@ -118,7 +118,7 @@
       @media screen and (min-width: 767px) {
           display: block !important;
       }
-      .add-project-header-button {
+      .add-project-header-button, .inbox-notifications-button {
           background: none;
           font-size: 28px;
 			 color: #fff;
@@ -127,6 +127,10 @@
               background: none;
           }
       }
+	   .inbox-notifications-button {
+		    font-size: 18px;
+		    margin-top: 10px;
+	   }
       .bs-tooltip-top {
           top: -33px !important;
       }

@@ -21,7 +21,7 @@ export class Auth {
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
-    scope: 'openid profile',
+    scope: 'openid user user_metadata',
     leeway: 60
   });
 
@@ -46,7 +46,15 @@ export class Auth {
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
             $("#user_avatar").attr("src",localStorage.getItem('user_avatar'));
+				$(".profile-info .avatar").attr("src",localStorage.getItem('user_avatar'));
           } 
+			 if(localStorage.getItem('user_email') && localStorage.getItem('user_email')!=''){
+			 	$('.dropdown-links .profile-email').html(localStorage.getItem('user_email'));
+			 }
+			 if(localStorage.getItem('user_fullname') && localStorage.getItem('user_fullname')!=''){
+			 	$('.profile-info .profile-name').html(localStorage.getItem('user_fullname'));
+			 }
+			 
         } else if (err) {
           console.log(err);
 			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
@@ -178,7 +186,7 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         console.log(err);
         return;
@@ -191,14 +199,24 @@ export class Auth {
       data.idToken = authResult.idToken;
       data.user_id = user.sub;
       (data.email_verified =
-        user[
+        profile[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
+		localStorage.setItem('user_email', data.email);
+		
       this.userService.auth0_authenticate(data).subscribe(res => {
+		  console.log("is this on");
+		  console.log(res);
+		  //update userMeta on auth0
+        this.updUserMeta(authResult.accessToken, res, data);
+
+        // here's we can get the user name without dealing with the http:// named nonsense
+		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
+		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
@@ -218,8 +236,6 @@ export class Auth {
           // Set session
           this.setSession(authResult);
 
-          //update userMeta on auth0
-          //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // Check if user has errors like being underage, if so log them out and let them know
 			 var querystring = this.router.routerState.snapshot.url;
@@ -268,8 +284,8 @@ export class Auth {
       });
     });
   }
-
-  /* Just the refresh code */
+  
+ /* Just the refresh code */
   public hardRefresh(): void {
         window.alert("Your all set to make something special!");
         //window.location.href = "/portfolio”;
@@ -333,10 +349,25 @@ export class Auth {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
+	 localStorage.removeItem('user_fullname');
+	 localStorage.removeItem('user_email');
     localStorage.removeItem('user_photo');
+	 localStorage.removeItem('user_avatar');
+	 localStorage.removeItem('roles');
+	 
+	 let logoutUrl = "https://manage.makershare.com/user/logout";
+	 if(window.location.href.indexOf("preview") > -1) {
+	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
+	 }
+	 // getting a response isn't in the cards here as the admin page is access restricted, luckily just hitting the page and failing to get a response is enough to logout out of drupal, so when that's complete, logout out of auth0 too
+	 $.post( logoutUrl )
+		.done(function() {
+    		window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+		}) 
+		.fail(function(jqXHR, textStatus, errorThrown) {
+		   window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+		});
 
-    // logout of auth0
-    window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
   }
 
   /**
