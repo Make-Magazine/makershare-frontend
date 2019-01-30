@@ -21,7 +21,7 @@ export class Auth {
     audience: 'https://makermedia.auth0.com/userinfo',
     redirectUri: Singleton.Settings.appURL,
     //scope: 'openid id_token access_token profile',
-    scope: 'openid user user_metadata',
+    scope: 'openid profile user_metadata',
     leeway: 60
   });
 
@@ -186,33 +186,29 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    this.auth0.client.userInfo(authResult.accessToken, (err, user) => {
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         console.log(err);
         return;
       }
 
       //temp overwrite profile picture with auth0 avatar
-      localStorage.setItem('user_avatar', user.picture);
+      localStorage.setItem('user_avatar', profile.picture);
 
-      const data = user;
+      const data = profile;
       data.idToken = authResult.idToken;
-      data.user_id = user.sub;
+      data.user_id = profile.sub;
       (data.email_verified =
-        user[
+        profile[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
-      data.email = user.name;
+      data.email = profile.name;
 
 		localStorage.setItem('user_email', data.email);
 		
       this.userService.auth0_authenticate(data).subscribe(res => {
-		  console.log("is this on");
-		  console.log(res);
-		  //update userMeta on auth0
-        this.updUserMeta(authResult.accessToken, res, data);
 
         // here's we can get the user name without dealing with the http:// named nonsense
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
@@ -236,6 +232,8 @@ export class Auth {
           // Set session
           this.setSession(authResult);
 
+          //update userMeta on auth0
+          //this.updUserMeta(authResult.accessToken, res, data);
 			 
 			 // Check if user has errors like being underage, if so log them out and let them know
 			 var querystring = this.router.routerState.snapshot.url;
@@ -284,13 +282,6 @@ export class Auth {
       });
     });
   }
-  
- /* Just the refresh code */
-  public hardRefresh(): void {
-        window.alert("Your all set to make something special!");
-        //window.location.href = "/portfolio”;
-  }
-
 
   /*
    * updUserMeta
@@ -359,13 +350,14 @@ export class Auth {
 	 if(window.location.href.indexOf("preview") > -1) {
 	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
 	 }
-	 // getting a response isn't in the cards here as the admin page is access restricted, luckily just hitting the page and failing to get a response is enough to logout out of drupal, so when that's complete, logout out of auth0 too
+	 
 	 $.post( logoutUrl )
 		.done(function() {
     		window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-		}) 
+		})
 		.fail(function(jqXHR, textStatus, errorThrown) {
 		   window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
+			console.log( jqXHR.responseText );
 		});
 
   }
