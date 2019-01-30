@@ -61,7 +61,7 @@
 
         <li class="nav-item hide-mobile" *ngIf="auth.authenticated()">
           <a class="button add-project-header-button" ngbTooltip="Add Project" [routerLink]="['/projects/create']">+</a>
-			 <a class="button inbox-notifications-button" [routerLink]="['/inbox-notifications']"><i class="fa fa-bell"></i></a>
+			 <a class="button inbox-notifications-button" ngbTooltip="Inbox" [routerLink]="['/inbox-notifications']"><i class="fa fa-bell"></i></a>
         </li>
 			
         <li class="nav-item" id="profile-view" *ngIf="auth.authenticated()">

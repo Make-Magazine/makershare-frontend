@@ -123,6 +123,7 @@
           font-size: 28px;
 			 color: #fff;
 			 opacity: 1;
+			 float: left;
           &:hover, &:focus, &:active {
               background: none;
           }
@@ -130,6 +131,7 @@
 	   .inbox-notifications-button {
 		    font-size: 18px;
 		    margin-top: 10px;
+			 margin-left: 18px;
 	   }
       .bs-tooltip-top {
           top: -33px !important;
