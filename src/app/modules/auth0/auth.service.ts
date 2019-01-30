@@ -256,7 +256,7 @@ export class Auth {
 					});
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 // User doesn't have a profile picture	
-				 } else if (res.user_photo.indexOf('profile-default.png') >= 0) {
+				 } else if (res.user_photo.indexOf('profile-default.png') >= 0 && window.location.origin == window.location.href) {
 					/* User sees this notification on the portfolio page we're bring them to, no need to show here
 					this.notificationBarService.create({
 					  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
