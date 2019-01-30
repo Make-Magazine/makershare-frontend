@@ -198,12 +198,6 @@ export class Auth {
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
       data.email = user.name;
 
-      data.user_metadata = {
-        firstname: user["http://makershare.com/firstname"],
-        lastname: user["http://makershare.com/lastname"],
-        dob: user["http://makershare.com/dob"]
-      };
-
       this.userService.auth0_authenticate(data).subscribe(res => {
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
