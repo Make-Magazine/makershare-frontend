@@ -97,7 +97,7 @@
       font-family: $font-roboto, sans-serif;
 	   border: solid #eb002a 1px;
 	   border-radius: 2px;
-	   padding: 8px 10px 7px;
+	   padding: 8px 10px 6px;
       height: auto;
 	   opacity: 1;
 	   @media screen and (min-width: 577px) and (max-width: 767px) {
@@ -179,7 +179,6 @@
               padding-left: 55px;
               width: 400px;
           }
-			.profile-name { font-family: "Roboto Light"; }
 			.profile-info { margin-top: 0px; }
           .dropdown-item {
 				 .list-group {
