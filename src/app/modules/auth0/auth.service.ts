@@ -198,6 +198,9 @@ export class Auth {
       const data = profile;
       data.idToken = authResult.idToken;
       data.user_id = profile.sub;
+		
+		console.log(profile);
+		
       (data.email_verified =
         profile[
           'http://makershare.com/email_verified'
