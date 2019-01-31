@@ -199,12 +199,6 @@ export class Auth {
       data.idToken = authResult.idToken;
       data.user_id = profile.sub;
 		
-		console.log(profile);
-		console.log("email is");
-		console.log(profile['email']);
-		console.log(profile['http://makershare.com/email']);
-		console.log(profile['https://makershare.com/email']);
-		
       (data.email_verified =
         profile[
           'http://makershare.com/email_verified'
@@ -222,9 +216,14 @@ export class Auth {
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
-			 console.log(res);
+			 console.log(res.user);
 			 console.log(res.user.email);
-			 localStorage.setItem('user_email', res.user.email);
+			 alert(res.user.email);
+			 if(res.user.email) {
+			 	localStorage.setItem('user_email', res.user.email);
+			 }else{
+			   localStorage.setItem('user_email', res.user.name);
+			 }
           localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
           this.userService.saveCookies(
