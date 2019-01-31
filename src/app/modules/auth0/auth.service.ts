@@ -199,7 +199,7 @@ export class Auth {
       data.idToken = authResult.idToken;
       data.user_id = profile.sub;
 		
-		console.log(profile);
+		// console.log(profile);
 		
       (data.email_verified =
         profile[
@@ -207,7 +207,7 @@ export class Auth {
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
-      data.email = profile.name;
+      data.email = profile.email;
 
 		localStorage.setItem('user_email', data.email);
 		
