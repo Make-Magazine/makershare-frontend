@@ -201,7 +201,9 @@ export class Auth {
 		
 		console.log(profile);
 		console.log("email is");
-		console.log(profile.email);
+		console.log(profile['email']);
+		console.log(profile['http://makershare.com/email']);
+		console.log(profile['https://makershare.com/email']);
 		
       (data.email_verified =
         profile[
