@@ -216,7 +216,7 @@ export class Auth {
 		  console.log(res);
 		  console.log(res.user);
 		  console.log(res.user.field_email['und'][0]['value']);
-		  if(res.user.field_email['und'][0]['value'])
+		  if(res.user.field_email['und'][0]['value']) {
 		  	  localStorage.setItem('user_email', res.user.field_email['und'][0]['value']);
 		  }
 		  
