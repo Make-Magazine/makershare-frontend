@@ -211,13 +211,6 @@ export class Auth {
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
-		if(profile.email) {
-      	data.email = profile.email;
-		}else {
-		   data.email = profile.name;
-		}
-      
-		localStorage.setItem('user_email', data.email);
 		
       this.userService.auth0_authenticate(data).subscribe(res => {
 
@@ -229,6 +222,9 @@ export class Auth {
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
+			 console.log(res);
+			 console.log(res.user.email);
+			 localStorage.setItem('user_email', res.user.email);
           localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
           this.userService.saveCookies(
