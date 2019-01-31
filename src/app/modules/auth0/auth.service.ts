@@ -213,8 +213,6 @@ export class Auth {
         // here's we can get the user name without dealing with the http:// named nonsense
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
 		  
-		  console.log(res.user);
-		  console.log(res.user.mail);
 		  if(res.user.mail) {
 		  	  localStorage.setItem('user_email', res.user.mail);
 		  }
