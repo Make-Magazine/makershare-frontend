@@ -210,20 +210,14 @@ export class Auth {
 
         // here's we can get the user name without dealing with the http:// named nonsense
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
+		  console.log(res.user);
+		  localStorage.setItem('user_email', res.user.field_email['und'][0]['value']);
 		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
           localStorage.setItem('user_name', res.user.name);
-			 console.log(res.user);
-			 console.log(res.user.email);
-			 alert(res.user.email);
-			 if(res.user.email) {
-			 	localStorage.setItem('user_email', res.user.email);
-			 }else{
-			   localStorage.setItem('user_email', res.user.name);
-			 }
           localStorage.setItem('roles', JSON.stringify(res.user.roles));
 
           this.userService.saveCookies(
