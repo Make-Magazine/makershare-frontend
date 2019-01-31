@@ -198,20 +198,29 @@ export class Auth {
       const data = profile;
       data.idToken = authResult.idToken;
       data.user_id = profile.sub;
-		
       (data.email_verified =
         profile[
           'http://makershare.com/email_verified'
         ]), (data.access_token = authResult.accessToken);
       data.email_verified = true;
       data.subscribeToNewsletter = localStorage.getItem('subscribeToNewsletter');
+      data.email = profile.name;
+
+		localStorage.setItem('user_email', data.email);
 		
       this.userService.auth0_authenticate(data).subscribe(res => {
 
         // here's we can get the user name without dealing with the http:// named nonsense
 		  localStorage.setItem('user_fullname', res.user.field_first_name['und'][0]['value'] + " " + res.user.field_last_name['und'][0]['value']);
+		  
+		  console.log(res);
 		  console.log(res.user);
-		  localStorage.setItem('user_email', res.user.field_email['und'][0]['value']);
+		  console.log(res.user.field_email['und'][0]['value']);
+		  if(res.user.field_email['und'][0]['value'])
+		  	  localStorage.setItem('user_email', res.user.field_email['und'][0]['value']);
+		  }
+		  
+		  alert("hello");
 		  
         if (res.user.uid != 0) {
           localStorage.setItem('access_token', authResult.accessToken);
