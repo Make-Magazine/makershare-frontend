@@ -204,9 +204,9 @@
   .hide-mobile {
     position: fixed;
     top: 12px;
-	  .add-project-header-button {
+	  .add-project-header-button, .inbox-notifications-button {
 		  position: relative;
-		  left: -50px;
+		  left: -100px;
 	  }
   }
   .search-button {

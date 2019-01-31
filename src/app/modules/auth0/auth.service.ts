@@ -357,7 +357,6 @@ export class Auth {
 		})
 		.fail(function(jqXHR, textStatus, errorThrown) {
 		   window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
-			console.log( jqXHR.responseText );
 		});
 
   }
