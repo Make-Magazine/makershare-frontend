@@ -12,7 +12,7 @@ module.exports = {
     path: path.resolve(path.join(__dirname, 'dist')),
     publicPath: '/'
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   resolve: {
     extensions: ['.ts', '.js', '.json']
   },
