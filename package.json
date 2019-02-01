@@ -11,7 +11,7 @@
     "build": "npm-run-all --parallel build:client build:server",
     "build:dev": "npm-run-all --parallel build:client:dev build:server",
     "build:client": "webpack --define process.env.NODE_ENV=\"production\" --config webpack-client.config.js",
-    "build:clien:dev": "webpack --define process.env.NODE_ENV=\"development\" --config webpack-client.config.js",
+    "build:client:dev": "webpack --define process.env.NODE_ENV=\"development\" --config webpack-client.config.js",
     "build:server": "webpack --define process.env.NODE_ENV=\"production\" --config webpack-server.config.js",
     "build:client:watch": "webpack --watch --config webpack-client.config.js",
     "build:server:watch": "webpack --config webpack-server.config.js --watch",
