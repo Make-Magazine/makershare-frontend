@@ -75,6 +75,7 @@ export class Auth {
   }
 
   public Auth0Login(): void {
+     console.log('Attempting to authorize...');
     this.auth0.authorize();
   }
 
