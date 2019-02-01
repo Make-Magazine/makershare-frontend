@@ -56,7 +56,7 @@ export class Auth {
 			 }
 			 
         } else if (err) {
-          console.log(err);
+          console.error('This is fun because it shows up for every logged out user', err);
 			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
 			 	this.logout(); 
 			}
@@ -75,7 +75,7 @@ export class Auth {
   }
 
   public Auth0Login(): void {
-     console.log('Attempting to authorize...');
+     //console.log('Attempting to authorize...');
     this.auth0.authorize();
   }
 

@@ -9,7 +9,9 @@
   },
   "scripts": {
     "build": "npm-run-all --parallel build:client build:server",
+    "build:dev": "npm-run-all --parallel build:client:dev build:server",
     "build:client": "webpack --define process.env.NODE_ENV=\"production\" --config webpack-client.config.js",
+    "build:clien:dev": "webpack --define process.env.NODE_ENV=\"development\" --config webpack-client.config.js",
     "build:server": "webpack --define process.env.NODE_ENV=\"production\" --config webpack-server.config.js",
     "build:client:watch": "webpack --watch --config webpack-client.config.js",
     "build:server:watch": "webpack --config webpack-server.config.js --watch",
@@ -19,6 +21,7 @@
     "start:watch": "nodemon -C ./dist-server/index.js",
     "buildall": "./build.sh && ./verify.sh && npm run copyassets && npm run setExecute && npm run sassIt && ./finish.sh",
     "buildstage": "./build.sh && ./verify.sh && ./stage.sh && npm run copyassets && npm run setExecute && npm run sassIt && ./finish.sh",
+    "buildstage:dev": "./build-dev.sh && ./verify.sh && ./stage.sh && npm run copyassets && npm run setExecute && npm run sassIt && ./finish.sh",
     "buildlocal": "./build.sh && ./verify.sh && npm run copyassets && npm run setExecute && npm run sassIt && npm run startLocalServer",
     "copyassets": "cp -rf src/assets dist/",
     "setExecute": "chmod 755 -R dist/ dist-server/",
