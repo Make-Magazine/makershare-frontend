@@ -48,7 +48,7 @@
         </div>
         <div class="message-body">
           <!-- <p>{{message?.body}}</p> -->
-          <p ng-bind-html="message?.body"></p>
+          <p [innerHTML]="message?.body"></p>
         </div>
       </li>
     </div>
