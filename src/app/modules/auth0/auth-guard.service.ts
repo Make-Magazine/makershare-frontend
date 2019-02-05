@@ -23,6 +23,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
         },
         err => {
           // in case of error, return false (not logged in)
+          console.error('User not logged in... we should redirect');
           observer.next(false);
           observer.complete();
         },
