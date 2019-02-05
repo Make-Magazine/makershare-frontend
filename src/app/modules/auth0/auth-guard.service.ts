@@ -18,6 +18,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
       this.userService.isLogedIn().subscribe(
         data => {
           // data is a boolean value whather the user is logged in or not
+          console.error('User IS logged in... this is glorious');
           observer.next(data);
           observer.complete();
         },
