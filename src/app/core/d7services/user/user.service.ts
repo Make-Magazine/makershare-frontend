@@ -72,6 +72,7 @@ export class UserService {
       ) {
          console.log('user: has cookies... getting status');
         this.getStatus().subscribe(data => {
+           console.log('user: getStatus call... ', data)
           if (data.user.uid && data.user.uid > 0) {
              console.log('has a userid greater than 0');
             observer.next(true);
