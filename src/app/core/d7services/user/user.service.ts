@@ -59,6 +59,7 @@ export class UserService {
   }
 
   getStatus(): Observable<any> {
+     console.log('user: getting status')
     return this.mainService.custompost('system/connect');
   }
 
@@ -69,16 +70,20 @@ export class UserService {
         this.mainService.cookieService.get('session_name') &&
         this.mainService.cookieService.get('token')
       ) {
+         console.log('user: has cookies... getting status');
         this.getStatus().subscribe(data => {
           if (data.user.uid && data.user.uid > 0) {
+             console.log('has a userid greater than 0');
             observer.next(true);
             observer.complete();
           } else {
+             console.log('does not have a userid greater than 0');
             observer.next(false);
             observer.complete();
           }
         });
       } else {
+         console.log('user: does not have cookies')
         observer.next(false);
         observer.complete();
       }
