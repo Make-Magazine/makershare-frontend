@@ -23,6 +23,7 @@
     "buildstage": "./build.sh && ./verify.sh && ./stage.sh && npm run copyassets && npm run setExecute && npm run sassIt && ./finish.sh",
     "buildstage:dev": "./build-dev.sh && ./verify.sh && ./stage.sh && npm run copyassets && npm run setExecute && npm run sassIt && ./finish.sh",
     "buildlocal": "./build.sh && ./verify.sh && npm run copyassets && npm run setExecute && npm run sassIt && npm run startLocalServer",
+    "buildlocal:dev": "./build-dev.sh && ./verify.sh && npm run copyassets && npm run sassIt",
     "copyassets": "cp -rf src/assets dist/",
     "setExecute": "chmod 755 -R dist/ dist-server/",
     "sassIt": "sass src/assets/css/style.scss dist/assets/css/style.css",
