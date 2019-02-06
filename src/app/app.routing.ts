@@ -55,7 +55,7 @@ const APP_ROUTES: Routes = [
     { path: 'access-restricted', component: AccessRestrictedComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component:  SignupComponent},
-    { path: '**', redirectTo: 'login' },
+    { path: '**', redirectTo: '' },
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
