@@ -28,6 +28,9 @@
   ],
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {},
+    "build": {
+       "sourcemaps": true
+    }
   }
 }
