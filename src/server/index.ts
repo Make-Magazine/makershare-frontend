@@ -1,11 +1,11 @@
 import express = require('express');
-//import { enableProdMode } from '@angular/core';
+import { enableProdMode } from '@angular/core';
 import { applicationBuilderFromModule } from 'angular-ssr';
 import { AppModule } from '../app/app.module';
 import { absoluteUri, configure, listen } from './http';
 import { index } from './paths';
 
-//enableProdMode();
+enableProdMode();
 
 const builder = applicationBuilderFromModule(AppModule, index);
 
