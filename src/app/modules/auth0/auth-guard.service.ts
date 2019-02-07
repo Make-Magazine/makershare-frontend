@@ -27,6 +27,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
           console.error('User logged in is ', data);
           if(!data) {
             console.log('We should redirect to the auth0 login page here I think.... ', ActivatedRouteSnapshot);
+            console.log(window.location.href, window.location.origin)
             this.auth.Auth0Login({'redirectURI': `${window.location.origin}`})
             //this.router.navigateByUrl('/');
           }
