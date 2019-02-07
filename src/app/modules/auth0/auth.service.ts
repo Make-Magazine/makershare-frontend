@@ -19,7 +19,8 @@ export class Auth {
     // responseType: 'token id_token access_token profile',
     responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    redirectUri: Singleton.Settings.appURL,
+    //redirectUri: Singleton.Settings.appURL,
+    redirectUri: `${window.location.origin}`,
     //scope: 'openid id_token access_token profile',
     scope: 'openid profile user_metadata',
     leeway: 60
