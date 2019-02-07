@@ -3,19 +3,19 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   CanLoad,
-  RouterStateSnapshot,
-  Router,
+  RouterStateSnapshot//,
+  //Router,
 } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../core/d7services';
-import { Auth } from '../../../modules/auth0/auth.service';
+import { Auth } from './auth.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate, CanLoad {
   constructor(
      private userService: UserService, 
-     public auth: Auth,
-     private router: Router
+     public auth: Auth//,
+     //private router: Router
    ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
