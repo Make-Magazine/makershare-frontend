@@ -19,8 +19,8 @@ export class Auth {
     // responseType: 'token id_token access_token profile',
     responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    //redirectUri: Singleton.Settings.appURL,
-    redirectUri: `${window.location.origin}`,
+    redirectUri: Singleton.Settings.appURL,
+    //redirectUri: `${window.location.origin}`,
     //scope: 'openid id_token access_token profile',
     scope: 'openid profile user_metadata',
     leeway: 60
@@ -75,9 +75,9 @@ export class Auth {
     this._toggleModal.next(enable);
   }
 
-  public Auth0Login(): void {
+  public Auth0Login(args): void {
      //console.log('Attempting to authorize...');
-    this.auth0.authorize();
+    this.auth0.authorize(args);
   }
 
   /**
