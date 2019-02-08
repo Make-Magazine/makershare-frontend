@@ -24,7 +24,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
       this.userService.isLogedIn().subscribe(
         data => {
           // data is a boolean value whather the user is logged in or not
-          console.error('User logged in is ', data);
+          //console.error('User logged in is ', data);
           if(!data) {
             //console.log('We should redirect to the auth0 login page here I think.... ', route.url.path);
             //console.log(window.location.href, window.location.origin)
@@ -36,7 +36,7 @@ export class AuthGuardService implements CanActivate, CanLoad {
         },
         err => {
           // in case of error, return false (not logged in)
-          console.error('User not logged in... we should redirect');
+          //console.error('User not logged in... we should redirect');
           observer.next(false);
           observer.complete();
         },

@@ -70,21 +70,21 @@ export class UserService {
         this.mainService.cookieService.get('session_name') &&
         this.mainService.cookieService.get('token')
       ) {
-         console.log('user: has cookies... getting status');
+         //console.log('user: has cookies... getting status');
         this.getStatus().subscribe(data => {
-           console.log('user: getStatus call... ', data)
+           //console.log('user: getStatus call... ', data)
           if (data.user.uid && data.user.uid > 0) {
-             console.log('has a userid greater than 0');
+             //console.log('has a userid greater than 0');
             observer.next(true);
             observer.complete();
           } else {
-             console.log('does not have a userid greater than 0');
+             //console.log('does not have a userid greater than 0');
             observer.next(false);
             observer.complete();
           }
         });
       } else {
-         console.log('user: does not have cookies')
+         //console.log('user: does not have cookies')
         observer.next(false);
         observer.complete();
       }

@@ -57,7 +57,7 @@ export class Auth {
 			 }
 			 
         } else if (err) {
-          console.error('This is fun because it shows up for every logged out user', err);
+          //console.error('This is fun because it shows up for every logged out user', err);
 			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
 			 	this.logout(); 
 			}
@@ -190,7 +190,7 @@ export class Auth {
   public doLogin(authResult): void {
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
-        console.log(err);
+        //console.log(err);
         return;
       }
 
@@ -284,7 +284,7 @@ export class Auth {
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
-        console.log(err);
+        //console.log(err);
       });
     });
   }
@@ -309,7 +309,7 @@ export class Auth {
     }
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
+      //console.log(response);
     });
 
   }
