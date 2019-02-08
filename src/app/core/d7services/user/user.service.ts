@@ -59,7 +59,7 @@ export class UserService {
   }
 
   getStatus(): Observable<any> {
-     console.log('user: getting status')
+     //console.log('user: getting status')
     return this.mainService.custompost('system/connect');
   }
 
