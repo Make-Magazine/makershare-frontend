@@ -3,8 +3,8 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   CanLoad,
-  RouterStateSnapshot//,
-  //Router,
+  RouterStateSnapshot,
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../core/d7services';
@@ -14,8 +14,8 @@ import { Auth } from './auth.service';
 export class AuthGuardService implements CanActivate, CanLoad {
   constructor(
      private userService: UserService, 
-     public auth: Auth//,
-     //private router: Router
+     public auth: Auth,
+     private router: Router
    ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -26,10 +26,10 @@ export class AuthGuardService implements CanActivate, CanLoad {
           // data is a boolean value whather the user is logged in or not
           console.error('User logged in is ', data);
           if(!data) {
-            console.log('We should redirect to the auth0 login page here I think.... ', route.url);
+            //console.log('We should redirect to the auth0 login page here I think.... ', route.url.path);
             //console.log(window.location.href, window.location.origin)
             //this.auth.Auth0Login({'redirectURI': route.url})
-            //this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/');
           }
           observer.next(data);
           observer.complete();
