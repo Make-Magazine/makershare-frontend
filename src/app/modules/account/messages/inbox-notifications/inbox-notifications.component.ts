@@ -103,10 +103,9 @@ export class InboxNotificationsComponent implements OnInit {
       }
       this.messageObj.recipients = str;
       this.messageObj.subject = this.messageForm.value.subject;
-
+      // NOTE (ts): Persist line breaks in message content - see also messages/view/view.component.ts
       var msgStr = this.messageForm.value.body.replace(/(?:\r\n|\r|\n)/g, '<br>');
-      console.log('message: ',msgStr);
-
+      //console.log('message: ',msgStr);
       this.messageObj.body = msgStr; //this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => { 
               
