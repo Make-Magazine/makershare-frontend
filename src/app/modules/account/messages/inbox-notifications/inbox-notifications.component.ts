@@ -103,7 +103,11 @@ export class InboxNotificationsComponent implements OnInit {
       }
       this.messageObj.recipients = str;
       this.messageObj.subject = this.messageForm.value.subject;
-      this.messageObj.body = this.messageForm.value.body;
+
+      var msgStr = this.messageForm.value.body.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      console.log('message: ',msgStr);
+
+      this.messageObj.body = msgStr; //this.messageForm.value.body;
       this.pm.sendMessage(this.messageObj).subscribe(res => { 
               
         this.loaderService.display(false);
