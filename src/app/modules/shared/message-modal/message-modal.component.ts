@@ -42,7 +42,12 @@ export class MessageModalComponent implements OnInit {
     e.preventDefault();
     if (this.messageForm.valid) {
       this.messageObj.recipients = this.user.name;
-      this.messageObj.body = this.messageForm.value.body;
+
+      // NOTE (ts): Persist line breaks in message content - see also messages/view/view.component.ts
+      var msgStr = this.messageForm.value.body.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      //console.log('message: ',msgStr);
+      this.messageObj.body = msgStr; //this.messageForm.value.body;
+
       this.messageObj.subject = this.messageForm.value.subject;
       this.pm.sendMessage(this.messageObj).subscribe(res => {
         this.notificationBarService.create({ message: 'Your message has been sent', type: NotificationType.Success, allowClose: true, autoHide: false, hideOnHover: false });
