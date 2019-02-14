@@ -185,6 +185,7 @@ export class ViewComponent implements OnInit {
       this.reply.thread_id = this.msg.pmtid;
       //this.reply.body = this.messageForm.value.body;
       var str = this.messageForm.value.body.replace(/(?:\r\n|\r|\n)/g, '<br>');
+      console.log('message: ',str);
       this.reply.body = str;
       this.pm.sendMessage(this.reply).subscribe(
         res => {
