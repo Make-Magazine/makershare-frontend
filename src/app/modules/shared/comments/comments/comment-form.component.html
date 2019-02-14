@@ -18,7 +18,7 @@
     <div class="d-flex flex-row">
     <p *ngIf="titlecomment" class="not-join m-0 pr-2"> Please </p>
     <div *ngIf="titlecomment" class="button-container-main-1">
-      <a class="btn btn-main" (click)="auth.login()">Join / Login</a>
+      <a class="btn btn-main" (click)="auth.Auth0Login()">Join / Login</a>
     </div>
      <p *ngIf="titlecomment" class="not-join m-0 pl-2">{{titlecomment.join}}</p>
     </div>
