@@ -58,12 +58,12 @@ export class Auth {
 			 
         } else if (err) {
           //console.error('This is fun because it shows up for every logged out user', err);
-			 if(window.location.href.indexOf("authenticate") < -1) {
+			 if(this.router.url != "/authenticate-redirect") {
 			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
 			 		this.logout(); 
 				}
 			 } else {
-			    alert("failure on the authenticate page!");
+			    alert("failure on the authenticate page specifically!");
 			    $(".redirect-message").html("<a class='reload' href='javascript:location.reload();'>Reload page</a>");
 			 }
         }
@@ -193,8 +193,10 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    document.getElementById("authenticated-redirect").style.display = "block";
-	 window.location.href = "/authenticate-redirect";
+    //document.getElementById("authenticated-redirect").style.display = "block";
+	 //window.location.href = "/authenticate-redirect";
+	 this.router.navigateByUrl('/authenticate-redirect');
+
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         //console.log("Login error is: ", err);
