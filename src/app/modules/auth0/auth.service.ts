@@ -58,8 +58,9 @@ export class Auth {
 			 
         } else if (err) {
 		  
-          //console.error('This is fun because it shows up for every logged out user', err);
+          
 			 if(this.router.url != "/authenticate-redirect") {
+			   console.error('This is fun because it shows up for every logged out user', err);
 			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
 			 		this.logout(); 
 				}
@@ -181,9 +182,10 @@ export class Auth {
       },
       (err, authResult) => {
         if (authResult) {
+		    console.log("Handle Authentication handled it");
           this.doLogin(authResult);
         } else if (err) {
-
+           console.log("Authentication error: ", err);
         }
       }
     );
@@ -194,15 +196,10 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-  
-    // all this stuff is before the callback url was pointed to 
-    //document.getElementById("authenticated-redirect").style.display = "block";
-	 //window.location.href = "/authenticate-redirect";
-	 //this.router.navigateByUrl('/authenticate-redirect');
 
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
-        //console.log("Login error is: ", err);
+        console.log("Login error is: ", err);
         return;
       }
 
@@ -233,10 +230,10 @@ export class Auth {
 		  
         if (res.user.uid != 0) {
 		  
-		    console.log("user id: ", res.user.uid);
+		  	 console.log("user id: ", res.user.uid);
 			 console.log("username: ", res.user.name);
 			 console.log("session name: ", res['session_name']);
-			 
+
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
@@ -292,8 +289,8 @@ export class Auth {
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-					
-					 if ( jQuery( '#authenticated-redirect' ).length ) { //are we on the authentication page?
+				    // this is the standard login that goes through the authenticate redirect page
+					 if ( jQuery( '#authenticate-redirect' ).length ) {
 						 if( localStorage.getItem( 'redirect_to' ) ){
 							jQuery( '.redirect-message' ).text( "You will be redirected to the page you were trying to access shortly." );
 							var redirect_url = localStorage.getItem( 'redirect_to' ); //retrieve redirect URL
@@ -303,6 +300,7 @@ export class Auth {
 							// this is what's occurring sometimes when the page redirects to the homepage instead of to the url
 							location.href = "/";
 						 }
+						 
 					 } 
 				 }
 			 }
