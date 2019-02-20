@@ -205,7 +205,6 @@ export class Auth {
         //console.log("Login error is: ", err);
         return;
       }
-		console.log(profile);
 
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', profile.picture);
@@ -231,8 +230,13 @@ export class Auth {
 		  if(res.user.mail) {
 		  	  localStorage.setItem('user_email', res.user.mail);
 		  }
-		  console.log("data token is: ", data.idToken);
-        if (res.user.uid != 0 && data.idToken) {
+		  
+        if (res.user.uid != 0) {
+		  
+		    console.log("user id: ", res.user.uid);
+			 console.log("username: ", res.user.name);
+			 console.log("session name: ", res['session_name']);
+			 
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
@@ -250,6 +254,7 @@ export class Auth {
 
           // Set session
           this.setSession(authResult);
+			 console.log(authResult);
 
           //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
