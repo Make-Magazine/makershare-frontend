@@ -191,7 +191,7 @@ export class Auth {
     document.getElementById("authOverlay").style.display = "block";
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
-        //console.log(err);
+        console.log("Login error is: ", err);
         return;
       }
 
@@ -285,7 +285,7 @@ export class Auth {
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
-        //console.log(err);
+        console.log("Another error, same error? ", err);
       });
     });
   }
