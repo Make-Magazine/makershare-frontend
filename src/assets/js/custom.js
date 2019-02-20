@@ -157,6 +157,18 @@ $(document).ready(function () {
     $('.submenus div ' + ul).show();
 
   });
+	
+	
+   // set the localStorage for a page to redirect back too
+	$("#qsLoginBtn").click(function(e) {
+		if(location.href.indexOf('authenticate-redirect') >= 0){
+			localStorage.setItem('redirect_to', "/");
+		}else{
+			localStorage.setItem('redirect_to',location.href);
+		}
+		e.preventDefault();
+	});
+
 
   $(document).on('click', '#cover-upload-link', function (e) {
     e.preventDefault();

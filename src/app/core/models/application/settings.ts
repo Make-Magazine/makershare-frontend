@@ -6,20 +6,28 @@ export class Settings {
  apiProtocol: 'http'|'https' = 'https';
 
  // Switch based on which site you are compiling
-
- // Preview settings
+ 
+ // LOCAL settings
  // apiHost: string = 'preview-manage.makershare.com';
- // appURL: string = 'https://preview.makershare.com';
+ // appURL: string = 'http://localhost:4200';
+ // callbackURL: string = 'http://localhost:4200/authenticate-redirect';
  // solrPath: string = 'https://preview-manage.makershare.com/solr/stage/';
 
+ // Preview settings
+ apiHost: string = 'preview-manage.makershare.com';
+ appURL: string = 'https://preview.makershare.com';
+ callbackURL: string = 'https://preview.makershare.com/authenticate-redirect';
+ solrPath: string = 'https://preview-manage.makershare.com/solr/stage/';
+
  // PROD settings
- apiHost: string = 'manage.makershare.com';
- appURL: string = 'https://makershare.com';
- solrPath: string = 'https://manage.makershare.com/solr/makershare/';
+ // apiHost: string = 'manage.makershare.com';
+ // appURL: string = 'https://makershare.com';
+ // callbackURL: string = 'https://makershare.com/authenticate-redirect';
+ // solrPath: string = 'https://manage.makershare.com/solr/makershare/';
+
 
  apiPort: number;
 
- // appURL: string = 'http://localhost:4200';
  appName: string = 'Maker Share';
  language: string = 'und';
 

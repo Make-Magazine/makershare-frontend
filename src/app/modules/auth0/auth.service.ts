@@ -19,7 +19,7 @@ export class Auth {
     // responseType: 'token id_token access_token profile',
     responseType: 'token id_token',
     audience: 'https://makermedia.auth0.com/userinfo',
-    redirectUri: Singleton.Settings.appURL,
+    redirectUri: Singleton.Settings.callbackURL,
     //redirectUri: `${window.location.origin}`,
     //scope: 'openid id_token access_token profile',
     scope: 'openid profile user_metadata',
@@ -193,9 +193,11 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
+  
+    // all this stuff is before the callback url was pointed to 
     //document.getElementById("authenticated-redirect").style.display = "block";
 	 //window.location.href = "/authenticate-redirect";
-	 this.router.navigateByUrl('/authenticate-redirect');
+	 //this.router.navigateByUrl('/authenticate-redirect');
 
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
@@ -369,6 +371,10 @@ export class Auth {
 	 if(window.location.href.indexOf("preview") > -1) {
 	    logoutUrl = "https://preview-manage.makershare.com/user/logout";
 	 }
+	 if(window.location.href.indexOf("localhost") > -1) {
+	    logoutUrl = "https://localhost:4200/user/logout";
+	 }
+	 
 	 
 	 $.post( logoutUrl )
 		.done(function() {
