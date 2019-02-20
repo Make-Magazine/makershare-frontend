@@ -58,9 +58,14 @@ export class Auth {
 			 
         } else if (err) {
           //console.error('This is fun because it shows up for every logged out user', err);
-			 if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
-			 	this.logout(); 
-			}
+			 if(window.location.href.indexOf("authenticate") < -1) {
+			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
+			 		this.logout(); 
+				}
+			 } else {
+			    alert("failure on the authenticate page!");
+			    $(".redirect-message").html("<a class='reload' href='javascript:location.reload();'>Reload page</a>");
+			 }
         }
       }
     );
@@ -189,7 +194,7 @@ export class Auth {
    */
   public doLogin(authResult): void {
     document.getElementById("authenticated-redirect").style.display = "block";
-	 this.router.navigateByUrl('/authenticate-redirect');
+	 window.location.href = "/authenticate-redirect";
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         //console.log("Login error is: ", err);
@@ -276,6 +281,10 @@ export class Auth {
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
+				 
+				   // testing to be removed
+				   alert("user has a photo");
+					
 					this.router.navigateByUrl('/');
 					window.location.reload();
 				 }
