@@ -188,6 +188,7 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
+    document.getElementById("authOverlay").style.display = "block";
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         //console.log(err);
