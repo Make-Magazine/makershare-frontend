@@ -205,6 +205,7 @@ export class Auth {
         //console.log("Login error is: ", err);
         return;
       }
+		console.log(profile);
 
       //temp overwrite profile picture with auth0 avatar
       localStorage.setItem('user_avatar', profile.picture);
@@ -230,8 +231,8 @@ export class Auth {
 		  if(res.user.mail) {
 		  	  localStorage.setItem('user_email', res.user.mail);
 		  }
-		  
-        if (res.user.uid != 0) {
+		  console.log("data token is: ", data.idToken);
+        if (res.user.uid != 0 && data.idToken) {
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
           localStorage.setItem('user_id', res.user.uid);
@@ -286,7 +287,7 @@ export class Auth {
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-					 
+					
 					 if ( jQuery( '#authenticated-redirect' ).length ) { //are we on the authentication page?
 						 if( localStorage.getItem( 'redirect_to' ) ){
 							jQuery( '.redirect-message' ).text( "You will be redirected to the page you were trying to access shortly." );
