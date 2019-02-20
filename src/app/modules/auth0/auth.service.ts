@@ -77,7 +77,7 @@ export class Auth {
 
   public Auth0Login(args): void {
      //console.log('Attempting to authorize...');
-    this.auth0.authorize(args);
+     this.auth0.authorize(args);
   }
 
   /**
@@ -188,10 +188,11 @@ export class Auth {
    * @param authResult
    */
   public doLogin(authResult): void {
-    document.getElementById("authOverlay").style.display = "block";
+    document.getElementById("authenticated-redirect").style.display = "block";
+	 window.location.href = "/authenticate-redirect";
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
-        console.log("Login error is: ", err);
+        //console.log("Login error is: ", err);
         return;
       }
 
@@ -285,7 +286,7 @@ export class Auth {
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
-        console.log("Another error, same error? ", err);
+        // console.log("Another error, same error, NO ERROR? ", err);
       });
     });
   }

@@ -3,6 +3,7 @@ import { AccessDeniedComponent } from './modules/auth0/access-denied/access-deni
 import { Four04Component } from './modules/auth0/four04/four04.component';
 import { AboutBadgesComponent } from './modules/pages/about-badges/about-badges.component';
 import { AboutUsComponent } from './modules/pages/about-us/about-us.component';
+import { AuthenticateRedirectComponent } from './modules/pages/authenticate-redirect/authenticate-redirect.component';
 import { ClaimProfileComponent } from './modules/pages/claim-profile/claim-profile.component';
 import { GuidelinesComponent } from './modules/pages/guidelines/guidelines.component';
 import { IntelInnovationComponent } from './modules/pages/intel-innovation/intel-innovation.component';
@@ -40,6 +41,7 @@ const APP_ROUTES: Routes = [
     { path: 'guidelines', component: GuidelinesComponent },
     { path: 'why-portfolio', component: WhyPortfolioComponent },
     { path: 'about-us', component: AboutUsComponent },
+	 { path: 'authenticate-redirect', component: AuthenticateRedirectComponent }, 
     { path: 'badges', component: AboutBadgesComponent },
     { path: 'show-and-tell', component: ShowTellComponent },
     { path: 'terms-of-use', component: TermsComponent },

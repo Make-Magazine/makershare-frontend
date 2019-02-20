@@ -386,3 +386,11 @@ app-header[class^="/makers"], app-header[class^="/portfolio"] {
 }
 app-header[class^="/projects"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(2) a { opacity: 1; }
 app-header[class^="/missions"] #universal-nav #menu-secondary_universal_menu .nav-item:nth-of-type(3) a { opacity: 1; }
+
+#authenticated-redirect {
+	padding-top: 45px;
+	h2 { 
+		font-size: 36px;
+		margin-bottom: 15px;
+	}
+}

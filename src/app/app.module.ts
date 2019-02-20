@@ -24,6 +24,7 @@ import { HeaderComponent } from './modules/general/header/header.component';
 import { SearchBoxComponent } from './modules/general/header/search-box/search-box.component';
 import { AboutBadgesComponent } from './modules/pages/about-badges/about-badges.component';
 import { AboutUsComponent } from './modules/pages/about-us/about-us.component';
+import { AuthenticateRedirectComponent } from './modules/pages/authenticate-redirect/authenticate-redirect.component';
 import { ClaimProfileComponent } from './modules/pages/claim-profile/claim-profile.component';
 import { GuidelinesComponent } from './modules/pages/guidelines/guidelines.component';
 import { IntelInnovationComponent } from './modules/pages/intel-innovation/intel-innovation.component';
@@ -84,6 +85,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     GuidelinesComponent,
     WhyPortfolioComponent,
     AboutUsComponent,
+	 AuthenticateRedirectComponent,
     ShowTellComponent,
     ClaimProfileComponent,
     LoginComponent,
