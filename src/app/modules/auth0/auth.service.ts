@@ -189,7 +189,7 @@ export class Auth {
    */
   public doLogin(authResult): void {
     document.getElementById("authenticated-redirect").style.display = "block";
-	 window.location.href = "/authenticate-redirect";
+	 this.router.navigateByUrl('/authenticate-redirect');
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (err) {
         //console.log("Login error is: ", err);
