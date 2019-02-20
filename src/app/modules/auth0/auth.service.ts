@@ -57,6 +57,7 @@ export class Auth {
 			 }
 			 
         } else if (err) {
+		  
           //console.error('This is fun because it shows up for every logged out user', err);
 			 if(this.router.url != "/authenticate-redirect") {
 			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
@@ -285,12 +286,18 @@ export class Auth {
 					});*/
 					window.location.href = Singleton.Settings.appURL + "/portfolio";
 				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-				 
-				   // testing to be removed
-				   alert("user has a photo");
-					
-					this.router.navigateByUrl('/');
-					window.location.reload();
+					 
+					 if ( jQuery( '#authenticated-redirect' ).length ) { //are we on the authentication page?
+						 if( localStorage.getItem( 'redirect_to' ) ){
+							jQuery( '.redirect-message' ).text( "You will be redirected to the page you were trying to access shortly." );
+							var redirect_url = localStorage.getItem( 'redirect_to' ); //retrieve redirect URL
+							localStorage.removeItem( 'redirect_to' ); //unset after retrieved
+							location.href = redirect_url;
+						 }else{ 
+							// this is what's occurring sometimes when the page redirects to the homepage instead of to the url
+							location.href = "/";
+						 }
+					 } 
 				 }
 			 }
         } else {
