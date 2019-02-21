@@ -1,11 +1,13 @@
 #universal-nav {
 	.nav-level-1 .nav-level-1-nav {
-		margin-left: 160px;
+		margin-left: 120px;
 		@media screen and (max-width: 1199px) and (min-width: 992px) {
 			margin-left: 88px;
+			li a { padding: 0 15px; }
 		}
 		@media screen and (max-width: 991px) and (min-width: 768px) {
 			margin-left: 76px;
+			li a { padding: 0 4px; }
 		}
 	}
 	.bs-tooltip-top {

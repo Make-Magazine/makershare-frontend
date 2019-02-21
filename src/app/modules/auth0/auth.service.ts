@@ -61,11 +61,11 @@ export class Auth {
 			 if(this.router.url != "/authenticate-redirect") {
 			   // console.error('This is fun because it shows up for every logged out user', err);
 			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
-				   console.log("no user avatar");
+				   //alert("no user avatar");
 			 		this.logout(); 
 				}
 			 } else {
-			    alert("failure on the authenticate page specifically!");
+			    // alert("failure on the authenticate page specifically!"); // doesn't seem to happen
 			    $(".redirect-message").html("<a class='reload' href='javascript:location.reload();'>Reload page</a>");
 			 }
         }
@@ -182,7 +182,6 @@ export class Auth {
       },
       (err, authResult) => {
         if (authResult) {
-		    console.log("Handle Authentication handled it");
           this.doLogin(authResult);
         } else if (err) {
            console.log("Authentication error: ", err);
@@ -192,7 +191,7 @@ export class Auth {
 			  if(querystringArray[0] == "#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
 				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
-				 this.logout(); // this probably isn't necessary at this point
+				 // this.logout(); // this probably isn't necessary at this point
 			 }
         }
       }
@@ -237,10 +236,6 @@ export class Auth {
 		  }
 		  
         if (res.user.uid != 0) {
-		  
-		  	 console.log("user id: ", res.user.uid);
-			 console.log("username: ", res.user.name);
-			 console.log("session name: ", res['session_name']);
 
           localStorage.setItem('access_token', authResult.accessToken);
           localStorage.setItem('id_token', authResult.idToken);
@@ -259,7 +254,6 @@ export class Auth {
 
           // Set session
           this.setSession(authResult);
-			 console.log(authResult);
 
           //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
@@ -304,7 +298,7 @@ export class Auth {
 				 } 
 			 }
         } else {
-          // localStorage.setItem('user_photo', res.user_photo);
+          localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
           window.location.href = Singleton.Settings.appURL;
         }
@@ -384,8 +378,6 @@ export class Auth {
 	 if(window.location.href.indexOf("localhost") > -1) {
 	    logoutUrl = "https://localhost:4200/user/logout";
 	 }
-	 
-	 
 	 $.post( logoutUrl )
 		.done(function() {
     		window.location.href = 'https://makermedia.auth0.com/v2/logout?returnTo='+Singleton.Settings.appURL;
