@@ -167,6 +167,7 @@ $(document).ready(function () {
 		}else{
 			localStorage.setItem('redirect_to',location.href);
 		}
+		e.preventDefault();
 	});
 
 

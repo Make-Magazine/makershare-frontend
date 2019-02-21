@@ -298,6 +298,7 @@ export class Auth {
 				 } 
 			 }
 			 if( !localStorage.getItem( 'onsite' )) {
+			   localStorage.removeItem('onsite');
 			 	location.reload(); 
 			 }
 			 
@@ -374,6 +375,7 @@ export class Auth {
     localStorage.removeItem('user_photo');
 	 localStorage.removeItem('user_avatar');
 	 localStorage.removeItem('roles');
+	 localStorage.removeItem('onsite');
 	 
 	 let logoutUrl = "https://manage.makershare.com/user/logout";
 	 if(window.location.href.indexOf("preview") > -1) {
