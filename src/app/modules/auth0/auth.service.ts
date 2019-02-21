@@ -42,7 +42,7 @@ export class Auth {
           this.setSession(authResult);
 
           //if the user isn't logged into drupal, log them in
-          if (!localStorage.getItem('user_id') ) {
+          if (!localStorage.getItem('user_id') && this.router.url != "/authenticate-redirect") {
             this.doLogin(authResult);
           }
           if(localStorage.getItem('user_avatar') && localStorage.getItem('user_avatar')!=''){
@@ -58,10 +58,10 @@ export class Auth {
 			 
         } else if (err) {
 		  
-          
 			 if(this.router.url != "/authenticate-redirect") {
-			   console.error('This is fun because it shows up for every logged out user', err);
+			   // console.error('This is fun because it shows up for every logged out user', err);
 			 	if($("#user_avatar").length){ // if we should be logged out, but the avatar is still trying to set
+				   console.log("no user avatar");
 			 		this.logout(); 
 				}
 			 } else {
@@ -186,6 +186,14 @@ export class Auth {
           this.doLogin(authResult);
         } else if (err) {
            console.log("Authentication error: ", err);
+			  var querystring = window.location.hash;
+			  var querystringArray = querystring.split("&");
+			  // Check if user has errors like being underage, if so log them out (although I don't think they get logged in) and let them know
+			  if(querystringArray[0] == "#error=unauthorized") {
+			    var errorDesc = querystringArray[1].split("=");
+				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
+				 this.logout(); // this probably isn't necessary at this point
+			 }
         }
       }
     );
@@ -255,54 +263,45 @@ export class Auth {
 
           //update userMeta on auth0
           //this.updUserMeta(authResult.accessToken, res, data);
-			 
-			 // Check if user has errors like being underage, if so log them out and let them know
-			 var querystring = this.router.routerState.snapshot.url;
-			 var querystringArray = querystring.split("&");
-			 if(querystringArray[0] == "/#error=unauthorized") {
-			    var errorDesc = querystringArray[1].split("=");
-				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
-				 this.logout();
-			 } else {
-				 // redirect to the profile page if it's a user's first time
-				 if (res.first_time) {
-					// Notification to visit portfolio page
-					this.notificationBarService.create({
-					  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
-					  type: NotificationType.Success,
-					  autoHide: true,
-					  isHtml: true,
-					  allowClose: true,
-					  hideOnHover: false,
-					});
-					window.location.href = Singleton.Settings.appURL + "/portfolio";
-				 // User doesn't have a profile picture	
-				 } else if (res.user_photo.indexOf('profile-default.png') >= 0 && window.location.origin == window.location.href) {
-					/* User sees this notification on the portfolio page we're bring them to, no need to show here
-					this.notificationBarService.create({
-					  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
-					  type: NotificationType.Success,
-					  autoHide: true,
-					  allowClose: true,
-					  hideOnHover: false,
-					  isHtml: true,
-					});*/
-					window.location.href = Singleton.Settings.appURL + "/portfolio";
-				 } else if (res.user_photo.indexOf('profile-default') < 0) {
-				    // this is the standard login that goes through the authenticate redirect page
-					 if ( jQuery( '#authenticate-redirect' ).length ) {
-						 if( localStorage.getItem( 'redirect_to' ) ){
-							jQuery( '.redirect-message' ).text( "You will be redirected to the page you were trying to access shortly." );
-							var redirect_url = localStorage.getItem( 'redirect_to' ); //retrieve redirect URL
-							localStorage.removeItem( 'redirect_to' ); //unset after retrieved
-							location.href = redirect_url;
-						 }else{ 
-							// this is what's occurring sometimes when the page redirects to the homepage instead of to the url
-							location.href = "/";
-						 }
-						 
-					 } 
-				 }
+
+			 // redirect to the profile page if it's a user's first time
+			 if (res.first_time) {
+				// Notification to visit portfolio page
+				this.notificationBarService.create({
+				  message: 'Welcome to Makershare! Let\'s get you to your portfolio page to get started.',
+				  type: NotificationType.Success,
+				  autoHide: true,
+				  isHtml: true,
+				  allowClose: true,
+				  hideOnHover: false,
+				});
+				window.location.href = Singleton.Settings.appURL + "/portfolio";
+			 // User doesn't have a profile picture	
+			 } else if (res.user_photo.indexOf('profile-default.png') >= 0 && window.location.origin == window.location.href) {
+				/* User sees this notification on the portfolio page we're bring them to, no need to show here
+				this.notificationBarService.create({
+				  message: 'Please <a href="/portfolio">upload a profile photo.</a>',
+				  type: NotificationType.Success,
+				  autoHide: true,
+				  allowClose: true,
+				  hideOnHover: false,
+				  isHtml: true,
+				});*/
+				window.location.href = Singleton.Settings.appURL + "/portfolio";
+			 } else if (res.user_photo.indexOf('profile-default') < 0) {
+				 // this is the standard login that goes through the authenticate redirect page
+				 if ( jQuery( '#authenticate-redirect' ).length ) {
+					 if( localStorage.getItem( 'redirect_to' ) ){
+						jQuery( '.redirect-message' ).text( "You will be redirected to the page you were trying to access shortly." );
+						var redirect_url = localStorage.getItem( 'redirect_to' ); //retrieve redirect URL
+						localStorage.removeItem( 'redirect_to' ); //unset after retrieved
+						location.href = redirect_url;
+					 }else{ 
+						// this is what's occurring sometimes when the page redirects to the homepage instead of to the url
+						location.href = "/";
+					 }
+
+				 } 
 			 }
         } else {
           // localStorage.setItem('user_photo', res.user_photo);
