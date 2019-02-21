@@ -298,9 +298,9 @@ export class Auth {
 				 } 
 			 }
 			 if( !localStorage.getItem( 'onsite' )) {
-			   localStorage.removeItem('onsite');
 			 	location.reload(); 
 			 }
+			 localStorage.removeItem('onsite');
 			 
         } else {
           //localStorage.setItem('user_photo', res.user_photo);
