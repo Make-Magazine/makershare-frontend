@@ -299,8 +299,8 @@ export class Auth {
 			 }
 			 // this is to reload the page for people visiting from offsite, since they don't have the authenticate page to get them logged in fully
 			 if( !localStorage.getItem( 'onsite' )) {
+			 	localStorage.setItem('onsite', 'true');
 			 	location.reload(); 
-				localStorage.setItem('onsite', 'true');
 			 }
 			 localStorage.removeItem('onsite');
 			 
