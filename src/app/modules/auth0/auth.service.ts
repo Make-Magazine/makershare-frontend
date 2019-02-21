@@ -297,13 +297,17 @@ export class Auth {
 
 				 } 
 			 }
+			 if( !localStorage.getItem( 'onsite' )) {
+			 	location.reload(); 
+			 }
+			 
         } else {
           //localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
           window.location.href = Singleton.Settings.appURL;
         }
       }, err => {
-        // console.log("Another error, same error, NO ERROR? ", err);
+         console.log("Another error, same error, NO ERROR? ", err);
       });
     });
   }
