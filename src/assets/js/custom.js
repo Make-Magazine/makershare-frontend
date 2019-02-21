@@ -163,9 +163,9 @@ $(document).ready(function () {
 	$("#qsLoginBtn").click(function(e) {
 		if(location.href.indexOf('authenticate-redirect') >= 0){
 			localStorage.setItem('redirect_to', "/");
-			localStorage.setItem('onsite', 'true');
 		}else{
 			localStorage.setItem('redirect_to',location.href);
+			localStorage.setItem('onsite', 'true');
 		}
 		e.preventDefault();
 	});
