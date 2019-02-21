@@ -191,7 +191,7 @@ export class Auth {
 			  if(querystringArray[0] == "#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
 				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ","));
-				 // this.logout(); // this probably isn't necessary at this point
+				 this.logout();
 			 }
         }
       }
@@ -298,7 +298,7 @@ export class Auth {
 				 } 
 			 }
         } else {
-          localStorage.setItem('user_photo', res.user_photo);
+          //localStorage.setItem('user_photo', res.user_photo);
           localStorage.setItem('user_id', '0');
           window.location.href = Singleton.Settings.appURL;
         }
