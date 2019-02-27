@@ -32,7 +32,8 @@ export class AuthenticateRedirectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMakers();
+     console.log('Init redirect.component');
+    //this.getMakers();
   }
 
    getMakers() {
