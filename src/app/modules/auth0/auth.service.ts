@@ -36,9 +36,11 @@ export class Auth {
 
   public checkSession(): void {
     //check if logged in another place
+    console.log('Checking session....');
     this.auth0.checkSession({},
       (err, authResult) => {
         if (authResult) {
+           console.log('have authResult, go ahead and set session....', authResult);
           this.setSession(authResult);
 
           //if the user isn't logged into drupal, log them in
