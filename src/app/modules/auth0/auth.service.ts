@@ -191,7 +191,7 @@ export class Auth {
 			  // Check if user has errors like being underage, if so log them out (although I don't think they get logged in) and let them know
 			  if(querystringArray[0] == "#error=unauthorized") {
 			    var errorDesc = querystringArray[1].split("=");
-				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ",").replace(/%3B/g, ",");
+				 alert(errorDesc[1].replace(/%20/g, " ").replace(/%253B/g, ",").replace(/%3B/g, ","));
 				 this.logout();
 			 }
         }
