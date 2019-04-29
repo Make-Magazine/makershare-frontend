@@ -158,15 +158,7 @@ export class MissionProjectComponent implements OnInit {
           if (this.challangeData) {
             const todayDate = new Date();
             const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-            const dateArray = this.challangeData.challenge_end_date.value.split(
-              ' ',
-            );
-            const YearDayMonth = dateArray[0].split('-');
-            const endDate = new Date(
-              +YearDayMonth[0],
-              +YearDayMonth[1],
-              +YearDayMonth[2],
-            );
+            const endDate = new Date(this.challangeData.challenge_end_date.value );
             const diffDays = Math.round(
               (endDate.getTime() - todayDate.getTime()) / oneDay,
             );
