@@ -1,6 +1,6 @@
 DirectoryIndex index.html index.htm
 
-ErrorDocument 404 /404.html
+ErrorDocument 404 /index.html
 
 <IfModule mod_rewrite.c>
    RewriteEngine on
