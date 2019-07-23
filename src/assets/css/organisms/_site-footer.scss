@@ -63,11 +63,37 @@
 	}
 	.link-footer .container {
 		.footer-branding {
-			margin-top: 20px !important;
-			margin-bottom: 30px;
-			@media screen and (min-width: 1290px) {
-				margin-top: 65px;
-				img { margin-bottom: 0px; }
+			img { 
+				max-width: 150px;
+				margin-bottom: 10px;
+				@media screen and (max-width: 1187px) {
+					max-width: 140px;
+				}
+			}
+			span {
+				font-size: 20px;
+				color: #989898;
+				float: left;
+				margin-right: 8px;
+				margin-bottom: 15px;
+			}
+			a { 
+				cursor: pointer;
+				display: block;
+			}
+			a:nth-of-type(2) {
+				img { 
+					margin-top: 0px;
+					float: left;
+					margin-bottom: 0px;
+				}
+				span:nth-of-type(1) { 
+					margin-right: 0px;
+					margin-left: 8px;
+				}
+			}
+			a:nth-of-type(3) {
+				img { margin-top: -5px; }
 			}
 		}
 	}

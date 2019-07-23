@@ -486,61 +486,6 @@ $(window).on('load', function () {
       }
   });
 
-  // to keep this nav universal, let's not have each site's style sheet highlight a different active manually
-  var site = window.location.hostname;
-  var firstpath = $(location).attr('pathname');
-    firstpath.indexOf(1);
-    firstpath.toLowerCase();
-    firstpath = firstpath.split("/")[1];
-  var shareSection = site + "/" + firstpath;
-  function universalNavActive( site ) {
-    jQuery(".nav-" + site).addClass("active-site");
-    jQuery(".nav-" + site + " .nav-level-2-arrow").addClass("active-site")
-  }
-  // each one has to apply to a number of environments
-  switch(site) {
-    case "make-zine":
-    case "makezine":
-    case "makezine.wpengine.com":
-    case "makezine.staging.wpengine.com":
-    case "makezine.com":
-        universalNavActive("zine");
-        break;
-    case "makeco":
-    case "makeco.wpengine.com":
-    case "makeco.staging.wpengine.com/":
-    case "makeco.com":
-        universalNavActive("make");
-        break;
-    case "makershed.com":
-        universalNavActive("shed")
-        break;
-    case "maker-faire":
-    case "makerfaire":
-    case "makerfaire.wpengine.com":
-    case "makerfaire.staging.wpengine.com":
-    case "makerfaire.com":
-        universalNavActive("faire")
-        break;
-    case "maker-share":
-    case "makershare":
-    case "preview.makershare.com":
-    case "makershare.com":
-        universalNavActive("share-p")
-        break;
-    default:
-        break;
-  }
-  switch(shareSection) {
-    case "maker-share/learning":
-    case "makershare/learning":
-    case "preview.makershare.com/learning":
-    case "makershare.com/learning":
-        universalNavActive("share")
-        break;
-    default:
-        break;
-  }
 	// fix nav to top on scrolldown, stay fixed for transition from mobile to desktop
 		if (jQuery(window).width() < 578) {
 			jQuery(".auth-target").append(jQuery(".nav-level-1-auth"));
