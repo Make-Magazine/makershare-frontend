@@ -83,7 +83,7 @@
 			}
 			a:nth-of-type(2) {
 				img { 
-					margin-top: 0px;
+					margin-top: 0px !important;
 					float: left;
 					margin-bottom: 0px;
 				}
@@ -93,7 +93,7 @@
 				}
 			}
 			a:nth-of-type(3) {
-				img { margin-top: -5px; }
+				img { margin-top: -6px; }
 			}
 		}
 	}
