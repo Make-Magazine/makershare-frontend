@@ -565,6 +565,7 @@ function newsSignup() {
 	}
 }
 var toggledClosed = false;
+/*
 function beltOff() {
 	jQuery(".newsletter-footer").removeClass("scrolling");
    localStorage.setItem("newsletterClosed", "yes");
@@ -616,6 +617,7 @@ jQuery(document).ready(function(){
   });
 	
 });
+*/
 
 jQuery(document).ready(function(jQuery){
   // Thank you modal with more newsletter options
@@ -639,6 +641,7 @@ jQuery(document).ready(function(jQuery){
     }
   });
 });
+
 
 ////////////////////////////////////////////////
 //////////////// Auth0.js stuff ////////////////
