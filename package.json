@@ -59,7 +59,7 @@
     "angular-ssr": "^0.10.40",
     "angular2-jwt": "0.2.3",
     "angular2-template-loader": "0.6.2",
-    "auth0-js": "^9.3.3",
+    "auth0-js": "^9.6.1",
     "auth0-lock": "^11.3.1",
     "cookie-parser": "1.4.3",
     "core-js": "^2.5.7",
