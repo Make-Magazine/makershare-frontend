@@ -551,19 +551,29 @@ $(window).on('load', function () {
 
 // Newsletter code
 // When you submit a newsletter
-
-function newsSignup() {
-  // e.preventDefault();
-	var bla = jQuery('#wc-email').val();
-	if(!bla) {
-		grecaptcha.reset();
+jQuery(document).ready(function(){
+jQuery("#subscribe-form").submit(function( event ) {
+	var email = jQuery('#EMAIL').val();
+	var fname = jQuery('#FNAME').val();
+	var lname = jQuery('#LNAME').val();
+	if(!email || !fname || !lname) {
+		jQuery("#EMAIL").next().removeClass('hidden');
+		jQuery("#FNAME").next().removeClass('hidden');
+		jQuery("#LNAME").next().removeClass('hidden');
 		return;
 	} else {
-		jQuery.post('https://secure.whatcounts.com/bin/listctrl', jQuery('#wc-embedded-subscribe-form').serialize());
-		jQuery("#wc-email").val("");
+		jQuery.post('https://makermedia.us9.list-manage.com/subscribe/post?u=4e536d5744e71c0af50c0678c&amp;id=64d256630b', jQuery('#subscribe-form').serialize());
+		jQuery("#EMAIL").next().addClass('hidden');
+		jQuery("#FNAME").next().addClass('hidden');
+		jQuery("#LNAME").next().addClass('hidden');
+		jQuery("#EMAIL").val("");
+		jQuery("#FNAME").val("");
+		jQuery("#LNAME").val("");
 		jQuery('.fancybox-thx').trigger('click');
 	}
-}
+	event.preventDefault();
+});
+});
 var toggledClosed = false;
 /*
 function beltOff() {

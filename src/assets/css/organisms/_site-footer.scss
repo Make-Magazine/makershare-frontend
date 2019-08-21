@@ -22,7 +22,12 @@
 			color: #fff!important;
 			padding: 0;
 		}
-		.hidden { display: none; }
+		.hidden { display: none !important; }
+		@media screen and (max-width: 768px) {
+			input[type="submit"], input[type="submit"]:hover {
+				 right: -20px !important;
+			}
+		}
 	}
 	.magazine-footer {
       img {
