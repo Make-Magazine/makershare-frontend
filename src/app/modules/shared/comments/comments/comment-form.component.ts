@@ -61,17 +61,8 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
-	 console.log("Comment Link: " + this.commentForm.value.comment_link);
-	 if(this.commentForm.value.comment_link == '') {
-	   console.log("nothing!");
-	 }
-	 if(this.commentForm.value.comment_link == null) {
-	   console.log("null");
-	 }
-	 if(this.commentForm.value.comment_link == undefined) {
-	   console.log("undefined");
-	 }
-    if (this.commentForm.valid && this.commentForm.value.comment_link == '') {
+
+    if (this.commentForm.valid && this.commentForm.value.comment_link == null) {
       e.preventDefault();
 
       this.commentData.subject = this.currentuser.author;
