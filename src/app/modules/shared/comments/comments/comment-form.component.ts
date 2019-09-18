@@ -76,8 +76,8 @@ export class CommentFormComponent implements OnInit {
         err => {},
       );
     }
-    this.commentForm.reset();
 	 this.commentForm.value.comment_link = 'test';
+    this.commentForm.value.comment_body.reset();
   }
   /* end function on submit post comment */
 
