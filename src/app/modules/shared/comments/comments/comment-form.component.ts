@@ -53,6 +53,7 @@ export class CommentFormComponent implements OnInit {
   buildForm() {
     this.commentForm = this.fb.group({
       comment_body: ['', Validators.required],
+		comment_link: ['', Validators.required],
     });
   }
   /* end function build form */
