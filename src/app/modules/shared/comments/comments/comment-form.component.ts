@@ -59,7 +59,7 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
-    if (this.commentForm.valid) {
+    if (this.commentForm.valid && this.commentForm.value.comment_link != '') {
       e.preventDefault();
 
       this.commentData.subject = this.currentuser.author;

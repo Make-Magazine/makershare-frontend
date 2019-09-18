@@ -4,6 +4,7 @@
     <label *ngIf="titlecomment" class="feedback-label title-tab">{{titlecomment.title}}</label>
   <div class="comment-body d-flex justify-content-around">
     <textarea name="new-feedback" placeholder="{{titlecomment.placeholder}}" cols="100" rows="6" class="col" formControlName="comment_body"></textarea>
+	 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" formControlName="comment_link" tabindex="-1" value=""></div>
     <button class="send-comment" type="submit">
       <span class="fa-stack fa-lg">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
