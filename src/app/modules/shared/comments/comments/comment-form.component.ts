@@ -20,6 +20,7 @@ export class CommentFormComponent implements OnInit {
   currentuser;
   newcomment;
   CommenterNid;
+  spam = true;
   commentData: IComment = {
     subject: '',
     comment_body: { und: [{ value: '' }] },
@@ -61,18 +62,13 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
-	 console.log("Comment Link: " + this.commentForm.value.comment_link);
-	 if(this.commentForm.value.comment_link == '') {
-	   console.log("nothing!");
-	 }
-	 if(this.commentForm.value.comment_link == null) {
-	   console.log("null");
-	 }
-	 if(this.commentForm.value.comment_link == undefined) {
-	   console.log("undefined");
+
+	 if(this.commentForm.value.comment_link == '' || this.commentForm.value.comment_link == null || this.commentForm.value.comment_link == undefined) {
+	   console.log("no spam!");
+	   this.spam = false;
 	 }
 	 
-    if (this.commentForm.valid && (this.commentForm.value.comment_link == null || this.commentForm.value.comment_link == undefined)) {
+    if (this.commentForm.valid && this.spam == false) {
       e.preventDefault();
 
       this.commentData.subject = this.currentuser.author;
