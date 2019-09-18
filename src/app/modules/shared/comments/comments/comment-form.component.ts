@@ -61,6 +61,7 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
+    /* if this.commentForm.value.comment_link isn't test, a bot fell into our honey pot */
     if (this.commentForm.valid && (this.commentForm.value.comment_link == 'test') ) {
       e.preventDefault();
 
@@ -75,9 +76,8 @@ export class CommentFormComponent implements OnInit {
       );
     }
     this.commentForm.reset();
+	 /* reset the value to what it was before spammers messed with it */
 	 this.commentForm.value.comment_link = 'test';
-	 console.log(this.commentForm);
-
 	 this.commentForm.controls.comment_link.setValue('test');
 
   }
