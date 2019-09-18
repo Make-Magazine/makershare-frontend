@@ -66,8 +66,9 @@ export class CommentFormComponent implements OnInit {
 	 if(this.commentForm.value.comment_link == '' || this.commentForm.value.comment_link == null || this.commentForm.value.comment_link == undefined) {
 	   console.log("no spam!");
 	   this.spam = false;
+		console.log(this.spam);
 	 }
-	 
+	 console.log(this.spam);
     if (this.commentForm.valid && this.spam == false) {
       e.preventDefault();
 
