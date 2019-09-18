@@ -55,11 +55,20 @@ export class CommentFormComponent implements OnInit {
       comment_body: ['', Validators.required],
 		comment_link: ['', Validators.required],
     });
+	 console.log(this.commentForm);
+	 console.log("next");
+	 console.log(this.commentForm.value);
+	 console.log("Comment Link: " + this.commentForm.value.comment_link);
   }
   /* end function build form */
 
+
   /* function on submit post comment */
   onSubmit(e) {
+  	 console.log(this.commentForm);
+	 console.log("next");
+	 console.log(this.commentForm.value);
+	 console.log("Comment Link: " + this.commentForm.value.comment_link);
     if (this.commentForm.valid && this.commentForm.value.comment_link != '') {
       e.preventDefault();
 
