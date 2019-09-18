@@ -76,10 +76,9 @@ export class CommentFormComponent implements OnInit {
     }
     this.commentForm.reset();
 	 this.commentForm.value.comment_link = 'test';
-	 this.commentForm.controls.comment_link.value('testy');
+	 	 console.log(this.commentForm);
+	 this.commentForm.controls.comment_link.value = 'testy';
 	 this.commentForm.controls.comment_link.setValue('test');
-	 console.log(this.commentForm);
-	 //this.commentForm.comment_link.setValue('test');
 
   }
   /* end function on submit post comment */
