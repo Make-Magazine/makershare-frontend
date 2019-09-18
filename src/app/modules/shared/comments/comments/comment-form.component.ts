@@ -53,7 +53,7 @@ export class CommentFormComponent implements OnInit {
   buildForm() {
     this.commentForm = this.fb.group({
       comment_body: ['', Validators.required],
-		comment_link: ['', Validators.required],
+		comment_link: ['test', Validators.required],
     });
   }
   /* end function build form */
@@ -61,7 +61,7 @@ export class CommentFormComponent implements OnInit {
 
   /* function on submit post comment */
   onSubmit(e) {
-    if (this.commentForm.valid && (this.commentForm.value.comment_link === '') ) {
+    if (this.commentForm.valid && (this.commentForm.value.comment_link == 'test') ) {
       e.preventDefault();
 
       this.commentData.subject = this.currentuser.author;
