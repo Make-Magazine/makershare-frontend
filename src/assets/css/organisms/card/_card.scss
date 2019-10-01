@@ -15,7 +15,9 @@
       overflow: visible !important;
     }
   }
-
+	&.item-0 {
+		display: none;
+	}
 }
 
 .card {
