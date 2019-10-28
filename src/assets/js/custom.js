@@ -553,22 +553,22 @@ $(window).on('load', function () {
 // When you submit a newsletter
 jQuery(document).ready(function(){
 jQuery("#subscribe-form").submit(function( event ) {
-	var email = jQuery('#EMAIL').val();
-	var fname = jQuery('#FNAME').val();
-	var lname = jQuery('#LNAME').val();
+	var email = jQuery('#mce-EMAIL').val();
+	var fname = jQuery('#mce-FNAME').val();
+	var lname = jQuery('#mce-LNAME').val();
 	if(!email || !fname || !lname) {
-		jQuery("#EMAIL").next().removeClass('hidden');
-		jQuery("#FNAME").next().removeClass('hidden');
-		jQuery("#LNAME").next().removeClass('hidden');
+		jQuery("#mce-EMAIL").next().removeClass('hidden');
+		jQuery("#mce-FNAME").next().removeClass('hidden');
+		jQuery("#mce-LNAME").next().removeClass('hidden');
 		return;
 	} else {
-		jQuery.post('https://makermedia.us9.list-manage.com/subscribe/post?u=4e536d5744e71c0af50c0678c&amp;id=64d256630b', jQuery('#subscribe-form').serialize());
-		jQuery("#EMAIL").next().addClass('hidden');
-		jQuery("#FNAME").next().addClass('hidden');
-		jQuery("#LNAME").next().addClass('hidden');
-		jQuery("#EMAIL").val("");
-		jQuery("#FNAME").val("");
-		jQuery("#LNAME").val("");
+		jQuery.post('https://make.us9.list-manage.com/subscribe/post?u=4e536d5744e71c0af50c0678c&amp;id=609e43360a', jQuery('#subscribe-form').serialize());
+		jQuery("#mce-EMAIL").next().addClass('hidden');
+		jQuery("#mce-FNAME").next().addClass('hidden');
+		jQuery("#mce-LNAME").next().addClass('hidden');
+		jQuery("#mce-EMAIL").val("");
+		jQuery("#mce-FNAME").val("");
+		jQuery("#mce-LNAME").val("");
 		jQuery('.fancybox-thx').trigger('click');
 	}
 	event.preventDefault();
