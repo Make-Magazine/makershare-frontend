@@ -428,7 +428,7 @@ jQuery(window).on('load', function () {
 //////////////////////////////////////
                            
 $(window).on('load', function () {
-   var topElementOffset = jQuery("#menu- secondary_universal_menu").height();
+   var topElementOffset = jQuery("#menu-secondary_universal_menu").height();
 	
 	$('#hamburger-icon, #hamburger-text, .nav-flyout-underlay').click(function() {
 		$('#hamburger-icon').toggleClass('open');
@@ -452,9 +452,6 @@ $(window).on('load', function () {
   var y_pos = $(".nav-level-2").offset().top; // 75
 
   $(window).on('resize', function(){
-	  if( document.querySelector(".sumome-smartbar-popup") != null ) {
-			topElementOffset += jQuery(".sumome-smartbar-popup").height();
-		}
       if ($(window).width() < 767) {
           y_pos = 0;
           $(".main-container").css("margin-top", topElementOffset + "px");
@@ -469,13 +466,13 @@ $(window).on('load', function () {
           $("body").addClass("scrolled");
           e.addClass("main-nav-scrolled");
           hamburger.addClass("ham-menu-animate");
-			 if( document.querySelector(".sumome-smartbar-popup") != null) {
-					jQuery(".nav-hamburger .container").css("margin-top", jQuery(".sumome-smartbar-popup").height() * 2.2 + "px");
-					jQuery("#nav-flyout").css("margin-top", jQuery(".sumome-smartbar-popup").height() + "px");
+			 // make hamburger dynamic to height of banner
+				if( document.querySelector(".banner-bar") != null) {
+					jQuery(".nav-hamburger .container").css("margin-top", jQuery(".banner-bar").height() + jQuery(".nav-level-1"));
+					jQuery("#nav-flyout").css("margin-top", jQuery(".banner-bar").height() + "px");
 				} else {
 					jQuery(".nav-hamburger .container, #nav-flyout").css("margin-top", "0px");
 				}
-			 hamburger.css("margin-top", topElementOffset + "px");
           $(".main-container").css("margin-top", topElementOffset + "px");
       }else if(scrollTop <= y_pos){
           $("body").removeClass("scrolled");
