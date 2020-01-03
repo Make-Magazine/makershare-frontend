@@ -454,7 +454,7 @@ $(window).on('load', function () {
   $(window).on('resize', function(){
       if ($(window).width() < 767) {
           y_pos = 0;
-          $(".main-container").css("margin-top", topElementOffset + "px");
+          $(".main-container").css("margin-top", "50px");
       }else{
           y_pos = 75;
           $(".main-container").css("margin-top", "0px");
@@ -473,13 +473,13 @@ $(window).on('load', function () {
 				} else {
 					jQuery(".nav-hamburger .container, #nav-flyout").css("margin-top", "0px");
 				}
-          $(".main-container").css("margin-top", topElementOffset + "px");
+          $(".main-container").css("margin-top", "50px");
       }else if(scrollTop <= y_pos){
           $("body").removeClass("scrolled");
           e.removeClass("main-nav-scrolled");
 			 jQuery(".nav-hamburger .container").css("margin-top", "0px");
           hamburger.removeClass("ham-menu-animate");
-          $(".main-container").css("margin-top", "0px");
+          $(".main-container").css("margin-top", "50px");
       }
   });
 

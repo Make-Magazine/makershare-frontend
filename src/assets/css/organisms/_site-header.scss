@@ -1,3 +1,5 @@
+.main-container { margin-top: 50px; }
+
 #universal-nav {
 	.nav-level-1 .nav-level-1-nav {
 		margin-left: 120px;
@@ -14,6 +16,7 @@
 		margin-top: -40px;
 	}
 	#nav-flyout {
+		z-index: 999999;
 		@media screen and (max-width: 768px) and (min-width: 574px) {
 			.container { width: 680px; }
 		}
@@ -56,7 +59,7 @@
 
 .nav-level-1-auth {
   position: absolute;
-  right: -20px;
+  right: -20px !important;
   top: 0px;
   @media screen and (max-width: 576px) {
     display: none;
@@ -202,6 +205,9 @@
 	.banner-bar {
 		 font-size: 12px;
 	}
+}
+.nav-hamburger#nav-hamburger {
+	z-index: 9999999;
 }
 @media screen and (min-width: 767px) {
 	.nav-hamburger#nav-hamburger { top: 0px; }
