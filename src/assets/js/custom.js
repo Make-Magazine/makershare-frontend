@@ -469,9 +469,8 @@ $(window).on('load', function () {
 			 // make hamburger dynamic to height of banner
 				if( document.querySelector(".banner-bar") != null) {
 					jQuery(".nav-hamburger .container").css("margin-top", jQuery(".banner-bar").height() + jQuery(".nav-level-1"));
-					jQuery("#nav-flyout").css("margin-top", jQuery(".banner-bar").height() + "px");
 				} else {
-					jQuery(".nav-hamburger .container, #nav-flyout").css("margin-top", "0px");
+					jQuery(".nav-hamburger .container").css("margin-top", "0px");
 				}
           $(".main-container").css("margin-top", "50px");
       }else if(scrollTop <= y_pos){
