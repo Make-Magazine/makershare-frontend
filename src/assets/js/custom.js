@@ -495,34 +495,11 @@ $(window).on('load', function () {
   }
   // each one has to apply to a number of environments
   switch(site) {
-    case "make-zine":
-    case "makezine":
-    case "makezine.wpengine.com":
-    case "makezine.staging.wpengine.com":
-    case "makezine.com":
-        universalNavActive("zine");
-        break;
-    case "makeco":
-    case "makeco.wpengine.com":
-    case "makeco.staging.wpengine.com/":
-    case "makeco.com":
-        universalNavActive("make");
-        break;
-    case "makershed.com":
-        universalNavActive("shed")
-        break;
-    case "maker-faire":
-    case "makerfaire":
-    case "makerfaire.wpengine.com":
-    case "makerfaire.staging.wpengine.com":
-    case "makerfaire.com":
-        universalNavActive("faire")
-        break;
     case "maker-share":
     case "makershare":
     case "preview.makershare.com":
     case "makershare.com":
-        universalNavActive("share-p")
+        universalNavActive("community")
         break;
     default:
         break;
