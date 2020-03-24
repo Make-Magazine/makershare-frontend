@@ -202,9 +202,9 @@
 
 .banner-bar { 
 	font-size: 18px;
-	line-height: 22px;
+	line-height: 24px;
 	.container { 
-		height: 160px;
+		height: 160px !important;
 		a { text-decoration: underline; }
 	}
 }
