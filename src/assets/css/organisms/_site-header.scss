@@ -200,7 +200,14 @@
   }
 }
 
-.banner-bar { font-size: 16px; }
+.banner-bar { 
+	font-size: 18px;
+	line-height: 22px;
+	.container { 
+		height: 160px;
+		a { text-decoration: underline; }
+	}
+}
 @media screen and (max-width: 420px) {
 	.banner-bar {
 		 font-size: 12px;
