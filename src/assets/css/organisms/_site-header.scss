@@ -203,8 +203,10 @@
 .banner-bar { 
 	font-size: 18px;
 	line-height: 24px;
+	z-index: 99999999;
 	.container { 
-		height: 160px !important;
+		height: 100% !important;
+		padding: 15px !important;
 		a { text-decoration: underline; }
 	}
 }
